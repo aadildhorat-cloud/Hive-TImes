@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade Times</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global reset and base styles */
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Header styling */
+        .header {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #610d00, #8b1a00);
+            color: #ffffff;
+            padding: 15px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 100;
+        }
+        .header img {
+            height: 80px;
+            margin-right: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        .header h1 {
+            font-size: 2.2em;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Navigation styling */
+        nav {
+            background: #2c3e50;
+            padding: 12px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1.1em;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        nav ul li a:hover {
+            color: #3498db;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: #3498db;
+            transition: all 0.3s ease;
+        }
+        nav ul li a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        
+        /* Dropdown styling */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropbtn {
+            background-color: transparent;
+            color: #ffffff;
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s ease;
+        }
+        .dropbtn i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        .dropdown:hover .dropbtn i {
+            transform: rotate(180deg);
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 220px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            z-index: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 20px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+        }
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+        .dropdown-content a i {
+            margin-right: 10px;
+            color: #610d00;
+            width: 20px;
+            text-align: center;
+        }
+        .dropdown-content a:hover {
+            background-color: #f8f9fa;
+            color: #610d00;
+            transform: translateX(5px);
+        }
+        
+        /* ✅ Fixed Slider styling (like the reference code) */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            max-width: 1400px;
+            height: 550px;
+            margin: 30px auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            background: #000;
+            cursor: pointer;
+        }
+        .slider {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            transition: transform 1s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+        
+        /* Slide indicators */
+        .slide-indicators {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .indicator.active {
+            background-color: white;
+            width: 16px;
+            height: 16px;
+        }
+        
+        /* Container for content blocks */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 25px;
+            padding: 30px;
+            max-width: 1400px;
+            margin: 0 auto 20px auto;
+        }
+        /* Block styling inside container */
+        .block {
+            width: calc(33.333% - 25px);
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .block:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        .block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #610d00, #3498db);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        .block:hover::before {
+            transform: scaleX(1);
+        }
+        .block a {
+            display: block;
+            text-decoration: none;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .block img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .block:hover img {
+            transform: scale(1.05);
+        }
+        /* Info section inside blocks */
+        .info {
+            padding: 20px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .info h3 {
+            margin: 0 0 12px 0;
+            font-size: 1.5em;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        .info p {
+            font-size: 1em;
+            color: #555;
+            margin: 0 0 20px 0;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+        .info button {
+            background: linear-gradient(135deg, #610d00, #8b1a00);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(97, 13, 0, 0.3);
+        }
+        .info button:hover {
+            background: linear-gradient(135deg, #8b1a00, #c0392b);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(97, 13, 0, 0.4);
+        }
+        /* Popup styling */
+        .popup {
+            display: none;
+            position: fixed;
+            z-index: 1002;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .popup-content {
+            background-color: #fff;
+            padding: 30px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 700px;
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        @keyframes slideIn {
+            from { 
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to { 
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .popup-content h3 {
+            margin: 0 0 20px 0;
+            color: #2c3e50;
+            font-size: 1.8em;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 10px;
+        }
+        .popup-content p {
+            color: #333;
+            line-height: 1.8;
+            font-size: 1.1em;
+            text-align: justify;
+        }
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: #610d00;
+            background-color: #e0e0e0;
+            transform: scale(1.1);
+        }
+        /* Contact Popup Styles */
+        .contact-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 35px;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            display: none;
+            text-align: center;
+            border-radius: 12px;
+            max-width: 400px;
+            width: 90%;
+            animation: popupAppear 0.3s ease;
+        }
+        @keyframes popupAppear {
+            from { 
+                opacity: 0;
+                transform: translate(-50%, -60%);
+            }
+            to { 
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+        .contact-popup h3 {
+            margin: 0 0 15px 0;
+            color: #2c3e50;
+            font-size: 1.5em;
+        }
+        .contact-popup p {
+            margin-bottom: 25px;
+            font-size: 1.1em;
+            color: #555;
+        }
+        .contact-popup button {
+            margin: 10px;
+            padding: 14px 25px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            min-width: 120px;
+        }
+        .contact-popup button:first-child {
+            background-color: #25d366;
+            color: white;
+            box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+        }
+        .contact-popup button:first-child:hover {
+            background-color: #128c7e;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+        }
+        .contact-popup button:nth-child(2) {
+            background-color: #007bff;
+            color: white;
+            box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+        }
+        .contact-popup button:nth-child(2):hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+        }
+        .contact-popup button:last-child {
+            background-color: #f44336;
+            color: white;
+            box-shadow: 0 2px 8px rgba(244, 67, 54, 0.3);
+        }
+        .contact-popup button:last-child:hover {
+            background-color: #d32f2f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(244, 67, 54, 0.4);
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: none;
+            transition: opacity 0.3s ease;
+        }
+        /* Footer styling */
+        footer {
+            background: linear-gradient(135deg, #2c3e50, #1a2530);
+            color: #ffffff;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        .footer-logo {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        .footer-logo img {
+            height: 60px;
+            margin-bottom: 10px;
+            filter: brightness(0) invert(1);
+        }
+        .footer-logo h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.3em;
+        }
+        .social-media {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        .social-media li {
+            margin: 0 15px;
+        }
+        .social-media li a {
+            color: #ffffff;
+            font-size: 1.8em;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .social-media li a:hover {
+            color: #3498db;
+            transform: translateY(-3px);
+        }
+        .footer-nav {
+            flex: 1;
+            min-width: 300px;
+        }
+        .footer-nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .footer-nav ul li {
+            margin: 10px 20px;
+        }
+        .footer-nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1em;
+            position: relative;
+            padding: 5px 0;
+        }
+        .footer-nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: #3498db;
+            transition: all 0.3s ease;
+        }
+        .footer-nav ul li a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        .footer-nav ul li a:hover {
+            color: #3498db;
+        }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 0.9em;
+        }
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                gap: 20px;
+            }
+            .block {
+                width: calc(50% - 20px);
+            }
+            .slider-container {
+                height: 500px;
+                margin: 20px auto;
+            }
+        }
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+                padding: 15px;
+            }
+            .header img {
+                margin-bottom: 10px;
+                height: 60px;
+            }
+            .header h1 {
+                font-size: 1.8em;
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 8px 0;
+            }
+            .dropdown {
+                width: 100%;
+                text-align: center;
+            }
+            .dropdown .dropbtn {
+                width: 100%;
+                justify-content: center;
+            }
+            .dropdown-content {
+                position: static;
+                width: 100%;
+                margin-top: 5px;
+                border-radius: 8px;
+            }
+            .container {
+                padding: 20px;
+            }
+            .block {
+                width: 100%;
+            }
+            .slider-container {
+                height: 400px;
+            }
+            .slide-indicators {
+                bottom: 20px;
+            }
+        }
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+            .slider-container {
+                height: 320px;
+            }
+            .slide-indicators {
+                bottom: 15px;
+                gap: 8px;
+            }
+            .indicator {
+                width: 10px;
+                height: 10px;
+            }
+            .indicator.active {
+                width: 14px;
+                height: 14px;
+            }
+        }
+        /* Animation for blocks on page load */
+        .block {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .block.animate {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s ease 0.2s;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="logo/HIVE TIMES LOGO RED.png" alt="HIVE Times Logo">
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+            <li class="dropdown">
+                <button class="dropbtn"><i class="fas fa-building"></i> Businesses <i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="website codes/Polar ice cream.html"><i class="fas fa-ice-cream"></i> Polar Ice Cream</a>
+                    <a href="website codes/Sweet Mart.html"><i class="fas fa-cookie"></i> Sweet Mart</a>
+                    <a href="website codes/broadway page.html"><i class="fas fa-candy-cane"></i> Broadway Sweets</a>
+                    <a href="website codes/Sweet Depot website.html"><i class="fas fa-candy-cane"></i> Sweet depot</a>
+                    <a href="#"><i class="fas fa-cake-candles"></i> Z and S Sweets</a>
+                </div>
+            </li>
+            <li><button onclick="showContactPopup()" style="background: none; border: none; color: white; font-size: 1.1em; cursor: pointer; display: flex; align-items: center;"><i class="fas fa-phone-alt"></i> Contact Us</button></li>
+        </ul>
+    </nav>
+
+    <!-- ✅ Fixed Slider Section (like the reference code) -->
+    <div class="slider-container" id="sliderContainer">
+        <div class="slider" id="slider">
+            <!-- Slide 1: Broadway Sweets -->
+            <div class="slide">
+                <a href="website codes/broadway page.html" target="_blank" rel="noopener">
+                    <img src="images/broadway sweets long.jpg" alt="Broadway Sweets">
+                </a>
+            </div>
+
+            <!-- Slide 2: Sweet Deport -->
+            <div class="slide">
+                <a href="website codes/Sweet Depot website.html" target="_blank" rel="noopener">
+                    <img src="images/sweet deport long.jpg" alt="Sweet Deport">
+                </a>
+            </div>
+
+            <!-- Slide 3: Sweet Mart -->
+            <div class="slide">
+                <a href="website codes/Sweet Mart.html" target="_blank" rel="noopener">
+                    <img src="images/sweet mart long.jpg" alt="Sweet Mart">
+                </a>
+            </div>
+
+            <!-- Slide 4: Polar Ice Cream -->
+            <div class="slide">
+                <a href="website codes/Polar ice cream.html" target="_blank" rel="noopener">
+                    <img src="images/polar ice cream long.jpg" alt="Polar Ice Cream">
+                </a>
+            </div>
+        </div>
+
+        <!-- Slide Indicators -->
+        <div class="slide-indicators">
+            <div class="indicator active" onclick="changeSlide(0)"></div>
+            <div class="indicator" onclick="changeSlide(1)"></div>
+            <div class="indicator" onclick="changeSlide(2)"></div>
+            <div class="indicator" onclick="changeSlide(3)"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="block">
+            <a href="website codes/broadway page.html">
+                <img src="logo/broadway sweets logo.jpg" alt="Broadway Sweets Logo">
+            </a>
+            <div class="info">
+                <h3>Broadway Sweets</h3>
+                <p> Lolipops, Bubblegum, Candy, Party Packs, Secret Snacks</p>
+                <button class="open-popup" data-popup-target="broadwaysweetsPopup">Learn More</button>
+            </div>
+        </div>
+        <div class="block">
+            <a href="website codes/Sweet Depot website.html">
+                <img src="sweet-depot-logo.png" alt="Sweet Deport Logo">
+            </a>
+            <div class="info">
+                <h3>Sweet Deport</h3>
+                <p>Your comprehensive source for a wide variety of sweets, snacks, and confectionery items from around the world.</p>
+                <button class="open-popup" data-popup-target="sweetdeportPopup">Learn More</button>
+            </div>
+        </div>
+        <div class="block">
+            <a href="website codes/Sweet Mart.html">
+                <img src="logo/sweet mart logo.jpeg" alt="Sweet Mart Logo">
+            </a>
+            <div class="info">
+                <h3>Sweet Mart</h3>
+                <p>Quality sweets, snacks, and confectionery at unbeatable prices, with a focus on customer satisfaction and value.</p>
+                <button class="open-popup" data-popup-target="sweetmartPopup">Learn More</button>
+            </div>
+        </div>
+        <div class="block">
+            <a href="website codes/Polar ice cream.html">
+                <img src="logo/polar ice cream.png" alt="Polar Ice Cream Logo">
+            </a>
+            <div class="info">
+                <h3>Polar Ice Cream</h3>
+                <p>Cool down with our delicious range of premium ice creams and frozen desserts, perfect for hot summer days.</p>
+                <button class="open-popup" data-popup-target="polaricecreampopup">Learn More</button>
+            </div>
+        </div>
+        <div class="block">
+            <a href="#">
+                <img src="C:\Users\AADIL DHORAT\OneDrive\Desktop\Aadil code 1\Sunrise sweets\sunrise logo.jpg" alt="Sunrise Sweets Logo">
+            </a>
+            <div class="info">
+                <h3>Sunrise Sweets</h3>
+                <p>Start your day with our delightful range of morning sweets and traditional breakfast desserts.</p>
+                <button class="open-popup" data-popup-target="sunrisesweetsPopup">Learn More</button>
+            </div>
+        </div>
+        <div class="block">
+            <a href="#">
+                <img src="C:\Users\AADIL DHORAT\OneDrive\Desktop\Aadil code 1\Z and S sweets\z and s logo.jpg" alt="Z and S Sweets Logo">
+            </a>
+            <div class="info">
+                <h3>Z and S Sweets</h3>
+                <p>Specialty sweets and desserts crafted with generations of expertise and traditional methods.</p>
+                <button class="open-popup" data-popup-target="zandsweetsPopup">Learn More</button>
+            </div>
+        </div>
+        <div class="block">
+            <a href="#">
+                <img src="https://placehold.co/300x220/e67e22/ffffff?text=Desert+Sweets" alt="Desert Sweets Logo">
+            </a>
+            <div class="info">
+                <h3>Desert Sweets</h3>
+                <p>Unique sweets inspired by Middle Eastern flavors and traditional desert recipes.</p>
+                <button class="open-popup" data-popup-target="desertsweetsPopup">Learn More</button>
+            </div>
+        </div>
+        <div class="block">
+            <a href="#">
+                <img src="https://placehold.co/300x220/34495e/ffffff?text=Royal+Sweets" alt="Royal Sweets Logo">
+            </a>
+            <div class="info">
+                <h3>Royal Sweets</h3>
+                <p>Luxury sweets and desserts fit for royalty, with premium ingredients and exquisite presentation.</p>
+                <button class="open-popup" data-popup-target="royalsweetsPopup">Learn More</button>
+            </div>
+        </div>
+        <div class="block">
+            <a href="#">
+                <img src="https://placehold.co/300x220/7f8c8d/ffffff?text=Golden+Sweets" alt="Golden Sweets Logo">
+            </a>
+            <div class="info">
+                <h3>Golden Sweets</h3>
+                <p>Our premium line of sweets featuring edible gold and the finest ingredients for special occasions.</p>
+                <button class="open-popup" data-popup-target="goldensweetsPopup">Learn More</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="https://placehold.co/100x60/610d00/ffffff?text=TT" alt="Trade Times Logo">
+                <h3>Trade Times</h3>
+                <p>Your trusted partner for Trade Directory</p>
+            </div>
+            <div class="footer-nav">
+                <ul>
+                    <li><a href="#"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="#"><i class="fas fa-shopping-bag"></i> Products</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Team</a></li>
+                    <li><a href="#"><i class="fas fa-file-contract"></i> Terms</a></li>
+                    <li><a href=""><i class="fas fa-shield-alt"></i> Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <ul class="social-media">
+            <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+        </ul>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Trade Times. All rights reserved. <i class="fas fa-heart" style="color: #e74c3c;"></i> for Businesses</p>
+        </div>
+    </footer>
+    <div id="myPopup" class="popup">
+        <div class="popup-content">
+            <span class="close-button">&times;</span>
+            <h3 id="popup-title"></h3>
+            <p id="popup-text"></p>
+        </div>
+    </div>
+    <div id="contactPopup" class="contact-popup">
+        <h3>Get In Touch</h3>
+        <p>How would you like to contact us?</p>
+        <button onclick="window.open('https://wa.me/1234567890', '_blank')"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+        <button onclick="window.location.href='mailto:contact@tradetimes.com'"><i class="fas fa-envelope"></i> Email</button>
+        <button onclick="hideContactPopup()"><i class="fas fa-times"></i> Close</button>
+    </div>
+    <div class="overlay" onclick="hideContactPopup()"></div>
+    
+    <script>
+        // ✅ Fixed Slider functionality (like the reference code)
+        let currentSlide = 0;
+        const slider = document.getElementById('slider');
+        const slides = document.querySelectorAll('.slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const sliderContainer = document.getElementById('sliderContainer');
+        let slideInterval;
+
+        // Show slide by index
+        function showSlide(index) {
+            currentSlide = index;
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            indicators.forEach((ind, i) => {
+                ind.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        // Next slide
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        // Manual slide change
+        function changeSlide(index) {
+            showSlide(index);
+        }
+
+        // Auto-advance slides
+        function startSlider() {
+            slideInterval = setInterval(nextSlide, 3000);
+        }
+
+        // Pause on hover
+        if (sliderContainer) {
+            sliderContainer.addEventListener('mouseenter', () => {
+                clearInterval(slideInterval);
+            });
+            sliderContainer.addEventListener('mouseleave', () => {
+                startSlider();
+            });
+        }
+
+        // Initialize indicators
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => changeSlide(index));
+        });
+
+        // Start slider
+        showSlide(0);
+        startSlider();
+
+        // --- Generic Popup Script ---
+        const genericPopup = document.getElementById('myPopup');
+        const popupTitle = document.getElementById('popup-title');
+        const popupText = document.getElementById('popup-text');
+        const closeButton = genericPopup.querySelector('.close-button');
+        const openPopupButtons = document.querySelectorAll('.open-popup');
+        
+        // Define content for each popup
+        const popupContents = {
+            broadwaysweetsPopup: {
+                title: "About Broadway Sweets",
+                text: "Broadway Sweets is a premier destination for traditional Indian sweets and desserts. Established with a passion for authentic flavors, we craft our products using time-honored recipes passed down through generations. Our commitment to quality ingredients and traditional methods ensures that every bite delivers the rich, authentic taste of Indian confectionery. From festive specialties to everyday treats, Broadway Sweets brings the sweetness of tradition to your table."
+            },
+            sweetdeportPopup: {
+                title: "About Sweet Deport",
+                text: "Sweet Deport is your comprehensive source for a wide variety of sweets, snacks, and confectionery items from around the world. Our mission is to bring joy to every occasion with our diverse selection of quality products. Whether you're looking for traditional favorites or international treats, Sweet Deport offers something for every palate. With a focus on customer satisfaction and competitive pricing, we've become a trusted name in the confectionery industry."
+            },
+            sweetmartPopup: {
+                title: "About Sweet Mart",
+                text: "Sweet Mart has been serving sweet lovers for over two decades with our extensive range of quality sweets, snacks, and confectionery. Our stores are designed to be a paradise for those with a sweet tooth, offering everything from traditional Indian mithai to international chocolates and candies. We pride ourselves on our customer service, product quality, and unbeatable value. Sweet Mart is more than just a store – it's a destination for creating sweet memories."
+            },
+            polaricecreampopup: {
+                title: "About Polar Ice Cream",
+                text: "Polar Ice Cream brings the chill to your summer days with our delicious range of premium ice creams and frozen desserts. Using only the finest ingredients and innovative recipes, we create ice creams that delight the senses. From classic vanilla and chocolate to exotic flavors inspired by global cuisines, Polar Ice Cream offers something for everyone. Our commitment to quality and innovation has made us a favorite among ice cream lovers of all ages."
+            },
+            sunrisesweetsPopup: {
+                title: "About Sunrise Sweets",
+                text: "Sunrise Sweets specializes in morning treats and breakfast desserts that start your day on a sweet note. Our products are crafted to complement your morning tea or coffee, offering a perfect balance of sweetness and flavor. From light pastries to traditional breakfast sweets, Sunrise Sweets uses quality ingredients to create products that are both delicious and satisfying. We believe that every day should begin with a touch of sweetness."
+            },
+            zandsweetsPopup: {
+                title: "About Z and S Sweets",
+                text: "Z and S Sweets represents generations of expertise in traditional sweet-making. Our products are crafted using time-honored methods and recipes that have been perfected over decades. Specializing in authentic regional specialties, we bring the rich heritage of Indian confectionery to discerning customers. Each sweet is made with care and attention to detail, ensuring consistent quality and authentic flavor. Z and S Sweets is a name synonymous with tradition and quality."
+            },
+            desertsweetsPopup: {
+                title: "About Desert Sweets",
+                text: "Desert Sweets draws inspiration from the rich culinary traditions of the Middle East, creating unique sweets that blend ancient flavors with modern techniques. Our products feature ingredients like dates, pistachios, rose water, and saffron, creating distinctive flavors that transport you to the heart of the desert. Whether you're enjoying our baklava, halva, or other specialties, Desert Sweets offers a taste of Middle Eastern hospitality and tradition."
+            },
+            royalsweetsPopup: {
+                title: "About Royal Sweets",
+                text: "Royal Sweets offers a premium line of luxury confectionery fit for royalty. Our products feature the finest ingredients, exquisite presentation, and innovative flavor combinations. From gold-leaf chocolates to truffles infused with rare spices, Royal Sweets creates memorable experiences through exceptional quality and craftsmanship. Perfect for special occasions and gift-giving, our sweets are designed to impress and delight even the most discerning palates."
+            },
+            goldensweetsPopup: {
+                title: "About Golden Sweets",
+                text: "Golden Sweets represents the pinnacle of luxury confectionery, featuring edible gold and the finest ingredients for special occasions. Our master confectioners combine traditional techniques with innovative designs to create sweets that are as beautiful as they are delicious. From gold-dusted chocolates to intricately designed mithai, Golden Sweets transforms ordinary treats into extraordinary experiences. Perfect for weddings, anniversaries, and other milestone celebrations."
+            }
+        };
+        
+        // Function to open the generic popup with specific content
+        function openGenericPopup(contentKey) {
+            const content = popupContents[contentKey];
+            if (content) {
+                popupTitle.textContent = content.title;
+                popupText.textContent = content.text;
+                genericPopup.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            } else {
+                console.error('Popup content not found for key:', contentKey);
+                closeGenericPopup();
+            }
+        }
+        
+        // Function to close the generic popup
+        function closeGenericPopup() {
+            genericPopup.style.display = 'none';
+            popupTitle.textContent = '';
+            popupText.textContent = '';
+            document.body.style.overflow = '';
+        }
+        
+        // Attach click listeners to all buttons with class 'open-popup'
+        openPopupButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetKey = button.getAttribute('data-popup-target');
+                if (targetKey) {
+                    openGenericPopup(targetKey);
+                }
+            });
+        });
+        
+        // Add click listener to the close button
+        closeButton.addEventListener('click', closeGenericPopup);
+        
+        // Close the popup if the user clicks outside of it
+        genericPopup.addEventListener('click', function(event) {
+            if (event.target === genericPopup) {
+                closeGenericPopup();
+            }
+        });
+        
+        // --- Contact Popup Script ---
+        const contactPopup = document.getElementById('contactPopup');
+        const overlay = document.querySelector('.overlay');
+        
+        function showContactPopup() {
+            contactPopup.style.display = 'block';
+            overlay.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function hideContactPopup() {
+            contactPopup.style.display = 'none';
+            overlay.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+        
+        // Close contact popup when overlay is clicked
+        overlay.addEventListener('click', hideContactPopup);
+        
+        // Allow closing with escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                if (genericPopup.style.display === 'flex') {
+                    closeGenericPopup();
+                }
+                if (contactPopup.style.display === 'block') {
+                    hideContactPopup();
+                }
+            }
+        });
+        
+        // Animate blocks on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                const blocks = document.querySelectorAll('.block');
+                blocks.forEach((block, index) => {
+                    setTimeout(() => {
+                        block.classList.add('animate');
+                    }, 100 * index);
+                });
+            }, 500);
+        });
+    
+    </script>
+</body>
+</html>
