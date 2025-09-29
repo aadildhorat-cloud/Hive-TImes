@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,7 +87,6 @@
             min-width: 200px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
             border-radius: 8px;
-            overflow: hidden;
             z-index: 1000;
             opacity: 0;
             visibility: hidden;
@@ -110,6 +110,49 @@
             color: #a30909;
             padding-left: 20px;
         }
+
+        /* Submenu Styling */
+        .submenu {
+            position: relative;
+        }
+        .submenu > a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .submenu-content {
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: -5px;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+        .submenu:hover .submenu-content {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+        .submenu-content a {
+            color: #333;
+            padding: 12px 16px;
+            display: block;
+            transition: all 0.2s ease;
+        }
+        .submenu-content a:hover {
+            background-color: #f8f9fa;
+            color: #a30909;
+            padding-left: 20px;
+        }
+
         /* Contact button styling */
         .contact-btn {
             background-color: #25d366;
@@ -131,7 +174,7 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
         }
-        /* ✅ Fixed Slider styling (like the reference code) */
+        /* Slider styling */
         .slider-container {
             position: relative;
             width: 100%;
@@ -563,31 +606,65 @@
     <header>
         <div class="header-container">
             <div class="logo-container">
-                <img src="C:\Users\AADIL DHORAT\OneDrive\Desktop\Aadil code 1\sweet mart products\sweet mart logo.jpeg" alt="Logo" class="logo-img">
+                <img src="sweet mart products/sweet mart logo.jpeg" alt="Logo" class="logo-img">
                 <div class="logo">SWEET MART</div>
             </div>
             <nav>
                 <ul>
-                    <li><a href="file:///C:/Users/AADIL%20DHORAT/OneDrive/Desktop/Aadil%20code%201/website%20codes/website%20idea.html">Home</a></li>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                     <li class="dropdown">
-                        <a href="#">Businesses</a>
+                        <a href="#"><i class="fas fa-store"></i> Businesses</a>
                         <div class="dropdown-content">
-                            <a href="file:///C:/Users/AADIL%20DHORAT/OneDrive/Desktop/website%20idea/Polar%20ice%20cream.html">Polar Ice Cream</a>
-                            <a href="file:///C:/Users/AADIL%20DHORAT/OneDrive/Desktop/website%20idea/Sweet%20Mart.html">Sweet Mart</a>
-                            <a href="file:///C:/Users/AADIL%20DHORAT/OneDrive/Desktop/Aadil%20code%201/website%20codes/broadway%20page.html">Broadway Sweets</a>
-                            <a href="file:///C:/Users/AADIL%20DHORAT/OneDrive/Desktop/Aadil%20code%201/Sweet%20Depot%20website.html">Sweet depot</a>
+                            <a href="Polar ice cream.html"><i class="fas fa-ice-cream"></i> Polar Ice Cream</a>
+                            <a href="Sweet Mart.html"><i class="fas fa-cookie"></i> Sweet Mart</a>
+                            <a href="broadway page.html"><i class="fas fa-candy-cane"></i> Broadway Sweets</a>
+                            <a href="Sweet Depot website.html"><i class="fas fa-candy-cane"></i> Sweet depot</a>
                         </div>
                     </li>
                     <li class="dropdown">
-                        <a href="#">Categories</a>
+                        <a href="#"><i class="fas fa-box"></i> Categories</a>
                         <div class="dropdown-content">
-                            <a href="#Candy">CANDY</a>
-                            <a href="#chocolate">CHOCOLATE</a>
-                            <a href="#jelly-gums">JELLY GUMS</a>
-                            <a href="#biscuits-and-snacks">BISCUITS AND SNACKS</a>
-                            <a href="#Cakes-and-donuts">CAKES AND DONUTS</a>
-                            <a href="#pasta-and-noodles">PASTA AND NOODLES</a>
-                        </div>
+                            <div class="submenu">
+                                <a href="#candy">
+                                    <span><i class="fas fa-sticky-note"></i>CANDY</span>
+                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
+                                </a>
+                            
+                            </div>
+                            <div class="submenu">
+                                <a href="#chocolate">
+                                    <span><i class="fas fa-circle"></i> CHOCOLATE</span>
+                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
+                                </a>
+                         </div>
+                            <div class="submenu">
+                                <a href="#jelly-gums">
+                                    <span><i class="fas fa-star"></i> JELLY GUMS</span>
+                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
+                                </a>
+                               
+                            </div>
+                            <div class="submenu">
+                                <a href="#biscuits-and-snacks">
+                                    <span><i class="fas fa-gift"></i> BISCUITS AND SNACKS</span>
+                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
+                                </a>
+                                
+                            </div>
+                           <div class="submenu">
+                                <a href="#cakes-and-donuts">
+                                    <span><i class="fas fa-star"></i> CAKES AND DONUTS</span>
+                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
+                                </a>
+                           </div>
+                           <div class="submenu">
+                                <a href="#pasta-and-noodles">
+                                    <span><i class="fas fa-star"></i> PASTA AND NOODLES</span>
+                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
+                                </a>
+                           </div>
+                               
+                               
                     </li>
                     <li>
                         <button class="contact-btn" onclick="showPopup()">
@@ -599,104 +676,101 @@
         </div>
     </header>
 
-    <!-- ✅ Fixed Slider Section (like the reference code) -->
     <div class="slider-container" id="sliderContainer">
         <div class="slider" id="slider">
-            <!-- Slide 1: Polar Ice Cream -->
             <div class="slide">
-                <a href="file:///C:/Users/AADIL%20DHORAT/OneDrive/Desktop/website%20idea/Polar%20ice%20cream.html" target="_blank" rel="noopener">
-                    <img src="C:\Users\AADIL DHORAT\OneDrive\Desktop\Aadil code 1\Polar Ice cream\polar ice cream long.jpg" alt="Polar Ice Cream">
+                <a href="Polar ice cream.html" target="_blank" rel="noopener">
+                    <img src="Polar Ice cream products/polar ice cream long.jpg" alt="Polar Ice Cream">
                 </a>
             </div>
 
-            <!-- Slide 2: Broadway Sweets -->
             <div class="slide">
-                <a href="file:///C:/Users/AADIL%20DHORAT/OneDrive/Desktop/Aadil%20code%201/website%20codes/broadway%20page.html" target="_blank" rel="noopener">
-                    <img src="C:\Users\AADIL DHORAT\OneDrive\Desktop\Aadil code 1\Broadway sweets\Broadwat sweets long.jpeg" alt="Broadway Sweets">
+                <a href="broadway page.html" target="_blank" rel="noopener">
+                    <img src="Broadway sweets products/Broadway sweets long.jpg" alt="Broadway Sweets">
                 </a>
             </div>
 
-            <!-- Slide 3: Sweet Depot -->
             <div class="slide">
-                <a href="file:///C:/Users/AADIL%20DHORAT/OneDrive/Desktop/website%20idea/Sweet%20Mart.html" target="_blank" rel="noopener">
-                    <img src="C:\Users\AADIL DHORAT\OneDrive\Desktop\Aadil code 1\Sweet depot\sweet deport long.jpg" alt="Sweet Depot">
+                <a href="Sweet Depot website.html" target="_blank" rel="noopener">
+                    <img src="Sweet depot/sweet deport long.jpg" alt="Sweet Depot">
+                </a>
+            </div>
+            <div class="slide">
+                <a href="Sweet Mart.html" target="_blank" rel="noopener">
+                    <img src="sweet mart products/Sweet Mart Long.jpg" alt="Sweet mart">
                 </a>
             </div>
         </div>
 
-        <!-- Slide Indicators -->
         <div class="slide-indicators">
             <div class="indicator active" onclick="changeSlide(0)"></div>
             <div class="indicator" onclick="changeSlide(1)"></div>
             <div class="indicator" onclick="changeSlide(2)"></div>
+             <div class="indicator" onclick="changeSlide(3)"></div>
         </div>
     </div>
 
-    <!-- Business Info Button with Logo -->
     <div class="business-info-container">
         <button class="business-info-btn" onclick="showBusinessPopup()">
-            <img src="C:\Users\AADIL DHORAT\OneDrive\Desktop\Aadil code 1\sweet mart products\sweet mart logo.jpeg" alt="Business Logo" class="business-logo">
+            <img src="sweet mart products/sweet mart logo.jpeg" alt="Business Logo" class="business-logo">
             About Our Business
         </button>
     </div>
 
-    <!-- Business Info Popup -->
     <div class="business-popup-overlay" id="businessPopupOverlay">
         <div class="business-popup" id="businessPopup">
             <h3 class="business-popup-title">About Our Business</h3>
             <div class="business-info-content">
-                <p>Welcome to Sweet Mart, your premier destination for the finest confectionery and snacks. We offer a wide range of delicious products including candies, chocolates, jelly gums, biscuits, cakes, donuts, and even pasta and noodles to satisfy every craving.</p>
+                <p>Welcome to Broadway Sweets, your premier destination for the finest confectionery treats. We specialize in a wide range of delicious sweets including lollipops, bubblegum, candies, and party packs that bring joy to every occasion.</p>
                 
-                <p>Our commitment to quality and customer satisfaction has made us a trusted name in the industry. We source only the finest ingredients to create our products, ensuring a delightful experience with every purchase.</p>
+                <p>Our commitment to quality and customer satisfaction has made us a trusted name in the industry. We use only the finest ingredients to create our products, ensuring a delightful experience with every bite.</p>
                 
-                <p>What makes Sweet Mart special:</p>
+                <p>What sets us apart:</p>
                 <ul>
-                    <li><strong>End-to-end encryption and privacy controls:</strong> Your data and information are always protected with our advanced security measures.</li>
-                    <li><strong>Message and call for free* around the world:</strong> Stay connected with our global network of sweet lovers and distributors.</li>
-                    <li><strong>Group messaging made easy:</strong> Organize your party packs and bulk orders with our easy communication system.</li>
-                    <li><strong>Say it with stickers, voice, GIFs and more:</strong> Express your joy and share your sweet moments with our fun communication features.</li>
-                    <li><strong>Layers of protection to help you stay safe:</strong> Our products undergo rigorous quality checks to ensure safety and freshness.</li>
-                    <li><strong>Share photos, videos, voice notes on Status:</strong> Showcase your favorite sweet moments and party experiences.</li>
-                    <li><strong>Stay updated on topics you care about:</strong> Get the latest news on new candy flavors and special promotions.</li>
-                    <li><strong>Get help with anything:</strong> Our dedicated customer service team is always ready to assist you with your sweet needs.</li>
+                    <li><strong>Quality Ingredients:</strong> We use only the finest, fresh ingredients to create our delicious sweets.</li>
+                    <li><strong>Wide Variety:</strong> Our extensive range includes lollipops, bubblegum, candies, party packs, and exclusive secret snacks.</li>
+                    <li><strong>Freshness Guaranteed:</strong> Our products undergo rigorous quality checks to ensure safety and freshness.</li>
+                    <li><strong>Customer Satisfaction:</strong> We offer excellent customer service and support for all your sweet needs.</li>
+                    <li><strong>Innovative Products:</strong> We continuously develop new and exciting flavors to delight our customers.</li>
+                    <li><strong>Party Solutions:</strong> Our party packs are perfect for birthdays, events, and special occasions.</li>
+                    <li><strong>Local Craftsmanship:</strong> We take pride in our local production and traditional sweet-making techniques.</li>
+                    <li><strong>Customer Support:</strong> Our dedicated team is always ready to assist you with your sweet needs.</li>
                 </ul>
                 
-                <p>We believe in creating moments of happiness through our delicious products. Whether you're planning a party, looking for a special treat, or just want to indulge in something sweet, Sweet Mart has something for everyone.</p>
+                <p>We believe in creating moments of happiness through our delicious products. Whether you're planning a party, looking for a special treat, or just want to indulge in something sweet, Broadway Sweets has something for everyone.</p>
             </div>
             <button class="close-business-btn" onclick="hideBusinessPopup()">Close</button>
         </div>
     </div>
 
-    <!-- Content Sections -->
     <div class="content-section">
-        <h2 id="Candy" class="section-title">CANDY</h2>
-        <img src="C:\Users\AADIL DHORAT\OneDrive\Desktop\Aadil code 1\sweet mart products\pages\CANDY PAGE 1.png" alt="candy" class="fullscreen-image">
-        <img src="C:\Users\AADIL DHORAT\OneDrive\Desktop\Aadil code 1\sweet mart products\pages\CANDY PAGE 2.png" alt="candy" class="fullscreen-image">
+        <h2 id="candy" class="section-title">CANDY</h2>
+        <img src="sweet mart products/pages/CANDY PAGE 1.png" alt="candy" class="fullscreen-image">
+         <img src="sweet mart products/pages/CANDY PAGE 2.png" alt="candy" class="fullscreen-image">
     </div>
     <div class="content-section">
         <h2 id="chocolate" class="section-title">CHOCOLATE</h2>
-        <img src="C:\Users\AADIL DHORAT\OneDrive\Desktop\Aadil code 1\sweet mart products\pages\chocolate page 1.png" alt="chocolate" class="fullscreen-image">
-        <img src="C:\Users\AADIL DHORAT\OneDrive\Desktop\Aadil code 1\sweet mart products\pages\chocolate page 2.png" alt="chocolate" class="fullscreen-image">
+        <img src="sweet mart products/pages/chocolate page 1.png" alt="chocolate" class="fullscreen-image">
+        <img src="sweet mart products/pages/chocolate page 2.png" alt="chocolate" class="fullscreen-image">
     </div>
     <div class="content-section">
         <h2 id="jelly-gums" class="section-title">JELLY GUMS</h2>
-        <img src="C:\Users\AADIL DHORAT\OneDrive\Desktop\Aadil code 1\sweet mart products\pages\jelly gums page 1.png" alt="jelly gums" class="fullscreen-image">
+        <img src="sweet mart products/pages/jelly gums page 1.png" alt="jelly-gums" class="fullscreen-image">
     </div>
     <div class="content-section">
         <h2 id="biscuits-and-snacks" class="section-title">BISCUITS AND SNACKS</h2>
-        <img src="C:\Users\AADIL DHORAT\OneDrive\Desktop\Aadil code 1\sweet mart products\pages\Biscuits and Snacks.png" alt="Biscuits and snacks" class="fullscreen-image">
+        <img src="sweet mart products/pages/Biscuits and Snacks.png" alt="biscuits-and-snacks" class="fullscreen-image">
     </div>
     <div class="content-section">
-        <h2 id="Cakes-and-donuts" class="section-title">CAKES AND DONUTS</h2>
-        <img src="C:\Users\AADIL DHORAT\OneDrive\Desktop\Aadil code 1\sweet mart products\pages\Cakes and Donuts page.png" alt="cakes and donuts" class="fullscreen-image">
+        <h2 id="cakes-and-donuts" class="section-title">CAKES AND DONUTS</h2>
+        <img src="sweet mart products/pages/Cakes and Donuts page.png" alt="cakes-and-donuts" class="fullscreen-image">
     </div>
-    <div class="content-section">
+     <div class="content-section">
         <h2 id="pasta-and-noodles" class="section-title">PASTA AND NOODLES</h2>
-        <img src="C:\Users\AADIL DHORAT\OneDrive\Desktop\Aadil code 1\sweet mart products\pages\Pasta and Noodles page.png" alt="pasta and noodles" class="fullscreen-image">
+        <img src="sweet mart products/pages/Pasta and Noodles page.png" alt="pasta-and-noodles" class="fullscreen-image">
     </div>
-
-    <!-- Contact Popup -->
-    <div class="popup-overlay" id="popupOverlay">
+     <
+ <div class="popup-overlay" id="popupOverlay">
         <div class="popup" id="contactPopup">
             <h3 class="popup-title">Contact Us</h3>
             <div class="contact-options">
@@ -711,7 +785,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-container">
             <div class="footer-content">
@@ -734,7 +807,7 @@
     </footer>
 
     <script>
-        // ✅ Fixed Slider functionality (like the reference code)
+        // Slider functionality
         let currentSlide = 0;
         const slider = document.getElementById('slider');
         const slides = document.querySelectorAll('.slide');
@@ -742,7 +815,6 @@
         const sliderContainer = document.getElementById('sliderContainer');
         let slideInterval;
 
-        // Show slide by index
         function showSlide(index) {
             currentSlide = index;
             slider.style.transform = `translateX(-${currentSlide * 100}%)`;
@@ -751,23 +823,19 @@
             });
         }
 
-        // Next slide
         function nextSlide() {
             currentSlide = (currentSlide + 1) % slides.length;
             showSlide(currentSlide);
         }
 
-        // Manual slide change
         function changeSlide(index) {
             showSlide(index);
         }
 
-        // Auto-advance slides
         function startSlider() {
             slideInterval = setInterval(nextSlide, 4000);
         }
 
-        // Pause on hover
         if (sliderContainer) {
             sliderContainer.addEventListener('mouseenter', () => {
                 clearInterval(slideInterval);
@@ -777,12 +845,10 @@
             });
         }
 
-        // Initialize indicators
         indicators.forEach((indicator, index) => {
             indicator.addEventListener('click', () => changeSlide(index));
         });
 
-        // Start slider
         showSlide(0);
         startSlider();
 
@@ -802,19 +868,19 @@
         }
 
         function sendWhatsApp() {
-            // Replace with actual phone number
-            const phoneNumber = "1234567890";
-            const message = "Hello, I'd like to contact you.";
+            // Replace with your actual phone number
+            const phoneNumber = "27123456789"; // Example South African number
+            const message = "Hello, I'd like to inquire about your products.";
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
             hidePopup();
         }
 
         function sendEmail() {
-            // Replace with actual email address
-            const emailAddress = "contact@tradewiththetimes.com";
-            const subject = "Contact Inquiry";
-            const body = "Hello, I'd like to contact you.";
+            // Replace with your actual email address
+            const emailAddress = "contact@broadwaysweets.co.za"; // Example email
+            const subject = "Inquiry from Website";
+            const body = "Hello, I'd like to inquire about your products.";
             const mailtoUrl = `mailto:${emailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             window.location.href = mailtoUrl;
             hidePopup();
