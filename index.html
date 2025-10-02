@@ -3,948 +3,1806 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Broadway Sweets | Home</title>
-
-    <link rel="stylesheet" href="style.css"> 
-     <link rel="stylesheet" href="css/style.css">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script> 
- 
-    <script src="https://js.stripe.com/v3/"></script>
-
-
-
-    </head>
+    <title>Hive Times - Businesses</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --primary-color: #e74c3c;
+            --secondary-color: #34495e;
+            --background-color: #f9fafb;
+            --text-color: #2d3748;
+            --card-background: #ffffff;
+            --border-radius: 16px;
+            --box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        /* --- Header & Navigation --- */
+        header {
+            background: linear-gradient(135deg, #610d00 0%, #8b1a00 100%);
+            color: #fff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        .logo h3 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: #fff;
+            font-weight: 700;
+        }
+        .logo img {
+            height: 90px;
+            vertical-align: middle;
+            margin-right: 40px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 12px 18px;
+            border-radius: 12px;
+            transition: var(--transition);
+            display: inline-block;
+            font-size: 1.05rem;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-3px);
+        }
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--card-background);
+            min-width: 220px;
+            box-shadow: var(--box-shadow);
+            z-index: 1001;
+            border-radius: var(--border-radius);
+            padding: 12px 0;
+            animation: fadeIn 0.3s ease-in-out;
+            top: 100%;
+            left: 0;
+        }
+        .dropdown[aria-expanded="true"] .dropdown-content {
+            display: block;
+        }
+        .dropdown-content a {
+            color: var(--text-color);
+            padding: 14px 20px;
+            text-decoration: none;
+            display: block;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        .dropdown-content a:hover {
+            background-color: #f8f9fa;
+            color: var(--primary-color);
+        }
+        .dropdown-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 12px 18px;
+            border-radius: 12px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .dropdown-btn:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        .nav-icon-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.3rem;
+            cursor: pointer;
+            padding: 12px;
+            transition: var(--transition);
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-icon-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            transform: scale(1.1);
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.25);
+            border-radius: 30px;
+            padding: 8px 20px;
+            width: 280px;
+            transition: var(--transition);
+        }
+        .search-container:focus-within {
+            background-color: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+        }
+        .search-container input {
+            background: none;
+            border: none;
+            outline: none;
+            color: #fff;
+            font-size: 1.05rem;
+            flex-grow: 1;
+            padding: 4px 0;
+        }
+        .search-container input::placeholder {
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .search-container i {
+            color: #fff;
+            margin-right: 12px;
+            font-size: 1.1rem;
+        }
+        /* --- Slider Section --- */
+        .slider-section {
+            padding: 4rem 0;
+            background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
+            text-align: center;
+        }
+        .slider-container {
+            width: 92%;
+            max-width: 1300px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            border: 1px solid #eee;
+        }
+        .slider {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .slide img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            height: 450px;
+        }
+        .slide-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.9) 100%);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            max-width: 80%;
+        }
+        .slide-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        .slide-content p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+        .slider-indicators {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+        }
+        .indicator {
+            width: 14px;
+            height: 14px;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .indicator:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        .indicator.active {
+            background-color: var(--primary-color);
+            transform: scale(1.2);
+        }
+        /* --- Main Content Section --- */
+        main {
+            flex-grow: 1;
+            padding: 3rem 2rem;
+            max-width: 1500px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 3rem;
+            font-weight: 800;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+        .businesses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
+            padding: 2rem 0;
+        }
+        .block {
+            background-color: var(--card-background);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.05) 0%, transparent 100%);
+            z-index: 0;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .block:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+        }
+        .block:hover::before {
+            opacity: 1;
+        }
+        .block img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+        .block:hover img {
+            transform: scale(1.03);
+        }
+        .block h3 {
+            margin: 0.8rem 0;
+            font-size: 1.6rem;
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+        .block p {
+            font-size: 1.05rem;
+            color: #555;
+            min-height: 60px;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        .block button {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #c0392b 100%);
+            color: #fff;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.05rem;
+            font-weight: 600;
+            transition: var(--transition);
+            margin-top: 1rem;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .block button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+        }
+        .block button:active {
+            transform: translateY(0);
+        }
+        /* --- Footer --- */
+        footer {
+            background: linear-gradient(135deg, #610d00 0%, #4a0a00 100%);
+            color: #fff;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: flex-start;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding-bottom: 2.5rem;
+            margin-bottom: 2rem;
+            gap: 2rem;
+        }
+        .footer-logo img {
+            height: 70px;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+        .footer-logo h3 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        .footer-logo p {
+            font-size: 1.05rem;
+            color: #e0e0e0;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+        .social-media {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 18px;
+            margin-top: 20px;
+        }
+        .social-media a {
+            color: #fff;
+            font-size: 1.6rem;
+            transition: var(--transition);
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .social-media a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            color: #ffd700;
+        }
+        .footer-nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .footer-nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .footer-nav a:hover {
+            color: #ffd700;
+            transform: translateX(5px);
+        }
+        .footer-nav a i {
+            width: 24px;
+            text-align: center;
+        }
+        .footer-bottom {
+            font-size: 0.95rem;
+            color: #ccc;
+            margin-top: 1.5rem;
+            line-height: 1.6;
+        }
+        .footer-bottom i {
+            color: #e74c3c;
+            animation: pulse 2s infinite;
+        }
+        /* --- Pop-up Styles --- */
+        .popup {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        .popup-content {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.4s ease-out;
+            text-align: center;
+            border: 1px solid #eee;
+        }
+        .popup-content h3 {
+            margin-top: 0;
+            color: var(--secondary-color);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        .popup-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+        }
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2.2rem;
+            color: #888;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        .close-button:hover {
+            color: var(--primary-color);
+            background: rgba(231, 76, 60, 0.1);
+            transform: rotate(90deg);
+        }
+        .contact-popup {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            z-index: 1000;
+            text-align: center;
+            animation: slideIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid #eee;
+        }
+        .contact-popup h3 {
+            margin-top: 0;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        .contact-popup button {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #c0392b 100%);
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            margin: 8px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+        .contact-popup button.close-btn {
+            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+        }
+        .contact-popup button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            animation: fadeIn 0.3s;
+        }
+        /* Login & Register Popup */
+        .form-group {
+            margin-bottom: 1.8rem;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            font-size: 1.05rem;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            transition: var(--transition);
+        }
+        .form-group input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.2);
+        }
+        .form-submit-btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #c0392b 100%);
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1rem;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+        .form-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+        }
+        .toggle-form {
+            margin-top: 1.5rem;
+            color: #666;
+            font-size: 1.05rem;
+        }
+        .toggle-form a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .toggle-form a:hover {
+            text-decoration: underline;
+            color: #c0392b;
+        }
+        /* User Profile */
+        .user-profile {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 1.5rem;
+            width: 280px;
+            z-index: 100;
+            animation: fadeIn 0.3s ease-in-out;
+            border: 1px solid #eee;
+        }
+        .user-profile.active {
+            display: block;
+        }
+        .user-info {
+            padding: 1.2rem 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 1.2rem;
+            text-align: center;
+        }
+        .user-info h4 {
+            margin: 0 0 0.8rem 0;
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        .user-info p {
+            color: #666;
+            font-size: 1.05rem;
+        }
+        .user-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        .user-actions button {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 1px solid #dee2e6;
+            text-align: center;
+            padding: 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            color: var(--secondary-color);
+            font-size: 1.05rem;
+        }
+        .user-actions button:hover {
+            background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+            transform: translateY(-2px);
+            color: var(--primary-color);
+        }
+        /* Shopping Cart Modal */
+        #cartModalContent {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            max-width: 850px;
+            width: 95%;
+            position: relative;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.4s ease-out;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid #eee;
+        }
+        #cartModalContent h3 {
+            margin-top: 0;
+            color: var(--secondary-color);
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+        #cart-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        #cartBusinessLogo {
+            width: 100px;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+        #cartBusinessName {
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+        }
+        .cart-item {
+            display: flex;
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+            transition: var(--transition);
+        }
+        .cart-item:hover {
+            background-color: #f8f9fa;
+        }
+        .cart-item img {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-right: 1.5rem;
+            transition: var(--transition);
+        }
+        .cart-item:hover img {
+            transform: scale(1.05);
+        }
+        .cart-item-details {
+            flex: 1;
+        }
+        .cart-item-name {
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+        }
+        .cart-item-price {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-top: 0.8rem;
+        }
+        .quantity-btn {
+            width: 36px;
+            height: 36px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            background-color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        .quantity-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        .quantity-display {
+            min-width: 36px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        .remove-item-btn {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: var(--transition);
+            font-weight: 600;
+            margin-left: auto;
+        }
+        .remove-item-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 8px rgba(231, 76, 60, 0.4);
+        }
+        .cart-total {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-align: right;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #fff5f5 0%, #ffeaea 100%);
+            border-radius: 12px;
+            border: 2px solid #ffe0e0;
+        }
+        .checkout-btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #27ae60 0%, #219653 100%);
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1.5rem;
+            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.3);
+        }
+        .checkout-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(39, 174, 96, 0.4);
+        }
+        /* --- Animations --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .back-to-top {
+            display: none;
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: linear-gradient(135deg, #8b1a00 0%, #610d00 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.6rem;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+            z-index: 998;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top:hover {
+            background: linear-gradient(135deg, #610d00 0%, #4a0a00 100%);
+            transform: translateY(-5px) rotate(15deg);
+        }
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 1.2rem;
+                gap: 1.5rem;
+            }
+            .header-content {
+                flex-direction: column;
+                width: 100%;
+                gap: 1.5rem;
+            }
+            .logo {
+                margin-bottom: 0;
+                text-align: center;
+            }
+            .logo img {
+                margin-right: 0;
+                height: 70px;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+            .search-container {
+                width: 100%;
+                max-width: 400px;
+            }
+            .businesses-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .slide img {
+                height: 300px;
+            }
+            .slide-content {
+                padding: 1.8rem;
+                max-width: 90%;
+            }
+            .slide-content h2 {
+                font-size: 2rem;
+            }
+            .slide-content p {
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 2.5rem;
+            }
+            .footer-nav {
+                margin-top: 1rem;
+            }
+            .footer-nav ul {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            .back-to-top {
+                width: 50px;
+                height: 50px;
+                font-size: 1.4rem;
+                bottom: 30px;
+                right: 30px;
+            }
+        }
+        @media (max-width: 480px) {
+            .slide img {
+                height: 250px;
+            }
+            .slide-content h2 {
+                font-size: 1.6rem;
+            }
+            .slide-content p {
+                font-size: 1rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .block h3 {
+                font-size: 1.4rem;
+            }
+            .block p {
+                font-size: 0.95rem;
+                min-height: 50px;
+            }
+        }
+    </style>
+</head>
 <body>
-     <script src="js/script.js"></script>
-    <script src="script.js"></script>
     <header>
-        <div class="header-container">
-            <div class="logo-container">
-                <img src="images/Broadway sweets products/BRoadway Sweets Logo.jpg" alt="Logo" class="logo-img">
-                <div class="logo">BROADWAY SWEETS</div>
+        <div class="header-content">
+            <div class="logo">
+                <img src="images/logo/HIVE TIMES LOGO RED.png" alt="Hive Times Logo">
+                <h3></h3>
             </div>
-<nav id="mainNav">
-                <ul>
-                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                    <li class="dropdown">
-                        <a href="#"><i class="fas fa-store"></i> Businesses</a>
-                        <div class="dropdown-content">
-                            <a href="Polar ice cream.html"><i class="fas fa-ice-cream"></i> Polar Ice Cream</a>
-                            <a href="Sweet Mart.html"><i class="fas fa-cookie"></i> Sweet Mart</a>
-                            <a href="broadway page.html"><i class="fas fa-candy-cane"></i> Broadway Sweets</a>
-                            <a href="Sweet Depot website.html"><i class="fas fa-candy-cane"></i> Sweet depot</a>
-                        </div>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#"><i class="fas fa-box"></i> Categories</a>
-                        <div class="dropdown-content">
-                            <div class="submenu">
-                                <a href="#">
-                                    <span><i class="fas fa-sticky-note"></i>LOLLIPOPS</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                                <div class="submenu-content">
-                                    <a href="#BIG-POPS">BIG POPS</a>
-                                    <a href="#FLIGOS">FLIGOS</a>
-                                    <a href="#SOCCER-POPS">SOCCER POPS</a>
-                                    <a href="#STUMBO">STUMBO</a>
-                                </div>
-                            </div>
-                            <div class="submenu">
-                                <a href="#">
-                                    <span><i class="fas fa-circle"></i> SOUR STRIPS</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                                <div class="submenu-content">
-                                    <a href="#BRATS">BRATS</a>
-                                    <a href="#SOUR-PUNK">SOUR PUNK</a>
-                                    <a href="#WOBBLES">WOBBLES</a>
-                                </div>
-                            </div>
-                            <div class="submenu">
-                                <a href="#">
-                                    <span><i class="fas fa-star"></i> CANDY</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                                <div class="submenu-content">
-                                    <a href="#HARTBEAT">HARTBEAT</a>
-                                    <a href="#ICE-UP">ICE UP</a>
-                                    <a href="#STUMBO-CANDY">STUMBO CANDY</a>
-                                    <a href="#ZOUR-BOMB">ZOUR BOMB</a>
-                                    <a href="#NOMICS">NOMICS</a>
-                                </div>
-                            </div>
-                            <div class="submenu">
-                                <a href="#BUBBLEGUM">
-                                    <span><i class="fas fa-gift"></i> BUBBLEGUM</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                            </div>
-                            <div class="submenu">
-                                <a href="#SECRET-SNACKS">
-                                    <span><i class="fas fa-star"></i> SECRET SNACKS</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                            </div>
-                            <div class="submenu">
-                                <a href="#PARTY-PACKS">
-                                    <span><i class="fas fa-star"></i> PARTY PACKS</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-    
-            <div class="header-right">
-    <button class="icon-btn hamburger-menu" id="navToggle" aria-label="Toggle navigation menu">
-        <i class="fas fa-bars"></i>
-    </button>
-    
-    <div class="user-controls">
-        <button class="icon-btn" onclick="showUserModal()"><i class="fas fa-user"></i></button>
-        <button class="icon-btn" onclick="showCartModal()"><i class="fas fa-shopping-cart"></i><span class="cart-count" id="cartCount">0</span></button>
-    </div>
-</div>
-</div>
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search businesses...">
             </div>
         </div>
-    </header>
-
-    <div class="slider-container" id="sliderContainer">
-        <div class="slider" id="slider">
-            <div class="slide">
-                <a href="Polar ice cream.html" target="_blank" rel="noopener">
-                    <img src="images/Polar Ice cream products/polar ice cream long.jpg" alt="Polar Ice Cream">
-                </a>
-            </div>
-            <div class="slide">
-                <a href="broadway page.html" target="_blank" rel="noopener">
-                    <img src="images/Broadway sweets products/Broadway sweets long.jpg" alt="Broadway Sweets">
-                </a>
-            </div>
-            <div class="slide">
-                <a href="Sweet Depot website.html" target="_blank" rel="noopener">
-                    <img src="images/Sweet depot/sweet deport long.jpg" alt="Sweet Depot">
-                </a>
-            </div>
-            <div class="slide">
-                <a href="Sweet Mart.html" target="_blank" rel="noopener">
-                    <img src="images/sweet mart products/Sweet Mart Long.jpg" alt="Sweet mart">
-                </a>
-            </div>
-        </div>
-        <div class="slide-indicators">
-            <div class="indicator active" onclick="changeSlide(0)"></div>
-            <div class="indicator" onclick="changeSlide(1)"></div>
-            <div class="indicator" onclick="changeSlide(2)"></div>
-            <div class="indicator" onclick="changeSlide(3)"></div>
-        </div>
-    </div>
-    
-    <section class="search-bar-section">
-    <div class="search-container">
-        <input type="text" id="productSearch" placeholder="Search for lollipops, jellies, or chews...">
-        <i class="fas fa-search search-icon"></i>
-    </div>
-</section>
-
-    
-
-    <div class="content-section">
-        <h2 id="BIG-POPS" class="section-title">BIG POPS</h2>
-        <div class="products-grid" id="productsGrid">
-            <div class="product-card" data-id="1" data-category="lollipops" data-price="71.50">
-                <img src="images/Broadway sweets products/Lolipops/big pops/lolipops 8.jpg" alt="Big Pops XXXL Cherry Plum Lollipops" class="product-image">
-                <div class="product-info">
-                    <div class="product-name">Big Pops XXXL Cherry Plum Lollipops 48</div>
-                    <div class="product-price">R71.50</div>
-                    <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-1', name: 'Big Pops XXXL Cherry Plum Lollipops 48', price: 71.50, quantity: 1, image: 'Broadway sweets products/Lolipops/big pops/lolipops 8.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-                </div>
-            </div>
-            <div class="product-card" data-id="2" data-category="lollipops" data-price="71.50">
-                <img src="images/Broadway sweets products/Lolipops/big pops/Big Pops XXXL Guavadilla Lollipops 48 Product 2.jpg" alt="Big Pops XXXL Guavadilla Lollipops" class="product-image">
-                <div class="product-info">
-                    <div class="product-name">Big Pops XXXL Guavadilla Lollipops 48</div>
-                    <div class="product-price">R71.50</div>
-                    <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-2', name: 'Big Pops XXXL Guavadilla Lollipops 48', price: 71.50, quantity: 1, image: 'Broadway sweets products/Lolipops/big pops/Big Pops XXXL Guavadilla Lollipops 48 Product 2.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-                </div>
-            </div>
-            </div>
-    </div>
-
-    <div class="content-section">
-        <h2 id="FLIGOS" class="section-title">FLIGOS </h2>
-        <div class="products-grid" id="fligosProductsGrid">
-            <div class="product-card" data-id="9" data-category="lollipops" data-price="77.00">
-                <img src="images/Broadway sweets products/Lolipops/fligos/1..Fligos Eclair Milky Lollipops 48.jpg" alt="Fligos Eclair Milky Lollipops 48" class="product-image">
-                <div class="product-info">
-                    <div class="product-name">Fligos Eclair Milky Lollipops</div>
-                    <div class="product-price">R77.00</div>
-                    <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-9', name: 'Fligos Eclair Milky Lollipops', price: 77.00, quantity: 1, image: 'Broadway sweets products/Lolipops/fligos/1..Fligos Eclair Milky Lollipops 48.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-                </div>
-            </div>
-            <div class="product-card" data-id="10" data-category="lollipops" data-price="77.00">
-                <img src="images/Broadway sweets products/Lolipops/fligos/2..Fligos Choc Eclair Lollipops 48.jpg" alt="Fligos Choc Eclair Lollipops 48" class="product-image">
-                <div class="product-info">
-                    <div class="product-name">Fligos Choc Eclair Lollipops</div>
-                    <div class="product-price">R77.00</div>
-                    <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-10', name: 'Fligos Choc Eclair Lollipops', price: 77.00, quantity: 1, image: 'Broadway sweets products/Lolipops/fligos/2..Fligos Choc Eclair Lollipops 48.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-                </div>
-            </div>
-            <div class="product-card" data-id="11" data-category="lollipops" data-price="77.00">
-                <img src="images/Broadway sweets products/Lolipops/fligos/3..Fligos Eclair Coffee Lollipops 48.jpg" alt="Fligos Eclair Coffee Lollipops 48" class="product-image">
-                <div class="product-info">
-                    <div class="product-name">Fligos Eclair Coffee Lollipops</div>
-                    <div class="product-price">R77.00</div>
-                    <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-11', name: 'Fligos Eclair Coffee Lollipops', price: 77.00, quantity: 1, image: 'Broadway sweets products/Lolipops/fligos/3..Fligos Eclair Coffee Lollipops 48.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-                </div>
-            </div>
-            <div class="product-card" data-id="12" data-category="lollipops" data-price="77.00">
-                <img src="images/Broadway sweets products/Lolipops/fligos/4...jpg" alt="Fligos Creamy Lollipops 48" class="product-image">
-                <div class="product-info">
-                    <div class="product-name">Fligos Creamy Lollipops</div>
-                    <div class="product-price">R77.00</div>
-                    <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-12', name: 'Fligos Creamy Lollipops', price: 77.00, quantity: 1, image: 'Broadway sweets products/Lolipops/fligos/4...jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-                </div>
-            </div>
-            <div class="product-card" data-id="13" data-category="lollipops" data-price="77.00">
-                <img src="images/Broadway sweets products/Lolipops/fligos/5...jpg" alt="Fligos Chocolate & Choc Mint Lollipops 48" class="product-image">
-                <div class="product-info">
-                    <div class="product-name">Fligos Chocolate & Choc Mint Lollipops</div>
-                    <div class="product-price">R77.00</div>
-                    <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-13', name: 'Fligos Chocolate & Choc Mint Lollipops', price: 77.00, quantity: 1, image: 'Broadway sweets products/Lolipops/fligos/5...jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="content-section">
-        <h2 id="SOCCER-POPS" class="section-title">SOCCER POPS</h2>
-        <div class="products-grid" id="soccerPopsGrid">
-            <div class="product-card" data-id="14" data-category="lollipops" data-price="66.00">
-                <img src="images/Broadway sweets products/Lolipops/soccer pops/soccer pops 2.jpg" alt="Soccer Pops Cherry & Plum Lollipops 48" class="product-image">
-                <div class="product-info">
-                    <div class="product-name">Soccer Pops Cherry & Plum Lollipops</div>
-                    <div class="product-price">R66.00</div>
-                    <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-14', name: 'Soccer Pops Cherry & Plum Lollipops', price: 66.00, quantity: 1, image: 'Broadway sweets products/Lolipops/soccer pops/1.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-                </div>
-            </div>
-            <div class="product-card" data-id="15" data-category="lollipops" data-price="66.00">
-                <img src="images/Broadway sweets products/Lolipops/soccer pops/1.jpg" alt="Soccer Pops Watermelon & Mint Lollipops 48" class="product-image">
-                <div class="product-info">
-                    <div class="product-name">Soccer Pops Watermelon & Mint Lollipops</div>
-                    <div class="product-price">R66.00</div>
-                    <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-15', name: 'Soccer Pops Watermelon & Mint Lollipops', price: 66.00, quantity: 1, image: 'Broadway sweets products/Lolipops/soccer pops/1.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-                </div>
-            </div>
-            <div class="product-card" data-id="16" data-category="lollipops" data-price="66.00">
-                <img src="images/Broadway sweets products/Lolipops/soccer pops/soccer pops 3.jpg" alt="Soccer Pops Honey & Ginger Lollipops 48" class="product-image">
-                <div class="product-info">
-                    <div class="product-name">Soccer Pops Honey & Ginger Lollipops</div>
-                    <div class="product-price">R66.00</div>
-                    <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-16', name: 'Soccer Pops Honey & Ginger Lollipops', price: 66.00, quantity: 1, image: 'Broadway sweets products/Lolipops/soccer pops/soccer pops 3.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="content-section">
-        <h2 id="STUMBO" class="section-title">STUMBO LOLLIPOPS</h2>
-        <div class="products-grid" id="stumboProductsGrid">
-           <div class="product-card" data-id="27" data-category="lollipops" data-price="66.00">
-    <img src="images/Broadway sweets products/Lolipops/stumbo pops/stumbo pops 11.jpg" alt="Stumbo Pops Cherry Fun Lollipops 48" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Pops Cherry Fun Lollipops</div>
-        <div class="product-price">R66.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-27', name: 'Stumbo Pops Cherry Fun Lollipops', price: 66.00, quantity: 1, image: 'Broadway sweets products/Lolipops/stumbo pops/stumbo pops 11.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="28" data-category="lollipops" data-price="66.00">
-    <img src="images/Broadway sweets products/Lolipops/stumbo pops/stumbo pops 12.jpg" alt="Stumbo Pops Super Blue Blueberry Lollipops 48" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Pops Super Blue Blueberry Lollipops</div>
-        <div class="product-price">R66.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-28', name: 'Stumbo Pops Super Blue Blueberry Lollipops', price: 66.00, quantity: 1, image: 'Broadway sweets products/Lolipops/stumbo pops/stumbo pops 12.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="29" data-category="lollipops" data-price="66.00">
-    <img src="images/Broadway sweets products/Lolipops/stumbo pops/stumbo pops 13.jpg" alt="Stumbo Pops Blue Bubblegum Mouth Painter Lollipops 48" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Pops Blue Bubblegum Mouth Painter Lollipops</div>
-        <div class="product-price">R66.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-29', name: 'Stumbo Pops Blue Bubblegum Mouth Painter Lollipops', price: 66.00, quantity: 1, image: 'Broadway sweets products/Lolipops/stumbo pops/stumbo pops 13.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="30" data-category="lollipops" data-price="66.00">
-    <img src="images/Broadway sweets products/Lolipops/stumbo pops/stumbo pops 14.jpg" alt="Stumbo Pops Juicy Orange Lollipops 48" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Pops Juicy Orange Lollipops</div>
-        <div class="product-price">R66.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-30', name: 'Stumbo Pops Juicy Orange Lollipops', price: 66.00, quantity: 1, image: 'Broadway sweets products/Lolipops/stumbo pops/stumbo pops 14.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="31" data-category="lollipops" data-price="66.00">
-    <img src="images/Broadway sweets products/Lolipops/stumbo pops/stumbo pops 15.jpg" alt="Stumbo Soccer Pops Cherry & Plum Lollipops 48" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Soccer Pops Cherry & Plum Lollipops</div>
-        <div class="product-price">R66.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-31', name: 'Stumbo Soccer Pops Cherry & Plum Lollipops', price: 66.00, quantity: 1, image: 'Broadway sweets products/Lolipops/stumbo pops/stumbo pops 15.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="32" data-category="lollipops" data-price="66.00">
-    <img src="images/Broadway sweets products/Lolipops/stumbo pops/stumbo pops 16.jpg" alt="Stumbo Pops Fizzy Coco Pine Lollipops 48" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Pops Fizzy Coco Pine Lollipops</div>
-        <div class="product-price">R66.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-32', name: 'Stumbo Pops Fizzy Coco Pine Lollipops', price: 66.00, quantity: 1, image: 'Broadway sweets products/Lolipops/stumbo pops/stumbo pops 16.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="33" data-category="lollipops" data-price="66.00">
-    <img src="images/Broadway sweets products/Lolipops/stumbo pops/stumbo pops 17.jpg" alt="Stumbo Soccer Pops Watermelon & Mint Lollipops 48" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Soccer Pops Watermelon & Mint Lollipops</div>
-        <div class="product-price">R66.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-33', name: 'Stumbo Soccer Pops Watermelon & Mint Lollipops', price: 66.00, quantity: 1, image: 'Broadway sweets products/Lolipops/stumbo pops/stumbo pops 17.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="34" data-category="lollipops" data-price="66.00">
-    <img src="images/Broadway sweets products/Lolipops/stumbo pops/stumbo pops 18.jpg" alt="Stumbo Soccer Pops Honey & Ginger Lollipops 48" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Soccer Pops Honey & Ginger Lollipops</div>
-        <div class="product-price">R66.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-34', name: 'Stumbo Soccer Pops Honey & Ginger Lollipops', price: 66.00, quantity: 1, image: 'Broadway sweets products/Lolipops/stumbo pops/stumbo pops 18.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="35" data-category="lollipops" data-price="25.00">
-    <img src="images/Broadway sweets products/Lolipops/stumbo pops/stumbo pops 19.jpg" alt="Stumbo Uniq Candy Floss Flavoured Lollipops 8" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Uniq Candy Floss Flavoured Lollipops (8 Units)</div>
-        <div class="product-price">R25.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-35', name: 'Stumbo Uniq Candy Floss Flavoured Lollipops (8 Units)', price: 25.00, quantity: 1, image: 'Broadway sweets products/Lolipops/stumbo pops/stumbo pops 19.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="36" data-category="lollipops" data-price="25.00">
-    <img src="images/Broadway sweets products/Lolipops/stumbo pops/stumbo pops 20.jpg" alt="Stumbo Uniq Cola Flavoured Lollipops 8" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Uniq Cola Flavoured Lollipops (8 Units)</div>
-        <div class="product-price">R25.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-36', name: 'Stumbo Uniq Cola Flavoured Lollipops (8 Units)', price: 25.00, quantity: 1, image: 'Broadway sweets products/Lolipops/stumbo pops/stumbo pops 20.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-         <div class="product-card" data-id="37" data-category="lollipops" data-price="66.00">
-    <img src="images/Broadway sweets products/Lolipops/stumbo pops/stumbo pops 1.jpg" alt="Stumbo Pops Tropical Twist Tropical Fruit Lollipops 48" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Pops Tropical Twist Tropical Fruit Lollipops</div>
-        <div class="product-price">R66.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-37', name: 'Stumbo Pops Tropical Twist Tropical Fruit Lollipops', price: 66.00, quantity: 1, image: 'Broadway sweets products/Lolipops/stumbo pops/stumbo pops 1.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="38" data-category="lollipops" data-price="66.00">
-    <img src="images/Broadway sweets products/Lolipops/stumbo pops/stumbo pops 10.jpg" alt="Stumbo Pops Racing Red Strawberry Lollipops 48" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Pops Racing Red Strawberry Lollipops</div>
-        <div class="product-price">R66.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-38', name: 'Stumbo Pops Racing Red Strawberry Lollipops', price: 66.00, quantity: 1, image: 'Broadway sweets products/Lolipops/stumbo pops/stumbo pops 10.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="39" data-category="lollipops" data-price="66.00">
-    <img src="images/Broadway sweets products/Lolipops/stumbo pops/stumbo pops 5.jpg" alt="Stumbo Pops Fizzy Remix Black Cherry, Strawberry, Coco Pine, Cream Soda Lollipops 48" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Pops Fizzy Remix Lollipops</div>
-        <div class="product-price">R66.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-39', name: 'Stumbo Pops Fizzy Remix Lollipops', price: 66.00, quantity: 1, image: 'Broadway sweets products/Lolipops/stumbo pops/stumbo pops 5.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="40" data-category="lollipops" data-price="66.00">
-    <img src="images/Broadway sweets products/Lolipops/stumbo pops/stumbo pops 9.jpg" alt="Stumbo UNIQ Soda Burst Cola, Pear, Blackberry & Other Lollipops 48" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo UNIQ Soda Burst Lollipops</div>
-        <div class="product-price">R66.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-40', name: 'Stumbo UNIQ Soda Burst Lollipops', price: 66.00, quantity: 1, image: 'Broadway sweets products/Lolipops/stumbo pops/stumbo pops 9.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="41" data-category="lollipops" data-price="66.00">
-    <img src="images/Broadway sweets products/Lolipops/stumbo pops/stumbo pops 8.jpg" alt="Stumbo Pops Mango Magic Mango Lollipops 48" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Pops Mango Magic Lollipops</div>
-        <div class="product-price">R66.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-41', name: 'Stumbo Pops Mango Magic Lollipops', price: 66.00, quantity: 1, image: 'Broadway sweets products/Lolipops/stumbo pops/stumbo pops 8.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="42" data-category="lollipops" data-price="66.00">
-    <img src="images/Broadway sweets products/Lolipops/stumbo pops/stumbo pops 3.jpg" alt="Stumbo Pops Candy Floss Flavoured Lollipops 48" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Pops Candy Floss Lollipops</div>
-        <div class="product-price">R66.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-42', name: 'Stumbo Pops Candy Floss Lollipops', price: 66.00, quantity: 1, image: 'Broadway sweets products/Lolipops/stumbo pops/stumbo pops 3.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="43" data-category="lollipops" data-price="66.00">
-    <img src="images/Broadway sweets products/Lolipops/stumbo pops/stumbo pops 7.jpg" alt="Stumbo Max Mouth Painter Assorted Raspberry & Black Cherry Lollipops 48" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Max Mouth Painter Assorted Lollipops</div>
-        <div class="product-price">R66.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-43', name: 'Stumbo Max Mouth Painter Assorted Lollipops', price: 66.00, quantity: 1, image: 'Broadway sweets products/Lolipops/stumbo pops/stumbo pops 7.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="44" data-category="lollipops" data-price="66.00">
-    <img src="images/Broadway sweets products/Lolipops/stumbo pops/stumbo pops 2.jpg" alt="Stumbo Pops Assorted Fruit Flavoured Lollipops 48" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Pops Assorted Fruit Flavoured Lollipops</div>
-        <div class="product-price">R66.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-44', name: 'Stumbo Pops Assorted Fruit Flavoured Lollipops', price: 66.00, quantity: 1, image: 'Broadway sweets products/Lolipops/stumbo pops/stumbo pops 2.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="45" data-category="lollipops" data-price="66.00">
-    <img src="images/Broadway sweets products/Lolipops/stumbo pops/stumbo pops 4.jpg" alt="Stumbo Pops Fizzy Black Cherry Flavoured Lollipops 48" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Pops Fizzy Black Cherry Lollipops</div>
-        <div class="product-price">R66.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-45', name: 'Stumbo Pops Fizzy Black Cherry Lollipops', price: 66.00, quantity: 1, image: 'Broadway sweets products/Lolipops/stumbo pops/stumbo pops 4.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="46" data-category="lollipops" data-price="66.00">
-    <img src="images/Broadway sweets products/Lolipops/stumbo pops/stumbo pops 6.jpg" alt="Stumbo UNIQ Plus+ Candy Floss, Strawberry, Peach Lollipops 48" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo UNIQ Plus+ Lollipops</div>
-        <div class="product-price">R66.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-46', name: 'Stumbo UNIQ Plus+ Lollipops', price: 66.00, quantity: 1, image: 'Broadway sweets products/Lolipops/stumbo pops/stumbo pops 6.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>   
-        </div>
-    </div>
-
-    <div class="content-section">
-        <h2 id="BRATS" class="section-title">BRATS</h2>
-        <div class="products-grid" id="bratsProductsGrid">
-          <div class="product-card" data-id="47" data-category="gummies" data-price="25.00">
-    <img src="images/Broadway sweets products/sour strips/brats/1..Brats Sour String Candy.jpg" alt="Brats! Sour String Candy Strawberry, Lemon, Apple, Blue Raspberry 50g" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Brats! Sour String Candy (50g)</div>
-        <div class="product-price">R25.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-47', name: 'Brats! Sour String Candy (50g)', price: 25.00, quantity: 1, image: 'Broadway sweets products/Gummies/Brats/1..Brats Sour String Candy.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="48" data-category="gummies" data-price="25.00">
-    <img src="images/Broadway sweets products/sour strips/brats/2..Brats Sour Belts.jpg" alt="Brats! Belts Strawberry, Watermelon, Grape, Banana 50g" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Brats! Sour Belts (50g)</div>
-        <div class="product-price">R25.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-48', name: 'Brats! Sour Belts (50g)', price: 25.00, quantity: 1, image: 'Broadway sweets products/Gummies/Brats/2..Brats Sour Belts.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="49" data-category="gummies" data-price="25.00">
-    <img src="images/Broadway sweets products/sour strips/brats/3..Brats Rainbow Sour Belts.jpg" alt="Brats! Rainbow Sour Belts Strawberry, Lemon, Blue Raspberry, Grape 160g" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Brats! Rainbow Sour Belts (160g)</div>
-        <div class="product-price">R25.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-49', name: 'Brats! Rainbow Sour Belts (160g)', price: 25.00, quantity: 1, image: 'Broadway sweets products/Gummies/Brats/3..Brats Rainbow Sour Belts.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-        </div>
-    </div>
-
-    <div class="content-section">
-        <h2 id="SOUR-PUNK" class="section-title">SOUR PUNK</h2>
-        <div class="products-grid" id="sourPunkProductsGrid">
-           <div class="product-card" data-id="50" data-category="gummies" data-price="10.00">
-    <img src="images/Broadway sweets products/sour strips/sour punk/1..Sour Punk Candy Sticks – Strawberry.jpg" alt="Sour Punk Candy Sticks – Strawberry" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Sour Punk Candy Sticks – Strawberry</div>
-        <div class="product-price">R10.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-50', name: 'Sour Punk Candy Sticks – Strawberry', price: 10.00, quantity: 1, image: 'Broadway sweets products/Gummies/Sour Punk/1..Sour Punk Candy Sticks – Strawberry.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="51" data-category="gummies" data-price="10.00">
-    <img src="images/Broadway sweets products/sour strips/sour punk/2..Sour Punk Candy Sticks – Apple.jpg" alt="Sour Punk Candy Sticks – Apple" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Sour Punk Candy Sticks – Apple</div>
-        <div class="product-price">R10.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-51', name: 'Sour Punk Candy Sticks – Apple', price: 10.00, quantity: 1, image: 'Broadway sweets products/Gummies/Sour Punk/2..Sour Punk Candy Sticks – Apple.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="52" data-category="gummies" data-price="10.00">
-    <img src="images/Broadway sweets products/sour strips/sour punk/3..Sour Punk Candy Sticks – Blueberry.jpg" alt="Sour Punk Candy Sticks – Blueberry" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Sour Punk Candy Sticks – Blueberry</div>
-        <div class="product-price">R10.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-52', name: 'Sour Punk Candy Sticks – Blueberry', price: 10.00, quantity: 1, image: 'Broadway sweets products/Gummies/Sour Punk/3..Sour Punk Candy Sticks – Blueberry.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-        </div>
-    </div>
-
-    <div class="content-section">
-        <h2 id="WOBBLES" class="section-title">WOBBLES</h2>
-        <div class="products-grid" id="wobblesProductsGrid">
-           <div class="product-card" data-id="53" data-category="gummies" data-price="150.00">
-    <img src="images/Broadway sweets products/sour strips/wobbles/1...jpg" alt="Wobbles Sour Tape Bulk Container" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Wobbles Sour Tape - Bulk Container</div>
-        <div class="product-price">R150.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-53', name: 'Wobbles Sour Tape - Bulk Container', price: 150.00, quantity: 1, image: 'Broadway sweets products/Gummies/Wobbles/1...jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-        </div>
-    </div>
-
-    <div class="content-section">
-        <h2 id="HARTBEAT" class="section-title">HARTBEAT</h2>
-        <div class="products-grid" id="hartbeatProductsGrid">
-           <div class="product-card" data-id="54" data-category="hard_candy" data-price="70.00">
-    <img src="images/Broadway sweets products/Candy/hartbeat/1..jpg" alt="Hart Beat Exotic Love Candy 1 kg" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Hart Beat Exotic Love Candy (1 kg)</div>
-        <div class="product-price">R70.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-54', name: 'Hart Beat Exotic Love Candy (1 kg)', price: 70.00, quantity: 1, image: 'Broadway sweets products/Hard Candy/Hart Beat/1..jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="55" data-category="hard_candy" data-price="70.00">
-    <img src="images/Broadway sweets products/Candy/HartBeat/2..jpg" alt="Hart Beat Citrus Love Candy 1 kg" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Hart Beat Citrus Love Candy (1 kg)</div>
-        <div class="product-price">R70.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-55', name: 'Hart Beat Citrus Love Candy (1 kg)', price: 70.00, quantity: 1, image: 'Broadway sweets products/Hard Candy/Hart Beat/2..jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="56" data-category="hard_candy" data-price="70.00">
-    <img src="images/Broadway sweets products/Candy/HartBeat/3..jpg" alt="Jumbo Hartbeat Love Candy Blackcurrant & Litchi 1 kg" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Jumbo Hartbeat Love Candy Blackcurrant & Litchi (1 kg)</div>
-        <div class="product-price">R70.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-56', name: 'Jumbo Hartbeat Love Candy Blackcurrant & Litchi (1 kg)', price: 70.00, quantity: 1, image: 'Broadway sweets products/Hard Candy/Hart Beat/3..jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="57" data-category="hard_candy" data-price="70.00">
-    <img src="images/Broadway sweets products/Candy/HartBeat/4..jpg" alt="Hart Beat Corazon Love Candy Strawberry & Cocktail 1 kg" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Hart Beat Corazon Love Candy Strawberry & Cocktail (1 kg)</div>
-        <div class="product-price">R70.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-57', name: 'Hart Beat Corazon Love Candy Strawberry & Cocktail (1 kg)', price: 70.00, quantity: 1, image: 'Broadway sweets products/Hard Candy/Hart Beat/4..jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="58" data-category="hard_candy" data-price="25.00">
-    <img src="images/Broadway sweets products/Candy/HartBeat/5..jpg" alt="Hart Beat Corazon Love Candy Strawberry & Cocktail 300g" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Hart Beat Corazon Love Candy Strawberry & Cocktail (300g)</div>
-        <div class="product-price">R25.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-58', name: 'Hart Beat Corazon Love Candy Strawberry & Cocktail (300g)', price: 25.00, quantity: 1, image: 'Broadway sweets products/Hard Candy/Hart Beat/5..jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="59" data-category="hard_candy" data-price="25.00">
-    <img src="images/Broadway sweets products/Candy/HartBeat/6..jpg" alt="Jumbo Hartbeat Love Candy Blackcurrant & Litchi 300g" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Jumbo Hartbeat Love Candy Blackcurrant & Litchi (300g)</div>
-        <div class="product-price">R25.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-59', name: 'Jumbo Hartbeat Love Candy Blackcurrant & Litchi (300g)', price: 25.00, quantity: 1, image: 'Broadway sweets products/Hard Candy/Hart Beat/6..jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="60" data-category="hard_candy" data-price="25.00">
-    <img src="images/Broadway sweets products/Candy/HartBeat/7..jpg" alt="Hart Beat Exotic Love Candy 300g" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Hart Beat Exotic Love Candy (300g)</div>
-        <div class="product-price">R25.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-60', name: 'Hart Beat Exotic Love Candy (300g)', price: 25.00, quantity: 1, image: 'Broadway sweets products/Hard Candy/Hart Beat/7..jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="61" data-category="hard_candy" data-price="25.00">
-    <img src="images/Broadway sweets products/Candy/HartBeat/8..jpg" alt="Hart Beat Citrus Love Candy 300g" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Hart Beat Citrus Love Candy (300g)</div>
-        <div class="product-price">R25.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-61', name: 'Hart Beat Citrus Love Candy (300g)', price: 25.00, quantity: 1, image: 'Broadway sweets products/Hard Candy/Hart Beat/8..jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-        </div>
-    </div>
-
-    <div class="content-section">
-        <h2 id="ICE-UP" class="section-title">ICE UP</h2>
-        <div class="products-grid" id="iceUpProductsGrid">
-<div class="product-card" data-id="62" data-category="lozenges" data-price="40.00">
-    <img src="images/Broadway sweets products/Candy/ice up/ice up 1.jpg" alt="Ice Up Candy Lozenges - Peach, Liquorice, Pomegranate 72" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Ice Up Candy Lozenges - Peach, Liquorice, Pomegranate (72 Units)</div>
-        <div class="product-price">R40.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-62', name: 'Ice Up Candy Lozenges - Peach, Liquorice, Pomegranate (72 Units)', price: 40.00, quantity: 1, image: 'Broadway sweets products/Hard Candy/Ice Up/1..jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="63" data-category="lozenges" data-price="40.00">
-    <img src="images/Broadway sweets products/Candy/ice up/ice up 2.jpg" alt="Ice Up Candy Lozenges - Cherry 72" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Ice Up Candy Lozenges - Cherry (72 Units)</div>
-        <div class="product-price">R40.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-63', name: 'Ice Up Candy Lozenges - Cherry (72 Units)', price: 40.00, quantity: 1, image: 'Broadway sweets products/Hard Candy/Ice Up/2..jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="64" data-category="lozenges" data-price="40.00">
-    <img src="images/Broadway sweets products/Candy/ice up/ice up 3.jpg" alt="Ice Up Candy Lozenges - Mint 72" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Ice Up Candy Lozenges - Mint (72 Units)</div>
-        <div class="product-price">R40.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-64', name: 'Ice Up Candy Lozenges - Mint (72 Units)', price: 40.00, quantity: 1, image: 'Broadway sweets products/Hard Candy/Ice Up/3..jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="65" data-category="lozenges" data-price="45.71">
-    <img src="images/Broadway sweets products/Candy/ice up/ice up 4.jpg" alt="Ice Up Assorted Lozenges 166" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Ice Up Assorted Lozenges (166 Pieces)</div>
-        <div class="product-price">R45.71</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-65', name: 'Ice Up Assorted Lozenges (166 Pieces)', price: 45.71, quantity: 1, image: 'Broadway sweets products/Hard Candy/Ice Up/4..jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="66" data-category="lozenges" data-price="40.00">
-    <img src="images/Broadway sweets products/Candy/ice up/ice up 5.jpg" alt="Ice Up Candy Lozenges - Extra Strong 72" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Ice Up Candy Lozenges - Extra Strong (72 Units)</div>
-        <div class="product-price">R40.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-66', name: 'Ice Up Candy Lozenges - Extra Strong (72 Units)', price: 40.00, quantity: 1, image: 'Broadway sweets products/Hard Candy/Ice Up/5..jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-        </div>
-    </div>
-
-    <div class="content-section">
-        <h2 id="STUMBO-CANDY" class="section-title">STUMBO CANDY</h2>
-        <div class="products-grid" id="stumboCandyProductsGrid">
-        <div class="product-card" data-id="101" data-category="hard_candy" data-price="60.22">
-    <img src="images/Broadway sweets products/Candy/stumbo candy/candy 1.jpg" alt="Coffee Candy 30" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Coffee Candy (30 Units)</div>
-        <div class="product-price">R60.22</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-101', name: 'Coffee Candy (30 Units)', price: 60.22, quantity: 1, image: 'Broadway sweets products/Hard Candy/Coffee Candy/1..jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="102" data-category="hard_candy" data-price="44.00">
-    <img src="images/Broadway sweets products/Candy/stumbo candy/candy 2.jpg" alt="Stumbo Cola Burst Candy 50" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Cola Burst Candy (50 Units)</div>
-        <div class="product-price">R44.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-102', name: 'Stumbo Cola Burst Candy (50 Units)', price: 44.00, quantity: 1, image: 'Broadway sweets products/Hard Candy/Stumbo/Cola_Burst.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="103" data-category="hard_candy" data-price="44.00">
-    <img src="images/Broadway sweets products/Candy/stumbo candy/candy 3.jpg" alt="Stumbo Blackberry Flavoured Candy 50" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Blackberry Flavoured Candy (50 Units)</div>
-        <div class="product-price">R44.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-103', name: 'Stumbo Blackberry Flavoured Candy (50 Units)', price: 44.00, quantity: 1, image: 'Broadway sweets products/Hard Candy/Stumbo/Blackberry.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="104" data-category="hard_candy" data-price="44.00">
-    <img src="images/Broadway sweets products/Candy/stumbo candy/candy 4.jpg" alt="Stumbo Super Blue Candy 50" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Super Blue Candy (50 Units)</div>
-        <div class="product-price">R44.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-104', name: 'Stumbo Super Blue Candy (50 Units)', price: 44.00, quantity: 1, image: 'Broadway sweets products/Hard Candy/Stumbo/Super_Blue.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="105" data-category="hard_candy" data-price="44.00">
-    <img src="images/Broadway sweets products/Candy/stumbo candy/candy 5.jpg" alt="Stumbo Pear Flavoured Candy 50" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Pear Flavoured Candy (50 Units)</div>
-        <div class="product-price">R44.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-105', name: 'Stumbo Pear Flavoured Candy (50 Units)', price: 44.00, quantity: 1, image: 'Broadway sweets products/Hard Candy/Stumbo/Pear.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-        </div>
-    </div>
-
-    <div class="content-section">
-        <h2 id="ZOUR-BOMB" class="section-title">ZOUR BOMB</h2>
-        <div class="products-grid" id="zourBombProductsGrid">
-            <div class="product-card" data-id="42" data-category="candy" data-price="77.00">
-                <img src="images/Broadway sweets products/Candy/zour bomb/1..jpg" alt="Zour Bomb Assorted Candy 50" class="product-image">
-                <div class="product-info">
-                    <div class="product-name">Zour Bomb Assorted Candy</div>
-                    <div class="product-price">R77.00</div>
-                    <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-42', name: 'Zour Bomb Assorted Candy', price: 77.00, quantity: 1, image: 'Broadway sweets products/Candy/Zour bomb/1.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-                </div>
-            </div>
-        
-        </div>
-    </div>
-
-    <div class="content-section">
-        <h2 id="NOMICS" class="section-title">NOMICS</h2>
-        <div class="products-grid" id="nomicsProductsGrid">
-            <div class="product-card" data-id="44" data-category="candy" data-price="49.50">
-                <img src="images/Broadway sweets products/Candy/nomics/1.jpg" alt="Nomics Assorted Candy 50" class="product-image">
-                <div class="product-info">
-                    <div class="product-name">Nomics Assorted Candy</div>
-                    <div class="product-price">R49.50</div>
-                    <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-44', name: 'Nomics Assorted Candy', price: 49.50, quantity: 1, image: 'Broadway sweets products/Candy/Nomics/1.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="content-section">
-        <h2 id="BUBBLEGUM" class="section-title">BUBBLEGUM</h2>
-        <div class="products-grid" id="bubblegumProductsGrid">
-            <div class="product-card" data-id="106" data-category="bubblegum" data-price="60.00">
-    <img src="images/Broadway sweets products/Bubble Gum/bubblegum 1.jpg" alt="Stumbo Classic BubbleGum - Wintergreen Flavoured" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Classic BubbleGum - Wintergreen Flavoured</div>
-        <div class="product-price">R60.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-106', name: 'Stumbo Classic BubbleGum - Wintergreen Flavoured', price: 60.00, quantity: 1, image: 'Broadway sweets products/Gum/Stumbo/Wintergreen.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="107" data-category="bubblegum" data-price="60.00">
-    <img src="images/Broadway sweets products/Bubble Gum/bubblegum 2.jpg" alt="Stumbo Tutti Frutti Flavoured Bubblegum" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Tutti Frutti Flavoured Bubblegum</div>
-        <div class="product-price">R60.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-107', name: 'Stumbo Tutti Frutti Flavoured Bubblegum', price: 60.00, quantity: 1, image: 'Broadway sweets products/Gum/Stumbo/Tutti_Frutti.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="108" data-category="bubblegum" data-price="60.00">
-    <img src="images/Broadway sweets products/Bubble Gum/bubblegum 3.jpg" alt="Stumbo Assorted Bubblegum" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Assorted Bubblegum</div>
-        <div class="product-price">R60.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-108', name: 'Stumbo Assorted Bubblegum', price: 60.00, quantity: 1, image: 'Broadway sweets products/Gum/Stumbo/Assorted.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="109" data-category="bubblegum" data-price="60.00">
-    <img src="images/Broadway sweets products/Bubble Gum/bubblegum 4.jpg" alt="Stumbo Cherry Flavoured Bubblegum" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Cherry Flavoured Bubblegum</div>
-        <div class="product-price">R60.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-109', name: 'Stumbo Cherry Flavoured Bubblegum', price: 60.00, quantity: 1, image: 'Broadway sweets products/Gum/Stumbo/Cherry.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="110" data-category="bubblegum" data-price="60.00">
-    <img src="images/Broadway sweets products/Bubble Gum/bubblegum 5.jpg" alt="Stumbo Cola Flavoured Bubblegum" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Cola Flavoured Bubblegum</div>
-        <div class="product-price">R60.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-110', name: 'Stumbo Cola Flavoured Bubblegum', price: 60.00, quantity: 1, image: 'Broadway sweets products/Gum/Stumbo/Cola.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="111" data-category="bubblegum" data-price="60.00">
-    <img src="images/Broadway sweets products/Bubble Gum/bubblegum 6.jpg" alt="Stumbo Blue Bubblegum" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Blue Bubblegum</div>
-        <div class="product-price">R60.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-111', name: 'Stumbo Blue Bubblegum', price: 60.00, quantity: 1, image: 'Broadway sweets products/Gum/Stumbo/Blue.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="112" data-category="bubblegum" data-price="60.00">
-    <img src="images/Broadway sweets products/Bubble Gum/bubblegum 7.jpg" alt="Stumbo Apricot Flavoured Bubblegum" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Stumbo Apricot Flavoured Bubblegum</div>
-        <div class="product-price">R60.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-112', name: 'Stumbo Apricot Flavoured Bubblegum', price: 60.00, quantity: 1, image: 'Broadway sweets products/Gum/Stumbo/Apricot.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-        </div>
-    </div>
-
-    <div class="content-section">
-        <h2 id="SECRET-SNACKS" class="section-title">SECRET SNACKS</h2>
-        <div class="products-grid" id="secretSnacksProductsGrid">
-           <div class="product-card" data-id="113" data-category="snacks" data-price="80.00">
-    <img src="images/Broadway sweets products/Secret Snacks/secret snacks picture 1.jpg" alt="Choc Lava Cereal Bites - 50 Pack" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Choc Lava Cereal Bites - 50 Pack</div>
-        <div class="product-price">R80.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-113', name: 'Choc Lava Cereal Bites - 50 Pack', price: 80.00, quantity: 1, image: 'Broadway sweets products/Snacks/Funfoods/Choc_Lava.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="114" data-category="snacks" data-price="80.00">
-    <img src="images/Broadway sweets products/Secret Snacks/secret snacks picture 2.jpg" alt="Strawberry Lava Cereal Bites - 50 Pack" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Strawberry Lava Cereal Bites - 50 Pack</div>
-        <div class="product-price">R80.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-114', name: 'Strawberry Lava Cereal Bites - 50 Pack', price: 80.00, quantity: 1, image: 'Broadway sweets products/Snacks/Funfoods/Strawberry_Lava.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="115" data-category="snacks" data-price="70.00">
-    <img src="images/Broadway sweets products/Secret Snacks/secret snacks picture 3.jpg" alt="Popper's Puffs Cheese - 12 Pack" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Popper's Puffs Cheese - 12 Pack</div>
-        <div class="product-price">R70.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-115', name: 'Popper's Puffs Cheese - 12 Pack', price: 70.00, quantity: 1, image: 'Broadway sweets products/Snacks/Poppers/Puffs_Cheese.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="116" data-category="snacks" data-price="70.00">
-    <img src="images/Broadway sweets products/Secret Snacks/secret snacks picture 4.jpg" alt="Popper's Puffs Cheese & Onion- 12 Pack" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Popper's Puffs Cheese & Onion- 12 Pack</div>
-        <div class="product-price">R70.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-116', name: 'Popper's Puffs Cheese & Onion- 12 Pack', price: 70.00, quantity: 1, image: 'Broadway sweets products/Snacks/Poppers/Puffs_Cheese_Onion.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="117" data-category="snacks" data-price="70.00">
-    <img src="images/Broadway sweets products/Secret Snacks/secret snacks picture 5.jpg" alt="Popper's Puffs Sweet Chilli - 12 Pack" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Popper's Puffs Sweet Chilli - 12 Pack</div>
-        <div class="product-price">R70.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-117', name: 'Popper's Puffs Sweet Chilli - 12 Pack', price: 70.00, quantity: 1, image: 'Broadway sweets products/Snacks/Poppers/Puffs_Sweet_Chilli.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="118" data-category="snacks" data-price="70.00">
-    <img src="images/Broadway sweets products/Secret Snacks/secret snacks picture 6.jpg" alt="Popper Snapz Sweet Chilli - 12 Pack" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Popper Snapz Sweet Chilli - 12 Pack</div>
-        <div class="product-price">R70.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-118', name: 'Popper Snapz Sweet Chilli - 12 Pack', price: 70.00, quantity: 1, image: 'Broadway sweets products/Snacks/Poppers/Snapz_Sweet_Chilli.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-        </div>
-    </div>
-
-    <div class="content-section">
-        <h2 id="PARTY-PACKS" class="section-title">PARTY PACKS</h2>
-        <div class="products-grid" id="partyPacksProductsGrid">
-            <div class="product-card" data-id="119" data-category="party_packs" data-price="35.00">
-    <img src="images/Broadway sweets products/Party Packs/party packs picture 1.jpg" alt="Adventures Party Pack" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Adventures Party Pack</div>
-        <div class="product-price">R35.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-119', name: 'Adventures Party Pack', price: 35.00, quantity: 1, image: 'Broadway sweets products/Party_Packs/Adventures.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="120" data-category="party_packs" data-price="40.00">
-    <img src="images/Broadway sweets products/Party Packs/party packs picture 2.jpg" alt="Making Memories Party Pack" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Making Memories Party Pack</div>
-        <div class="product-price">R40.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-120', name: 'Making Memories Party Pack', price: 40.00, quantity: 1, image: 'Broadway sweets products/Party_Packs/Making_Memories.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-<div class="product-card" data-id="121" data-category="party_packs" data-price="50.00">
-    <img src="images/Broadway sweets products/Party Packs/party packs picture 3.jpg" alt="Fun Moments Party Pack" class="product-image">
-    <div class="product-info">
-        <div class="product-name">Fun Moments Party Pack</div>
-        <div class="product-price">R50.00</div>
-        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'broadway-121', name: 'Fun Moments Party Pack', price: 50.00, quantity: 1, image: 'Broadway sweets products/Party_Packs/Fun_Moments.jpg', businessName: 'Broadway Sweets', businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' })">Add to Cart</button>
-    </div>
-</div>
-        </div>
-    </div>
-
-    <div class="product-modal-overlay">
-        <div class="product-modal">
-            <button class="close-product-modal" onclick="closeProductModal()"><i class="fas fa-times"></i></button>
-            <div class="product-modal-content">
-                <div class="product-modal-images">
-                    <img src="" alt="Main Product Image" class="main-product-image" id="modalMainImage">
-                    <div class="product-thumbnails" id="productThumbnails">
-                        </div>
-                </div>
-                <div class="product-modal-details">
-                    <h3 class="product-modal-title" id="modalProductName">Product Name</h3>
-                    <div class="product-modal-price" id="modalProductPrice">R0.00</div>
-                    <p class="product-modal-description" id="modalProductDescription">A delicious treat for everyone!</p>
-
-                    <div class="product-variants" id="productVariantsContainer">
-                        </div>
-
-                    <div class="quantity-selector">
-                        <div class="variant-title">Quantity:</div>
-                        <button class="quantity-btn" id="decreaseQuantity">-</button>
-                        <span class="quantity-display" id="modalQuantity">1</span>
-                        <button class="quantity-btn" id="increaseQuantity">+</button>
-                    </div>
-
-                    <button class="add-to-cart-modal-btn" id="modalAddToCartBtn">
-                        <i class="fas fa-cart-plus"></i> Add to Cart
+        <nav>
+            <ul>
+                <li><a href="about page home.html">About</a></li>
+                <li class="dropdown" role="menu">
+                    <button id="businessesDropdownBtn" class="dropdown-btn" aria-expanded="false" aria-controls="businessesDropdownContent">
+                        Businesses <i class="fas fa-chevron-down"></i>
                     </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="cart-modal-overlay">
-        <div class="cart-modal">
-            <h3 class="cart-modal-title"><i class="fas fa-shopping-cart"></i> Your Shopping Cart</h3>
-            <div class="cart-items">
-                <p style="text-align: center; color: #555;">Your cart is empty.</p>
-            </div>
-            <div class="cart-total" id="cartTotal">Total: R0.00</div>
-            <button class="checkout-btn"><i class="fas fa-money-check-alt"></i> Proceed to Checkout</button>
-            <button class="close-cart-btn" onclick="closeCartModal()">Continue Shopping</button>
-        </div>
-    </div>
-
-    <div class="user-modal-overlay">
-        <div class="user-modal">
-            <h3 class="user-modal-title" id="userModalTitle">Login</h3>
-
-            <form class="auth-form" id="loginForm">
-                <div class="form-group">
-                    <label for="loginEmail" class="form-label">Email:</label>
-                    <input type="email" id="loginEmail" class="form-input" required>
-                </div>
-                <div class="form-group">
-                    <label for="loginPassword" class="form-label">Password:</label>
-                    <input type="password" id="loginPassword" class="form-input" required>
-                </div>
-                <button type="submit" class="auth-btn">Login</button>
-            </form>
-
-            <form class="auth-form" id="registerForm" style="display: none;">
-                <div class="form-group">
-                    <label for="registerName" class="form-label">Name:</label>
-                    <input type="text" id="registerName" class="form-input" required>
-                </div>
-                <div class="form-group">
-                    <label for="registerEmail" class="form-label">Email:</label>
-                    <input type="email" id="registerEmail" class="form-input" required>
-                </div>
-                <div class="form-group">
-                    <label for="registerPassword" class="form-label">Password:</label>
-                    <input type="password" id="registerPassword" class="form-input" required>
-                </div>
-                <button type="submit" class="auth-btn">Register</button>
-            </form>
-
-            <div class="switch-auth">
-                <span id="switchAuthText">New user?</span>
-                <span class="switch-auth-btn" onclick="toggleAuthForm()">Register here</span>
-            </div>
-            <button class="close-product-modal" style="top: 10px; right: 10px; background-color: #a30909;" onclick="closeUserModal()"><i class="fas fa-times"></i></button>
-        </div>
-    </div>
-
-    <footer>
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <h3>BROADWAY SWEETS</h3>
-                    <p>Quality sweets for every occasion.</p>
-                    <div class="social-media">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <ul class="dropdown-content" id="businessesDropdownContent">
+                        <li><a href="#sweet-shops" role="menuitem">Sweet Shops</a></li>
+                        <li><a href="#restaurant" role="menuitem">Restaurants</a></li>
+                        <li><a href="#catering" role="menuitem">Catering</a></li>
+                    </ul>
+                </li>
+               
+                <li class="user-menu">
+                    <button id="userBtn" class="nav-icon-btn" aria-label="User account">
+                        <i class="fas fa-user-circle"></i> <span id="userDisplay">Account</span>
+                    </button>
+                    <div class="user-profile" id="userProfile">
+                        <div class="user-info">
+                            <h4 id="userName">Welcome</h4>
+                            <p id="userEmail"></p>
+                        </div>
+                        <div class="user-actions">
+                            <button id="logoutBtn">Logout</button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <button id="cartBtn" class="nav-icon-btn" aria-label="View your shopping cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="slider-section">
+            <div class="slider-container" id="sliderContainer">
+                <div class="slider" id="slider">
+                    <div class="slide" role="tabpanel" id="slide1">
+                        <a href="broadway page.html">
+                            <img src="images/broadway-sweets-products/broadway-sweets-long.jpg" alt="A variety of colorful Indian sweets arranged on a tray">
+                        </a>
+                    </div>
+                    <div class="slide" role="tabpanel" id="slide2">
+                        <a href="Sweet Mart.html">
+                            <img src="images/sweet-mart-products/sweet-mart-long.jpg" alt="Assorted chocolates and pastries in a display case">
+                        </a>
+                    </div>
+                    <div class="slide" role="tabpanel" id="slide3">
+                        <a href="Polar ice cream.html">
+                            <img src="images/polar-ice-cream-products/polar-ice-cream-long.jpg" alt="A close-up of a decorative dessert with fresh fruits and cream">
+                        </a>
+                    </div>
+                    <div class="slide" role="tabpanel" id="slide4">
+                        <a href="Sweet Depot website.html">
+                            <img src="images/sweet-depot-products/sweet-deport-long.jpg" alt="A close-up of a decorative dessert with fresh fruits and cream">
+                        </a>
                     </div>
                 </div>
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <nav class="footer-nav">
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="#BIG-POPS">Shop</a></li>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul>
-                    </nav>
+                <div class="slider-indicators" role="tablist">
+                    <span class="indicator" onclick="changeSlide(0)" role="tab" aria-selected="true" aria-controls="slide1"></span>
+                    <span class="indicator" onclick="changeSlide(1)" role="tab" aria-selected="false" aria-controls="slide2"></span>
+                    <span class="indicator" onclick="changeSlide(2)" role="tab" aria-selected="false" aria-controls="slide3"></span>
+                    <span class="indicator" onclick="changeSlide(3)" role="tab" aria-selected="false" aria-controls="slide4"></span>
                 </div>
             </div>
-            <div class="footer-bottom">
-                &copy; 2024 Broadway Sweets. All rights reserved. | Developed by Your Company Name
+        </section>
+        <section id="sweet-shops">
+            <h2 class="section-title">Featured Sweet Shops</h2>
+            <div class="businesses-grid">
+                <div class="block">
+                    <a href="broadway page.html">
+                        <img src="images/broadway-sweets-products/broadway-sweets-logo.jpg" alt="Broadway-sweets-logo">
+                    </a>
+                    <div class="info">
+                        <h3>Broadway Sweets</h3>
+                        <p>Authentic Indian sweets and savory snacks, made with traditional recipes and love.</p>
+                        <button class="open-popup" data-popup-target="broadwaysweetsPopup">Learn More</button>
+                    </div>
+                </div>
+                <div class="block">
+                    <a href="Sweet Depot website.html">
+                        <img src="images/sweet-depot-products/sweet-deport-cover.jpg" alt="sweet-deport"> 
+                    </a>
+                    <div class="info">
+                        <h3>Sweet Depot</h3>
+                        <p>Your one-stop shop for a wide selection of international and local confectionery.</p>
+                        <button class="open-popup" data-popup-target="sweetdeportPopup">Learn More</button>
+                    </div>
+                </div>
+                <div class="block">
+                    <a href="Sweet Mart.html">
+                        <img src="images/sweet-mart-products/sweet-mart-logo.jpeg" alt="Sweet-Mart-Logo">
+                    </a>
+                    <div class="info">
+                        <h3>Sweet Mart</h3>
+                        <p>A classic favorite with an extensive range of sweets, snacks, and festive delights.</p>
+                        <button class="open-popup" data-popup-target="sweetmartPopup">Learn More</button>
+                    </div>
+                </div>
+                <div class="block">
+                    <a href="Polar ice cream.html">
+                        <img src="images/polar-ice-cream-products/polar-ice-cream-logo.png" alt="Polar-Ice-Cream-Logo">
+                    </a>
+                    <div class="info">
+                        <h3>Polar Ice Cream</h3>
+                        <p>Cool down with our delicious range of homemade ice creams and frozen desserts.</p>
+                        <button class="open-popup" data-popup-target="polaricecreampopup">Learn More</button>
+                    </div>
+                </div>
+                <div class="block">
+                    <a href="#">
+                        <img src="images/sunrise-sweets/sunrise logo.jpg" alt="Sunrise-Sweets-Logo">
+                    </a>
+                    <div class="info">
+                        <h3>Sunrise Sweets</h3>
+                        <p>Start your day with our delightful range of morning sweets and traditional breakfast desserts.</p>
+                        <button class="open-popup" data-popup-target="sunrisesweetsPopup">Learn More</button>
+                    </div>
+                </div>
+                <div class="block">
+                    <a href="#">
+                        <img src="images/Z and S sweets/z and s logo.jpg" alt="Z-and-S-Sweets Logo">
+                    </a>
+                    <div class="info">
+                        <h3>Z and S Sweets</h3>
+                        <p>Specialty sweets and desserts crafted with generations of expertise and traditional methods.</p>
+                        <button class="open-popup" data-popup-target="zandsweetsPopup">Learn More</button>
+                    </div>
+                </div>
+                <div class="block">
+                    <a href="#">
+                        <img src="https://placehold.co/320x240/8e44ad/ffffff?text=Desert+Sweets" alt="Desert Sweets Logo">
+                    </a>
+                    <div class="info">
+                        <h3>Desert Sweets</h3>
+                        <p>Unique sweets inspired by Middle Eastern flavors and traditional desert recipes.</p>
+                        <button class="open-popup" data-popup-target="desertsweetsPopup">Learn More</button>
+                    </div>
+                </div>
+                <div class="block">
+                    <a href="#">
+                        <img src="https://placehold.co/320x240/34495e/ffffff?text=Royal+Sweets" alt="Royal Sweets Logo">
+                    </a>
+                    <div class="info">
+                        <h3>Royal Sweets</h3>
+                        <p>Luxury sweets and desserts fit for royalty, with premium ingredients and exquisite presentation.</p>
+                        <button class="open-popup" data-popup-target="royalsweetsPopup">Learn More</button>
+                    </div>
+                </div>
+                <div class="block">
+                    <a href="#">
+                        <img src="https://placehold.co/320x240/7f8c8d/ffffff?text=Golden+Sweets" alt="Golden Sweets Logo">
+                    </a>
+                    <div class="info">
+                        <h3>Golden Sweets</h3>
+                        <p>Our premium line of sweets featuring edible gold and the finest ingredients for special occasions.</p>
+                        <button class="open-popup" data-popup-target="goldensweetsPopup">Learn More</button>
+                    </div>
+                </div>
             </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/logo/HIVE TIMES LOGO RED.png" alt="Hive Times Logo">
+                <h3>Hive Times</h3>
+                <p>Your trusted partner for Trade Directory</p>
+                <ul class="social-media">
+                    <li><a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></li>
+                    <li><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+            <div class="footer-nav">
+                <ul>
+                    <li><a href="about page home.html"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="index.html"><i class="fas fa-shopping-bag"></i> Businesses</a></li>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#"><i class="fas fa-file-contract"></i> Terms</a></li>
+                    <li><a href=""><i class="fas fa-shield-alt"></i> Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Hive Times. All rights reserved. Made with <i class="fas fa-heart"></i> for Businesses</p>
         </div>
     </footer>
+    <button class="back-to-top" onclick="scrollToTop()" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <div id="myPopup" class="popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+        <div class="popup-content">
+            <span class="close-button" role="button" aria-label="Close popup" onclick="closeGenericPopup()">&times;</span>
+            <h3 id="popup-title"></h3>
+            <p id="popup-text"></p>
+        </div>
+    </div>
+    <div id="loginPopup" class="popup" role="dialog" aria-modal="true" aria-labelledby="loginPopupTitle">
+        <div class="popup-content">
+            <span class="close-button" role="button" aria-label="Close login popup" onclick="hideLoginPopup()">&times;</span>
+            <h3 id="loginPopupTitle">Login to Your Account</h3>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password:</label>
+                    <input type="password" id="loginPassword" name="password" required>
+                </div>
+                <button type="submit" class="form-submit-btn">Login</button>
+                <p class="toggle-form">Don't have an account? <a href="#" id="showRegister">Create one</a></p>
+            </form>
+        </div>
+    </div>
+    <div id="registerPopup" class="popup" role="dialog" aria-modal="true" aria-labelledby="registerPopupTitle">
+        <div class="popup-content">
+            <span class="close-button" role="button" aria-label="Close register popup" onclick="hideRegisterPopup()">&times;</span>
+            <h3 id="registerPopupTitle">Create Your Account</h3>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerName">Full Name:</label>
+                    <input type="text" id="registerName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email:</label>
+                    <input type="email" id="registerEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password:</label>
+                    <input type="password" id="registerPassword" name="password" required minlength="6">
+                </div>
+                <div class="form-group">
+                    <label for="registerConfirmPassword">Confirm Password:</label>
+                    <input type="password" id="registerConfirmPassword" name="confirmPassword" required>
+                </div>
+                <button type="submit" class="form-submit-btn">Create Account</button>
+                <p class="toggle-form">Already have an account? <a href="#" id="showLogin">Login</a></p>
+            </form>
+        </div>
+    </div>
+    <div id="contactPopup" class="contact-popup" role="dialog" aria-modal="true" aria-labelledby="contactPopupTitle">
+        <h3 id="contactPopupTitle">Get In Touch</h3>
+        <p>How would you like to contact us?</p>
+        <button onclick="window.open('https://wa.me/+27649220145', '_blank')" aria-label="Contact via WhatsApp"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+        <button onclick="window.location.href='mailto:contact@tradetimes.com'" aria-label="Contact via Email"><i class="fas fa-envelope"></i> Email</button>
+        <button onclick="hideContactPopup()" class="close-btn" aria-label="Close contact options"><i class="fas fa-times"></i> Close</button>
+    </div>
+    <div id="cartModal" class="popup" role="dialog" aria-modal="true" aria-labelledby="cartModalTitle">
+        <div id="cartModalContent">
+            <span class="close-button" role="button" aria-label="Close cart" onclick="hideCartModal()">&times;</span>
+            <h3 id="cartModalTitle">Your Shopping Cart</h3>
+            <div id="cart-header">
+                <img id="cartBusinessLogo" src="" alt="Business Logo">
+                <h3 id="cartBusinessName"></h3>
+            </div>
+            <div id="cartItems">
+                <p id="emptyCartMessage">Your cart is empty.</p>
+            </div>
+            <div class="cart-total" id="cartTotal">Total: R0.00</div>
+            <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+        </div>
+    </div>
+    <div class="overlay" onclick="hideContactPopup()" role="presentation"></div>
+    <script>
+        // --- User Authentication System ---
+        let currentUser = null;
+        // Check if user is logged in (from localStorage)
+        function checkUserLogin() {
+            const savedUser = localStorage.getItem('hiveTimesUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                updateUserUI();
+            }
+        }
+        // Update UI based on user login status
+        function updateUserUI() {
+            if (currentUser) {
+                document.getElementById('userDisplay').textContent = 'My Account';
+                document.getElementById('userName').textContent = currentUser.name;
+                document.getElementById('userEmail').textContent = currentUser.email;
+                document.getElementById('userBtn').addEventListener('click', toggleUserProfile);
+            } else {
+                document.getElementById('userDisplay').textContent = 'Account';
+                document.getElementById('userBtn').addEventListener('click', showLoginPopup);
+            }
+        }
+        // Toggle user profile dropdown
+        function toggleUserProfile() {
+            const userProfile = document.getElementById('userProfile');
+            userProfile.classList.toggle('active');
+        }
+        // Logout function
+        function logout() {
+            currentUser = null;
+            localStorage.removeItem('hiveTimesUser');
+            document.getElementById('userProfile').classList.remove('active');
+            updateUserUI();
+            alert('You have been logged out successfully!');
+        }
+        // --- Login Popup Script ---
+        const loginPopup = document.getElementById('loginPopup');
+        const loginForm = document.getElementById('loginForm');
+        function showLoginPopup() {
+            loginPopup.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            loginPopup.setAttribute('aria-hidden', 'false');
+            loginForm.querySelector('input').focus();
+        }
+        function hideLoginPopup() {
+            loginPopup.style.display = 'none';
+            document.body.style.overflow = '';
+            loginPopup.setAttribute('aria-hidden', 'true');
+        }
+        // Handle login form submission
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = this.loginEmail.value;
+            const password = this.loginPassword.value;
+            // Get registered users from localStorage
+            const users = JSON.parse(localStorage.getItem('hiveTimesUsers') || '[]');
+            // Find user with matching email and password
+            const user = users.find(u => u.email === email && u.password === password);
+            if (user) {
+                // Login successful
+                currentUser = {
+                    name: user.name,
+                    email: user.email
+                };
+                // Save to localStorage
+                localStorage.setItem('hiveTimesUser', JSON.stringify(currentUser));
+                // Update UI
+                updateUserUI();
+                // Hide popup
+                hideLoginPopup();
+                // Show success message
+                alert('Login successful! Welcome back, ' + currentUser.name);
+            } else {
+                // Login failed
+                alert('Invalid email or password. Please try again.');
+            }
+        });
+        // --- Register Popup Script ---
+        const registerPopup = document.getElementById('registerPopup');
+        const registerForm = document.getElementById('registerForm');
+        function showRegisterPopup() {
+            registerPopup.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            registerPopup.setAttribute('aria-hidden', 'false');
+            registerForm.querySelector('input').focus();
+        }
+        function hideRegisterPopup() {
+            registerPopup.style.display = 'none';
+            document.body.style.overflow = '';
+            registerPopup.setAttribute('aria-hidden', 'true');
+        }
+        // Handle register form submission
+        registerForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = this.registerName.value;
+            const email = this.registerEmail.value;
+            const password = this.registerPassword.value;
+            const confirmPassword = this.registerConfirmPassword.value;
+            // Validate password match
+            if (password !== confirmPassword) {
+                alert('Passwords do not match. Please try again.');
+                return;
+            }
+            // Get existing users
+            let users = JSON.parse(localStorage.getItem('hiveTimesUsers') || '[]');
+            // Check if email already exists
+            if (users.some(u => u.email === email)) {
+                alert('An account with this email already exists. Please login or use a different email.');
+                return;
+            }
+            // Create new user
+            const newUser = {
+                name: name,
+                email: email,
+                password: password
+            };
+            // Add to users array
+            users.push(newUser);
+            // Save to localStorage
+            localStorage.setItem('hiveTimesUsers', JSON.stringify(users));
+            // Show success message
+            alert('Account created successfully! You can now login with your credentials.');
+            // Hide register popup and show login popup
+            hideRegisterPopup();
+            showLoginPopup();
+            // Reset form
+            registerForm.reset();
+        });
+        // --- Generic Popup Script ---
+        const genericPopup = document.getElementById('myPopup');
+        const popupTitle = document.getElementById('popup-title');
+        const popupText = document.getElementById('popup-text');
+        const closeButton = genericPopup.querySelector('.close-button');
+        const openPopupButtons = document.querySelectorAll('.open-popup');
+        // Define content for each popup
+        const popupContents = {
+            broadwaysweetsPopup: {
+                title: "About Broadway Sweets",
+                text: "Broadway Sweets is a premier destination for traditional Indian sweets and desserts. Established with a passion for authentic flavors, we craft our products using time-honored recipes passed down through generations. Our commitment to quality ingredients and traditional methods ensures that every bite delivers the rich, authentic taste of Indian confectionery. From festive specialties to everyday treats, Broadway Sweets brings the sweetness of tradition to your table."
+            },
+            sweetdeportPopup: {
+                title: "About Sweet Depot",
+                text: "Sweet Depot is your comprehensive source for a wide variety of sweets, snacks, and confectionery items from around the world. Our mission is to bring joy to every occasion with our diverse selection of quality products. Whether you're looking for traditional favorites or international treats, Sweet Depot offers something for every palate. With a focus on customer satisfaction and competitive pricing, we've become a trusted name in the confectionery industry."
+            },
+            sweetmartPopup: {
+                title: "About Sweet Mart",
+                text: "Sweet Mart has been serving sweet lovers for over two decades with our extensive range of quality sweets, snacks, and confectionery. Our stores are designed to be a paradise for those with a sweet tooth, offering everything from traditional Indian mithai to international chocolates and candies. We pride ourselves on our customer service, product quality, and unbeatable value. Sweet Mart is more than just a store – it's a destination for creating sweet memories."
+            },
+            polaricecreampopup: {
+                title: "About Polar Ice Cream",
+                text: "Polar Ice Cream brings the chill to your summer days with our delicious range of premium ice creams and frozen desserts. Using only the finest ingredients and innovative recipes, we create ice creams that delight the senses. From classic vanilla and chocolate to exotic flavors inspired by global cuisines, Polar Ice Cream offers something for everyone. Our commitment to quality and innovation has made us a favorite among ice cream lovers of all ages."
+            },
+            sunrisesweetsPopup: {
+                title: "About Sunrise Sweets",
+                text: "Sunrise Sweets specializes in morning treats and breakfast desserts that start your day on a sweet note. Our products are crafted to complement your morning tea or coffee, offering a perfect balance of sweetness and flavor. From light pastries to traditional breakfast sweets, Sunrise Sweets uses quality ingredients to create products that are both delicious and satisfying. We believe that every day should begin with a touch of sweetness."
+            },
+            zandsweetsPopup: {
+                title: "About Z and S Sweets",
+                text: "Z and S Sweets represents generations of expertise in traditional sweet-making. Our products are crafted using time-honored methods and recipes that have been perfected over decades. Specializing in authentic regional specialties, we bring the rich heritage of Indian confectionery to discerning customers. Each sweet is made with care and attention to detail, ensuring consistent quality and authentic flavor. Z and S Sweets is a name synonymous with tradition and quality."
+            },
+            desertsweetsPopup: {
+                title: "About Desert Sweets",
+                text: "Desert Sweets draws inspiration from the rich culinary traditions of the Middle East, creating unique sweets that blend ancient flavors with modern techniques. Our products feature ingredients like dates, pistachios, rose water, and saffron, creating distinctive flavors that transport you to the heart of the desert. Whether you're enjoying our baklava, halva, or other specialties, Desert Sweets offers a taste of Middle Eastern hospitality and tradition."
+            },
+            royalsweetsPopup: {
+                title: "About Royal Sweets",
+                text: "Royal Sweets offers a premium line of luxury confectionery fit for royalty. Our products feature the finest ingredients, exquisite presentation, and innovative flavor combinations. From gold-leaf chocolates to truffles infused with rare spices, Royal Sweets creates memorable experiences through exceptional quality and craftsmanship. Perfect for special occasions and gift-giving, our sweets are designed to impress and delight even the most discerning palates."
+            },
+            goldensweetsPopup: {
+                title: "About Golden Sweets",
+                text: "Golden Sweets represents the pinnacle of luxury confectionery, featuring edible gold and the finest ingredients for special occasions. Our master confectioners combine traditional techniques with innovative designs to create sweets that are as beautiful as they are delicious. From gold-dusted chocolates to intricately designed mithai, Golden Sweets transforms ordinary treats into extraordinary experiences. Perfect for weddings, anniversaries, and other milestone celebrations."
+            }
+        };
+        function openGenericPopup(contentKey) {
+            const content = popupContents[contentKey];
+            if (content) {
+                popupTitle.textContent = content.title;
+                popupText.textContent = content.text;
+                genericPopup.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                genericPopup.setAttribute('aria-hidden', 'false');
+                closeButton.focus();
+            } else {
+                console.error('Popup content not found for key:', contentKey);
+                closeGenericPopup();
+            }
+        }
+        function closeGenericPopup() {
+            genericPopup.style.display = 'none';
+            popupTitle.textContent = '';
+            popupText.textContent = '';
+            document.body.style.overflow = '';
+            genericPopup.setAttribute('aria-hidden', 'true');
+        }
+        openPopupButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetKey = button.getAttribute('data-popup-target');
+                if (targetKey) {
+                    openGenericPopup(targetKey);
+                    button.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+        closeButton.addEventListener('click', closeGenericPopup);
+        genericPopup.addEventListener('click', function(event) {
+            if (event.target === genericPopup) {
+                closeGenericPopup();
+            }
+        });
+        // --- Contact Popup Script ---
+        const contactPopup = document.getElementById('contactPopup');
+        const overlay = document.querySelector('.overlay');
+        function showContactPopup() {
+            contactPopup.style.display = 'block';
+            overlay.style.display = 'block';
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            contactPopup.setAttribute('aria-hidden', 'false');
+            contactPopup.querySelector('button').focus(); 
+        }
+        function hideContactPopup() {
+            contactPopup.style.display = 'none';
+            overlay.classList.remove('active');
+            overlay.style.display = 'none';
+            document.body.style.overflow = '';
+            contactPopup.setAttribute('aria-hidden', 'true');
+        }
+        overlay.addEventListener('click', hideContactPopup);
+        // --- Dropdown Menu Accessibility ---
+        const dropdownBtn = document.getElementById('businessesDropdownBtn');
+        const dropdownContent = document.getElementById('businessesDropdownContent');
+        const dropdownLi = dropdownBtn.closest('.dropdown');
+        dropdownBtn.addEventListener('click', () => {
+            const isExpanded = dropdownBtn.getAttribute('aria-expanded') === 'true';
+            dropdownBtn.setAttribute('aria-expanded', String(!isExpanded));
+            dropdownLi.setAttribute('aria-expanded', String(!isExpanded));
+        });
+        // Close dropdown if clicking outside
+        document.addEventListener('click', (event) => {
+            if (!dropdownLi.contains(event.target) && dropdownBtn.getAttribute('aria-expanded') === 'true') {
+                dropdownBtn.setAttribute('aria-expanded', 'false');
+                dropdownLi.setAttribute('aria-expanded', 'false');
+            }
+            // Close user profile if clicking outside
+            const userMenu = document.querySelector('.user-menu');
+            const userProfile = document.getElementById('userProfile');
+            if (!userMenu.contains(event.target) && userProfile.classList.contains('active')) {
+                userProfile.classList.remove('active');
+            }
+        });
+        // --- Toggle between Login and Register forms ---
+        document.getElementById('showRegister').addEventListener('click', function(e) {
+            e.preventDefault();
+            hideLoginPopup();
+            showRegisterPopup();
+        });
+        document.getElementById('showLogin').addEventListener('click', function(e) {
+            e.preventDefault();
+            hideRegisterPopup();
+            showLoginPopup();
+        });
+        // --- Logout button event listener ---
+        document.getElementById('logoutBtn').addEventListener('click', logout);
+        // --- Slider functionality ---
+        let currentSlide = 0;
+        const slider = document.getElementById('slider');
+        const slides = document.querySelectorAll('.slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const sliderContainer = document.getElementById('sliderContainer');
+        let slideInterval;
+        const SLIDE_DURATION = 4000; // 4 seconds
+        function showSlide(index) {
+            // Ensure index is within bounds
+            currentSlide = (index + slides.length) % slides.length;
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            indicators.forEach((ind, i) => {
+                ind.classList.toggle('active', i === currentSlide);
+                ind.setAttribute('aria-selected', i === currentSlide);
+            });
+            // Update aria-controls for accessibility
+            slides.forEach((slide, i) => {
+                slide.id = `slide${i + 1}`;
+            });
+            if (indicators[currentSlide]) {
+                indicators[currentSlide].setAttribute('aria-controls', `slide${currentSlide + 1}`);
+            }
+        }
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+        function changeSlide(index) {
+            clearInterval(slideInterval); // Stop auto-slide when manual change
+            showSlide(index);
+            startSlider(); // Restart auto-slide
+        }
+        function startSlider() {
+            slideInterval = setInterval(nextSlide, SLIDE_DURATION);
+        }
+        // Pause/Resume on hover
+        if (sliderContainer) {
+            sliderContainer.addEventListener('mouseenter', () => {
+                clearInterval(slideInterval);
+            });
+            sliderContainer.addEventListener('mouseleave', () => {
+                startSlider();
+            });
+        }
+        // Initialize indicators and start slider
+        showSlide(0);
+        startSlider();
+        // --- Keyboard Accessibility for Popups and Dropdown ---
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                if (genericPopup.style.display === 'flex') {
+                    closeGenericPopup();
+                }
+                if (contactPopup.style.display === 'block') {
+                    hideContactPopup();
+                }
+                if (loginPopup.style.display === 'flex') {
+                    hideLoginPopup();
+                }
+                if (registerPopup.style.display === 'flex') {
+                    hideRegisterPopup();
+                }
+                if (dropdownBtn.getAttribute('aria-expanded') === 'true') {
+                    dropdownBtn.setAttribute('aria-expanded', 'false');
+                    dropdownLi.setAttribute('aria-expanded', 'false');
+                    dropdownBtn.focus();
+                }
+                if (document.getElementById('userProfile').classList.contains('active')) {
+                    document.getElementById('userProfile').classList.remove('active');
+                }
+                if (document.getElementById('cartModal').style.display === 'flex') {
+                    hideCartModal();
+                }
+            }
+        });
+        // --- Animate blocks on page load ---
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is already logged in
+            checkUserLogin();
+            updateUserUI();
+            // Initialize cart
+            initCart();
+            // Add event listener for cart button
+            document.getElementById('cartBtn').addEventListener('click', showCartModal);
+        });
+        // --- Search Functionality ---
+        const searchInput = document.getElementById('searchInput');
+        const businessBlocks = document.querySelectorAll('.block');
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            businessBlocks.forEach(block => {
+                const businessName = block.querySelector('h3').textContent.toLowerCase();
+                const businessDescription = block.querySelector('p').textContent.toLowerCase();
+                if (businessName.includes(searchTerm) || businessDescription.includes(searchTerm)) {
+                    block.style.display = 'block';
+                    block.style.opacity = '1';
+                } else {
+                    block.style.display = 'none';
+                    block.style.opacity = '0.5';
+                }
+            });
+        });
+        // --- Back to Top Button ---
+        const backToTopButton = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTopButton.style.display = 'flex';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        // Add contact button
+        const contactButton = document.createElement('button');
+        contactButton.innerHTML = '<i class="fas fa-comment-dots"></i>';
+        contactButton.className = 'back-to-top';
+        contactButton.style.bottom = '110px';
+        contactButton.style.right = '40px';
+        contactButton.style.background = 'linear-gradient(135deg, #27ae60 0%, #219653 100%)';
+        contactButton.onclick = showContactPopup;
+        contactButton.setAttribute('aria-label', 'Contact us');
+        document.body.appendChild(contactButton);
+        // --- Shopping Cart System ---
+        let cart = [];
+        // Initialize cart from localStorage
+        function initCart() {
+            try {
+                const savedCart = localStorage.getItem('hiveTimesCart');
+                if (savedCart) {
+                    cart = JSON.parse(savedCart);
+                    updateCartCount();
+                }
+            } catch (error) {
+                console.error("Error loading cart:", error);
+                cart = [];
+            }
+        }
+        // Update cart count display
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+        // Show cart modal
+        function showCartModal() {
+            const cartModal = document.getElementById('cartModal');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            const emptyCartMessage = document.getElementById('emptyCartMessage');
+            const cartBusinessLogo = document.getElementById('cartBusinessLogo');
+            const cartBusinessName = document.getElementById('cartBusinessName');
 
-  <script src="script.js"></script>
+            if (!cartModal || !cartItems || !cartTotal || !cartBusinessLogo || !cartBusinessName) {
+                console.error('Cart modal elements not found');
+                return;
+            }
+
+            cartItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                if (emptyCartMessage) {
+                    emptyCartMessage.style.display = 'block';
+                }
+                cartTotal.textContent = 'Total: R0.00';
+                cartBusinessLogo.style.display = 'none';
+                cartBusinessName.textContent = '';
+            } else {
+                if (emptyCartMessage) {
+                    emptyCartMessage.style.display = 'none';
+                }
+                
+                // Populate business info from the first item
+                const firstItem = cart[0];
+                cartBusinessLogo.style.display = 'block';
+                cartBusinessLogo.src = firstItem.businessLogo;
+                cartBusinessName.textContent = firstItem.businessName;
+
+                let total = 0;
+                cart.forEach((item, index) => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'cart-item';
+                    cartItem.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="cart-item-details">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">R${item.price.toFixed(2)}</div>
+                            <div class="cart-item-quantity">
+                                <button class="quantity-btn decrease-qty" data-index="${index}">-</button>
+                                <span class="quantity-display">${item.quantity}</span>
+                                <button class="quantity-btn increase-qty" data-index="${index}">+</button>
+                                <button class="remove-item-btn" data-index="${index}">Remove</button>
+                            </div>
+                        </div>
+                    `;
+                    cartItems.appendChild(cartItem);
+                });
+
+                cartTotal.textContent = `Total: R${total.toFixed(2)}`;
+                // Add event listeners for quantity buttons and remove buttons
+                document.querySelectorAll('.increase-qty').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const index = parseInt(this.dataset.index);
+                        cart[index].quantity++;
+                        saveCart();
+                        showCartModal(); // Refresh the display
+                    });
+                });
+                document.querySelectorAll('.decrease-qty').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const index = parseInt(this.dataset.index);
+                        if (cart[index].quantity > 1) {
+                            cart[index].quantity--;
+                            saveCart();
+                            showCartModal(); // Refresh the display
+                        }
+                    });
+                });
+                document.querySelectorAll('.remove-item-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const index = parseInt(this.dataset.index);
+                        cart.splice(index, 1);
+                        saveCart();
+                        showCartModal(); // Refresh the display
+                    });
+                });
+            }
+            
+            cartModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            cartModal.setAttribute('aria-hidden', 'false');
+        }
+        // Hide cart modal
+        function hideCartModal() {
+            const cartModal = document.getElementById('cartModal');
+            if (cartModal) {
+                cartModal.style.display = 'none';
+                document.body.style.overflow = '';
+                cartModal.setAttribute('aria-hidden', 'true');
+            }
+        }
+        // Save cart to localStorage
+        function saveCart() {
+            try {
+                localStorage.setItem('hiveTimesCart', JSON.stringify(cart));
+                updateCartCount();
+            } catch (error) {
+                console.error("Error saving cart:", error);
+            }
+        }
+        // Checkout function
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            // Calculate total
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            // In a real application, this would redirect to a checkout page
+            // For demo purposes, we'll just show an alert
+            alert(`Proceeding to checkout with ${cart.length} items totaling R${total.toFixed(2)}.
+Thank you for shopping with us! Your order will be processed shortly.`);
+            // Clear cart after checkout
+            cart = [];
+            saveCart();
+            hideCartModal();
+        }
+        
+    </script>
+    <script src="cart.js"></script>
 </body>
 </html>
