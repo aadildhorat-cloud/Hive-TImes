@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Hive Times</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Color palette inspired by the logo */
+        :root {
+            --primary-color: #FF9900; /* Bright orange for accents */
+            --secondary-color: #E64A19; /* A slightly darker red-orange if needed */
+            --brand-red: #8B1A1A; /* Deep red from the logo background */
+            --text-dark: #222;
+            --text-light: #444;
+            --bg-light: #f8f8f8;
+            --bg-white: #fff;
+            --border-color: #ddd;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-light);
+            color: var(--text-light);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header-hero {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: var(--brand-red); /* Use brand red for the hero background */
+            color: var(--bg-white);
+            border-bottom: 5px solid var(--primary-color); /* Highlight with primary color */
+            border-radius: 0 0 10px 10px;
+            margin-bottom: 20px;
+        }
+
+        .header-hero .logo {
+            max-width: 300px; /* Adjust logo size as needed */
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .header-hero h1 { /* This H1 is now for descriptive text, not the main title */
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            color: var(--bg-white);
+            margin: 0 0 10px;
+        }
+
+        .header-hero p {
+            font-size: 1.05em;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        section {
+            padding: 40px 20px;
+            background-color: var(--bg-white);
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--brand-red); /* Use brand red for section titles */
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .mission-text {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .what-we-do-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--bg-light);
+            padding: 25px;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 280px; /* Slightly larger min-width for cards */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid var(--primary-color); /* Add a colored border to cards */
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .card h3 {
+            color: var(--brand-red);
+            margin-top: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .card p {
+            margin-bottom: 0;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 30px 0;
+            color: var(--primary-color); /* Hexagon icon in primary color */
+            font-size: 2.5em; /* Larger icon */
+            line-height: 0; /* Adjust line height for icon centering */
+        }
+        
+        .cta-section {
+            text-align: center;
+            background-color: var(--brand-red); /* CTA section background */
+            color: var(--bg-white);
+            padding: 50px 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .cta-section h2 {
+            color: var(--bg-white); /* White text for CTA heading */
+            margin-bottom: 25px;
+        }
+
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            font-size: 1.1em;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--text-dark); /* Dark text on bright button */
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1em;
+        }
+
+        .cta-button:hover {
+            background-color: #FFB333; /* Slightly lighter orange on hover */
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .what-we-do-grid {
+                flex-direction: column;
+            }
+            .header-hero h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.7em;
+            }
+            .header-hero .logo {
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="header-hero">
+        <img src="logo/HIVE TIMES LOGO RED.png" alt="Hive Times Logo" class="logo">
+        <h1>Building a new kind of e-commerce experience.</h1>
+        <p>Bridging the gap between social-first shopping and powerful professional tools.</p>
+    </header>
+
+    <section>
+        <h2>Our Mission</h2>
+        <p class="mission-text">The world of online shopping is fractured. We saw an opportunity to bridge that gap, providing a single, powerful solution that gives businesses the best of both worlds.</p>
+        
+        <div class="divider">&#x2B22;</div> <h2>What We Do</h2>
+        <div class="what-we-do-grid">
+            <div class="card">
+                <h3>For Businesses</h3>
+                <p>We provide a user-friendly platform to build and manage your online store. Our tools are intuitive, so you can focus on creating great products. We also offer robust analytics and marketing tools to help you find and connect with new customers.</p>
+            </div>
+            <div class="card">
+                <h3>For Shoppers</h3>
+                <p>We make shopping an effortless and enjoyable experience. Our platform is designed for discovery, allowing you to browse, find, and purchase from unique businesses with just a few taps. We believe that shopping should be a part of your daily digital life, not a separate, clunky process.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Our Story</h2>
+        <p>Hive Times was born from a simple observation: social media is great for discovery and impulse buys, but it lacks the depth and control of a professional website. Traditional e-commerce platforms offer control and data, but they can be complex and disconnected from where people spend their time online.</p>
+        <p>We are a team of passionate creators and entrepreneurs who understand the challenges of running a modern business. Our goal is to empower you with a beautiful, professional storefront that has the simple, social-first appeal that customers love.</p>
+    </section>
+
+    <div class="cta-section">
+        <h2>Join the Hive</h2>
+        <p>Whether you're a small business looking to launch your first online store or a seasoned entrepreneur seeking a more powerful way to connect with your customers, we invite you to join the Hive. Let us help you build a buzz around your brand.</p>
+        <a href="#" class="cta-button">Launch Your Store Now</a>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Broadway Sweets</title>
+    
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="css/style.css">
+</head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    </head>
+<body>
+    <script src="js/checkout.js"></script>
+    
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="broadway page.html">BROADWAY SWEETS</a>
+            </div>
+            </div>
+    </header>
+
+    <div class="checkout-container">
+        <h2>Secure Checkout</h2>
+        
+        <div class="checkout-content">
+            
+            <div class="checkout-form">
+                <h3>Shipping Information</h3>
+                <form id="checkoutForm">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" required>
+
+                    <label for="address">Address Line 1</label>
+                    <input type="text" id="address" required>
+
+                    <label for="city">City</label>
+                    <input type="text" id="city" required>
+
+                    <label for="zip">Zip Code</label>
+                    <input type="text" id="zip" required>
+
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required>
+
+                    <button type="submit" class="submit-checkout-btn">Continue to Payment (Simulated)</button>
+                </form>
+            </div>
+
+            <div class="order-summary">
+                <h3>Your Order</h3>
+                <div id="checkoutSummaryItems" class="summary-items-container">
+                    <p class="loading-message">Loading order...</p>
+                </div>
+                
+                <div class="summary-item summary-total">
+                    <span>Order Total</span>
+                    <span id="checkoutTotal">R0.00</span>
+                </div>
+                
+                <p class="return-link"><a href="broadway page.html#BIG-POPS">← Back to Shop</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-bottom">
+            &copy; 2024 Broadway Sweets. All rights reserved. 
+        </div>
+    </footer>
+
+    <script src="checkout.js"></script>
+</body>
+</html>
