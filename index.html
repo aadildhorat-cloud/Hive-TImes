@@ -939,9 +939,19 @@
                 grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
                 gap: 1.5rem;
             }
+
+            /* UPGRADED SLIDER STYLES */
+            .slider-section {
+                padding: 2.5rem 0; /* Reduced top/bottom padding */
+            }
+            .slider-container {
+                width: 95%; /* Increased width for a better fit on tablets */
+            }
             .slide img {
                 height: 350px; /* Adjust slider height */
             }
+            /* END UPGRADED SLIDER STYLES */
+
             .slide-content {
                 padding: 1.8rem;
                 max-width: 90%;
@@ -981,9 +991,22 @@
             .businesses-grid {
                 grid-template-columns: 1fr; /* Single column for small phones */
             }
+
+            /* UPGRADED SLIDER STYLES */
+            .slider-section {
+                padding: 2rem 0; /* Remove horizontal padding */
+            }
+            .slider-container {
+                width: 100%; /* Make slider full-width */
+                border-radius: 0; /* Remove rounded corners for a seamless look */
+                box-shadow: none; /* Remove shadow */
+                border-left: none; /* Remove side borders */
+                border-right: none;
+            }
              .slide img {
                 height: 280px; /* Further adjust slider height for phones */
             }
+            /* END UPGRADED SLIDER STYLES */
         }
 
         @media (max-width: 480px) {
