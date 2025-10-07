@@ -66,24 +66,38 @@
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
             transition: height 0.3s ease;
         }
+        
+        /* START MODIFICATION: Adjust navigation spacing */
+        nav {
+            flex-grow: 1; /* Allow navigation to take up remaining space */
+            display: flex; /* Added for proper alignment of ul */
+            justify-content: flex-end; /* Align the nav to the right */
+        }
         nav ul {
             list-style: none;
             margin: 0;
             padding: 0;
             display: flex;
-            gap: 24px;
+            /* gap: 24px; REMOVED FIXED GAP */
+            justify-content: space-between; /* NEW: Distribute space evenly */
+            width: 450px; /* NEW: Set a width for the items to space out within */
+            max-width: 100%; /* NEW: Ensure responsiveness */
             align-items: center;
         }
         nav a {
             color: #fff;
             text-decoration: none;
             font-weight: 600;
-            padding: 12px 18px;
+            padding: 12px 10px; /* MODIFIED: Reduced horizontal padding for tighter fit */
             border-radius: 12px;
             transition: var(--transition);
             display: inline-block;
             font-size: 1.05rem;
+            min-width: 100px; /* NEW: Ensure minimum width */
+            text-align: center; /* NEW: Center text within link */
         }
+        /* END MODIFICATION */
+        
         nav a:hover {
             background-color: rgba(255, 255, 255, 0.15);
             transform: translateY(-3px);
@@ -114,6 +128,8 @@
             display: block;
             transition: var(--transition);
             font-weight: 500;
+            min-width: initial; /* Reset min-width for dropdown items */
+            text-align: left; /* Reset text-align for dropdown items */
         }
         .dropdown-content a:hover {
             background-color: #f8f9fa;
@@ -126,12 +142,14 @@
             font-size: 1.05rem;
             font-weight: 600;
             cursor: pointer;
-            padding: 12px 18px;
+            padding: 12px 10px; /* MODIFIED: Reduced horizontal padding for tighter fit */
             border-radius: 12px;
             transition: var(--transition);
             display: flex;
             align-items: center;
+            justify-content: center; /* Center content in dropdown button */
             gap: 6px;
+            min-width: 100px; /* NEW: Ensure minimum width */
         }
         .dropdown-btn:hover {
             background-color: rgba(255, 255, 255, 0.15);
@@ -902,6 +920,11 @@
             .slide img {
                 height: 400px; /* Adjust slider height for tablets */
             }
+            /* Adjust nav for tablets */
+            nav ul {
+                width: auto; /* Allow ul to take max width available, controlled by flex-wrap */
+                justify-content: center;
+            }
         }
 
         /* Portrait Tablets and Small Laptops */
@@ -924,14 +947,21 @@
                 margin-right: 0;
                 height: 60px; /* Smaller logo */
             }
+            /* Responsive nav update for mobile */
+            nav {
+                width: 100%;
+                justify-content: center;
+            }
             nav ul {
                 flex-wrap: wrap;
                 justify-content: center;
                 gap: 8px; /* Tighter gap */
+                width: 100%; /* Make nav ul full width */
             }
              nav a, .dropdown-btn {
                 padding: 8px 12px; /* Smaller nav buttons */
                 font-size: 1rem;
+                min-width: 80px; /* Adjust min-width for mobile */
             }
             .search-container {
                 width: 100%;
