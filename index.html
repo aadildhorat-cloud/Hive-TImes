@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hive Times - Businesses</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
     <style>
         :root {
             --primary-color: #e74c3c;
@@ -37,7 +36,7 @@
         header {
             background: linear-gradient(135deg, #610d00 0%, #8b1a00 100%);
             color: #fff;
-            padding: 1rem 2rem;
+            padding: 0.75rem 1.25rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -45,45 +44,42 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            flex-wrap: nowrap;
         }
         .header-content {
             display: flex;
             align-items: center;
-            gap: 24px;
-        }
-        .logo h3 {
-            margin: 0;
-            font-size: 1.6rem;
-            color: #fff;
-            font-weight: 700;
+            gap: 16px;
+            flex: 1;
+            min-width: 0;
         }
         .logo img {
-            height: 90px;
+            height: 50px;
             vertical-align: middle;
-            margin-right: 40px;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+            transition: height 0.3s ease;
         }
         nav ul {
             list-style: none;
             margin: 0;
             padding: 0;
             display: flex;
-            gap: 24px;
+            gap: 16px;
             align-items: center;
+            white-space: nowrap;
         }
         nav a {
             color: #fff;
             text-decoration: none;
             font-weight: 600;
-            padding: 12px 18px;
-            border-radius: 12px;
+            padding: 8px 14px;
+            border-radius: 10px;
             transition: var(--transition);
-            display: inline-block;
-            font-size: 1.05rem;
+            font-size: 0.95rem;
         }
         nav a:hover {
             background-color: rgba(255, 255, 255, 0.15);
-            transform: translateY(-3px);
+            transform: translateY(-2px);
         }
         .dropdown {
             position: relative;
@@ -92,11 +88,11 @@
             display: none;
             position: absolute;
             background-color: var(--card-background);
-            min-width: 220px;
+            min-width: 200px;
             box-shadow: var(--box-shadow);
             z-index: 1001;
             border-radius: var(--border-radius);
-            padding: 12px 0;
+            padding: 10px 0;
             animation: fadeIn 0.3s ease-in-out;
             top: 100%;
             left: 0;
@@ -106,11 +102,12 @@
         }
         .dropdown-content a {
             color: var(--text-color);
-            padding: 14px 20px;
+            padding: 12px 18px;
             text-decoration: none;
             display: block;
             transition: var(--transition);
             font-weight: 500;
+            font-size: 0.95rem;
         }
         .dropdown-content a:hover {
             background-color: #f8f9fa;
@@ -120,11 +117,11 @@
             background: none;
             border: none;
             color: #fff;
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             font-weight: 600;
             cursor: pointer;
-            padding: 12px 18px;
-            border-radius: 12px;
+            padding: 8px 14px;
+            border-radius: 10px;
             transition: var(--transition);
             display: flex;
             align-items: center;
@@ -137,13 +134,13 @@
             background: none;
             border: none;
             color: #fff;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             cursor: pointer;
-            padding: 12px;
+            padding: 10px;
             transition: var(--transition);
             border-radius: 50%;
-            width: 48px;
-            height: 48px;
+            width: 44px;
+            height: 44px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -151,16 +148,17 @@
         .nav-icon-btn:hover {
             background-color: rgba(255, 255, 255, 0.2);
             color: #fff;
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
         .search-container {
             display: flex;
             align-items: center;
             background-color: rgba(255, 255, 255, 0.25);
             border-radius: 30px;
-            padding: 8px 20px;
-            width: 280px;
+            padding: 6px 16px;
+            width: 220px;
             transition: var(--transition);
+            flex-shrink: 0;
         }
         .search-container:focus-within {
             background-color: rgba(255, 255, 255, 0.35);
@@ -171,7 +169,7 @@
             border: none;
             outline: none;
             color: #fff;
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             flex-grow: 1;
             padding: 4px 0;
         }
@@ -180,17 +178,17 @@
         }
         .search-container i {
             color: #fff;
-            margin-right: 12px;
-            font-size: 1.1rem;
+            margin-right: 10px;
+            font-size: 1rem;
         }
         /* --- Slider Section --- */
         .slider-section {
-            padding: 4rem 0;
+            padding: 2.5rem 0;
             background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
             text-align: center;
         }
         .slider-container {
-            width: 92%;
+            width: 94%;
             max-width: 1300px;
             margin: 0 auto;
             overflow: hidden;
@@ -212,7 +210,7 @@
             width: 100%;
             display: block;
             object-fit: cover;
-            height: 450px;
+            aspect-ratio: 16 / 9;
         }
         .slide-content {
             position: absolute;
@@ -221,31 +219,31 @@
             transform: translate(-50%, -50%);
             color: #fff;
             background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.9) 100%);
-            padding: 2.5rem;
+            padding: 2rem;
             border-radius: var(--border-radius);
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
             max-width: 80%;
         }
         .slide-content h2 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
             font-weight: 700;
         }
         .slide-content p {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             opacity: 0.9;
         }
         .slider-indicators {
             position: absolute;
-            bottom: 30px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 12px;
+            gap: 10px;
         }
         .indicator {
-            width: 14px;
-            height: 14px;
+            width: 12px;
+            height: 12px;
             background-color: rgba(255, 255, 255, 0.6);
             border-radius: 50%;
             cursor: pointer;
@@ -261,41 +259,41 @@
         /* --- Main Content Section --- */
         main {
             flex-grow: 1;
-            padding: 3rem 2rem;
+            padding: 2.5rem 1.5rem;
             max-width: 1500px;
             margin: 0 auto;
             width: 100%;
         }
         .section-title {
             text-align: center;
-            font-size: 2.8rem;
+            font-size: 2.4rem;
             color: var(--secondary-color);
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             font-weight: 800;
             position: relative;
         }
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -15px;
+            bottom: -12px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
+            width: 70px;
+            height: 3px;
             background: var(--primary-color);
             border-radius: 2px;
         }
         .businesses-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2.5rem;
-            padding: 2rem 0;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 1.5rem 0;
         }
         .block {
             background-color: var(--card-background);
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
-            padding: 2rem;
+            padding: 1.8rem;
             text-align: center;
             transition: var(--transition);
             position: relative;
@@ -314,63 +312,58 @@
             transition: var(--transition);
         }
         .block:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
         }
         .block:hover::before {
             opacity: 1;
         }
         .block img {
             width: 100%;
-            height: 240px;
+            height: 220px;
             object-fit: cover;
             border-radius: var(--border-radius);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             transition: var(--transition);
         }
         .block:hover img {
-            transform: scale(1.03);
+            transform: scale(1.02);
         }
         .block h3 {
-            margin: 0.8rem 0;
-            font-size: 1.6rem;
+            margin: 0.6rem 0;
+            font-size: 1.45rem;
             color: var(--secondary-color);
             font-weight: 700;
         }
         .block p {
-            font-size: 1.05rem;
+            font-size: 1rem;
             color: #555;
-            min-height: 60px;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
+            min-height: 55px;
+            margin-bottom: 1.2rem;
+            line-height: 1.65;
         }
         .block button {
             background: linear-gradient(135deg, var(--primary-color) 0%, #c0392b 100%);
             color: #fff;
             border: none;
-            padding: 14px 32px;
+            padding: 12px 28px;
             border-radius: 50px;
             cursor: pointer;
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: 600;
             transition: var(--transition);
             margin-top: 1rem;
-            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
         }
         .block button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
-        }
-        .block button:active {
-            transform: translateY(0);
+            box-shadow: 0 6px 18px rgba(231, 76, 60, 0.4);
         }
         /* --- Footer --- */
         footer {
             background: linear-gradient(135deg, #610d00 0%, #4a0a00 100%);
             color: #fff;
-            padding: 3rem 2rem;
+            padding: 2.5rem 1.5rem;
             text-align: center;
         }
         .footer-content {
@@ -380,39 +373,39 @@
             align-items: flex-start;
             text-align: left;
             border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-            padding-bottom: 2.5rem;
-            margin-bottom: 2rem;
-            gap: 2rem;
+            padding-bottom: 2rem;
+            margin-bottom: 1.8rem;
+            gap: 1.8rem;
         }
         .footer-logo img {
-            height: 70px;
-            margin-bottom: 15px;
+            height: 65px;
+            margin-bottom: 12px;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
         }
         .footer-logo h3 {
             margin: 0;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
         }
         .footer-logo p {
-            font-size: 1.05rem;
+            font-size: 1rem;
             color: #e0e0e0;
-            margin-top: 10px;
+            margin-top: 8px;
             line-height: 1.6;
         }
         .social-media {
             list-style: none;
             padding: 0;
             display: flex;
-            gap: 18px;
-            margin-top: 20px;
+            gap: 16px;
+            margin-top: 18px;
         }
         .social-media a {
             color: #fff;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             transition: var(--transition);
-            width: 45px;
-            height: 45px;
+            width: 42px;
+            height: 42px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -421,7 +414,7 @@
         }
         .social-media a:hover {
             background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
+            transform: translateY(-2px);
             color: #ffd700;
         }
         .footer-nav ul {
@@ -429,30 +422,30 @@
             padding: 0;
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 12px;
         }
         .footer-nav a {
             color: #fff;
             text-decoration: none;
             font-weight: 500;
             transition: var(--transition);
-            font-size: 1.05rem;
+            font-size: 1rem;
             display: flex;
             align-items: center;
             gap: 10px;
         }
         .footer-nav a:hover {
             color: #ffd700;
-            transform: translateX(5px);
+            transform: translateX(4px);
         }
         .footer-nav a i {
-            width: 24px;
+            width: 22px;
             text-align: center;
         }
         .footer-bottom {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: #ccc;
-            margin-top: 1.5rem;
+            margin-top: 1.2rem;
             line-height: 1.6;
         }
         .footer-bottom i {
@@ -472,11 +465,11 @@
             backdrop-filter: blur(10px);
             justify-content: center;
             align-items: center;
-            padding: 2rem;
+            padding: 1.5rem;
         }
         .popup-content {
             background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            padding: 2.5rem;
+            padding: 2.2rem;
             border-radius: var(--border-radius);
             max-width: 600px;
             width: 100%;
@@ -489,25 +482,25 @@
         .popup-content h3 {
             margin-top: 0;
             color: var(--secondary-color);
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
             font-weight: 700;
         }
         .popup-content p {
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-size: 1rem;
+            line-height: 1.7;
             color: #444;
         }
         .close-button {
             position: absolute;
-            top: 20px;
-            right: 25px;
-            font-size: 2.2rem;
+            top: 18px;
+            right: 22px;
+            font-size: 2rem;
             color: #888;
             cursor: pointer;
             transition: var(--transition);
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -525,7 +518,7 @@
             right: 30px;
             background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
             border-radius: var(--border-radius);
-            padding: 2rem;
+            padding: 1.8rem;
             box-shadow: var(--box-shadow);
             z-index: 1000;
             text-align: center;
@@ -535,22 +528,22 @@
         .contact-popup h3 {
             margin-top: 0;
             color: var(--secondary-color);
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
         }
         .contact-popup button {
             background: linear-gradient(135deg, var(--primary-color) 0%, #c0392b 100%);
             color: #fff;
             border: none;
-            padding: 12px 24px;
-            margin: 8px;
-            border-radius: 12px;
+            padding: 10px 20px;
+            margin: 6px;
+            border-radius: 10px;
             cursor: pointer;
-            font-size: 1.1rem;
+            font-size: 1rem;
             transition: var(--transition);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             font-weight: 600;
         }
         .contact-popup button.close-btn {
@@ -558,7 +551,7 @@
         }
         .contact-popup button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
         .overlay {
             display: none;
@@ -573,22 +566,22 @@
         }
         /* Login & Register Popup */
         .form-group {
-            margin-bottom: 1.8rem;
+            margin-bottom: 1.5rem;
             text-align: left;
         }
         .form-group label {
             display: block;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.7rem;
             font-weight: 600;
             color: var(--secondary-color);
-            font-size: 1.05rem;
+            font-size: 1rem;
         }
         .form-group input {
             width: 100%;
-            padding: 14px;
+            padding: 12px;
             border: 2px solid #e1e5e9;
-            border-radius: 12px;
-            font-size: 1.05rem;
+            border-radius: 10px;
+            font-size: 1rem;
             transition: var(--transition);
         }
         .form-group input:focus {
@@ -598,26 +591,26 @@
         }
         .form-submit-btn {
             width: 100%;
-            padding: 16px;
+            padding: 14px;
             border: none;
-            border-radius: 12px;
+            border-radius: 10px;
             background: linear-gradient(135deg, var(--primary-color) 0%, #c0392b 100%);
             color: #fff;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
             margin-top: 1rem;
-            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
         }
         .form-submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+            box-shadow: 0 6px 18px rgba(231, 76, 60, 0.4);
         }
         .toggle-form {
-            margin-top: 1.5rem;
+            margin-top: 1.2rem;
             color: #666;
-            font-size: 1.05rem;
+            font-size: 1rem;
         }
         .toggle-form a {
             color: var(--primary-color);
@@ -638,8 +631,8 @@
             background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
-            padding: 1.5rem;
-            width: 280px;
+            padding: 1.4rem;
+            width: 260px;
             z-index: 100;
             animation: fadeIn 0.3s ease-in-out;
             border: 1px solid #eee;
@@ -648,37 +641,37 @@
             display: block;
         }
         .user-info {
-            padding: 1.2rem 0;
+            padding: 1rem 0;
             border-bottom: 1px solid #eee;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
             text-align: center;
         }
         .user-info h4 {
-            margin: 0 0 0.8rem 0;
+            margin: 0 0 0.6rem 0;
             color: var(--secondary-color);
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 600;
         }
         .user-info p {
             color: #666;
-            font-size: 1.05rem;
+            font-size: 1rem;
         }
         .user-actions {
             display: flex;
             flex-direction: column;
-            gap: 0.8rem;
+            gap: 0.7rem;
         }
         .user-actions button {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             border: 1px solid #dee2e6;
             text-align: center;
-            padding: 12px;
-            border-radius: 10px;
+            padding: 10px;
+            border-radius: 8px;
             cursor: pointer;
             transition: var(--transition);
             font-weight: 600;
             color: var(--secondary-color);
-            font-size: 1.05rem;
+            font-size: 1rem;
         }
         .user-actions button:hover {
             background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
@@ -688,42 +681,42 @@
         /* Shopping Cart Modal */
         #cartModalContent {
             background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            padding: 2.5rem;
+            padding: 2.2rem;
             border-radius: var(--border-radius);
-            max-width: 850px;
+            max-width: 800px;
             width: 95%;
             position: relative;
             box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
             animation: fadeIn 0.4s ease-out;
-            max-height: 90vh;
+            max-height: 85vh;
             overflow-y: auto;
             border: 1px solid #eee;
         }
         #cartModalContent h3 {
             margin-top: 0;
             color: var(--secondary-color);
-            font-size: 2.2rem;
+            font-size: 2rem;
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.8rem;
             font-weight: 700;
         }
         #cart-header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.8rem;
         }
         #cartBusinessLogo {
-            width: 100px;
+            width: 90px;
             height: auto;
-            border-radius: 12px;
-            margin-bottom: 1rem;
+            border-radius: 10px;
+            margin-bottom: 0.8rem;
         }
         #cartBusinessName {
             color: var(--secondary-color);
-            font-size: 1.8rem;
+            font-size: 1.6rem;
         }
         .cart-item {
             display: flex;
-            padding: 1.5rem;
+            padding: 1.2rem;
             border-bottom: 1px solid #eee;
             align-items: center;
             transition: var(--transition);
@@ -732,11 +725,11 @@
             background-color: #f8f9fa;
         }
         .cart-item img {
-            width: 90px;
-            height: 90px;
+            width: 80px;
+            height: 80px;
             object-fit: cover;
-            border-radius: 12px;
-            margin-right: 1.5rem;
+            border-radius: 10px;
+            margin-right: 1.2rem;
             transition: var(--transition);
         }
         .cart-item:hover img {
@@ -747,28 +740,28 @@
         }
         .cart-item-name {
             font-weight: 700;
-            margin-bottom: 0.8rem;
-            font-size: 1.2rem;
+            margin-bottom: 0.6rem;
+            font-size: 1.1rem;
             color: var(--secondary-color);
         }
         .cart-item-price {
             color: var(--primary-color);
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
         .cart-item-quantity {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
-            margin-top: 0.8rem;
+            gap: 0.7rem;
+            margin-top: 0.6rem;
         }
         .quantity-btn {
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             border: 2px solid #dee2e6;
-            border-radius: 8px;
+            border-radius: 6px;
             background-color: #fff;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
             cursor: pointer;
             display: flex;
@@ -782,55 +775,55 @@
             border-color: var(--primary-color);
         }
         .quantity-display {
-            min-width: 36px;
+            min-width: 32px;
             text-align: center;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
         .remove-item-btn {
             background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
             color: #fff;
             border: none;
-            padding: 8px 16px;
-            border-radius: 8px;
+            padding: 6px 14px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 13px;
             transition: var(--transition);
             font-weight: 600;
             margin-left: auto;
         }
         .remove-item-btn:hover {
             transform: scale(1.05);
-            box-shadow: 0 2px 8px rgba(231, 76, 60, 0.4);
+            box-shadow: 0 2px 6px rgba(231, 76, 60, 0.4);
         }
         .cart-total {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 800;
             color: var(--primary-color);
             text-align: right;
-            margin: 2rem 0;
-            padding: 1.5rem;
+            margin: 1.8rem 0;
+            padding: 1.2rem;
             background: linear-gradient(135deg, #fff5f5 0%, #ffeaea 100%);
-            border-radius: 12px;
+            border-radius: 10px;
             border: 2px solid #ffe0e0;
         }
         .checkout-btn {
             width: 100%;
-            padding: 16px;
+            padding: 14px;
             border: none;
-            border-radius: 12px;
+            border-radius: 10px;
             background: linear-gradient(135deg, #27ae60 0%, #219653 100%);
             color: #fff;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
             cursor: pointer;
             transition: var(--transition);
-            margin-top: 1.5rem;
-            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.3);
+            margin-top: 1.2rem;
+            box-shadow: 0 6px 18px rgba(39, 174, 96, 0.3);
         }
         .checkout-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(39, 174, 96, 0.4);
+            box-shadow: 0 8px 22px rgba(39, 174, 96, 0.4);
         }
         /* --- Animations --- */
         @keyframes fadeIn {
@@ -865,17 +858,17 @@
         .back-to-top {
             display: none;
             position: fixed;
-            bottom: 40px;
-            right: 40px;
+            bottom: 35px;
+            right: 35px;
             background: linear-gradient(135deg, #8b1a00 0%, #610d00 100%);
             color: white;
             border: none;
             border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            font-size: 1.6rem;
+            width: 55px;
+            height: 55px;
+            font-size: 1.4rem;
             cursor: pointer;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
             transition: var(--transition);
             z-index: 998;
             display: flex;
@@ -884,99 +877,125 @@
         }
         .back-to-top:hover {
             background: linear-gradient(135deg, #610d00 0%, #4a0a00 100%);
-            transform: translateY(-5px) rotate(15deg);
+            transform: translateY(-4px) rotate(10deg);
         }
         /* --- Responsive Design --- */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                padding: 1.2rem;
-                gap: 1.5rem;
-            }
-            .header-content {
-                flex-direction: column;
-                width: 100%;
-                gap: 1.5rem;
-            }
-            .logo {
-                margin-bottom: 0;
-                text-align: center;
-            }
-            .logo img {
-                margin-right: 0;
-                height: 70px;
-            }
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 12px;
-            }
-            .search-container {
-                width: 100%;
-                max-width: 400px;
-            }
+        @media (max-width: 992px) {
             .businesses-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            .slide img {
-                height: 300px;
+                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             }
             .slide-content {
-                padding: 1.8rem;
+                max-width: 85%;
+            }
+        }
+        @media (max-width: 768px) {
+            header {
+                padding: 0.6rem 1rem;
+            }
+            .logo img {
+                height: 46px;
+            }
+            nav ul {
+                gap: 12px;
+            }
+            nav a, .dropdown-btn {
+                padding: 7px 12px;
+                font-size: 0.9rem;
+            }
+            .search-container {
+                width: 180px;
+                padding: 5px 14px;
+            }
+            .search-container input {
+                font-size: 0.9rem;
+            }
+            .businesses-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 1.5rem;
+            }
+            .slide-content {
+                padding: 1.6rem;
                 max-width: 90%;
             }
             .slide-content h2 {
-                font-size: 2rem;
-            }
-            .slide-content p {
-                font-size: 1.1rem;
-            }
-            .section-title {
-                font-size: 2.2rem;
-            }
-            .footer-content {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                gap: 2.5rem;
-            }
-            .footer-nav {
-                margin-top: 1rem;
-            }
-            .footer-nav ul {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
-            }
-            .back-to-top {
-                width: 50px;
-                height: 50px;
-                font-size: 1.4rem;
-                bottom: 30px;
-                right: 30px;
-            }
-        }
-        @media (max-width: 480px) {
-            .slide img {
-                height: 250px;
-            }
-            .slide-content h2 {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
             }
             .slide-content p {
                 font-size: 1rem;
             }
             .section-title {
-                font-size: 1.8rem;
+                font-size: 2rem;
+            }
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 2rem;
+            }
+            .footer-nav ul {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+            .back-to-top {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+                bottom: 30px;
+                right: 30px;
+            }
+        }
+        @media (max-width: 576px) {
+            .search-container {
+                width: 140px;
+                padding: 5px 12px;
+            }
+            .businesses-grid {
+                grid-template-columns: 1fr;
+            }
+            .slide img {
+                aspect-ratio: 4 / 3;
+            }
+            .slide-content h2 {
+                font-size: 1.5rem;
+            }
+            .slide-content p {
+                font-size: 0.95rem;
+            }
+        }
+        @media (max-width: 480px) {
+            header {
+                padding: 0.5rem 0.8rem;
+            }
+            .logo img {
+                height: 42px;
+            }
+            .search-container {
+                display: none;
+            }
+            nav ul {
+                gap: 10px;
+            }
+            nav a, .dropdown-btn {
+                padding: 6px 10px;
+                font-size: 0.85rem;
+            }
+            .section-title {
+                font-size: 1.7rem;
             }
             .block h3 {
-                font-size: 1.4rem;
+                font-size: 1.3rem;
             }
             .block p {
-                font-size: 0.95rem;
+                font-size: 0.9rem;
                 min-height: 50px;
+            }
+            .block img {
+                height: 200px;
+            }
+            .slide img {
+                aspect-ratio: 3 / 4;
             }
         }
     </style>
@@ -985,8 +1004,7 @@
     <header>
         <div class="header-content">
             <div class="logo">
-               <img src="images-logo/hive-times-logo.png" alt="hive times logo">
-                <h3></h3>
+               <img src="images-logo/hive-times-logo.png" alt="Hive Times Logo">
             </div>
             <div class="search-container">
                 <i class="fas fa-search"></i>
@@ -1006,7 +1024,6 @@
                         <li><a href="#catering" role="menuitem">Catering</a></li>
                     </ul>
                 </li>
-               
                 <li class="user-menu">
                     <button id="userBtn" class="nav-icon-btn" aria-label="User account">
                         <i class="fas fa-user-circle"></i> <span id="userDisplay">Account</span>
@@ -1267,7 +1284,6 @@
     <script>
         // --- User Authentication System ---
         let currentUser = null;
-        // Check if user is logged in (from localStorage)
         function checkUserLogin() {
             const savedUser = localStorage.getItem('hiveTimesUser');
             if (savedUser) {
@@ -1275,7 +1291,6 @@
                 updateUserUI();
             }
         }
-        // Update UI based on user login status
         function updateUserUI() {
             if (currentUser) {
                 document.getElementById('userDisplay').textContent = 'My Account';
@@ -1287,12 +1302,10 @@
                 document.getElementById('userBtn').addEventListener('click', showLoginPopup);
             }
         }
-        // Toggle user profile dropdown
         function toggleUserProfile() {
             const userProfile = document.getElementById('userProfile');
             userProfile.classList.toggle('active');
         }
-        // Logout function
         function logout() {
             currentUser = null;
             localStorage.removeItem('hiveTimesUser');
@@ -1314,31 +1327,19 @@
             document.body.style.overflow = '';
             loginPopup.setAttribute('aria-hidden', 'true');
         }
-        // Handle login form submission
         loginForm.addEventListener('submit', function(event) {
             event.preventDefault();
             const email = this.loginEmail.value;
             const password = this.loginPassword.value;
-            // Get registered users from localStorage
             const users = JSON.parse(localStorage.getItem('hiveTimesUsers') || '[]');
-            // Find user with matching email and password
             const user = users.find(u => u.email === email && u.password === password);
             if (user) {
-                // Login successful
-                currentUser = {
-                    name: user.name,
-                    email: user.email
-                };
-                // Save to localStorage
+                currentUser = { name: user.name, email: user.email };
                 localStorage.setItem('hiveTimesUser', JSON.stringify(currentUser));
-                // Update UI
                 updateUserUI();
-                // Hide popup
                 hideLoginPopup();
-                // Show success message
                 alert('Login successful! Welcome back, ' + currentUser.name);
             } else {
-                // Login failed
                 alert('Invalid email or password. Please try again.');
             }
         });
@@ -1356,87 +1357,43 @@
             document.body.style.overflow = '';
             registerPopup.setAttribute('aria-hidden', 'true');
         }
-        // Handle register form submission
         registerForm.addEventListener('submit', function(event) {
             event.preventDefault();
             const name = this.registerName.value;
             const email = this.registerEmail.value;
             const password = this.registerPassword.value;
             const confirmPassword = this.registerConfirmPassword.value;
-            // Validate password match
             if (password !== confirmPassword) {
                 alert('Passwords do not match. Please try again.');
                 return;
             }
-            // Get existing users
             let users = JSON.parse(localStorage.getItem('hiveTimesUsers') || '[]');
-            // Check if email already exists
             if (users.some(u => u.email === email)) {
                 alert('An account with this email already exists. Please login or use a different email.');
                 return;
             }
-            // Create new user
-            const newUser = {
-                name: name,
-                email: email,
-                password: password
-            };
-            // Add to users array
+            const newUser = { name: name, email: email, password: password };
             users.push(newUser);
-            // Save to localStorage
             localStorage.setItem('hiveTimesUsers', JSON.stringify(users));
-            // Show success message
             alert('Account created successfully! You can now login with your credentials.');
-            // Hide register popup and show login popup
             hideRegisterPopup();
             showLoginPopup();
-            // Reset form
             registerForm.reset();
         });
         // --- Generic Popup Script ---
         const genericPopup = document.getElementById('myPopup');
         const popupTitle = document.getElementById('popup-title');
         const popupText = document.getElementById('popup-text');
-        const closeButton = genericPopup.querySelector('.close-button');
-        const openPopupButtons = document.querySelectorAll('.open-popup');
-        // Define content for each popup
         const popupContents = {
-            broadwaysweetsPopup: {
-                title: "About Broadway Sweets",
-                text: "Broadway Sweets is a premier destination for traditional Indian sweets and desserts. Established with a passion for authentic flavors, we craft our products using time-honored recipes passed down through generations. Our commitment to quality ingredients and traditional methods ensures that every bite delivers the rich, authentic taste of Indian confectionery. From festive specialties to everyday treats, Broadway Sweets brings the sweetness of tradition to your table."
-            },
-            sweetdeportPopup: {
-                title: "About Sweet Depot",
-                text: "Sweet Depot is your comprehensive source for a wide variety of sweets, snacks, and confectionery items from around the world. Our mission is to bring joy to every occasion with our diverse selection of quality products. Whether you're looking for traditional favorites or international treats, Sweet Depot offers something for every palate. With a focus on customer satisfaction and competitive pricing, we've become a trusted name in the confectionery industry."
-            },
-            sweetmartPopup: {
-                title: "About Sweet Mart",
-                text: "Sweet Mart has been serving sweet lovers for over two decades with our extensive range of quality sweets, snacks, and confectionery. Our stores are designed to be a paradise for those with a sweet tooth, offering everything from traditional Indian mithai to international chocolates and candies. We pride ourselves on our customer service, product quality, and unbeatable value. Sweet Mart is more than just a store – it's a destination for creating sweet memories."
-            },
-            polaricecreampopup: {
-                title: "About Polar Ice Cream",
-                text: "Polar Ice Cream brings the chill to your summer days with our delicious range of premium ice creams and frozen desserts. Using only the finest ingredients and innovative recipes, we create ice creams that delight the senses. From classic vanilla and chocolate to exotic flavors inspired by global cuisines, Polar Ice Cream offers something for everyone. Our commitment to quality and innovation has made us a favorite among ice cream lovers of all ages."
-            },
-            sunrisesweetsPopup: {
-                title: "About Sunrise Sweets",
-                text: "Sunrise Sweets specializes in morning treats and breakfast desserts that start your day on a sweet note. Our products are crafted to complement your morning tea or coffee, offering a perfect balance of sweetness and flavor. From light pastries to traditional breakfast sweets, Sunrise Sweets uses quality ingredients to create products that are both delicious and satisfying. We believe that every day should begin with a touch of sweetness."
-            },
-            zandsweetsPopup: {
-                title: "About Z and S Sweets",
-                text: "Z and S Sweets represents generations of expertise in traditional sweet-making. Our products are crafted using time-honored methods and recipes that have been perfected over decades. Specializing in authentic regional specialties, we bring the rich heritage of Indian confectionery to discerning customers. Each sweet is made with care and attention to detail, ensuring consistent quality and authentic flavor. Z and S Sweets is a name synonymous with tradition and quality."
-            },
-            desertsweetsPopup: {
-                title: "About Desert Sweets",
-                text: "Desert Sweets draws inspiration from the rich culinary traditions of the Middle East, creating unique sweets that blend ancient flavors with modern techniques. Our products feature ingredients like dates, pistachios, rose water, and saffron, creating distinctive flavors that transport you to the heart of the desert. Whether you're enjoying our baklava, halva, or other specialties, Desert Sweets offers a taste of Middle Eastern hospitality and tradition."
-            },
-            royalsweetsPopup: {
-                title: "About Royal Sweets",
-                text: "Royal Sweets offers a premium line of luxury confectionery fit for royalty. Our products feature the finest ingredients, exquisite presentation, and innovative flavor combinations. From gold-leaf chocolates to truffles infused with rare spices, Royal Sweets creates memorable experiences through exceptional quality and craftsmanship. Perfect for special occasions and gift-giving, our sweets are designed to impress and delight even the most discerning palates."
-            },
-            goldensweetsPopup: {
-                title: "About Golden Sweets",
-                text: "Golden Sweets represents the pinnacle of luxury confectionery, featuring edible gold and the finest ingredients for special occasions. Our master confectioners combine traditional techniques with innovative designs to create sweets that are as beautiful as they are delicious. From gold-dusted chocolates to intricately designed mithai, Golden Sweets transforms ordinary treats into extraordinary experiences. Perfect for weddings, anniversaries, and other milestone celebrations."
-            }
+            broadwaysweetsPopup: { title: "About Broadway Sweets", text: "Broadway Sweets is a premier destination for traditional Indian sweets and desserts. Established with a passion for authentic flavors, we craft our products using time-honored recipes passed down through generations. Our commitment to quality ingredients and traditional methods ensures that every bite delivers the rich, authentic taste of Indian confectionery. From festive specialties to everyday treats, Broadway Sweets brings the sweetness of tradition to your table." },
+            sweetdeportPopup: { title: "About Sweet Depot", text: "Sweet Depot is your comprehensive source for a wide variety of sweets, snacks, and confectionery items from around the world. Our mission is to bring joy to every occasion with our diverse selection of quality products. Whether you're looking for traditional favorites or international treats, Sweet Depot offers something for every palate. With a focus on customer satisfaction and competitive pricing, we've become a trusted name in the confectionery industry." },
+            sweetmartPopup: { title: "About Sweet Mart", text: "Sweet Mart has been serving sweet lovers for over two decades with our extensive range of quality sweets, snacks, and confectionery. Our stores are designed to be a paradise for those with a sweet tooth, offering everything from traditional Indian mithai to international chocolates and candies. We pride ourselves on our customer service, product quality, and unbeatable value. Sweet Mart is more than just a store – it's a destination for creating sweet memories." },
+            polaricecreampopup: { title: "About Polar Ice Cream", text: "Polar Ice Cream brings the chill to your summer days with our delicious range of premium ice creams and frozen desserts. Using only the finest ingredients and innovative recipes, we create ice creams that delight the senses. From classic vanilla and chocolate to exotic flavors inspired by global cuisines, Polar Ice Cream offers something for everyone. Our commitment to quality and innovation has made us a favorite among ice cream lovers of all ages." },
+            sunrisesweetsPopup: { title: "About Sunrise Sweets", text: "Sunrise Sweets specializes in morning treats and breakfast desserts that start your day on a sweet note. Our products are crafted to complement your morning tea or coffee, offering a perfect balance of sweetness and flavor. From light pastries to traditional breakfast sweets, Sunrise Sweets uses quality ingredients to create products that are both delicious and satisfying. We believe that every day should begin with a touch of sweetness." },
+            zandsweetsPopup: { title: "About Z and S Sweets", text: "Z and S Sweets represents generations of expertise in traditional sweet-making. Our products are crafted using time-honored methods and recipes that have been perfected over decades. Specializing in authentic regional specialties, we bring the rich heritage of Indian confectionery to discerning customers. Each sweet is made with care and attention to detail, ensuring consistent quality and authentic flavor. Z and S Sweets is a name synonymous with tradition and quality." },
+            desertsweetsPopup: { title: "About Desert Sweets", text: "Desert Sweets draws inspiration from the rich culinary traditions of the Middle East, creating unique sweets that blend ancient flavors with modern techniques. Our products feature ingredients like dates, pistachios, rose water, and saffron, creating distinctive flavors that transport you to the heart of the desert. Whether you're enjoying our baklava, halva, or other specialties, Desert Sweets offers a taste of Middle Eastern hospitality and tradition." },
+            royalsweetsPopup: { title: "About Royal Sweets", text: "Royal Sweets offers a premium line of luxury confectionery fit for royalty. Our products feature the finest ingredients, exquisite presentation, and innovative flavor combinations. From gold-leaf chocolates to truffles infused with rare spices, Royal Sweets creates memorable experiences through exceptional quality and craftsmanship. Perfect for special occasions and gift-giving, our sweets are designed to impress and delight even the most discerning palates." },
+            goldensweetsPopup: { title: "About Golden Sweets", text: "Golden Sweets represents the pinnacle of luxury confectionery, featuring edible gold and the finest ingredients for special occasions. Our master confectioners combine traditional techniques with innovative designs to create sweets that are as beautiful as they are delicious. From gold-dusted chocolates to intricately designed mithai, Golden Sweets transforms ordinary treats into extraordinary experiences. Perfect for weddings, anniversaries, and other milestone celebrations." }
         };
         function openGenericPopup(contentKey) {
             const content = popupContents[contentKey];
@@ -1446,9 +1403,7 @@
                 genericPopup.style.display = 'flex';
                 document.body.style.overflow = 'hidden';
                 genericPopup.setAttribute('aria-hidden', 'false');
-                closeButton.focus();
             } else {
-                console.error('Popup content not found for key:', contentKey);
                 closeGenericPopup();
             }
         }
@@ -1459,21 +1414,16 @@
             document.body.style.overflow = '';
             genericPopup.setAttribute('aria-hidden', 'true');
         }
-        openPopupButtons.forEach(button => {
+        document.querySelectorAll('.open-popup').forEach(button => {
             button.addEventListener('click', (e) => {
                 e.preventDefault();
                 const targetKey = button.getAttribute('data-popup-target');
-                if (targetKey) {
-                    openGenericPopup(targetKey);
-                    button.setAttribute('aria-expanded', 'true');
-                }
+                openGenericPopup(targetKey);
             });
         });
-        closeButton.addEventListener('click', closeGenericPopup);
+        genericPopup.querySelector('.close-button').addEventListener('click', closeGenericPopup);
         genericPopup.addEventListener('click', function(event) {
-            if (event.target === genericPopup) {
-                closeGenericPopup();
-            }
+            if (event.target === genericPopup) closeGenericPopup();
         });
         // --- Contact Popup Script ---
         const contactPopup = document.getElementById('contactPopup');
@@ -1481,14 +1431,11 @@
         function showContactPopup() {
             contactPopup.style.display = 'block';
             overlay.style.display = 'block';
-            overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
             contactPopup.setAttribute('aria-hidden', 'false');
-            contactPopup.querySelector('button').focus(); 
         }
         function hideContactPopup() {
             contactPopup.style.display = 'none';
-            overlay.classList.remove('active');
             overlay.style.display = 'none';
             document.body.style.overflow = '';
             contactPopup.setAttribute('aria-hidden', 'true');
@@ -1496,20 +1443,17 @@
         overlay.addEventListener('click', hideContactPopup);
         // --- Dropdown Menu Accessibility ---
         const dropdownBtn = document.getElementById('businessesDropdownBtn');
-        const dropdownContent = document.getElementById('businessesDropdownContent');
         const dropdownLi = dropdownBtn.closest('.dropdown');
         dropdownBtn.addEventListener('click', () => {
             const isExpanded = dropdownBtn.getAttribute('aria-expanded') === 'true';
             dropdownBtn.setAttribute('aria-expanded', String(!isExpanded));
             dropdownLi.setAttribute('aria-expanded', String(!isExpanded));
         });
-        // Close dropdown if clicking outside
         document.addEventListener('click', (event) => {
             if (!dropdownLi.contains(event.target) && dropdownBtn.getAttribute('aria-expanded') === 'true') {
                 dropdownBtn.setAttribute('aria-expanded', 'false');
                 dropdownLi.setAttribute('aria-expanded', 'false');
             }
-            // Close user profile if clicking outside
             const userMenu = document.querySelector('.user-menu');
             const userProfile = document.getElementById('userProfile');
             if (!userMenu.contains(event.target) && userProfile.classList.contains('active')) {
@@ -1527,74 +1471,50 @@
             hideRegisterPopup();
             showLoginPopup();
         });
-        // --- Logout button event listener ---
         document.getElementById('logoutBtn').addEventListener('click', logout);
         // --- Slider functionality ---
         let currentSlide = 0;
         const slider = document.getElementById('slider');
         const slides = document.querySelectorAll('.slide');
         const indicators = document.querySelectorAll('.indicator');
-        const sliderContainer = document.getElementById('sliderContainer');
         let slideInterval;
-        const SLIDE_DURATION = 4000; // 4 seconds
+        const SLIDE_DURATION = 4000;
         function showSlide(index) {
-            // Ensure index is within bounds
             currentSlide = (index + slides.length) % slides.length;
             slider.style.transform = `translateX(-${currentSlide * 100}%)`;
             indicators.forEach((ind, i) => {
                 ind.classList.toggle('active', i === currentSlide);
                 ind.setAttribute('aria-selected', i === currentSlide);
             });
-            // Update aria-controls for accessibility
-            slides.forEach((slide, i) => {
-                slide.id = `slide${i + 1}`;
-            });
-            if (indicators[currentSlide]) {
-                indicators[currentSlide].setAttribute('aria-controls', `slide${currentSlide + 1}`);
-            }
         }
         function nextSlide() {
             showSlide(currentSlide + 1);
         }
         function changeSlide(index) {
-            clearInterval(slideInterval); // Stop auto-slide when manual change
+            clearInterval(slideInterval);
             showSlide(index);
-            startSlider(); // Restart auto-slide
+            startSlider();
         }
         function startSlider() {
             slideInterval = setInterval(nextSlide, SLIDE_DURATION);
         }
-        // Pause/Resume on hover
+        const sliderContainer = document.getElementById('sliderContainer');
         if (sliderContainer) {
-            sliderContainer.addEventListener('mouseenter', () => {
-                clearInterval(slideInterval);
-            });
-            sliderContainer.addEventListener('mouseleave', () => {
-                startSlider();
-            });
+            sliderContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
+            sliderContainer.addEventListener('mouseleave', () => startSlider());
         }
-        // Initialize indicators and start slider
         showSlide(0);
         startSlider();
-        // --- Keyboard Accessibility for Popups and Dropdown ---
+        // --- Keyboard Accessibility ---
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
-                if (genericPopup.style.display === 'flex') {
-                    closeGenericPopup();
-                }
-                if (contactPopup.style.display === 'block') {
-                    hideContactPopup();
-                }
-                if (loginPopup.style.display === 'flex') {
-                    hideLoginPopup();
-                }
-                if (registerPopup.style.display === 'flex') {
-                    hideRegisterPopup();
-                }
+                if (genericPopup.style.display === 'flex') closeGenericPopup();
+                if (contactPopup.style.display === 'block') hideContactPopup();
+                if (loginPopup.style.display === 'flex') hideLoginPopup();
+                if (registerPopup.style.display === 'flex') hideRegisterPopup();
                 if (dropdownBtn.getAttribute('aria-expanded') === 'true') {
                     dropdownBtn.setAttribute('aria-expanded', 'false');
                     dropdownLi.setAttribute('aria-expanded', 'false');
-                    dropdownBtn.focus();
                 }
                 if (document.getElementById('userProfile').classList.contains('active')) {
                     document.getElementById('userProfile').classList.remove('active');
@@ -1603,16 +1523,6 @@
                     hideCartModal();
                 }
             }
-        });
-        // --- Animate blocks on page load ---
-        document.addEventListener('DOMContentLoaded', function() {
-            // Check if user is already logged in
-            checkUserLogin();
-            updateUserUI();
-            // Initialize cart
-            initCart();
-            // Add event listener for cart button
-            document.getElementById('cartBtn').addEventListener('click', showCartModal);
         });
         // --- Search Functionality ---
         const searchInput = document.getElementById('searchInput');
@@ -1634,49 +1544,37 @@
         // --- Back to Top Button ---
         const backToTopButton = document.querySelector('.back-to-top');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) {
-                backToTopButton.style.display = 'flex';
-            } else {
-                backToTopButton.style.display = 'none';
-            }
+            backToTopButton.style.display = window.scrollY > 400 ? 'flex' : 'none';
         });
         function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         // Add contact button
         const contactButton = document.createElement('button');
         contactButton.innerHTML = '<i class="fas fa-comment-dots"></i>';
         contactButton.className = 'back-to-top';
-        contactButton.style.bottom = '110px';
-        contactButton.style.right = '40px';
+        contactButton.style.bottom = '100px';
+        contactButton.style.right = '35px';
         contactButton.style.background = 'linear-gradient(135deg, #27ae60 0%, #219653 100%)';
         contactButton.onclick = showContactPopup;
         contactButton.setAttribute('aria-label', 'Contact us');
         document.body.appendChild(contactButton);
         // --- Shopping Cart System ---
         let cart = [];
-        // Initialize cart from localStorage
         function initCart() {
             try {
                 const savedCart = localStorage.getItem('hiveTimesCart');
-                if (savedCart) {
-                    cart = JSON.parse(savedCart);
-                    updateCartCount();
-                }
+                if (savedCart) cart = JSON.parse(savedCart);
+                updateCartCount();
             } catch (error) {
                 console.error("Error loading cart:", error);
                 cart = [];
             }
         }
-        // Update cart count display
         function updateCartCount() {
             const count = cart.reduce((total, item) => total + item.quantity, 0);
             document.getElementById('cartCount').textContent = count;
         }
-        // Show cart modal
         function showCartModal() {
             const cartModal = document.getElementById('cartModal');
             const cartItems = document.getElementById('cartItems');
@@ -1684,32 +1582,18 @@
             const emptyCartMessage = document.getElementById('emptyCartMessage');
             const cartBusinessLogo = document.getElementById('cartBusinessLogo');
             const cartBusinessName = document.getElementById('cartBusinessName');
-
-            if (!cartModal || !cartItems || !cartTotal || !cartBusinessLogo || !cartBusinessName) {
-                console.error('Cart modal elements not found');
-                return;
-            }
-
             cartItems.innerHTML = '';
-            
             if (cart.length === 0) {
-                if (emptyCartMessage) {
-                    emptyCartMessage.style.display = 'block';
-                }
+                if (emptyCartMessage) emptyCartMessage.style.display = 'block';
                 cartTotal.textContent = 'Total: R0.00';
                 cartBusinessLogo.style.display = 'none';
                 cartBusinessName.textContent = '';
             } else {
-                if (emptyCartMessage) {
-                    emptyCartMessage.style.display = 'none';
-                }
-                
-                // Populate business info from the first item
+                if (emptyCartMessage) emptyCartMessage.style.display = 'none';
                 const firstItem = cart[0];
                 cartBusinessLogo.style.display = 'block';
-                cartBusinessLogo.src = firstItem.businessLogo;
-                cartBusinessName.textContent = firstItem.businessName;
-
+                cartBusinessLogo.src = firstItem.businessLogo || firstItem.image;
+                cartBusinessName.textContent = firstItem.businessName || 'Your Cart';
                 let total = 0;
                 cart.forEach((item, index) => {
                     const itemTotal = item.price * item.quantity;
@@ -1731,15 +1615,13 @@
                     `;
                     cartItems.appendChild(cartItem);
                 });
-
                 cartTotal.textContent = `Total: R${total.toFixed(2)}`;
-                // Add event listeners for quantity buttons and remove buttons
                 document.querySelectorAll('.increase-qty').forEach(button => {
                     button.addEventListener('click', function() {
                         const index = parseInt(this.dataset.index);
                         cart[index].quantity++;
                         saveCart();
-                        showCartModal(); // Refresh the display
+                        showCartModal();
                     });
                 });
                 document.querySelectorAll('.decrease-qty').forEach(button => {
@@ -1748,7 +1630,7 @@
                         if (cart[index].quantity > 1) {
                             cart[index].quantity--;
                             saveCart();
-                            showCartModal(); // Refresh the display
+                            showCartModal();
                         }
                     });
                 });
@@ -1757,16 +1639,14 @@
                         const index = parseInt(this.dataset.index);
                         cart.splice(index, 1);
                         saveCart();
-                        showCartModal(); // Refresh the display
+                        showCartModal();
                     });
                 });
             }
-            
             cartModal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
             cartModal.setAttribute('aria-hidden', 'false');
         }
-        // Hide cart modal
         function hideCartModal() {
             const cartModal = document.getElementById('cartModal');
             if (cartModal) {
@@ -1775,7 +1655,6 @@
                 cartModal.setAttribute('aria-hidden', 'true');
             }
         }
-        // Save cart to localStorage
         function saveCart() {
             try {
                 localStorage.setItem('hiveTimesCart', JSON.stringify(cart));
@@ -1784,25 +1663,24 @@
                 console.error("Error saving cart:", error);
             }
         }
-        // Checkout function
         function checkout() {
             if (cart.length === 0) {
                 alert('Your cart is empty!');
                 return;
             }
-            // Calculate total
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            // In a real application, this would redirect to a checkout page
-            // For demo purposes, we'll just show an alert
-            alert(`Proceeding to checkout with ${cart.length} items totaling R${total.toFixed(2)}.
-Thank you for shopping with us! Your order will be processed shortly.`);
-            // Clear cart after checkout
+            alert(`Proceeding to checkout with ${cart.length} items totaling R${total.toFixed(2)}.\nThank you for shopping with us! Your order will be processed shortly.`);
             cart = [];
             saveCart();
             hideCartModal();
         }
-        
+        // --- Initialize on DOM Load ---
+        document.addEventListener('DOMContentLoaded', function() {
+            checkUserLogin();
+            updateUserUI();
+            initCart();
+            document.getElementById('cartBtn').addEventListener('click', showCartModal);
+        });
     </script>
-    <script src="cart.js"></script>
 </body>
 </html>
