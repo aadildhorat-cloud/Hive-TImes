@@ -1,9 +1,10 @@
-<html lang="en"><head>
+```html
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hive Times - Businesses</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
     <style>
         :root {
             --primary-color: #e74c3c;
@@ -31,7 +32,6 @@
             flex-direction: column;
             min-height: 100vh;
         }
-
         /* --- Header & Navigation --- */
         header {
             background: linear-gradient(135deg, #610d00 0%, #8b1a00 100%);
@@ -65,146 +65,55 @@
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
             transition: height 0.3s ease;
         }
-
-        /* Hamburger Button */
-        #hamburgerBtn {
+        /* Hamburger Menu */
+        .hamburger {
             display: none;
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 1.5rem;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
             cursor: pointer;
-            padding: 12px;
-            border-radius: 50%;
+            z-index: 1001;
+        }
+        .hamburger span {
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            border-radius: 3px;
             transition: var(--transition);
         }
-        #hamburgerBtn:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Mobile Menu */
-        #mobileMenu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: linear-gradient(135deg, #610d00 0%, #8b1a00 100%);
-            flex-direction: column;
-            padding: 1.5rem 0;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-        }
-        #mobileMenu.active {
-            display: flex;
-        }
-        #mobileMenu a,
-        #mobileMenu .dropdown-btn {
-            color: white !important;
-            text-align: center;
-            padding: 14px 20px !important;
-            display: block !important;
-            width: 100%;
-            font-size: 1.1rem;
-            border-radius: 0 !important;
-            background: transparent !important;
-            text-decoration: none;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-        }
-        #mobileMenu .dropdown-content {
-            display: none !important;
-        }
-
         nav {
-            flex-grow: 1;
             display: flex;
-            justify-content: flex-end;
+            align-items: center;
+            gap: 20px;
         }
         nav ul {
             list-style: none;
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: space-between;
-            width: 450px;
-            max-width: 100%;
+            gap: 20px;
             align-items: center;
         }
         nav a {
             color: #fff;
             text-decoration: none;
             font-weight: 600;
-            padding: 12px 10px;
+            padding: 12px 16px;
             border-radius: 12px;
             transition: var(--transition);
             display: inline-block;
             font-size: 1.05rem;
-            min-width: 100px;
-            text-align: center;
         }
         nav a:hover {
             background-color: rgba(255, 255, 255, 0.15);
             transform: translateY(-3px);
         }
-        .dropdown {
-            position: relative;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: var(--card-background);
-            min-width: 220px;
-            box-shadow: var(--box-shadow);
-            z-index: 1001;
-            border-radius: var(--border-radius);
-            padding: 12px 0;
-            animation: fadeIn 0.3s ease-in-out;
-            top: 100%;
-            left: 0;
-        }
-        .dropdown[aria-expanded="true"] .dropdown-content {
-            display: block;
-        }
-        .dropdown-content a {
-            color: var(--text-color);
-            padding: 14px 20px;
-            text-decoration: none;
-            display: block;
-            transition: var(--transition);
-            font-weight: 500;
-            min-width: initial;
-            text-align: left;
-        }
-        .dropdown-content a:hover {
-            background-color: #f8f9fa;
-            color: var(--primary-color);
-        }
-        .dropdown-btn {
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 1.05rem;
-            font-weight: 600;
-            cursor: pointer;
-            padding: 12px 10px;
-            border-radius: 12px;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            min-width: 100px;
-        }
-        .dropdown-btn:hover {
-            background-color: rgba(255, 255, 255, 0.15);
-        }
         .nav-icon-btn {
             background: none;
             border: none;
             color: #fff;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             cursor: pointer;
             padding: 12px;
             transition: var(--transition);
@@ -251,33 +160,63 @@
             font-size: 1.1rem;
         }
 
-        /* --- Responsive Design --- */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                padding: 1rem;
-                gap: 1rem;
-            }
-            .header-content {
-                flex-direction: row;
-                width: 100%;
-                justify-content: space-between;
-                align-items: center;
-            }
-            #hamburgerBtn {
-                display: block;
-            }
-            nav {
-                display: none;
-            }
-            .search-container {
-                order: 3;
-                width: 100%;
-                max-width: 400px;
-            }
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #610d00 0%, #8b1a00 100%);
+            z-index: 1000;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 100px;
+            gap: 2rem;
+        }
+        .mobile-menu.active {
+            display: flex;
+        }
+        .mobile-menu ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .mobile-menu a {
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+        .mobile-menu .nav-icon-btn {
+            margin-top: 2rem;
+        }
+        .close-mobile-menu {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
         }
 
-        /* Rest of your existing styles remain unchanged... */
+        /* Hamburger active state */
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
         /* --- Slider Section --- */
         .slider-section {
             padding: 4rem 0;
@@ -304,11 +243,10 @@
             position: relative;
         }
         .slide img {
-           height: 500px;
+            height: 500px;
             width: 100%;
             display: block;
             object-fit: contain;
-            height: 500px;
         }
         .slide-content {
             position: absolute;
@@ -942,24 +880,12 @@
             to { opacity: 1; transform: translateY(0); }
         }
         @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         @keyframes slideIn {
-            from {
-                transform: translateY(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
         @keyframes pulse {
             0% { transform: scale(1); }
@@ -999,15 +925,35 @@
             .slide img {
                 height: 400px;
             }
-            nav ul {
-                width: auto;
-                justify-content: center;
+            nav {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
             }
         }
         @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+            }
+            .header-content {
+                flex-direction: column;
+                width: 100%;
+                gap: 1rem;
+            }
+            .logo {
+                margin-bottom: 0;
+                text-align: center;
+            }
             .logo img {
                 margin-right: 0;
                 height: 60px;
+            }
+            .search-container {
+                width: 100%;
+                max-width: 400px;
             }
             .businesses-grid {
                 grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -1117,27 +1063,22 @@
                 <img src="images-logo/hive-times-logo.png" alt="hive times logo">
                 <h3></h3>
             </div>
-            <button id="hamburgerBtn" aria-label="Toggle navigation menu">
-                <i class="fas fa-bars"></i>
-            </button>
             <div class="search-container">
                 <i class="fas fa-search"></i>
                 <input type="text" id="searchInput" placeholder="Search businesses...">
             </div>
         </div>
-        <nav id="mainNav">
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
             <ul>
                 <li><a href="about page home.html">About</a></li>
-                <li class="dropdown" role="menu">
-                    <button id="businessesDropdownBtn" class="dropdown-btn" aria-expanded="false" aria-controls="businessesDropdownContent">
-                        Businesses <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <ul class="dropdown-content" id="businessesDropdownContent">
-                        <li><a href="#sweet-shops" role="menuitem">Sweet Shops</a></li>
-                        <li><a href="#restaurant" role="menuitem">Restaurants</a></li>
-                        <li><a href="#catering" role="menuitem">Catering</a></li>
-                    </ul>
-                </li>
+                <li><a href="#sweet-shops">Sweet Shops</a></li>
+                <li><a href="#restaurant">Restaurants</a></li>
+                <li><a href="#catering">Catering</a></li>
                 <li class="user-menu">
                     <button id="userBtn" class="nav-icon-btn" aria-label="User account">
                         <i class="fas fa-user-circle"></i> <span id="userDisplay">Account</span>
@@ -1160,47 +1101,32 @@
                 </li>
             </ul>
         </nav>
-        <div id="mobileMenu">
-            <ul>
-                <li><a href="about page home.html">About</a></li>
-                <li class="dropdown" role="menu">
-                    <button id="businessesDropdownBtn" class="dropdown-btn" aria-expanded="false" aria-controls="businessesDropdownContent">
-                        Businesses <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <ul class="dropdown-content" id="businessesDropdownContent">
-                        <li><a href="#sweet-shops" role="menuitem">Sweet Shops</a></li>
-                        <li><a href="#restaurant" role="menuitem">Restaurants</a></li>
-                        <li><a href="#catering" role="menuitem">Catering</a></li>
-                    </ul>
-                </li>
-                <li class="user-menu">
-                    <button id="userBtn" class="nav-icon-btn" aria-label="User account">
-                        <i class="fas fa-user-circle"></i> <span id="userDisplay">Account</span>
-                    </button>
-                    <div class="user-profile" id="userProfile">
-                        <div class="user-info">
-                            <h4 id="userName">Welcome</h4>
-                            <p id="userEmail"></p>
-                        </div>
-                        <div class="user-actions">
-                            <button id="logoutBtn">Logout</button>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <button id="cartBtn" class="nav-icon-btn" aria-label="View your shopping cart">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="cart-count" id="cartCount">0</span>
-                    </button>
-                </li>
-            </ul>
-        </div>
     </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-mobile-menu" id="closeMobileMenu">&times;</button>
+        <ul>
+            <li><a href="about page home.html">About</a></li>
+            <li><a href="#sweet-shops">Sweet Shops</a></li>
+            <li><a href="#restaurant">Restaurants</a></li>
+            <li><a href="#catering">Catering</a></li>
+        </ul>
+        <div class="mobile-user-section">
+            <button id="mobileUserBtn" class="nav-icon-btn" aria-label="User account">
+                <i class="fas fa-user-circle"></i> <span id="mobileUserDisplay">Account</span>
+            </button>
+        </div>
+        <button id="mobileCartBtn" class="nav-icon-btn" aria-label="View your shopping cart">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="mobileCartCount">0</span>
+        </button>
+    </div>
+
     <main>
-        <!-- Rest of your content remains unchanged -->
         <section class="slider-section">
             <div class="slider-container" id="sliderContainer">
-                <div class="slider" id="slider" style="transform: translateX(0%);">
+                <div class="slider" id="slider" style="transform: translateX(-300%);">
                     <div class="slide" role="tabpanel" id="slide1">
                         <a href="broadway page.html">
                             <img src="images-logo/broadway-sweets-long.jpg" alt="A variety of colorful Indian sweets arranged on a tray">
@@ -1223,17 +1149,16 @@
                     </div>
                 </div>
                 <div class="slider-indicators" role="tablist">
-                    <span class="indicator active" onclick="changeSlide(0)" role="tab" aria-selected="true" aria-controls="slide1"></span>
+                    <span class="indicator" onclick="changeSlide(0)" role="tab" aria-selected="false" aria-controls="slide1"></span>
                     <span class="indicator" onclick="changeSlide(1)" role="tab" aria-selected="false" aria-controls="slide2"></span>
                     <span class="indicator" onclick="changeSlide(2)" role="tab" aria-selected="false" aria-controls="slide3"></span>
-                    <span class="indicator" onclick="changeSlide(3)" role="tab" aria-selected="false" aria-controls="slide4"></span>
+                    <span class="indicator active" onclick="changeSlide(3)" role="tab" aria-selected="true" aria-controls="slide4"></span>
                 </div>
             </div>
         </section>
         <section id="sweet-shops">
             <h2 class="section-title">Featured Sweet Shops</h2>
             <div class="businesses-grid">
-                <!-- Blocks unchanged -->
                 <div class="block">
                     <a href="broadway page.html">
                         <img src="images-logo/broadway-sweets-logo.jpg" alt="Broadway-sweets-logo">
@@ -1328,7 +1253,6 @@
         </section>
     </main>
     <footer>
-        <!-- Footer unchanged -->
         <div class="footer-content">
             <div class="footer-logo">
                 <img src="images/logo/hive-times-logo.png" alt="Hive Times Logo">
@@ -1359,8 +1283,6 @@
     <button class="back-to-top" onclick="scrollToTop()" aria-label="Back to top" style="display: none;">
         <i class="fas fa-arrow-up"></i>
     </button>
-
-    <!-- Popups unchanged -->
     <div id="myPopup" class="popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
         <div class="popup-content">
             <span class="close-button" role="button" aria-label="Close popup" onclick="closeGenericPopup()">×</span>
@@ -1435,29 +1357,7 @@
         </div>
     </div>
     <div class="overlay" onclick="hideContactPopup()" role="presentation"></div>
-
     <script>
-        // --- Hamburger Menu Toggle ---
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const mainNav = document.getElementById('mainNav');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        // Clone nav content for mobile menu
-        mobileMenu.innerHTML = mainNav.innerHTML;
-        mobileMenu.querySelectorAll('a, button').forEach(el => {
-            el.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-            });
-        });
-
-        hamburgerBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-        });
-
-        // --- Rest of your original JS remains unchanged ---
-        // (User auth, slider, popups, cart, etc.)
-        // ... [your existing script code below]
-        
         // --- User Authentication System ---
         let currentUser = null;
         function checkUserLogin() {
@@ -1468,14 +1368,20 @@
             }
         }
         function updateUserUI() {
+            const userDisplay = document.getElementById('userDisplay');
+            const mobileUserDisplay = document.getElementById('mobileUserDisplay');
             if (currentUser) {
-                document.getElementById('userDisplay').textContent = 'My Account';
+                userDisplay.textContent = 'My Account';
+                mobileUserDisplay.textContent = 'My Account';
                 document.getElementById('userName').textContent = currentUser.name;
                 document.getElementById('userEmail').textContent = currentUser.email;
                 document.getElementById('userBtn').addEventListener('click', toggleUserProfile);
+                document.getElementById('mobileUserBtn').addEventListener('click', showLoginPopup);
             } else {
-                document.getElementById('userDisplay').textContent = 'Account';
+                userDisplay.textContent = 'Account';
+                mobileUserDisplay.textContent = 'Account';
                 document.getElementById('userBtn').addEventListener('click', showLoginPopup);
+                document.getElementById('mobileUserBtn').addEventListener('click', showLoginPopup);
             }
         }
         function toggleUserProfile() {
@@ -1489,6 +1395,8 @@
             updateUserUI();
             alert('You have been logged out successfully!');
         }
+
+        // --- Login Popup Script ---
         const loginPopup = document.getElementById('loginPopup');
         const loginForm = document.getElementById('loginForm');
         function showLoginPopup() {
@@ -1518,6 +1426,8 @@
                 alert('Invalid email or password. Please try again.');
             }
         });
+
+        // --- Register Popup Script ---
         const registerPopup = document.getElementById('registerPopup');
         const registerForm = document.getElementById('registerForm');
         function showRegisterPopup() {
@@ -1554,21 +1464,50 @@
             showLoginPopup();
             registerForm.reset();
         });
+
+        // --- Generic Popup Script ---
         const genericPopup = document.getElementById('myPopup');
         const popupTitle = document.getElementById('popup-title');
         const popupText = document.getElementById('popup-text');
         const closeButton = genericPopup.querySelector('.close-button');
         const openPopupButtons = document.querySelectorAll('.open-popup');
         const popupContents = {
-            broadwaysweetsPopup: { title: "About Broadway Sweets", text: "Broadway Sweets is a premier destination..." },
-            sweetdeportPopup: { title: "About Sweet Depot", text: "Sweet Depot is your comprehensive source..." },
-            sweetmartPopup: { title: "About Sweet Mart", text: "Sweet Mart has been serving sweet lovers..." },
-            polaricecreampopup: { title: "About Polar Ice Cream", text: "Polar Ice Cream brings the chill..." },
-            sunrisesweetsPopup: { title: "About Sunrise Sweets", text: "Sunrise Sweets specializes in morning treats..." },
-            zandsweetsPopup: { title: "About Z and S Sweets", text: "Z and S Sweets represents generations..." },
-            desertsweetsPopup: { title: "About Desert Sweets", text: "Desert Sweets draws inspiration..." },
-            royalsweetsPopup: { title: "About Royal Sweets", text: "Royal Sweets offers a premium line..." },
-            goldensweetsPopup: { title: "About Golden Sweets", text: "Golden Sweets represents the pinnacle..." }
+            broadwaysweetsPopup: {
+                title: "About Broadway Sweets",
+                text: "Broadway Sweets is a premier destination for traditional Indian sweets and desserts. Established with a passion for authentic flavors, we craft our products using time-honored recipes passed down through generations. Our commitment to quality ingredients and traditional methods ensures that every bite delivers the rich, authentic taste of Indian confectionery. From festive specialties to everyday treats, Broadway Sweets brings the sweetness of tradition to your table."
+            },
+            sweetdeportPopup: {
+                title: "About Sweet Depot",
+                text: "Sweet Depot is your comprehensive source for a wide variety of sweets, snacks, and confectionery items from around the world. Our mission is to bring joy to every occasion with our diverse selection of quality products. Whether you're looking for traditional favorites or international treats, Sweet Depot offers something for every palate. With a focus on customer satisfaction and competitive pricing, we've become a trusted name in the confectionery industry."
+            },
+            sweetmartPopup: {
+                title: "About Sweet Mart",
+                text: "Sweet Mart has been serving sweet lovers for over two decades with our extensive range of quality sweets, snacks, and confectionery. Our stores are designed to be a paradise for those with a sweet tooth, offering everything from traditional Indian mithai to international chocolates and candies. We pride ourselves on our customer service, product quality, and unbeatable value. Sweet Mart is more than just a store – it's a destination for creating sweet memories."
+            },
+            polaricecreampopup: {
+                title: "About Polar Ice Cream",
+                text: "Polar Ice Cream brings the chill to your summer days with our delicious range of premium ice creams and frozen desserts. Using only the finest ingredients and innovative recipes, we create ice creams that delight the senses. From classic vanilla and chocolate to exotic flavors inspired by global cuisines, Polar Ice Cream offers something for everyone. Our commitment to quality and innovation has made us a favorite among ice cream lovers of all ages."
+            },
+            sunrisesweetsPopup: {
+                title: "About Sunrise Sweets",
+                text: "Sunrise Sweets specializes in morning treats and breakfast desserts that start your day on a sweet note. Our products are crafted to complement your morning tea or coffee, offering a perfect balance of sweetness and flavor. From light pastries to traditional breakfast sweets, Sunrise Sweets uses quality ingredients to create products that are both delicious and satisfying. We believe that every day should begin with a touch of sweetness."
+            },
+            zandsweetsPopup: {
+                title: "About Z and S Sweets",
+                text: "Z and S Sweets represents generations of expertise in traditional sweet-making. Our products are crafted using time-honored methods and recipes that have been perfected over decades. Specializing in authentic regional specialties, we bring the rich heritage of Indian confectionery to discerning customers. Each sweet is made with care and attention to detail, ensuring consistent quality and authentic flavor. Z and S Sweets is a name synonymous with tradition and quality."
+            },
+            desertsweetsPopup: {
+                title: "About Desert Sweets",
+                text: "Desert Sweets draws inspiration from the rich culinary traditions of the Middle East, creating unique sweets that blend ancient flavors with modern techniques. Our products feature ingredients like dates, pistachios, rose water, and saffron, creating distinctive flavors that transport you to the heart of the desert. Whether you're enjoying our baklava, halva, or other specialties, Desert Sweets offers a taste of Middle Eastern hospitality and tradition."
+            },
+            royalsweetsPopup: {
+                title: "About Royal Sweets",
+                text: "Royal Sweets offers a premium line of luxury confectionery fit for royalty. Our products feature the finest ingredients, exquisite presentation, and innovative flavor combinations. From gold-leaf chocolates to truffles infused with rare spices, Royal Sweets creates memorable experiences through exceptional quality and craftsmanship. Perfect for special occasions and gift-giving, our sweets are designed to impress and delight even the most discerning palates."
+            },
+            goldensweetsPopup: {
+                title: "About Golden Sweets",
+                text: "Golden Sweets represents the pinnacle of luxury confectionery, featuring edible gold and the finest ingredients for special occasions. Our master confectioners combine traditional techniques with innovative designs to create sweets that are as beautiful as they are delicious. From gold-dusted chocolates to intricately designed mithai, Golden Sweets transforms ordinary treats into extraordinary experiences. Perfect for weddings, anniversaries, and other milestone celebrations."
+            }
         };
         function openGenericPopup(contentKey) {
             const content = popupContents[contentKey];
@@ -1607,6 +1546,8 @@
                 closeGenericPopup();
             }
         });
+
+        // --- Contact Popup Script ---
         const contactPopup = document.getElementById('contactPopup');
         const overlay = document.querySelector('.overlay');
         function showContactPopup() {
@@ -1625,25 +1566,8 @@
             contactPopup.setAttribute('aria-hidden', 'true');
         }
         overlay.addEventListener('click', hideContactPopup);
-        const dropdownBtn = document.getElementById('businessesDropdownBtn');
-        const dropdownContent = document.getElementById('businessesDropdownContent');
-        const dropdownLi = dropdownBtn.closest('.dropdown');
-        dropdownBtn.addEventListener('click', () => {
-            const isExpanded = dropdownBtn.getAttribute('aria-expanded') === 'true';
-            dropdownBtn.setAttribute('aria-expanded', String(!isExpanded));
-            dropdownLi.setAttribute('aria-expanded', String(!isExpanded));
-        });
-        document.addEventListener('click', (event) => {
-            if (!dropdownLi.contains(event.target) && dropdownBtn.getAttribute('aria-expanded') === 'true') {
-                dropdownBtn.setAttribute('aria-expanded', 'false');
-                dropdownLi.setAttribute('aria-expanded', 'false');
-            }
-            const userMenu = document.querySelector('.user-menu');
-            const userProfile = document.getElementById('userProfile');
-            if (!userMenu.contains(event.target) && userProfile.classList.contains('active')) {
-                userProfile.classList.remove('active');
-            }
-        });
+
+        // --- Toggle between Login and Register forms ---
         document.getElementById('showRegister').addEventListener('click', function(e) {
             e.preventDefault();
             hideLoginPopup();
@@ -1654,7 +1578,11 @@
             hideRegisterPopup();
             showLoginPopup();
         });
+
+        // --- Logout button event listener ---
         document.getElementById('logoutBtn').addEventListener('click', logout);
+
+        // --- Slider functionality ---
         let currentSlide = 0;
         const slider = document.getElementById('slider');
         const slides = document.querySelectorAll('.slide');
@@ -1697,31 +1625,36 @@
         }
         showSlide(0);
         startSlider();
+
+        // --- Keyboard Accessibility ---
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 if (genericPopup.style.display === 'flex') closeGenericPopup();
                 if (contactPopup.style.display === 'block') hideContactPopup();
                 if (loginPopup.style.display === 'flex') hideLoginPopup();
                 if (registerPopup.style.display === 'flex') hideRegisterPopup();
-                if (dropdownBtn.getAttribute('aria-expanded') === 'true') {
-                    dropdownBtn.setAttribute('aria-expanded', 'false');
-                    dropdownLi.setAttribute('aria-expanded', 'false');
-                    dropdownBtn.focus();
-                }
                 if (document.getElementById('userProfile').classList.contains('active')) {
                     document.getElementById('userProfile').classList.remove('active');
                 }
-                if (document.getElementById('cartModal').style.display === 'flex') {
-                    hideCartModal();
+                if (document.getElementById('cartModal').style.display === 'flex') hideCartModal();
+                if (document.getElementById('mobileMenu').classList.contains('active')) {
+                    document.getElementById('mobileMenu').classList.remove('active');
+                    document.getElementById('hamburger').classList.remove('active');
+                    document.body.style.overflow = '';
                 }
             }
         });
+
+        // --- DOM Ready ---
         document.addEventListener('DOMContentLoaded', function() {
             checkUserLogin();
             updateUserUI();
             initCart();
             document.getElementById('cartBtn').addEventListener('click', showCartModal);
+            document.getElementById('mobileCartBtn').addEventListener('click', showCartModal);
         });
+
+        // --- Search Functionality ---
         const searchInput = document.getElementById('searchInput');
         const businessBlocks = document.querySelectorAll('.block');
         searchInput.addEventListener('input', function() {
@@ -1738,6 +1671,8 @@
                 }
             });
         });
+
+        // --- Back to Top Button ---
         const backToTopButton = document.querySelector('.back-to-top');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 400) {
@@ -1749,6 +1684,8 @@
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        // --- Contact Button ---
         const contactButton = document.createElement('button');
         contactButton.innerHTML = '<i class="fas fa-comment-dots"></i>';
         contactButton.className = 'back-to-top';
@@ -1758,6 +1695,8 @@
         contactButton.onclick = showContactPopup;
         contactButton.setAttribute('aria-label', 'Contact us');
         document.body.appendChild(contactButton);
+
+        // --- Shopping Cart System ---
         let cart = [];
         function initCart() {
             try {
@@ -1774,6 +1713,7 @@
         function updateCartCount() {
             const count = cart.reduce((total, item) => total + item.quantity, 0);
             document.getElementById('cartCount').textContent = count;
+            document.getElementById('mobileCartCount').textContent = count;
         }
         function showCartModal() {
             const cartModal = document.getElementById('cartModal');
@@ -1873,13 +1813,38 @@
                 return;
             }
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            alert(`Proceeding to checkout with ${cart.length} items totaling R${total.toFixed(2)}.\nThank you for shopping with us! Your order will be processed shortly.`);
+            alert(`Proceeding to checkout with ${cart.length} items totaling R${total.toFixed(2)}.
+Thank you for shopping with us! Your order will be processed shortly.`);
             cart = [];
             saveCart();
             hideCartModal();
         }
-    </script><button class="back-to-top" aria-label="Contact us" style="bottom: 110px; right: 40px; background: linear-gradient(135deg, rgb(39, 174, 96) 0%, rgb(33, 150, 83) 100%);"><i class="fas fa-comment-dots"></i></button>
-    <button class="back-to-top" aria-label="Contact us" style="bottom: 110px; right: 40px; background: linear-gradient(135deg, rgb(39, 174, 96) 0%, rgb(33, 150, 83) 100%);"><i class="fas fa-comment-dots"></i></button>
-    <script src="cart.js"></script>
 
-</body></html>
+        // --- Hamburger Menu Toggle ---
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        closeMobileMenu.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    </script>
+</body>
+</html>
