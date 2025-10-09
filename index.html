@@ -142,16 +142,27 @@
             background: linear-gradient(135deg, #610d00 0%, #8b1a00 100%);
             color: #fff;
             padding: 0.8rem 30px;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
             position: sticky;
             top: 0;
             z-index: 999;
             transition: padding 0.3s ease;
-            gap: 24px;
+            display: flex; /* Main header is now flex */
+            flex-direction: column; /* Stack rows by default (mobile first) */
+            gap: 10px; /* Space between rows */
         }
+
+        .header-top-row, .header-bottom-row {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            gap: 15px;
+        }
+
+        .header-top-row {
+            justify-content: space-between; /* Distribute items */
+        }
+        
         .hamburger-menu {
             display: flex;
             flex-direction: column;
@@ -163,6 +174,7 @@
             padding: 8px;
             border-radius: 50%;
             transition: background-color 0.3s ease;
+            flex-shrink: 0; /* Don't shrink */
         }
         .hamburger-menu:hover {
             background-color: rgba(255, 255, 255, 0.15);
@@ -188,6 +200,12 @@
             transform: rotate(-45deg) translate(6px, -6px);
             background: #e74c3c;
         }
+        .logo {
+            flex-grow: 1; /* Allow logo to take available space */
+            text-align: left;
+            display: flex;
+            align-items: center;
+        }
         .logo h3 {
             margin: 0;
             font-size: 1.6rem;
@@ -195,14 +213,43 @@
             font-weight: 700;
         }
         .logo img {
-            height: 60px;
+            height: 45px; /* Smaller logo for mobile */
             width: auto;
             vertical-align: middle;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
             transition: height 0.3s ease;
+            margin-right: 10px; /* Space between logo and text */
         }
+
+        /* Mobile Search Input - top row */
+        .mobile-search-input {
+            display: flex; /* Show by default on mobile */
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            padding: 8px 15px;
+            flex-grow: 1;
+            max-width: 450px;
+            cursor: pointer; /* Indicates it's clickable */
+            transition: var(--transition);
+        }
+        .mobile-search-input i {
+            color: rgba(255, 255, 255, 0.9);
+            margin-right: 10px;
+            font-size: 1.1rem;
+        }
+        .mobile-search-input span {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            flex-grow: 1;
+        }
+        .mobile-search-input:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Nav links - hidden on mobile */
         nav {
-            display: flex;
+            display: none; /* Hidden by default on mobile */
             gap: 15px;
         }
         nav a {
@@ -216,15 +263,18 @@
         nav a:hover {
             background-color: rgba(255, 255, 255, 0.15);
         }
+
+        /* Full Search Container - second row on mobile */
         .search-container {
-            display: flex;
+            display: flex; /* Shown in second row on mobile */
             align-items: center;
             background-color: rgba(255, 255, 255, 0.25);
             border-radius: 30px;
             padding: 8px 20px;
             flex-grow: 1;
-            max-width: 450px;
+            max-width: 100%; /* Take full width of header */
             transition: var(--transition);
+            order: 1; /* Ensure it's the second element in the column flow */
         }
         .search-container:focus-within {
             background-color: rgba(255, 255, 255, 0.35);
@@ -252,7 +302,20 @@
             align-items: center;
             gap: 10px;
             margin-left: auto;
+            flex-shrink: 0;
         }
+        .header-action-icons .action-icon {
+            color: white;
+            font-size: 1.4rem;
+            padding: 8px;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+        .header-action-icons .action-icon:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+
         /* --- Slider Section --- */
         .slider-section {
             padding: 4rem 0;
@@ -772,22 +835,62 @@
             .slide img {
                 height: 400px;
             }
-        }
-        @media (max-width: 768px) {
             header {
-                flex-direction: column;
-                padding: 1rem;
-                gap: 1rem;
+                padding: 0.8rem 20px; /* Adjust header padding for smaller screens */
+            }
+            .header-top-row {
+                gap: 10px; /* Reduce gap in top row */
             }
             .header-action-icons {
-                margin-left: 0;
+                gap: 5px; /* Reduce gap for action icons */
             }
+        }
+        @media (min-width: 769px) {
+            /* Desktop Styles */
+            header {
+                flex-direction: row; /* Horizontal layout for desktop */
+                justify-content: flex-start;
+                align-items: center;
+                gap: 24px; /* Default desktop gap */
+                padding: 0.8rem 30px;
+            }
+
+            .header-top-row {
+                display: contents; /* Makes children participate directly in header's flex context */
+            }
+
             .logo img {
-                height: 60px;
+                height: 60px; /* Larger logo on desktop */
+                margin-right: 15px;
             }
+            
+            nav {
+                display: flex; /* Show nav links on desktop */
+            }
+            
+            .mobile-search-input {
+                display: none; /* Hide compact search on desktop */
+            }
+
             .search-container {
-                width: 100%;
-                max-width: 100%;
+                display: flex; /* Show full search bar on desktop */
+                order: initial; /* Reset order */
+                flex-grow: 1; /* Allow to grow */
+                max-width: 450px; /* Constrain max width */
+                margin-left: auto; /* Push it to the right */
+            }
+            
+            /* Ensure the Hamburger is always visible but has different styling */
+            .hamburger-menu {
+                display: flex; /* Always show hamburger for sidebar */
+                margin-right: 15px; /* Space after hamburger */
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 15px; /* More padding for mobile header */
+                gap: 15px;
             }
             .businesses-grid {
                 grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -841,6 +944,62 @@
                 width: 280px;
                 padding-top: 70px;
             }
+            .hamburger-menu {
+                width: 40px; /* Adjusted size */
+                height: 40px;
+            }
+            .hamburger-menu span {
+                width: 24px;
+            }
+
+            /* Mobile-specific header layout */
+            header {
+                padding: 10px 15px; /* Smaller padding */
+            }
+
+            .header-top-row {
+                flex-grow: 1; /* Allow this row to take available width */
+                justify-content: flex-start; /* Align items to start */
+                gap: 10px;
+            }
+
+            .logo {
+                flex-grow: 0; /* Don't want it to grow as much, keep it compact */
+                margin-right: 10px; /* Space after logo */
+            }
+            .logo img {
+                height: 40px; /* Smallest logo for top row */
+            }
+            .logo h3 {
+                font-size: 1.4rem;
+            }
+
+            .search-container {
+                display: flex; /* Show the full search bar as the second row */
+                margin: 0; /* Remove auto margin */
+                padding: 6px 15px; /* Smaller padding for search bar */
+            }
+            .search-container input {
+                font-size: 0.95rem; /* Smaller font in search input */
+            }
+            .search-container i {
+                font-size: 1rem;
+            }
+
+            .header-action-icons {
+                margin-left: auto; /* Push icons to the right */
+                gap: 8px; /* Compact icons */
+            }
+            .header-action-icons .action-icon {
+                font-size: 1.2rem; /* Smaller icons */
+                width: 38px; /* Adjusted size */
+                height: 38px;
+            }
+
+            /* Hide the mobile search input from the top row on larger screens */
+            .mobile-search-input {
+                display: none; 
+            }
         }
         @media (max-width: 576px) {
             .businesses-grid {
@@ -865,7 +1024,10 @@
                 padding: 0.8rem;
             }
             .logo img {
-                height: 50px;
+                height: 40px; /* Logo size for very small screens */
+            }
+            .logo h3 {
+                font-size: 1.3rem;
             }
             .slide img {
                 height: 220px;
@@ -890,11 +1052,19 @@
                 width: 260px;
             }
             .hamburger-menu {
-                width: 38px;
-                height: 38px;
+                width: 36px;
+                height: 36px;
             }
             .hamburger-menu span {
-                width: 22px;
+                width: 20px;
+            }
+            .search-container input {
+                font-size: 0.9rem;
+            }
+            .header-action-icons .action-icon {
+                font-size: 1.1rem;
+                width: 35px;
+                height: 35px;
             }
         }
     </style>
@@ -924,25 +1094,34 @@
     <div class="overlay" id="overlay"></div>
     
     <header>
-        <div class="hamburger-menu" id="hamburgerMenu">
-            <span></span>
-            <span></span>
-            <span></span>
+        <div class="header-top-row">
+            <div class="hamburger-menu" id="hamburgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="logo">
+                <img src="images-logo/hive-times-logo.png" alt="hive times logo">
+                </div>
+            
+            <div class="mobile-search-input" id="mobileSearchTrigger">
+                <i class="fas fa-search"></i>
+                <span>Search Hive Times</span>
+            </div>
+
+            <nav>
+                <a href="about page home.html">About</a>
+            </nav>
+            <div class="header-action-icons">
+                <a href="#" class="action-icon"><i class="fas fa-user-circle"></i></a>
+                <a href="#" class="action-icon"><i class="fas fa-shopping-cart"></i></a>
+            </div>
         </div>
-        <div class="logo">
-            <img src="images-logo/hive-times-logo.png" alt="hive times logo">
-            <h3></h3>
-        </div>
-        <nav>
-            <a href="about page home.html">About</a>
-           
-        </nav>
+        
         <div class="search-container" id="mainSearchContainer">
             <i class="fas fa-search"></i>
             <input type="text" id="searchInput" placeholder="Search businesses...">
         </div>
-        <div class="header-action-icons">
-            </div>
     </header>
     <main>
         <section class="slider-section">
@@ -1357,6 +1536,17 @@
                 const sidebarLinks = document.querySelectorAll('.sidebar-menu a');
                 sidebarLinks.forEach(link => {
                     link.addEventListener('click', closeSidebar);
+                });
+            }
+
+            // Mobile search trigger
+            const mobileSearchTrigger = document.getElementById('mobileSearchTrigger');
+            const mainSearchContainer = document.getElementById('mainSearchContainer');
+
+            if (mobileSearchTrigger && mainSearchContainer) {
+                mobileSearchTrigger.addEventListener('click', () => {
+                    // Focus the input when the trigger is clicked
+                    mainSearchContainer.querySelector('input').focus();
                 });
             }
         });
