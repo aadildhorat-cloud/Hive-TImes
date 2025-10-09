@@ -426,9 +426,9 @@
             border-radius: 2px;
         }
         .businesses-grid {
-            /* DEFAULT: 3+ columns for large screens */
+            /* DEFAULT: 4 columns or more on very large screens, based on minmax(220px, 1fr) */
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Decreased min size to 220px */
             gap: 2.5rem;
             padding: 2rem 0;
         }
@@ -838,9 +838,9 @@
         /* --- Responsive Design --- */
         @media (max-width: 992px) {
             .businesses-grid {
-                /* 3 columns on medium screens / landscape tablets */
-                grid-template-columns: repeat(3, 1fr);
-                gap: 2rem;
+                /* SET TO 4 COLUMNS on screens 769px to 992px (Smaller Business Cards) */
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1.5rem; /* Reduced gap for fit */
             }
             /* REMOVE fixed height for slider (it's now responsive) 
             .slide img {
@@ -904,9 +904,9 @@
                 gap: 15px;
             }
             .businesses-grid {
-                /* 2 columns on tablets/large phones */
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
+                /* SET TO 3 COLUMNS on tablets/large phones (768px down to 577px) */
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem; /* Reduced gap for fit */
             }
             .slider-section {
                 padding: 2.5rem 0;
