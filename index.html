@@ -477,13 +477,23 @@
             color: var(--secondary-color);
             font-weight: 700;
         }
-        .block p {
-            font-size: 1.05rem;
-            color: #555;
-            min-height: 60px;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
+       .block p {
+    font-size: 1.05rem;
+    color: #555;
+    /* min-height: 60px; REMOVED and replaced with multi-line ellipsis */
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+    
+    /* FIX: Webkit Multi-line Text Truncation */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display:
+    webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
         .block button {
             background: linear-gradient(135deg, var(--primary-color) 0%, #c0392b 100%);
             color: #fff;
@@ -1060,46 +1070,13 @@
             .section-title {
                 font-size: 1.8rem;
             }
-            
-            /* *** MODIFIED FOR 3-COLUMN LAYOUT ON SMALL SCREENS *** */
-            .businesses-grid {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr); /* FORCED 3 COLUMNS */
-                gap: 0.8rem; /* Reduced gap for space */
-                padding: 0.5rem 0; /* Reduced padding */
-            }
-            .block {
-                padding: 0.8rem; /* Smaller padding inside blocks */
-            }
             .block h3 {
-                font-size: 0.85rem; /* Smaller heading */
-                margin: 0.3rem 0;
-                /* Forced single line to prevent layout issues */
-                white-space: nowrap; 
-                overflow: hidden;
-                text-overflow: ellipsis;
+                font-size: 1.4rem;
             }
             .block p {
-                /* Description text is now very small, consider hiding it (uncomment below) */
-                font-size: 0.65rem; /* Much smaller text for descriptions */
-                min-height: 20px; /* Reduced minimum height */
-                line-height: 1.2;
-                margin-bottom: 0.5rem;
-                display: none; /* Hiding description is highly recommended for 3 columns on this screen size */
+                font-size: 0.95rem;
+                /* Multi-line clamp handles height on smaller screens */
             }
-            .block button {
-                padding: 6px 10px; /* Smaller button */
-                font-size: 0.65rem;
-                font-weight: 500;
-                margin-top: 0.3rem;
-            }
-            .block img {
-                aspect-ratio: 1 / 1; /* Changed aspect ratio for better fit */
-                margin-bottom: 0.5rem;
-                border-radius: 8px; /* Slightly smaller border radius */
-            }
-            /* *** END 3-COLUMN MODIFICATION *** */
-
             .sidebar {
                 width: 260px;
             }
