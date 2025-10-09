@@ -44,21 +44,11 @@
             z-index: 1000;
             transition: padding 0.3s ease;
         }
-        /* NEW: Grouping for Hamburger and Logo */
-        .header-left-group {
+        .header-content {
             display: flex;
             align-items: center;
-            gap: 15px; /* Spacing between Hamburger and Logo */
+            gap: 24px;
         }
-        /* NEW: Grouping for Search and Nav/Icons */
-        .header-right-group {
-            display: flex;
-            align-items: center;
-            gap: 24px; /* Spacing between Search and Nav/Icons */
-            /* flex-grow: 1; */
-            justify-content: flex-end;
-        }
-        
         .logo h3 {
             margin: 0;
             font-size: 1.6rem;
@@ -69,13 +59,13 @@
             height: 90px;
             width: auto;
             vertical-align: middle;
-            /* Removed margin-right: 40px; relying on parent group gap */
+            margin-right: 40px;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
             transition: height 0.3s ease;
         }
         /* Hamburger Menu */
         .hamburger {
-            display: none; /* HIDE on desktop */
+            display: flex; /* MODIFIED: Set to 'flex' to show on desktop */
             flex-direction: column;
             justify-content: space-between;
             width: 30px;
@@ -91,7 +81,7 @@
             transition: var(--transition);
         }
         nav {
-            display: flex; /* SHOW on desktop */
+            display: none; /* MODIFIED: Set to 'none' to hide full navigation on desktop */
             align-items: center;
             gap: 20px;
         }
@@ -168,11 +158,11 @@
             font-size: 1.1rem;
         }
 
-        /* Mobile Menu (Sidebar/Off-Canvas) - MODIFIED FOR LEFT SLIDE */
+        /* Mobile Menu (Sidebar/Off-Canvas) */
         .mobile-menu {
             position: fixed;
             top: 0;
-            left: 0; /* Positioned to slide in from the LEFT */
+            right: 0; /* Positioned to slide in from the right */
             width: 300px; /* Fixed width for the sidebar */
             max-width: 80%; /* Ensure it doesn't get too wide on small screens */
             height: 100%;
@@ -185,9 +175,9 @@
             gap: 2rem;
             
             /* Off-canvas state */
-            transform: translateX(-100%); /* Hides off-screen to the LEFT */
+            transform: translateX(100%); 
             transition: transform 0.4s ease-in-out;
-            display: flex; 
+            display: flex; /* Always display flex, use transform to hide/show */
         }
         .mobile-menu.active {
             transform: translateX(0); /* On-canvas state */
@@ -224,7 +214,7 @@
         .close-mobile-menu {
             position: absolute;
             top: 20px;
-            right: 20px; /* Close button stays on the right side of the menu */
+            right: 20px;
             background: none;
             border: none;
             color: white;
@@ -961,46 +951,37 @@
             .slide img {
                 height: 400px;
             }
-            /* Hamburger is now managed by its own display: none/flex */
+            /* The following rules are now redundant but harmless: */
             nav {
                 display: none;
+            }
+            .hamburger {
+                display: flex;
             }
         }
         @media (max-width: 768px) {
             header {
-                /* MODIFIED: Ensure hamburger/logo are on the same row */
-                flex-direction: row; 
-                flex-wrap: wrap; /* Allow search to drop below */
-                justify-content: space-between;
+                flex-direction: column;
                 padding: 1rem;
                 gap: 1rem;
             }
-            /* SHOW hamburger on mobile */
-            .hamburger {
-                display: flex;
+            .header-content {
+                flex-direction: column;
+                width: 100%;
+                gap: 1rem;
             }
-            /* Adjust group spacing and hide desktop search/nav elements that should be in the mobile menu */
-            .header-left-group {
-                gap: 10px;
-            }
-            .header-right-group {
-                /* Let the search bar take full width below the header main line */
-                flex-basis: 100%; 
-                order: 2; /* Puts search on the second row */
-                margin-top: 0;
+            .logo {
+                margin-bottom: 0;
+                text-align: center;
             }
             .logo img {
-                height: 60px; /* Smaller logo on mobile */
+                margin-right: 0;
+                height: 60px;
             }
             .search-container {
                 width: 100%;
-                max-width: none;
-                /* Remove margin here as it's controlled by header gap */
+                max-width: 400px;
             }
-            nav {
-                display: none !important; /* Hide desktop navigation links */
-            }
-            
             .businesses-grid {
                 grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
                 gap: 1.5rem;
@@ -1106,53 +1087,50 @@
         }
     </style>
     <header>
-        <div class="header-left-group">
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+        <div class="header-content">
             <div class="logo">
                 <img src="images-logo/hive-times-logo.png" alt="hive times logo">
                 <h3></h3>
             </div>
-        </div>
-
-        <div class="header-right-group">
             <div class="search-container">
                 <i class="fas fa-search"></i>
                 <input type="text" id="searchInput" placeholder="Search businesses...">
             </div>
-            <nav>
-                <ul>
-                    <li><a href="about page home.html">About</a></li>
-                    <li><a href="#sweet-shops">Sweet Shops</a></li>
-                    <li><a href="#restaurant">Restaurants</a></li>
-                    <li><a href="#catering">Catering</a></li>
-                    <li class="user-menu">
-                        <button id="userBtn" class="nav-icon-btn" aria-label="User account">
-                            <i class="fas fa-user-circle"></i>
-                            <span id="userDisplay">Account</span>
-                        </button>
-                        <div class="user-profile" id="userProfile">
-                            <div class="user-info">
-                                <h4 id="userName">Welcome</h4>
-                                <p id="userEmail"></p>
-                            </div>
-                            <div class="user-actions">
-                                <button id="logoutBtn">Logout</button>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <button id="cartBtn" class="nav-icon-btn" aria-label="View your shopping cart">
-                            <i class="fas fa-shopping-cart"></i>
-                            <span class="cart-count" id="cartCount">0</span>
-                        </button>
-                    </li>
-                </ul>
-            </nav>
         </div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="about page home.html">About</a></li>
+                <li><a href="#sweet-shops">Sweet Shops</a></li>
+                <li><a href="#restaurant">Restaurants</a></li>
+                <li><a href="#catering">Catering</a></li>
+                <li class="user-menu">
+                    <button id="userBtn" class="nav-icon-btn" aria-label="User account">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="userDisplay">Account</span>
+                    </button>
+                    <div class="user-profile" id="userProfile">
+                        <div class="user-info">
+                            <h4 id="userName">Welcome</h4>
+                            <p id="userEmail"></p>
+                        </div>
+                        <div class="user-actions">
+                            <button id="logoutBtn">Logout</button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <button id="cartBtn" class="nav-icon-btn" aria-label="View your shopping cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
     </header>
 
     <div class="mobile-menu" id="mobileMenu">
@@ -1959,6 +1937,4 @@
 
         // Initial update
         updateCartDisplay();
-    </script><button class="back-to-top" aria-label="Contact us" style="bottom: 110px; right: 40px; background: linear-gradient(135deg, rgb(39, 174, 96) 0%, rgb(33, 150, 83) 100%);"><i class="fas fa-comments"></i></button>
-    </body>
-    </html>
+    </script><button class="back-to-top" aria-label="Contact us" style="bottom: 110px; right: 40px; background: linear-gradient(135deg, rgb(39, 174, 96) 0%, rgb(33, 150, 83) 100%);"><i class="fas fa-comments"></i></button></body></html>
