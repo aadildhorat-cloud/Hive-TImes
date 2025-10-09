@@ -138,7 +138,7 @@
         .header-action-icons {
             display: flex;
             align-items: center;
-            gap: 50px;
+            gap: 60px;
             margin-left: auto; /* Pushes the action icons to the far right */
         }
         /* Mobile Menu (Sidebar/Off-Canvas) */
@@ -1324,10 +1324,10 @@
             </div>
         </div>
     </div>
-    <div id="cartModal" class="popup" role="dialog" aria-labelledby="cartModalTitle">
-        <div class="popup-content" id="cartModalContent" role="document">
-            <h3 id="cartModalTitle">Your Shopping Cart</h3> <!-- Added ID for ARIA -->
-            <span class="close-button" id="closeCartModal" aria-label="Close shopping cart">&times;</span>
+    <div id="cartModal" class="popup">
+        <div class="popup-content" id="cartModalContent">
+            <span class="close-button" id="closeCartModal">&times;</span>
+            <h3>Your Shopping Cart</h3>
             <div id="cart-header">
                 <img id="cartBusinessLogo" src="" alt="Business Logo" style="display:none;">
                 <h4 id="cartBusinessName"></h4>
@@ -1399,7 +1399,7 @@
                 popupTitle.textContent = data.title;
                 popupText.textContent = data.text;
                 popup.style.display = 'flex';
-                updateOverlay(true); // Show overlay when popup opens
+                document.getElementById('overlay').classList.add('active');
             }
         }
         // Event listener for all "Learn More" buttons
@@ -1413,17 +1413,17 @@
         // Event listener to close the info popup
         closeInfoPopup.addEventListener('click', () => {
             popup.style.display = 'none';
-            updateOverlay(false); // Hide overlay when popup closes
+            document.getElementById('overlay').classList.remove('active');
         });
         // Click outside popup to close it (for info and cart modals)
         window.addEventListener('click', (event) => {
             if (event.target === popup) {
                 popup.style.display = 'none';
-                updateOverlay(false);
+                document.getElementById('overlay').classList.remove('active');
             }
             if (event.target === document.getElementById('cartModal')) {
                 document.getElementById('cartModal').style.display = 'none';
-                updateOverlay(false);
+                document.getElementById('overlay').classList.remove('active');
             }
         });
         // SLIDER FUNCTIONALITY
@@ -1457,57 +1457,45 @@
         });
         // Initial update for the slider 
         updateSlider();
-        // --- OVERLAY MANAGEMENT SYSTEM ---
-        let activeOverlays = 0; // Counter for active overlays
-
-        function updateOverlay(show) {
-            if (show) {
-                activeOverlays++;
-            } else {
-                activeOverlays = Math.max(0, activeOverlays - 1); // Prevent negative count
-            }
-            const overlay = document.getElementById('overlay');
-            if (activeOverlays > 0) {
-                overlay.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Lock scroll if any overlay is active
-            } else {
-                overlay.classList.remove('active');
-                document.body.style.overflow = ''; // Restore scroll if no overlays are active
-            }
-        }
-        // MOBILE MENU (HAMBURGER) FUNCTIONALITY - IMPROVED
+        // MOBILE MENU (HAMBURGER) FUNCTIONALITY - FIXED & IMPROVED
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
         const closeMobileMenu = document.getElementById('closeMobileMenu');
+        const overlay = document.getElementById('overlay');
+
         // Function to update aria attributes based on menu state
         function updateAriaExpanded(isExpanded) {
             hamburger.setAttribute('aria-expanded', isExpanded);
             mobileMenu.setAttribute('aria-hidden', !isExpanded);
         }
+
         // Function to open the mobile menu
         function openMenu() {
             mobileMenu.classList.add('active');
             hamburger.classList.add('active');
-            updateOverlay(true); // Show overlay when menu opens
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Lock scroll when menu is open
             updateAriaExpanded(true); // Update ARIA attributes
         }
+
         // Function to close the mobile menu
         function closeMenu() {
             mobileMenu.classList.remove('active');
             hamburger.classList.remove('active');
-            updateOverlay(false); // Hide overlay when menu closes
+            overlay.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scroll when menu is closed
             updateAriaExpanded(false); // Update ARIA attributes
         }
+
         // Event listeners for opening and closing the menu
         hamburger.addEventListener('click', openMenu);
         closeMobileMenu.addEventListener('click', closeMenu);
-        // Clicking the overlay closes the mobile menu
-        document.getElementById('overlay').addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu); // Clicking the overlay closes the menu
         // Clicking inside the menu content should NOT close it
         mobileMenu.addEventListener('click', function(event) {
             event.stopPropagation(); // Prevents click inside menu from bubbling up to overlay
         });
-        // LOGIN/REGISTER POPUP FUNCTIONALITY - IMPROVED
+        // LOGIN/REGISTER POPUP FUNCTIONALITY
         const loginRegisterPopup = document.getElementById('loginRegisterPopup');
         const closeLoginRegisterPopup = document.getElementById('closeLoginRegisterPopup');
         const loginForm = document.getElementById('loginForm');
@@ -1520,9 +1508,14 @@
         const logoutBtn = document.getElementById('logoutBtn');
         let isAuthenticated = false;
         function toggleLoginRegisterPopup() {
-            const isPopupVisible = loginRegisterPopup.style.display === 'flex';
-            loginRegisterPopup.style.display = isPopupVisible ? 'none' : 'flex';
-            updateOverlay(!isPopupVisible); // Update overlay based on new state
+            loginRegisterPopup.style.display = (loginRegisterPopup.style.display === 'flex' ? 'none' : 'flex');
+            document.getElementById('overlay').classList.toggle('active');
+            // Ensure body scroll is restored if popup is closed
+            if (loginRegisterPopup.style.display === 'none') {
+                 document.body.style.overflow = '';
+            } else {
+                 document.body.style.overflow = 'hidden';
+            }
         }
         function toggleUserProfile(event) {
             event.stopPropagation();
@@ -1595,7 +1588,7 @@
             loginForm.style.display = 'block';
         });
         logoutBtn.addEventListener('click', logoutUser);
-        // CART FUNCTIONALITY (Simple Mock) - IMPROVED
+        // CART FUNCTIONALITY (Simple Mock)
         const cartBtn = document.getElementById('cartBtn');
         // const mobileCartBtn = document.getElementById('mobileCartBtn'); // Removed from JS
         const cartModal = document.getElementById('cartModal');
@@ -1675,7 +1668,7 @@
         });
         cartBtn.addEventListener('click', () => {
             cartModal.style.display = 'flex';
-            updateOverlay(true); // Show overlay when cart opens
+            document.getElementById('overlay').classList.add('active');
         });
         // Removed mobileCartBtn event listener
         /*
@@ -1687,17 +1680,20 @@
             document.getElementById('overlay').classList.add('active');
         });
         */
-        // IMPROVED: Close Cart Modal Button - Now explicitly calls updateOverlay
         closeCartModal.addEventListener('click', () => {
             cartModal.style.display = 'none';
-            updateOverlay(false); // Hide overlay when cart closes - CONSISTENCY FIX
+            document.getElementById('overlay').classList.remove('active');
+            // Restore body scroll when cart closes
+             document.body.style.overflow = '';
         });
         checkoutBtn.addEventListener('click', () => {
             alert('Proceeding to checkout with ' + cart.length + ' items.');
             cart = [];
             updateCartDisplay();
             cartModal.style.display = 'none';
-            updateOverlay(false); // Hide overlay after checkout - CONSISTENCY FIX
+            document.getElementById('overlay').classList.remove('active');
+            // Restore body scroll after checkout
+             document.body.style.overflow = '';
         });
         // BACK TO TOP BUTTON (Now also Contact Us button)
         const backToTopBtn = document.querySelector('.back-to-top');
