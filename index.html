@@ -426,6 +426,7 @@
             border-radius: 2px;
         }
         .businesses-grid {
+            /* DEFAULT: 3+ columns for large screens */
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 2.5rem;
@@ -837,7 +838,9 @@
         /* --- Responsive Design --- */
         @media (max-width: 992px) {
             .businesses-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                /* 3 columns on medium screens / landscape tablets */
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
             }
             /* REMOVE fixed height for slider (it's now responsive) 
             .slide img {
@@ -901,7 +904,8 @@
                 gap: 15px;
             }
             .businesses-grid {
-                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+                /* 2 columns on tablets/large phones */
+                grid-template-columns: repeat(2, 1fr);
                 gap: 1.5rem;
             }
             .slider-section {
@@ -1016,6 +1020,7 @@
         }
         @media (max-width: 576px) {
             .businesses-grid {
+                /* 1 column on standard/small phones */
                 grid-template-columns: 1fr;
             }
             .slider-section {
