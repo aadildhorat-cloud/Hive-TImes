@@ -44,11 +44,21 @@
             z-index: 1000;
             transition: padding 0.3s ease;
         }
-        .header-content {
+        /* NEW: Grouping for Hamburger and Logo */
+        .header-left-group {
             display: flex;
             align-items: center;
-            gap: 24px;
+            gap: 15px; /* Spacing between Hamburger and Logo */
         }
+        /* NEW: Grouping for Search and Nav/Icons */
+        .header-right-group {
+            display: flex;
+            align-items: center;
+            gap: 24px; /* Spacing between Search and Nav/Icons */
+            /* flex-grow: 1; */
+            justify-content: flex-end;
+        }
+        
         .logo h3 {
             margin: 0;
             font-size: 1.6rem;
@@ -59,13 +69,13 @@
             height: 90px;
             width: auto;
             vertical-align: middle;
-            margin-right: 40px;
+            /* Removed margin-right: 40px; relying on parent group gap */
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
             transition: height 0.3s ease;
         }
         /* Hamburger Menu */
         .hamburger {
-            display: none;
+            display: none; /* HIDE on desktop */
             flex-direction: column;
             justify-content: space-between;
             width: 30px;
@@ -81,7 +91,7 @@
             transition: var(--transition);
         }
         nav {
-            display: flex;
+            display: flex; /* SHOW on desktop */
             align-items: center;
             gap: 20px;
         }
@@ -158,30 +168,39 @@
             font-size: 1.1rem;
         }
 
-        /* Mobile Menu */
+        /* Mobile Menu (Sidebar/Off-Canvas) - MODIFIED FOR LEFT SLIDE */
         .mobile-menu {
-            display: none;
             position: fixed;
             top: 0;
-            left: 0;
-            width: 100%;
+            left: 0; /* Positioned to slide in from the LEFT */
+            width: 300px; /* Fixed width for the sidebar */
+            max-width: 80%; /* Ensure it doesn't get too wide on small screens */
             height: 100%;
             background: linear-gradient(135deg, #610d00 0%, #8b1a00 100%);
-            z-index: 1000;
+            z-index: 1002; /* Higher z-index than overlay */
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            padding-top: 100px;
+            padding: 20px 20px;
             gap: 2rem;
+            
+            /* Off-canvas state */
+            transform: translateX(-100%); /* Hides off-screen to the LEFT */
+            transition: transform 0.4s ease-in-out;
+            display: flex; 
         }
         .mobile-menu.active {
-            display: flex;
+            transform: translateX(0); /* On-canvas state */
         }
+        /* Mobile Menu items styling */
         .mobile-menu ul {
+            list-style: none;
+            padding-top: 50px; /* Space for the close button */
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 1.5rem;
+            width: 100%;
         }
         .mobile-menu a {
             color: white;
@@ -189,19 +208,33 @@
             font-weight: 600;
             text-decoration: none;
             padding: 10px 20px;
+            transition: background-color 0.2s;
+            display: block;
+            width: 100%;
+            text-align: center;
+            border-radius: 8px;
+        }
+        .mobile-menu a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
         }
         .mobile-menu .nav-icon-btn {
             margin-top: 2rem;
+            background-color: rgba(255, 255, 255, 0.1);
         }
         .close-mobile-menu {
             position: absolute;
-            top: 30px;
-            right: 30px;
+            top: 20px;
+            right: 20px; /* Close button stays on the right side of the menu */
             background: none;
             border: none;
             color: white;
             font-size: 2rem;
             cursor: pointer;
+            transition: var(--transition);
+        }
+        .close-mobile-menu:hover {
+            transform: rotate(90deg);
+            color: var(--primary-color);
         }
 
         /* Hamburger active state */
@@ -596,6 +629,7 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
+        /* Overlay for Sidebar */
         .overlay {
             display: none;
             position: fixed;
@@ -604,10 +638,14 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-            animation: fadeIn 0.3s;
+            z-index: 1001; /* Lower than mobile-menu (1002) but higher than everything else */
+            transition: opacity 0.4s ease-in-out;
+            opacity: 0;
         }
-
+        .overlay.active {
+            opacity: 1;
+            display: block;
+        }
         /* Login & Register Popup */
         .form-group {
             margin-bottom: 1.8rem;
@@ -923,36 +961,46 @@
             .slide img {
                 height: 400px;
             }
+            /* Hamburger is now managed by its own display: none/flex */
             nav {
                 display: none;
-            }
-            .hamburger {
-                display: flex;
             }
         }
         @media (max-width: 768px) {
             header {
-                flex-direction: column;
+                /* MODIFIED: Ensure hamburger/logo are on the same row */
+                flex-direction: row; 
+                flex-wrap: wrap; /* Allow search to drop below */
+                justify-content: space-between;
                 padding: 1rem;
                 gap: 1rem;
             }
-            .header-content {
-                flex-direction: column;
-                width: 100%;
-                gap: 1rem;
+            /* SHOW hamburger on mobile */
+            .hamburger {
+                display: flex;
             }
-            .logo {
-                margin-bottom: 0;
-                text-align: center;
+            /* Adjust group spacing and hide desktop search/nav elements that should be in the mobile menu */
+            .header-left-group {
+                gap: 10px;
+            }
+            .header-right-group {
+                /* Let the search bar take full width below the header main line */
+                flex-basis: 100%; 
+                order: 2; /* Puts search on the second row */
+                margin-top: 0;
             }
             .logo img {
-                margin-right: 0;
-                height: 60px;
+                height: 60px; /* Smaller logo on mobile */
             }
             .search-container {
                 width: 100%;
-                max-width: 400px;
+                max-width: none;
+                /* Remove margin here as it's controlled by header gap */
             }
+            nav {
+                display: none !important; /* Hide desktop navigation links */
+            }
+            
             .businesses-grid {
                 grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
                 gap: 1.5rem;
@@ -1032,6 +1080,10 @@
             .logo img {
                 height: 50px;
             }
+            .mobile-menu {
+                width: 100%; /* Full width for very small screens */
+                max-width: 100%;
+            }
             .slide img {
                 height: 220px;
             }
@@ -1053,55 +1105,56 @@
             }
         }
     </style>
-
-
     <header>
-        <div class="header-content">
+        <div class="header-left-group">
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <div class="logo">
                 <img src="images-logo/hive-times-logo.png" alt="hive times logo">
                 <h3></h3>
             </div>
+        </div>
+
+        <div class="header-right-group">
             <div class="search-container">
                 <i class="fas fa-search"></i>
                 <input type="text" id="searchInput" placeholder="Search businesses...">
             </div>
-        </div>
-        <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="about page home.html">About</a></li>
-                <li><a href="#sweet-shops">Sweet Shops</a></li>
-                <li><a href="#restaurant">Restaurants</a></li>
-                <li><a href="#catering">Catering</a></li>
-                <li class="user-menu">
-                    <button id="userBtn" class="nav-icon-btn" aria-label="User account">
-                        <i class="fas fa-user-circle"></i> <span id="userDisplay">Account</span>
-                    </button>
-                    <div class="user-profile" id="userProfile">
-                        <div class="user-info">
-                            <h4 id="userName">Welcome</h4>
-                            <p id="userEmail"></p>
+            <nav>
+                <ul>
+                    <li><a href="about page home.html">About</a></li>
+                    <li><a href="#sweet-shops">Sweet Shops</a></li>
+                    <li><a href="#restaurant">Restaurants</a></li>
+                    <li><a href="#catering">Catering</a></li>
+                    <li class="user-menu">
+                        <button id="userBtn" class="nav-icon-btn" aria-label="User account">
+                            <i class="fas fa-user-circle"></i>
+                            <span id="userDisplay">Account</span>
+                        </button>
+                        <div class="user-profile" id="userProfile">
+                            <div class="user-info">
+                                <h4 id="userName">Welcome</h4>
+                                <p id="userEmail"></p>
+                            </div>
+                            <div class="user-actions">
+                                <button id="logoutBtn">Logout</button>
+                            </div>
                         </div>
-                        <div class="user-actions">
-                            <button id="logoutBtn">Logout</button>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <button id="cartBtn" class="nav-icon-btn" aria-label="View your shopping cart">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="cart-count" id="cartCount">0</span>
-                    </button>
-                </li>
-            </ul>
-        </nav>
+                    </li>
+                    <li>
+                        <button id="cartBtn" class="nav-icon-btn" aria-label="View your shopping cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <button class="close-mobile-menu" id="closeMobileMenu">×</button>
         <ul>
@@ -1112,7 +1165,8 @@
         </ul>
         <div class="mobile-user-section">
             <button id="mobileUserBtn" class="nav-icon-btn" aria-label="User account">
-                <i class="fas fa-user-circle"></i> <span id="mobileUserDisplay">Account</span>
+                <i class="fas fa-user-circle"></i>
+                <span id="mobileUserDisplay">Account</span>
             </button>
         </div>
         <button id="mobileCartBtn" class="nav-icon-btn" aria-label="View your shopping cart">
@@ -1154,6 +1208,7 @@
                 </div>
             </div>
         </section>
+
         <section id="sweet-shops">
             <h2 class="section-title">Featured Sweet Shops</h2>
             <div class="businesses-grid">
@@ -1169,7 +1224,7 @@
                 </div>
                 <div class="block">
                     <a href="Sweet Depot website.html">
-                        <img src="images-logo/sweet-deport-logo.jpg" alt="sweet-deport"> 
+                        <img src="images-logo/sweet-deport-logo.jpg" alt="sweet-deport">
                     </a>
                     <div class="info">
                         <h3>Sweet Depot</h3>
@@ -1250,6 +1305,7 @@
             </div>
         </section>
     </main>
+
     <footer>
         <div class="footer-content">
             <div class="footer-logo">
@@ -1265,584 +1321,644 @@
                 </ul>
             </div>
             <div class="footer-nav">
+                <h4>Company</h4>
                 <ul>
-                    <li><a href="about page home.html"><i class="fas fa-info-circle"></i> About</a></li>
-                    <li><a href="index.html"><i class="fas fa-shopping-bag"></i> Businesses</a></li>
-                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="#"><i class="fas fa-file-contract"></i> Terms</a></li>
-                    <li><a href=""><i class="fas fa-shield-alt"></i> Policy</a></li>
+                    <li><a href="about page home.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                    <li><a href="#"><i class="fas fa-handshake"></i> Partnerships</a></li>
+                    <li><a href="#"><i class="fas fa-briefcase"></i> Careers</a></li>
+                    <li><a href="#"><i class="fas fa-newspaper"></i> Blog</a></li>
+                    <li><a href="#"><i class="fas fa-file-contract"></i> Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-nav">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#"><i class="fas fa-headset"></i> Contact Us</a></li>
+                    <li><a href="#"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                    <li><a href="#"><i class="fas fa-user-shield"></i> Privacy Policy</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Sitemap</a></li>
+                </ul>
+            </div>
+            <div class="footer-nav">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="#sweet-shops"><i class="fas fa-candy-cane"></i> Sweet Shops</a></li>
+                    <li><a href="#restaurant"><i class="fas fa-utensils"></i> Restaurants</a></li>
+                    <li><a href="#catering"><i class="fas fa-cheese"></i> Catering</a></li>
+                    <li><a href="#"><i class="fas fa-store"></i> All Businesses</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2025 Hive Times. All rights reserved. Made with <i class="fas fa-heart"></i> for Businesses</p>
+            <p>&copy; 2024 Hive Times. All rights reserved. Made with <i class="fas fa-heart"></i> for the community.</p>
         </div>
     </footer>
-    <button class="back-to-top" onclick="scrollToTop()" aria-label="Back to top" style="display: none;">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-    <div id="myPopup" class="popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+
+    <div class="popup" id="broadwaysweetsPopup">
         <div class="popup-content">
-            <span class="close-button" role="button" aria-label="Close popup" onclick="closeGenericPopup()">×</span>
-            <h3 id="popup-title"></h3>
-            <p id="popup-text"></p>
+            <span class="close-button">×</span>
+            <h3>Broadway Sweets</h3>
+            <p><strong>Address:</strong> 123 Main Street, Cityville</p>
+            <p><strong>Contact:</strong> (555) 123-4567</p>
+            <p><strong>Hours:</strong> Mon-Sat: 10 AM - 9 PM, Sun: 11 AM - 7 PM</p>
+            <p>A neighborhood institution known for its fresh, high-quality samosas and jalebi.</p>
         </div>
     </div>
-    <div id="loginPopup" class="popup" role="dialog" aria-modal="true" aria-labelledby="loginPopupTitle">
+    <div class="popup" id="sweetdeportPopup">
         <div class="popup-content">
-            <span class="close-button" role="button" aria-label="Close login popup" onclick="hideLoginPopup()">×</span>
-            <h3 id="loginPopupTitle">Login to Your Account</h3>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="loginEmail">Email:</label>
-                    <input type="email" id="loginEmail" name="email" required="">
-                </div>
-                <div class="form-group">
-                    <label for="loginPassword">Password:</label>
-                    <input type="password" id="loginPassword" name="password" required="">
-                </div>
-                <button type="submit" class="form-submit-btn">Login</button>
-                <p class="toggle-form">Don't have an account? <a href="#" id="showRegister">Create one</a></p>
-            </form>
+            <span class="close-button">×</span>
+            <h3>Sweet Depot</h3>
+            <p><strong>Address:</strong> 456 Elm Avenue, Townsville</p>
+            <p><strong>Contact:</strong> (555) 987-6543</p>
+            <p><strong>Hours:</strong> Daily: 9 AM - 10 PM</p>
+            <p>Offers bulk candy, imported chocolates, and specialty baking ingredients.</p>
         </div>
     </div>
-    <div id="registerPopup" class="popup" role="dialog" aria-modal="true" aria-labelledby="registerPopupTitle">
+    <div class="popup" id="sweetmartPopup">
         <div class="popup-content">
-            <span class="close-button" role="button" aria-label="Close register popup" onclick="hideRegisterPopup()">×</span>
-            <h3 id="registerPopupTitle">Create Your Account</h3>
-            <form id="registerForm">
-                <div class="form-group">
-                    <label for="registerName">Full Name:</label>
-                    <input type="text" id="registerName" name="name" required="">
-                </div>
-                <div class="form-group">
-                    <label for="registerEmail">Email:</label>
-                    <input type="email" id="registerEmail" name="email" required="">
-                </div>
-                <div class="form-group">
-                    <label for="registerPassword">Password:</label>
-                    <input type="password" id="registerPassword" name="password" required="" minlength="6">
-                </div>
-                <div class="form-group">
-                    <label for="registerConfirmPassword">Confirm Password:</label>
-                    <input type="password" id="registerConfirmPassword" name="confirmPassword" required="">
-                </div>
-                <button type="submit" class="form-submit-btn">Create Account</button>
-                <p class="toggle-form">Already have an account? <a href="#" id="showLogin">Login</a></p>
-            </form>
+            <span class="close-button">×</span>
+            <h3>Sweet Mart</h3>
+            <p><strong>Address:</strong> 789 Oak Lane, Villagetown</p>
+            <p><strong>Contact:</strong> (555) 555-1212</p>
+            <p><strong>Hours:</strong> Tue-Sun: 10:30 AM - 8:30 PM</p>
+            <p>Famous for custom cake orders and seasonal festive sweet boxes.</p>
         </div>
     </div>
-    <div id="contactPopup" class="contact-popup" role="dialog" aria-modal="true" aria-labelledby="contactPopupTitle">
-        <h3 id="contactPopupTitle">Get In Touch</h3>
-        <p>How would you like to contact us?</p>
-        <button onclick="window.open('https://wa.me/+27649220145', '_blank')" aria-label="Contact via WhatsApp"><i class="fab fa-whatsapp"></i> WhatsApp</button>
-        <button onclick="window.location.href='mailto:contact@tradetimes.com'" aria-label="Contact via Email"><i class="fas fa-envelope"></i> Email</button>
-        <button onclick="hideContactPopup()" class="close-btn" aria-label="Close contact options"><i class="fas fa-times"></i> Close</button>
+    <div class="popup" id="polaricecreampopup">
+        <div class="popup-content">
+            <span class="close-button">×</span>
+            <h3>Polar Ice Cream</h3>
+            <p><strong>Address:</strong> 321 Pine Road, Suburbia</p>
+            <p><strong>Contact:</strong> (555) 222-3333</p>
+            <p><strong>Hours:</strong> Daily: 12 PM - 11 PM</p>
+            <p>Hand-crafted ice cream with unique local flavors and vegan options.</p>
+        </div>
     </div>
-    <div id="cartModal" class="popup" role="dialog" aria-modal="true" aria-labelledby="cartModalTitle">
-        <div id="cartModalContent">
-            <span class="close-button" role="button" aria-label="Close cart" onclick="hideCartModal()">×</span>
-            <h3 id="cartModalTitle">Your Shopping Cart</h3>
-            <div id="cart-header">
-                <img id="cartBusinessLogo" src="" alt="Business Logo">
-                <h3 id="cartBusinessName"></h3>
+    <div class="popup" id="sunrisesweetsPopup">
+        <div class="popup-content">
+            <span class="close-button">×</span>
+            <h3>Sunrise Sweets</h3>
+            <p><strong>Address:</strong> 101 Morning Star Blvd, City Center</p>
+            <p><strong>Contact:</strong> (555) 444-5555</p>
+            <p><strong>Hours:</strong> Mon-Fri: 7 AM - 3 PM</p>
+            <p>A focus on traditional breakfast pastries and lighter, healthier sweet options.</p>
+        </div>
+    </div>
+    <div class="popup" id="zandsweetsPopup">
+        <div class="popup-content">
+            <span class="close-button">×</span>
+            <h3>Z and S Sweets</h3>
+            <p><strong>Address:</strong> 202 Zenith Way, Industrial Park</p>
+            <p><strong>Contact:</strong> (555) 666-7777</p>
+            <p><strong>Hours:</strong> Mon-Sat: 9 AM - 6 PM</p>
+            <p>Specializing in custom corporate sweet gifts and large-scale orders.</p>
+        </div>
+    </div>
+    <div class="popup" id="desertsweetsPopup">
+        <div class="popup-content">
+            <span class="close-button">×</span>
+            <h3>Desert Sweets</h3>
+            <p><strong>Address:</strong> 303 Oasis Drive, Downtown</p>
+            <p><strong>Contact:</strong> (555) 888-9999</p>
+            <p><strong>Hours:</strong> Daily: 1 PM - 1 AM</p>
+            <p>A late-night dessert lounge offering unique, exotic flavors.</p>
+        </div>
+    </div>
+    <div class="popup" id="royalsweetsPopup">
+        <div class="popup-content">
+            <span class="close-button">×</span>
+            <h3>Royal Sweets</h3>
+            <p><strong>Address:</strong> 404 Palace View, Prestige Heights</p>
+            <p><strong>Contact:</strong> (555) 000-1111</p>
+            <p><strong>Hours:</strong> Tue-Sun: 11 AM - 9 PM</p>
+            <p>The finest luxury chocolates and French patisserie.</p>
+        </div>
+    </div>
+    <div class="popup" id="goldensweetsPopup">
+        <div class="popup-content">
+            <span class="close-button">×</span>
+            <h3>Golden Sweets</h3>
+            <p><strong>Address:</strong> 505 Gold Rush Road, Mall</p>
+            <p><strong>Contact:</strong> (555) 333-2222</p>
+            <p><strong>Hours:</strong> Daily: 10 AM - 9 PM</p>
+            <p>Modern sweets with a classic, high-end feel.</p>
+        </div>
+    </div>
+
+    <div class="popup" id="authPopup">
+        <div class="popup-content">
+            <span class="close-button">×</span>
+            <div id="loginForm" style="display: block;">
+                <h3>Login</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="form-submit-btn">Login</button>
+                </form>
+                <p class="toggle-form">Don't have an account? <a href="#" onclick="toggleAuthForm(event, 'register')">Register here</a></p>
             </div>
-            <div id="cartItems">
+            <div id="registerForm" style="display: none;">
+                <h3>Register</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="registerName">Name</label>
+                        <input type="text" id="registerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Email</label>
+                        <input type="email" id="registerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Password</label>
+                        <input type="password" id="registerPassword" required>
+                    </div>
+                    <button type="submit" class="form-submit-btn">Register</button>
+                </form>
+                <p class="toggle-form">Already have an account? <a href="#" onclick="toggleAuthForm(event, 'login')">Login here</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup" id="cartModal">
+        <div id="cartModalContent">
+            <span class="close-button" id="closeCartModal">×</span>
+            <h3 id="cartTitle">Your Shopping Cart</h3>
+            <div id="cart-header">
+                <img id="cartBusinessLogo" src="" alt="Business Logo" style="display:none;">
+                <h4 id="cartBusinessName"></h4>
+            </div>
+            <div id="cart-items">
                 <p id="emptyCartMessage">Your cart is empty.</p>
             </div>
-            <div class="cart-total" id="cartTotal">Total: R0.00</div>
-            <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+            <div class="cart-total" id="cartTotalDisplay" style="display:none;">
+                Total: $0.00
+            </div>
+            <button class="checkout-btn" id="checkoutBtn" style="display:none;">Proceed to Checkout</button>
         </div>
     </div>
-    <div class="overlay" onclick="hideContactPopup()" role="presentation"></div>
+
+    <div class="contact-popup" id="contactPopup" style="display: none;">
+        <h3>Need Assistance?</h3>
+        <button id="contactCall" aria-label="Call us">
+            <i class="fas fa-phone-alt"></i> Call Us
+        </button>
+        <button id="contactEmail" aria-label="Email us">
+            <i class="fas fa-envelope"></i> Email Us
+        </button>
+        <button id="contactClose" class="close-btn" aria-label="Close contact popup">
+            <i class="fas fa-times"></i> Close
+        </button>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <button class="back-to-top" id="backToTopBtn" aria-label="Scroll back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <button class="back-to-top" id="contactUsBtn" aria-label="Contact us" style="bottom: 110px; right: 40px; background: linear-gradient(135deg, rgb(39, 174, 96) 0%, rgb(33, 150, 83) 100%);">
+        <i class="fas fa-comments"></i>
+    </button>
+
     <script>
-        // --- User Authentication System ---
-        let currentUser = null;
-        function checkUserLogin() {
-            const savedUser = localStorage.getItem('hiveTimesUser');
-            if (savedUser) {
-                currentUser = JSON.parse(savedUser);
-                updateUserUI();
-            }
-        }
-        function updateUserUI() {
-            const userDisplay = document.getElementById('userDisplay');
-            const mobileUserDisplay = document.getElementById('mobileUserDisplay');
-            if (currentUser) {
-                userDisplay.textContent = 'My Account';
-                mobileUserDisplay.textContent = 'My Account';
-                document.getElementById('userName').textContent = currentUser.name;
-                document.getElementById('userEmail').textContent = currentUser.email;
-                document.getElementById('userBtn').addEventListener('click', toggleUserProfile);
-                document.getElementById('mobileUserBtn').addEventListener('click', showLoginPopup);
-            } else {
-                userDisplay.textContent = 'Account';
-                mobileUserDisplay.textContent = 'Account';
-                document.getElementById('userBtn').addEventListener('click', showLoginPopup);
-                document.getElementById('mobileUserBtn').addEventListener('click', showLoginPopup);
-            }
-        }
-        function toggleUserProfile() {
-            const userProfile = document.getElementById('userProfile');
-            userProfile.classList.toggle('active');
-        }
-        function logout() {
-            currentUser = null;
-            localStorage.removeItem('hiveTimesUser');
-            document.getElementById('userProfile').classList.remove('active');
-            updateUserUI();
-            alert('You have been logged out successfully!');
-        }
-
-        // --- Login Popup Script ---
-        const loginPopup = document.getElementById('loginPopup');
-        const loginForm = document.getElementById('loginForm');
-        function showLoginPopup() {
-            loginPopup.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-            loginPopup.setAttribute('aria-hidden', 'false');
-            loginForm.querySelector('input').focus();
-        }
-        function hideLoginPopup() {
-            loginPopup.style.display = 'none';
-            document.body.style.overflow = '';
-            loginPopup.setAttribute('aria-hidden', 'true');
-        }
-        loginForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            const email = this.loginEmail.value;
-            const password = this.loginPassword.value;
-            const users = JSON.parse(localStorage.getItem('hiveTimesUsers') || '[]');
-            const user = users.find(u => u.email === email && u.password === password);
-            if (user) {
-                currentUser = { name: user.name, email: user.email };
-                localStorage.setItem('hiveTimesUser', JSON.stringify(currentUser));
-                updateUserUI();
-                hideLoginPopup();
-                alert('Login successful! Welcome back, ' + currentUser.name);
-            } else {
-                alert('Invalid email or password. Please try again.');
-            }
-        });
-
-        // --- Register Popup Script ---
-        const registerPopup = document.getElementById('registerPopup');
-        const registerForm = document.getElementById('registerForm');
-        function showRegisterPopup() {
-            registerPopup.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-            registerPopup.setAttribute('aria-hidden', 'false');
-            registerForm.querySelector('input').focus();
-        }
-        function hideRegisterPopup() {
-            registerPopup.style.display = 'none';
-            document.body.style.overflow = '';
-            registerPopup.setAttribute('aria-hidden', 'true');
-        }
-        registerForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            const name = this.registerName.value;
-            const email = this.registerEmail.value;
-            const password = this.registerPassword.value;
-            const confirmPassword = this.registerConfirmPassword.value;
-            if (password !== confirmPassword) {
-                alert('Passwords do not match. Please try again.');
-                return;
-            }
-            let users = JSON.parse(localStorage.getItem('hiveTimesUsers') || '[]');
-            if (users.some(u => u.email === email)) {
-                alert('An account with this email already exists. Please login or use a different email.');
-                return;
-            }
-            const newUser = { name, email, password };
-            users.push(newUser);
-            localStorage.setItem('hiveTimesUsers', JSON.stringify(users));
-            alert('Account created successfully! You can now login with your credentials.');
-            hideRegisterPopup();
-            showLoginPopup();
-            registerForm.reset();
-        });
-
-        // --- Generic Popup Script ---
-        const genericPopup = document.getElementById('myPopup');
-        const popupTitle = document.getElementById('popup-title');
-        const popupText = document.getElementById('popup-text');
-        const closeButton = genericPopup.querySelector('.close-button');
-        const openPopupButtons = document.querySelectorAll('.open-popup');
-        const popupContents = {
-            broadwaysweetsPopup: {
-                title: "About Broadway Sweets",
-                text: "Broadway Sweets is a premier destination for traditional Indian sweets and desserts. Established with a passion for authentic flavors, we craft our products using time-honored recipes passed down through generations. Our commitment to quality ingredients and traditional methods ensures that every bite delivers the rich, authentic taste of Indian confectionery. From festive specialties to everyday treats, Broadway Sweets brings the sweetness of tradition to your table."
-            },
-            sweetdeportPopup: {
-                title: "About Sweet Depot",
-                text: "Sweet Depot is your comprehensive source for a wide variety of sweets, snacks, and confectionery items from around the world. Our mission is to bring joy to every occasion with our diverse selection of quality products. Whether you're looking for traditional favorites or international treats, Sweet Depot offers something for every palate. With a focus on customer satisfaction and competitive pricing, we've become a trusted name in the confectionery industry."
-            },
-            sweetmartPopup: {
-                title: "About Sweet Mart",
-                text: "Sweet Mart has been serving sweet lovers for over two decades with our extensive range of quality sweets, snacks, and confectionery. Our stores are designed to be a paradise for those with a sweet tooth, offering everything from traditional Indian mithai to international chocolates and candies. We pride ourselves on our customer service, product quality, and unbeatable value. Sweet Mart is more than just a store – it's a destination for creating sweet memories."
-            },
-            polaricecreampopup: {
-                title: "About Polar Ice Cream",
-                text: "Polar Ice Cream brings the chill to your summer days with our delicious range of premium ice creams and frozen desserts. Using only the finest ingredients and innovative recipes, we create ice creams that delight the senses. From classic vanilla and chocolate to exotic flavors inspired by global cuisines, Polar Ice Cream offers something for everyone. Our commitment to quality and innovation has made us a favorite among ice cream lovers of all ages."
-            },
-            sunrisesweetsPopup: {
-                title: "About Sunrise Sweets",
-                text: "Sunrise Sweets specializes in morning treats and breakfast desserts that start your day on a sweet note. Our products are crafted to complement your morning tea or coffee, offering a perfect balance of sweetness and flavor. From light pastries to traditional breakfast sweets, Sunrise Sweets uses quality ingredients to create products that are both delicious and satisfying. We believe that every day should begin with a touch of sweetness."
-            },
-            zandsweetsPopup: {
-                title: "About Z and S Sweets",
-                text: "Z and S Sweets represents generations of expertise in traditional sweet-making. Our products are crafted using time-honored methods and recipes that have been perfected over decades. Specializing in authentic regional specialties, we bring the rich heritage of Indian confectionery to discerning customers. Each sweet is made with care and attention to detail, ensuring consistent quality and authentic flavor. Z and S Sweets is a name synonymous with tradition and quality."
-            },
-            desertsweetsPopup: {
-                title: "About Desert Sweets",
-                text: "Desert Sweets draws inspiration from the rich culinary traditions of the Middle East, creating unique sweets that blend ancient flavors with modern techniques. Our products feature ingredients like dates, pistachios, rose water, and saffron, creating distinctive flavors that transport you to the heart of the desert. Whether you're enjoying our baklava, halva, or other specialties, Desert Sweets offers a taste of Middle Eastern hospitality and tradition."
-            },
-            royalsweetsPopup: {
-                title: "About Royal Sweets",
-                text: "Royal Sweets offers a premium line of luxury confectionery fit for royalty. Our products feature the finest ingredients, exquisite presentation, and innovative flavor combinations. From gold-leaf chocolates to truffles infused with rare spices, Royal Sweets creates memorable experiences through exceptional quality and craftsmanship. Perfect for special occasions and gift-giving, our sweets are designed to impress and delight even the most discerning palates."
-            },
-            goldensweetsPopup: {
-                title: "About Golden Sweets",
-                text: "Golden Sweets represents the pinnacle of luxury confectionery, featuring edible gold and the finest ingredients for special occasions. Our master confectioners combine traditional techniques with innovative designs to create sweets that are as beautiful as they are delicious. From gold-dusted chocolates to intricately designed mithai, Golden Sweets transforms ordinary treats into extraordinary experiences. Perfect for weddings, anniversaries, and other milestone celebrations."
-            }
-        };
-        function openGenericPopup(contentKey) {
-            const content = popupContents[contentKey];
-            if (content) {
-                popupTitle.textContent = content.title;
-                popupText.textContent = content.text;
-                genericPopup.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-                genericPopup.setAttribute('aria-hidden', 'false');
-                closeButton.focus();
-            } else {
-                console.error('Popup content not found for key:', contentKey);
-                closeGenericPopup();
-            }
-        }
-        function closeGenericPopup() {
-            genericPopup.style.display = 'none';
-            popupTitle.textContent = '';
-            popupText.textContent = '';
-            document.body.style.overflow = '';
-            genericPopup.setAttribute('aria-hidden', 'true');
-        }
-        openPopupButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetKey = button.getAttribute('data-popup-target');
-                if (targetKey) {
-                    openGenericPopup(targetKey);
-                    button.setAttribute('aria-expanded', 'true');
-                }
-            });
-        });
-        closeButton.addEventListener('click', closeGenericPopup);
-        genericPopup.addEventListener('click', function(event) {
-            if (event.target === genericPopup) {
-                closeGenericPopup();
-            }
-        });
-
-        // --- Contact Popup Script ---
-        const contactPopup = document.getElementById('contactPopup');
-        const overlay = document.querySelector('.overlay');
-        function showContactPopup() {
-            contactPopup.style.display = 'block';
-            overlay.style.display = 'block';
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            contactPopup.setAttribute('aria-hidden', 'false');
-            contactPopup.querySelector('button').focus(); 
-        }
-        function hideContactPopup() {
-            contactPopup.style.display = 'none';
-            overlay.classList.remove('active');
-            overlay.style.display = 'none';
-            document.body.style.overflow = '';
-            contactPopup.setAttribute('aria-hidden', 'true');
-        }
-        overlay.addEventListener('click', hideContactPopup);
-
-        // --- Toggle between Login and Register forms ---
-        document.getElementById('showRegister').addEventListener('click', function(e) {
-            e.preventDefault();
-            hideLoginPopup();
-            showRegisterPopup();
-        });
-        document.getElementById('showLogin').addEventListener('click', function(e) {
-            e.preventDefault();
-            hideRegisterPopup();
-            showLoginPopup();
-        });
-
-        // --- Logout button event listener ---
-        document.getElementById('logoutBtn').addEventListener('click', logout);
-
-        // --- Slider functionality ---
-        let currentSlide = 0;
+        // --- Slider Logic ---
         const slider = document.getElementById('slider');
         const slides = document.querySelectorAll('.slide');
         const indicators = document.querySelectorAll('.indicator');
-        const sliderContainer = document.getElementById('sliderContainer');
-        let slideInterval;
-        const SLIDE_DURATION = 4000;
-        function showSlide(index) {
-            currentSlide = (index + slides.length) % slides.length;
-            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-            indicators.forEach((ind, i) => {
-                ind.classList.toggle('active', i === currentSlide);
-                ind.setAttribute('aria-selected', i === currentSlide);
+        const slideCount = slides.length;
+        let currentIndex = slideCount - 1; // Start at the last slide (Slide 4)
+        const slideWidth = 100;
+
+        function updateSliderPosition() {
+            slider.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentIndex);
+                indicator.setAttribute('aria-selected', index === currentIndex);
             });
-            slides.forEach((slide, i) => {
-                slide.id = `slide${i + 1}`;
-            });
-            if (indicators[currentSlide]) {
-                indicators[currentSlide].setAttribute('aria-controls', `slide${currentSlide + 1}`);
-            }
         }
-        function nextSlide() {
-            showSlide(currentSlide + 1);
-        }
+
         function changeSlide(index) {
-            clearInterval(slideInterval);
-            showSlide(index);
-            startSlider();
+            currentIndex = index;
+            updateSliderPosition();
         }
-        function startSlider() {
-            slideInterval = setInterval(nextSlide, SLIDE_DURATION);
-        }
-        if (sliderContainer) {
-            sliderContainer.addEventListener('mouseenter', () => {
-                clearInterval(slideInterval);
-            });
-            sliderContainer.addEventListener('mouseleave', () => {
-                startSlider();
-            });
-        }
-        showSlide(0);
-        startSlider();
 
-        // --- Keyboard Accessibility ---
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                if (genericPopup.style.display === 'flex') closeGenericPopup();
-                if (contactPopup.style.display === 'block') hideContactPopup();
-                if (loginPopup.style.display === 'flex') hideLoginPopup();
-                if (registerPopup.style.display === 'flex') hideRegisterPopup();
-                if (document.getElementById('userProfile').classList.contains('active')) {
-                    document.getElementById('userProfile').classList.remove('active');
-                }
-                if (document.getElementById('cartModal').style.display === 'flex') hideCartModal();
-                if (document.getElementById('mobileMenu').classList.contains('active')) {
-                    document.getElementById('mobileMenu').classList.remove('active');
-                    document.getElementById('hamburger').classList.remove('active');
-                    document.body.style.overflow = '';
-                }
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slideCount;
+            updateSliderPosition();
+        }
+
+        let slideInterval = setInterval(nextSlide, 5000);
+
+        // Initial setup
+        updateSliderPosition();
+
+        // Pause on hover
+        const sliderContainer = document.getElementById('sliderContainer');
+        sliderContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
+        sliderContainer.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(nextSlide, 5000);
+        });
+
+        // --- Popups Logic ---
+        const popups = document.querySelectorAll('.popup');
+        const openPopupButtons = document.querySelectorAll('.open-popup');
+        const closeButtons = document.querySelectorAll('.close-button');
+        const overlay = document.getElementById('overlay');
+
+        function showPopup(id) {
+            const popup = document.getElementById(id);
+            if (popup) {
+                popup.style.display = 'flex';
+                overlay.classList.add('active'); // Use overlay for popups as well
+                document.body.style.overflow = 'hidden';
             }
+        }
+
+        function hidePopup(popup) {
+            popup.style.display = 'none';
+            // Only hide the overlay if no other popups or the mobile menu are active
+            if (!document.querySelector('.mobile-menu.active') && !document.querySelector('.popup[style*="display: flex"]')) {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        openPopupButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.getAttribute('data-popup-target');
+                showPopup(targetId);
+            });
         });
 
-        // --- DOM Ready ---
-        document.addEventListener('DOMContentLoaded', function() {
-            checkUserLogin();
-            updateUserUI();
-            initCart();
-            document.getElementById('cartBtn').addEventListener('click', showCartModal);
-            document.getElementById('mobileCartBtn').addEventListener('click', showCartModal);
-        });
-
-        // --- Search Functionality ---
-        const searchInput = document.getElementById('searchInput');
-        const businessBlocks = document.querySelectorAll('.block');
-        searchInput.addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
-            businessBlocks.forEach(block => {
-                const businessName = block.querySelector('h3').textContent.toLowerCase();
-                const businessDescription = block.querySelector('p').textContent.toLowerCase();
-                if (businessName.includes(searchTerm) || businessDescription.includes(searchTerm)) {
-                    block.style.display = 'block';
-                    block.style.opacity = '1';
-                } else {
-                    block.style.display = 'none';
-                    block.style.opacity = '0.5';
+        closeButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const popup = event.target.closest('.popup');
+                if (popup) {
+                    hidePopup(popup);
                 }
             });
         });
 
-        // --- Back to Top Button ---
-        const backToTopButton = document.querySelector('.back-to-top');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) {
-                backToTopButton.style.display = 'flex';
-            } else {
-                backToTopButton.style.display = 'none';
-            }
-        });
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // --- Contact Button ---
-        const contactButton = document.createElement('button');
-        contactButton.innerHTML = '<i class="fas fa-comment-dots"></i>';
-        contactButton.className = 'back-to-top';
-        contactButton.style.bottom = '110px';
-        contactButton.style.right = '40px';
-        contactButton.style.background = 'linear-gradient(135deg, #27ae60 0%, #219653 100%)';
-        contactButton.onclick = showContactPopup;
-        contactButton.setAttribute('aria-label', 'Contact us');
-        document.body.appendChild(contactButton);
-
-        // --- Shopping Cart System ---
-        let cart = [];
-        function initCart() {
-            try {
-                const savedCart = localStorage.getItem('hiveTimesCart');
-                if (savedCart) {
-                    cart = JSON.parse(savedCart);
-                    updateCartCount();
-                }
-            } catch (error) {
-                console.error("Error loading cart:", error);
-                cart = [];
-            }
-        }
-        function updateCartCount() {
-            const count = cart.reduce((total, item) => total + item.quantity, 0);
-            document.getElementById('cartCount').textContent = count;
-            document.getElementById('mobileCartCount').textContent = count;
-        }
-        function showCartModal() {
+        overlay.addEventListener('click', () => {
+            // Check if cart modal is open (it also uses the .popup style)
             const cartModal = document.getElementById('cartModal');
-            const cartItems = document.getElementById('cartItems');
-            const cartTotal = document.getElementById('cartTotal');
+            if (cartModal.style.display === 'flex') {
+                hideCartModal();
+            }
+            
+            // Close other popups (Login/Register, etc.)
+            popups.forEach(popup => {
+                if (popup.style.display === 'flex') {
+                    hidePopup(popup);
+                }
+            });
+
+            // Close the sidebar menu
+            if (mobileMenu.classList.contains('active')) {
+                hideMobileMenu();
+            }
+        });
+
+        // --- Auth Popup Logic ---
+        const userBtn = document.getElementById('userBtn');
+        const userProfile = document.getElementById('userProfile');
+        const logoutBtn = document.getElementById('logoutBtn');
+        let isAuthenticated = false; // Simulate auth state
+
+        userBtn.addEventListener('click', () => {
+            if (isAuthenticated) {
+                // Toggle user profile dropdown
+                userProfile.classList.toggle('active');
+            } else {
+                // Show login/register popup
+                showPopup('authPopup');
+                userProfile.classList.remove('active'); // Ensure dropdown is closed
+            }
+        });
+
+        logoutBtn.addEventListener('click', () => {
+            isAuthenticated = false;
+            document.getElementById('userDisplay').textContent = 'Account';
+            document.getElementById('mobileUserDisplay').textContent = 'Account';
+            userProfile.classList.remove('active');
+            alert('You have been logged out.');
+        });
+
+        // Handle clicks outside the user profile
+        document.addEventListener('click', (e) => {
+            if (!userBtn.contains(e.target) && !userProfile.contains(e.target)) {
+                userProfile.classList.remove('active');
+            }
+        });
+
+        // Placeholder for successful login/register
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            isAuthenticated = true;
+            document.getElementById('userName').textContent = 'Hello, User!';
+            document.getElementById('userEmail').textContent = document.getElementById('loginEmail').value;
+            document.getElementById('userDisplay').textContent = 'User';
+            document.getElementById('mobileUserDisplay').textContent = 'User';
+            hidePopup(document.getElementById('authPopup'));
+            alert('Login successful!');
+        });
+        document.getElementById('registerForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            isAuthenticated = true;
+            document.getElementById('userName').textContent = 'Hello, ' + document.getElementById('registerName').value + '!';
+            document.getElementById('userEmail').textContent = document.getElementById('registerEmail').value;
+            document.getElementById('userDisplay').textContent = 'User';
+            document.getElementById('mobileUserDisplay').textContent = 'User';
+            hidePopup(document.getElementById('authPopup'));
+            alert('Registration successful and logged in!');
+        });
+
+        function toggleAuthForm(event, formType) {
+            event.preventDefault();
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            if (formType === 'register') {
+                loginForm.style.display = 'none';
+                registerForm.style.display = 'block';
+            } else {
+                loginForm.style.display = 'block';
+                registerForm.style.display = 'none';
+            }
+        }
+
+        // --- Shopping Cart Logic (Simplified Placeholder) ---
+        let cart = JSON.parse(localStorage.getItem('hiveTimesCart')) || [];
+
+        function saveCart() {
+            localStorage.setItem('hiveTimesCart', JSON.stringify(cart));
+            updateCartDisplay();
+        }
+
+        function updateCartDisplay() {
+            const cartCountElement = document.getElementById('cartCount');
+            const mobileCartCountElement = document.getElementById('mobileCartCount');
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+            cartCountElement.textContent = totalItems;
+            mobileCartCountElement.textContent = totalItems;
+
+            // Display '0' only when empty. Hide if 0 and on desktop to clean up nav bar.
+            if (totalItems > 0) {
+                cartCountElement.style.display = 'flex';
+                mobileCartCountElement.style.display = 'flex';
+            } else {
+                cartCountElement.style.display = 'none';
+                mobileCartCountElement.style.display = 'none';
+            }
+        }
+
+        // Dummy product data (for cart only, real content is in the page)
+        const products = {
+            'broadwaysweets': { name: 'Broadway Sweets Item', price: 5.99, logo: 'images-logo/broadway-sweets-logo.jpg' },
+            'sweetdeport': { name: 'Sweet Depot Treat', price: 3.50, logo: 'images-logo/sweet-deport-logo.jpg' },
+            'sweetmart': { name: 'Sweet Mart Special', price: 7.25, logo: 'images-logo/sweet-mart-logo.jpg' },
+            'polaricecream': { name: 'Polar Ice Cream Scoop', price: 4.00, logo: 'images-logo/polar-ice-cream-logo.png' }
+        };
+
+        function renderCartItems() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalDisplay = document.getElementById('cartTotalDisplay');
+            const checkoutBtn = document.getElementById('checkoutBtn');
             const emptyCartMessage = document.getElementById('emptyCartMessage');
             const cartBusinessLogo = document.getElementById('cartBusinessLogo');
             const cartBusinessName = document.getElementById('cartBusinessName');
-            if (!cartModal || !cartItems || !cartTotal || !cartBusinessLogo || !cartBusinessName) {
-                console.error('Cart modal elements not found');
-                return;
-            }
-            cartItems.innerHTML = '';
+
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+
             if (cart.length === 0) {
-                if (emptyCartMessage) emptyCartMessage.style.display = 'block';
-                cartTotal.textContent = 'Total: R0.00';
+                emptyCartMessage.style.display = 'block';
+                cartTotalDisplay.style.display = 'none';
+                checkoutBtn.style.display = 'none';
                 cartBusinessLogo.style.display = 'none';
                 cartBusinessName.textContent = '';
-            } else {
-                if (emptyCartMessage) emptyCartMessage.style.display = 'none';
-                const firstItem = cart[0];
-                cartBusinessLogo.style.display = 'block';
-                cartBusinessLogo.src = firstItem.businessLogo;
-                cartBusinessName.textContent = firstItem.businessName;
-                let total = 0;
-                cart.forEach((item, index) => {
-                    const itemTotal = item.price * item.quantity;
-                    total += itemTotal;
-                    const cartItem = document.createElement('div');
-                    cartItem.className = 'cart-item';
-                    cartItem.innerHTML = `
-                        <img src="${item.image}" alt="${item.name}">
-                        <div class="cart-item-details">
-                            <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-price">R${item.price.toFixed(2)}</div>
-                            <div class="cart-item-quantity">
-                                <button class="quantity-btn decrease-qty" data-index="${index}">-</button>
-                                <span class="quantity-display">${item.quantity}</span>
-                                <button class="quantity-btn increase-qty" data-index="${index}">+</button>
-                                <button class="remove-item-btn" data-index="${index}">Remove</button>
-                            </div>
-                        </div>
-                    `;
-                    cartItems.appendChild(cartItem);
-                });
-                cartTotal.textContent = `Total: R${total.toFixed(2)}`;
-                document.querySelectorAll('.increase-qty').forEach(button => {
-                    button.addEventListener('click', function() {
-                        const index = parseInt(this.dataset.index);
-                        cart[index].quantity++;
-                        saveCart();
-                        showCartModal();
-                    });
-                });
-                document.querySelectorAll('.decrease-qty').forEach(button => {
-                    button.addEventListener('click', function() {
-                        const index = parseInt(this.dataset.index);
-                        if (cart[index].quantity > 1) {
-                            cart[index].quantity--;
-                            saveCart();
-                            showCartModal();
-                        }
-                    });
-                });
-                document.querySelectorAll('.remove-item-btn').forEach(button => {
-                    button.addEventListener('click', function() {
-                        const index = parseInt(this.dataset.index);
-                        cart.splice(index, 1);
-                        saveCart();
-                        showCartModal();
-                    });
-                });
-            }
-            cartModal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-            cartModal.setAttribute('aria-hidden', 'false');
-        }
-        function hideCartModal() {
-            const cartModal = document.getElementById('cartModal');
-            if (cartModal) {
-                cartModal.style.display = 'none';
-                document.body.style.overflow = '';
-                cartModal.setAttribute('aria-hidden', 'true');
-            }
-        }
-        function saveCart() {
-            try {
-                localStorage.setItem('hiveTimesCart', JSON.stringify(cart));
-                updateCartCount();
-            } catch (error) {
-                console.error("Error saving cart:", error);
-            }
-        }
-        function checkout() {
-            if (cart.length === 0) {
-                alert('Your cart is empty!');
                 return;
             }
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            alert(`Proceeding to checkout with ${cart.length} items totaling R${total.toFixed(2)}.
-Thank you for shopping with us! Your order will be processed shortly.`);
+
+            emptyCartMessage.style.display = 'none';
+            cartTotalDisplay.style.display = 'block';
+            checkoutBtn.style.display = 'block';
+
+            // Assume all items are from the first business for this simplified example
+            const businessKey = cart[0].id.replace('Popup', ''); // Crude way to get business key
+            const businessInfo = products[businessKey];
+            if (businessInfo) {
+                cartBusinessLogo.src = businessInfo.logo;
+                cartBusinessLogo.style.display = 'block';
+                cartBusinessName.textContent = businessInfo.name.replace(' Item', '').replace(' Treat', '').replace(' Special', '').replace(' Scoop', '');
+            }
+
+
+            cart.forEach((item, index) => {
+                const product = products[item.id.replace('Popup', '')];
+                const itemTotal = item.quantity * product.price;
+                total += itemTotal;
+
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'cart-item';
+                itemDiv.innerHTML = `
+                    <img src="${product.logo}" alt="${product.name}">
+                    <div class="cart-item-details">
+                        <div class="cart-item-name">${product.name}</div>
+                        <div class="cart-item-price">$${product.price.toFixed(2)}</div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn decrease-btn" data-index="${index}">-</button>
+                            <span class="quantity-display">${item.quantity}</span>
+                            <button class="quantity-btn increase-btn" data-index="${index}">+</button>
+                        </div>
+                    </div>
+                    <button class="remove-item-btn" data-index="${index}">Remove</button>
+                `;
+                cartItemsContainer.appendChild(itemDiv);
+            });
+
+            cartTotalDisplay.textContent = `Total: $${total.toFixed(2)}`;
+
+            // Attach event listeners for quantity/remove buttons
+            cartItemsContainer.querySelectorAll('.decrease-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const index = parseInt(e.target.getAttribute('data-index'));
+                    updateCartItemQuantity(index, -1);
+                });
+            });
+            cartItemsContainer.querySelectorAll('.increase-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const index = parseInt(e.target.getAttribute('data-index'));
+                    updateCartItemQuantity(index, 1);
+                });
+            });
+            cartItemsContainer.querySelectorAll('.remove-item-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const index = parseInt(e.target.getAttribute('data-index'));
+                    removeCartItem(index);
+                });
+            });
+        }
+
+        function updateCartItemQuantity(index, change) {
+            cart[index].quantity += change;
+            if (cart[index].quantity <= 0) {
+                removeCartItem(index);
+            } else {
+                saveCart();
+                renderCartItems();
+            }
+        }
+
+        function removeCartItem(index) {
+            cart.splice(index, 1);
+            saveCart();
+            renderCartItems();
+        }
+
+        // Add to cart placeholder function (called from your "Learn More" buttons)
+        document.querySelectorAll('.block button').forEach(button => {
+            // Note: This is a placeholder. In a real application, you'd have dedicated "Add to Cart" buttons.
+            // Here, we hijack the "Learn More" functionality for demonstration on click.
+            button.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent default popup for a moment
+
+                const targetId = button.getAttribute('data-popup-target');
+
+                // Simulate adding a unique item
+                let existingItem = cart.find(item => item.id === targetId);
+
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({ id: targetId, quantity: 1 });
+                }
+
+                saveCart();
+                // Instead of showing the cart, we now proceed to show the popup (original functionality)
+                setTimeout(() => showPopup(targetId), 50); // Re-show the original popup after brief delay
+            });
+        });
+
+        // Cart Modal functions
+        const cartModal = document.getElementById('cartModal');
+        const cartBtn = document.getElementById('cartBtn');
+        const mobileCartBtn = document.getElementById('mobileCartBtn');
+        const closeCartModal = document.getElementById('closeCartModal');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+
+        function showCartModal() {
+            renderCartItems();
+            cartModal.style.display = 'flex';
+            overlay.classList.add('active'); // Use overlay for popups as well
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideCartModal() {
+            cartModal.style.display = 'none';
+            // Only hide the overlay if no other popups or the mobile menu are active
+            if (!document.querySelector('.mobile-menu.active') && !document.querySelector('.popup[style*="display: flex"]')) {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        cartBtn.addEventListener('click', showCartModal);
+        mobileCartBtn.addEventListener('click', showCartModal);
+        closeCartModal.addEventListener('click', hideCartModal);
+
+        checkoutBtn.addEventListener('click', () => {
+            alert(`Checking out ${cart.length} unique items. Total amount to pay: ${document.getElementById('cartTotalDisplay').textContent}. Thank you for ordering from us! Your order will be processed shortly.`);
             cart = [];
             saveCart();
             hideCartModal();
-        }
+        });
 
-        // --- Hamburger Menu Toggle ---
+        // --- Hamburger Menu Toggle (Sidebar Logic) ---
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
         const closeMobileMenu = document.getElementById('closeMobileMenu');
 
+        function showMobileMenu() {
+            mobileMenu.classList.add('active');
+            hamburger.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideMobileMenu() {
+            mobileMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+            // Only hide the overlay and restore scroll if no other popups are active
+            if (!document.querySelector('.popup[style*="display: flex"]')) {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
         hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            if (mobileMenu.classList.contains('active')) {
+                hideMobileMenu();
+            } else {
+                showMobileMenu();
+            }
         });
 
-        closeMobileMenu.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = '';
-        });
+        closeMobileMenu.addEventListener('click', hideMobileMenu);
 
         // Close mobile menu when clicking a link
         document.querySelectorAll('.mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            });
+            link.addEventListener('click', hideMobileMenu);
         });
-    </script><button class="back-to-top" aria-label="Contact us" style="bottom: 110px; right: 40px; background: linear-gradient(135deg, rgb(39, 174, 96) 0%, rgb(33, 150, 83) 100%);"><i class="fas fa-comment-dots"></i></button>
 
-</body></html>
+        // --- Scroll and Contact Button Logic ---
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        const contactUsBtn = document.getElementById('contactUsBtn');
+        const contactPopup = document.getElementById('contactPopup');
+        const contactClose = document.getElementById('contactClose');
+
+        window.onscroll = function() { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTopBtn.style.display = "flex";
+                contactUsBtn.style.display = "flex";
+            } else {
+                backToTopBtn.style.display = "none";
+                contactUsBtn.style.display = "none";
+            }
+        }
+
+        backToTopBtn.addEventListener('click', () => {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        });
+
+        contactUsBtn.addEventListener('click', () => {
+            contactPopup.style.display = (contactPopup.style.display === 'none' || contactPopup.style.display === '') ? 'flex' : 'none';
+        });
+
+        contactClose.addEventListener('click', () => {
+            contactPopup.style.display = 'none';
+        });
+
+        contactCall.addEventListener('click', () => {
+            alert('Calling Customer Service at (555) 123-9999');
+            contactPopup.style.display = 'none';
+        });
+
+        contactEmail.addEventListener('click', () => {
+            alert('Opening email client to support@hivetimes.com');
+            contactPopup.style.display = 'none';
+        });
+
+        // Initial update
+        updateCartDisplay();
+    </script><button class="back-to-top" aria-label="Contact us" style="bottom: 110px; right: 40px; background: linear-gradient(135deg, rgb(39, 174, 96) 0%, rgb(33, 150, 83) 100%);"><i class="fas fa-comments"></i></button>
+    </body>
+    </html>
