@@ -426,9 +426,8 @@
             border-radius: 2px;
         }
         .businesses-grid {
-            /* DEFAULT: 4 columns or more on very large screens, based on minmax(220px, 1fr) */
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Decreased min size to 220px */
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 2.5rem;
             padding: 2rem 0;
         }
@@ -838,9 +837,7 @@
         /* --- Responsive Design --- */
         @media (max-width: 992px) {
             .businesses-grid {
-                /* SET TO 4 COLUMNS on screens 769px to 992px (Smaller Business Cards) */
-                grid-template-columns: repeat(4, 1fr);
-                gap: 1.5rem; /* Reduced gap for fit */
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             }
             /* REMOVE fixed height for slider (it's now responsive) 
             .slide img {
@@ -898,15 +895,14 @@
             }
         }
 
-        @media (max-width: 576px) {
+        @media (max-width: 768px) {
             header {
                 padding: 1rem 15px; /* More padding for mobile header */
                 gap: 15px;
             }
             .businesses-grid {
-                /* SET TO 3 COLUMNS on tablets/large phones (768px down to 577px) */
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1rem; /* Reduced gap for fit */
+                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+                gap: 1.5rem;
             }
             .slider-section {
                 padding: 2.5rem 0;
@@ -1020,7 +1016,6 @@
         }
         @media (max-width: 576px) {
             .businesses-grid {
-                /* 1 column on standard/small phones */
                 grid-template-columns: 1fr;
             }
             .slider-section {
@@ -1065,13 +1060,46 @@
             .section-title {
                 font-size: 1.8rem;
             }
+            
+            /* *** MODIFIED FOR 3-COLUMN LAYOUT ON SMALL SCREENS *** */
+            .businesses-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr); /* FORCED 3 COLUMNS */
+                gap: 0.8rem; /* Reduced gap for space */
+                padding: 0.5rem 0; /* Reduced padding */
+            }
+            .block {
+                padding: 0.8rem; /* Smaller padding inside blocks */
+            }
             .block h3 {
-                font-size: 1.4rem;
+                font-size: 0.85rem; /* Smaller heading */
+                margin: 0.3rem 0;
+                /* Forced single line to prevent layout issues */
+                white-space: nowrap; 
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
             .block p {
-                font-size: 0.95rem;
-                min-height: 50px;
+                /* Description text is now very small, consider hiding it (uncomment below) */
+                font-size: 0.65rem; /* Much smaller text for descriptions */
+                min-height: 20px; /* Reduced minimum height */
+                line-height: 1.2;
+                margin-bottom: 0.5rem;
+                display: none; /* Hiding description is highly recommended for 3 columns on this screen size */
             }
+            .block button {
+                padding: 6px 10px; /* Smaller button */
+                font-size: 0.65rem;
+                font-weight: 500;
+                margin-top: 0.3rem;
+            }
+            .block img {
+                aspect-ratio: 1 / 1; /* Changed aspect ratio for better fit */
+                margin-bottom: 0.5rem;
+                border-radius: 8px; /* Slightly smaller border radius */
+            }
+            /* *** END 3-COLUMN MODIFICATION *** */
+
             .sidebar {
                 width: 260px;
             }
