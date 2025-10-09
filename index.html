@@ -1,4 +1,4 @@
-<html lang="en"><head></head><body>
+<html lang="en"><head>
  <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hive Times - Businesses</title>
@@ -34,20 +34,20 @@
         header {
             background: linear-gradient(135deg, #610d00 0%, #8b1a00 100%);
             color: #fff;
-            padding: 1rem 2rem;
+            padding: 0.8rem 30px; /* Adjusted padding for a sleeker, professional height */
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start; /* Aligns all elements to the left by default */
             align-items: center;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
             position: sticky;
             top: 0;
             z-index: 1000;
             transition: padding 0.3s ease;
+            gap: 24px; /* Spacing between the Hamburger, Logo, and Search */
         }
         .header-content {
-            display: flex;
-            align-items: center;
-            gap: 24px;
+            /* This class is no longer used in the HTML but kept for safety. */
+            display: none;
         }
         .logo h3 {
             margin: 0;
@@ -56,16 +56,16 @@
             font-weight: 700;
         }
         .logo img {
-            height: 90px;
+            height: 60px; /* Reduced logo size for a more professional, compact header */
             width: auto;
             vertical-align: middle;
-            margin-right: 40px;
+            margin-right: 0; /* Removed old margin */
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
             transition: height 0.3s ease;
         }
         /* Hamburger Menu */
         .hamburger {
-            display: flex; /* MODIFIED: Set to 'flex' to show on desktop */
+            display: flex; 
             flex-direction: column;
             justify-content: space-between;
             width: 30px;
@@ -81,31 +81,7 @@
             transition: var(--transition);
         }
         nav {
-            display: none; /* MODIFIED: Set to 'none' to hide full navigation on desktop */
-            align-items: center;
-            gap: 20px;
-        }
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            padding: 12px 16px;
-            border-radius: 12px;
-            transition: var(--transition);
-            display: inline-block;
-            font-size: 1.05rem;
-        }
-        nav a:hover {
-            background-color: rgba(255, 255, 255, 0.15);
-            transform: translateY(-3px);
+            display: none; /* The main nav links are hidden on desktop, relying on the hamburger/mobile menu */
         }
         .nav-icon-btn {
             background: none;
@@ -133,7 +109,8 @@
             background-color: rgba(255, 255, 255, 0.25);
             border-radius: 30px;
             padding: 8px 20px;
-            width: 280px;
+            flex-grow: 1; /* Allows it to take up available horizontal space */
+            max-width: 450px; /* Limits the search bar width for a professional look */
             transition: var(--transition);
         }
         .search-container:focus-within {
@@ -157,35 +134,40 @@
             margin-right: 12px;
             font-size: 1.1rem;
         }
-
+        /* New professional grouping for action icons */
+        .header-action-icons {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-left: auto; /* Pushes the action icons to the far right */
+        }
         /* Mobile Menu (Sidebar/Off-Canvas) */
         .mobile-menu {
             position: fixed;
             top: 0;
-            right: 0; /* Positioned to slide in from the right */
-            width: 300px; /* Fixed width for the sidebar */
-            max-width: 80%; /* Ensure it doesn't get too wide on small screens */
+            right: 0; 
+            width: 300px;
+            max-width: 80%;
             height: 100%;
             background: linear-gradient(135deg, #610d00 0%, #8b1a00 100%);
-            z-index: 1002; /* Higher z-index than overlay */
+            z-index: 1002;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
             padding: 20px 20px;
             gap: 2rem;
-            
             /* Off-canvas state */
             transform: translateX(100%); 
             transition: transform 0.4s ease-in-out;
-            display: flex; /* Always display flex, use transform to hide/show */
+            display: flex;
         }
         .mobile-menu.active {
-            transform: translateX(0); /* On-canvas state */
+            transform: translateX(0); 
         }
         /* Mobile Menu items styling */
         .mobile-menu ul {
             list-style: none;
-            padding-top: 50px; /* Space for the close button */
+            padding-top: 50px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -226,7 +208,6 @@
             transform: rotate(90deg);
             color: var(--primary-color);
         }
-
         /* Hamburger active state */
         .hamburger.active span:nth-child(1) {
             transform: translateY(9px) rotate(45deg);
@@ -237,7 +218,6 @@
         .hamburger.active span:nth-child(3) {
             transform: translateY(-9px) rotate(-45deg);
         }
-
         /* --- Slider Section --- */
         .slider-section {
             padding: 4rem 0;
@@ -313,7 +293,6 @@
             background-color: var(--primary-color);
             transform: scale(1.2);
         }
-
         /* --- Main Content Section --- */
         main {
             flex-grow: 1;
@@ -422,7 +401,6 @@
         .block button:active {
             transform: translateY(0);
         }
-
         /* --- Footer --- */
         footer {
             background: linear-gradient(135deg, #610d00 0%, #4a0a00 100%);
@@ -517,7 +495,6 @@
             color: #e74c3c;
             animation: pulse 2s infinite;
         }
-
         /* --- Pop-up Styles --- */
         .popup {
             display: none;
@@ -619,22 +596,26 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
-        /* Overlay for Sidebar */
+        /* Overlay for Sidebar - FIX APPLIED HERE */
         .overlay {
-            display: none;
+            /* display: none; <-- REMOVED FIX: This was preventing the click event from registering when the menu was closing. */
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1001; /* Lower than mobile-menu (1002) but higher than everything else */
+            z-index: 1001; 
             transition: opacity 0.4s ease-in-out;
             opacity: 0;
+            /* FIX: Prevent clicks on the invisible overlay */
+            pointer-events: none; 
         }
         .overlay.active {
             opacity: 1;
-            display: block;
+            /* display: block; <-- REMOVED FIX: This is no longer necessary as we removed 'display: none' from the base. */
+            /* FIX: Allow clicks on the active, visible overlay */
+            pointer-events: auto; 
         }
         /* Login & Register Popup */
         .form-group {
@@ -694,7 +675,6 @@
             text-decoration: underline;
             color: #c0392b;
         }
-
         /* User Profile */
         .user-profile {
             display: none;
@@ -751,7 +731,6 @@
             transform: translateY(-2px);
             color: var(--primary-color);
         }
-
         /* Shopping Cart Modal */
         #cartModalContent {
             background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
@@ -899,7 +878,6 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(39, 174, 96, 0.4);
         }
-
         /* --- Animations --- */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-20px); }
@@ -942,7 +920,6 @@
             background: linear-gradient(135deg, #610d00 0%, #4a0a00 100%);
             transform: translateY(-5px) rotate(15deg);
         }
-
         /* --- Responsive Design --- */
         @media (max-width: 992px) {
             .businesses-grid {
@@ -965,22 +942,15 @@
                 padding: 1rem;
                 gap: 1rem;
             }
-            .header-content {
-                flex-direction: column;
-                width: 100%;
-                gap: 1rem;
-            }
-            .logo {
-                margin-bottom: 0;
-                text-align: center;
+            .header-action-icons {
+                margin-left: 0; /* Reset for mobile stack */
             }
             .logo img {
-                margin-right: 0;
                 height: 60px;
             }
             .search-container {
                 width: 100%;
-                max-width: 400px;
+                max-width: 100%; /* Allows search bar to span full width on mobile */
             }
             .businesses-grid {
                 grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -1062,7 +1032,7 @@
                 height: 50px;
             }
             .mobile-menu {
-                width: 100%; /* Full width for very small screens */
+                width: 100%;
                 max-width: 100%;
             }
             .slide img {
@@ -1087,59 +1057,48 @@
         }
     </style>
     <header>
-        <div class="header-content">
-            <div class="logo">
-                <img src="images-logo/hive-times-logo.png" alt="hive times logo">
-                <h3></h3>
-            </div>
-            <div class="search-container">
-                <i class="fas fa-search"></i>
-                <input type="text" id="searchInput" placeholder="Search businesses...">
-            </div>
-        </div>
-        <div class="hamburger" id="hamburger">
+        <div class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
         </div>
-        <nav>
-            <ul>
-                <li><a href="about page home.html">About</a></li>
-                <li><a href="#sweet-shops">Sweet Shops</a></li>
-                <li><a href="#restaurant">Restaurants</a></li>
-                <li><a href="#catering">Catering</a></li>
-                <li class="user-menu">
-                    <button id="userBtn" class="nav-icon-btn" aria-label="User account">
-                        <i class="fas fa-user-circle"></i>
-                        <span id="userDisplay">Account</span>
-                    </button>
-                    <div class="user-profile" id="userProfile">
-                        <div class="user-info">
-                            <h4 id="userName">Welcome</h4>
-                            <p id="userEmail"></p>
-                        </div>
-                        <div class="user-actions">
-                            <button id="logoutBtn">Logout</button>
-                        </div>
+        <div class="logo">
+            <img src="images-logo/hive-times-logo.png" alt="hive times logo">
+            <h3></h3>
+        </div>
+        <div class="search-container" id="mainSearchContainer">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Search businesses...">
+        </div>
+        <div class="header-action-icons">
+            <div class="user-menu-container" style="position: relative;">
+                <button id="userBtn" class="nav-icon-btn" aria-label="User account">
+                    <i class="fas fa-user-circle"></i>
+                    <span id="userDisplay">Account</span>
+                </button>
+                <div class="user-profile" id="userProfile">
+                    <div class="user-info">
+                        <h4 id="userName">Welcome</h4>
+                        <p id="userEmail"></p>
                     </div>
-                </li>
-                <li>
-                    <button id="cartBtn" class="nav-icon-btn" aria-label="View your shopping cart">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="cart-count" id="cartCount">0</span>
-                    </button>
-                </li>
-            </ul>
-        </nav>
+                    <div class="user-actions">
+                        <button id="logoutBtn">Logout</button>
+                    </div>
+                </div>
+            </div>
+            <button id="cartBtn" class="nav-icon-btn" aria-label="View your shopping cart">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </div>
     </header>
-
-    <div class="mobile-menu" id="mobileMenu">
-        <button class="close-mobile-menu" id="closeMobileMenu">×</button>
-        <ul>
-            <li><a href="about page home.html">About</a></li>
-            <li><a href="#sweet-shops">Sweet Shops</a></li>
-            <li><a href="#restaurant">Restaurants</a></li>
-            <li><a href="#catering">Catering</a></li>
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <button class="close-mobile-menu" id="closeMobileMenu" aria-label="Close navigation menu">×</button>
+        <ul> 
+            <li><a href="about page home.html">About</a></li> 
+            <li><a href="#sweet-shops">Sweet Shops</a></li> 
+            <li><a href="#restaurant">Restaurants</a></li> 
+            <li><a href="#catering">Catering</a></li> 
         </ul>
         <div class="mobile-user-section">
             <button id="mobileUserBtn" class="nav-icon-btn" aria-label="User account">
@@ -1147,12 +1106,7 @@
                 <span id="mobileUserDisplay">Account</span>
             </button>
         </div>
-        <button id="mobileCartBtn" class="nav-icon-btn" aria-label="View your shopping cart">
-            <i class="fas fa-shopping-cart"></i>
-            <span class="cart-count" id="mobileCartCount">0</span>
-        </button>
-    </div>
-
+        </div>
     <main>
         <section class="slider-section">
             <div class="slider-container" id="sliderContainer">
@@ -1186,7 +1140,6 @@
                 </div>
             </div>
         </section>
-
         <section id="sweet-shops">
             <h2 class="section-title">Featured Sweet Shops</h2>
             <div class="businesses-grid">
@@ -1283,625 +1236,486 @@
             </div>
         </section>
     </main>
-
     <footer>
         <div class="footer-content">
             <div class="footer-logo">
                 <img src="images/logo/hive-times-logo.png" alt="Hive Times Logo">
                 <h3>Hive Times</h3>
-                <p>Your trusted partner for Trade Directory</p>
+                <p>Connecting you to the best local businesses and sweetest delights in the area.</p>
                 <ul class="social-media">
-                    <li><a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></li>
-                    <li><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
                     <li><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+                    <li><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
                 </ul>
             </div>
             <div class="footer-nav">
                 <h4>Company</h4>
                 <ul>
                     <li><a href="about page home.html"><i class="fas fa-info-circle"></i> About Us</a></li>
-                    <li><a href="#"><i class="fas fa-handshake"></i> Partnerships</a></li>
+                    <li><a href="#"><i class="fas fa-hands-helping"></i> Support</a></li>
                     <li><a href="#"><i class="fas fa-briefcase"></i> Careers</a></li>
-                    <li><a href="#"><i class="fas fa-newspaper"></i> Blog</a></li>
                     <li><a href="#"><i class="fas fa-file-contract"></i> Terms of Service</a></li>
                 </ul>
             </div>
             <div class="footer-nav">
-                <h4>Support</h4>
+                <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="#"><i class="fas fa-headset"></i> Contact Us</a></li>
-                    <li><a href="#"><i class="fas fa-question-circle"></i> FAQ</a></li>
-                    <li><a href="#"><i class="fas fa-user-shield"></i> Privacy Policy</a></li>
-                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Sitemap</a></li>
+                    <li><a href="#sweet-shops"><i class="fas fa-cookie-bite"></i> Sweet Shops</a></li>
+                    <li><a href="#restaurant"><i class="fas fa-utensils"></i> Restaurants</a></li>
+                    <li><a href="#catering"><i class="fas fa-boxes"></i> Catering</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Find Stores</a></li>
                 </ul>
             </div>
             <div class="footer-nav">
-                <h4>Categories</h4>
+                <h4>Contact</h4>
                 <ul>
-                    <li><a href="#sweet-shops"><i class="fas fa-candy-cane"></i> Sweet Shops</a></li>
-                    <li><a href="#restaurant"><i class="fas fa-utensils"></i> Restaurants</a></li>
-                    <li><a href="#catering"><i class="fas fa-cheese"></i> Catering</a></li>
-                    <li><a href="#"><i class="fas fa-store"></i> All Businesses</a></li>
+                    <li><a href="#"><i class="fas fa-phone"></i> (555) 123-9999</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i> support@hivetimes.com</a></li>
+                    <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 9am-5pm</a></li>
                 </ul>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Hive Times. All rights reserved. Made with <i class="fas fa-heart"></i> for the community.</p>
-        </div>
+        <p class="footer-bottom">© 2024 Hive Times. Crafted with <i class="fas fa-heart"></i> for the community.</p>
     </footer>
-
-    <div class="popup" id="broadwaysweetsPopup">
+    <div id="infoPopup" class="popup">
         <div class="popup-content">
-            <span class="close-button">×</span>
-            <h3>Broadway Sweets</h3>
-            <p><strong>Address:</strong> 123 Main Street, Cityville</p>
-            <p><strong>Contact:</strong> (555) 123-4567</p>
-            <p><strong>Hours:</strong> Mon-Sat: 10 AM - 9 PM, Sun: 11 AM - 7 PM</p>
-            <p>A neighborhood institution known for its fresh, high-quality samosas and jalebi.</p>
+            <span class="close-button" id="closeInfoPopup">&times;</span>
+            <h3>More Information</h3>
+            <p id="popupText"></p>
         </div>
     </div>
-    <div class="popup" id="sweetdeportPopup">
+    <div id="loginRegisterPopup" class="popup">
         <div class="popup-content">
-            <span class="close-button">×</span>
-            <h3>Sweet Depot</h3>
-            <p><strong>Address:</strong> 456 Elm Avenue, Townsville</p>
-            <p><strong>Contact:</strong> (555) 987-6543</p>
-            <p><strong>Hours:</strong> Daily: 9 AM - 10 PM</p>
-            <p>Offers bulk candy, imported chocolates, and specialty baking ingredients.</p>
-        </div>
-    </div>
-    <div class="popup" id="sweetmartPopup">
-        <div class="popup-content">
-            <span class="close-button">×</span>
-            <h3>Sweet Mart</h3>
-            <p><strong>Address:</strong> 789 Oak Lane, Villagetown</p>
-            <p><strong>Contact:</strong> (555) 555-1212</p>
-            <p><strong>Hours:</strong> Tue-Sun: 10:30 AM - 8:30 PM</p>
-            <p>Famous for custom cake orders and seasonal festive sweet boxes.</p>
-        </div>
-    </div>
-    <div class="popup" id="polaricecreampopup">
-        <div class="popup-content">
-            <span class="close-button">×</span>
-            <h3>Polar Ice Cream</h3>
-            <p><strong>Address:</strong> 321 Pine Road, Suburbia</p>
-            <p><strong>Contact:</strong> (555) 222-3333</p>
-            <p><strong>Hours:</strong> Daily: 12 PM - 11 PM</p>
-            <p>Hand-crafted ice cream with unique local flavors and vegan options.</p>
-        </div>
-    </div>
-    <div class="popup" id="sunrisesweetsPopup">
-        <div class="popup-content">
-            <span class="close-button">×</span>
-            <h3>Sunrise Sweets</h3>
-            <p><strong>Address:</strong> 101 Morning Star Blvd, City Center</p>
-            <p><strong>Contact:</strong> (555) 444-5555</p>
-            <p><strong>Hours:</strong> Mon-Fri: 7 AM - 3 PM</p>
-            <p>A focus on traditional breakfast pastries and lighter, healthier sweet options.</p>
-        </div>
-    </div>
-    <div class="popup" id="zandsweetsPopup">
-        <div class="popup-content">
-            <span class="close-button">×</span>
-            <h3>Z and S Sweets</h3>
-            <p><strong>Address:</strong> 202 Zenith Way, Industrial Park</p>
-            <p><strong>Contact:</strong> (555) 666-7777</p>
-            <p><strong>Hours:</strong> Mon-Sat: 9 AM - 6 PM</p>
-            <p>Specializing in custom corporate sweet gifts and large-scale orders.</p>
-        </div>
-    </div>
-    <div class="popup" id="desertsweetsPopup">
-        <div class="popup-content">
-            <span class="close-button">×</span>
-            <h3>Desert Sweets</h3>
-            <p><strong>Address:</strong> 303 Oasis Drive, Downtown</p>
-            <p><strong>Contact:</strong> (555) 888-9999</p>
-            <p><strong>Hours:</strong> Daily: 1 PM - 1 AM</p>
-            <p>A late-night dessert lounge offering unique, exotic flavors.</p>
-        </div>
-    </div>
-    <div class="popup" id="royalsweetsPopup">
-        <div class="popup-content">
-            <span class="close-button">×</span>
-            <h3>Royal Sweets</h3>
-            <p><strong>Address:</strong> 404 Palace View, Prestige Heights</p>
-            <p><strong>Contact:</strong> (555) 000-1111</p>
-            <p><strong>Hours:</strong> Tue-Sun: 11 AM - 9 PM</p>
-            <p>The finest luxury chocolates and French patisserie.</p>
-        </div>
-    </div>
-    <div class="popup" id="goldensweetsPopup">
-        <div class="popup-content">
-            <span class="close-button">×</span>
-            <h3>Golden Sweets</h3>
-            <p><strong>Address:</strong> 505 Gold Rush Road, Mall</p>
-            <p><strong>Contact:</strong> (555) 333-2222</p>
-            <p><strong>Hours:</strong> Daily: 10 AM - 9 PM</p>
-            <p>Modern sweets with a classic, high-end feel.</p>
-        </div>
-    </div>
-
-    <div class="popup" id="authPopup">
-        <div class="popup-content">
-            <span class="close-button">×</span>
-            <div id="loginForm" style="display: block;">
-                <h3>Login</h3>
+            <span class="close-button" id="closeLoginRegisterPopup">&times;</span>
+            <div id="loginForm">
+                <h3>Login to your Account</h3>
                 <form>
                     <div class="form-group">
                         <label for="loginEmail">Email</label>
-                        <input type="email" id="loginEmail" required>
+                        <input type="email" id="loginEmail" placeholder="Enter your email" required>
                     </div>
                     <div class="form-group">
                         <label for="loginPassword">Password</label>
-                        <input type="password" id="loginPassword" required>
+                        <input type="password" id="loginPassword" placeholder="Enter your password" required>
                     </div>
                     <button type="submit" class="form-submit-btn">Login</button>
                 </form>
-                <p class="toggle-form">Don't have an account? <a href="#" onclick="toggleAuthForm(event, 'register')">Register here</a></p>
+                <p class="toggle-form">Don't have an account? <a href="#" id="showRegister">Register here</a></p>
             </div>
-            <div id="registerForm" style="display: none;">
-                <h3>Register</h3>
+            <div id="registerForm" style="display:none;">
+                <h3>Create an Account</h3>
                 <form>
                     <div class="form-group">
                         <label for="registerName">Name</label>
-                        <input type="text" id="registerName" required>
+                        <input type="text" id="registerName" placeholder="Enter your name" required>
                     </div>
                     <div class="form-group">
                         <label for="registerEmail">Email</label>
-                        <input type="email" id="registerEmail" required>
+                        <input type="email" id="registerEmail" placeholder="Enter your email" required>
                     </div>
                     <div class="form-group">
                         <label for="registerPassword">Password</label>
-                        <input type="password" id="registerPassword" required>
+                        <input type="password" id="registerPassword" placeholder="Create a password" required>
                     </div>
                     <button type="submit" class="form-submit-btn">Register</button>
                 </form>
-                <p class="toggle-form">Already have an account? <a href="#" onclick="toggleAuthForm(event, 'login')">Login here</a></p>
+                <p class="toggle-form">Already have an account? <a href="#" id="showLogin">Login here</a></p>
             </div>
         </div>
     </div>
-
-    <div class="popup" id="cartModal">
-        <div id="cartModalContent">
-            <span class="close-button" id="closeCartModal">×</span>
-            <h3 id="cartTitle">Your Shopping Cart</h3>
+    <div id="cartModal" class="popup" role="dialog" aria-labelledby="cartModalTitle">
+        <div class="popup-content" id="cartModalContent" role="document">
+            <h3 id="cartModalTitle">Your Shopping Cart</h3> <!-- Added ID for ARIA -->
+            <span class="close-button" id="closeCartModal" aria-label="Close shopping cart">&times;</span>
             <div id="cart-header">
                 <img id="cartBusinessLogo" src="" alt="Business Logo" style="display:none;">
                 <h4 id="cartBusinessName"></h4>
             </div>
-            <div id="cart-items">
-                <p id="emptyCartMessage">Your cart is empty.</p>
+            <div id="cart-items-container">
+                <p style="text-align:center; color:#777;" id="empty-cart-message">Your cart is empty.</p>
             </div>
-            <div class="cart-total" id="cartTotalDisplay" style="display:none;">
-                Total: $0.00
-            </div>
-            <button class="checkout-btn" id="checkoutBtn" style="display:none;">Proceed to Checkout</button>
+            <div class="cart-total" id="cartTotalDisplay">Total: $0.00</div>
+            <button class="checkout-btn" id="checkoutBtn" disabled>Proceed to Checkout</button>
         </div>
     </div>
-
     <div class="contact-popup" id="contactPopup" style="display: none;">
-        <h3>Need Assistance?</h3>
-        <button id="contactCall" aria-label="Call us">
-            <i class="fas fa-phone-alt"></i> Call Us
-        </button>
-        <button id="contactEmail" aria-label="Email us">
-            <i class="fas fa-envelope"></i> Email Us
-        </button>
-        <button id="contactClose" class="close-btn" aria-label="Close contact popup">
-            <i class="fas fa-times"></i> Close
-        </button>
+        <h3>Need Help? Contact Us</h3>
+        <button class="close-btn" id="contactClose">Close</button>
+        <button id="contactCall"><i class="fas fa-phone-alt"></i> Call Us</button>
+        <button id="contactEmail"><i class="fas fa-envelope"></i> Email Us</button>
     </div>
-
     <div class="overlay" id="overlay"></div>
-
-    <button class="back-to-top" id="backToTopBtn" aria-label="Scroll back to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-    <button class="back-to-top" id="contactUsBtn" aria-label="Contact us" style="bottom: 110px; right: 40px; background: linear-gradient(135deg, rgb(39, 174, 96) 0%, rgb(33, 150, 83) 100%);">
-        <i class="fas fa-comments"></i>
-    </button>
-
     <script>
-        // --- Slider Logic ---
+        // Data for popups
+        const businessInfo = {
+            "broadwaysweetsPopup": {
+                title: "Broadway Sweets",
+                text: "Broadway Sweets offers a delightful selection of traditional Indian confections and mouth-watering savory snacks. Their commitment to quality and authentic recipes has made them a local favorite for generations."
+            },
+            "sweetdeportPopup": {
+                title: "Sweet Depot",
+                text: "Sweet Depot is your international candy and dessert headquarters. They stock a massive variety of hard-to-find international treats alongside classic local favorites. Perfect for stocking up for parties or a quick sugar fix."
+            },
+            "sweetmartPopup": {
+                title: "Sweet Mart",
+                text: "Sweet Mart is a classic institution, known for its extensive range of festive delights, traditional sweets, and ready-to-eat savory items. A perfect stop for all your holiday and everyday snack needs."
+            },
+            "polaricecreampopup": {
+                title: "Polar Ice Cream",
+                text: "Polar Ice Cream specializes in homemade, artisanal ice creams and frozen desserts. From classic flavors to unique seasonal concoctions, they use only the freshest ingredients for a truly chilling treat."
+            },
+            "sunrisesweetsPopup": {
+                title: "Sunrise Sweets",
+                text: "Sunrise Sweets specializes in morning confections and traditional breakfast pastries. Their menu features warm, freshly baked goods perfect for starting your day on a sweet note."
+            },
+            "zandsweetsPopup": {
+                title: "Z and S Sweets",
+                text: "Z and S Sweets prides itself on crafting specialty sweets with generations of expertise. They focus on sophisticated, traditional methods to create desserts that are both elegant and delicious."
+            },
+            "desertsweetsPopup": {
+                title: "Desert Sweets",
+                text: "Desert Sweets offers a unique culinary journey with confections inspired by rich Middle Eastern and Mediterranean flavors. Expect exotic spices, honey, and nuts in their traditional recipes."
+            },
+            "royalsweetsPopup": {
+                title: "Royal Sweets",
+                text: "Royal Sweets defines luxury in confectionery. Using only premium, high-end ingredients, their desserts are crafted for special occasions and boast exquisite presentation and flavor complexity."
+            },
+            "goldensweetsPopup": {
+                title: "Golden Sweets",
+                text: "Golden Sweets' signature line features exclusive desserts that often incorporate edible gold and the finest ingredients available. A truly decadent experience for the most discerning sweet tooth."
+            }
+        };
+        // DOM Elements
+        const popup = document.getElementById('infoPopup');
+        const closeInfoPopup = document.getElementById('closeInfoPopup');
+        const popupTitle = document.querySelector('#infoPopup h3');
+        const popupText = document.getElementById('popupText');
+        const openPopupButtons = document.querySelectorAll('.open-popup');
+        // Function to open the info popup
+        function openInfoPopup(target) {
+            const data = businessInfo[target];
+            if (data) {
+                popupTitle.textContent = data.title;
+                popupText.textContent = data.text;
+                popup.style.display = 'flex';
+                updateOverlay(true); // Show overlay when popup opens
+            }
+        }
+        // Event listener for all "Learn More" buttons
+        openPopupButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                event.preventDefault();
+                const target = button.getAttribute('data-popup-target');
+                openInfoPopup(target);
+            });
+        });
+        // Event listener to close the info popup
+        closeInfoPopup.addEventListener('click', () => {
+            popup.style.display = 'none';
+            updateOverlay(false); // Hide overlay when popup closes
+        });
+        // Click outside popup to close it (for info and cart modals)
+        window.addEventListener('click', (event) => {
+            if (event.target === popup) {
+                popup.style.display = 'none';
+                updateOverlay(false);
+            }
+            if (event.target === document.getElementById('cartModal')) {
+                document.getElementById('cartModal').style.display = 'none';
+                updateOverlay(false);
+            }
+        });
+        // SLIDER FUNCTIONALITY
         const slider = document.getElementById('slider');
-        const slides = document.querySelectorAll('.slide');
         const indicators = document.querySelectorAll('.indicator');
-        const slideCount = slides.length;
-        let currentIndex = slideCount - 1; // Start at the last slide (Slide 4)
-        const slideWidth = 100;
-
-        function updateSliderPosition() {
-            slider.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+        const totalSlides = 4;
+        let currentSlide = 3; // Start at the 4th slide as per the initial style
+        function updateSlider() {
+            const offset = -currentSlide * 100;
+            slider.style.transform = `translateX(${offset}%)`;
             indicators.forEach((indicator, index) => {
-                indicator.classList.toggle('active', index === currentIndex);
-                indicator.setAttribute('aria-selected', index === currentIndex);
+                indicator.classList.toggle('active', index === currentSlide);
+                indicator.setAttribute('aria-selected', index === currentSlide);
             });
         }
-
         function changeSlide(index) {
-            currentIndex = index;
-            updateSliderPosition();
+            currentSlide = index;
+            updateSlider();
         }
-
+        // Auto-slide functionality
         function nextSlide() {
-            currentIndex = (currentIndex + 1) % slideCount;
-            updateSliderPosition();
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
         }
-
-        let slideInterval = setInterval(nextSlide, 5000);
-
-        // Initial setup
-        updateSliderPosition();
-
-        // Pause on hover
+        let slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+        // Stop auto-slide on hover
         const sliderContainer = document.getElementById('sliderContainer');
         sliderContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
         sliderContainer.addEventListener('mouseleave', () => {
             slideInterval = setInterval(nextSlide, 5000);
         });
+        // Initial update for the slider 
+        updateSlider();
+        // --- OVERLAY MANAGEMENT SYSTEM ---
+        let activeOverlays = 0; // Counter for active overlays
 
-        // --- Popups Logic ---
-        const popups = document.querySelectorAll('.popup');
-        const openPopupButtons = document.querySelectorAll('.open-popup');
-        const closeButtons = document.querySelectorAll('.close-button');
-        const overlay = document.getElementById('overlay');
-
-        function showPopup(id) {
-            const popup = document.getElementById(id);
-            if (popup) {
-                popup.style.display = 'flex';
-                overlay.classList.add('active'); // Use overlay for popups as well
-                document.body.style.overflow = 'hidden';
+        function updateOverlay(show) {
+            if (show) {
+                activeOverlays++;
+            } else {
+                activeOverlays = Math.max(0, activeOverlays - 1); // Prevent negative count
             }
-        }
-
-        function hidePopup(popup) {
-            popup.style.display = 'none';
-            // Only hide the overlay if no other popups or the mobile menu are active
-            if (!document.querySelector('.mobile-menu.active') && !document.querySelector('.popup[style*="display: flex"]')) {
+            const overlay = document.getElementById('overlay');
+            if (activeOverlays > 0) {
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Lock scroll if any overlay is active
+            } else {
                 overlay.classList.remove('active');
-                document.body.style.overflow = '';
+                document.body.style.overflow = ''; // Restore scroll if no overlays are active
             }
         }
-
-        openPopupButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const targetId = button.getAttribute('data-popup-target');
-                showPopup(targetId);
-            });
-        });
-
-        closeButtons.forEach(button => {
-            button.addEventListener('click', (event) => {
-                const popup = event.target.closest('.popup');
-                if (popup) {
-                    hidePopup(popup);
-                }
-            });
-        });
-
-        overlay.addEventListener('click', () => {
-            // Check if cart modal is open (it also uses the .popup style)
-            const cartModal = document.getElementById('cartModal');
-            if (cartModal.style.display === 'flex') {
-                hideCartModal();
-            }
-            
-            // Close other popups (Login/Register, etc.)
-            popups.forEach(popup => {
-                if (popup.style.display === 'flex') {
-                    hidePopup(popup);
-                }
-            });
-
-            // Close the sidebar menu
-            if (mobileMenu.classList.contains('active')) {
-                hideMobileMenu();
-            }
-        });
-
-        // --- Auth Popup Logic ---
-        const userBtn = document.getElementById('userBtn');
-        const userProfile = document.getElementById('userProfile');
-        const logoutBtn = document.getElementById('logoutBtn');
-        let isAuthenticated = false; // Simulate auth state
-
-        userBtn.addEventListener('click', () => {
-            if (isAuthenticated) {
-                // Toggle user profile dropdown
-                userProfile.classList.toggle('active');
-            } else {
-                // Show login/register popup
-                showPopup('authPopup');
-                userProfile.classList.remove('active'); // Ensure dropdown is closed
-            }
-        });
-
-        logoutBtn.addEventListener('click', () => {
-            isAuthenticated = false;
-            document.getElementById('userDisplay').textContent = 'Account';
-            document.getElementById('mobileUserDisplay').textContent = 'Account';
-            userProfile.classList.remove('active');
-            alert('You have been logged out.');
-        });
-
-        // Handle clicks outside the user profile
-        document.addEventListener('click', (e) => {
-            if (!userBtn.contains(e.target) && !userProfile.contains(e.target)) {
-                userProfile.classList.remove('active');
-            }
-        });
-
-        // Placeholder for successful login/register
-        document.getElementById('loginForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            isAuthenticated = true;
-            document.getElementById('userName').textContent = 'Hello, User!';
-            document.getElementById('userEmail').textContent = document.getElementById('loginEmail').value;
-            document.getElementById('userDisplay').textContent = 'User';
-            document.getElementById('mobileUserDisplay').textContent = 'User';
-            hidePopup(document.getElementById('authPopup'));
-            alert('Login successful!');
-        });
-        document.getElementById('registerForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            isAuthenticated = true;
-            document.getElementById('userName').textContent = 'Hello, ' + document.getElementById('registerName').value + '!';
-            document.getElementById('userEmail').textContent = document.getElementById('registerEmail').value;
-            document.getElementById('userDisplay').textContent = 'User';
-            document.getElementById('mobileUserDisplay').textContent = 'User';
-            hidePopup(document.getElementById('authPopup'));
-            alert('Registration successful and logged in!');
-        });
-
-        function toggleAuthForm(event, formType) {
-            event.preventDefault();
-            const loginForm = document.getElementById('loginForm');
-            const registerForm = document.getElementById('registerForm');
-            if (formType === 'register') {
-                loginForm.style.display = 'none';
-                registerForm.style.display = 'block';
-            } else {
-                loginForm.style.display = 'block';
-                registerForm.style.display = 'none';
-            }
-        }
-
-        // --- Shopping Cart Logic (Simplified Placeholder) ---
-        let cart = JSON.parse(localStorage.getItem('hiveTimesCart')) || [];
-
-        function saveCart() {
-            localStorage.setItem('hiveTimesCart', JSON.stringify(cart));
-            updateCartDisplay();
-        }
-
-        function updateCartDisplay() {
-            const cartCountElement = document.getElementById('cartCount');
-            const mobileCartCountElement = document.getElementById('mobileCartCount');
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-
-            cartCountElement.textContent = totalItems;
-            mobileCartCountElement.textContent = totalItems;
-
-            // Display '0' only when empty. Hide if 0 and on desktop to clean up nav bar.
-            if (totalItems > 0) {
-                cartCountElement.style.display = 'flex';
-                mobileCartCountElement.style.display = 'flex';
-            } else {
-                cartCountElement.style.display = 'none';
-                mobileCartCountElement.style.display = 'none';
-            }
-        }
-
-        // Dummy product data (for cart only, real content is in the page)
-        const products = {
-            'broadwaysweets': { name: 'Broadway Sweets Item', price: 5.99, logo: 'images-logo/broadway-sweets-logo.jpg' },
-            'sweetdeport': { name: 'Sweet Depot Treat', price: 3.50, logo: 'images-logo/sweet-deport-logo.jpg' },
-            'sweetmart': { name: 'Sweet Mart Special', price: 7.25, logo: 'images-logo/sweet-mart-logo.jpg' },
-            'polaricecream': { name: 'Polar Ice Cream Scoop', price: 4.00, logo: 'images-logo/polar-ice-cream-logo.png' }
-        };
-
-        function renderCartItems() {
-            const cartItemsContainer = document.getElementById('cart-items');
-            const cartTotalDisplay = document.getElementById('cartTotalDisplay');
-            const checkoutBtn = document.getElementById('checkoutBtn');
-            const emptyCartMessage = document.getElementById('emptyCartMessage');
-            const cartBusinessLogo = document.getElementById('cartBusinessLogo');
-            const cartBusinessName = document.getElementById('cartBusinessName');
-
-            cartItemsContainer.innerHTML = '';
-            let total = 0;
-
-            if (cart.length === 0) {
-                emptyCartMessage.style.display = 'block';
-                cartTotalDisplay.style.display = 'none';
-                checkoutBtn.style.display = 'none';
-                cartBusinessLogo.style.display = 'none';
-                cartBusinessName.textContent = '';
-                return;
-            }
-
-            emptyCartMessage.style.display = 'none';
-            cartTotalDisplay.style.display = 'block';
-            checkoutBtn.style.display = 'block';
-
-            // Assume all items are from the first business for this simplified example
-            const businessKey = cart[0].id.replace('Popup', ''); // Crude way to get business key
-            const businessInfo = products[businessKey];
-            if (businessInfo) {
-                cartBusinessLogo.src = businessInfo.logo;
-                cartBusinessLogo.style.display = 'block';
-                cartBusinessName.textContent = businessInfo.name.replace(' Item', '').replace(' Treat', '').replace(' Special', '').replace(' Scoop', '');
-            }
-
-
-            cart.forEach((item, index) => {
-                const product = products[item.id.replace('Popup', '')];
-                const itemTotal = item.quantity * product.price;
-                total += itemTotal;
-
-                const itemDiv = document.createElement('div');
-                itemDiv.className = 'cart-item';
-                itemDiv.innerHTML = `
-                    <img src="${product.logo}" alt="${product.name}">
-                    <div class="cart-item-details">
-                        <div class="cart-item-name">${product.name}</div>
-                        <div class="cart-item-price">$${product.price.toFixed(2)}</div>
-                        <div class="cart-item-quantity">
-                            <button class="quantity-btn decrease-btn" data-index="${index}">-</button>
-                            <span class="quantity-display">${item.quantity}</span>
-                            <button class="quantity-btn increase-btn" data-index="${index}">+</button>
-                        </div>
-                    </div>
-                    <button class="remove-item-btn" data-index="${index}">Remove</button>
-                `;
-                cartItemsContainer.appendChild(itemDiv);
-            });
-
-            cartTotalDisplay.textContent = `Total: $${total.toFixed(2)}`;
-
-            // Attach event listeners for quantity/remove buttons
-            cartItemsContainer.querySelectorAll('.decrease-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const index = parseInt(e.target.getAttribute('data-index'));
-                    updateCartItemQuantity(index, -1);
-                });
-            });
-            cartItemsContainer.querySelectorAll('.increase-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const index = parseInt(e.target.getAttribute('data-index'));
-                    updateCartItemQuantity(index, 1);
-                });
-            });
-            cartItemsContainer.querySelectorAll('.remove-item-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const index = parseInt(e.target.getAttribute('data-index'));
-                    removeCartItem(index);
-                });
-            });
-        }
-
-        function updateCartItemQuantity(index, change) {
-            cart[index].quantity += change;
-            if (cart[index].quantity <= 0) {
-                removeCartItem(index);
-            } else {
-                saveCart();
-                renderCartItems();
-            }
-        }
-
-        function removeCartItem(index) {
-            cart.splice(index, 1);
-            saveCart();
-            renderCartItems();
-        }
-
-        // Add to cart placeholder function (called from your "Learn More" buttons)
-        document.querySelectorAll('.block button').forEach(button => {
-            // Note: This is a placeholder. In a real application, you'd have dedicated "Add to Cart" buttons.
-            // Here, we hijack the "Learn More" functionality for demonstration on click.
-            button.addEventListener('click', (e) => {
-                e.preventDefault(); // Prevent default popup for a moment
-
-                const targetId = button.getAttribute('data-popup-target');
-
-                // Simulate adding a unique item
-                let existingItem = cart.find(item => item.id === targetId);
-
-                if (existingItem) {
-                    existingItem.quantity += 1;
-                } else {
-                    cart.push({ id: targetId, quantity: 1 });
-                }
-
-                saveCart();
-                // Instead of showing the cart, we now proceed to show the popup (original functionality)
-                setTimeout(() => showPopup(targetId), 50); // Re-show the original popup after brief delay
-            });
-        });
-
-        // Cart Modal functions
-        const cartModal = document.getElementById('cartModal');
-        const cartBtn = document.getElementById('cartBtn');
-        const mobileCartBtn = document.getElementById('mobileCartBtn');
-        const closeCartModal = document.getElementById('closeCartModal');
-        const checkoutBtn = document.getElementById('checkoutBtn');
-
-        function showCartModal() {
-            renderCartItems();
-            cartModal.style.display = 'flex';
-            overlay.classList.add('active'); // Use overlay for popups as well
-            document.body.style.overflow = 'hidden';
-        }
-
-        function hideCartModal() {
-            cartModal.style.display = 'none';
-            // Only hide the overlay if no other popups or the mobile menu are active
-            if (!document.querySelector('.mobile-menu.active') && !document.querySelector('.popup[style*="display: flex"]')) {
-                overlay.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        }
-
-        cartBtn.addEventListener('click', showCartModal);
-        mobileCartBtn.addEventListener('click', showCartModal);
-        closeCartModal.addEventListener('click', hideCartModal);
-
-        checkoutBtn.addEventListener('click', () => {
-            alert(`Checking out ${cart.length} unique items. Total amount to pay: ${document.getElementById('cartTotalDisplay').textContent}. Thank you for ordering from us! Your order will be processed shortly.`);
-            cart = [];
-            saveCart();
-            hideCartModal();
-        });
-
-        // --- Hamburger Menu Toggle (Sidebar Logic) ---
+        // MOBILE MENU (HAMBURGER) FUNCTIONALITY - IMPROVED
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
         const closeMobileMenu = document.getElementById('closeMobileMenu');
-
-        function showMobileMenu() {
+        // Function to update aria attributes based on menu state
+        function updateAriaExpanded(isExpanded) {
+            hamburger.setAttribute('aria-expanded', isExpanded);
+            mobileMenu.setAttribute('aria-hidden', !isExpanded);
+        }
+        // Function to open the mobile menu
+        function openMenu() {
             mobileMenu.classList.add('active');
             hamburger.classList.add('active');
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            updateOverlay(true); // Show overlay when menu opens
+            updateAriaExpanded(true); // Update ARIA attributes
         }
-
-        function hideMobileMenu() {
+        // Function to close the mobile menu
+        function closeMenu() {
             mobileMenu.classList.remove('active');
             hamburger.classList.remove('active');
-            // Only hide the overlay and restore scroll if no other popups are active
-            if (!document.querySelector('.popup[style*="display: flex"]')) {
-                overlay.classList.remove('active');
-                document.body.style.overflow = '';
+            updateOverlay(false); // Hide overlay when menu closes
+            updateAriaExpanded(false); // Update ARIA attributes
+        }
+        // Event listeners for opening and closing the menu
+        hamburger.addEventListener('click', openMenu);
+        closeMobileMenu.addEventListener('click', closeMenu);
+        // Clicking the overlay closes the mobile menu
+        document.getElementById('overlay').addEventListener('click', closeMenu);
+        // Clicking inside the menu content should NOT close it
+        mobileMenu.addEventListener('click', function(event) {
+            event.stopPropagation(); // Prevents click inside menu from bubbling up to overlay
+        });
+        // LOGIN/REGISTER POPUP FUNCTIONALITY - IMPROVED
+        const loginRegisterPopup = document.getElementById('loginRegisterPopup');
+        const closeLoginRegisterPopup = document.getElementById('closeLoginRegisterPopup');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const showRegister = document.getElementById('showRegister');
+        const showLogin = document.getElementById('showLogin');
+        const userBtn = document.getElementById('userBtn');
+        const mobileUserBtn = document.getElementById('mobileUserBtn');
+        const userProfile = document.getElementById('userProfile');
+        const logoutBtn = document.getElementById('logoutBtn');
+        let isAuthenticated = false;
+        function toggleLoginRegisterPopup() {
+            const isPopupVisible = loginRegisterPopup.style.display === 'flex';
+            loginRegisterPopup.style.display = isPopupVisible ? 'none' : 'flex';
+            updateOverlay(!isPopupVisible); // Update overlay based on new state
+        }
+        function toggleUserProfile(event) {
+            event.stopPropagation();
+            if (isAuthenticated) {
+                userProfile.classList.toggle('active');
+            } else {
+                toggleLoginRegisterPopup();
             }
         }
-
-        hamburger.addEventListener('click', () => {
-            if (mobileMenu.classList.contains('active')) {
-                hideMobileMenu();
+        function logoutUser() {
+            isAuthenticated = false;
+            userProfile.classList.remove('active');
+            document.getElementById('userDisplay').textContent = 'Account';
+            document.getElementById('mobileUserDisplay').textContent = 'Account';
+        }
+        // Desktop User Button
+        userBtn.addEventListener('click', toggleUserProfile);
+        // FIX: Ensure the mobile menu closes when the mobile user button is clicked
+        mobileUserBtn.addEventListener('click', () => {
+             // Function to ensure mobile menu is closed
+            const closeMobileMenuIfOpen = () => {
+                if (mobileMenu.classList.contains('active')) {
+                    closeMenu(); // Use the dedicated close function
+                }
+            };
+            if (isAuthenticated) {
+                // If logged in, log out AND close the mobile menu
+                closeMobileMenuIfOpen();
+                logoutUser();
             } else {
-                showMobileMenu();
+                // If not logged in, close mobile menu and open the login popup
+                closeMobileMenuIfOpen();
+                toggleLoginRegisterPopup();
             }
         });
-
-        closeMobileMenu.addEventListener('click', hideMobileMenu);
-
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.mobile-menu a').forEach(link => {
-            link.addEventListener('click', hideMobileMenu);
+        // Close Popup Button
+        closeLoginRegisterPopup.addEventListener('click', toggleLoginRegisterPopup);
+        // Close dropdown on click outside
+        window.addEventListener('click', (event) => {
+            if (!userBtn.contains(event.target) && !userProfile.contains(event.target)) {
+                userProfile.classList.remove('active');
+            }
         });
-
-        // --- Scroll and Contact Button Logic ---
-        const backToTopBtn = document.getElementById('backToTopBtn');
-        const contactUsBtn = document.getElementById('contactUsBtn');
+        // Toggle between forms
+        showRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginForm.style.display = 'none';
+            registerForm.style.display = 'block';
+        });
+        showLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            registerForm.style.display = 'none';
+            loginForm.style.display = 'block';
+        });
+        // Simple form submission for demonstration
+        document.querySelector('#loginForm form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            isAuthenticated = true;
+            document.getElementById('userDisplay').textContent = 'My Profile';
+            document.getElementById('mobileUserDisplay').textContent = 'My Profile';
+            document.getElementById('userName').textContent = 'Hello, User!';
+            document.getElementById('userEmail').textContent = e.target.elements.loginEmail.value || 'user@example.com';
+            toggleLoginRegisterPopup();
+        });
+        document.querySelector('#registerForm form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Registration successful! Please log in.');
+            // Switch back to login form
+            registerForm.style.display = 'none';
+            loginForm.style.display = 'block';
+        });
+        logoutBtn.addEventListener('click', logoutUser);
+        // CART FUNCTIONALITY (Simple Mock) - IMPROVED
+        const cartBtn = document.getElementById('cartBtn');
+        // const mobileCartBtn = document.getElementById('mobileCartBtn'); // Removed from JS
+        const cartModal = document.getElementById('cartModal');
+        const closeCartModal = document.getElementById('closeCartModal');
+        const cartCountDisplay = document.querySelectorAll('.cart-count');
+        const cartItemsContainer = document.getElementById('cart-items-container');
+        const cartTotalDisplay = document.getElementById('cartTotalDisplay');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const emptyCartMessage = document.getElementById('empty-cart-message');
+        let cart = []; // Mock cart array
+        function updateCartDisplay() {
+            let total = 0;
+            let count = 0;
+            cartItemsContainer.innerHTML = '';
+            if (cart.length === 0) {
+                emptyCartMessage.style.display = 'block';
+                checkoutBtn.disabled = true;
+                cartTotalDisplay.textContent = 'Total: $0.00';
+            } else {
+                emptyCartMessage.style.display = 'none';
+                checkoutBtn.disabled = false;
+                cart.forEach((item, index) => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    count += item.quantity;
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'cart-item';
+                    itemDiv.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="cart-item-details">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                            <div class="cart-item-quantity">
+                                <button class="quantity-btn decrease-qty" data-index="${index}">-</button>
+                                <span class="quantity-display">${item.quantity}</span>
+                                <button class="quantity-btn increase-qty" data-index="${index}">+</button>
+                            </div>
+                        </div>
+                        <button class="remove-item-btn" data-index="${index}">Remove</button>
+                    `;
+                    cartItemsContainer.appendChild(itemDiv);
+                });
+                cartTotalDisplay.textContent = `Total: $${total.toFixed(2)}`;
+            }
+            // Update all cart count badges
+            cartCountDisplay.forEach(span => {
+                span.textContent = count;
+                span.style.display = count > 0 ? 'flex' : 'none';
+            });
+        }
+        // Mock function to add an item for testing purposes
+        function addItemToCart(name, price, image) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, image, quantity: 1 });
+            }
+            updateCartDisplay();
+        }
+        // Initial mock item for testing the layout
+        // addItemToCart('Jalebi Box', 12.99, 'https://placehold.co/90x90/ffcc00/e74c3c?text=Jalebi');
+        cartItemsContainer.addEventListener('click', (e) => {
+            const index = e.target.getAttribute('data-index');
+            if (index === null) return;
+            if (e.target.classList.contains('increase-qty')) {
+                cart[index].quantity += 1;
+            } else if (e.target.classList.contains('decrease-qty')) {
+                cart[index].quantity -= 1;
+                if (cart[index].quantity === 0) {
+                    cart.splice(index, 1);
+                }
+            } else if (e.target.classList.contains('remove-item-btn')) {
+                cart.splice(index, 1);
+            }
+            updateCartDisplay();
+        });
+        cartBtn.addEventListener('click', () => {
+            cartModal.style.display = 'flex';
+            updateOverlay(true); // Show overlay when cart opens
+        });
+        // Removed mobileCartBtn event listener
+        /*
+        mobileCartBtn.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('active')) {
+                toggleMenu();
+            }
+            cartModal.style.display = 'flex';
+            document.getElementById('overlay').classList.add('active');
+        });
+        */
+        // IMPROVED: Close Cart Modal Button - Now explicitly calls updateOverlay
+        closeCartModal.addEventListener('click', () => {
+            cartModal.style.display = 'none';
+            updateOverlay(false); // Hide overlay when cart closes - CONSISTENCY FIX
+        });
+        checkoutBtn.addEventListener('click', () => {
+            alert('Proceeding to checkout with ' + cart.length + ' items.');
+            cart = [];
+            updateCartDisplay();
+            cartModal.style.display = 'none';
+            updateOverlay(false); // Hide overlay after checkout - CONSISTENCY FIX
+        });
+        // BACK TO TOP BUTTON (Now also Contact Us button)
+        const backToTopBtn = document.querySelector('.back-to-top');
+        const contactUsBtn = document.createElement('button');
+        contactUsBtn.className = 'back-to-top';
+        contactUsBtn.id = 'contactUsBtn';
+        contactUsBtn.innerHTML = '<i class="fas fa-headset"></i>';
+        contactUsBtn.setAttribute('aria-label', 'Contact Us');
+        document.body.appendChild(contactUsBtn);
+        contactUsBtn.style.cssText = backToTopBtn.style.cssText;
+        contactUsBtn.style.bottom = '110px';
+        backToTopBtn.innerHTML = '<i class="fas fa-chevron-up"></i>';
+        backToTopBtn.setAttribute('aria-label', 'Back to top');
         const contactPopup = document.getElementById('contactPopup');
         const contactClose = document.getElementById('contactClose');
-
-        window.onscroll = function() { scrollFunction() };
-
+        const contactCall = document.getElementById('contactCall');
+        const contactEmail = document.getElementById('contactEmail');
+        window.onscroll = function() {scrollFunction()};
         function scrollFunction() {
             if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
                 backToTopBtn.style.display = "flex";
@@ -1911,30 +1725,25 @@
                 contactUsBtn.style.display = "none";
             }
         }
-
         backToTopBtn.addEventListener('click', () => {
             document.body.scrollTop = 0; // For Safari
             document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
         });
-
         contactUsBtn.addEventListener('click', () => {
             contactPopup.style.display = (contactPopup.style.display === 'none' || contactPopup.style.display === '') ? 'flex' : 'none';
         });
-
         contactClose.addEventListener('click', () => {
             contactPopup.style.display = 'none';
         });
-
         contactCall.addEventListener('click', () => {
             alert('Calling Customer Service at (555) 123-9999');
             contactPopup.style.display = 'none';
         });
-
         contactEmail.addEventListener('click', () => {
             alert('Opening email client to support@hivetimes.com');
             contactPopup.style.display = 'none';
         });
-
         // Initial update
         updateCartDisplay();
-    </script><button class="back-to-top" aria-label="Contact us" style="bottom: 110px; right: 40px; background: linear-gradient(135deg, rgb(39, 174, 96) 0%, rgb(33, 150, 83) 100%);"><i class="fas fa-comments"></i></button></body></html>
+    </script><button class="back-to-top" aria-label="Back to top" style="bottom: 40px; right: 40px; display: none;"><i class="fas fa-chevron-up"></i></button><button class="back-to-top" id="contactUsBtn" aria-label="Contact Us" style="bottom: 110px; right: 40px; display: none;"><i class="fas fa-headset"></i></button>
+    </body></html>
