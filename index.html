@@ -427,7 +427,8 @@
         }
         .businesses-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            /* Reverted to original responsive grid for desktop first */
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
             gap: 2.5rem;
             padding: 2rem 0;
         }
@@ -477,23 +478,19 @@
             color: var(--secondary-color);
             font-weight: 700;
         }
-       .block p {
-    font-size: 1.05rem;
-    color: #555;
-    /* min-height: 60px; REMOVED and replaced with multi-line ellipsis */
-    margin-bottom: 1.5rem;
-    line-height: 1.7;
-    
-    /* FIX: Webkit Multi-line Text Truncation */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display:
-    webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
-}
+        .block p {
+            font-size: 1.05rem;
+            color: #555;
+            /* FIX: Restored the webkit multi-line clamp for truncation */
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
 
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
         .block button {
             background: linear-gradient(135deg, var(--primary-color) 0%, #c0392b 100%);
             color: #fff;
@@ -849,10 +846,6 @@
             .businesses-grid {
                 grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             }
-            /* REMOVE fixed height for slider (it's now responsive) 
-            .slide img {
-                height: 400px;
-            }*/
             header {
                 padding: 0.8rem 20px; /* Adjust header padding for smaller screens */
             }
@@ -906,13 +899,17 @@
         }
 
         @media (max-width: 768px) {
-            header {
-                padding: 1rem 15px; /* More padding for mobile header */
-                gap: 15px;
-            }
+            /* MOBILE/TABLET STYLES (768px and below) */
+
+            /* ADDED: Set to 2 columns for most mobile/tablet views */
             .businesses-grid {
                 grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
                 gap: 1.5rem;
+            }
+
+            header {
+                padding: 1rem 15px; /* More padding for mobile header */
+                gap: 15px;
             }
             .slider-section {
                 padding: 2.5rem 0;
@@ -924,10 +921,6 @@
             .slide {
                 padding-bottom: 50%; /* 1 / 2 * 100% */
             }
-            /* REMOVE fixed height for slider (it's now responsive) 
-            .slide img {
-                height: 350px;
-            }*/
             .slide-content {
                 padding: 1.8rem;
                 max-width: 90%;
@@ -1024,7 +1017,9 @@
                 display: none; 
             }
         }
+
         @media (max-width: 576px) {
+            /* SMALLER PHONES (e.g., iPhone SE size) - Reverts to 1 column */
             .businesses-grid {
                 grid-template-columns: 1fr;
             }
@@ -1042,10 +1037,6 @@
             .slide {
                 padding-bottom: 33.33%; /* 1 / 3 * 100% */
             }
-            /* REMOVE fixed height for slider (it's now responsive) 
-            .slide img {
-                height: 280px;
-            }*/
         }
         @media (max-width: 480px) {
             header {
@@ -1057,10 +1048,6 @@
             .logo h3 {
                 font-size: 1.3rem;
             }
-            /* REMOVE fixed height for slider (it's now responsive) 
-            .slide img {
-                height: 220px;
-            }*/
             .slide-content h2 {
                 font-size: 1.6rem;
             }
@@ -1075,7 +1062,6 @@
             }
             .block p {
                 font-size: 0.95rem;
-                /* Multi-line clamp handles height on smaller screens */
             }
             .sidebar {
                 width: 260px;
@@ -1563,7 +1549,7 @@
                 
                 // Close sidebar when clicking on any menu links
                 const sidebarLinks = document.querySelectorAll('.sidebar-menu a');
-                sidebarLinks.forEach(link => {
+                    sidebarLinks.forEach(link => {
                     link.addEventListener('click', closeSidebar);
                 });
             }
