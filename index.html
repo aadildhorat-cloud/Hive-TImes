@@ -1,5 +1,7 @@
-<html lang="en"><head>
- <meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hive Times - Businesses</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -13,6 +15,7 @@
             --border-radius: 16px;
             --box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --sidebar-width: 320px;
         }
         * {
             margin: 0;
@@ -29,25 +32,161 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            overflow-x: hidden;
         }
-        /* --- Header & Navigation --- */
+        /* --- Upgraded Sidebar Menu --- */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: var(--sidebar-width);
+            background: linear-gradient(135deg, #2c3e50 0%, #1a1a2e 100%);
+            color: white;
+            z-index: 1001;
+            transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s ease;
+            box-shadow: 8px 0 30px rgba(0, 0, 0, 0.3);
+            padding-top: 80px;
+        }
+        .sidebar.active {
+            transform: translateX(0);
+        }
+        .sidebar-header {
+            padding: 25px 25px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 25px;
+            position: relative;
+        }
+        .sidebar-header h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin: 0;
+            background: linear-gradient(90deg, #e74c3c, #f39c12);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+        }
+        .sidebar-menu {
+            list-style: none;
+            padding: 0 25px;
+        }
+        .sidebar-menu li {
+            margin-bottom: 15px;
+        }
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 16px 22px;
+            color: #ecf0f1;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.15rem;
+            transition: var(--transition);
+            gap: 18px;
+            position: relative;
+            overflow: hidden;
+        }
+        .sidebar-menu a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #e74c3c, #f39c12);
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.3s ease;
+        }
+        .sidebar-menu a:hover {
+            background: rgba(231, 76, 60, 0.15);
+            color: white;
+            transform: translateX(8px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .sidebar-menu a:hover::before {
+            transform: scaleY(1);
+        }
+        .sidebar-menu a i {
+            font-size: 1.4rem;
+            width: 30px;
+            text-align: center;
+            color: #e74c3c;
+            transition: color 0.3s ease;
+        }
+        .sidebar-menu a:hover i {
+            color: #f39c12;
+            transform: scale(1.1);
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        /* --- Upgraded Header & Navigation --- */
         header {
             background: linear-gradient(135deg, #610d00 0%, #8b1a00 100%);
             color: #fff;
-            padding: 0.8rem 30px; /* Adjusted padding for a sleeker, professional height */
+            padding: 0.8rem 30px;
             display: flex;
-            justify-content: flex-start; /* Aligns all elements to the left by default */
+            justify-content: flex-start;
             align-items: center;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 999;
             transition: padding 0.3s ease;
-            gap: 24px; /* Spacing between the Hamburger, Logo, and Search */
+            gap: 24px;
         }
-        .header-content {
-            /* This class is no longer used in the HTML but kept for safety. */
-            display: none;
+        .hamburger-menu {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            cursor: pointer;
+            width: 42px;
+            height: 42px;
+            z-index: 1002;
+            padding: 8px;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+        .hamburger-menu:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        .hamburger-menu span {
+            display: block;
+            height: 3px;
+            width: 26px;
+            background-color: white;
+            margin: 3px 0;
+            border-radius: 2px;
+            transition: var(--transition);
+            position: relative;
+        }
+        .hamburger-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+            background: #e74c3c;
+        }
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+            background: #e74c3c;
         }
         .logo h3 {
             margin: 0;
@@ -56,52 +195,26 @@
             font-weight: 700;
         }
         .logo img {
-            height: 60px; /* Reduced logo size for a more professional, compact header */
+            height: 60px;
             width: auto;
             vertical-align: middle;
-            margin-right: 0; /* Removed old margin */
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
             transition: height 0.3s ease;
         }
-        /* Hamburger Menu */
-        .hamburger {
-            display: flex; 
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 21px;
-            cursor: pointer;
-            z-index: 1001;
-        }
-        .hamburger span {
-            height: 3px;
-            width: 100%;
-            background-color: white;
-            border-radius: 3px;
-            transition: var(--transition);
-        }
         nav {
-            display: none; /* The main nav links are hidden on desktop, relying on the hamburger/mobile menu */
-        }
-        .nav-icon-btn {
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 1.2rem;
-            cursor: pointer;
-            padding: 12px;
-            transition: var(--transition);
-            border-radius: 50%;
-            width: 48px;
-            height: 48px;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            gap: 15px;
         }
-        .nav-icon-btn:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            color: #fff;
-            transform: scale(1.1);
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: background-color 0.2s;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
         }
         .search-container {
             display: flex;
@@ -109,8 +222,8 @@
             background-color: rgba(255, 255, 255, 0.25);
             border-radius: 30px;
             padding: 8px 20px;
-            flex-grow: 1; /* Allows it to take up available horizontal space */
-            max-width: 450px; /* Limits the search bar width for a professional look */
+            flex-grow: 1;
+            max-width: 450px;
             transition: var(--transition);
         }
         .search-container:focus-within {
@@ -134,89 +247,11 @@
             margin-right: 12px;
             font-size: 1.1rem;
         }
-        /* New professional grouping for action icons */
         .header-action-icons {
             display: flex;
             align-items: center;
-            gap: 60px;
-            margin-left: auto; /* Pushes the action icons to the far right */
-        }
-        /* Mobile Menu (Sidebar/Off-Canvas) */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: 0; 
-            width: 300px;
-            max-width: 80%;
-            height: 100%;
-            background: linear-gradient(135deg, #610d00 0%, #8b1a00 100%);
-            z-index: 1002;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            padding: 20px 20px;
-            gap: 2rem;
-            /* Off-canvas state */
-            transform: translateX(100%); 
-            transition: transform 0.4s ease-in-out;
-            display: flex;
-        }
-        .mobile-menu.active {
-            transform: translateX(0); 
-        }
-        /* Mobile Menu items styling */
-        .mobile-menu ul {
-            list-style: none;
-            padding-top: 50px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-            width: 100%;
-        }
-        .mobile-menu a {
-            color: white;
-            font-size: 1.4rem;
-            font-weight: 600;
-            text-decoration: none;
-            padding: 10px 20px;
-            transition: background-color 0.2s;
-            display: block;
-            width: 100%;
-            text-align: center;
-            border-radius: 8px;
-        }
-        .mobile-menu a:hover {
-            background-color: rgba(255, 255, 255, 0.15);
-        }
-        .mobile-menu .nav-icon-btn {
-            margin-top: 2rem;
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        .close-mobile-menu {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        .close-mobile-menu:hover {
-            transform: rotate(90deg);
-            color: var(--primary-color);
-        }
-        /* Hamburger active state */
-        .hamburger.active span:nth-child(1) {
-            transform: translateY(9px) rotate(45deg);
-        }
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-        .hamburger.active span:nth-child(3) {
-            transform: translateY(-9px) rotate(-45deg);
+            gap: 10px;
+            margin-left: auto;
         }
         /* --- Slider Section --- */
         .slider-section {
@@ -554,330 +589,139 @@
             background: rgba(231, 76, 60, 0.1);
             transform: rotate(90deg);
         }
-        .contact-popup {
-            display: none;
+
+        /* --- ADVANCED WHATSAPP & EMAIL WIDGET STYLES --- */
+
+        /* Main Contact Widget Container */
+        .advanced-contact-widget {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            box-shadow: var(--box-shadow);
-            z-index: 1000;
-            text-align: center;
-            animation: slideIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid #eee;
-        }
-        .contact-popup h3 {
-            margin-top: 0;
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-        }
-        .contact-popup button {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #c0392b 100%);
-            color: #fff;
-            border: none;
-            padding: 12px 24px;
-            margin: 8px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 600;
-        }
-        .contact-popup button.close-btn {
-            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
-        }
-        .contact-popup button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-        /* Overlay for Sidebar - FIX APPLIED HERE */
-        .overlay {
-            /* display: none; <-- REMOVED FIX: This was preventing the click event from registering when the menu was closing. */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1001; 
-            transition: opacity 0.4s ease-in-out;
-            opacity: 0;
-            /* FIX: Prevent clicks on the invisible overlay */
-            pointer-events: none; 
-        }
-        .overlay.active {
-            opacity: 1;
-            /* display: block; <-- REMOVED FIX: This is no longer necessary as we removed 'display: none' from the base. */
-            /* FIX: Allow clicks on the active, visible overlay */
-            pointer-events: auto; 
-        }
-        /* Login & Register Popup */
-        .form-group {
-            margin-bottom: 1.8rem;
-            text-align: left;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-            color: var(--secondary-color);
-            font-size: 1.05rem;
-        }
-        .form-group input {
-            width: 100%;
-            padding: 14px;
-            border: 2px solid #e1e5e9;
-            border-radius: 12px;
-            font-size: 1.05rem;
-            transition: var(--transition);
-        }
-        .form-group input:focus {
-            border-color: var(--primary-color);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.2);
-        }
-        .form-submit-btn {
-            width: 100%;
-            padding: 16px;
-            border: none;
-            border-radius: 12px;
-            background: linear-gradient(135deg, var(--primary-color) 0%, #c0392b 100%);
-            color: #fff;
-            font-size: 1.2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            margin-top: 1rem;
-            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
-        }
-        .form-submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
-        }
-        .toggle-form {
-            margin-top: 1.5rem;
-            color: #666;
-            font-size: 1.05rem;
-        }
-        .toggle-form a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-        .toggle-form a:hover {
-            text-decoration: underline;
-            color: #c0392b;
-        }
-        /* User Profile */
-        .user-profile {
-            display: none;
-            position: absolute;
-            right: 0;
-            top: 100%;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            padding: 1.5rem;
-            width: 280px;
-            z-index: 100;
-            animation: fadeIn 0.3s ease-in-out;
-            border: 1px solid #eee;
-        }
-        .user-profile.active {
-            display: block;
-        }
-        .user-info {
-            padding: 1.2rem 0;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 1.2rem;
-            text-align: center;
-        }
-        .user-info h4 {
-            margin: 0 0 0.8rem 0;
-            color: var(--secondary-color);
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-        .user-info p {
-            color: #666;
-            font-size: 1.05rem;
-        }
-        .user-actions {
+            bottom: 110px; /* Position above the back-to-top button */
+            right: 40px; 
+            z-index: 999; 
             display: flex;
             flex-direction: column;
-            gap: 0.8rem;
+            align-items: flex-end;
         }
-        .user-actions button {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border: 1px solid #dee2e6;
-            text-align: center;
-            padding: 12px;
-            border-radius: 10px;
+
+        /* Main Toggle Button Styling (replacing back-to-top styling) */
+        .main-contact-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%); /* Blue for general support */
+            color: white;
+            font-size: 1.6rem;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
             cursor: pointer;
-            transition: var(--transition);
-            font-weight: 600;
-            color: var(--secondary-color);
-            font-size: 1.05rem;
-        }
-        .user-actions button:hover {
-            background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
-            transform: translateY(-2px);
-            color: var(--primary-color);
-        }
-        /* Shopping Cart Modal */
-        #cartModalContent {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            padding: 2.5rem;
-            border-radius: var(--border-radius);
-            max-width: 850px;
-            width: 95%;
-            position: relative;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
-            animation: fadeIn 0.4s ease-out;
-            max-height: 90vh;
-            overflow-y: auto;
-            border: 1px solid #eee;
-        }
-        #cartModalContent h3 {
-            margin-top: 0;
-            color: var(--secondary-color);
-            font-size: 2.2rem;
-            text-align: center;
-            margin-bottom: 2rem;
-            font-weight: 700;
-        }
-        #cart-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        #cartBusinessLogo {
-            width: 100px;
-            height: auto;
-            border-radius: 12px;
-            margin-bottom: 1rem;
-        }
-        #cartBusinessName {
-            color: var(--secondary-color);
-            font-size: 1.8rem;
-        }
-        .cart-item {
-            display: flex;
-            padding: 1.5rem;
-            border-bottom: 1px solid #eee;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            display: flex; /* Make it a flex container to center icon */
             align-items: center;
-            transition: var(--transition);
+            justify-content: center;
+            z-index: 1; /* Keep above sub-links */
         }
-        .cart-item:hover {
-            background-color: #f8f9fa;
+
+        .main-contact-button:hover {
+            background: linear-gradient(135deg, #0056b3 0%, #003d80 100%);
+            transform: scale(1.05); 
         }
-        .cart-item img {
-            width: 90px;
-            height: 90px;
-            object-fit: cover;
-            border-radius: 12px;
-            margin-right: 1.5rem;
-            transition: var(--transition);
+
+        /* Rotate main button icon when open */
+        .main-contact-button.is-open i {
+            transform: rotate(45deg);
+            transition: transform 0.3s ease;
         }
-        .cart-item:hover img {
-            transform: scale(1.05);
+        .main-contact-button i {
+            transition: transform 0.3s ease;
         }
-        .cart-item-details {
-            flex: 1;
-        }
-        .cart-item-name {
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-            font-size: 1.2rem;
-            color: var(--secondary-color);
-        }
-        .cart-item-price {
-            color: var(--primary-color);
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-        .cart-item-quantity {
+
+        /* Sub-Links Container - Hidden/Animation Logic */
+        .contact-links-container {
             display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            margin-top: 0.8rem;
+            flex-direction: column;
+            align-items: flex-end;
+            margin-bottom: 10px;
+            /* Animation properties for hidden state */
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in;
         }
-        .quantity-btn {
-            width: 36px;
-            height: 36px;
-            border: 2px solid #dee2e6;
-            border-radius: 8px;
-            background-color: #fff;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
+
+        /* Open state for the container */
+        .contact-links-container.open {
+            max-height: 200px; /* Space for both buttons */
+            opacity: 1;
+            transition: max-height 0.6s ease-in-out, opacity 0.5s 0.2s ease-in;
+        }
+
+        /* Individual Link Buttons Styling */
+        .contact-link {
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: var(--transition);
-        }
-        .quantity-btn:hover {
-            background-color: var(--primary-color);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            text-decoration: none;
             color: white;
-            border-color: var(--primary-color);
+            font-size: 24px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            position: relative;
+            /* Slide-in animation setup */
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .quantity-display {
-            min-width: 36px;
-            text-align: center;
-            font-weight: 600;
-            font-size: 1.1rem;
+
+        .contact-links-container.open .contact-link {
+            transform: translateX(0); /* Slide in when open */
         }
-        .remove-item-btn {
-            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-            color: #fff;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 8px;
-            cursor: pointer;
+
+        /* WhatsApp Specific Styling */
+        .whatsapp-link {
+            background-color: #25D366;
+        }
+        .whatsapp-link:hover {
+            background-color: #128C7E;
+            transform: scale(1.05) translateX(0);
+        }
+
+        /* Email Specific Styling */
+        .email-link {
+            background-color: #EA4335; /* Professional red/Google color */
+        }
+        .email-link:hover {
+            background-color: #C5221F;
+            transform: scale(1.05) translateX(0);
+        }
+
+        /* Tooltip (Text next to button on hover) */
+        .tooltip {
+            position: absolute;
+            right: 70px; 
+            padding: 8px 15px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 4px;
             font-size: 14px;
-            transition: var(--transition);
-            font-weight: 600;
-            margin-left: auto;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateX(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
-        .remove-item-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 2px 8px rgba(231, 76, 60, 0.4);
+
+        .contact-link:hover .tooltip {
+            opacity: 1;
+            transform: translateX(0);
         }
-        .cart-total {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--primary-color);
-            text-align: right;
-            margin: 2rem 0;
-            padding: 1.5rem;
-            background: linear-gradient(135deg, #fff5f5 0%, #ffeaea 100%);
-            border-radius: 12px;
-            border: 2px solid #ffe0e0;
-        }
-        .checkout-btn {
-            width: 100%;
-            padding: 16px;
-            border: none;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #27ae60 0%, #219653 100%);
-            color: #fff;
-            font-size: 1.3rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: var(--transition);
-            margin-top: 1.5rem;
-            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.3);
-        }
-        .checkout-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(39, 174, 96, 0.4);
-        }
+
+        /* Adjust animation delay for stacking effect */
+        .contact-links-container.open .whatsapp-link { transition-delay: 0.1s; }
+        .contact-links-container.open .email-link { transition-delay: 0s; }
+
+
         /* --- Animations --- */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-20px); }
@@ -928,13 +772,6 @@
             .slide img {
                 height: 400px;
             }
-            /* The following rules are now redundant but harmless: */
-            nav {
-                display: none;
-            }
-            .hamburger {
-                display: flex;
-            }
         }
         @media (max-width: 768px) {
             header {
@@ -943,14 +780,14 @@
                 gap: 1rem;
             }
             .header-action-icons {
-                margin-left: 0; /* Reset for mobile stack */
+                margin-left: 0;
             }
             .logo img {
                 height: 60px;
             }
             .search-container {
                 width: 100%;
-                max-width: 100%; /* Allows search bar to span full width on mobile */
+                max-width: 100%;
             }
             .businesses-grid {
                 grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -1000,6 +837,10 @@
                 bottom: 30px;
                 right: 30px;
             }
+            .sidebar {
+                width: 280px;
+                padding-top: 70px;
+            }
         }
         @media (max-width: 576px) {
             .businesses-grid {
@@ -1018,11 +859,6 @@
             .slide img {
                 height: 280px;
             }
-            .cart-item img {
-                width: 70px;
-                height: 70px;
-                margin-right: 1rem;
-            }
         }
         @media (max-width: 480px) {
             header {
@@ -1030,10 +866,6 @@
             }
             .logo img {
                 height: 50px;
-            }
-            .mobile-menu {
-                width: 100%;
-                max-width: 100%;
             }
             .slide img {
                 height: 220px;
@@ -1054,10 +886,45 @@
                 font-size: 0.95rem;
                 min-height: 50px;
             }
+            .sidebar {
+                width: 260px;
+            }
+            .hamburger-menu {
+                width: 38px;
+                height: 38px;
+            }
+            .hamburger-menu span {
+                width: 22px;
+            }
         }
     </style>
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Hive Times Menu</h3>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#" id="mobileAccountBtn"><i class="fas fa-user-circle"></i> My Account</a></li>
+            <li><a href="#" id="mobileCartBtn"><i class="fas fa-shopping-cart"></i> Shopping Cart</a></li>
+            
+            <hr style="border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 20px 0;">
+            
+            <li><a href="#sweet-shops"><i class="fas fa-cookie-bite"></i> Sweet Shops</a></li>
+            <li><a href="#restaurants"><i class="fas fa-utensils"></i> Restaurants</a></li>
+            <li><a href="#catering"><i class="fas fa-boxes"></i> Catering</a></li>
+            
+            <hr style="border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 20px 0;">
+            
+            <li><a href="about page home.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+            <li><a href="#"><i class="fas fa-hands-helping"></i> Support</a></li>
+        </ul>
+    </div>
+    
+    <div class="overlay" id="overlay"></div>
+    
     <header>
-        <div class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <div class="hamburger-menu" id="hamburgerMenu">
             <span></span>
             <span></span>
             <span></span>
@@ -1066,51 +933,21 @@
             <img src="images-logo/hive-times-logo.png" alt="hive times logo">
             <h3></h3>
         </div>
+        <nav>
+            <a href="about page home.html">About</a>
+           
+        </nav>
         <div class="search-container" id="mainSearchContainer">
             <i class="fas fa-search"></i>
             <input type="text" id="searchInput" placeholder="Search businesses...">
         </div>
         <div class="header-action-icons">
-            <div class="user-menu-container" style="position: relative;">
-                <button id="userBtn" class="nav-icon-btn" aria-label="User account">
-                    <i class="fas fa-user-circle"></i>
-                    <span id="userDisplay">Account</span>
-                </button>
-                <div class="user-profile" id="userProfile">
-                    <div class="user-info">
-                        <h4 id="userName">Welcome</h4>
-                        <p id="userEmail"></p>
-                    </div>
-                    <div class="user-actions">
-                        <button id="logoutBtn">Logout</button>
-                    </div>
-                </div>
             </div>
-            <button id="cartBtn" class="nav-icon-btn" aria-label="View your shopping cart">
-                <i class="fas fa-shopping-cart"></i>
-                <span class="cart-count" id="cartCount">0</span>
-            </button>
-        </div>
     </header>
-    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-        <button class="close-mobile-menu" id="closeMobileMenu" aria-label="Close navigation menu">×</button>
-        <ul> 
-            <li><a href="about page home.html">About</a></li> 
-            <li><a href="#sweet-shops">Sweet Shops</a></li> 
-            <li><a href="#restaurant">Restaurants</a></li> 
-            <li><a href="#catering">Catering</a></li> 
-        </ul>
-        <div class="mobile-user-section">
-            <button id="mobileUserBtn" class="nav-icon-btn" aria-label="User account">
-                <i class="fas fa-user-circle"></i>
-                <span id="mobileUserDisplay">Account</span>
-            </button>
-        </div>
-        </div>
     <main>
         <section class="slider-section">
             <div class="slider-container" id="sliderContainer">
-                <div class="slider" id="slider" style="transform: translateX(-300%);">
+                <div class="slider" id="slider">
                     <div class="slide" role="tabpanel" id="slide1">
                         <a href="broadway page.html">
                             <img src="images-logo/broadway-sweets-long.jpg" alt="A variety of colorful Indian sweets arranged on a tray">
@@ -1133,10 +970,10 @@
                     </div>
                 </div>
                 <div class="slider-indicators" role="tablist">
-                    <span class="indicator" onclick="changeSlide(0)" role="tab" aria-selected="false" aria-controls="slide1"></span>
+                    <span class="indicator" onclick="changeSlide(0)" role="tab" aria-selected="true" aria-controls="slide1"></span>
                     <span class="indicator" onclick="changeSlide(1)" role="tab" aria-selected="false" aria-controls="slide2"></span>
                     <span class="indicator" onclick="changeSlide(2)" role="tab" aria-selected="false" aria-controls="slide3"></span>
-                    <span class="indicator active" onclick="changeSlide(3)" role="tab" aria-selected="true" aria-controls="slide4"></span>
+                    <span class="indicator" onclick="changeSlide(3)" role="tab" aria-selected="false" aria-controls="slide4"></span>
                 </div>
             </div>
         </section>
@@ -1262,7 +1099,7 @@
                 <h4>Quick Links</h4>
                 <ul>
                     <li><a href="#sweet-shops"><i class="fas fa-cookie-bite"></i> Sweet Shops</a></li>
-                    <li><a href="#restaurant"><i class="fas fa-utensils"></i> Restaurants</a></li>
+                    <li><a href="#restaurants"><i class="fas fa-utensils"></i> Restaurants</a></li>
                     <li><a href="#catering"><i class="fas fa-boxes"></i> Catering</a></li>
                     <li><a href="#"><i class="fas fa-map-marker-alt"></i> Find Stores</a></li>
                 </ul>
@@ -1285,67 +1122,34 @@
             <p id="popupText"></p>
         </div>
     </div>
-    <div id="loginRegisterPopup" class="popup">
-        <div class="popup-content">
-            <span class="close-button" id="closeLoginRegisterPopup">&times;</span>
-            <div id="loginForm">
-                <h3>Login to your Account</h3>
-                <form>
-                    <div class="form-group">
-                        <label for="loginEmail">Email</label>
-                        <input type="email" id="loginEmail" placeholder="Enter your email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="loginPassword">Password</label>
-                        <input type="password" id="loginPassword" placeholder="Enter your password" required>
-                    </div>
-                    <button type="submit" class="form-submit-btn">Login</button>
-                </form>
-                <p class="toggle-form">Don't have an account? <a href="#" id="showRegister">Register here</a></p>
-            </div>
-            <div id="registerForm" style="display:none;">
-                <h3>Create an Account</h3>
-                <form>
-                    <div class="form-group">
-                        <label for="registerName">Name</label>
-                        <input type="text" id="registerName" placeholder="Enter your name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="registerEmail">Email</label>
-                        <input type="email" id="registerEmail" placeholder="Enter your email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="registerPassword">Password</label>
-                        <input type="password" id="registerPassword" placeholder="Create a password" required>
-                    </div>
-                    <button type="submit" class="form-submit-btn">Register</button>
-                </form>
-                <p class="toggle-form">Already have an account? <a href="#" id="showLogin">Login here</a></p>
-            </div>
+    
+    <div class="advanced-contact-widget">
+        <button class="main-contact-button" id="toggle-contact-buttons" aria-label="Open contact options">
+            <i class="fas fa-headset"></i>
+        </button>
+
+        <div class="contact-links-container" id="contact-links-container">
+
+            <a href="https://wa.me/15551239999?text=Hello%2C%20I%20have%20an%20inquiry%20from%20Hive%20Times%20website." 
+               target="_blank" 
+               class="contact-link whatsapp-link"
+               aria-label="Chat with us on WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+                <span class="tooltip">WhatsApp Chat</span>
+            </a>
+
+            <a href="mailto:support@hivetimes.com?subject=Inquiry%20from%20Hive%20Times%20Website" 
+               target="_blank" 
+               class="contact-link email-link"
+               aria-label="Send us an Email">
+                <i class="fas fa-envelope"></i>
+                <span class="tooltip">Email Support</span>
+            </a>
+
         </div>
     </div>
-    <div id="cartModal" class="popup">
-        <div class="popup-content" id="cartModalContent">
-            <span class="close-button" id="closeCartModal">&times;</span>
-            <h3>Your Shopping Cart</h3>
-            <div id="cart-header">
-                <img id="cartBusinessLogo" src="" alt="Business Logo" style="display:none;">
-                <h4 id="cartBusinessName"></h4>
-            </div>
-            <div id="cart-items-container">
-                <p style="text-align:center; color:#777;" id="empty-cart-message">Your cart is empty.</p>
-            </div>
-            <div class="cart-total" id="cartTotalDisplay">Total: $0.00</div>
-            <button class="checkout-btn" id="checkoutBtn" disabled>Proceed to Checkout</button>
-        </div>
-    </div>
-    <div class="contact-popup" id="contactPopup" style="display: none;">
-        <h3>Need Help? Contact Us</h3>
-        <button class="close-btn" id="contactClose">Close</button>
-        <button id="contactCall"><i class="fas fa-phone-alt"></i> Call Us</button>
-        <button id="contactEmail"><i class="fas fa-envelope"></i> Email Us</button>
-    </div>
-    <div class="overlay" id="overlay"></div>
+    <button class="back-to-top" id="backToTopBtn" aria-label="Back to top" style="display: none;"><i class="fas fa-chevron-up"></i></button>
+
     <script>
         // Data for popups
         const businessInfo = {
@@ -1392,6 +1196,7 @@
         const popupTitle = document.querySelector('#infoPopup h3');
         const popupText = document.getElementById('popupText');
         const openPopupButtons = document.querySelectorAll('.open-popup');
+
         // Function to open the info popup
         function openInfoPopup(target) {
             const data = businessInfo[target];
@@ -1399,9 +1204,9 @@
                 popupTitle.textContent = data.title;
                 popupText.textContent = data.text;
                 popup.style.display = 'flex';
-                document.getElementById('overlay').classList.add('active');
             }
         }
+        
         // Event listener for all "Learn More" buttons
         openPopupButtons.forEach(button => {
             button.addEventListener('click', (event) => {
@@ -1410,27 +1215,24 @@
                 openInfoPopup(target);
             });
         });
+        
         // Event listener to close the info popup
         closeInfoPopup.addEventListener('click', () => {
             popup.style.display = 'none';
-            document.getElementById('overlay').classList.remove('active');
         });
-        // Click outside popup to close it (for info and cart modals)
+        
+        // Click outside popup to close it
         window.addEventListener('click', (event) => {
             if (event.target === popup) {
                 popup.style.display = 'none';
-                document.getElementById('overlay').classList.remove('active');
-            }
-            if (event.target === document.getElementById('cartModal')) {
-                document.getElementById('cartModal').style.display = 'none';
-                document.getElementById('overlay').classList.remove('active');
             }
         });
+
         // SLIDER FUNCTIONALITY
         const slider = document.getElementById('slider');
         const indicators = document.querySelectorAll('.indicator');
-        const totalSlides = 4;
-        let currentSlide = 3; // Start at the 4th slide as per the initial style
+        let currentSlide = 0; 
+        
         function updateSlider() {
             const offset = -currentSlide * 100;
             slider.style.transform = `translateX(${offset}%)`;
@@ -1439,307 +1241,125 @@
                 indicator.setAttribute('aria-selected', index === currentSlide);
             });
         }
+        
         function changeSlide(index) {
             currentSlide = index;
             updateSlider();
         }
+        
         // Auto-slide functionality
         function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
+            currentSlide = (currentSlide + 1) % indicators.length;
             updateSlider();
         }
+        
         let slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+        
         // Stop auto-slide on hover
         const sliderContainer = document.getElementById('sliderContainer');
         sliderContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
         sliderContainer.addEventListener('mouseleave', () => {
             slideInterval = setInterval(nextSlide, 5000);
         });
+        
         // Initial update for the slider 
         updateSlider();
-        // MOBILE MENU (HAMBURGER) FUNCTIONALITY - FIXED & IMPROVED
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const closeMobileMenu = document.getElementById('closeMobileMenu');
-        const overlay = document.getElementById('overlay');
 
-        // Function to update aria attributes based on menu state
-        function updateAriaExpanded(isExpanded) {
-            hamburger.setAttribute('aria-expanded', isExpanded);
-            mobileMenu.setAttribute('aria-hidden', !isExpanded);
-        }
-
-        // Function to open the mobile menu
-        function openMenu() {
-            mobileMenu.classList.add('active');
-            hamburger.classList.add('active');
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Lock scroll when menu is open
-            updateAriaExpanded(true); // Update ARIA attributes
-        }
-
-        // Function to close the mobile menu
-        function closeMenu() {
-            mobileMenu.classList.remove('active');
-            hamburger.classList.remove('active');
+        // --- AMAZON-STYLE MOBILE MENU ACTIONS (HELPER FUNCTION) ---
+        function closeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const hamburgerMenu = document.getElementById('hamburgerMenu');
+            
+            sidebar.classList.remove('active');
             overlay.classList.remove('active');
-            document.body.style.overflow = ''; // Restore scroll when menu is closed
-            updateAriaExpanded(false); // Update ARIA attributes
+            hamburgerMenu.classList.remove('active');
+            document.body.style.overflow = ''; // Remove scroll lock
         }
 
-        // Event listeners for opening and closing the menu
-        hamburger.addEventListener('click', openMenu);
-        closeMobileMenu.addEventListener('click', closeMenu);
-        overlay.addEventListener('click', closeMenu); // Clicking the overlay closes the menu
-        // Clicking inside the menu content should NOT close it
-        mobileMenu.addEventListener('click', function(event) {
-            event.stopPropagation(); // Prevents click inside menu from bubbling up to overlay
-        });
-        // LOGIN/REGISTER POPUP FUNCTIONALITY
-        const loginRegisterPopup = document.getElementById('loginRegisterPopup');
-        const closeLoginRegisterPopup = document.getElementById('closeLoginRegisterPopup');
-        const loginForm = document.getElementById('loginForm');
-        const registerForm = document.getElementById('registerForm');
-        const showRegister = document.getElementById('showRegister');
-        const showLogin = document.getElementById('showLogin');
-        const userBtn = document.getElementById('userBtn');
-        const mobileUserBtn = document.getElementById('mobileUserBtn');
-        const userProfile = document.getElementById('userProfile');
-        const logoutBtn = document.getElementById('logoutBtn');
-        let isAuthenticated = false;
-        function toggleLoginRegisterPopup() {
-            loginRegisterPopup.style.display = (loginRegisterPopup.style.display === 'flex' ? 'none' : 'flex');
-            document.getElementById('overlay').classList.toggle('active');
-            // Ensure body scroll is restored if popup is closed
-            if (loginRegisterPopup.style.display === 'none') {
-                 document.body.style.overflow = '';
-            } else {
-                 document.body.style.overflow = 'hidden';
-            }
-        }
-        function toggleUserProfile(event) {
-            event.stopPropagation();
-            if (isAuthenticated) {
-                userProfile.classList.toggle('active');
-            } else {
-                toggleLoginRegisterPopup();
-            }
-        }
-        function logoutUser() {
-            isAuthenticated = false;
-            userProfile.classList.remove('active');
-            document.getElementById('userDisplay').textContent = 'Account';
-            document.getElementById('mobileUserDisplay').textContent = 'Account';
-        }
-        // Desktop User Button
-        userBtn.addEventListener('click', toggleUserProfile);
-        // FIX: Ensure the mobile menu closes when the mobile user button is clicked
-        mobileUserBtn.addEventListener('click', () => {
-             // Function to ensure mobile menu is closed
-            const closeMobileMenuIfOpen = () => {
-                if (mobileMenu.classList.contains('active')) {
-                    closeMenu(); // Use the dedicated close function
-                }
-            };
-            if (isAuthenticated) {
-                // If logged in, log out AND close the mobile menu
-                closeMobileMenuIfOpen();
-                logoutUser();
-            } else {
-                // If not logged in, close mobile menu and open the login popup
-                closeMobileMenuIfOpen();
-                toggleLoginRegisterPopup();
-            }
-        });
-        // Close Popup Button
-        closeLoginRegisterPopup.addEventListener('click', toggleLoginRegisterPopup);
-        // Close dropdown on click outside
-        window.addEventListener('click', (event) => {
-            if (!userBtn.contains(event.target) && !userProfile.contains(event.target)) {
-                userProfile.classList.remove('active');
-            }
-        });
-        // Toggle between forms
-        showRegister.addEventListener('click', (e) => {
-            e.preventDefault();
-            loginForm.style.display = 'none';
-            registerForm.style.display = 'block';
-        });
-        showLogin.addEventListener('click', (e) => {
-            e.preventDefault();
-            registerForm.style.display = 'none';
-            loginForm.style.display = 'block';
-        });
-        // Simple form submission for demonstration
-        document.querySelector('#loginForm form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            isAuthenticated = true;
-            document.getElementById('userDisplay').textContent = 'My Profile';
-            document.getElementById('mobileUserDisplay').textContent = 'My Profile';
-            document.getElementById('userName').textContent = 'Hello, User!';
-            document.getElementById('userEmail').textContent = e.target.elements.loginEmail.value || 'user@example.com';
-            toggleLoginRegisterPopup();
-        });
-        document.querySelector('#registerForm form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Registration successful! Please log in.');
-            // Switch back to login form
-            registerForm.style.display = 'none';
-            loginForm.style.display = 'block';
-        });
-        logoutBtn.addEventListener('click', logoutUser);
-        // CART FUNCTIONALITY (Simple Mock)
-        const cartBtn = document.getElementById('cartBtn');
-        // const mobileCartBtn = document.getElementById('mobileCartBtn'); // Removed from JS
-        const cartModal = document.getElementById('cartModal');
-        const closeCartModal = document.getElementById('closeCartModal');
-        const cartCountDisplay = document.querySelectorAll('.cart-count');
-        const cartItemsContainer = document.getElementById('cart-items-container');
-        const cartTotalDisplay = document.getElementById('cartTotalDisplay');
-        const checkoutBtn = document.getElementById('checkoutBtn');
-        const emptyCartMessage = document.getElementById('empty-cart-message');
-        let cart = []; // Mock cart array
-        function updateCartDisplay() {
-            let total = 0;
-            let count = 0;
-            cartItemsContainer.innerHTML = '';
-            if (cart.length === 0) {
-                emptyCartMessage.style.display = 'block';
-                checkoutBtn.disabled = true;
-                cartTotalDisplay.textContent = 'Total: $0.00';
-            } else {
-                emptyCartMessage.style.display = 'none';
-                checkoutBtn.disabled = false;
-                cart.forEach((item, index) => {
-                    const itemTotal = item.price * item.quantity;
-                    total += itemTotal;
-                    count += item.quantity;
-                    const itemDiv = document.createElement('div');
-                    itemDiv.className = 'cart-item';
-                    itemDiv.innerHTML = `
-                        <img src="${item.image}" alt="${item.name}">
-                        <div class="cart-item-details">
-                            <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-price">$${item.price.toFixed(2)}</div>
-                            <div class="cart-item-quantity">
-                                <button class="quantity-btn decrease-qty" data-index="${index}">-</button>
-                                <span class="quantity-display">${item.quantity}</span>
-                                <button class="quantity-btn increase-qty" data-index="${index}">+</button>
-                            </div>
-                        </div>
-                        <button class="remove-item-btn" data-index="${index}">Remove</button>
-                    `;
-                    cartItemsContainer.appendChild(itemDiv);
-                });
-                cartTotalDisplay.textContent = `Total: $${total.toFixed(2)}`;
-            }
-            // Update all cart count badges
-            cartCountDisplay.forEach(span => {
-                span.textContent = count;
-                span.style.display = count > 0 ? 'flex' : 'none';
+        // Event listeners for new mobile menu links
+        const mobileAccountBtn = document.getElementById('mobileAccountBtn');
+        const mobileCartBtn = document.getElementById('mobileCartBtn');
+
+        if (mobileAccountBtn) {
+            mobileAccountBtn.addEventListener('click', (event) => {
+                event.preventDefault();
+                closeSidebar();
+                // Placeholder for User/Login/Profile action
+                alert('My Account: Opening Login/Registration or User Profile page.');
             });
         }
-        // Mock function to add an item for testing purposes
-        function addItemToCart(name, price, image) {
-            const existingItem = cart.find(item => item.name === name);
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({ name, price, image, quantity: 1 });
-            }
-            updateCartDisplay();
+        
+        if (mobileCartBtn) {
+            mobileCartBtn.addEventListener('click', (event) => {
+                event.preventDefault();
+                closeSidebar();
+                // Placeholder for Cart Modal/Page action
+                alert('Shopping Cart: Opening Cart Modal or Cart Page.');
+            });
         }
-        // Initial mock item for testing the layout
-        // addItemToCart('Jalebi Box', 12.99, 'https://placehold.co/90x90/ffcc00/e74c3c?text=Jalebi');
-        cartItemsContainer.addEventListener('click', (e) => {
-            const index = e.target.getAttribute('data-index');
-            if (index === null) return;
-            if (e.target.classList.contains('increase-qty')) {
-                cart[index].quantity += 1;
-            } else if (e.target.classList.contains('decrease-qty')) {
-                cart[index].quantity -= 1;
-                if (cart[index].quantity === 0) {
-                    cart.splice(index, 1);
-                }
-            } else if (e.target.classList.contains('remove-item-btn')) {
-                cart.splice(index, 1);
-            }
-            updateCartDisplay();
-        });
-        cartBtn.addEventListener('click', () => {
-            cartModal.style.display = 'flex';
-            document.getElementById('overlay').classList.add('active');
-        });
-        // Removed mobileCartBtn event listener
-        /*
-        mobileCartBtn.addEventListener('click', () => {
-            if (mobileMenu.classList.contains('active')) {
-                toggleMenu();
-            }
-            cartModal.style.display = 'flex';
-            document.getElementById('overlay').classList.add('active');
-        });
-        */
-        closeCartModal.addEventListener('click', () => {
-            cartModal.style.display = 'none';
-            document.getElementById('overlay').classList.remove('active');
-            // Restore body scroll when cart closes
-             document.body.style.overflow = '';
-        });
-        checkoutBtn.addEventListener('click', () => {
-            alert('Proceeding to checkout with ' + cart.length + ' items.');
-            cart = [];
-            updateCartDisplay();
-            cartModal.style.display = 'none';
-            document.getElementById('overlay').classList.remove('active');
-            // Restore body scroll after checkout
-             document.body.style.overflow = '';
-        });
-        // BACK TO TOP BUTTON (Now also Contact Us button)
-        const backToTopBtn = document.querySelector('.back-to-top');
-        const contactUsBtn = document.createElement('button');
-        contactUsBtn.className = 'back-to-top';
-        contactUsBtn.id = 'contactUsBtn';
-        contactUsBtn.innerHTML = '<i class="fas fa-headset"></i>';
-        contactUsBtn.setAttribute('aria-label', 'Contact Us');
-        document.body.appendChild(contactUsBtn);
-        contactUsBtn.style.cssText = backToTopBtn.style.cssText;
-        contactUsBtn.style.bottom = '110px';
-        backToTopBtn.innerHTML = '<i class="fas fa-chevron-up"></i>';
-        backToTopBtn.setAttribute('aria-label', 'Back to top');
-        const contactPopup = document.getElementById('contactPopup');
-        const contactClose = document.getElementById('contactClose');
-        const contactCall = document.getElementById('contactCall');
-        const contactEmail = document.getElementById('contactEmail');
+
+        // CONTACT US / BACK TO TOP FUNCTIONALITY
+        const backToTopBtn = document.getElementById('backToTopBtn'); 
+        
+        // --- ADVANCED WHATSAPP & EMAIL WIDGET LOGIC ---
+        const toggleButton = document.getElementById('toggle-contact-buttons');
+        const linksContainer = document.getElementById('contact-links-container');
+        
+        if (toggleButton && linksContainer) {
+            toggleButton.addEventListener('click', function() {
+                // Toggle the 'open' class for expansion/contraction
+                linksContainer.classList.toggle('open');
+                
+                // Toggle a class on the main button for rotation animation
+                this.classList.toggle('is-open');
+            });
+        }
+
         window.onscroll = function() {scrollFunction()};
+        
         function scrollFunction() {
             if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
                 backToTopBtn.style.display = "flex";
-                contactUsBtn.style.display = "flex";
             } else {
                 backToTopBtn.style.display = "none";
-                contactUsBtn.style.display = "none";
+                // Ensure the expanded menu is closed when scrolling back to the top
+                if (linksContainer.classList.contains('open')) {
+                    linksContainer.classList.remove('open');
+                    toggleButton.classList.remove('is-open');
+                }
             }
         }
+        
         backToTopBtn.addEventListener('click', () => {
             document.body.scrollTop = 0; // For Safari
             document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
         });
-        contactUsBtn.addEventListener('click', () => {
-            contactPopup.style.display = (contactPopup.style.display === 'none' || contactPopup.style.display === '') ? 'flex' : 'none';
+        
+        // SIDEBAR FUNCTIONALITY (CORRECTED)
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerMenu = document.getElementById('hamburgerMenu');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            
+            if (hamburgerMenu && sidebar && overlay) {
+                hamburgerMenu.addEventListener('click', () => {
+                    sidebar.classList.toggle('active');
+                    overlay.classList.toggle('active');
+                    hamburgerMenu.classList.toggle('active');
+                    // Add scroll lock when menu is active
+                    document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : ''; 
+                });
+                
+                overlay.addEventListener('click', closeSidebar);
+                
+                // Close sidebar when clicking on any menu links
+                const sidebarLinks = document.querySelectorAll('.sidebar-menu a');
+                sidebarLinks.forEach(link => {
+                    link.addEventListener('click', closeSidebar);
+                });
+            }
         });
-        contactClose.addEventListener('click', () => {
-            contactPopup.style.display = 'none';
-        });
-        contactCall.addEventListener('click', () => {
-            alert('Calling Customer Service at (555) 123-9999');
-            contactPopup.style.display = 'none';
-        });
-        contactEmail.addEventListener('click', () => {
-            alert('Opening email client to support@hivetimes.com');
-            contactPopup.style.display = 'none';
-        });
-        // Initial update
-        updateCartDisplay();
-    </script><button class="back-to-top" aria-label="Back to top" style="bottom: 40px; right: 40px; display: none;"><i class="fas fa-chevron-up"></i></button><button class="back-to-top" id="contactUsBtn" aria-label="Contact Us" style="bottom: 110px; right: 40px; display: none;"><i class="fas fa-headset"></i></button>
-    </body></html>
+    </script>
+</body>
+</html>
