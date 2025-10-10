@@ -1019,9 +1019,10 @@
         }
 
         @media (max-width: 576px) {
-            /* SMALLER PHONES (e.g., iPhone SE size) - Reverts to 1 column */
+            /* SMALLER PHONES (e.g., iPhone SE size) - Set to 2 columns as requested by user */
             .businesses-grid {
-                grid-template-columns: 1fr;
+                /* Explicitly set to two equal columns for phone view, overriding the default 1-column */
+                grid-template-columns: repeat(2, 1fr);
             }
             .slider-section {
                 padding: 2rem 0;
