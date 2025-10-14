@@ -110,46 +110,44 @@
             padding-left: 20px;
         }
         /* Submenu Styling */
-        .submenu {
-            position: relative;
-        }
-        .submenu > a {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .submenu-content {
-            display: none;
-            position: absolute;
-            left: 100%;
-            top: -5px;
-            background-color: white;
-            min-width: 200px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            border-radius: 8px;
-            z-index: 1001;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateX(-10px);
-            transition: all 0.3s ease;
-        }
-        .submenu:hover .submenu-content {
-            display: block;
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(0);
-        }
-        .submenu-content a {
-            color: #333;
-            padding: 12px 16px;
-            display: block;
-            transition: all 0.2s ease;
-        }
-        .submenu-content a:hover {
-            background-color: #f8f9fa;
-            color: #a30909;
-            padding-left: 20px;
-        }
+      /* Submenu Styling (Vertical Nested) */
+.submenu {
+    /* Retain structure */
+}
+.submenu > a {
+    /* Style the main category link (e.g., LOLLIPOPS) */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Ensure it has the correct padding to look like a main dropdown link */
+    padding: 12px 16px;
+}
+.submenu-content {
+    display: none;     /* Hide by default */
+    position: static;  /* CRITICAL CHANGE: Allows content to flow vertically */
+    background-color: #f8f9fa; /* Lighter background for visual nesting */
+    border-top: 1px solid #eee;
+    padding: 0;
+}
+.submenu:hover .submenu-content {
+    /* When hovering over the main subcategory item, show its content */
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+}
+.submenu-content a {
+    color: #333;
+    /* Indent the sub-link to visually show nesting */
+    padding: 8px 16px 8px 30px; 
+    display: block;
+    transition: all 0.2s ease;
+}
+.submenu-content a:hover {
+    background-color: #eee;
+    color: #a30909;
+    padding-left: 35px; /* Slight movement on hover */
+}
         /* User Account & Cart */
         .user-section {
             display: flex;
@@ -977,15 +975,48 @@
             <nav>
                 <ul>
                     <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                    <li class="dropdown">
-                        <a href="#"><i class="fas fa-store"></i> Businesses</a>
+                       <button class="user-btn" onclick="showUserModal()">
+                    <i class="fas fa-user"></i> Account
+                </button>
+                   <li class="dropdown">
+                        <a href="#"><i class="fas fa-box"></i> Businesses</a>
                         <div class="dropdown-content">
-                            <a href="Polar ice cream.html"><i class="fas fa-ice-cream"></i> Polar Ice Cream</a>
-                            <a href="Sweet Mart.html"><i class="fas fa-cookie"></i> Sweet Mart</a>
-                            <a href="broadway page.html"><i class="fas fa-candy-cane"></i> Broadway Sweets</a>
-                            <a href="Sweet Depot website.html"><i class="fas fa-candy-cane"></i> Sweet depot</a>
-                        </div>
+                            <div class="submenu">
+                                <a href="#">
+                                    <span><i class="fas fa-sticky-note"></i>Home Businesses</span>
+                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
+                                </a>
+                                <div class="submenu-content">
+                                    <a href="#BIG-POPS">home business 1 </a>
+                                    <a href="#FLIGOS">home business 2</a>
+                                    <a href="#SOCCER-POPS">home business 3</a>
+                                    <a href="#STUMBO">home business 4</a>
+                                </div>
+                            </div>
+                            <div class="submenu">
+                                <a href="#">
+                                    <span><i class="fas fa-circle"></i>Retail Shops</span>
+                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
+                                </a>
+                                <div class="submenu-content">
+                                    <a href="Polar ice cream.html">Polar Ice Cream</a>
+                                    <a href="broadway page.html">Broadway Sweets</a>
+                                    <a href="Sweet Mart.html">Sweet Mart</a>
+                                </div>
+                            </div>
+                            <div class="submenu">
+                                <a href="#">
+                                    <span><i class="fas fa-star"></i> Wholesale</span>
+                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
+                                </a>
+                                <div class="submenu-content">
+                                    <a href="#HARTBEAT">Africa Cash n Carry</a>
+                                    <a href="#ICE-UP">Devland Cash & Carry</a>
+                                    <a href="#STUMBO-CANDY">Continental Cash & Carry</a>
+                                    <a href="#ZOUR-BOMB">Jumbo Cash & Carry</a>
+                                  </div>
                     </li>
+                  
                     <li class="dropdown">
                         <a href="#"><i class="fas fa-box"></i> Categories</a>
                         <div class="dropdown-content">
@@ -1048,9 +1079,7 @@
                 </ul>
             </nav>
             <div class="user-section">
-                <button class="user-btn" onclick="showUserModal()">
-                    <i class="fas fa-user"></i> Account
-                </button>
+                
                 <button class="cart-btn" onclick="showCartModal()">
                     <i class="fas fa-shopping-cart"></i> Cart (<span id="cartCount">0</span>)
                 </button>
