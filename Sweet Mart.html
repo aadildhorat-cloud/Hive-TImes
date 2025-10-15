@@ -342,30 +342,29 @@
         .fullscreen-image:hover {
             transform: scale(1.02);
         }
-     /* Product grid container */
+   /* Product grid container */
 .products-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px; /* Consistent spacing between cards */
+    justify-content: space-between;
+    gap: 0;
     margin: 30px 0;
 }
 
-/* Product card styling */
+/* Product card styling — force 4 per row on all devices */
 .product-card {
     background-color: white;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-    flex: 1 1 calc(25% - 20px); /* 4 per row on desktop */
-    max-width: calc(25% - 20px);
-    min-width: 200px; /* Prevent collapse on mid-size screens */
+    width: calc(25% - 12px); /* 4 per row: 25% each, minus spacing */
+    min-width: 0; /* Override any min-width that prevents shrinking */
+    margin-bottom: 20px;
     transition: all 0.3s ease;
     cursor: pointer;
     display: flex;
     flex-direction: column;
 }
-
 .product-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
@@ -925,19 +924,23 @@
                 align-items: stretch;
             }
         }
-        @media (max-width: 768px) {
-            .section-title {
-                font-size: 28px;
-            }
+      /* Force 4 products per row on all screen sizes */
+@media (max-width: 992px),
+       (max-width: 768px),
+       (max-width: 576px) {
+    .product-card {
+        width: calc(25% - 12px) !important;
+        flex: none !important;
+        max-width: calc(25% - 12px) !important;
+        min-width: 0 !important;
+    }
+}
+            
             .slider-container {
                 height: 400px;
             }
-           @media (max-width: 992px) {
-    .product-card {
-        flex: 1 1 calc(33.333% - 16px); /* 3 per row */
-        max-width: calc(33.333% - 16px);
-    }
-}
+          
+
 
 @media (max-width: 768px) {
     .product-card {
@@ -955,7 +958,7 @@
             .product-modal-content {
                 flex-direction: column;
             }
-        }
+        
         @media (max-width: 576px) {
             .header-container {
                 padding: 0 0px;
