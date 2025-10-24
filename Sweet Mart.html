@@ -1853,7 +1853,9 @@
                 <p style="text-align: center; color: #555;">Your cart is empty.</p>
             </div>
             <div class="cart-total" id="cartTotal">Total: R0.00</div>
-            <button class="checkout-btn"><i class="fas fa-money-check-alt"></i> Proceed to Checkout</button>
+          <button class="checkout-btn" onclick="sendOrder()">
+    <i class="fas fa-money-check-alt"></i> Proceed to Checkout
+</button>
             <button class="close-cart-btn" onclick="closeCartModal()">Continue Shopping</button>
         </div>
     </div>
@@ -2306,6 +2308,39 @@ function initializeSlider() {
 document.addEventListener('DOMContentLoaded', () => {
     initializeSlider();
 });
+function sendOrder() {
+    if (cart.items.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
+
+    // Turn the cart into a message
+    const order = {
+        items: cart.items,
+        total: cart.calculateTotal()
+    };
+
+    // Send it to your helper (we’ll make this later!)
+    fetch("https://yourwebsite.com/order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(order)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert("Thank you! Your order is confirmed!");
+            cart.items = []; // Empty the cart
+            cart.saveCart();
+            closeCartModal();
+        } else {
+            alert("Oops! Something went wrong.");
+        }
+    })
+    .catch(() => {
+        alert("Can't reach the shop right now. Try again later!");
+    });
+}
     </script>
      </body>
 </html>
