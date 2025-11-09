@@ -6,6 +6,185 @@
     <title>Polar Ice Cream </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Business info button */
+.business-info-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 10px auto;
+    flex-wrap: wrap;
+}
+.business-info-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #a30909;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(163, 9, 9, 0.3);
+    text-align: center;
+}
+.business-info-btn:hover {
+    background-color: #8a0808;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(163, 9, 9, 0.4);
+}
+.business-logo {
+    height: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+/* Business info popup */
+.business-popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+.business-popup {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all 0.3s ease;
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+.business-popup.active {
+    transform: scale(1);
+    opacity: 1;
+}
+.business-popup-title {
+    font-size: 24px;
+    color: #a30909;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f8f9fa;
+}
+.business-info-content {
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+.business-info-content p {
+    margin-bottom: 15px;
+    text-align: justify;
+}
+.business-info-content ul {
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+.business-info-content li {
+    margin-bottom: 10px;
+}
+.close-business-btn {
+    background-color: #a30909;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    display: block;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+    width: 120px;
+}
+.close-business-btn:hover {
+    background-color: #8a0808;
+    transform: translateY(-2px);
+}
+
+/* Responsive design adjustments for this section */
+@media (max-width: 992px) {
+    .business-info-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .business-info-btn {
+        width: auto;
+        justify-content: center;
+    }
+}
+@media (max-width: 576px) {
+    .business-logo {
+        height: 35px;
+    }
+}
+        /* Floating Contact Container */
+.floating-contact {
+    position: fixed;
+    bottom: 25px; /* Adjust distance from the bottom */
+    right: 25px; /* Adjust distance from the right */
+    z-index: 1000; /* Ensure it stays on top of other content */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between the buttons */
+}
+
+/* Floating Button Base Style */
+.float-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px; /* Size of the circle */
+    height: 60px; /* Size of the circle */
+    border-radius: 50%;
+    color: white;
+    font-size: 28px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.float-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
+}
+
+/* WhatsApp specific styling */
+.whatsapp-float {
+    background-color: #25d366; /* WhatsApp green */
+}
+
+/* Email specific styling */
+.email-float {
+    background-color: #3498db; /* Email blue */
+}
+
+/* Optional: Adjust for smaller screens */
+@media (max-width: 576px) {
+    .floating-contact {
+        bottom: 20px;
+        right: 20px;
+        gap: 10px;
+    }
+    .float-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+}
         /* Global reset and modern styling */
         * {
             margin: 0;
@@ -1125,6 +1304,34 @@
         </div>
     </div>
 </section>
+<div class="business-info-container">
+    <button class="business-info-btn" onclick="showBusinessPopup()">
+        <img src="images-logo/polar-ice-cream-logo.png" alt="Business Logo" class="business-logo">
+        About Our Business
+    </button>
+</div>
+
+<div class="business-popup-overlay" id="businessPopupOverlay">
+    <div class="business-popup" id="businessPopup">
+        <h3 class="business-popup-title">About Our Business</h3>
+        <div class="business-info-content">
+            <p>Welcome to Broadway Sweets, your premier destination for the finest confectionery treats. We specialize in a wide range of delicious sweets including lollipops, bubblegum, candies, and party packs that bring joy to every occasion.</p>
+            
+            <p>Our commitment to quality and customer satisfaction has made us a trusted name in the industry. We use only the finest ingredients to create our products, ensuring a delightful experience with every bite.</p>
+            
+            <p>Information:</p>
+            <ul>
+                <li><strong>Location:</strong> We use only the finest, fresh ingredients to create our delicious sweets.</li>
+                <li><strong>Open hours:</strong> Our extensive range includes lollipops, bubblegum, candies, party packs, and exclusive secret snacks.</li>
+                <li><strong>Contact Number:</strong> Our products undergo rigorous quality checks to ensure safety and freshness.</li>
+                <li><strong>Type of business:</strong> We offer excellent customer service and support for all your sweet needs.</li>
+                </ul>
+            
+            <p>We believe in creating moments of happiness through our delicious products. Whether you're planning a party, looking for a special treat, or just want to indulge in something sweet, Broadway Sweets has something for everyone.</p>
+        </div>
+        <button class="close-business-btn" onclick="hideBusinessPopup()">Close</button>
+    </div>
+</div>
    <div class="content-section">
         <h2 id="premier-ice-cream" class="section-title">PREMIER ICE CREAM</h2>
         <div class="products-grid" id="productsGrid">
@@ -2347,6 +2554,27 @@
         </div>
     </footer>
     <script>
+        // Business info popup functionality
+function showBusinessPopup() {
+    document.getElementById('businessPopupOverlay').style.display = 'flex';
+    setTimeout(() => {
+        document.getElementById('businessPopup').classList.add('active');
+    }, 10);
+}
+
+function hideBusinessPopup() {
+    document.getElementById('businessPopup').classList.remove('active');
+    setTimeout(() => {
+        document.getElementById('businessPopupOverlay').style.display = 'none';
+    }, 300);
+}
+
+// Close business popup when clicking outside
+document.getElementById('businessPopupOverlay').addEventListener('click', function(e) {
+    if (e.target === this) {
+        hideBusinessPopup();
+    }
+});
         // Define global variables
         const productModalOverlay = document.querySelector('.product-modal-overlay');
         const productModal = document.querySelector('.product-modal');
@@ -2774,5 +3002,13 @@ const stored = localStorage.getItem(STORAGE_KEY);
 }
     </script>
     <script src="/js/cart.js"></script>
+    <div class="floating-contact">
+    <a href="https://wa.me/27649220145?text=Hello, I'd like to inquire about your products." target="_blank" rel="noopener noreferrer" class="float-btn whatsapp-float" title="Contact via WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="mailto:contact@broadwaysweets.co.za?subject=Inquiry from Website&body=Hello, I'd like to inquire about your products." class="float-btn email-float" title="Contact via Email">
+        <i class="fas fa-envelope"></i>
+    </a>
+</div>
 </body>
 </html>
