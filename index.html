@@ -709,15 +709,54 @@
             color: #718096;
             margin-top: 5px;
         }
+        
+        /* View Comments Button */
+        .view-comments-btn {
+            background-color: #f8f9fa;
+            color: #495057;
+            border: 1px solid #dee2e6;
+            border-radius: 50px;
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            text-decoration: none;
+        }
+        
+        .view-comments-btn:hover {
+            background-color: #e9ecef;
+            color: #343a40;
+            border-color: #adb5bd;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .view-comments-btn i {
+            font-size: 0.9rem;
+        }
+        
         /* --- COMMENT SECTION STYLES --- */
         .comments-section {
             margin-top: 15px;
             padding-top: 15px;
             border-top: 1px solid #eee;
+            display: none; /* Hidden by default */
+            transition: all 0.3s ease;
         }
+        
+        .comments-section.active {
+            display: block;
+        }
+        
         .comment-form {
             margin-bottom: 15px;
         }
+        
         .comment-input {
             width: 100%;
             padding: 10px;
@@ -728,6 +767,7 @@
             font-family: inherit;
             box-sizing: border-box;
         }
+        
         .submit-comment-btn {
             background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
             color: white;
@@ -740,46 +780,57 @@
             transition: var(--transition);
             width: 100%;
         }
+        
         .submit-comment-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(52, 148, 219, 0.3);
         }
+        
         .comments-list {
             max-height: 150px;
             overflow-y: auto;
             padding-right: 5px;
         }
+        
         .comments-list::-webkit-scrollbar {
             width: 6px;
         }
+        
         .comments-list::-webkit-scrollbar-track {
             background: #f1f1f1;
             border-radius: 10px;
         }
+        
         .comments-list::-webkit-scrollbar-thumb {
             background: #c1c1c1;
             border-radius: 10px;
         }
+        
         .comments-list::-webkit-scrollbar-thumb:hover {
             background: #a8a8a8;
         }
+        
         .comment-item {
             padding: 10px 0;
             border-bottom: 1px solid #f5f5f5;
         }
+        
         .comment-item:last-child {
             border-bottom: none;
         }
+        
         .comment-author {
             font-weight: 600;
             color: var(--secondary-color);
             font-size: 0.9rem;
         }
+        
         .comment-date {
             font-size: 0.8rem;
             color: #718096;
             margin-left: 8px;
         }
+        
         .comment-text {
             margin-top: 5px;
             font-size: 0.95rem;
@@ -787,6 +838,7 @@
             line-height: 1.5;
             text-align: left;
         }
+        
         /* --- SHARE SECTION STYLES --- */
         .share-section {
             margin-top: 15px;
@@ -796,6 +848,7 @@
             justify-content: center;
             gap: 12px;
         }
+        
         .share-btn {
             display: flex;
             align-items: center;
@@ -810,22 +863,27 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             text-decoration: none;
         }
+        
         .share-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         }
+        
         .share-btn.facebook:hover {
             background: #3b5998;
             color: white;
         }
+        
         .share-btn.whatsapp:hover {
             background: #25D366;
             color: white;
         }
+        
         .share-btn.email:hover {
             background: #EA4335;
             color: white;
         }
+        
         /* --- Footer --- */
         footer {
             background: linear-gradient(135deg, #610d00 0%, #4a0a00 100%);
@@ -1423,9 +1481,12 @@
                                 <i class="far fa-star star"></i>
                             </div>
                             <div class="rating-count">0 ratings</div>
+                            <a href="#" class="view-comments-btn" data-target="nothing-fancy-comments">
+                                <i class="fas fa-comment"></i> View Comments
+                            </a>
                         </div>
                         <!-- Comment Section -->
-                        <div class="comments-section">
+                        <div class="comments-section" id="nothing-fancy-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
                                 <button class="submit-comment-btn">Post Comment</button>
@@ -1466,9 +1527,12 @@
                                 <i class="far fa-star star"></i>
                             </div>
                             <div class="rating-count">0 ratings</div>
+                            <a href="#" class="view-comments-btn" data-target="sweet-depot-comments">
+                                <i class="fas fa-comment"></i> View Comments
+                            </a>
                         </div>
                         <!-- Comment Section -->
-                        <div class="comments-section">
+                        <div class="comments-section" id="sweet-depot-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
                                 <button class="submit-comment-btn">Post Comment</button>
@@ -1509,9 +1573,12 @@
                                 <i class="far fa-star star"></i>
                             </div>
                             <div class="rating-count">0 ratings</div>
+                            <a href="#" class="view-comments-btn" data-target="sweet-mart-comments">
+                                <i class="fas fa-comment"></i> View Comments
+                            </a>
                         </div>
                         <!-- Comment Section -->
-                        <div class="comments-section">
+                        <div class="comments-section" id="sweet-mart-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
                                 <button class="submit-comment-btn">Post Comment</button>
@@ -1552,9 +1619,12 @@
                                 <i class="far fa-star star"></i>
                             </div>
                             <div class="rating-count">0 ratings</div>
+                            <a href="#" class="view-comments-btn" data-target="polar-ice-cream-comments">
+                                <i class="fas fa-comment"></i> View Comments
+                            </a>
                         </div>
                         <!-- Comment Section -->
-                        <div class="comments-section">
+                        <div class="comments-section" id="polar-ice-cream-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
                                 <button class="submit-comment-btn">Post Comment</button>
@@ -1600,9 +1670,12 @@
                                 <i class="far fa-star star"></i>
                             </div>
                             <div class="rating-count">0 ratings</div>
+                            <a href="#" class="view-comments-btn" data-target="polar-ice-cream-retail-comments">
+                                <i class="fas fa-comment"></i> View Comments
+                            </a>
                         </div>
                         <!-- Comment Section -->
-                        <div class="comments-section">
+                        <div class="comments-section" id="polar-ice-cream-retail-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
                                 <button class="submit-comment-btn">Post Comment</button>
@@ -1643,9 +1716,12 @@
                                 <i class="far fa-star star"></i>
                             </div>
                             <div class="rating-count">0 ratings</div>
+                            <a href="#" class="view-comments-btn" data-target="broadway-sweets-comments">
+                                <i class="fas fa-comment"></i> View Comments
+                            </a>
                         </div>
                         <!-- Comment Section -->
-                        <div class="comments-section">
+                        <div class="comments-section" id="broadway-sweets-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
                                 <button class="submit-comment-btn">Post Comment</button>
@@ -1686,9 +1762,12 @@
                                 <i class="far fa-star star"></i>
                             </div>
                             <div class="rating-count">0 ratings</div>
+                            <a href="#" class="view-comments-btn" data-target="sweet-depot-retail-comments">
+                                <i class="fas fa-comment"></i> View Comments
+                            </a>
                         </div>
                         <!-- Comment Section -->
-                        <div class="comments-section">
+                        <div class="comments-section" id="sweet-depot-retail-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
                                 <button class="submit-comment-btn">Post Comment</button>
@@ -1729,9 +1808,12 @@
                                 <i class="far fa-star star"></i>
                             </div>
                             <div class="rating-count">0 ratings</div>
+                            <a href="#" class="view-comments-btn" data-target="sweet-mart-retail-comments">
+                                <i class="fas fa-comment"></i> View Comments
+                            </a>
                         </div>
                         <!-- Comment Section -->
-                        <div class="comments-section">
+                        <div class="comments-section" id="sweet-mart-retail-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
                                 <button class="submit-comment-btn">Post Comment</button>
@@ -1777,9 +1859,12 @@
                                 <i class="far fa-star star"></i>
                             </div>
                             <div class="rating-count">0 ratings</div>
+                            <a href="#" class="view-comments-btn" data-target="africa-cash-n-carry-comments">
+                                <i class="fas fa-comment"></i> View Comments
+                            </a>
                         </div>
                         <!-- Comment Section -->
-                        <div class="comments-section">
+                        <div class="comments-section" id="africa-cash-n-carry-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
                                 <button class="submit-comment-btn">Post Comment</button>
@@ -1820,9 +1905,12 @@
                                 <i class="far fa-star star"></i>
                             </div>
                             <div class="rating-count">0 ratings</div>
+                            <a href="#" class="view-comments-btn" data-target="devland-cash-carry-comments">
+                                <i class="fas fa-comment"></i> View Comments
+                            </a>
                         </div>
                         <!-- Comment Section -->
-                        <div class="comments-section">
+                        <div class="comments-section" id="devland-cash-carry-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
                                 <button class="submit-comment-btn">Post Comment</button>
@@ -1863,9 +1951,12 @@
                                 <i class="far fa-star star"></i>
                             </div>
                             <div class="rating-count">0 ratings</div>
+                            <a href="#" class="view-comments-btn" data-target="continental-cash-carry-comments">
+                                <i class="fas fa-comment"></i> View Comments
+                            </a>
                         </div>
                         <!-- Comment Section -->
-                        <div class="comments-section">
+                        <div class="comments-section" id="continental-cash-carry-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
                                 <button class="submit-comment-btn">Post Comment</button>
@@ -1906,9 +1997,12 @@
                                 <i class="far fa-star star"></i>
                             </div>
                             <div class="rating-count">0 ratings</div>
+                            <a href="#" class="view-comments-btn" data-target="jumbo-cash-carry-comments">
+                                <i class="fas fa-comment"></i> View Comments
+                            </a>
                         </div>
                         <!-- Comment Section -->
-                        <div class="comments-section">
+                        <div class="comments-section" id="jumbo-cash-carry-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
                                 <button class="submit-comment-btn">Post Comment</button>
@@ -1965,9 +2059,12 @@
                                 <i class="far fa-star star"></i>
                             </div>
                             <div class="rating-count">0 ratings</div>
+                            <a href="#" class="view-comments-btn" data-target="butcher-block-comments">
+                                <i class="fas fa-comment"></i> View Comments
+                            </a>
                         </div>
                         <!-- Comment Section -->
-                        <div class="comments-section">
+                        <div class="comments-section" id="butcher-block-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
                                 <button class="submit-comment-btn">Post Comment</button>
@@ -2016,9 +2113,12 @@
                                 <i class="far fa-star star"></i>
                             </div>
                             <div class="rating-count">0 ratings</div>
+                            <a href="#" class="view-comments-btn" data-target="ben-carter-comments">
+                                <i class="fas fa-comment"></i> View Comments
+                            </a>
                         </div>
                         <!-- Comment Section -->
-                        <div class="comments-section">
+                        <div class="comments-section" id="ben-carter-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
                                 <button class="submit-comment-btn">Post Comment</button>
@@ -2067,9 +2167,12 @@
                                 <i class="far fa-star star"></i>
                             </div>
                             <div class="rating-count">0 ratings</div>
+                            <a href="#" class="view-comments-btn" data-target="chloe-lee-comments">
+                                <i class="fas fa-comment"></i> View Comments
+                            </a>
                         </div>
                         <!-- Comment Section -->
-                        <div class="comments-section">
+                        <div class="comments-section" id="chloe-lee-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
                                 <button class="submit-comment-btn">Post Comment</button>
@@ -2118,9 +2221,12 @@
                                 <i class="far fa-star star"></i>
                             </div>
                             <div class="rating-count">0 ratings</div>
+                            <a href="#" class="view-comments-btn" data-target="david-kross-comments">
+                                <i class="fas fa-comment"></i> View Comments
+                            </a>
                         </div>
                         <!-- Comment Section -->
-                        <div class="comments-section">
+                        <div class="comments-section" id="david-kross-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
                                 <button class="submit-comment-btn">Post Comment</button>
@@ -2231,7 +2337,7 @@
     </div>
     <button class="back-to-top" id="backToTopBtn" aria-label="Back to top" style="display: none;"><i class="fas fa-chevron-up"></i></button>
     <script>
-        // === EXISTING POPUP, SIDEBAR LOGIC (UNCHANGED) ===
+        // === EXISTING POPUP, SLIDER, SIDEBAR LOGIC (UNCHANGED) ===
         const businessInfo = {
             "broadwaysweetsPopup": { title: "Broadway Sweets", text: "Broadway Sweets offers a delightful selection of traditional Indian confections and mouth-watering savory snacks. Their commitment to quality and authentic recipes has made them a local favorite for generations." },
             "sweetdeportPopup": { title: "Sweet Depot", text: "Sweet Depot is your international candy and dessert headquarters. They stock a massive variety of hard-to-find international treats alongside classic local favorites. Perfect for stocking up for parties or a quick sugar fix." },
@@ -2284,7 +2390,6 @@
         let currentSlide = 0;
         let slideInterval;
         const slideDuration = 5000; // 5 seconds
-
         function showSlide(index) {
             // Remove active class from all slides and indicators
             slides.forEach(slide => slide.classList.remove('active'));
@@ -2294,17 +2399,14 @@
             indicators[index].classList.add('active');
             currentSlide = index;
         }
-
         function nextSlide() {
             currentSlide = (currentSlide + 1) % slides.length;
             showSlide(currentSlide);
         }
-
         function prevSlide() {
             currentSlide = (currentSlide - 1 + slides.length) % slides.length;
             showSlide(currentSlide);
         }
-
         // Event listeners for buttons and indicators
         nextBtn.addEventListener('click', () => {
             nextSlide();
@@ -2320,7 +2422,6 @@
                 resetSlideInterval();
             });
         });
-
         // Auto-advance the slider
         function startSlideInterval() {
             slideInterval = setInterval(nextSlide, slideDuration);
@@ -2330,11 +2431,9 @@
             startSlideInterval();
         }
         startSlideInterval();
-
         // Pause auto-advance on hover
         slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
         slider.addEventListener('mouseleave', startSlideInterval);
-
         // Sidebar & scroll logic
         function closeSidebar() {
             document.getElementById('sidebar').classList.remove('active');
@@ -2548,22 +2647,18 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Rating System
     const allRatingStars = document.querySelectorAll('.rating-stars');
-    
     allRatingStars.forEach(ratingGroup => {
         const stars = ratingGroup.querySelectorAll('.star');
         const ratingCount = ratingGroup.parentElement.querySelector('.rating-count');
         const businessId = ratingGroup.dataset.business || ratingGroup.dataset.service;
-        
         // Load saved ratings
         const savedRating = localStorage.getItem(`rating_${businessId}`);
         const savedComments = JSON.parse(localStorage.getItem(`comments_${businessId}`)) || [];
-        
         if (savedRating) {
             const ratingValue = parseInt(savedRating);
             updateStars(ratingGroup, ratingValue);
             updateRatingCount(ratingCount, ratingValue, 1);
         }
-        
         // Hover effect
         stars.forEach((star, index) => {
             star.addEventListener('mouseover', () => {
@@ -2572,33 +2667,48 @@ document.addEventListener('DOMContentLoaded', () => {
                     stars[i].classList.add('hover');
                 }
             });
-            
             star.addEventListener('mouseout', () => {
                 stars.forEach(s => s.classList.remove('hover'));
                 if (savedRating) {
                     updateStars(ratingGroup, parseInt(savedRating));
                 }
             });
-            
             // Click to rate
             star.addEventListener('click', () => {
                 const ratingValue = index + 1;
                 localStorage.setItem(`rating_${businessId}`, ratingValue.toString());
-                
                 // Update UI
                 updateStars(ratingGroup, ratingValue);
-                
                 // Update rating count (for demo purposes, we'll just show "1 rating")
                 updateRatingCount(ratingCount, ratingValue, 1);
-                
                 alert(`Thank you for rating ${ratingValue} star${ratingValue !== 1 ? 's' : ''}!`);
             });
         });
     });
     
+    // View Comments Button Functionality
+    const viewCommentsButtons = document.querySelectorAll('.view-comments-btn');
+    viewCommentsButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = button.getAttribute('data-target');
+            const commentSection = document.getElementById(targetId);
+            
+            if (commentSection) {
+                commentSection.classList.toggle('active');
+                // Update button text based on state
+                const icon = button.querySelector('i');
+                if (commentSection.classList.contains('active')) {
+                    button.innerHTML = '<i class="fas fa-angle-up"></i> Hide Comments';
+                } else {
+                    button.innerHTML = '<i class="fas fa-comment"></i> View Comments';
+                }
+            }
+        });
+    });
+    
     // Comment System
     const allCommentForms = document.querySelectorAll('.comment-form');
-    
     allCommentForms.forEach(form => {
         const textarea = form.querySelector('.comment-input');
         const submitBtn = form.querySelector('.submit-comment-btn');
@@ -2637,7 +2747,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Share Functionality
     const allShareButtons = document.querySelectorAll('.share-btn');
-    
     allShareButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
