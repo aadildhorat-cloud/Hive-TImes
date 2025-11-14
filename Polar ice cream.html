@@ -408,7 +408,8 @@
 
 .swiper-button-next:after,
 .swiper-button-prev:after {
-  font-size: 20px;
+   min-width: 44px; /* Minimum recommended touch target */
+    min-height: 44px;
 }
 
 /* Responsive */
@@ -3029,7 +3030,11 @@ const stored = localStorage.getItem(STORAGE_KEY);
     effect: "fade",
     fadeEffect: {
       crossFade: true
-    }
+    },
+    // Enhanced for mobile touch
+    touchRatio: 1,
+    simulateTouch: true,
+    preventClicksOnSlide: false
   });
 </script>
 </body>
