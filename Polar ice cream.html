@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Polar Ice Cream </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <style>
         /* Business info button */
 .business-info-container {
@@ -362,61 +364,58 @@
             justify-content: center;
         }
       /* --- Slider Section --- */
+/* Swiper Slider Styling */
 .slider-section {
-    padding: 20px 0;
-    background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
-    text-align: center;
+  padding: 40px 0;
+  background: #fff;
 }
-.slider-container {
-    position: relative;
-    width: 92%;
-    max-width: 1200px;
-    height: 500px;
-    margin: 0 auto;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    background: #000;
-    cursor: pointer;
+
+.swiper {
+  width: 100%;
+  max-width: 1200px;
+  height: 500px;
+  margin: auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
-.slider {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    transition: transform 1s ease-in-out;
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
-.slide {
-    min-width: 100%;
-    height: 100%;
-    position: relative;
+
+.swiper-pagination-bullet {
+  background: #fff;
+  opacity: 0.7;
 }
-.slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 0px;
+
+.swiper-pagination-bullet-active {
+  background: #a30909;
+  opacity: 1;
 }
-.slide-indicators {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-    z-index: 10;
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 10px 15px;
+  border-radius: 50%;
+  backdrop-filter: blur(4px);
 }
-.indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-    transition: all 0.3s ease;
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 20px;
 }
-.indicator.active {
-    background-color: white;
-    width: 16px;
-    height: 16px;
+
+/* Responsive */
+@media (max-width: 768px) {
+  .swiper {
+    height: 300px;
+  }
 }
         /* Search and Filter */
         .search-filter-container {
@@ -1272,37 +1271,34 @@
             </div>
         </div>
     </header>
-  <section class="slider-section">
-    <div class="slider-container" id="sliderContainer">
-        <div class="slider" id="slider">
-            <div class="slide">
-                <a href="Polar ice cream.html" target="_blank" rel="noopener">
-                    <img src="images-logo/polar-ice-cream-long.jpg" alt="Polar Ice Cream">
-                </a>
-            </div>
-            <div class="slide">
-                <a href="broadway page.html" target="_blank" rel="noopener">
-                    <img src="images-logo/broadway-sweets-long.jpg" alt="Broadway Sweets">
-                </a>
-            </div>
-            <div class="slide">
-                <a href="Sweet Depot website.html" target="_blank" rel="noopener">
-                    <img src="images-logo/sweet-deport-long.jpg" alt="Sweet Depot">
-                </a>
-            </div>
-            <div class="slide">
-                <a href="Sweet Mart.html" target="_blank" rel="noopener">
-                    <img src="images-logo/sweet-mart-long.jpg" alt="Sweet mart">
-                </a>
-            </div>
-        </div>
-        <div class="slide-indicators">
-            <div class="indicator active" onclick="changeSlide(0)"></div>
-            <div class="indicator" onclick="changeSlide(1)"></div>
-            <div class="indicator" onclick="changeSlide(2)"></div>
-            <div class="indicator" onclick="changeSlide(3)"></div>
-        </div>
+ <section class="swiper mySwiper slider-section">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <a href="Polar ice cream.html" target="_blank" rel="noopener">
+        <img src="images-logo/polar-ice-cream-long.jpg" alt="Polar Ice Cream">
+      </a>
     </div>
+    <div class="swiper-slide">
+      <a href="broadway page.html" target="_blank" rel="noopener">
+        <img src="images-logo/broadway-sweets-long.jpg" alt="Broadway Sweets">
+      </a>
+    </div>
+    <div class="swiper-slide">
+      <a href="Sweet Depot website.html" target="_blank" rel="noopener">
+        <img src="images-logo/sweet-deport-long.jpg" alt="Sweet Depot">
+      </a>
+    </div>
+    <div class="swiper-slide">
+      <a href="Sweet Mart.html" target="_blank" rel="noopener">
+        <img src="images-logo/sweet-mart-long.jpg" alt="Sweet Mart">
+      </a>
+    </div>
+  </div>
+  <!-- Add Pagination -->
+  <div class="swiper-pagination"></div>
+  <!-- Add Navigation -->
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
 </section>
 <div class="business-info-container">
     <button class="business-info-btn" onclick="showBusinessPopup()">
@@ -2984,7 +2980,7 @@ const stored = localStorage.getItem(STORAGE_KEY);
     }
 
     // 🔹 Replace with your business WhatsApp number (include country code, no + or spaces)
-    const businessNumber = "27649220145"; // Example: South Africa number
+    const businessNumber = "27604368376"; // Example: South Africa number
 
     // 🔹 Build message
     let message = "Hi! I'm enquiring from **Hive Times** and would like to place the following order from *Polar Ice Cream*:\n\n";
@@ -3003,12 +2999,38 @@ const stored = localStorage.getItem(STORAGE_KEY);
     </script>
     <script src="/js/cart.js"></script>
     <div class="floating-contact">
-    <a href="https://wa.me/27649220145?text=Hello, I'd like to inquire about your products." target="_blank" rel="noopener noreferrer" class="float-btn whatsapp-float" title="Contact via WhatsApp">
+    <a href="https://wa.me/27604368376?text=Hello, I'd like to inquire about your products." target="_blank" rel="noopener noreferrer" class="float-btn whatsapp-float" title="Contact via WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
     <a href="mailto:contact@broadwaysweets.co.za?subject=Inquiry from Website&body=Hello, I'd like to inquire about your products." class="float-btn email-float" title="Contact via Email">
         <i class="fas fa-envelope"></i>
     </a>
 </div>
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    spaceBetween: 0,
+    centeredSlides: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    loop: true,
+    effect: "fade",
+    fadeEffect: {
+      crossFade: true
+    }
+  });
+</script>
 </body>
 </html>
