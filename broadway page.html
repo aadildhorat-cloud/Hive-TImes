@@ -1,66 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DTPGZ964FD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DTPGZ964FD');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Broadway Sweets - Online Store</title>
+    <title>BROADWAY SWEETS </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Swiper CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <style>
-        /* Floating Contact Container */
-.floating-contact {
-    position: fixed;
-    bottom: 25px; /* Adjust distance from the bottom */
-    right: 25px; /* Adjust distance from the right */
-    z-index: 1000; /* Ensure it stays on top of other content */
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Space between the buttons */
-}
-
-/* Floating Button Base Style */
-.float-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 60px; /* Size of the circle */
-    height: 60px; /* Size of the circle */
-    border-radius: 50%;
-    color: white;
-    font-size: 28px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.float-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
-}
-
-/* WhatsApp specific styling */
-.whatsapp-float {
-    background-color: #25d366; /* WhatsApp green */
-}
-
-/* Email specific styling */
-.email-float {
-    background-color: #3498db; /* Email blue */
-}
-
-/* Optional: Adjust for smaller screens */
-@media (max-width: 576px) {
-    .floating-contact {
-        bottom: 20px;
-        right: 20px;
-        gap: 10px;
-    }
-    .float-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 24px;
-    }
-}
         /* Business info button */
 .business-info-container {
     display: flex;
@@ -187,6 +143,59 @@
         height: 35px;
     }
 }
+        /* Floating Contact Container */
+.floating-contact {
+    position: fixed;
+    bottom: 25px; /* Adjust distance from the bottom */
+    right: 25px; /* Adjust distance from the right */
+    z-index: 1000; /* Ensure it stays on top of other content */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between the buttons */
+}
+
+/* Floating Button Base Style */
+.float-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px; /* Size of the circle */
+    height: 60px; /* Size of the circle */
+    border-radius: 50%;
+    color: white;
+    font-size: 28px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.float-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
+}
+
+/* WhatsApp specific styling */
+.whatsapp-float {
+    background-color: #25d366; /* WhatsApp green */
+}
+
+/* Email specific styling */
+.email-float {
+    background-color: #3498db; /* Email blue */
+}
+
+/* Optional: Adjust for smaller screens */
+@media (max-width: 576px) {
+    .floating-contact {
+        bottom: 20px;
+        right: 20px;
+        gap: 10px;
+    }
+    .float-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+}
         /* Global reset and modern styling */
         * {
             margin: 0;
@@ -215,7 +224,7 @@
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 -10px;
+            padding: 0 20px;
         }
         .logo-container {
             display: flex;
@@ -290,25 +299,21 @@
             color: #a30909;
             padding-left: 20px;
         }
-/* Submenu Styling */
 /* Submenu Styling (Vertical Nested) */
 .submenu > a {
-    /* Style the main category link (e.g., LOLLIPOPS) */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* Ensure it has the correct padding to look like a main dropdown link */
     padding: 12px 16px;
 }
 .submenu-content {
-    display: none;     /* Hide by default */
-    position: static;  /* CRITICAL CHANGE: Allows content to flow vertically */
-    background-color: #f8f9fa; /* Lighter background for visual nesting */
+    display: none;
+    position: static;
+    background-color: #f8f9fa;
     border-top: 1px solid #eee;
     padding: 0;
 }
 .submenu:hover .submenu-content {
-    /* When hovering over the main subcategory item, show its content */
     display: block;
     opacity: 1;
     visibility: visible;
@@ -316,15 +321,14 @@
 }
 .submenu-content a {
     color: #333;
-    /* Indent the sub-link to visually show nesting */
-    padding: 8px 16px 8px 30px; 
+    padding: 8px 16px 8px 30px;
     display: block;
     transition: all 0.2s ease;
 }
 .submenu-content a:hover {
     background-color: #eee;
     color: #a30909;
-    padding-left: 35px; /* Slight movement on hover */
+    padding-left: 35px;
 }
         /* User Account & Cart */
         .user-section {
@@ -368,7 +372,7 @@
             align-items: center;
             justify-content: center;
         }
-      /* --- NEW Slider Section --- */
+      /* --- Slider Section --- */
 /* Swiper Slider Styling */
 .slider-section {
   padding: 40px 0;
@@ -413,7 +417,8 @@
 
 .swiper-button-next:after,
 .swiper-button-prev:after {
-  font-size: 20px;
+   min-width: 44px; /* Minimum recommended touch target */
+    min-height: 44px;
 }
 
 /* Responsive */
@@ -1133,24 +1138,22 @@
         padding: 0 10px;
         margin: 30px auto;
     }
-
-    /* === UPDATED PRODUCT GRID FOR MOBILE === */
     .products-grid {
         justify-content: space-between;
-        gap: 12px; /* Reduced gap for tighter layout */
+        gap: 12px;
     }
     .product-card {
-        flex: 1 1 calc(50% - 6px); /* 2 per row with gap */
+        flex: 1 1 calc(50% - 6px);
         max-width: calc(50% - 6px);
         margin: 0;
         min-width: 0;
     }
     .product-info {
-        padding: 10px; /* Slightly reduced padding */
+        padding: 10px;
     }
     .product-name {
         font-size: 14px;
-        min-height: auto; /* Avoid excessive spacing */
+        min-height: auto;
     }
     .product-price {
         font-size: 16px;
@@ -1171,10 +1174,8 @@
             <nav>
                 <ul>
                     <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-        
-                 
-                  
-                    <li class="dropdown">
+                   
+                         <li class="dropdown">
                         <a href="#"><i class="fas fa-box"></i> Categories</a>
                         <div class="dropdown-content">
                             <div class="submenu">
@@ -1270,19 +1271,19 @@
                                     <a href="#STUMBO-CANDY">Continental Cash & Carry</a>
                                     <a href="#ZOUR-BOMB">Jumbo Cash & Carry</a>
                                   </div>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </nav>
             <div class="user-section">
-                
                 <button class="cart-btn" onclick="showCartModal()">
                     <i class="fas fa-shopping-cart"></i> Cart (<span id="cartCount">0</span>)
                 </button>
             </div>
         </div>
     </header>
-
-  <section class="swiper mySwiper slider-section">
+ <section class="swiper mySwiper slider-section">
   <div class="swiper-wrapper">
     <div class="swiper-slide">
       <a href="Polar ice cream.html" target="_blank" rel="noopener">
@@ -1311,10 +1312,9 @@
   <div class="swiper-button-next"></div>
   <div class="swiper-button-prev"></div>
 </section>
-
 <div class="business-info-container">
     <button class="business-info-btn" onclick="showBusinessPopup()">
-        <img src="images-logo/broadway-sweets-logo.jpg" alt="Business Logo" class="business-logo">
+        <img src="images-logo/polar-ice-cream-logo.png" alt="Business Logo" class="business-logo">
         About Our Business
     </button>
 </div>
@@ -1327,26 +1327,20 @@
             
             <p>Our commitment to quality and customer satisfaction has made us a trusted name in the industry. We use only the finest ingredients to create our products, ensuring a delightful experience with every bite.</p>
             
-            <p>What sets us apart:</p>
+            <p>Information:</p>
             <ul>
-                <li><strong>Quality Ingredients:</strong> We use only the finest, fresh ingredients to create our delicious sweets.</li>
-                <li><strong>Wide Variety:</strong> Our extensive range includes lollipops, bubblegum, candies, party packs, and exclusive secret snacks.</li>
-                <li><strong>Freshness Guaranteed:</strong> Our products undergo rigorous quality checks to ensure safety and freshness.</li>
-                <li><strong>Customer Satisfaction:</strong> We offer excellent customer service and support for all your sweet needs.</li>
-                <li><strong>Innovative Products:</strong> We continuously develop new and exciting flavors to delight our customers.</li>
-                <li><strong>Party Solutions:</strong> Our party packs are perfect for birthdays, events, and special occasions.</li>
-                <li><strong>Local Craftsmanship:</strong> We take pride in our local production and traditional sweet-making techniques.</li>
-                <li><strong>Customer Support:</strong> Our dedicated team is always ready to assist you with your sweet needs.</li>
-            </ul>
+                <li><strong>Location:</strong> We use only the finest, fresh ingredients to create our delicious sweets.</li>
+                <li><strong>Open hours:</strong> Our extensive range includes lollipops, bubblegum, candies, party packs, and exclusive secret snacks.</li>
+                <li><strong>Contact Number:</strong> Our products undergo rigorous quality checks to ensure safety and freshness.</li>
+                <li><strong>Type of business:</strong> We offer excellent customer service and support for all your sweet needs.</li>
+                </ul>
             
             <p>We believe in creating moments of happiness through our delicious products. Whether you're planning a party, looking for a special treat, or just want to indulge in something sweet, Broadway Sweets has something for everyone.</p>
         </div>
         <button class="close-business-btn" onclick="hideBusinessPopup()">Close</button>
     </div>
 </div>
-    
-
-    <div class="content-section">
+  <div class="content-section">
     <h2 id="BIG-POPS" class="section-title">BIG POPS</h2>
     <div class="products-grid" id="productsGrid">
         <div class="product-card" data-id="1" data-category="lollipops" data-price="71.50">
@@ -2019,7 +2013,6 @@
         </div>
     </div>
 </div>
-
     <div class="product-modal-overlay">
         <div class="product-modal">
             <button class="close-product-modal" onclick="closeProductModal()"><i class="fas fa-times"></i></button>
@@ -2033,17 +2026,14 @@
                     <h3 class="product-modal-title" id="modalProductName">Product Name</h3>
                     <div class="product-modal-price" id="modalProductPrice">R0.00</div>
                     <p class="product-modal-description" id="modalProductDescription">A delicious treat for everyone!</p>
-
                     <div class="product-variants" id="productVariantsContainer">
                         </div>
-
                     <div class="quantity-selector">
                         <div class="variant-title">Quantity:</div>
                         <button class="quantity-btn" id="decreaseQuantity">-</button>
                         <span class="quantity-display" id="modalQuantity">1</span>
                         <button class="quantity-btn" id="increaseQuantity">+</button>
                     </div>
-
                     <button class="add-to-cart-modal-btn" id="modalAddToCartBtn">
                         <i class="fas fa-cart-plus"></i> Add to Cart
                     </button>
@@ -2051,7 +2041,6 @@
             </div>
         </div>
     </div>
-
     <div class="cart-modal-overlay">
         <div class="cart-modal">
             <h3 class="cart-modal-title"><i class="fas fa-shopping-cart"></i> Your Shopping Cart</h3>
@@ -2059,17 +2048,13 @@
                 <p style="text-align: center; color: #555;">Your cart is empty.</p>
             </div>
             <div class="cart-total" id="cartTotal">Total: R0.00</div>
-          <button class="checkout-btn" onclick="sendOrder()">
-    <i class="fas fa-money-check-alt"></i> Proceed to Checkout
-</button>
+        <button class="checkout-btn" onclick="sendCartToWhatsApp()"><i class="fab fa-whatsapp"></i> Send Order via WhatsApp</button>
             <button class="close-cart-btn" onclick="closeCartModal()">Continue Shopping</button>
         </div>
     </div>
-
     <div class="user-modal-overlay">
         <div class="user-modal">
             <h3 class="user-modal-title" id="userModalTitle">Login</h3>
-
             <form class="auth-form" id="loginForm">
                 <div class="form-group">
                     <label for="loginEmail" class="form-label">Email:</label>
@@ -2081,7 +2066,6 @@
                 </div>
                 <button type="submit" class="auth-btn">Login</button>
             </form>
-
             <form class="auth-form" id="registerForm" style="display: none;">
                 <div class="form-group">
                     <label for="registerName" class="form-label">Name:</label>
@@ -2097,7 +2081,6 @@
                 </div>
                 <button type="submit" class="auth-btn">Register</button>
             </form>
-
             <div class="switch-auth">
                 <span id="switchAuthText">New user?</span>
                 <span class="switch-auth-btn" onclick="toggleAuthForm()">Register here</span>
@@ -2105,7 +2088,6 @@
             <button class="close-product-modal" style="top: 10px; right: 10px; background-color: #a30909;" onclick="closeUserModal()"><i class="fas fa-times"></i></button>
         </div>
     </div>
-
     <footer>
         <div class="footer-container">
             <div class="footer-content">
@@ -2131,11 +2113,10 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                &copy;  Broadway Sweets. All rights reserved. | Developed by Your Company Name
+                &copy;  Hive Times. All rights reserved. | Developed by Your Company Name
             </div>
         </div>
     </footer>
-
     <script>
         // Business info popup functionality
 function showBusinessPopup() {
@@ -2165,9 +2146,7 @@ document.getElementById('businessPopupOverlay').addEventListener('click', functi
         const cartModal = document.querySelector('.cart-modal');
         const userModalOverlay = document.querySelector('.user-modal-overlay');
         const userModal = document.querySelector('.user-modal');
-
-        // Product data structure (Example. In a real application, this would come from a database)
-        // I will use a simple mapping to hold the details for the product modal
+        // Product data structure
         const allProducts = [
             { id: 'broadway-1', name: 'Big Pops XXXL Cherry Plum Lollipops 48', price: 71.50, category: 'lollipops', image: 'Broadway sweets products/Lolipops/big pops/lolipops 8.jpg', description: 'Giant lollipops in a delicious cherry plum flavor, perfect for sharing or a big treat.', thumbnails: ['Broadway sweets products/Lolipops/big pops/lolipops 8.jpg'], variants: [] },
             { id: 'broadway-2', name: 'Big Pops XXXL Guavadilla Lollipops 48', price: 71.50, category: 'lollipops', image: 'Broadway sweets products/Lolipops/big pops/Big Pops XXXL Guavadilla Lollipops 48 Product 2.jpg', description: 'Massive lollipops bursting with exotic guavadilla flavour. A sweet and tangy delight.', thumbnails: ['Broadway sweets products/Lolipops/big pops/Big Pops XXXL Guavadilla Lollipops 48 Product 2.jpg'], variants: [] },
@@ -2211,73 +2190,52 @@ document.getElementById('businessPopupOverlay').addEventListener('click', functi
             { id: 'broadway-46', name: 'Secret Snacks Assorted', price: 49.50, category: 'secret snacks', image: 'Broadway sweets products/Secret snacks/1.jpg', description: 'A mysterious mix of small, crunchy, and savory snacks.', thumbnails: ['Broadway sweets products/Secret snacks/1.jpg'], variants: [] },
             { id: 'broadway-47', name: 'Party Packs Assorted', price: 137.50, category: 'party packs', image: 'Broadway sweets products/Party Packs/1.jpg', description: 'Pre-made assortment of various sweets perfect for parties.', thumbnails: ['Broadway sweets products/Party Packs/1.jpg'], variants: [] }
         ];
-
-        // Filter and Search Logic (Existing functions updated for clarity)
+        // Filter and Search Logic
         function getProductCards() {
             return document.querySelectorAll('.product-card');
         }
-
         function applyFilters() {
-            const searchQuery = document.getElementById('searchInput').value.toLowerCase();
-            const categoryFilter = document.getElementById('categoryFilter').value;
-            const priceSort = document.getElementById('priceSort').value;
+            const searchQuery = document.getElementById('searchInput')?.value.toLowerCase() || '';
+            const categoryFilter = document.getElementById('categoryFilter')?.value || '';
+            const priceSort = document.getElementById('priceSort')?.value || '';
             const allCards = Array.from(getProductCards());
-
-            // 1. Filtering
             allCards.forEach(card => {
                 const productName = card.querySelector('.product-name').textContent.toLowerCase();
                 const productCategory = card.getAttribute('data-category');
-                
                 let isVisible = true;
-
-                // Search Filter
                 if (searchQuery && !productName.includes(searchQuery)) {
                     isVisible = false;
                 }
-
-                // Category Filter
                 if (categoryFilter && productCategory !== categoryFilter) {
                     isVisible = false;
                 }
-
                 card.style.display = isVisible ? 'block' : 'none';
             });
-
-            // 2. Sorting
             let visibleCards = allCards.filter(card => card.style.display !== 'none');
-
             if (priceSort) {
                 visibleCards.sort((a, b) => {
                     const priceA = parseFloat(a.getAttribute('data-price'));
                     const priceB = parseFloat(b.getAttribute('data-price'));
                     return priceSort === 'asc' ? priceA - priceB : priceB - priceA;
                 });
-
-                // Re-insert sorted cards into their original grids (simplified: only applies to the first grid it encounters for now)
-                const gridContainer = document.getElementById('productsGrid') || document.getElementById('fligosProductsGrid');
+                const gridContainer = document.querySelector('.products-grid');
                 if (gridContainer) {
+                    const fragment = document.createDocumentFragment();
+                    visibleCards.forEach(card => fragment.appendChild(card));
                     gridContainer.innerHTML = '';
-                    visibleCards.forEach(card => {
-                        gridContainer.appendChild(card);
-                    });
+                    gridContainer.appendChild(fragment);
                 }
             }
-
-            // Note: A more robust filter/sort system would re-render all products, not just manipulate the DOM.
         }
-
         // Modal Functions
         function showProductModal(productId) {
             const product = allProducts.find(p => p.id === productId);
-
             if (!product) return;
-
             document.getElementById('modalProductName').textContent = product.name;
             document.getElementById('modalProductPrice').textContent = `R${product.price.toFixed(2)}`;
-            document.getElementById('modalProductDescription').textContent = product.description;
+            document.getElementById('modalProductDescription').textContent = product.description || 'A delicious frozen treat for everyone!';
             document.getElementById('modalMainImage').src = product.image;
             document.getElementById('modalQuantity').textContent = 1;
-
             const modalAddToCartBtn = document.getElementById('modalAddToCartBtn');
             modalAddToCartBtn.onclick = () => {
                 const quantity = parseInt(document.getElementById('modalQuantity').textContent);
@@ -2286,14 +2244,12 @@ document.getElementById('businessPopupOverlay').addEventListener('click', functi
                     name: product.name, 
                     price: product.price, 
                     quantity: quantity, 
-                    image: product.image, 
-                    businessName: 'Broadway Sweets',
-                    businessLogo: 'Broadway sweets products/BRoadway Sweets Logo.jpg' 
+                   image: `/images/polar-ice-cream/${product.image}`,
+                    businessName: product.businessName,
+                    businessLogo: 'polar-ice-cream-logo.png' 
                 });
                 closeProductModal();
             };
-
-            // Quantity controls
             document.getElementById('increaseQuantity').onclick = () => {
                 let quantity = parseInt(document.getElementById('modalQuantity').textContent);
                 document.getElementById('modalQuantity').textContent = quantity + 1;
@@ -2304,156 +2260,116 @@ document.getElementById('businessPopupOverlay').addEventListener('click', functi
                     document.getElementById('modalQuantity').textContent = quantity - 1;
                 }
             };
-            
-            // Show modal
             productModalOverlay.style.display = 'flex';
             setTimeout(() => productModal.classList.add('active'), 10);
         }
-
         function closeProductModal() {
             productModal.classList.remove('active');
             setTimeout(() => productModalOverlay.style.display = 'none', 300);
         }
-
         function showCartModal() {
             cartModalOverlay.style.display = 'flex';
             setTimeout(() => cartModal.classList.add('active'), 10);
-            cart.updateCartDisplay(); // Refresh content just in case
+            cart.updateCartDisplay();
         }
-
         function closeCartModal() {
             cartModal.classList.remove('active');
             setTimeout(() => cartModalOverlay.style.display = 'none', 300);
         }
-
         function showUserModal() {
             userModalOverlay.style.display = 'flex';
             setTimeout(() => userModal.classList.add('active'), 10);
         }
-
         function closeUserModal() {
             userModal.classList.remove('active');
             setTimeout(() => userModalOverlay.style.display = 'none', 300);
         }
-
         function toggleAuthForm() {
             const loginForm = document.getElementById('loginForm');
             const registerForm = document.getElementById('registerForm');
             const modalTitle = document.getElementById('userModalTitle');
             const switchAuthText = document.getElementById('switchAuthText');
-            const switchAuthBtn = document.getElementById('switchAuthBtn');
-
             if (loginForm.style.display !== 'none') {
-                // Switch to Register
                 loginForm.style.display = 'none';
                 registerForm.style.display = 'flex';
                 modalTitle.textContent = 'Register Account';
                 switchAuthText.textContent = 'Have an account?';
-                switchAuthBtn.textContent = 'Login here';
             } else {
-                // Switch to Login
                 loginForm.style.display = 'flex';
                 registerForm.style.display = 'none';
                 modalTitle.textContent = 'Login';
                 switchAuthText.textContent = 'New user?';
-                switchAuthBtn.textContent = 'Register here';
             }
         }
-
-        // Event listener for product card clicks to show product modal
         document.addEventListener('click', (e) => {
             const card = e.target.closest('.product-card');
-            if (card && e.target.className.indexOf('add-to-cart-btn') === -1) {
+            if (card && !e.target.closest('.add-to-cart-btn')) {
                 const productId = card.getAttribute('data-id');
-                const product = allProducts.find(p => p.id.endsWith(productId));
+                const product = allProducts.find(p => p.id === productId);
                 if (product) {
                     showProductModal(product.id);
                 }
             }
         });
-
-        // =========================================================================
-        // === CORE CART FUNCTIONALITY: UPDATED WITH LOCAL STORAGE PERSISTENCE ===
-        // =========================================================================
+        // CART FUNCTIONALITY WITH LOCAL STORAGE
         const cart = {
             items: [],
-
-            // --- LOCAL STORAGE IMPLEMENTATION ---
             saveCart: function() {
                 try {
-                    // Save the current cart items array to local storage
-                const STORAGE_KEY = 'hivetimes_unified_cart_v3';
+                   const STORAGE_KEY = 'hivetimes_unified_cart_v3';
                     this.updateCartDisplay();
                 } catch (e) {
-                    console.error('Error saving cart to local storage:', e);
+                    console.error('Error saving cart:', e);
                 }
             },
-
-            // Modify init to load cart from localStorage
             init: function() {
-                const storedCart = localStorage.getItem('broadwaySweetsCart');
+                const storedCart = localStorage.getItem('polarIceCreamCart');
                 if (storedCart) {
                     try {
-                        // Parse the stored JSON string back into the items array
                         this.items = JSON.parse(storedCart);
                     } catch (e) {
-                        console.error("Error parsing cart data from local storage, starting with empty cart:", e);
+                        console.error("Error parsing cart, starting fresh:", e);
                         this.items = [];
                     }
                 }
                 this.updateCartDisplay();
             },
-            // --- END LOCAL STORAGE IMPLEMENTATION ---
-
             addToCart: function(product) {
                 const existingItem = this.items.find(item => item.id === product.id);
-
                 if (existingItem) {
                     existingItem.quantity += product.quantity;
                 } else {
                     this.items.push(product);
                 }
-
-                this.saveCart(); // Save cart after modification
+                this.saveCart();
                 alert(`${product.name} added to cart!`);
             },
-            
             updateQuantity: function(id, delta) {
                 const item = this.items.find(i => i.id === id);
                 if (item) {
                     item.quantity += delta;
                     if (item.quantity <= 0) {
-                        this.removeItem(id); // removeItem also calls saveCart
+                        this.removeItem(id);
                     } else {
-                        this.saveCart(); // Save cart after modification
+                        this.saveCart();
                     }
                 }
             },
-
             removeItem: function(id) {
                 this.items = this.items.filter(item => item.id !== id);
-                this.saveCart(); // Save cart after modification
+                this.saveCart();
             },
-
             calculateTotal: function() {
                 return this.items.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
             },
-
             updateCartDisplay: function() {
                 const cartCountElement = document.getElementById('cartCount');
                 const cartItemsContainer = document.querySelector('.cart-items');
                 const cartTotalElement = document.getElementById('cartTotal');
-
-                // Update cart count in header
                 const totalItems = this.items.reduce((sum, item) => sum + item.quantity, 0);
-                if (cartCountElement) {
-                    cartCountElement.textContent = totalItems;
-                }
-
-                // Update cart modal display
+                if (cartCountElement) cartCountElement.textContent = totalItems;
                 if (cartItemsContainer) {
-                    cartItemsContainer.innerHTML = ''; // Clear existing items
-
+                    cartItemsContainer.innerHTML = '';
                     if (this.items.length === 0) {
                         cartItemsContainer.innerHTML = '<p style="text-align: center; color: #555;">Your cart is empty.</p>';
                     } else {
@@ -2478,134 +2394,85 @@ document.getElementById('businessPopupOverlay').addEventListener('click', functi
                         });
                     }
                 }
-
-                // Update cart total
                 if (cartTotalElement) {
                     cartTotalElement.textContent = `Total: R${this.calculateTotal()}`;
                 }
             }
         };
+        // Save
+localStorage.setItem(STORAGE_KEY, JSON.stringify(this.items));
 
-       // === NEW SLIDER LOGIC ===
-let currentSlide = 0;
-const slides = document.querySelectorAll('.slide');
-const indicators = document.querySelectorAll('.indicator');
-const totalSlides = slides.length;
-const slider = document.getElementById('slider');
-let slideInterval;
-
-function updateSlider() {
-    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-    indicators.forEach((indicator, index) => {
-        indicator.classList.toggle('active', index === currentSlide);
-    });
-}
-
-function nextSlide() {
-    currentSlide = (currentSlide + 1) % totalSlides;
-    updateSlider();
-}
-
-function changeSlide(index) {
-    currentSlide = index;
-    updateSlider();
-    resetAutoSlide();
-}
-
-function startAutoSlide() {
-    slideInterval = setInterval(nextSlide, 5000);
-}
-
-function resetAutoSlide() {
-    clearInterval(slideInterval);
-    startAutoSlide();
-}
-
-function initializeSlider() {
-    updateSlider();
-    startAutoSlide();
-    const sliderContainer = document.getElementById('sliderContainer');
-    if (sliderContainer) {
-        sliderContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
-        sliderContainer.addEventListener('mouseleave', resetAutoSlide);
-    }
-}
-
-// Initialize slider when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    initializeSlider();
-});
-function sendOrder() {
+// Load
+const stored = localStorage.getItem(STORAGE_KEY);
+        // SLIDER LOGIC
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const totalSlides = slides.length;
+        const slider = document.getElementById('slider');
+        let slideInterval;
+        function updateSlider() {
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlide);
+            });
+        }
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        }
+        function changeSlide(index) {
+            currentSlide = index;
+            updateSlider();
+            resetAutoSlide();
+        }
+        function startAutoSlide() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+        function resetAutoSlide() {
+            clearInterval(slideInterval);
+            startAutoSlide();
+        }
+        function initializeSlider() {
+            updateSlider();
+            startAutoSlide();
+            const sliderContainer = document.getElementById('sliderContainer');
+            if (sliderContainer) {
+                sliderContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
+                sliderContainer.addEventListener('mouseleave', resetAutoSlide);
+            }
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeSlider();
+            cart.init();
+        });
+        function sendCartToWhatsApp() {
     if (cart.items.length === 0) {
-        alert("Your cart is empty!");
+        alert("Your cart is empty. Add some items before sending!");
         return;
     }
 
-    // Turn the cart into a message
-    const order = {
-        items: cart.items,
-        total: cart.calculateTotal()
-    };
+    // 🔹 Replace with your business WhatsApp number (include country code, no + or spaces)
+    const businessNumber = "27825113441"; // Example: South Africa number
 
-    // Send it to your helper (we’ll make this later!)
-    fetch("https://yourwebsite.com/order", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(order)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert("Thank you! Your order is confirmed!");
-            cart.items = []; // Empty the cart
-            cart.saveCart();
-            closeCartModal();
-        } else {
-            alert("Oops! Something went wrong.");
-        }
-    })
-    .catch(() => {
-        alert("Can't reach the shop right now. Try again later!");
+    // 🔹 Build message
+    let message = "Hi! I'm enquiring from **Hive Times** and would like to place the following order from *Broadway Sweets*:\n\n";
+    cart.items.forEach(item => {
+        message += `• ${item.name} x${item.quantity} — R${(item.price * item.quantity).toFixed(2)}\n`;
     });
-}
-// === SEND ORDER TO NETLIFY FUNCTION ===
-async function sendOrderToBackend() {
-  const cartItems = JSON.parse(localStorage.getItem('broadwaySweetsCart') || '[]');
-  
-  if (cartItems.length === 0) {
-    alert("Your cart is empty!");
-    return;
-  }
+    message += `\n*Total: R${cart.calculateTotal()}*\n\nThank you!`;
 
-  const total = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-
-  try {
-    const response = await fetch("/.netlify/functions/checkout", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ items: cartItems, total: total.toFixed(2) })
-    });
-
-    const result = await response.json();
-
-    if (result.success) {
-      alert("✅ Order sent! We’ll email you soon.");
-      localStorage.removeItem('broadwaySweetsCart');
-      closeCartModal();
-      location.reload(); // Optional: refresh to clear cart count
-    } else {
-      alert("❌ Failed to send order. Please try again.");
-      console.error("Checkout error:", result.error);
-    }
-  } catch (error) {
-    console.error("Network error:", error);
-    alert("⚠️ Can't reach the server. Make sure you're on the live Netlify site!");
-  }
+    // 🔹 URL-encode and open WhatsApp
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${businessNumber}?text=${encodedMessage}`;
+    
+    // Open in new tab (works on desktop & mobile)
+    window.open(whatsappUrl, '_blank');
 }
     </script>
     <script src="/js/cart.js"></script>
     <div class="floating-contact">
-    <a href="https://wa.me/27123456789?text=Hello, I'd like to inquire about your products." target="_blank" rel="noopener noreferrer" class="float-btn whatsapp-float" title="Contact via WhatsApp">
+    <a href="https://wa.me/27825113441?text=Hello, I'd like to inquire about your products." target="_blank" rel="noopener noreferrer" class="float-btn whatsapp-float" title="Contact via WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
     <a href="mailto:contact@broadwaysweets.co.za?subject=Inquiry from Website&body=Hello, I'd like to inquire about your products." class="float-btn email-float" title="Contact via Email">
@@ -2635,8 +2502,12 @@ async function sendOrderToBackend() {
     effect: "fade",
     fadeEffect: {
       crossFade: true
-    }
+    },
+    // Enhanced for mobile touch
+    touchRatio: 1,
+    simulateTouch: true,
+    preventClicksOnSlide: false
   });
 </script>
-     </body>
+</body>
 </html>
