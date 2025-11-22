@@ -1,11 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DTPGZ964FD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DTPGZ964FD');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hive Times - Businesses</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
+        /* --- Shopping Cart Modal Styles (Updated for Business Groups) --- */
+/* ... (keep your existing .cart-modal, .cart-item, etc. styles) ... */
+
+/* Style for the business group container */
+.cart-business-group {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden; /* Ensures rounded corners contain content */
+    background-color: #fafafa; /* Slight background for group */
+}
+
+/* Style for the business header containing logo and name */
+.cart-business-header {
+    background-color: #f1f1f1; /* Light background for header */
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between logo and name */
+    border-bottom: 1px solid #eee;
+}
+
+.cart-business-logo {
+    height: 30px; /* Adjust size as needed */
+    width: auto;
+    border-radius: 4px; /* Optional: Add border radius */
+    object-fit: contain; /* Ensure logo scales nicely */
+}
+
+.cart-business-name {
+    margin: 0;
+    font-size: 1.1em; /* Adjust size as needed */
+    font-weight: 600;
+    color: #34495e; /* Match your theme's secondary color */
+}
+
+/* Style for the container holding items from the same business */
+.cart-business-items {
+    padding: 10px 0; /* Add padding inside the items container */
+}
+
+/* Adjust styles for items within the business group if needed */
+.cart-business-items .cart-item {
+    border-bottom: 1px solid #eee; /* Separator between items within group */
+    padding: 10px 15px; /* Padding for each item */
+    align-items: center; /* Ensure alignment */
+}
+
+/* Remove the bottom border from the last item in a group */
+.cart-business-items .cart-item:last-child {
+    border-bottom: none;
+}
+
+/* ... (keep your existing .cart-quantity-btn, .remove-item-btn, .cart-total, etc. styles) ... */
         /* --- Freelance Section Styles --- */
         .freelancer-grid {
             display: grid;
@@ -2093,13 +2156,13 @@
                         <img src="https://placehold.co/100x100/34495e/ffffff?text=BC" alt="Ben Carter Profile" class="profile-picture">
                     </div>
                     <div class="card-content">
-                        <h3>Ben Carter</h3>
-                        <p>Full Stack Developer (React, Node)</p>
+                        <h3>Shafique Salim</h3>
+                        <p>Carpenter</p>
                         <div class="contact-buttons">
-                            <a href="tel:+1234567891" class="contact-btn btn-call">
+                            <a href="tel:+27826774402" class="contact-btn btn-call">
                                 <i class="fas fa-phone"></i> Call
                             </a>
-                            <a href="https://wa.me/1234567891" target="_blank" class="contact-btn btn-whatsapp">
+                            <a href="https://wa.me/+27826774402" target="_blank" class="contact-btn btn-whatsapp">
                                 <i class="fab fa-whatsapp"></i> WhatsApp
                             </a>
                         </div>
@@ -2823,6 +2886,40 @@ function displayComments(commentsList, comments) {
     `).join('');
 }
     </script>
-    <script src="/cart.js"></script>
+      <script src="product_data.js"></script> <!-- Adjust path if needed -->
+
+    <script>
+        // ... (existing popup, slider, sidebar, cart, auth, search, rating, comment, share logic remains) ...
+
+        // --- NEW: Function to Render Product Cards ---
+        function renderProductCards(products, containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) {
+                console.error(`Container with ID ${containerId} not found.`);
+                return;
+            }
+
+            // Clear existing content (in case of re-rendering)
+            container.innerHTML = '';
+
+            if (!products || products.length === 0) {
+                container.innerHTML = '<p style="text-align: center; width: 100%;">No products available.</p>';
+                return;
+            }
+
+            products.forEach(product => {
+                // Create the main block div
+                const blockDiv = document.createElement('div');
+                blockDiv.className = 'block';
+
+                // Create the content string for the block
+                blockDiv.innerHTML = `
+                    <a href="#" onclick="showProductDetail('${product.id}')">Product</a>
+                `;
+                container.appendChild(blockDiv);
+            });
+        }
+    </script>
+    <script src="cart.js"></script>
 </body>
 </html>
