@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vendor / Seller Agreement | Hive Times</title>
+  <!-- Google Fonts / Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #e74c3c;
+      --secondary-color: #34495e;
+      --background-color: #f9fafb;
+      --text-color: #2d3748;
+      --card-background: #ffffff;
+      --border-radius: 16px;
+      --box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --sidebar-width: 320px;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--background-color);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    /* HEADER */
+    header {
+      background: linear-gradient(135deg, #610d00 0%, #8b1a00 100%);
+      color: #fff;
+      padding: 0.8rem 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo img {
+      height: 45px;
+      width: auto;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+    .logo h3 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: #fff;
+      font-weight: 700;
+    }
+    /* MAIN CONTENT */
+    main {
+      flex-grow: 1;
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .agreement-container {
+      background-color: var(--card-background);
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      padding: 2.5rem;
+    }
+    h1 {
+      font-size: 2.2rem;
+      color: var(--secondary-color);
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-weight: 800;
+    }
+    .last-updated {
+      text-align: center;
+      font-size: 1rem;
+      color: #718096;
+      margin-bottom: 2rem;
+    }
+    h2 {
+      font-size: 1.4rem;
+      margin: 1.8rem 0 1rem;
+      color: var(--secondary-color);
+      font-weight: 700;
+    }
+    p, ul {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+      color: #444;
+    }
+    ul {
+      padding-left: 1.5rem;
+    }
+    li {
+      margin-bottom: 0.6rem;
+    }
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    /* FOOTER */
+    footer {
+      background: linear-gradient(135deg, #610d00 0%, #4a0a00 100%);
+      color: #fff;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: flex-start;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      padding-bottom: 2.5rem;
+      margin-bottom: 2rem;
+      gap: 2rem;
+    }
+    .footer-logo img {
+      height: 70px;
+      width: auto;
+      margin-bottom: 15px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    }
+    .social-media {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      gap: 18px;
+      margin-top: 20px;
+    }
+    .social-media a {
+      color: #fff;
+      font-size: 1.6rem;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .footer-nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .footer-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .footer-bottom {
+      font-size: 0.95rem;
+      color: #ccc;
+      margin-top: 1.5rem;
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      main {
+        padding: 2rem 1.2rem;
+      }
+      .agreement-container {
+        padding: 1.8rem;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      h2 {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="images-logo/hive-times-logo.png" alt="Hive Times Logo">
+      <h3></h3>
+    </div>
+  </header>
+
+  <main>
+    <div class="agreement-container">
+      <h1>Vendor / Seller Agreement</h1>
+      <p class="last-updated"><strong>Last Updated:</strong> 23 November 2025</p>
+
+      <h2>1. Introduction</h2>
+      <p>This Vendor Agreement ("Agreement") is entered into between Hive Times ("Platform") and the individual or business entity registering as a seller ("Vendor," "you").</p>
+      <p>By registering as a Vendor on <a href="https://hivetimes.co.za">hivetimes.co.za</a>, you agree to be bound by this Agreement, as well as our <a href="#">General Terms and Conditions</a> and <a href="#">Privacy Policy</a>.</p>
+
+      <h2>2. Relationship of Parties</h2>
+      <ul>
+        <li><strong>Marketplace Model:</strong> Hive Times acts solely as a venue to allow Users to purchase products/services from Vendors. We are not a party to the transaction between you and the Customer.</li>
+        <li><strong>Independent Contractor:</strong> You are an independent business/entity. Nothing in this Agreement creates a partnership, joint venture, or employment relationship between you and Hive Times.</li>
+      </ul>
+
+      <h2>3. Vendor Account & Onboarding</h2>
+      <ul>
+        <li><strong>Verification:</strong> You agree to provide valid proof of identity or business registration (CIPC documents) if requested by Hive Times to comply with South African laws (FICA/KYC).</li>
+        <li><strong>Account Security:</strong> You are responsible for maintaining the security of your Vendor dashboard and password.</li>
+      </ul>
+
+      <h2>4. Fees and Commissions</h2>
+      <ul>
+        <li><strong>Commission Rate:</strong> Hive Times charges a commission of <strong>[Insert Percentage, e.g., 10%]</strong> on the total sale price (excluding/including shipping) of every item sold through the Platform.</li>
+        <li><strong>Transaction Fees:</strong> Any payment processing fees (e.g., PayPal fees) will be deducted from the total payout amount.</li>
+        <li><strong>Subscription Fees:</strong> If applicable, monthly subscription fees for premium Vendor tiers will be billed automatically.</li>
+      </ul>
+
+      <h2>5. Payouts and Payment Remittance</h2>
+      <ul>
+        <li><strong>Schedule:</strong> Payouts to Vendors are processed <strong>[ Weekly]</strong> or <strong>[7 days]</strong> after the customer confirms receipt of the order. This delay is to cover potential returns or disputes.</li>
+        <li><strong>Method:</strong> Payouts are made via Bank Transfer or PayPal to the account details provided in your Vendor Dashboard.</li>
+        <li><strong>Currency:</strong> All settlements will be made in South African Rand (ZAR) unless otherwise agreed.</li>
+      </ul>
+
+      <h2>6. Vendor Obligations</h2>
+      <ul>
+        <li><strong>Product Accuracy:</strong> You must ensure that all product descriptions, prices, and images are accurate and not misleading. You must not sell counterfeit or illegal goods.</li>
+        <li><strong>Inventory:</strong> You are responsible for maintaining accurate stock levels. If you cancel an order due to "out of stock," you may be subject to penalties.</li>
+        <li><strong>Fulfillment:</strong> You agree to ship items within <strong> 2–5</strong> business days of receiving an order notification.</li>
+        <li><strong>Packaging:</strong> You must package items securely to prevent damage during transit.</li>
+      </ul>
+
+      <h2>7. Returns and Refunds</h2>
+      <ul>
+        <li><strong>Compliance:</strong> You agree to comply with the Consumer Protection Act (CPA) regarding returns for defective goods.</li>
+        <li><strong>Policy:</strong> You must honor the Hive Times general return window 7 days. If a customer requests a valid refund due to a defect or non-delivery, Hive Times reserves the right to refund the customer and deduct that amount from your future payouts.</li>
+      </ul>
+
+      <h2>8. Prohibited Items and Conduct</h2>
+      <p>You may not list:</p>
+      <ul>
+        <li>Illegal drugs, weapons, or hazardous materials.</li>
+        <li>Stolen goods or copyright-infringing material.</li>
+        <li>Adult/Explicit content (unless in a restricted category properly gated).</li>
+        <li>Services that violate South African law.</li>
+      </ul>
+
+      <h2>9. Intellectual Property</h2>
+      <p>By listing products, you grant Hive Times a license to use your product images and descriptions for marketing and promotional purposes (e.g., featuring your item on our homepage or social media).</p>
+
+      <h2>10. Idemnification</h2>
+      <p>You agree to indemnify and hold harmless Hive Times from any claims, damages, or legal fees arising out of your products, your services, your breach of this Agreement, or your violation of any law or rights of a third party. If a customer sues because your product caused harm, you are solely responsible.</p>
+
+      <h2>11. Termination</h2>
+      <ul>
+        <li><strong>By You:</strong> You may close your Vendor shop at any time by providing written notice.</li>
+        <li><strong>By Us:</strong> We may terminate your account immediately if you violate these terms, receive excessive negative feedback, or engage in fraudulent activity.</li>
+      </ul>
+
+      <h2>12. Governing Law</h2>
+      <p>This Agreement is governed by the laws of the Republic of South Africa.</p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="images-logo/hive-times-logo.png" alt="Hive Times Logo">
+        <h3>Hive Times</h3>
+        <p>Connecting you to the best local businesses and sweetest delights in the area.</p>
+        <ul class="social-media">
+          <li><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+          <li><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+          <li><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about page home.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+   
+          <li><a href="terms-and-conditions.html"><i class="fas fa-file-contract"></i> Terms and Conditions</a></li>
+          <li><a href="privacy-policy.html"><i class="fas fa-file-contract"></i> Privacy Policy</a></li>
+          <li><a href="vendor-seller-agreement.html"><i class="fas fa-file-contract"></i> Vendor/Seller Agreement</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home-businesses"><i class="fas fa-cookie-bite"></i> Home Businesses</a></li>
+          <li><a href="#retail-shops"><i class="fas fa-utensils"></i> Retail Shops</a></li>
+          <li><a href="#wholesale"><i class="fas fa-boxes"></i> Wholesale</a></li>
+          <li><a href="#services"><i class="fas fa-paint-brush"></i> Services</a></li>
+          <li><a href="#"><i class="fas fa-map-marker-alt"></i> Find Stores</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#"><i class="fas fa-phone"></i> (27) 64 922 0145</a></li>
+          <li><a href="#"><i class="fas fa-envelope"></i> hivetimes@gmail.com</a></li>
+          <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 9am-5pm</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-bottom">© 2025 Hive Times. Crafted with <i class="fas fa-heart"></i> for the community.</p>
+  </footer>
+</body>
+</html>

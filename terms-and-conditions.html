@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terms and Conditions | Hive Times</title>
+  <!-- Google Fonts / Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #e74c3c;
+      --secondary-color: #34495e;
+      --background-color: #f9fafb;
+      --text-color: #2d3748;
+      --card-background: #ffffff;
+      --border-radius: 16px;
+      --box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --sidebar-width: 320px;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--background-color);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    /* HEADER */
+    header {
+      background: linear-gradient(135deg, #610d00 0%, #8b1a00 100%);
+      color: #fff;
+      padding: 0.8rem 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo img {
+      height: 45px;
+      width: auto;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+    .logo h3 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: #fff;
+      font-weight: 700;
+    }
+    /* MAIN CONTENT */
+    main {
+      flex-grow: 1;
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .terms-container {
+      background-color: var(--card-background);
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      padding: 2.5rem;
+    }
+    h1 {
+      font-size: 2.2rem;
+      color: var(--secondary-color);
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-weight: 800;
+    }
+    .last-updated {
+      text-align: center;
+      font-size: 1rem;
+      color: #718096;
+      margin-bottom: 2rem;
+    }
+    h2 {
+      font-size: 1.4rem;
+      margin: 1.8rem 0 1rem;
+      color: var(--secondary-color);
+      font-weight: 700;
+    }
+    p, ul {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+      color: #444;
+    }
+    ul {
+      padding-left: 1.5rem;
+    }
+    li {
+      margin-bottom: 0.6rem;
+    }
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    /* FOOTER */
+    footer {
+      background: linear-gradient(135deg, #610d00 0%, #4a0a00 100%);
+      color: #fff;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: flex-start;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      padding-bottom: 2.5rem;
+      margin-bottom: 2rem;
+      gap: 2rem;
+    }
+    .footer-logo img {
+      height: 70px;
+      width: auto;
+      margin-bottom: 15px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    }
+    .social-media {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      gap: 18px;
+      margin-top: 20px;
+    }
+    .social-media a {
+      color: #fff;
+      font-size: 1.6rem;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .footer-nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .footer-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .footer-bottom {
+      font-size: 0.95rem;
+      color: #ccc;
+      margin-top: 1.5rem;
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      main {
+        padding: 2rem 1.2rem;
+      }
+      .terms-container {
+        padding: 1.8rem;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      h2 {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="images-logo/hive-times-logo.png" alt="Hive Times Logo">
+      <h3></h3>
+    </div>
+  </header>
+
+  <main>
+    <div class="terms-container">
+      <h1>Terms and Conditions</h1>
+      <p class="last-updated"><strong>Last Updated:</strong> 23 November 2025</p>
+
+      <h2>1. Introduction</h2>
+      <p>Welcome to Hive Times . These Terms and Conditions ("Terms") govern your use of our website located at <a href="https://hivetimes.co.za">hivetimes.co.za</a> (the "Site") and the services provided therein.</p>
+      <p>By accessing or using our Site, creating an account, or purchasing products/services, you agree to be bound by these Terms. If you do not agree with any part of these Terms, you must explicitly stop using the Site.</p>
+
+      <h2>2. Nature of the Platform</h2>
+      <p>Hive Times operates as a digital ecosystem and multi-vendor marketplace.</p>
+      <ul>
+        <li><strong>Facilitator Role:</strong> We provide a platform for third-party sellers ("Vendors"), service providers, and home businesses to display and sell their products and services to customers ("Users").</li>
+        <li><strong>The Transaction:</strong> Unless explicitly stated otherwise, Hive Times is not the seller of the products or services listed. We facilitate the transaction, but the contract for the sale of goods or services is directly between the User and the Vendor.</li>
+        <li><strong>Service Providers:</strong> We also host a directory/section for service providers. We do not guarantee the quality or safety of services provided by third parties listed on our Site.</li>
+      </ul>
+
+      <h2>3. User Accounts</h2>
+      <ul>
+        <li>To access certain features (such as buying, selling, or reviewing), you must register for an account.</li>
+        <li><strong>Accuracy:</strong> You agree to provide accurate, current, and complete information during the registration process.</li>
+        <li><strong>Security:</strong> You are responsible for safeguarding your password. You agree to accept responsibility for all activities that occur under your account.</li>
+        <li><strong>Termination:</strong> We reserve the right to suspend or terminate your account at our sole discretion, without notice, for conduct that we believe violates these Terms or is harmful to other users, us, or third parties, or for any other reason.</li>
+      </ul>
+
+      <h2>4. Purchases and Payment</h2>
+      <ul>
+        <li><strong>Pricing:</strong> Prices for products and services are listed by the respective Vendors. Prices are subject to change without notice.</li>
+        <li><strong>Payment Processing:</strong> We utilize PayPal and other secure third-party payment processors to handle transactions. By making a purchase, you agree to the terms and conditions of these payment processors.</li>
+        <li><strong>Taxes:</strong> You are responsible for all applicable taxes, duties, and custom fees associated with your purchase.</li>
+      </ul>
+
+      <h2>5. Shipping, Returns, and Refunds</h2>
+      <ul>
+        <li><strong>Shipping:</strong> Shipping times and costs vary depending on the specific Vendor and the delivery location. Hive Times is not responsible for shipping delays caused by Vendors or courier services.</li>
+        <li><strong>Refunds and Returns:</strong> We aim to ensure customer satisfaction. Refunds and returns are generally available within a specific window (e.g., 7–30 days) from receipt of goods, subject to the Consumer Protection Act (CPA) where applicable.</li>
+        <li><strong>Defective Goods:</strong> If you receive a defective product, please contact us immediately at <a href="mailto:Hivetimes.co.za@gmail.com">Hivetimes.co.za@gmail.com</a>.</li>
+        <li><strong>Vendor Specifics:</strong> Certain Vendors may have specific return policies which will be indicated on their product pages.</li>
+      </ul>
+
+      <h2>6. User-Generated Content (Reviews and Comments)</h2>
+      <ul>
+        <li><strong>License:</strong> By posting reviews, comments, photos, or other content ("User Content"), you grant Hive Times a non-exclusive, royalty-free, perpetual, and worldwide license to use, reproduce, modify, and display such content on our Site and marketing materials.</li>
+        <li><strong>Prohibited Content:</strong> You agree not to post content that is:
+          <ul>
+            <li>False, misleading, or defamatory.</li>
+            <li>Harassing, hateful, or racially/ethnically offensive.</li>
+            <li>Violating the intellectual property rights of others.</li>
+            <li>Spam or unauthorized advertising.</li>
+          </ul>
+        </li>
+        <li><strong>Moderation:</strong> We have the right, but not the obligation, to monitor, edit, or remove any User Content at any time and for any reason.</li>
+      </ul>
+
+      <h2>7. Intellectual Property</h2>
+      <ul>
+        <li><strong>Our IP:</strong> The content on this Site, including the Hive Times logo, text, graphics, website design, and code, is the property of Hive Times and is protected by copyright and trademark laws. You may not use our intellectual property without our prior written consent.</li>
+        <li><strong>Vendor IP:</strong> Product images and descriptions are the property of the respective Vendors or their licensors.</li>
+      </ul>
+
+      <h2>8. Third-Party Links</h2>
+      <p>Our Site may contain links to third-party websites or services that are not owned or controlled by Hive Times. We have no control over, and assume no responsibility for, the content, privacy policies, or practices of any third-party websites. You acknowledge and agree that Hive Times shall not be responsible or liable for any damage or loss caused by your use of any such content or services.</p>
+
+      <h2>9. Disclaimers and Limitation of Liability</h2>
+      <ul>
+        <li><strong>"As Is" Basis:</strong> The Site and all products and services delivered to you through the Site are (except as expressly stated by us) provided "as is" and "as available" for your use, without any representation, warranties, or conditions of any kind.</li>
+        <li><strong>Liability Cap:</strong> To the fullest extent permitted by law, Hive Times (including our directors, employees, and affiliates) shall not be liable for any injury, loss, claim, or any direct, indirect, incidental, punitive, or consequential damages arising from your use of the Site or any products procured using the Site.</li>
+      </ul>
+
+      <h2>10. Indemnification</h2>
+      <p>You agree to indemnify, defend, and hold harmless Hive Times and our partners, officers, agents, and employees from any claim or demand, including reasonable attorneys’ fees, made by any third party due to or arising out of your breach of these Terms or your violation of any law or the rights of a third party.</p>
+
+      <h2>11. Governing Law</h2>
+      <p>These Terms and your use of the Site are governed by and construed in accordance with the laws of the Republic of South Africa. Any disputes arising out of or related to these Terms shall be subject to the exclusive jurisdiction of the courts located in South Africa.</p>
+
+      <h2>12. Changes to Terms</h2>
+      <p>We reserve the right to update, change, or replace any part of these Terms by posting updates to our website. It is your responsibility to check this page periodically for changes. Your continued use of the website following the posting of any changes constitutes acceptance of those changes.</p>
+
+      <h2>13. Contact Information</h2>
+      <p>Questions about the Terms and Conditions should be sent to us at:</p>
+      <p>
+        Hive Times<br>
+        Email: <a href="mailto:Hivetimes.co.za@gmail.com">Hivetimes.co.za@gmail.com</a><br>
+        Website: <a href="https://hivetimes.co.za">hivetimes.co.za</a>
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="images-logo/hive-times-logo.png" alt="Hive Times Logo">
+        <h3>Hive Times</h3>
+        <p></p>
+        <ul class="social-media">
+          <li><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+          <li><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+          <li><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about page home.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+        >
+          <li><a href="terms-and-conditions.html"><i class="fas fa-file-contract"></i> Terms and Conditions</a></li>
+          <li><a href="privacy-policy.html"><i class="fas fa-file-contract"></i> Privacy Policy</a></li>
+         <li><a href="vendor-seller-agreement.html"><i class="fas fa-file-contract"></i> Vendor/Seller Agreement</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home-businesses"><i class="fas fa-cookie-bite"></i> Home Businesses</a></li>
+          <li><a href="#retail-shops"><i class="fas fa-utensils"></i> Retail Shops</a></li>
+          <li><a href="#wholesale"><i class="fas fa-boxes"></i> Wholesale</a></li>
+          <li><a href="#services"><i class="fas fa-paint-brush"></i> Services</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#"><i class="fas fa-phone"></i> (27) 64 922 0145</a></li>
+          <li><a href="#"><i class="fas fa-envelope"></i> hivetimes@gmail.com</a></li>
+          <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 9am-5pm</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-bottom">© 2025 Hive Times. Crafted with <i class="fas fa-heart"></i> for the community.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy | Hive Times</title>
+  <!-- Google Fonts / Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #e74c3c;
+      --secondary-color: #34495e;
+      --background-color: #f9fafb;
+      --text-color: #2d3748;
+      --card-background: #ffffff;
+      --border-radius: 16px;
+      --box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --sidebar-width: 320px;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--background-color);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    /* HEADER */
+    header {
+      background: linear-gradient(135deg, #610d00 0%, #8b1a00 100%);
+      color: #fff;
+      padding: 0.8rem 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo img {
+      height: 45px;
+      width: auto;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+    .logo h3 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: #fff;
+      font-weight: 700;
+    }
+    /* MAIN CONTENT */
+    main {
+      flex-grow: 1;
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .policy-container {
+      background-color: var(--card-background);
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      padding: 2.5rem;
+    }
+    h1 {
+      font-size: 2.2rem;
+      color: var(--secondary-color);
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-weight: 800;
+    }
+    .last-updated {
+      text-align: center;
+      font-size: 1rem;
+      color: #718096;
+      margin-bottom: 2rem;
+    }
+    h2 {
+      font-size: 1.4rem;
+      margin: 1.8rem 0 1rem;
+      color: var(--secondary-color);
+      font-weight: 700;
+    }
+    p, ul {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+      color: #444;
+    }
+    ul {
+      padding-left: 1.5rem;
+    }
+    li {
+      margin-bottom: 0.6rem;
+    }
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    /* FOOTER */
+    footer {
+      background: linear-gradient(135deg, #610d00 0%, #4a0a00 100%);
+      color: #fff;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: flex-start;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      padding-bottom: 2.5rem;
+      margin-bottom: 2rem;
+      gap: 2rem;
+    }
+    .footer-logo img {
+      height: 70px;
+      width: auto;
+      margin-bottom: 15px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    }
+    .social-media {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      gap: 18px;
+      margin-top: 20px;
+    }
+    .social-media a {
+      color: #fff;
+      font-size: 1.6rem;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .footer-nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .footer-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .footer-bottom {
+      font-size: 0.95rem;
+      color: #ccc;
+      margin-top: 1.5rem;
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      main {
+        padding: 2rem 1.2rem;
+      }
+      .policy-container {
+        padding: 1.8rem;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      h2 {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="images-logo/hive-times-logo.png" alt="Hive Times Logo">
+      <h3></h3>
+    </div>
+  </header>
+
+  <main>
+    <div class="policy-container">
+      <h1>Privacy Policy</h1>
+      <p class="last-updated"><strong>Last Updated:</strong> 23 November 2025</p>
+
+      <h2>1. Introduction</h2>
+      <p>Hive Times  operates <a href="https://hivetimes.co.za">hivetimes.co.za</a>. We are committed to protecting your privacy and ensuring that your personal information is collected and used properly, lawfully, and transparently, in compliance with the Protection of Personal Information Act 4 of 2013 (POPIA).</p>
+      <p>By using our website, creating an account, or purchasing products, you consent to the data practices described in this policy.</p>
+
+      <h2>2. Information We Collect</h2>
+      <p>We collect information to facilitate the buying, selling, and service-finding process on our digital ecosystem.</p>
+      <ul>
+        <li><strong>Personal Information:</strong> When you register, buy, or sell, we collect personally identifiable information such as:
+          <ul>
+            <li>Name and Surname</li>
+            <li>Email Address</li>
+            <li>Phone Number</li>
+            <li>Physical Shipping/Billing Address</li>
+            <li>Banking Details (for Vendors to receive payouts)</li>
+          </ul>
+        </li>
+        <li><strong>Transaction Data:</strong> Details about payments to and from you and other details of products and services you have purchased from us or our Vendors.</li>
+        <li><strong>Technical Data:</strong> Internet Protocol (IP) address, browser type and version, time zone setting, and operating system (via Cookies).</li>
+        <li><strong>User Content:</strong> Reviews, comments, and ratings you post on the platform.</li>
+      </ul>
+
+      <h2>3. How We Use Your Information</h2>
+      <p>We use your personal information for the following purposes:</p>
+      <ul>
+        <li><strong>To Provide Services:</strong> To register you as a new customer or vendor, manage your account, and process orders.</li>
+        <li><strong>Order Fulfillment:</strong> Sharing your shipping address and contact details with the specific Third-Party Vendor you purchased from so they can deliver your goods.</li>
+        <li><strong>Payments:</strong> To process payments via our third-party payment processors (e.g., PayPal). Note: We do not store your full credit card details on our servers.</li>
+        <li><strong>Communication:</strong> To notify you about changes to our terms, order updates, or (if you opted in) to send marketing emails.</li>
+        <li><strong>Marketplace Integrity:</strong> To verify identities and prevent fraud or illegal activity within the ecosystem.</li>
+      </ul>
+
+      <h2>4. Sharing of Personal Information</h2>
+      <p>Since Hive Times is a multi-vendor marketplace, we must share data to make the ecosystem work. We may share your data with:</p>
+      <ul>
+        <li><strong>Vendors/Sellers:</strong> If you buy a product from a Vendor, we provide them with your Name, Shipping Address, and Phone Number solely for the purpose of fulfilling that order. Vendors are not permitted to use your data for other purposes without your consent.</li>
+        <li><strong>Service Providers:</strong> Third parties who provide IT, system administration, and payment processing services (e.g., PayPal, Hosting Providers).</li>
+        <li><strong>Legal Authorities:</strong> If required by law or to protect the rights, property, or safety of Hive Times, our users, or others.</li>
+      </ul>
+
+      <h2>5. International Transfers</h2>
+      <p>Some of our external third parties (like PayPal or Google) may be based outside of South Africa. Whenever we transfer your personal information out of the country, we ensure a similar degree of protection is afforded to it.</p>
+
+      <h2>6. Data Security</h2>
+      <p>We have put in place appropriate security measures to prevent your personal information from being accidentally lost, used, or accessed in an unauthorized way. Access to your personal information is limited to those employees, agents, and vendors who have a business need to know.</p>
+
+      <h2>7. Your Legal Rights (POPIA)</h2>
+      <p>Under South African law, you have rights regarding your personal information:</p>
+      <ul>
+        <li><strong>Right to Access:</strong> You can request a copy of the personal data we hold about you.</li>
+        <li><strong>Right to Correction:</strong> You can ask us to correct incomplete or inaccurate data.</li>
+        <li><strong>Right to Deletion:</strong> You can ask us to delete your personal data where there is no good reason for us to continue processing it.</li>
+        <li><strong>Right to Object:</strong> You can object to the processing of your personal data for marketing purposes.</li>
+      </ul>
+      <p>To exercise any of these rights, please contact us at <a href="mailto:Hivetimes.co.za@gmail.com">Hivetimes.co.za@gmail.com</a>.</p>
+
+      <h2>8. Cookies</h2>
+      <p>We use cookies to improve your experience on our site (e.g., keeping you logged in, remembering your cart items). You can set your browser to refuse all or some browser cookies, but some parts of this website may become inaccessible or not function properly.</p>
+
+      <h2>9. Information Officer and Contact</h2>
+      <p>If you have any questions about this privacy policy or our data practices, please contact us:</p>
+      <p>
+        Hive Times<br>
+        Email: <a href="mailto:Hivetimes.co.za@gmail.com">Hivetimes.co.za@gmail.com</a><br>
+        Website: <a href="https://hivetimes.co.za">hivetimes.co.za</a>
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="images-logo/hive-times-logo.png" alt="Hive Times Logo">
+        <h3>Hive Times</h3>
+        <p></p>
+        <ul class="social-media">
+          <li><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+          <li><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+          <li><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about page home.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+          <li><a href="terms-and-conditions.html"><i class="fas fa-file-contract"></i> Terms and Conditions</a></li>
+          <li><a href="privacy-policy.html"><i class="fas fa-file-contract"></i> Privacy Policy</a></li>
+          <li><a href="#"><i class="fas fa-file-contract"></i> Vendor/Seller Agreement</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home-businesses"><i class="fas fa-cookie-bite"></i> Home Businesses</a></li>
+          <li><a href="#retail-shops"><i class="fas fa-utensils"></i> Retail Shops</a></li>
+          <li><a href="#wholesale"><i class="fas fa-boxes"></i> Wholesale</a></li>
+          <li><a href="#services"><i class="fas fa-paint-brush"></i> Services</a></li>
+          <li><a href="#"><i class="fas fa-map-marker-alt"></i> Find Stores</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#"><i class="fas fa-phone"></i> (27) 64 922 0145</a></li>
+          <li><a href="#"><i class="fas fa-envelope"></i> hivetimes@gmail.com</a></li>
+          <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 9am-5pm</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-bottom">© 2025 Hive Times. Crafted with <i class="fas fa-heart"></i> for the community.</p>
+  </footer>
+</body>
+</html>
