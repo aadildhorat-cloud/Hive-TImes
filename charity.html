@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Provide Water For Life – Malawi 2025</title>
   <meta name="description" content="Donate to build wells, boreholes, and masjids in Malawi. 100% transparent. Donate via WhatsApp.">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #1e88e5;
@@ -13,17 +13,28 @@
       --light: #f5fbff;
       --dark: #0d47a1;
       --success: #2e7d32;
+      --bg-light: #fafafa;
+      --text-dark: #333;
+      --shadow: 0 8px 30px rgba(0,0,0,0.1);
+      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    [data-theme="dark"] {
+      --bg-light: #121212;
+      --text-dark: #f0f0f0;
+      --shadow: 0 8px 30px rgba(0,0,0,0.3);
     }
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      transition: var(--transition);
     }
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #fafafa;
-      color: #333;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
       line-height: 1.6;
+      overflow-x: hidden;
     }
     .container {
       max-width: 1200px;
@@ -31,199 +42,470 @@
       padding: 0 20px;
     }
 
-    /* Water Animation in Header */
+    /* ===== WATERFALL + DROPLETS ANIMATION ===== */
     header {
       position: relative;
       color: white;
       text-align: center;
-      padding: 80px 20px 60px;
+      padding: 100px 20px 80px;
       overflow: hidden;
-    }
-    .water-bg {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(135deg, var(--primary), var(--dark));
+      background: linear-gradient(120deg, var(--dark), var(--primary));
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       z-index: 1;
     }
-    .water-wave {
+
+    .waterfall-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .waterfall-layer {
+      position: absolute;
+      width: 100%;
+      height: 200%;
+      background: repeating-linear-gradient(
+        transparent,
+        rgba(255, 255, 255, 0.08) 2px,
+        transparent 4px
+      );
+      animation: fall linear infinite;
+      opacity: 0.4;
+    }
+
+    .waterfall-layer:nth-child(1) {
+      animation-duration: 6s;
+      background-size: 100% 6px;
+      z-index: 2;
+    }
+    .waterfall-layer:nth-child(2) {
+      animation-duration: 8s;
+      background-size: 100% 10px;
+      opacity: 0.3;
+      left: 10%;
+      width: 80%;
+      z-index: 1;
+    }
+    .waterfall-layer:nth-child(3) {
+      animation-duration: 10s;
+      background-size: 100% 8px;
+      opacity: 0.25;
+      left: 25%;
+      width: 50%;
+      z-index: 0;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+    }
+
+    /* Water Droplets */
+    .droplets {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 3;
+    }
+    .droplet {
+      position: absolute;
+      width: 2px;
+      height: 4px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: drop 3s linear infinite;
+    }
+    .droplet::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -1px;
+      width: 4px;
+      height: 4px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 50%;
+    }
+    @keyframes drop {
+      0% { transform: translateY(-10px) scale(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(100vh) scale(1.2); opacity: 0; }
+    }
+
+    /* Water Surface Glow */
+    .water-surface {
       position: absolute;
       bottom: 0;
       left: 0;
-      width: 200%;
-      height: 40px;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' fill='%23ffffff' opacity='0.2' /%3E%3C/svg%3E");
-      background-size: cover;
-      animation: wave 12s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
-      animation-delay: -2s;
-      z-index: 2;
+      width: 100%;
+      height: 80px;
+      background: linear-gradient(to top, rgba(0,120,255,0.3), transparent);
+      z-index: 4;
+      filter: blur(20px);
+      animation: glowPulse 3s ease-in-out infinite;
     }
-    .water-wave:nth-child(2) {
-      animation-delay: -6s;
-      opacity: 0.1;
-      height: 50px;
+    @keyframes glowPulse {
+      0% { opacity: 0.6; }
+      50% { opacity: 0.9; }
+      100% { opacity: 0.6; }
     }
-    @keyframes wave {
-      0% { transform: translateX(0); }
-      50% { transform: translateX(-25%); }
-      100% { transform: translateX(-50%); }
-    }
+
     header .content {
       position: relative;
-      z-index: 3;
+      z-index: 5;
       max-width: 800px;
       margin: 0 auto;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
     }
     header h1 {
-      font-size: 2.6rem;
-      margin-bottom: 12px;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      font-size: 3rem;
+      margin-bottom: 16px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
     }
     header p {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       opacity: 0.95;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
     }
+
     .whatsapp-btn {
       background-color: #25D366;
       color: white;
       border: none;
-      padding: 13px 28px;
-      font-size: 1.15rem;
+      padding: 15px 32px;
+      font-size: 1.25rem;
       font-weight: 600;
       border-radius: 50px;
-      margin-top: 25px;
+      margin-top: 30px;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
-      transition: all 0.25s ease;
+      gap: 12px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .whatsapp-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.6s;
+    }
+    .whatsapp-btn:hover::before {
+      left: 100%;
     }
     .whatsapp-btn:hover {
       background-color: #128C7E;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.4);
     }
 
+    /* ===== NAVIGATION ===== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.95);
+      box-shadow: var(--shadow);
+      z-index: 1000;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(10px);
+    }
+    .nav-logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+    .nav-menu {
+      display: flex;
+      gap: 24px;
+    }
+    .nav-link {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .theme-toggle {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: var(--text-dark);
+    }
+
+    /* ===== SECTIONS ===== */
     .section {
-      padding: 70px 0;
+      padding: 100px 0;
+      position: relative;
     }
     .section-title {
       text-align: center;
-      margin-bottom: 50px;
-      font-size: 2.1rem;
+      margin-bottom: 60px;
+      font-size: 2.4rem;
       color: var(--dark);
       position: relative;
+      animation: fadeInUp 0.8s ease-out;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     .section-title::after {
       content: '';
       display: block;
-      width: 60px;
-      height: 4px;
+      width: 80px;
+      height: 5px;
       background: var(--primary);
-      margin: 12px auto;
-      border-radius: 2px;
+      margin: 16px auto;
+      border-radius: 3px;
+      animation: growWidth 0.8s ease-out;
+    }
+    @keyframes growWidth {
+      from { width: 0; }
+      to { width: 80px; }
     }
 
+    /* ===== PROJECTS GRID ===== */
     .projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-      gap: 32px;
+      gap: 36px;
     }
     .project-card {
       background: white;
-      border-radius: 16px;
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      transform-style: preserve-3d;
+      perspective: 1000px;
       display: flex;
       flex-direction: column;
     }
     .project-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      transform: translateY(-15px) rotateX(5deg);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
     }
     .project-img {
       width: 100%;
-      height: 180px;
+      height: 200px;
       object-fit: cover;
-      background: #eee;
+      transition: transform 0.6s ease;
+    }
+    .project-card:hover .project-img {
+      transform: scale(1.05);
     }
     .project-header {
-      padding: 20px;
+      padding: 24px;
       text-align: center;
       background: var(--light);
+      position: relative;
+    }
+    .project-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .project-card:hover .project-header::before {
+      opacity: 1;
     }
     .project-header h3 {
-      font-size: 1.35rem;
+      font-size: 1.5rem;
       margin-bottom: 8px;
       color: var(--dark);
+      font-weight: 600;
     }
     .project-header .price {
-      font-size: 1.45rem;
+      font-size: 1.6rem;
       font-weight: 700;
       color: var(--primary);
     }
     .project-body {
-      padding: 22px;
+      padding: 26px;
       flex: 1;
       display: flex;
       flex-direction: column;
     }
     .project-body p {
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       flex: 1;
     }
 
+    /* ===== CONTACT SECTION ===== */
     .contact {
       text-align: center;
     }
     .contact a {
       display: block;
-      margin: 16px auto;
-      max-width: 340px;
+      margin: 20px auto;
+      max-width: 380px;
+      transition: transform 0.3s;
+    }
+    .contact a:hover {
+      transform: scale(1.05);
     }
     .bank-details {
       background: white;
-      padding: 20px;
-      border-radius: 12px;
-      margin-top: 25px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      font-size: 0.95rem;
-      line-height: 1.7;
+      padding: 24px;
+      border-radius: 16px;
+      margin-top: 30px;
+      box-shadow: var(--shadow);
+      font-size: 1rem;
+      line-height: 1.8;
+      text-align: left;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
+    /* ===== FOOTER ===== */
     footer {
-      background: #222;
-      color: white;
+      background: #1a1a1a;
+      color: #f0f0f0;
       text-align: center;
-      padding: 35px 0;
-      font-size: 0.95rem;
+      padding: 40px 0;
+      font-size: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
     }
 
-    @media (max-width: 600px) {
+    /* ===== STICKY WHATSAPP BUTTON ===== */
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      z-index: 1000;
+      animation: pulse 2s infinite;
+      cursor: pointer;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    .floating-whatsapp:hover {
+      background: #128C7E;
+      transform: scale(1.1) rotate(10deg);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
       header h1 {
-        font-size: 2.1rem;
+        font-size: 2.4rem;
       }
       .section {
-        padding: 50px 0;
+        padding: 80px 0;
       }
       .project-img {
-        height: 160px;
+        height: 180px;
+      }
+      .nav-menu {
+        display: none;
+      }
+      .mobile-menu-btn {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--text-dark);
+        cursor: pointer;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2rem;
       }
       .whatsapp-btn {
-        padding: 12px 22px;
-        font-size: 1.05rem;
+        padding: 12px 20px;
+        font-size: 1.1rem;
+      }
+      .floating-whatsapp {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="water-bg"></div>
-    <div class="water-wave"></div>
-    <div class="water-wave"></div>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-logo">💧 WaterForLife</div>
+    <div class="nav-menu">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+    <button class="theme-toggle" id="themeToggle">🌙</button>
+  </nav>
+
+  <!-- Header with Waterfall -->
+  <header id="home">
+    <div class="waterfall-bg">
+      <div class="waterfall-layer"></div>
+      <div class="waterfall-layer"></div>
+      <div class="waterfall-layer"></div>
+      <div class="droplets" id="droplets"></div>
+      <div class="water-surface"></div>
+    </div>
     <div class="content">
       <h1>Provide Water For Life – Malawi 2025</h1>
       <p>Build Wells. Build Hope. Build Faith.</p>
@@ -234,12 +516,13 @@
     </div>
   </header>
 
-  <section class="section">
+  <!-- Projects Section -->
+  <section class="section" id="projects">
     <div class="container">
       <h2 class="section-title">Our Projects</h2>
       <div class="projects">
         
-        <!-- Project 1: Water Well -->
+        <!-- Water Well -->
         <div class="project-card">
           <img src="images-charity/waterwell.jpg" alt="Water Well in Malawi" class="project-img">
           <div class="project-header">
@@ -254,7 +537,7 @@
           </div>
         </div>
 
-        <!-- Project 2: Borehole -->
+        <!-- Borehole -->
         <div class="project-card">
           <img src="images-charity/borehole.jpg" alt="Borehole Pump System" class="project-img">
           <div class="project-header">
@@ -269,7 +552,7 @@
           </div>
         </div>
 
-        <!-- Project 3: Masjid -->
+        <!-- Masjid -->
         <div class="project-card">
           <img src="images-charity/masjid.jpg" alt="Community Masjid" class="project-img">
           <div class="project-header">
@@ -284,13 +567,42 @@
           </div>
         </div>
 
-       
+        <!-- Sheep -->
+        <div class="project-card">
+          <img src="images-charity/sheep.jpg" alt="Sadaqa Sheep" class="project-img">
+          <div class="project-header">
+            <h3>🐑 Sadaqa / Sheep</h3>
+            <div class="price">R 600</div>
+          </div>
+          <div class="project-body">
+            <p>Fulfill religious obligations while feeding the hungry.</p>
+            <a href="https://wa.me/27846801709?text=Hi%2C%20I%20want%20to%20donate%20R600%20for%20a%20Sheep%20Qurbani%20in%20Malawi.%20My%20name%20is%20%5BYour%20Name%5D.%20Contact%3A%20%5BYour%20Number%5D" class="whatsapp-btn" style="font-size: 1rem; padding: 10px 20px; margin-top: auto;">
+              Donate via WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- Cow -->
+        <div class="project-card">
+          <img src="images-charity/cow.jpg" alt="Sadaqa Cow" class="project-img">
+          <div class="project-header">
+            <h3>🐮 Sadaqa / Cow</h3>
+            <div class="price">R 4,200</div>
+          </div>
+          <div class="project-body">
+            <p>A single cow can feed an entire village during Eid.</p>
+            <a href="https://wa.me/27846801709?text=Hi%2C%20I%20want%20to%20donate%20R4200%20for%20a%20Cow%20Qurbani%20in%20Malawi.%20My%20name%20is%20%5BYour%20Name%5D.%20Contact%3A%20%5BYour%20Number%5D" class="whatsapp-btn" style="font-size: 1rem; padding: 10px 20px; margin-top: auto;">
+              Donate via WhatsApp
+            </a>
+          </div>
+        </div>
 
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <!-- Contact Section -->
+  <section class="section" id="contact">
     <div class="container">
       <h2 class="section-title">Contact & Donate</h2>
       <div class="contact">
@@ -304,22 +616,63 @@
           🏦 <strong>Bank:</strong> Standard Bank<br>
           <strong>Account:</strong> 10117339235<br>
           <strong>Holder:</strong> YC Saloojee Water For Life<br>
-          <em>Reference: [Your Name + Phone]</em>
+          <em>Reference: [Your Name + Phone]</em><br>
+          <small>💡 Please add 1% if depositing cash (covers bank fees)</small>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
     <div class="container">
       <p>© 2025 Provide Water For Life – Malawi 2025 | NPC 2023/267166/08</p>
-      <p style="margin-top: 8px; opacity: 0.85;">Every drop counts. Every well changes lives.</p>
+      <p style="margin-top: 10px; opacity: 0.85;">Every drop counts. Every well changes lives.</p>
     </div>
   </footer>
 
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/27846801709?text=Hi%2C%20I%20want%20to%20donate%20to%20Provide%20Water%20For%20Life%20-%20Malawi%202025.%20Please%20send%20me%20the%20donation%20details." class="floating-whatsapp" aria-label="Chat on WhatsApp">
+    💬
+  </a>
+
+  <!-- JavaScript -->
   <script>
-    console.log("Website with water animation loaded! 💧");
-    // Optional: Add analytics or dynamic content later
+    // Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+
+    themeToggle.addEventListener('click', () => {
+      if (body.getAttribute('data-theme') === 'dark') {
+        body.removeAttribute('data-theme');
+        themeToggle.textContent = '🌙';
+      } else {
+        body.setAttribute('data-theme', 'dark');
+        themeToggle.textContent = '☀️';
+      }
+    });
+
+    // Create water droplets
+    const dropletsContainer = document.getElementById('droplets');
+    for (let i = 0; i < 50; i++) {
+      const droplet = document.createElement('div');
+      droplet.classList.add('droplet');
+      droplet.style.left = Math.random() * 100 + '%';
+      droplet.style.animationDelay = Math.random() * 3 + 's';
+      dropletsContainer.appendChild(droplet);
+    }
+
+    // Parallax effect on scroll
+    window.addEventListener('scroll', () => {
+      const projectsSection = document.querySelector('.projects');
+      const rect = projectsSection.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom >= 0) {
+        const scrollPercent = (window.innerHeight - rect.top) / window.innerHeight;
+        projectsSection.style.transform = `translateY(${(1 - scrollPercent) * 20}px)`;
+      }
+    });
+
+    console.log("Advanced Water Animation Charity Site Loaded! 💧✨");
   </script>
 
 </body>
