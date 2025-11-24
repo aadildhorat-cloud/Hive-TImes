@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DTPGZ964FD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DTPGZ964FD');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Polar Ice Cream </title>
@@ -364,27 +373,33 @@
             justify-content: center;
         }
       /* --- Slider Section --- */
-/* Swiper Slider Styling */
+/* --- Slider Section --- */
 .slider-section {
-  padding: 40px 0;
+  padding: 20px 0;
   background: #fff;
 }
 
 .swiper {
   width: 100%;
   max-width: 1200px;
-  height: auto; /* Let Swiper control height */
-  min-height: 250px; /* Fallback for very small screens */
+  height: auto; /* Let height adjust based on content */
   margin: auto;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 16 / 9; /* Maintain aspect ratio (adjust based on your image ratio) */
+}
+
 .swiper-slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain; /* Use 'contain' to prevent cropping/squeezing */
   display: block;
 }
 
@@ -402,21 +417,26 @@
 .swiper-button-prev {
   color: #fff;
   background: rgba(0, 0, 0, 0.4);
-  padding: 10px 15px;
+  padding: 10px;
   border-radius: 50%;
   backdrop-filter: blur(4px);
 }
 
-.swiper-button-next:after,
-.swiper-button-prev:after {
-   min-width: 44px; /* Minimum recommended touch target */
-    min-height: 44px;
+/* Mobile-first adjustments */
+@media (max-width: 768px) {
+  .swiper-slide {
+    aspect-ratio: 3 / 2; /* Taller on mobile if needed */
+  }
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .swiper {
-    height: 300px;
+@media (max-width: 480px) {
+  .swiper-slide {
+    aspect-ratio: 4 / 3; /* Even more vertical for small phones */
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    padding: 8px;
   }
 }
         /* Search and Filter */
@@ -1313,19 +1333,19 @@
     <div class="business-popup" id="businessPopup">
         <h3 class="business-popup-title">About Our Business</h3>
         <div class="business-info-content">
-            <p>Welcome to Broadway Sweets, your premier destination for the finest confectionery treats. We specialize in a wide range of delicious sweets including lollipops, bubblegum, candies, and party packs that bring joy to every occasion.</p>
+            <p>Welcome to Polar Ice Cream, a proudly South African company that has been crafting smiles since 1990. With a vision born from our love for ice cream and the joy it brings, we set out to produce high quality, affordable ice cream that everyone can enjoy. Despite our warm climate, market research revealed that South Africans consume far less ice cream than other nations. Inspired to change this, we embarked on a mission to spread happiness through our wide range of ice cream.</p>
             
-            <p>Our commitment to quality and customer satisfaction has made us a trusted name in the industry. We use only the finest ingredients to create our products, ensuring a delightful experience with every bite.</p>
+            <p></p>
             
             <p>Information:</p>
             <ul>
-                <li><strong>Location:</strong> We use only the finest, fresh ingredients to create our delicious sweets.</li>
-                <li><strong>Open hours:</strong> Our extensive range includes lollipops, bubblegum, candies, party packs, and exclusive secret snacks.</li>
-                <li><strong>Contact Number:</strong> Our products undergo rigorous quality checks to ensure safety and freshness.</li>
-                <li><strong>Type of business:</strong> We offer excellent customer service and support for all your sweet needs.</li>
+                <li><strong>Location:</strong> Beyers Naude Drive, Blackheath, Randburg, Gauteng 2195, South Africa</li>
+                <li><strong>Open hours:</strong> MON - FRI (09:00 - 17:30)  SAT - (09:00 - 15:30) SUN -( 09:30 - 13:00)</li>
+                <li><strong>Contact Number:</strong> 010 495 6227</li>
+                <li><strong>Email:</strong> polarnorthcliff@gmail.com</li>
                 </ul>
             
-            <p>We believe in creating moments of happiness through our delicious products. Whether you're planning a party, looking for a special treat, or just want to indulge in something sweet, Broadway Sweets has something for everyone.</p>
+            <p></p>
         </div>
         <button class="close-business-btn" onclick="hideBusinessPopup()">Close</button>
     </div>
@@ -2551,7 +2571,7 @@
             </div>
         </div>
     </footer>
-<script>
+    <script>
         // Business info popup functionality
 function showBusinessPopup() {
     document.getElementById('businessPopupOverlay').style.display = 'flex';
@@ -2559,19 +2579,20 @@ function showBusinessPopup() {
         document.getElementById('businessPopup').classList.add('active');
     }, 10);
 }
+
 function hideBusinessPopup() {
     document.getElementById('businessPopup').classList.remove('active');
     setTimeout(() => {
         document.getElementById('businessPopupOverlay').style.display = 'none';
     }, 300);
 }
+
 // Close business popup when clicking outside
 document.getElementById('businessPopupOverlay').addEventListener('click', function(e) {
     if (e.target === this) {
         hideBusinessPopup();
     }
 });
-
         // Define global variables
         const productModalOverlay = document.querySelector('.product-modal-overlay');
         const productModal = document.querySelector('.product-modal');
@@ -2718,183 +2739,6 @@ document.getElementById('businessPopupOverlay').addEventListener('click', functi
   { id: 'pralines-cream', name: 'Pralines & Cream - Caramel and cashew pralines in vanilla ice cream and fudge sauce', price: 35.00, category: 'premium-ice-cream', image: 'Pralines & Cream.jpg', description: 'Pralines in creamy vanilla.', thumbnails: ['Pralines & Cream.jpg'], variants: [], businessName: 'Not Just Any' },
   { id: 'salted-caramel', name: 'Salted Caramel - Caramel ice cream & buttery caramel sauce with a sprinkling of sea salt', price: 35.00, category: 'premium-ice-cream', image: 'Salted Caramel.jpg', description: 'Sweet and salty caramel.', thumbnails: ['Salted Caramel.jpg'], variants: [], businessName: 'Not Just Any' }
 ];
-
-        // --- START OF INVENTORY MANAGEMENT SIMULATION ---
-        // Define initial stock levels for each product
-        // This simulates backend inventory data.
-        // In a real application, this would come from a database.
-        const initialInventory = {
-            // Premier Ice Cream
-            'premier-1': 50, // Premier Ice Cream Blueberry
-            'premier-2': 45, // Premier Ice Cream Chocolate
-            'premier-3': 40, // Premier Ice Cream Roasted Almond
-            'premier-4': 35, // Premier Ice Cream Rum and Raisin
-            'premier-5': 60, // Premier Ice Cream Strawberry
-            'premier-6': 55, // Premier Ice Cream Strawberry and Cream
-            'premier-7': 70, // Premier Ice Cream Tinroof
-            'premier-8': 25, // Premier Ice Cream Toffee
-            'premier-9': 80, // Premier Ice Cream Vanilla
-            // Premier Dairy Ice Cream
-            'premier-dairy-27': 30, // Premier Dairy Blueberry Cheesecake
-            'premier-dairy-28': 30, // Premier Dairy Burfee
-            'premier-dairy-29': 30, // Premier Dairy Coconut
-            'premier-dairy-30': 30, // Premier Dairy Coffee Royale
-            'premier-dairy-31': 30, // Premier Dairy Double Vanilla
-            'premier-dairy-32': 30, // Premier Dairy Fresh Strawberry
-            'premier-dairy-33': 30, // Premier Dairy Mango
-            'premier-dairy-34': 30, // Premier Dairy Pistachio Nut
-            'premier-dairy-35': 30, // Premier Dairy Rocky Road
-            'premier-dairy-36': 30, // Premier Dairy Swiss Chocolate
-            'premier-dairy-37': 30, // Premier Dairy Tin Roof
-            'premier-dairy-38': 30, // Premier Dairy Cookies & Cream
-            'premier-dairy-39': 30, // Premier Dairy Toasted Almond
-            // iCUP
-            'icup-1': 100, // Polar iCUP Almond
-            'icup-2': 100, // Polar iCUP Mango
-            'icup-3': 100, // Polar iCUP Pista & Nuts
-            'icup-4': 100, // Polar iCUP Burfee
-            'icup-5': 100, // Polar iCUP Tin Roof
-            // Guilt Free
-            'guiltfree-1': 40, // Guilt-Free Vanilla Dairy
-            'guiltfree-2': 40, // Guilt-Free Espresso Choc Chip
-            'guiltfree-3': 40, // Guilt-Free Mint Choc Chip
-            // Sundae
-            'sundae-1': 50, // Polar Sundae - Vanilla with Strawberry Ripple
-            // Polar Lollies (Example entries)
-            'polar-lollies-1': 200, // Choc 99
-            'polar-lollies-2': 200, // Cocomint
-            'polar-lollies-3': 200, // Caramello
-            'polar-lollies-4': 200, // Choc Overload
-            'polar-lollies-5': 200, // Coconut Bar
-            'polar-lollies-6': 200, // Mango Bango
-            'polar-lollies-7': 200, // Just Jelly
-            'polar-lollies-8': 200, // LitchiLik
-            'polar-lollies-9': 200, // LemonLik
-            'polar-lollies-10': 200, // Milky Pie
-            'polar-lollies-11': 200, // Viva
-            'polar-lollies-12': 200, // Mr Apple
-            'polar-lollies-13': 200, // Polar Split
-            'polar-lollies-14': 200, // Tropaz
-            'polar-lollies-15': 200, // Three in One
-            'polar-lollies-16': 200, // Strawberry Sensation
-            'polar-lollies-17': 200, // Banana Berry
-            'polar-lollies-18': 200, // Berry Blaze
-            'polar-lollies-19': 200, // Grandelch
-            'polar-lollies-20': 200, // Banana Split
-            'polar-lollies-21': 200, // Bubble Gum
-            'polar-lollies-22': 200, // Custard Jelly
-            'polar-lollies-23': 200, // Granadilla Sherbet
-            'polar-lollies-24': 200, // Eish!
-            'polar-lollies-25': 200, // Jolly Pine
-            'polar-lollies-26': 200, // iCone
-            // Polar Milky
-            'polar-milky-1': 150, // Strawberry
-            'polar-milky-2': 150, // Apple
-            'polar-milky-3': 150, // Blueberry
-            'polar-milky-4': 150, // Chocolate
-            'polar-milky-5': 150, // Litchi
-            'polar-milky-6': 150, // Mango
-            // Maxi
-            'maxi-classic': 120, // Maxi Classic
-            'maxi-white-almond': 120, // Maxi White Almond
-            'maxi-ruby-chocolate': 120, // Maxi Ruby Chocolate
-            'maxi-chocolate-therapy': 120, // Maxi Chocolate Therapy
-            'maxi-almond': 120, // Maxi Almond
-            // Polar Sandwich
-            'polar-sandwich-vanilla-strawberry': 100, // Vanilla & Strawberry
-            'polar-sandwich-vanilla': 100, // Vanilla
-            // Rave
-            'rave-blueberry': 90, // Rave! Blueberry Swirl
-            'rave-strawberry': 90, // Rave! Strawberry Swirl
-            // Fruity Licks
-            'fruity-licks-orange': 110, // Orange
-            'fruity-licks-pineapple': 110, // Pineapple
-            'fruity-licks-raspberry': 110, // Raspberry
-            // Polar Pop
-            'polar-pop-orange': 130, // Orange
-            'polar-pop-raspberry': 130, // Raspberry
-            // Float
-            'polar-float-orange': 140, // Orange
-            'polar-float-strawberry': 140, // Strawberry
-            'polar-float-passion-fruit': 140, // Passion Fruit
-            // Woza
-            'polar-woza-strawberry': 160, // Strawberry & Vanilla
-            'polar-woza-chocolate': 160, // Chocolate & Vanilla
-            // Polar Cups
-            'polar-nja-strawberry-cup': 200, // NJA 125ml - Strawberry
-            'polar-nja-vanilla-cup': 200, // NJA 125ml - Vanilla
-            'polar-nja-chocolate-cup': 200, // NJA 125ml - Chocolate
-            'polar-tub-vanilla': 180, // 500ml - Vanilla
-            'polar-tub-vanilla-strawberry': 180, // 500ml - Vanilla and Strawberry
-            'polar-tub-black-forest': 180, // 500ml - Black Forest
-            'polar-tub-neapolitan': 180, // 500ml - Neapolitan
-            'polar-tub-choc-vanilla-chilla': 180, // 500ml - Choc Vanilla Chilla
-            'polar-tub-strawberry-bubblegum': 180, // 500ml - Strawberry and Bubblegum
-            'polar-tub-banana-berry-bliss': 180, // 500ml - Banana Berry Bliss
-            'polar-tub-choc-mint': 180, // 500ml - Choc Mint
-            // Polar Bucket
-            'polar-bucket-rainbow-2_5l': 20, // 2.5L - Rainbow
-            'polar-bucket-blueberry-cheesecake-2_5l': 20, // 2.5L - Blueberry Cheesecake
-            'polar-bucket-chocolate-chip-2_5l': 20, // 2.5L - Chocolate Chip
-            // Not Just Any
-            'polar-bucket-rainbow': 30, // 2L - Rainbow
-            'polar-bucket-choc-mint': 30, // 2L - Choc Mint
-            'polar-bucket-rum-&-raisin': 30, // 2L - Rum & Raisin
-            'polar-bucket-chocolate': 30, // 2L - Chocolate
-            'polar-bucket-strawberry': 30, // 2L - Strawberry
-            'polar-bucket-double-caramel': 30, // 2L - Double Caramel
-            'polar-bucket-choc-nut-sundae': 30, // 2L - Choc Nut Sundae
-            'polar-bucket-banana-berry': 30, // 2L - Banana Berry
-            'polar-bucket-choc-vanilla': 30, // 2L - Choc Vanilla
-            'polar-bucket-vanilla-fudge': 30, // 2L - Vanilla Fudge
-            'polar-bucket-mint-choc-chip': 30, // 2L - Mint Choc Chip
-            // Polar 5L Tubs
-            'polar-tub-strawberry-5l': 15, // 5L - Strawberry
-            'polar-tub-vanilla-5l': 15, // 5L - Vanilla
-            'polar-tub-chocolate-5l': 15, // 5L - Chocolate
-            // Kisses
-            'polar-kisses-24-pack-hazelnut': 25, // Kisses - 24 Pack (Hazelnut)
-            'polar-kisses-24-pack-caramel': 25, // Kisses - 24 Pack (Caramel)
-            'polar-kisses-24-pack-mint': 25, // Kisses - 24 Pack (Mint)
-            // Cannoli
-            'polar-cannoli-20-pack': 40, // Cannoli - 20 Units
-            // Artisanal Cups
-            'polar-cup-choc-fudge-brownie': 35, // Artisanal - Choc Fudge Brownie
-            'polar-cup-banana-nut-fudge': 35, // Artisanal - Banana Nut Fudge
-            'polar-cup-madagascan-vanilla': 35, // Artisanal - Madagascan Vanilla
-            'polar-cup-pralines-and-cream': 35, // Artisanal - Pralines & Cream
-            'polar-cup-salted-caramel': 35, // Artisanal - Salted Caramel
-            'polar-cup-strawberry-cheesecake': 35, // Artisanal - Strawberry Cheesecake
-        };
-
-        // Function to get current stock from localStorage or initial value
-        function getStock(productId) {
-            const stored = localStorage.getItem(`stock_${productId}`);
-            if (stored !== null) {
-                return parseInt(stored, 10);
-            }
-            return initialInventory[productId] || 0; // Return initial value if not found
-        }
-
-        // Function to set current stock in localStorage
-        function setStock(productId, quantity) {
-            localStorage.setItem(`stock_${productId}`, quantity.toString());
-        }
-
-        // Function to initialize stock in localStorage if not already set
-        function initializeStock() {
-            for (const [id, initialQty] of Object.entries(initialInventory)) {
-                if (localStorage.getItem(`stock_${id}`) === null) {
-                    setStock(id, initialQty);
-                }
-            }
-        }
-
-        // Initialize stock on page load
-        initializeStock();
-
-        // --- END OF INVENTORY MANAGEMENT SIMULATION ---
-
         // Filter and Search Logic
         function getProductCards() {
             return document.querySelectorAll('.product-card');
@@ -2932,83 +2776,46 @@ document.getElementById('businessPopupOverlay').addEventListener('click', functi
                 }
             }
         }
-
         // Modal Functions
         function showProductModal(productId) {
             const product = allProducts.find(p => p.id === productId);
             if (!product) return;
-
             document.getElementById('modalProductName').textContent = product.name;
             document.getElementById('modalProductPrice').textContent = `R${product.price.toFixed(2)}`;
             document.getElementById('modalProductDescription').textContent = product.description || 'A delicious frozen treat for everyone!';
             document.getElementById('modalMainImage').src = product.image;
-            document.getElementById('modalQuantity').textContent = 1; // Reset quantity
-
+            document.getElementById('modalQuantity').textContent = 1;
             const modalAddToCartBtn = document.getElementById('modalAddToCartBtn');
-            // Update stock display in the modal
-            const stock = getStock(productId);
-            updateModalStock(productId, stock); // Call the new function
-
-            // Update the Add to Cart button's click handler to pass the correct product ID
             modalAddToCartBtn.onclick = () => {
                 const quantity = parseInt(document.getElementById('modalQuantity').textContent);
-                cart.addToCart({
-                    id: product.id,
-                    name: product.name,
-                    price: product.price,
-                    quantity: quantity, // Use the quantity from the modal
-                    image: `/images/polar-ice-cream/${product.image}`,
+                cart.addToCart({ 
+                    id: product.id, 
+                    name: product.name, 
+                    price: product.price, 
+                    quantity: quantity, 
+                   image: `/images/polar-ice-cream/${product.image}`,
                     businessName: product.businessName,
-                    businessLogo: 'polar-ice-cream-logo.png'
+                    businessLogo: 'polar-ice-cream-logo.png' 
                 });
-                // closeProductModal(); // Optional: Close modal after adding
+                closeProductModal();
             };
-
-            // --- Quantity Selector Logic ---
-            const quantityDisplay = document.getElementById('modalQuantity');
-            const increaseBtn = document.getElementById('increaseQuantity');
-            const decreaseBtn = document.getElementById('decreaseQuantity');
-
-            // Set initial max based on stock
-            let currentQuantity = parseInt(quantityDisplay.textContent);
-            increaseBtn.disabled = (currentQuantity >= stock);
-
-            increaseBtn.onclick = () => {
-                let quantity = parseInt(quantityDisplay.textContent);
-                if (quantity < stock) { // Check against stock
-                    quantity++;
-                    quantityDisplay.textContent = quantity;
-                    // Re-check if max is reached after incrementing
-                    increaseBtn.disabled = (quantity >= stock);
-                }
+            document.getElementById('increaseQuantity').onclick = () => {
+                let quantity = parseInt(document.getElementById('modalQuantity').textContent);
+                document.getElementById('modalQuantity').textContent = quantity + 1;
             };
-
-            decreaseBtn.onclick = () => {
-                let quantity = parseInt(quantityDisplay.textContent);
+            document.getElementById('decreaseQuantity').onclick = () => {
+                let quantity = parseInt(document.getElementById('modalQuantity').textContent);
                 if (quantity > 1) {
-                    quantity--;
-                    quantityDisplay.textContent = quantity;
-                    // Re-enable increase button if it was disabled due to reaching max
-                    increaseBtn.disabled = false;
+                    document.getElementById('modalQuantity').textContent = quantity - 1;
                 }
             };
-            // --- End Quantity Selector Logic ---
-
             productModalOverlay.style.display = 'flex';
             setTimeout(() => productModal.classList.add('active'), 10);
         }
         function closeProductModal() {
-             productModal.classList.remove('active');
-             setTimeout(() => {
-                 productModalOverlay.style.display = 'none';
-                 // Optional: Clear modal stock display when closing
-                 const modalStockDisplay = document.querySelector('#productModalStockDisplay');
-                 if (modalStockDisplay) {
-                     modalStockDisplay.remove();
-                 }
-             }, 300);
-         }
-
+            productModal.classList.remove('active');
+            setTimeout(() => productModalOverlay.style.display = 'none', 300);
+        }
         function showCartModal() {
             cartModalOverlay.style.display = 'flex';
             setTimeout(() => cartModal.classList.add('active'), 10);
@@ -3053,14 +2860,12 @@ document.getElementById('businessPopupOverlay').addEventListener('click', functi
                 }
             }
         });
-
         // CART FUNCTIONALITY WITH LOCAL STORAGE
         const cart = {
             items: [],
             saveCart: function() {
                 try {
                    const STORAGE_KEY = 'hivetimes_unified_cart_v3';
-                   localStorage.setItem(STORAGE_KEY, JSON.stringify(this.items));
                     this.updateCartDisplay();
                 } catch (e) {
                     console.error('Error saving cart:', e);
@@ -3079,56 +2884,14 @@ document.getElementById('businessPopupOverlay').addEventListener('click', functi
                 this.updateCartDisplay();
             },
             addToCart: function(product) {
-                const productId = product.id;
-                const requestedQuantity = product.quantity || 1; // Default to 1 if quantity isn't specified
-                const currentStock = getStock(productId);
-
-                if (requestedQuantity <= 0) {
-                    alert("Quantity must be greater than 0.");
-                    return;
-                }
-
-                if (currentStock < requestedQuantity) {
-                    alert(`Sorry, only ${currentStock} ${currentStock === 1 ? 'unit' : 'units'} of ${product.name} are available.`);
-                    // Optional: Update the UI to reflect the new stock (out of stock or lower stock)
-                    // This requires finding the specific product card and updating its status
-                    updateProductCardStock(productId, currentStock);
-                    updateModalStock(productId, currentStock);
-                    return; // Exit the function if not enough stock
-                }
-
-                const existingItem = this.items.find(item => item.id === productId);
+                const existingItem = this.items.find(item => item.id === product.id);
                 if (existingItem) {
-                    // Check if adding the requested quantity would exceed stock
-                    if (existingItem.quantity + requestedQuantity > currentStock) {
-                         alert(`Adding ${requestedQuantity} more would exceed available stock. Only ${currentStock - existingItem.quantity} more can be added.`);
-                         // Optional: Update the UI to reflect the new stock
-                         updateProductCardStock(productId, currentStock - existingItem.quantity);
-                         updateModalStock(productId, currentStock - existingItem.quantity);
-                         return;
-                    }
-                    existingItem.quantity += requestedQuantity;
+                    existingItem.quantity += product.quantity;
                 } else {
-                    // Check if requested quantity is available
-                    if (requestedQuantity > currentStock) {
-                         alert(`Only ${currentStock} ${currentStock === 1 ? 'unit' : 'units'} of ${product.name} are available.`);
-                         // Optional: Update the UI to reflect the new stock
-                         updateProductCardStock(productId, currentStock);
-                         updateModalStock(productId, currentStock);
-                         return;
-                    }
-                    this.items.push({...product, quantity: requestedQuantity}); // Add a copy with the requested quantity
+                    this.items.push(product);
                 }
-
-                // Deduct the quantity from the simulated stock
-                setStock(productId, currentStock - requestedQuantity);
-
-                // Update the UI elements showing stock
-                updateProductCardStock(productId, currentStock - requestedQuantity);
-                updateModalStock(productId, currentStock - requestedQuantity);
-
                 this.saveCart();
-                alert(`${requestedQuantity} x ${product.name} added to cart!`); // Confirm the quantity added
+                alert(`${product.name} added to cart!`);
             },
             updateQuantity: function(id, delta) {
                 const item = this.items.find(i => i.id === id);
@@ -3185,109 +2948,11 @@ document.getElementById('businessPopupOverlay').addEventListener('click', functi
                 }
             }
         };
+        // Save
+localStorage.setItem(STORAGE_KEY, JSON.stringify(this.items));
 
-        // Helper function to update the stock display on a product card
-        function updateProductCardStock(productId, newStock) {
-            // Find the product card by its data-id attribute
-            const card = document.querySelector(`.product-card[data-id="${productId}"]`);
-            if (card) {
-                // Find the stock display element within the card
-                let stockDisplay = card.querySelector('.product-stock');
-                if (!stockDisplay) {
-                    // If the stock display element doesn't exist yet, create it
-                    stockDisplay = document.createElement('div');
-                    stockDisplay.className = 'product-stock';
-                    stockDisplay.style.marginTop = '5px'; // Add some space
-                    stockDisplay.style.fontSize = '14px'; // Adjust font size
-                    stockDisplay.style.fontWeight = '500'; // Make it slightly bold
-                    card.querySelector('.product-info').appendChild(stockDisplay); // Add it to the info section
-                }
-                // Update the text content based on stock
-                if (newStock > 0) {
-                    stockDisplay.textContent = `Stock: ${newStock}`;
-                    stockDisplay.style.color = '#28a745'; // Green for available stock
-                    stockDisplay.style.display = 'block'; // Ensure it's visible
-                    // Re-enable the Add to Cart button if it was disabled
-                    const addToCartBtn = card.querySelector('.add-to-cart-btn');
-                    if (addToCartBtn) {
-                        addToCartBtn.disabled = false;
-                        addToCartBtn.textContent = 'Add to Cart'; // Reset button text if needed
-                    }
-                } else {
-                    stockDisplay.textContent = 'Out of Stock';
-                    stockDisplay.style.color = '#dc3545'; // Red for out of stock
-                    stockDisplay.style.display = 'block';
-                    // Disable the Add to Cart button
-                    const addToCartBtn = card.querySelector('.add-to-cart-btn');
-                    if (addToCartBtn) {
-                        addToCartBtn.disabled = true;
-                        addToCartBtn.textContent = 'Out of Stock'; // Change button text
-                    }
-                }
-            }
-        }
-
-        // Helper function to update the stock display in the product modal
-        function updateModalStock(productId, newStock) {
-            // Check if the modal for this product is currently open
-            if (productModal.classList.contains('active') && document.getElementById('modalProductName').textContent.includes(allProducts.find(p => p.id === productId)?.name || '')) {
-                 // Find the stock display element within the modal details
-                 let modalStockDisplay = document.querySelector('#productModalStockDisplay');
-                 if (!modalStockDisplay) {
-                     // If the stock display element doesn't exist yet, create it
-                     modalStockDisplay = document.createElement('div');
-                     modalStockDisplay.id = 'productModalStockDisplay';
-                     modalStockDisplay.style.marginTop = '10px';
-                     modalStockDisplay.style.fontSize = '16px';
-                     modalStockDisplay.style.fontWeight = '600';
-                     document.querySelector('.product-modal-details').appendChild(modalStockDisplay);
-                 }
-                 // Update the text content based on stock
-                 if (newStock > 0) {
-                     modalStockDisplay.textContent = `Available Stock: ${newStock}`;
-                     modalStockDisplay.style.color = '#28a745'; // Green
-                     // Ensure the Add to Cart button in the modal is enabled if stock > 0
-                     const modalAddToCartBtn = document.getElementById('modalAddToCartBtn');
-                     if (modalAddToCartBtn) {
-                         modalAddToCartBtn.disabled = false;
-                         modalAddToCartBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart'; // Reset button text/html
-                     }
-                     // Update max quantity for quantity selector if needed (optional)
-                     // This requires getting the current modal quantity and comparing to newStock
-                     const currentQuantity = parseInt(document.getElementById('modalQuantity').textContent);
-                     if (currentQuantity > newStock) {
-                         document.getElementById('modalQuantity').textContent = newStock;
-                     }
-                     // Disable increase button if quantity reaches stock
-                      document.getElementById('increaseQuantity').disabled = (currentQuantity >= newStock);
-
-                 } else {
-                     modalStockDisplay.textContent = 'Out of Stock';
-                     modalStockDisplay.style.color = '#dc3545'; // Red
-                     // Disable the Add to Cart button in the modal
-                     const modalAddToCartBtn = document.getElementById('modalAddToCartBtn');
-                     if (modalAddToCartBtn) {
-                         modalAddToCartBtn.disabled = true;
-                         modalAddToCartBtn.innerHTML = '<i class="fas fa-exclamation-circle"></i> Out of Stock'; // Change button text/html
-                     }
-                     // Disable quantity buttons
-                     document.getElementById('increaseQuantity').disabled = true;
-                 }
-            }
-        }
-
-        // Helper function to initialize stock display on all cards when the page loads
-        function initializeStockDisplay() {
-            const allCards = getProductCards();
-            allCards.forEach(card => {
-                const productId = card.getAttribute('data-id');
-                if (productId) {
-                    const stock = getStock(productId);
-                    updateProductCardStock(productId, stock);
-                }
-            });
-        }
-
+// Load
+const stored = localStorage.getItem(STORAGE_KEY);
         // SLIDER LOGIC
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
@@ -3326,73 +2991,72 @@ document.getElementById('businessPopupOverlay').addEventListener('click', functi
                 sliderContainer.addEventListener('mouseleave', resetAutoSlide);
             }
         }
-        // Initialize Swiper with responsive breakpoints
-const swiper = new Swiper('.mySwiper', {
-  loop: true,
-  autoplay: {
-    delay: 5000,
-    disableOnInteraction: false,
-  },
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true,
-  },
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-  // Responsive breakpoints
-  breakpoints: {
-    // Mobile (portrait)
-    320: {
-      height: 250,
-    },
-    // Mobile (landscape) / Small tablets
-    576: {
-      height: 300,
-    },
-    // Tablets
-    768: {
-      height: 350,
-    },
-    // Desktop
-    1024: {
-      height: 450,
-    },
-    // Large desktop
-    1200: {
-      height: 500,
-    }
-  }
-});
         document.addEventListener('DOMContentLoaded', () => {
             initializeSlider();
             cart.init();
-            initializeStockDisplay(); // Add this line to initialize stock display on page load
         });
         function sendCartToWhatsApp() {
     if (cart.items.length === 0) {
         alert("Your cart is empty. Add some items before sending!");
         return;
     }
+
     // 🔹 Replace with your business WhatsApp number (include country code, no + or spaces)
     const businessNumber = "27604368376"; // Example: South Africa number
+
     // 🔹 Build message
-    let message = `Hi! I'm enquiring from **Hive Times** and would like to place the following order from *Polar Ice Cream*:
-`;
+    let message = "Hi! I'm enquiring from **Hive Times** and would like to place the following order from *Polar Ice Cream*:\n\n";
     cart.items.forEach(item => {
-        message += `• ${item.name} x${item.quantity} — R${(item.price * item.quantity).toFixed(2)}
-`;
+        message += `• ${item.name} x${item.quantity} — R${(item.price * item.quantity).toFixed(2)}\n`;
     });
-    message += `
-*Total: R${cart.calculateTotal()}*
-Thank you!`;
+    message += `\n*Total: R${cart.calculateTotal()}*\n\nThank you!`;
+
     // 🔹 URL-encode and open WhatsApp
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${businessNumber}?text=${encodedMessage}`;
+    
     // Open in new tab (works on desktop & mobile)
     window.open(whatsappUrl, '_blank');
 }
     </script>
+    <script src="/js/cart.js"></script>
+    <div class="floating-contact">
+    <a href="https://wa.me/27604368376?text=Hello, I'd like to inquire about your products." target="_blank" rel="noopener noreferrer" class="float-btn whatsapp-float" title="Contact via WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="mailto:contact@broadwaysweets.co.za?subject=Inquiry from Website&body=Hello, I'd like to inquire about your products." class="float-btn email-float" title="Contact via Email">
+        <i class="fas fa-envelope"></i>
+    </a>
+</div>
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    spaceBetween: 0,
+    centeredSlides: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    loop: true,
+    effect: "fade",
+    fadeEffect: {
+      crossFade: true
+    },
+    // Enhanced for mobile touch
+    touchRatio: 1,
+    simulateTouch: true,
+    preventClicksOnSlide: false
+  });
+</script>
 </body>
 </html>
