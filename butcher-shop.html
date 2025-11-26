@@ -1,0 +1,2428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DTPGZ964FD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DTPGZ964FD');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Butcher Block </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <style>
+        /* Business info button */
+.business-info-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 10px auto;
+    flex-wrap: wrap;
+}
+.business-info-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #a30909;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(163, 9, 9, 0.3);
+    text-align: center;
+}
+.business-info-btn:hover {
+    background-color: #8a0808;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(163, 9, 9, 0.4);
+}
+.business-logo {
+    height: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+/* Business info popup */
+.business-popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+.business-popup {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all 0.3s ease;
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+.business-popup.active {
+    transform: scale(1);
+    opacity: 1;
+}
+.business-popup-title {
+    font-size: 24px;
+    color: #a30909;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f8f9fa;
+}
+.business-info-content {
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+.business-info-content p {
+    margin-bottom: 15px;
+    text-align: justify;
+}
+.business-info-content ul {
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+.business-info-content li {
+    margin-bottom: 10px;
+}
+.close-business-btn {
+    background-color: #a30909;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    display: block;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+    width: 120px;
+}
+.close-business-btn:hover {
+    background-color: #8a0808;
+    transform: translateY(-2px);
+}
+
+/* Responsive design adjustments for this section */
+@media (max-width: 992px) {
+    .business-info-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .business-info-btn {
+        width: auto;
+        justify-content: center;
+    }
+}
+@media (max-width: 576px) {
+    .business-logo {
+        height: 35px;
+    }
+}
+        /* Floating Contact Container */
+.floating-contact {
+    position: fixed;
+    bottom: 25px; /* Adjust distance from the bottom */
+    right: 25px; /* Adjust distance from the right */
+    z-index: 1000; /* Ensure it stays on top of other content */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between the buttons */
+}
+
+/* Floating Button Base Style */
+.float-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px; /* Size of the circle */
+    height: 60px; /* Size of the circle */
+    border-radius: 50%;
+    color: white;
+    font-size: 28px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.float-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
+}
+
+/* WhatsApp specific styling */
+.whatsapp-float {
+    background-color: #25d366; /* WhatsApp green */
+}
+
+/* Email specific styling */
+.email-float {
+    background-color: #3498db; /* Email blue */
+}
+
+/* Optional: Adjust for smaller screens */
+@media (max-width: 576px) {
+    .floating-contact {
+        bottom: 20px;
+        right: 20px;
+        gap: 10px;
+    }
+    .float-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+}
+        /* Global reset and modern styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+        /* Header styling with modern design */
+        header {
+            background: linear-gradient(135deg, #a30909, #c71e1e);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .logo-img {
+            height: 60px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        /* Navigation styling */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 5px;
+        }
+        nav ul li {
+            position: relative;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        /* Dropdown styling */
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            display: block;
+            transition: all 0.2s ease;
+        }
+        .dropdown-content a:hover {
+            background-color: #f8f9fa;
+            color: #a30909;
+            padding-left: 20px;
+        }
+/* Submenu Styling (Vertical Nested) */
+.submenu > a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+}
+.submenu-content {
+    display: none;
+    position: static;
+    background-color: #f8f9fa;
+    border-top: 1px solid #eee;
+    padding: 0;
+}
+.submenu:hover .submenu-content {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+}
+.submenu-content a {
+    color: #333;
+    padding: 8px 16px 8px 30px;
+    display: block;
+    transition: all 0.2s ease;
+}
+.submenu-content a:hover {
+    background-color: #eee;
+    color: #a30909;
+    padding-left: 35px;
+}
+        /* User Account & Cart */
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .user-btn, .cart-btn {
+            background-color: transparent;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 8px 15px;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .user-btn:hover, .cart-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        .cart-btn {
+            position: relative;
+        }
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #ff6b6b;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+      /* --- Slider Section --- */
+/* --- Slider Section --- */
+.slider-section {
+  padding: 20px 0;
+  background: #fff;
+}
+
+.swiper {
+  width: 100%;
+  max-width: 1200px;
+  height: auto; /* Let height adjust based on content */
+  margin: auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.15);
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 16 / 9; /* Maintain aspect ratio (adjust based on your image ratio) */
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Use 'contain' to prevent cropping/squeezing */
+  display: block;
+}
+
+.swiper-pagination-bullet {
+  background: #fff;
+  opacity: 0.7;
+}
+
+.swiper-pagination-bullet-active {
+  background: #a30909;
+  opacity: 1;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 0px;
+  border-radius: 50%;
+  backdrop-filter: blur(4px);
+}
+
+/* Mobile-first adjustments */
+@media (max-width: 768px) {
+  .swiper-slide {
+    aspect-ratio: 3 / 2; /* Taller on mobile if needed */
+  }
+}
+
+@media (max-width: 480px) {
+  .swiper-slide {
+    aspect-ratio: 4 / 3; /* Even more vertical for small phones */
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    padding: 8px;
+  }
+}
+        /* Search and Filter */
+        .search-filter-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            align-items: flex-end;
+        }
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+        }
+        .search-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        .search-input:focus {
+            outline: none;
+            border-color: #a30909;
+            box-shadow: 0 0 0 3px rgba(163, 9, 9, 0.1);
+        }
+        .filter-section {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .filter-select {
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+        .filter-select:focus {
+            outline: none;
+            border-color: #a30909;
+        }
+        .apply-filters-btn {
+            background-color: #a30909;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .apply-filters-btn:hover {
+            background-color: #8a0808;
+            transform: translateY(-2px);
+        }
+        /* Content sections */
+        .content-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            color: #a30909;
+            margin-bottom: 40px;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #a30909;
+            border-radius: 2px;
+        }
+        .fullscreen-image {
+            width: 100%;
+            max-height: 2000px;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .fullscreen-image:hover {
+            transform: scale(1.02);
+        }
+        /* Product card styling */
+        .product-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            max-width: 220px;
+            width: 100%;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+        .product-info {
+            padding: 15px;
+            text-align: center;
+        }
+        .product-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+            min-height: 48px;
+        }
+        .product-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: #a30909;
+            margin-bottom: 10px;
+        }
+        .add-to-cart-btn {
+            background-color: #a30909;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        .add-to-cart-btn:hover {
+            background-color: #8a0808;
+            transform: translateY(-2px);
+        }
+        /* Product grid container */
+        .products-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        /* Product Detail Modal */
+        .product-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+            padding: 20px;
+        }
+        .product-modal {
+            background-color: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 1000px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            transform: scale(0.8);
+            opacity: 0;
+            transition: all 0.3s ease;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .product-modal.active {
+            transform: scale(1);
+            opacity: 1;
+        }
+        .close-product-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            border: none;
+            z-index: 10;
+        }
+        .product-modal-content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 30px;
+            gap: 30px;
+        }
+        .product-modal-images {
+            flex: 1;
+            min-width: 300px;
+        }
+        .main-product-image {
+            width: 100%;
+            height: 400px;
+            object-fit: contain;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .product-thumbnails {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .thumbnail.active {
+            border-color: #a30909;
+        }
+        .product-modal-details {
+            flex: 1;
+            min-width: 300px;
+        }
+        .product-modal-title {
+            font-size: 28px;
+            color: #a30909;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .product-modal-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #a30909;
+            margin-bottom: 20px;
+        }
+        .product-modal-description {
+            margin-bottom: 25px;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+        .product-variants {
+            margin-bottom: 25px;
+        }
+        .variant-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        .variant-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .variant-option {
+            padding: 8px 15px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .variant-option.active {
+            background-color: #a30909;
+            color: white;
+            border-color: #a30909;
+        }
+        .variant-option:hover:not(.active) {
+            border-color: #a30909;
+        }
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background-color: white;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .quantity-btn:hover {
+            background-color: #f8f9fa;
+            border-color: #a30909;
+        }
+        .quantity-display {
+            font-size: 18px;
+            font-weight: 600;
+            min-width: 40px;
+            text-align: center;
+        }
+        .add-to-cart-modal-btn {
+            background-color: #a30909;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .add-to-cart-modal-btn:hover {
+            background-color: #8a0808;
+            transform: translateY(-2px);
+        }
+        /* Shopping Cart Modal */
+        .cart-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1500;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        .cart-modal {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transform: scale(0.8);
+            opacity: 0;
+            transition: all 0.3s ease;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .cart-modal.active {
+            transform: scale(1);
+            opacity: 1;
+        }
+        .cart-modal-title {
+            font-size: 28px;
+            color: #a30909;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 700;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f8f9fa;
+        }
+        .cart-items {
+            margin-bottom: 30px;
+        }
+        .cart-item {
+            display: flex;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+        }
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            border-radius: 8px;
+            margin-right: 15px;
+        }
+        .cart-item-details {
+            flex: 1;
+        }
+        .cart-item-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .cart-item-price {
+            color: #a30909;
+            font-weight: 600;
+        }
+        .cart-item-variant {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .cart-quantity-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cart-quantity-display {
+            font-size: 16px;
+            font-weight: 600;
+            min-width: 30px;
+            text-align: center;
+        }
+        .remove-item-btn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        .remove-item-btn:hover {
+            background-color: #c0392b;
+        }
+        .cart-total {
+            font-size: 24px;
+            font-weight: 700;
+            color: #a30909;
+            text-align: right;
+            margin-bottom: 30px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        .checkout-btn {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .checkout-btn:hover {
+            background-color: #229954;
+            transform: translateY(-2px);
+        }
+        .close-cart-btn {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            width: 100%;
+        }
+        .close-cart-btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+        /* User Account Modal */
+        .user-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1500;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        .user-modal {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transform: scale(0.8);
+            opacity: 0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .user-modal.active {
+            transform: scale(1);
+            opacity: 1;
+        }
+        .user-modal-title {
+            font-size: 24px;
+            color: #a30909;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .form-label {
+            font-weight: 600;
+            color: #555;
+        }
+        .form-input {
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #a30909;
+            box-shadow: 0 0 0 3px rgba(163, 9, 9, 0.1);
+        }
+        .auth-btn {
+            background-color: #a30909;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        .auth-btn:hover {
+            background-color: #8a0808;
+            transform: translateY(-2px);
+        }
+        .switch-auth {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+        .switch-auth-btn {
+            color: #a30909;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        /* Footer styling */
+        footer {
+            background: linear-gradient(135deg, #a30909, #c71e1e);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .social-media {
+            display: flex;
+            gap: 15px;
+        }
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+        .social-link:hover {
+            background-color: white;
+            color: #a30909;
+            transform: translateY(-3px);
+        }
+        .footer-nav ul {
+            display: flex;
+            gap: 25px;
+        }
+        .footer-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        .footer-nav a:hover {
+            color: #f8f9fa;
+            text-decoration: underline;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        /* Responsive design */
+        @media (max-width: 992px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .footer-nav ul {
+                justify-content: center;
+            }
+            .search-filter-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 28px;
+            }
+            .slider-container {
+                height: 400px;
+            }
+            .product-card {
+                max-width: 200px;
+            }
+            .product-modal-content {
+                flex-direction: column;
+            }
+        }
+@media (max-width: 576px) {
+    .header-container {
+        padding: 0 10px;
+    }
+    .logo {
+        font-size: 24px;
+    }
+    .logo-img {
+        height: 50px;
+    }
+    nav ul {
+        gap: 10px;
+    }
+    nav ul li a {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+    .section-title {
+        font-size: 24px;
+    }
+    .slider-container {
+        height: 300px;
+        margin: 15px auto;
+    }
+    .content-section {
+        padding: 0 10px;
+        margin: 30px auto;
+    }
+    .products-grid {
+        justify-content: space-between;
+        gap: 12px;
+    }
+    .product-card {
+        flex: 1 1 calc(50% - 6px);
+        max-width: calc(50% - 6px);
+        margin: 0;
+        min-width: 0;
+    }
+    .product-info {
+        padding: 10px;
+    }
+    .product-name {
+        font-size: 14px;
+        min-height: auto;
+    }
+    .product-price {
+        font-size: 16px;
+    }
+    .main-product-image {
+        height: 300px;
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="images-logo/butcherblock-logo.jpg" alt="Logo" class="logo-img">
+                <div class="logo">BUTCHER BLOCK</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="dropdown">
+                        <a href="#"><i class="fas fa-box"></i> Categories</a>
+                        <div class="dropdown-content">
+                            <div class="submenu">
+                                <a href="#bulk-sales">
+                                    <span><i class="fas fa-sticky-note"></i>BULK SALES</span>
+                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
+                                </a>
+
+                            </div>
+                            <div class="submenu">
+                                <a href="#beef">
+                                    <span><i class="fas fa-circle"></i> BEEF</span>
+                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
+                                </a>
+                            </div>
+                            <div class="submenu">
+                                <a href="#steaks">
+                                    <span><i class="fas fa-star"></i> STEAKS</span>
+                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
+                                </a>
+                            </div>
+                            <div class="submenu">
+                                <a href="#oxtail">
+                                    <span><i class="fas fa-gift"></i> OXTAIL</span>
+                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
+                                </a>
+                                  </div>
+                                   <div class="submenu">
+                                <a href="#processed-meat">
+                                    <span><i class="fas fa-gift"></i> PROCESSED MEAT</span>
+                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
+                                </a>
+                                  </div>
+                                  <div class="submenu">
+                                <a href="#whole-half">
+                                    <span><i class="fas fa-circle"></i> WHOLE/HALF LAMB</span>
+                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
+                                </a>
+                            </div>
+                            <div class="submenu">
+                                <a href="#lamb">
+                                    <span><i class="fas fa-star"></i> LAMB</span>
+                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
+                                </a>
+                            </div>
+                            <div class="submenu">
+                                <a href="#other">
+                                    <span><i class="fas fa-gift"></i> OTHER</span>
+                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
+                                </a>
+                                  </div>
+                                   <div class="submenu">
+                                <a href="#hampers">
+                                    <span><i class="fas fa-gift"></i> HAMPERS</span>
+                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
+                                </a>
+                                  </div>
+                                   <div class="submenu">
+                                <a href="#skin-on">
+                                    <span><i class="fas fa-gift"></i> CHICKEN SKIN ON</span>
+                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
+                                </a>
+                                  </div>
+                                   <div class="submenu">
+                                <a href="#skin-off">
+                                    <span><i class="fas fa-gift"></i> CHICKEN SKIN OFF</span>
+                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
+                                </a>
+                                  </div>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#"><i class="fas fa-box"></i> Businesses</a>
+                        <div class="dropdown-content">
+                            <div class="submenu">
+                                <a href="#">
+                                    <span><i class="fas fa-sticky-note"></i>Home Businesses</span>
+                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
+                                </a>
+                                <div class="submenu-content">
+                                    <a href="#BIG-POPS">home business 1 </a>
+                                    <a href="#FLIGOS">home business 2</a>
+                                    <a href="#SOCCER-POPS">home business 3</a>
+                                    <a href="#STUMBO">home business 4</a>
+                                </div>
+                            </div>
+                            <div class="submenu">
+                                <a href="#">
+                                    <span><i class="fas fa-circle"></i>Retail Shops</span>
+                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
+                                </a>
+                                <div class="submenu-content">
+                                    <a href="Polar ice cream.html">Polar Ice Cream</a>
+                                    <a href="broadway page.html">Broadway Sweets</a>
+                                    <a href="Sweet Mart.html">Sweet Mart</a>
+                                </div>
+                            </div>
+                            <div class="submenu">
+                                <a href="#">
+                                    <span><i class="fas fa-star"></i> Wholesale</span>
+                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
+                                </a>
+                                <div class="submenu-content">
+                                    <a href="#HARTBEAT">Africa Cash n Carry</a>
+                                    <a href="#ICE-UP">Devland Cash & Carry</a>
+                                    <a href="#STUMBO-CANDY">Continental Cash & Carry</a>
+                                    <a href="#ZOUR-BOMB">Jumbo Cash & Carry</a>
+                                  </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="user-section">
+                <button class="cart-btn" onclick="showCartModal()">
+                    <i class="fas fa-shopping-cart"></i> Cart (<span id="cartCount">0</span>)
+                </button>
+            </div>
+        </div>
+    </header>
+ <section class="swiper mySwiper slider-section">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <a href="Polar ice cream.html" target="_blank" rel="noopener">
+        <img src="images-logo/polar-ice-cream-long.jpg" alt="Polar Ice Cream">
+      </a>
+    </div>
+    <div class="swiper-slide">
+      <a href="broadway page.html" target="_blank" rel="noopener">
+        <img src="images-logo/broadway-sweets-long.jpg" alt="Broadway Sweets">
+      </a>
+    </div>
+    <div class="swiper-slide">
+      <a href="Sweet Depot website.html" target="_blank" rel="noopener">
+        <img src="images-logo/sweet-deport-long.jpg" alt="Sweet Depot">
+      </a>
+    </div>
+    <div class="swiper-slide">
+      <a href="Sweet Mart.html" target="_blank" rel="noopener">
+        <img src="images-logo/sweet-mart-long.jpg" alt="Sweet Mart">
+      </a>
+    </div>
+  </div>
+  <!-- Add Pagination -->
+  <div class="swiper-pagination"></div>
+  <!-- Add Navigation -->
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+</section>
+<div class="business-info-container">
+    <button class="business-info-btn" onclick="showBusinessPopup()">
+        <img src="images-logo/butcherblock-logo.jpg" alt="Business Logo" class="business-logo">
+        About Our Business
+    </button>
+</div>
+
+<div class="business-popup-overlay" id="businessPopupOverlay">
+    <div class="business-popup" id="businessPopup">
+        <h3 class="business-popup-title">About Our Business</h3>
+        <div class="business-info-content">
+            <p>Welcome to Polar Ice Cream, a proudly South African company that has been crafting smiles since 1990. With a vision born from our love for ice cream and the joy it brings, we set out to produce high quality, affordable ice cream that everyone can enjoy. Despite our warm climate, market research revealed that South Africans consume far less ice cream than other nations. Inspired to change this, we embarked on a mission to spread happiness through our wide range of ice cream.</p>
+            
+            <p></p>
+            
+            <p>Information:</p>
+            <ul>
+                <li><strong>Location:</strong> Beyers Naude Drive, Blackheath, Randburg, Gauteng 2195, South Africa</li>
+                <li><strong>Open hours:</strong> MON - FRI (09:00 - 17:30)  SAT - (09:00 - 15:30) SUN -( 09:30 - 13:00)</li>
+                <li><strong>Contact Number:</strong> 010 495 6227</li>
+                <li><strong>Email:</strong> polarnorthcliff@gmail.com</li>
+                </ul>
+            
+            <p></p>
+        </div>
+        <button class="close-business-btn" onclick="hideBusinessPopup()">Close</button>
+    </div>
+</div>
+
+<div class="content-section">
+    <h2 id="bulk-sales" class="section-title">BULK SALES (500 KG)</h2>
+    <div class="products-grid" id="bulkSalesProductsGrid">
+        <div class="product-card" data-id="forequarter-a-grade-500kg" data-category="bulk-beef" data-price="0.00" data-units="500">
+            <img src="images-butchershop/" alt="Forequarter A Grade 500kg" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Forequarter A Grade</div>
+                <div class="product-description">Large bulk portion for processing or resale.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'forequarter-a-grade-500kg', name: 'Forequarter A Grade (500kg)', price: 0.00, quantity: 500, image: 'images-sweetmart/no image available.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="hindquarter-a-grade-500kg" data-category="bulk-beef" data-price="0.00" data-units="500">
+            <img src="images-sweetmart/no image available.jpg" alt="Hindquarter A Grade 500kg" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Hindquarter A Grade</div>
+                <div class="product-description">Large bulk portion for processing or resale.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'hindquarter-a-grade-500kg', name: 'Hindquarter A Grade (500kg)', price: 0.00, quantity: 500, image: 'images-sweetmart/no image available.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-section">
+    <h2 id="beef" class="section-title">BEEF</h2>
+    <div class="products-grid" id="butcherCutsProductsGrid">
+        <div class="product-card" data-id="beef-short-rib-100" data-category="beef-cuts" data-price="0.00" data-units="100">
+            <img src="images-butchershop/short-rib.jpg" alt="Short Rib" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Short Rib</div>
+                <div class="product-description">Ideal for braising and slow cooking.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'beef-short-rib-100', name: 'Short Rib (x100)', price: 0.00, quantity: 100, image: 'images-sweetmart/short-rib.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="beef-chuck-100" data-category="beef-cuts" data-price="0.00" data-units="100">
+            <img src="images-butchershop/beef-chuck.jpg" alt="Chuck" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Chuck</div>
+                <div class="product-description">Excellent for roasts, pot roast, or stewing meat.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'beef-chuck-100', name: 'Chuck (x100)', price: 0.00, quantity: 100, image: 'images-sweetmart/chuck.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="beef-brisket-100" data-category="beef-cuts" data-price="0.00" data-units="100">
+            <img src="images-butchershop/beef-brisket.jpg" alt="Brisket" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Brisket</div>
+                <div class="product-description">Perfect for smoking or corned beef.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'beef-brisket-100', name: 'Brisket (x100)', price: 0.00, quantity: 100, image: 'images-sweetmart/brisket.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="beef-shin-100" data-category="beef-cuts" data-price="0.00" data-units="100">
+            <img src="images-butchershop/beef-shin.jpg" alt="Shin" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Shin</div>
+                <div class="product-description">Bone-in cut for rich stocks, stews, and Osso Buco.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'beef-shin-100', name: 'Shin (x100)', price: 0.00, quantity: 100, image: 'images-sweetmart/shin.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="beef-stew-100" data-category="beef-cuts" data-price="0.00" data-units="100">
+            <img src="images-butchershop/beef-stew.jpg" alt="Stew Meat" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Stew Meat</div>
+                <div class="product-description">Pre-cut stewing cubes (various cuts).</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'beef-stew-100', name: 'Stew Meat (x100)', price: 0.00, quantity: 100, image: 'images-sweetmart/stew.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="beef-goulash-50" data-category="beef-cuts" data-price="0.00" data-units="50">
+            <img src="images-butchershop/beef-goulash.jpg" alt="Goulash Meat" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Goulash</div>
+                <div class="product-description">Thinly sliced strips for goulash or stirfry.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'beef-goulash-50', name: 'Goulash (x50)', price: 0.00, quantity: 50, image: 'images-sweetmart/goulash.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-section">
+    <h2 id="steaks" class="section-title">STEAKS </h2>
+    <div class="products-grid" id="premiumSteaksProductsGrid">
+        <div class="product-card" data-id="t-bone-75" data-category="premium-steaks" data-price="0.00" data-units="75">
+            <img src="images-butchershop/steak-tbone.jpg" alt="T-Bone Steak" class="product-image">
+            <div class="product-info">
+                <div class="product-name">T-Bone</div>
+                <div class="product-description">Includes the strip loin and tenderloin connected by a T-shaped bone.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 't-bone-75', name: 'T-Bone (75kg)', price: 0.00, quantity: 75, image: 'images-sweetmart/t-bone.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="sirloin-75" data-category="premium-steaks" data-price="0.00" data-units="75">
+            <img src="images-butchershop/steak-sirloin.jpg" alt="Sirloin Steak" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Sirloin</div>
+                <div class="product-description">Versatile and flavorful cut from the rear back portion.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'sirloin-75', name: 'Sirloin (75kg)', price: 0.00, quantity: 75, image: 'images-sweetmart/sirloin.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="ribeye-75" data-category="premium-steaks" data-price="0.00" data-units="75">
+            <img src="images-butchershop/steak-ribeye.jpg" alt="Ribeye Steak" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Ribeye</div>
+                <div class="product-description">Known for its rich marbling and flavor, from the rib section.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'ribeye-75', name: 'Ribeye (75kg)', price: 0.00, quantity: 75, image: 'images-sweetmart/ribeye.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="prime-rib-75" data-category="premium-steaks" data-price="0.00" data-units="75">
+            <img src="images-butchershop/steak-primerib.jpg" alt="Prime Rib Roast" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Prime Rib</div>
+                <div class="product-description">Large roast cut from the primal rib section.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'prime-rib-75', name: 'Prime Rib (75kg)', price: 0.00, quantity: 75, image: 'images-sweetmart/prime-rib.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="tomahawk-75" data-category="premium-steaks" data-price="0.00" data-units="75">
+            <img src="images-butchershop/steak-tomahawk.jpg" alt="Tomahawk Steak" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Tomahawk</div>
+                <div class="product-description">Ribeye cut with the full rib bone left intact.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'tomahawk-75', name: 'Tomahawk (75kg)', price: 0.00, quantity: 75, image: 'images-sweetmart/tomahawk.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="fillet-75" data-category="premium-steaks" data-price="0.00" data-units="75">
+            <img src="images-butchershop/steak-fillet.jpg" alt="Fillet Steak" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Fillet</div>
+                <div class="product-description">The most tender cut, also known as Tenderloin or Filet Mignon.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'fillet-75', name: 'Fillet (75kg)', price: 0.00, quantity: 75, image: 'images-sweetmart/fillet.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="rump-75" data-category="premium-steaks" data-price="0.00" data-units="75">
+            <img src="images-butchershop/steak-rump.jpg" alt="Rump Steak" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Rump</div>
+                <div class="product-description">A flavorful steak cut from the back end of the cow.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'rump-75', name: 'Rump (75kg)', price: 0.00, quantity: 75, image: 'images-sweetmart/rump.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="texan-steak-75" data-category="premium-steaks" data-price="0.00" data-units="75">
+            <img src="images-butchershop/steak-texan.jpg" alt="Texan Steak" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Texan Steak</div>
+                <div class="product-description">A regional or specialty cut, often a large, flavorful piece.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'texan-steak-75', name: 'Texan Steak (75kg)', price: 0.00, quantity: 75, image: 'images-sweetmart/texan-steak.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-section">
+    <h2 id="oxtail" class="section-title">OXTAIL</h2>
+    <div class="products-grid" id="specialtyCutsProductsGrid">
+         <div class="product-card" data-id="tongue-200" data-category="specialty-cuts" data-price="0.00" data-units="200">
+            <img src="images-butchershop/oxtail-tongue.jpg" alt="Beef Tongue" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Tongue</div>
+                <div class="product-description">Requires slow cooking until tender, often cured or pickled.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'tongue-200', name: 'Tongue (x200)', price: 0.00, quantity: 200, image: 'images-sweetmart/tongue.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="tripe-50" data-category="specialty-cuts" data-price="0.00" data-units="50">
+            <img src="images-butchershop/oxtail-tripe.jpg" alt="Tripe" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Tripe</div>
+                <div class="product-description">The lining of the stomach, used in stews and soups (e.g., Mala Mogodu).</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'tripe-50', name: 'Tripe (x50)', price: 0.00, quantity: 50, image: 'images-sweetmart/tripe.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="trotters-100" data-category="specialty-cuts" data-price="0.00" data-units="100">
+            <img src="images-butchershop/oxtail-trotters.jpg" alt="Trotters" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Trotters</div>
+                <div class="product-description">Feet, high in collagen for rich broth and stews.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'trotters-100', name: 'Trotters (x100)', price: 0.00, quantity: 100, image: 'images-sweetmart/trotters.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content-section">
+    <h2 id="processed-meat" class="section-title">PROCESSED MEAT</h2>
+    <div class="products-grid" id="processedMeatProductsGrid">
+        <div class="product-card" data-id="processed-mince-50" data-category="processed-meat" data-price="0.00" data-units="50">
+            <img src="images-butchershop/processed-mince.jpg" alt="Mince" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Mince</div>
+                <div class="product-description">Finely ground meat, ideal for sauces, burgers, and fillings.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'processed-mince-50', name: 'Mince (x50)', price: 0.00, quantity: 50, image: 'images-sweetmart/mince.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="processed-boerewors-50" data-category="processed-meat" data-price="0.00" data-units="50">
+            <img src="images-butchershop/processed-boerewors.jpg" alt="Boerewors" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Boerewors</div>
+                <div class="product-description">Traditional South African sausage, excellent for the braai (BBQ).</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'processed-boerewors-50', name: 'Boerewors (x50)', price: 0.00, quantity: 50, image: 'images-sweetmart/boerewors.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="processed-braaiwors-50" data-category="processed-meat" data-price="0.00" data-units="50">
+            <img src="images-butchershop/processed-boerewors.jpg" alt="Braaiwors" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Braaiwors</div>
+                <div class="product-description">General term for sausage intended for grilling.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'processed-braaiwors-50', name: 'Braaiwors (x50)', price: 0.00, quantity: 50, image: 'images-sweetmart/braaiwors.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="processed-meat-balls-50" data-category="processed-meat" data-price="0.00" data-units="50">
+            <img src="images-butchershop/processed-meatballs.jpg" alt="Meat balls" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Meat balls</div>
+                <div class="product-description">Ready-made meat spheres, great for stews or spaghetti.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'processed-meat-balls-50', name: 'Meat balls (x50)', price: 0.00, quantity: 50, image: 'images-sweetmart/meatballs.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="processed-patties-40" data-category="processed-meat" data-price="0.00" data-units="40">
+            <img src="images-butchershop/processed-patties.jpg" alt="Patties" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Patties</div>
+                <div class="product-description">Pressed portions of meat, perfect for quick burgers.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'processed-patties-40', name: 'Patties (x40)', price: 0.00, quantity: 40, image: 'images-sweetmart/patties.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content-section">
+    <h2 id="whole-half" class="section-title">WHOLE / HALF LAMB</h2>
+    <div class="products-grid" id="carcassProductsGrid">
+        <div class="product-card" data-id="whole-half-200" data-category="whole-half" data-price="0.00" data-units="200">
+            <img src="images-butchershop/lamb-whole-half.jpg" alt="Whole or Half Carcass" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Whole / Half Carcass</div>
+                <div class="product-description">Large, unprocessed bulk portion for full customization.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'whole-half-200', name: 'Whole / Half Carcass (x200)', price: 0.00, quantity: 200, image: 'images-sweetmart/whole-carcass.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-section">
+    <h2 id="lamb" class="section-title">LAMB</h2>
+    <div class="products-grid" id="lambCutsProductsGrid">
+        <div class="product-card" data-id="lamb-loin-chop-60" data-category="lamb-cuts" data-price="0.00" data-units="60">
+            <img src="images-butchershop/lamb-loinchop.jpg" alt="Lamb Loin Chop" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Loin Chop</div>
+                <div class="product-description">Tender and lean chops cut from the back.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'lamb-loin-chop-60', name: 'Lamb Loin Chop (x60)', price: 0.00, quantity: 60, image: 'images-sweetmart/lamb-loin-chop.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="lamb-best-end-60" data-category="lamb-cuts" data-price="0.00" data-units="60">
+            <img src="images-butchershop/lamb-bestend.jpg" alt="Lamb Best End" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Best End (Rib)</div>
+                <div class="product-description">Cut from the rib section, ideal for rack of lamb.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'lamb-best-end-60', name: 'Lamb Best End (x60)', price: 0.00, quantity: 60, image: 'images-sweetmart/lamb-best-end.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="lamb-leg-chop-60" data-category="lamb-cuts" data-price="0.00" data-units="60">
+            <img src="images-butchershop/lamb-legchop.jpg" alt="Lamb Leg Chop" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Leg Chop</div>
+                <div class="product-description">Chops cut from the leg, highly versatile.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'lamb-leg-chop-60', name: 'Lamb Leg Chop (x60)', price: 0.00, quantity: 60, image: 'images-sweetmart/lamb-leg-chop.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="lamb-leg-of-lamb-60" data-category="lamb-cuts" data-price="0.00" data-units="60">
+            <img src="images-butchershop/lamb-leg.jpg" alt="Leg of Lamb" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Leg of Lamb</div>
+                <div class="product-description">A large, popular roast joint.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'lamb-leg-of-lamb-60', name: 'Leg of Lamb (x60)', price: 0.00, quantity: 60, image: 'images-sweetmart/lamb-leg.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="lamb-shank-40" data-category="lamb-cuts" data-price="0.00" data-units="40">
+            <img src="images-butchershop/lamb-shank.jpg" alt="Lamb Shank" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Shank</div>
+                <div class="product-description">Lower portion of the leg, best slow-cooked.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'lamb-shank-40', name: 'Lamb Shank (x40)', price: 0.00, quantity: 40, image: 'images-sweetmart/lamb-shank.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="lamb-curry-40" data-category="lamb-cuts" data-price="0.00" data-units="40">
+            <img src="images-butchershop/lamb-curry.jpg" alt="Lamb Curry Meat" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Lamb Curry Meat</div>
+                <div class="product-description">Pre-cut cubes ideal for stews and curries.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'lamb-curry-40', name: 'Lamb Curry Meat (x40)', price: 0.00, quantity: 40, image: 'images-sweetmart/lamb-curry.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-section">
+    <h2 id="other" class="section-title">OTHER MEAT ITEMS</h2>
+    <div class="products-grid" id="otherMeatProductsGrid">
+        <div class="product-card" data-id="meaty-bones-100" data-category="other-meat-items" data-price="0.00" data-units="100">
+            <img src="images-butchershop/other-meatybones.jpg" alt="Meaty Bones" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Meaty Bones</div>
+                <div class="product-description">Bones with significant meat attached, excellent for stock or slow cooking.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'meaty-bones-100', name: 'Meaty Bones (x100)', price: 0.00, quantity: 100, image: 'images-sweetmart/meaty-bones.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="beef-trimmings-100" data-category="other-meat-items" data-price="0.00" data-units="100">
+            <img src="images-butchershop/other-beeftrimming.jpg" alt="Beef Trimmings" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Beef Trimmings</div>
+                <div class="product-description">Meat scraps from cutting, perfect for grinding into mince or sausages.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'beef-trimmings-100', name: 'Beef Trimmings (x100)', price: 0.00, quantity: 100, image: 'images-sweetmart/beef-trimmings.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-section">
+    <h2 id="hampers" class="section-title">MEAT HAMPERS</h2>
+    <div class="products-grid" id="hamperProductsGrid">
+        <div class="product-card" data-id="hamper-1" data-category="meat-hampers" data-price="0.00" data-units="1">
+            <img src="images-sweetmart/meat-hamper.jpg" alt="Meat Hamper 1" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Meat Hamper 1</div>
+                <div class="product-description">Assorted bulk cuts for home or business use.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'hamper-1', name: 'Meat Hamper 1', price: 0.00, quantity: 1, image: 'images-sweetmart/meat-hamper.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="hamper-2" data-category="meat-hampers" data-price="0.00" data-units="1">
+            <img src="images-sweetmart/meat-hamper.jpg" alt="Meat Hamper 2" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Meat Hamper 2</div>
+                <div class="product-description">Assorted bulk cuts for home or business use.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'hamper-2', name: 'Meat Hamper 2', price: 0.00, quantity: 1, image: 'images-sweetmart/meat-hamper.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="hamper-3" data-category="meat-hampers" data-price="0.00" data-units="1">
+            <img src="images-sweetmart/meat-hamper.jpg" alt="Meat Hamper 3" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Meat Hamper 3</div>
+                <div class="product-description">Assorted bulk cuts for home or business use.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'hamper-3', name: 'Meat Hamper 3', price: 0.00, quantity: 1, image: 'images-sweetmart/meat-hamper.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="hamper-4" data-category="meat-hampers" data-price="0.00" data-units="1">
+            <img src="images-sweetmart/meat-hamper.jpg" alt="Meat Hamper 4" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Meat Hamper 4</div>
+                <div class="product-description">Assorted bulk cuts for home or business use.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'hamper-4', name: 'Meat Hamper 4', price: 0.00, quantity: 1, image: 'images-sweetmart/meat-hamper.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="hamper-5" data-category="meat-hampers" data-price="0.00" data-units="1">
+            <img src="images-sweetmart/meat-hamper.jpg" alt="Meat Hamper 5" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Meat Hamper 5</div>
+                <div class="product-description">Assorted bulk cuts for home or business use.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'hamper-5', name: 'Meat Hamper 5', price: 0.00, quantity: 1, image: 'images-sweetmart/meat-hamper.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="hamper-6" data-category="meat-hampers" data-price="0.00" data-units="1">
+            <img src="images-sweetmart/meat-hamper.jpg" alt="Meat Hamper 6" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Meat Hamper 6</div>
+                <div class="product-description">Assorted bulk cuts for home or business use.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'hamper-6', name: 'Meat Hamper 6', price: 0.00, quantity: 1, image: 'images-sweetmart/meat-hamper.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-section">
+    <h2 id="skin-on" class="section-title">CHICKEN (SKIN ON)</h2>
+    <div class="products-grid" id="chickenSkinOnProductsGrid">
+        <div class="product-card" data-id="chicken-whole-skin-on-whole" data-category="chicken-skin-on" data-price="0.00" data-units="12">
+            <img src="images-butchershop/skinon-whole.jpg" alt="Whole Bird Skin On" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Whole Bird (Skin On)</div>
+                <div class="product-description">Whole chicken, with skin, perfect for roasting.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'chicken-whole-skin-on-whole', name: 'Whole Bird Skin On', price: 0.00, quantity: 12, image: 'images-sweetmart/chicken-whole.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="chicken-whole-bird-skin-on" data-category="chicken-skin-on" data-price="0.00" data-units="12">
+            <img src="images-butchershop/skinon-whole.jpg" alt="Whole Bird Skin On (Second)" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Whole Bird (Skin On)</div>
+                <div class="product-description">Whole chicken, with skin, perfect for roasting.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'chicken-whole-bird-skin-on', name: 'Whole Bird Skin On (Second)', price: 0.00, quantity: 12, image: 'images-sweetmart/chicken-whole.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="chicken-12pcs-skin-on" data-category="chicken-skin-on" data-price="0.00" data-units="12">
+            <img src="images-butchershop/skinn-12pc.jpg" alt="12 Pcs Chicken Skin On" class="product-image">
+            <div class="product-info">
+                <div class="product-name">12 Pcs Chicken (Skin On)</div>
+                <div class="product-description">Mixed portions, bone-in and skin-on.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'chicken-12pcs-skin-on', name: '12 Pcs Chicken Skin On', price: 0.00, quantity: 12, image: 'images-sweetmart/chicken-pieces.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="chicken-drum-sticks-skin-on" data-category="chicken-skin-on" data-price="0.00" data-units="12">
+            <img src="images-butchershop/skinon-drumsticks.jpg" alt="Drum Sticks Skin On" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Drum Sticks (Skin On)</div>
+                <div class="product-description">Lower portion of the leg, great for grilling.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'chicken-drum-sticks-skin-on', name: 'Drum Sticks Skin On', price: 0.00, quantity: 12, image: 'images-sweetmart/chicken-drumsticks.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="chicken-thighs-skin-on" data-category="chicken-skin-on" data-price="0.00" data-units="12">
+            <img src="images-butchershop/skinon-thigh.jpg" alt="Thighs Skin On" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Thighs (Skin On)</div>
+                <div class="product-description">Dark meat cut, flavorful and moist.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'chicken-thighs-skin-on', name: 'Thighs Skin On', price: 0.00, quantity: 12, image: 'images-sweetmart/chicken-thighs.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="chicken-leg-quarters-skin-on" data-category="chicken-skin-on" data-price="0.00" data-units="12">
+            <img src="images-butchershop/skinon-thigh.jpg" alt="Leg Quarters Skin On" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Leg Quarters (Skin On)</div>
+                <div class="product-description">Whole leg cut, including the thigh and drumstick.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'chicken-leg-quarters-skin-on', name: 'Leg Quarters Skin On', price: 0.00, quantity: 12, image: 'images-sweetmart/chicken-leg-quarters.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="chicken-fillets-skin-on" data-category="chicken-skin-on" data-price="0.00" data-units="12">
+            <img src="images-butchershop/skinon-fillits.jpg" alt="Fillets Skin On" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Fillets (Skin On)</div>
+                <div class="product-description">Breast meat with the skin left attached.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'chicken-fillets-skin-on', name: 'Fillets Skin On', price: 0.00, quantity: 12, image: 'images-sweetmart/chicken-fillets.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-section">
+    <h2 id="skin-off" class="section-title">CHICKEN (SKIN OFF)</h2>
+    <div class="products-grid" id="chickenSkinOffProductsGrid">
+        <div class="product-card" data-id="chicken-whole-bird-skin-off" data-category="chicken-skin-off" data-price="0.00" data-units="12">
+            <img src="images-butchershop/skinoff-wholebird.jpg" alt="Whole Bird Skin Off" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Whole Bird (Skin Off)</div>
+                <div class="product-description">Whole chicken, skin removed for leaner preparation.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'chicken-whole-bird-skin-off', name: 'Whole Bird Skin Off', price: 0.00, quantity: 12, image: 'images-sweetmart/chicken-whole-skinless.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="chicken-12pcs-skin-off" data-category="chicken-skin-off" data-price="0.00" data-units="12">
+            <img src="images-butchershop/skinoff-12pc.jpg" alt="12 Pcs Chicken Skin Off" class="product-image">
+            <div class="product-info">
+                <div class="product-name">12 Pcs Chicken (Skin Off)</div>
+                <div class="product-description">Mixed portions, bone-in and skin-off.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'chicken-12pcs-skin-off', name: '12 Pcs Chicken Skin Off', price: 0.00, quantity: 12, image: 'images-sweetmart/chicken-pieces-skinless.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="chicken-drum-sticks-skin-off" data-category="chicken-skin-off" data-price="0.00" data-units="12">
+            <img src="images-butchershop/skinoff-drumsticks.jpg" alt="Drum Sticks Skin Off" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Drum Sticks (Skin Off)</div>
+                <div class="product-description">Lower portion of the leg, skin removed.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'chicken-drum-sticks-skin-off', name: 'Drum Sticks Skin Off', price: 0.00, quantity: 12, image: 'images-sweetmart/chicken-drumsticks-skinless.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="chicken-thighs-skin-off" data-category="chicken-skin-off" data-price="0.00" data-units="12">
+            <img src="images-butchershop/skinoff-thigh.jpg" alt="Thighs Skin Off" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Thighs (Skin Off)</div>
+                <div class="product-description">Dark meat cut, skin removed.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'chicken-thighs-skin-off', name: 'Thighs Skin Off', price: 0.00, quantity: 12, image: 'images-sweetmart/chicken-thighs-skinless.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="chicken-leg-quarters-skin-off" data-category="chicken-skin-off" data-price="0.00" data-units="12">
+            <img src="images-butchershop/skinoff-leg.jpg" alt="Leg Quarters Skin Off" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Leg Quarters (Skin Off)</div>
+                <div class="product-description">Whole leg cut, skin removed.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'chicken-leg-quarters-skin-off', name: 'Leg Quarters Skin Off', price: 0.00, quantity: 12, image: 'images-sweetmart/chicken-leg-quarters-skinless.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="chicken-fillets-skin-off" data-category="chicken-skin-off" data-price="0.00" data-units="12">
+            <img src="images-butchershop/skinoff-filits.jpg" alt="Fillets Skin Off" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Fillets (Skin Off)</div>
+                <div class="product-description">Boneless, skinless breast meat.</div>
+                <div class="product-price">Call for Quote</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'chicken-fillets-skin-off', name: 'Fillets Skin Off', price: 0.00, quantity: 12, image: 'images-sweetmart/chicken-fillets-skinless.jpg', businessName: 'Sweetmart' })">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="product-modal-overlay">
+        <div class="product-modal">
+            <button class="close-product-modal" onclick="closeProductModal()"><i class="fas fa-times"></i></button>
+            <div class="product-modal-content">
+                <div class="product-modal-images">
+                    <img src="" alt="Main Product Image" class="main-product-image" id="modalMainImage">
+                    <div class="product-thumbnails" id="productThumbnails">
+                        </div>
+                </div>
+                <div class="product-modal-details">
+                    <h3 class="product-modal-title" id="modalProductName">Product Name</h3>
+                    <div class="product-modal-price" id="modalProductPrice">R0.00</div>
+                    <p class="product-modal-description" id="modalProductDescription">A delicious treat for everyone!</p>
+                    <div class="product-variants" id="productVariantsContainer">
+                        </div>
+                    <div class="quantity-selector">
+                        <div class="variant-title">Quantity:</div>
+                        <button class="quantity-btn" id="decreaseQuantity">-</button>
+                        <span class="quantity-display" id="modalQuantity">1</span>
+                        <button class="quantity-btn" id="increaseQuantity">+</button>
+                    </div>
+                    <button class="add-to-cart-modal-btn" id="modalAddToCartBtn">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cart-modal-overlay">
+        <div class="cart-modal">
+            <h3 class="cart-modal-title"><i class="fas fa-shopping-cart"></i> Your Shopping Cart</h3>
+            <div class="cart-items">
+                <p style="text-align: center; color: #555;">Your cart is empty.</p>
+            </div>
+            <div class="cart-total" id="cartTotal">Total: R0.00</div>
+        <button class="checkout-btn" onclick="sendCartToWhatsApp()"><i class="fab fa-whatsapp"></i> Send Order via WhatsApp</button>
+            <button class="close-cart-btn" onclick="closeCartModal()">Continue Shopping</button>
+        </div>
+    </div>
+    <div class="user-modal-overlay">
+        <div class="user-modal">
+            <h3 class="user-modal-title" id="userModalTitle">Login</h3>
+            <form class="auth-form" id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail" class="form-label">Email:</label>
+                    <input type="email" id="loginEmail" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword" class="form-label">Password:</label>
+                    <input type="password" id="loginPassword" class="form-input" required>
+                </div>
+                <button type="submit" class="auth-btn">Login</button>
+            </form>
+            <form class="auth-form" id="registerForm" style="display: none;">
+                <div class="form-group">
+                    <label for="registerName" class="form-label">Name:</label>
+                    <input type="text" id="registerName" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail" class="form-label">Email:</label>
+                    <input type="email" id="registerEmail" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword" class="form-label">Password:</label>
+                    <input type="password" id="registerPassword" class="form-input" required>
+                </div>
+                <button type="submit" class="auth-btn">Register</button>
+            </form>
+            <div class="switch-auth">
+                <span id="switchAuthText">New user?</span>
+                <span class="switch-auth-btn" onclick="toggleAuthForm()">Register here</span>
+            </div>
+            <button class="close-product-modal" style="top: 10px; right: 10px; background-color: #a30909;" onclick="closeUserModal()"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>BUTCHER BLOCK</h3>
+                    <p>A delicious frozen treat for everyone!</p>
+                    <div class="social-media">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <nav class="footer-nav">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="#BIG-POPS">Shop</a></li>
+                            <li><a href="about page home.html">About Us</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy;  Hive Times. All rights reserved. | Developed by Your Company Name
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Business info popup functionality
+function showBusinessPopup() {
+    document.getElementById('businessPopupOverlay').style.display = 'flex';
+    setTimeout(() => {
+        document.getElementById('businessPopup').classList.add('active');
+    }, 10);
+}
+
+function hideBusinessPopup() {
+    document.getElementById('businessPopup').classList.remove('active');
+    setTimeout(() => {
+        document.getElementById('businessPopupOverlay').style.display = 'none';
+    }, 300);
+}
+
+// Close business popup when clicking outside
+document.getElementById('businessPopupOverlay').addEventListener('click', function(e) {
+    if (e.target === this) {
+        hideBusinessPopup();
+    }
+});
+        // Define global variables
+        const productModalOverlay = document.querySelector('.product-modal-overlay');
+        const productModal = document.querySelector('.product-modal');
+        const cartModalOverlay = document.querySelector('.cart-modal-overlay');
+        const cartModal = document.querySelector('.cart-modal');
+        const userModalOverlay = document.querySelector('.user-modal-overlay');
+        const userModal = document.querySelector('.user-modal');
+        // Product data structure
+        const allProducts = [
+  // BULK SALES
+  { id: 'forequarter-a-grade-500kg', name: 'Forequarter A Grade (500kg)', price: 0.00, category: 'bulk-beef', image: 'images-sweetmart/no image available.jpg', description: 'Large bulk portion for processing or resale.', thumbnails: ['images-sweetmart/no image available.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'hindquarter-a-grade-500kg', name: 'Hindquarter A Grade (500kg)', price: 0.00, category: 'bulk-beef', image: 'images-sweetmart/no image available.jpg', description: 'Large bulk portion for processing or resale.', thumbnails: ['images-sweetmart/no image available.jpg'], variants: [], businessName: 'Butcher Block' },
+
+  // BEEF CUTS
+  { id: 'beef-short-rib-100', name: 'Short Rib (x100)', price: 0.00, category: 'beef-cuts', image: 'images-sweetmart/short-rib.jpg', description: 'Ideal for braising and slow cooking.', thumbnails: ['images-sweetmart/short-rib.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'beef-chuck-100', name: 'Chuck (x100)', price: 0.00, category: 'beef-cuts', image: 'images-sweetmart/chuck.jpg', description: 'Excellent for roasts, pot roast, or stewing meat.', thumbnails: ['images-sweetmart/chuck.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'beef-brisket-100', name: 'Brisket (x100)', price: 0.00, category: 'beef-cuts', image: 'images-sweetmart/brisket.jpg', description: 'Perfect for smoking or corned beef.', thumbnails: ['images-sweetmart/brisket.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'beef-shin-100', name: 'Shin (x100)', price: 0.00, category: 'beef-cuts', image: 'images-sweetmart/shin.jpg', description: 'Bone-in cut for rich stocks, stews, and Osso Buco.', thumbnails: ['images-sweetmart/shin.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'beef-stew-100', name: 'Stew Meat (x100)', price: 0.00, category: 'beef-cuts', image: 'images-sweetmart/stew.jpg', description: 'Pre-cut stewing cubes (various cuts).', thumbnails: ['images-sweetmart/stew.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'beef-goulash-50', name: 'Goulash (x50)', price: 0.00, category: 'beef-cuts', image: 'images-sweetmart/goulash.jpg', description: 'Thinly sliced strips for goulash or stirfry.', thumbnails: ['images-sweetmart/goulash.jpg'], variants: [], businessName: 'Butcher Block' },
+
+  // STEAKS
+  { id: 't-bone-75', name: 'T-Bone (75kg)', price: 0.00, category: 'premium-steaks', image: 'images-sweetmart/t-bone.jpg', description: 'Includes the strip loin and tenderloin connected by a T-shaped bone.', thumbnails: ['images-sweetmart/t-bone.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'sirloin-75', name: 'Sirloin (75kg)', price: 0.00, category: 'premium-steaks', image: 'images-sweetmart/sirloin.jpg', description: 'Versatile and flavorful cut from the rear back portion.', thumbnails: ['images-sweetmart/sirloin.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'ribeye-75', name: 'Ribeye (75kg)', price: 0.00, category: 'premium-steaks', image: 'images-sweetmart/ribeye.jpg', description: 'Known for its rich marbling and flavor, from the rib section.', thumbnails: ['images-sweetmart/ribeye.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'prime-rib-75', name: 'Prime Rib (75kg)', price: 0.00, category: 'premium-steaks', image: 'images-sweetmart/prime-rib.jpg', description: 'Large roast cut from the primal rib section.', thumbnails: ['images-sweetmart/prime-rib.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'tomahawk-75', name: 'Tomahawk (75kg)', price: 0.00, category: 'premium-steaks', image: 'images-sweetmart/tomahawk.jpg', description: 'Ribeye cut with the full rib bone left intact.', thumbnails: ['images-sweetmart/tomahawk.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'fillet-75', name: 'Fillet (75kg)', price: 0.00, category: 'premium-steaks', image: 'images-sweetmart/fillet.jpg', description: 'The most tender cut, also known as Tenderloin or Filet Mignon.', thumbnails: ['images-sweetmart/fillet.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'rump-75', name: 'Rump (75kg)', price: 0.00, category: 'premium-steaks', image: 'images-sweetmart/rump.jpg', description: 'A flavorful steak cut from the back end of the cow.', thumbnails: ['images-sweetmart/rump.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'texan-steak-75', name: 'Texan Steak (75kg)', price: 0.00, category: 'premium-steaks', image: 'images-sweetmart/texan-steak.jpg', description: 'A regional or specialty cut, often a large, flavorful piece.', thumbnails: ['images-sweetmart/texan-steak.jpg'], variants: [], businessName: 'Butcher Block' },
+
+  // SPECIALTY CUTS (OXTAIL section)
+  { id: 'tongue-200', name: 'Tongue (x200)', price: 0.00, category: 'specialty-cuts', image: 'images-sweetmart/tongue.jpg', description: 'Requires slow cooking until tender, often cured or pickled.', thumbnails: ['images-sweetmart/tongue.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'tripe-50', name: 'Tripe (x50)', price: 0.00, category: 'specialty-cuts', image: 'images-sweetmart/tripe.jpg', description: 'The lining of the stomach, used in stews and soups (e.g., Mala Mogodu).', thumbnails: ['images-sweetmart/tripe.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'trotters-100', name: 'Trotters (x100)', price: 0.00, category: 'specialty-cuts', image: 'images-sweetmart/trotters.jpg', description: 'Feet, high in collagen for rich broth and stews.', thumbnails: ['images-sweetmart/trotters.jpg'], variants: [], businessName: 'Butcher Block' },
+
+  // PROCESSED MEAT
+  { id: 'processed-mince-50', name: 'Mince (x50)', price: 0.00, category: 'processed-meat', image: 'images-sweetmart/mince.jpg', description: 'Finely ground meat, ideal for sauces, burgers, and fillings.', thumbnails: ['images-sweetmart/mince.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'processed-boerewors-50', name: 'Boerewors (x50)', price: 0.00, category: 'processed-meat', image: 'images-sweetmart/boerewors.jpg', description: 'Traditional South African sausage, excellent for the braai (BBQ).', thumbnails: ['images-sweetmart/boerewors.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'processed-braaiwors-50', name: 'Braaiwors (x50)', price: 0.00, category: 'processed-meat', image: 'images-sweetmart/braaiwors.jpg', description: 'General term for sausage intended for grilling.', thumbnails: ['images-sweetmart/braaiwors.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'processed-meat-balls-50', name: 'Meat balls (x50)', price: 0.00, category: 'processed-meat', image: 'images-sweetmart/meatballs.jpg', description: 'Ready-made meat spheres, great for stews or spaghetti.', thumbnails: ['images-sweetmart/meatballs.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'processed-patties-40', name: 'Patties (x40)', price: 0.00, category: 'processed-meat', image: 'images-sweetmart/patties.jpg', description: 'Pressed portions of meat, perfect for quick burgers.', thumbnails: ['images-sweetmart/patties.jpg'], variants: [], businessName: 'Butcher Block' },
+
+  // WHOLE / HALF LAMB
+  { id: 'whole-half-200', name: 'Whole / Half Carcass (x200)', price: 0.00, category: 'whole-half', image: 'images-sweetmart/whole-carcass.jpg', description: 'Large, unprocessed bulk portion for full customization.', thumbnails: ['images-sweetmart/whole-carcass.jpg'], variants: [], businessName: 'Butcher Block' },
+
+  // LAMB CUTS
+  { id: 'lamb-loin-chop-60', name: 'Lamb Loin Chop (x60)', price: 0.00, category: 'lamb-cuts', image: 'images-sweetmart/lamb-loin-chop.jpg', description: 'Tender and lean chops cut from the back.', thumbnails: ['images-sweetmart/lamb-loin-chop.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'lamb-best-end-60', name: 'Lamb Best End (x60)', price: 0.00, category: 'lamb-cuts', image: 'images-sweetmart/lamb-best-end.jpg', description: 'Cut from the rib section, ideal for rack of lamb.', thumbnails: ['images-sweetmart/lamb-best-end.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'lamb-leg-chop-60', name: 'Lamb Leg Chop (x60)', price: 0.00, category: 'lamb-cuts', image: 'images-sweetmart/lamb-leg-chop.jpg', description: 'Chops cut from the leg, highly versatile.', thumbnails: ['images-sweetmart/lamb-leg-chop.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'lamb-leg-of-lamb-60', name: 'Leg of Lamb (x60)', price: 0.00, category: 'lamb-cuts', image: 'images-sweetmart/lamb-leg.jpg', description: 'A large, popular roast joint.', thumbnails: ['images-sweetmart/lamb-leg.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'lamb-shank-40', name: 'Lamb Shank (x40)', price: 0.00, category: 'lamb-cuts', image: 'images-sweetmart/lamb-shank.jpg', description: 'Lower portion of the leg, best slow-cooked.', thumbnails: ['images-sweetmart/lamb-shank.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'lamb-curry-40', name: 'Lamb Curry Meat (x40)', price: 0.00, category: 'lamb-cuts', image: 'images-sweetmart/lamb-curry.jpg', description: 'Pre-cut cubes ideal for stews and curries.', thumbnails: ['images-sweetmart/lamb-curry.jpg'], variants: [], businessName: 'Butcher Block' },
+
+  // OTHER MEAT ITEMS
+  { id: 'meaty-bones-100', name: 'Meaty Bones (x100)', price: 0.00, category: 'other-meat-items', image: 'images-sweetmart/meaty-bones.jpg', description: 'Bones with significant meat attached, excellent for stock or slow cooking.', thumbnails: ['images-sweetmart/meaty-bones.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'beef-trimmings-100', name: 'Beef Trimmings (x100)', price: 0.00, category: 'other-meat-items', image: 'images-sweetmart/beef-trimmings.jpg', description: 'Meat scraps from cutting, perfect for grinding into mince or sausages.', thumbnails: ['images-sweetmart/beef-trimmings.jpg'], variants: [], businessName: 'Butcher Block' },
+
+  // MEAT HAMPERS
+  { id: 'hamper-1', name: 'Meat Hamper 1', price: 0.00, category: 'meat-hampers', image: 'images-sweetmart/meat-hamper.jpg', description: 'Assorted bulk cuts for home or business use.', thumbnails: ['images-sweetmart/meat-hamper.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'hamper-2', name: 'Meat Hamper 2', price: 0.00, category: 'meat-hampers', image: 'images-sweetmart/meat-hamper.jpg', description: 'Assorted bulk cuts for home or business use.', thumbnails: ['images-sweetmart/meat-hamper.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'hamper-3', name: 'Meat Hamper 3', price: 0.00, category: 'meat-hampers', image: 'images-sweetmart/meat-hamper.jpg', description: 'Assorted bulk cuts for home or business use.', thumbnails: ['images-sweetmart/meat-hamper.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'hamper-4', name: 'Meat Hamper 4', price: 0.00, category: 'meat-hampers', image: 'images-sweetmart/meat-hamper.jpg', description: 'Assorted bulk cuts for home or business use.', thumbnails: ['images-sweetmart/meat-hamper.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'hamper-5', name: 'Meat Hamper 5', price: 0.00, category: 'meat-hampers', image: 'images-sweetmart/meat-hamper.jpg', description: 'Assorted bulk cuts for home or business use.', thumbnails: ['images-sweetmart/meat-hamper.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'hamper-6', name: 'Meat Hamper 6', price: 0.00, category: 'meat-hampers', image: 'images-sweetmart/meat-hamper.jpg', description: 'Assorted bulk cuts for home or business use.', thumbnails: ['images-sweetmart/meat-hamper.jpg'], variants: [], businessName: 'Butcher Block' },
+
+  // CHICKEN (SKIN ON)
+  { id: 'chicken-whole-skin-on-whole', name: 'Whole Bird Skin On', price: 0.00, category: 'chicken-skin-on', image: 'images-sweetmart/chicken-whole.jpg', description: 'Whole chicken, with skin, perfect for roasting.', thumbnails: ['images-sweetmart/chicken-whole.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'chicken-whole-bird-skin-on', name: 'Whole Bird Skin On (Second)', price: 0.00, category: 'chicken-skin-on', image: 'images-sweetmart/chicken-whole.jpg', description: 'Whole chicken, with skin, perfect for roasting.', thumbnails: ['images-sweetmart/chicken-whole.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'chicken-12pcs-skin-on', name: '12 Pcs Chicken Skin On', price: 0.00, category: 'chicken-skin-on', image: 'images-sweetmart/chicken-pieces.jpg', description: 'Mixed portions, bone-in and skin-on.', thumbnails: ['images-sweetmart/chicken-pieces.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'chicken-drum-sticks-skin-on', name: 'Drum Sticks Skin On', price: 0.00, category: 'chicken-skin-on', image: 'images-sweetmart/chicken-drumsticks.jpg', description: 'Lower portion of the leg, great for grilling.', thumbnails: ['images-sweetmart/chicken-drumsticks.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'chicken-thighs-skin-on', name: 'Thighs Skin On', price: 0.00, category: 'chicken-skin-on', image: 'images-sweetmart/chicken-thighs.jpg', description: 'Dark meat cut, flavorful and moist.', thumbnails: ['images-sweetmart/chicken-thighs.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'chicken-leg-quarters-skin-on', name: 'Leg Quarters Skin On', price: 0.00, category: 'chicken-skin-on', image: 'images-sweetmart/chicken-leg-quarters.jpg', description: 'Whole leg cut, including the thigh and drumstick.', thumbnails: ['images-sweetmart/chicken-leg-quarters.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'chicken-fillets-skin-on', name: 'Fillets Skin On', price: 0.00, category: 'chicken-skin-on', image: 'images-sweetmart/chicken-fillets.jpg', description: 'Breast meat with the skin left attached.', thumbnails: ['images-sweetmart/chicken-fillets.jpg'], variants: [], businessName: 'Butcher Block' },
+
+  // CHICKEN (SKIN OFF)
+  { id: 'chicken-whole-bird-skin-off', name: 'Whole Bird Skin Off', price: 0.00, category: 'chicken-skin-off', image: 'images-sweetmart/chicken-whole-skinless.jpg', description: 'Whole chicken, skin removed for leaner preparation.', thumbnails: ['images-sweetmart/chicken-whole-skinless.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'chicken-12pcs-skin-off', name: '12 Pcs Chicken Skin Off', price: 0.00, category: 'chicken-skin-off', image: 'images-sweetmart/chicken-pieces-skinless.jpg', description: 'Mixed portions, bone-in and skin-off.', thumbnails: ['images-sweetmart/chicken-pieces-skinless.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'chicken-drum-sticks-skin-off', name: 'Drum Sticks Skin Off', price: 0.00, category: 'chicken-skin-off', image: 'images-sweetmart/chicken-drumsticks-skinless.jpg', description: 'Lower portion of the leg, skin removed.', thumbnails: ['images-sweetmart/chicken-drumsticks-skinless.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'chicken-thighs-skin-off', name: 'Thighs Skin Off', price: 0.00, category: 'chicken-skin-off', image: 'images-sweetmart/chicken-thighs-skinless.jpg', description: 'Dark meat cut, skin removed.', thumbnails: ['images-sweetmart/chicken-thighs-skinless.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'chicken-leg-quarters-skin-off', name: 'Leg Quarters Skin Off', price: 0.00, category: 'chicken-skin-off', image: 'images-sweetmart/chicken-leg-quarters-skinless.jpg', description: 'Whole leg cut, skin removed.', thumbnails: ['images-sweetmart/chicken-leg-quarters-skinless.jpg'], variants: [], businessName: 'Butcher Block' },
+  { id: 'chicken-fillets-skin-off', name: 'Fillets Skin Off', price: 0.00, category: 'chicken-skin-off', image: 'images-sweetmart/chicken-fillets-skinless.jpg', description: 'Boneless, skinless breast meat.', thumbnails: ['images-sweetmart/chicken-fillets-skinless.jpg'], variants: [], businessName: 'Butcher Block' }
+];
+        // Filter and Search Logic
+        function getProductCards() {
+            return document.querySelectorAll('.product-card');
+        }
+        function applyFilters() {
+            const searchQuery = document.getElementById('searchInput')?.value.toLowerCase() || '';
+            const categoryFilter = document.getElementById('categoryFilter')?.value || '';
+            const priceSort = document.getElementById('priceSort')?.value || '';
+            const allCards = Array.from(getProductCards());
+            allCards.forEach(card => {
+                const productName = card.querySelector('.product-name').textContent.toLowerCase();
+                const productCategory = card.getAttribute('data-category');
+                let isVisible = true;
+                if (searchQuery && !productName.includes(searchQuery)) {
+                    isVisible = false;
+                }
+                if (categoryFilter && productCategory !== categoryFilter) {
+                    isVisible = false;
+                }
+                card.style.display = isVisible ? 'block' : 'none';
+            });
+            let visibleCards = allCards.filter(card => card.style.display !== 'none');
+            if (priceSort) {
+                visibleCards.sort((a, b) => {
+                    const priceA = parseFloat(a.getAttribute('data-price'));
+                    const priceB = parseFloat(b.getAttribute('data-price'));
+                    return priceSort === 'asc' ? priceA - priceB : priceB - priceA;
+                });
+                const gridContainer = document.querySelector('.products-grid');
+                if (gridContainer) {
+                    const fragment = document.createDocumentFragment();
+                    visibleCards.forEach(card => fragment.appendChild(card));
+                    gridContainer.innerHTML = '';
+                    gridContainer.appendChild(fragment);
+                }
+            }
+        }
+        // Modal Functions
+        function showProductModal(productId) {
+            const product = allProducts.find(p => p.id === productId);
+            if (!product) return;
+            document.getElementById('modalProductName').textContent = product.name;
+            document.getElementById('modalProductPrice').textContent = `R${product.price.toFixed(2)}`;
+            document.getElementById('modalProductDescription').textContent = product.description || 'A delicious frozen treat for everyone!';
+            document.getElementById('modalMainImage').src = product.image;
+            document.getElementById('modalQuantity').textContent = 1;
+            const modalAddToCartBtn = document.getElementById('modalAddToCartBtn');
+            modalAddToCartBtn.onclick = () => {
+                const quantity = parseInt(document.getElementById('modalQuantity').textContent);
+                cart.addToCart({ 
+                    id: product.id, 
+                    name: product.name, 
+                    price: product.price, 
+                    quantity: quantity, 
+                   image: `/images/polar-ice-cream/${product.image}`,
+                    businessName: product.businessName,
+                    businessLogo: 'polar-ice-cream-logo.png' 
+                });
+                closeProductModal();
+            };
+            document.getElementById('increaseQuantity').onclick = () => {
+                let quantity = parseInt(document.getElementById('modalQuantity').textContent);
+                document.getElementById('modalQuantity').textContent = quantity + 1;
+            };
+            document.getElementById('decreaseQuantity').onclick = () => {
+                let quantity = parseInt(document.getElementById('modalQuantity').textContent);
+                if (quantity > 1) {
+                    document.getElementById('modalQuantity').textContent = quantity - 1;
+                }
+            };
+            productModalOverlay.style.display = 'flex';
+            setTimeout(() => productModal.classList.add('active'), 10);
+        }
+        function closeProductModal() {
+            productModal.classList.remove('active');
+            setTimeout(() => productModalOverlay.style.display = 'none', 300);
+        }
+        function showCartModal() {
+            cartModalOverlay.style.display = 'flex';
+            setTimeout(() => cartModal.classList.add('active'), 10);
+            cart.updateCartDisplay();
+        }
+        function closeCartModal() {
+            cartModal.classList.remove('active');
+            setTimeout(() => cartModalOverlay.style.display = 'none', 300);
+        }
+        function showUserModal() {
+            userModalOverlay.style.display = 'flex';
+            setTimeout(() => userModal.classList.add('active'), 10);
+        }
+        function closeUserModal() {
+            userModal.classList.remove('active');
+            setTimeout(() => userModalOverlay.style.display = 'none', 300);
+        }
+        function toggleAuthForm() {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const modalTitle = document.getElementById('userModalTitle');
+            const switchAuthText = document.getElementById('switchAuthText');
+            if (loginForm.style.display !== 'none') {
+                loginForm.style.display = 'none';
+                registerForm.style.display = 'flex';
+                modalTitle.textContent = 'Register Account';
+                switchAuthText.textContent = 'Have an account?';
+            } else {
+                loginForm.style.display = 'flex';
+                registerForm.style.display = 'none';
+                modalTitle.textContent = 'Login';
+                switchAuthText.textContent = 'New user?';
+            }
+        }
+        document.addEventListener('click', (e) => {
+            const card = e.target.closest('.product-card');
+            if (card && !e.target.closest('.add-to-cart-btn')) {
+                const productId = card.getAttribute('data-id');
+                const product = allProducts.find(p => p.id === productId);
+                if (product) {
+                    showProductModal(product.id);
+                }
+            }
+        });
+        // CART FUNCTIONALITY WITH LOCAL STORAGE
+        const cart = {
+            items: [],
+            saveCart: function() {
+                try {
+                   const STORAGE_KEY = 'hivetimes_unified_cart_v3';
+                    this.updateCartDisplay();
+                } catch (e) {
+                    console.error('Error saving cart:', e);
+                }
+            },
+            init: function() {
+                const storedCart = localStorage.getItem('polarIceCreamCart');
+                if (storedCart) {
+                    try {
+                        this.items = JSON.parse(storedCart);
+                    } catch (e) {
+                        console.error("Error parsing cart, starting fresh:", e);
+                        this.items = [];
+                    }
+                }
+                this.updateCartDisplay();
+            },
+            addToCart: function(product) {
+                const existingItem = this.items.find(item => item.id === product.id);
+                if (existingItem) {
+                    existingItem.quantity += product.quantity;
+                } else {
+                    this.items.push(product);
+                }
+                this.saveCart();
+                alert(`${product.name} added to cart!`);
+            },
+            updateQuantity: function(id, delta) {
+                const item = this.items.find(i => i.id === id);
+                if (item) {
+                    item.quantity += delta;
+                    if (item.quantity <= 0) {
+                        this.removeItem(id);
+                    } else {
+                        this.saveCart();
+                    }
+                }
+            },
+            removeItem: function(id) {
+                this.items = this.items.filter(item => item.id !== id);
+                this.saveCart();
+            },
+            calculateTotal: function() {
+                return this.items.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
+            },
+            updateCartDisplay: function() {
+                const cartCountElement = document.getElementById('cartCount');
+                const cartItemsContainer = document.querySelector('.cart-items');
+                const cartTotalElement = document.getElementById('cartTotal');
+                const totalItems = this.items.reduce((sum, item) => sum + item.quantity, 0);
+                if (cartCountElement) cartCountElement.textContent = totalItems;
+                if (cartItemsContainer) {
+                    cartItemsContainer.innerHTML = '';
+                    if (this.items.length === 0) {
+                        cartItemsContainer.innerHTML = '<p style="text-align: center; color: #555;">Your cart is empty.</p>';
+                    } else {
+                        this.items.forEach(item => {
+                            const itemElement = document.createElement('div');
+                            itemElement.className = 'cart-item';
+                            itemElement.innerHTML = `
+                                <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                                <div class="cart-item-details">
+                                    <div class="cart-item-name">${item.name}</div>
+                                    <div class="cart-item-variant">Business: ${item.businessName}</div>
+                                    <div class="cart-item-price">R${(item.price * item.quantity).toFixed(2)} (${item.price.toFixed(2)} each)</div>
+                                    <div class="cart-item-quantity">
+                                        <button class="cart-quantity-btn" onclick="cart.updateQuantity('${item.id}', -1)">-</button>
+                                        <span class="cart-quantity-display">${item.quantity}</span>
+                                        <button class="cart-quantity-btn" onclick="cart.updateQuantity('${item.id}', 1)">+</button>
+                                    </div>
+                                </div>
+                                <button class="remove-item-btn" onclick="cart.removeItem('${item.id}')"><i class="fas fa-trash-alt"></i> Remove</button>
+                            `;
+                            cartItemsContainer.appendChild(itemElement);
+                        });
+                    }
+                }
+                if (cartTotalElement) {
+                    cartTotalElement.textContent = `Total: R${this.calculateTotal()}`;
+                }
+            }
+        };
+        // Save
+localStorage.setItem(STORAGE_KEY, JSON.stringify(this.items));
+
+// Load
+const stored = localStorage.getItem(STORAGE_KEY);
+        // SLIDER LOGIC
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const totalSlides = slides.length;
+        const slider = document.getElementById('slider');
+        let slideInterval;
+        function updateSlider() {
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlide);
+            });
+        }
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        }
+        function changeSlide(index) {
+            currentSlide = index;
+            updateSlider();
+            resetAutoSlide();
+        }
+        function startAutoSlide() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+        function resetAutoSlide() {
+            clearInterval(slideInterval);
+            startAutoSlide();
+        }
+        function initializeSlider() {
+            updateSlider();
+            startAutoSlide();
+            const sliderContainer = document.getElementById('sliderContainer');
+            if (sliderContainer) {
+                sliderContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
+                sliderContainer.addEventListener('mouseleave', resetAutoSlide);
+            }
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeSlider();
+            cart.init();
+        });
+        function sendCartToWhatsApp() {
+    if (cart.items.length === 0) {
+        alert("Your cart is empty. Add some items before sending!");
+        return;
+    }
+
+    // 🔹 Replace with your business WhatsApp number (include country code, no + or spaces)
+    const businessNumber = "27604368376"; // Example: South Africa number
+
+    // 🔹 Build message
+    let message = "Hi! I'm enquiring from **Hive Times** and would like to place the following order from *Polar Ice Cream*:\n\n";
+    cart.items.forEach(item => {
+        message += `• ${item.name} x${item.quantity} — R${(item.price * item.quantity).toFixed(2)}\n`;
+    });
+    message += `\n*Total: R${cart.calculateTotal()}*\n\nThank you!`;
+
+    // 🔹 URL-encode and open WhatsApp
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${businessNumber}?text=${encodedMessage}`;
+    
+    // Open in new tab (works on desktop & mobile)
+    window.open(whatsappUrl, '_blank');
+}
+    </script>
+    <script src="/js/cart.js"></script>
+    <div class="floating-contact">
+    <a href="https://wa.me/27604368376?text=Hello, I'd like to inquire about your products." target="_blank" rel="noopener noreferrer" class="float-btn whatsapp-float" title="Contact via WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="mailto:contact@broadwaysweets.co.za?subject=Inquiry from Website&body=Hello, I'd like to inquire about your products." class="float-btn email-float" title="Contact via Email">
+        <i class="fas fa-envelope"></i>
+    </a>
+</div>
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    spaceBetween: 0,
+    centeredSlides: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    loop: true,
+    effect: "fade",
+    fadeEffect: {
+      crossFade: true
+    },
+    // Enhanced for mobile touch
+    touchRatio: 1,
+    simulateTouch: true,
+    preventClicksOnSlide: false
+  });
+</script>
+</body>
+</html>
