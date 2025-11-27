@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+   
+    <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DTPGZ964FD"></script>
 <script>
@@ -1307,29 +1310,8 @@
             </div>
         </div>
     </header>
- <section class="swiper mySwiper slider-section">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <a href="Polar ice cream.html" target="_blank" rel="noopener">
-        <img src="images-logo/polar-ice-cream-long.jpg" alt="Polar Ice Cream">
-      </a>
-    </div>
-    <div class="swiper-slide">
-      <a href="broadway page.html" target="_blank" rel="noopener">
-        <img src="images-logo/broadway-sweets-long.jpg" alt="Broadway Sweets">
-      </a>
-    </div>
-    <div class="swiper-slide">
-      <a href="Sweet Depot website.html" target="_blank" rel="noopener">
-        <img src="images-logo/sweet-deport-long.jpg" alt="Sweet Depot">
-      </a>
-    </div>
-    <div class="swiper-slide">
-      <a href="Sweet Mart.html" target="_blank" rel="noopener">
-        <img src="images-logo/sweet-mart-long.jpg" alt="Sweet Mart">
-      </a>
-    </div>
-  </div>
+    <div id="slider-container"></div>
+ 
   <!-- Add Pagination -->
   <div class="swiper-pagination"></div>
   <!-- Add Navigation -->
@@ -2421,32 +2403,37 @@ const stored = localStorage.getItem(STORAGE_KEY);
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
+<!-- 1. Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- 2. Fetch slider and initialize -->
 <script>
-  var swiper = new Swiper(".mySwiper", {
-    spaceBetween: 0,
-    centeredSlides: true,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    loop: true,
-    effect: "fade",
-    fadeEffect: {
-      crossFade: true
-    },
-    // Enhanced for mobile touch
-    touchRatio: 1,
-    simulateTouch: true,
-    preventClicksOnSlide: false
-  });
+  fetch('slider.html')
+    .then(response => {
+      if (!response.ok) throw new Error('slider.html not found (404)');
+      return response.text();
+    })
+    .then(html => {
+      document.getElementById('slider-container').innerHTML = html;
+      new Swiper('.mySwiper', {
+        spaceBetween: 0,
+        centeredSlides: true,
+        autoplay: { delay: 3000, disableOnInteraction: false },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        },
+        loop: true,
+        effect: 'fade',
+        fadeEffect: { crossFade: true }
+      });
+    })
+    .catch(err => {
+      console.error('Slider error:', err);
+      document.getElementById('slider-container').innerHTML = '<p style="text-align:center;color:red;">❌ ' + err.message + '</p>';
+    });
+</script>
 </script>
 </body>
 </html>
