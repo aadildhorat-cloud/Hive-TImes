@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout - Broadway Sweets</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body { font-family: sans-serif; background: #f8f9fa; padding: 20px; }
+    .checkout-container { max-width: 600px; margin: auto; background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .form-group { margin-bottom: 15px; }
+    label { display: block; margin-bottom: 5px; font-weight: bold; }
+    input, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; }
+    button { background: #a30909; color: white; padding: 12px 20px; border: none; border-radius: 6px; cursor: pointer; width: 100%; font-size: 16px; }
+    button:hover { background: #8a0808; }
+    .summary-item { display: flex; justify-content: space-between; margin: 8px 0; }
+    .cart-total { text-align: right; font-size: 18px; font-weight: bold; margin: 15px 0; color: #a30909; }
+  </style>
+</head>
+<body>
+  <div class="checkout-container">
+    <h2><i class="fas fa-receipt"></i> Checkout</h2>
+
+    <div id="checkoutSummaryItems">
+      <!-- Order items will load here -->
+    </div>
+    <div class="cart-total" id="checkoutTotal">Total: R0.00</div>
+
+    <form id="checkoutForm">
+      <div class="form-group">
+        <label for="fullName">Full Name *</label>
+        <input type="text" id="fullName" required />
+      </div>
+      <div class="form-group">
+        <label for="address">Delivery Address *</label>
+        <textarea id="address" rows="3" required placeholder="Street, Suburb, City, Postal Code"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="contact">Phone Number *</label>
+        <input type="tel" id="contact" required />
+      </div>
+      <div class="form-group">
+        <label for="deliveryNotes">Notes (Optional)</label>
+        <textarea id="deliveryNotes" rows="2" placeholder="Gate code, delivery time, etc."></textarea>
+      </div>
+      <button type="submit"><i class="fas fa-paper-plane"></i> Place Order</button>
+    </form>
+  </div>
+
+  <!-- Include your cart logic & Formspree integration -->
+  <script src="checkout.js"></script>
+</body>
+</html>

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
+    <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DTPGZ964FD"></script>
 <script>
@@ -1293,35 +1296,9 @@
             </div>
         </div>
     </header>
- <section class="swiper mySwiper slider-section">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <a href="Polar ice cream.html" target="_blank" rel="noopener">
-        <img src="images-logo/polar-ice-cream-long.jpg" alt="Polar Ice Cream">
-      </a>
-    </div>
-    <div class="swiper-slide">
-      <a href="broadway page.html" target="_blank" rel="noopener">
-        <img src="images-logo/broadway-sweets-long.jpg" alt="Broadway Sweets">
-      </a>
-    </div>
-    <div class="swiper-slide">
-      <a href="Sweet Depot website.html" target="_blank" rel="noopener">
-        <img src="images-logo/sweet-deport-long.jpg" alt="Sweet Depot">
-      </a>
-    </div>
-    <div class="swiper-slide">
-      <a href="Sweet Mart.html" target="_blank" rel="noopener">
-        <img src="images-logo/sweet-mart-long.jpg" alt="Sweet Mart">
-      </a>
-    </div>
-  </div>
-  <!-- Add Pagination -->
-  <div class="swiper-pagination"></div>
-  <!-- Add Navigation -->
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
-</section>
+    <div id="slider-container"></div>
+<div class="search-filter-container">
+ 
 <div class="business-info-container">
     <button class="business-info-btn" onclick="showBusinessPopup()">
         <img src="images-logo/polar-ice-cream-logo.png" alt="Business Logo" class="business-logo">
@@ -1350,6 +1327,7 @@
         <button class="close-business-btn" onclick="hideBusinessPopup()">Close</button>
     </div>
 </div>
+
    <div class="content-section">
         <h2 id="premier-ice-cream" class="section-title">PREMIER ICE CREAM</h2>
         <div class="products-grid" id="productsGrid">
@@ -2949,10 +2927,10 @@ document.getElementById('businessPopupOverlay').addEventListener('click', functi
             }
         };
         // Save
-localStorage.setItem(STORAGE_KEY, JSON.stringify(this.items));
+
 
 // Load
-const stored = localStorage.getItem(STORAGE_KEY);
+const stored = localStorage.getItem('hivetimes_unified_cart_v3');
         // SLIDER LOGIC
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
@@ -3019,7 +2997,7 @@ const stored = localStorage.getItem(STORAGE_KEY);
     window.open(whatsappUrl, '_blank');
 }
     </script>
-    <script src="/js/cart.js"></script>
+   <!-- <script src="/js/cart.js"></script> -->
     <div class="floating-contact">
     <a href="https://wa.me/27604368376?text=Hello, I'd like to inquire about your products." target="_blank" rel="noopener noreferrer" class="float-btn whatsapp-float" title="Contact via WhatsApp">
         <i class="fab fa-whatsapp"></i>
@@ -3028,35 +3006,38 @@ const stored = localStorage.getItem(STORAGE_KEY);
         <i class="fas fa-envelope"></i>
     </a>
 </div>
-<!-- Swiper JS -->
+
+<!-- 1. Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
+<!-- 2. Fetch slider and initialize -->
 <script>
-  var swiper = new Swiper(".mySwiper", {
-    spaceBetween: 0,
-    centeredSlides: true,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    loop: true,
-    effect: "fade",
-    fadeEffect: {
-      crossFade: true
-    },
-    // Enhanced for mobile touch
-    touchRatio: 1,
-    simulateTouch: true,
-    preventClicksOnSlide: false
-  });
+  fetch('slider.html')
+    .then(response => {
+      if (!response.ok) throw new Error('slider.html not found (404)');
+      return response.text();
+    })
+    .then(html => {
+      document.getElementById('slider-container').innerHTML = html;
+      new Swiper('.mySwiper', {
+        spaceBetween: 0,
+        centeredSlides: true,
+        autoplay: { delay: 3000, disableOnInteraction: false },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        },
+        loop: true,
+        effect: 'fade',
+        fadeEffect: { crossFade: true }
+      });
+    })
+    .catch(err => {
+      console.error('Slider error:', err);
+      document.getElementById('slider-container').innerHTML = '<p style="text-align:center;color:red;">❌ ' + err.message + '</p>';
+    });
 </script>
+
 </body>
 </html>
