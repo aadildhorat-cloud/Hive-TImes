@@ -1,0 +1,365 @@
+/*
+ * HIVE TIMES - Access Portal Styles
+ * style.css
+ */
+
+/* --- Base & Typography --- */
+:root {
+    --primary-color: #0077CC; /* A professional blue */
+    --secondary-color: #5C6773; /* Darker gray for text */
+    --background-light: #F4F7F9; /* Light, subtle background */
+    --panel-background: #ffffff;
+    --sidebar-background: #1A202C; /* Dark, deep color */
+    --text-on-sidebar: #E0E6ED;
+    --border-color: #DDE2E7;
+    --google-red: #DB4437;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-light);
+    color: var(--secondary-color);
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+    color: #1A202C;
+    font-weight: 700;
+}
+
+/* --- Layout Container --- */
+.main-container {
+    display: flex;
+    width: 90%;
+    max-width: 1100px;
+    height: 650px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* --- Visual Sidebar (Left) --- */
+.visual-sidebar {
+    width: 40%;
+    background-color: var(--sidebar-background);
+    color: var(--text-on-sidebar);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hive-logo-main {
+    width: 300px; /* Assuming a simple logo image */
+    margin-bottom: 20px;
+}
+
+.visual-sidebar h1 {
+    color: #fff;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.visual-sidebar p {
+    font-weight: 300;
+    max-width: 80%;
+}
+
+.hex-pattern-overlay {
+    /* Placeholder for a cool visual pattern */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 10% 20%, rgba(255,255,255,.05) 0%, rgba(255,255,255,0) 70%),
+                radial-gradient(circle at 90% 80%, rgba(255,255,255,.05) 0%, rgba(255,255,255,0) 70%);
+}
+
+/* --- Interactive Panel (Right) --- */
+.interactive-panel {
+    width: 60%;
+    background-color: var(--panel-background);
+    padding: 40px 60px;
+    overflow-y: auto; /* Allows scrolling if content is too long */
+}
+
+/* --- Panel Header (Tabs) --- */
+.panel-header {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--secondary-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px; /* Pulls button slightly down over border */
+}
+
+.tab-btn:hover {
+    color: var(--primary-color);
+}
+
+.tab-btn.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+/* --- Form/Panel Containers --- */
+.form-container {
+    display: none;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.form-container.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-container h2 {
+    margin-bottom: 25px;
+    font-size: 1.8em;
+}
+
+/* --- Form Inputs --- */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.9em;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #1A202C;
+}
+
+.input-group input[type="email"],
+.input-group input[type="password"],
+.input-group input[type="text"] {
+    width: 100%;
+    padding: 14px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.1);
+}
+
+/* --- Form Options & Terms --- */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 0.9em;
+}
+
+.form-options a, .terms-label a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.terms-label {
+    display: block;
+    margin-bottom: 25px;
+    font-size: 0.9em;
+}
+
+/* --- Buttons --- */
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background-color: #005A9C;
+}
+
+.social-login-divider {
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+    font-size: 0.9em;
+}
+
+.social-login-divider:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    border-top: 1px solid var(--border-color);
+    z-index: 1;
+}
+
+.social-login-divider span {
+    background-color: var(--panel-background);
+    padding: 0 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.social-btn {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    background-color: white;
+    color: #1A202C;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.google-btn:hover {
+    background-color: #F4F7F9;
+    border-color: #C0C5CC;
+}
+
+.google-btn::before {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="18px" height="18px"><path fill="%23FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.088 8-11.303 8c-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 8.089 3.066l5.707-5.707C35.859 4.882 29.98 2 24 2C11.895 2 2 11.895 2 24s9.895 22 22 22s22-9.895 22-22c0-1.746-.203-3.418-.592-5.008z"/><path fill="%23FF3D00" d="M6.306 14.693l6.571 4.819C14.655 15.108 18.995 13 24 13c3.791 0 7.18 1.18 9.873 3.14l6.571-4.819C34.406 7.425 29.526 5 24 5C17.068 5 10.593 8.356 6.306 14.693z"/><path fill="%234CAF50" d="M24 44c5.166 0 9.86-1.972 13.403-5.184l-6.571-4.819C29.215 35.074 26.68 36 24 36c-5.202 0-9.621-3.357-11.303-8L6.306 33.307C10.593 39.644 17.068 43 24 43z"/><path fill="%231976D2" d="M43.611 20.083H42V20H24v8h11.303c-.792 2.237-2.231 4.14-4.135 5.564l6.571 4.819C39.363 35.101 42 32 42 28h-3v-4.083h-1.389z"/></svg>');
+    margin-right: 10px;
+    display: inline-block;
+}
+
+
+/* --- Profile View Styling --- */
+.profile-header {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 30px;
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    font-weight: 700;
+    margin: 0 auto 10px;
+}
+
+.profile-header h3 {
+    margin-bottom: 5px;
+    color: #591704;
+}
+
+.profile-status {
+    color: #28a745; /* Green for 'Premium' */
+    font-weight: 600;
+}
+
+.profile-detail-group {
+    margin-bottom: 30px;
+    padding: 10px 0;
+}
+
+.profile-detail-group h4 {
+    color: var(--primary-color);
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.profile-detail-group p {
+    margin-bottom: 5px;
+}
+
+.settings-btn {
+    padding: 10px 15px;
+    margin-right: 10px;
+    background-color: var(--background-light);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.settings-btn:hover {
+    background-color: #E6EAF0;
+}
+
+.logout-btn {
+    background-color: #dc3545; /* Red for 'Logout' */
+    margin-top: 20px;
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .main-container {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+        width: 100%;
+        max-width: none;
+        border-radius: 0;
+    }
+
+    .visual-sidebar {
+        width: 100%;
+        height: 200px;
+        padding: 30px;
+        order: -1;
+    }
+
+    .interactive-panel {
+        width: 100%;
+        padding: 30px;
+    }
+}
