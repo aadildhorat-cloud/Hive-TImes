@@ -17,6 +17,8 @@
     <!-- Swiper CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/slider.css">
+
 </head>
 <body>
     <header>
@@ -1301,6 +1303,54 @@ const stored = localStorage.getItem(STORAGE_KEY);
     simulateTouch: true,
     preventClicksOnSlide: false
   });
+</script>
+<script>
+  // Load Business Dropdown Menu
+  fetch('businesses-dropdown.html')
+    .then(response => {
+      if (!response.ok) throw new Error('businesses-dropdown.html not found');
+      return response.text();
+    })
+    .then(html => {
+      const placeholder = document.getElementById('business-menu-placeholder');
+      if (placeholder) {
+        placeholder.outerHTML = html; // Replaces <li id="..."> with full menu HTML
+      }
+    })
+    .catch(err => {
+      console.error('Business menu failed to load:', err);
+    });
+</script>
+<!-- 1. Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- 2. Fetch slider and initialize -->
+<script>
+  fetch('slider.html')
+    .then(response => {
+      if (!response.ok) throw new Error('slider.html not found (404)');
+      return response.text();
+    })
+    .then(html => {
+      document.getElementById('slider-container').innerHTML = html;
+      new Swiper('.mySwiper', {
+        spaceBetween: 0,
+        centeredSlides: true,
+        autoplay: { delay: 3000, disableOnInteraction: false },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        },
+        loop: true,
+        effect: 'fade',
+        fadeEffect: { crossFade: true }
+      });
+    })
+    .catch(err => {
+      console.error('Slider error:', err);
+      document.getElementById('slider-container').innerHTML = '<p style="text-align:center;color:red;">❌ ' + err.message + '</p>';
+    });
 </script>
 <script>
   // Load Business Dropdown Menu
