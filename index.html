@@ -3150,6 +3150,37 @@ function displayComments(commentsList, comments) {
     document.body.style.overflow = '';
   });
 });
+/* ---- SEARCH BAR ---- */
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('searchInput');
+  if (!searchInput) return;
+
+  const sectionToCategory = {
+    'home-businesses': 'Home Business',
+    'retail-shops': 'Retail Shop',
+    'wholesale': 'Wholesale',
+    'services': 'Service'
+  };
+
+  function performSearch(query) {
+    const q = query.trim().toLowerCase();
+    document.querySelectorAll('.businesses-grid .block, .freelancer-grid .freelancer-card')
+      .forEach(card => {
+        const name = card.querySelector('h3')?.textContent.trim().toLowerCase() || '';
+        const desc = card.querySelector('p')?.textContent.trim().toLowerCase() || '';
+        const section = card.closest('section')?.id || '';
+        const cat  = (sectionToCategory[section] || '').toLowerCase();
+        const show = !q || name.includes(q) || desc.includes(q) || cat.includes(q);
+        card.style.display = show ? 'block' : 'none';
+      });
+  }
+
+  let t;
+  searchInput.addEventListener('input', e => {
+    clearTimeout(t);
+    t = setTimeout(() => performSearch(e.target.value), 200);
+  });
+});
     </script>
     
     <script src="cart.js"></script>
