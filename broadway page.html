@@ -103,11 +103,7 @@
 <div id="slider-container"></div>
 <div class="search-filter-container">
   </div>
-  <!-- Add Pagination -->
-  <div class="swiper-pagination"></div>
-  <!-- Add Navigation -->
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
+
 </section>
 <div class="business-info-container">
     <button class="business-info-btn" onclick="showBusinessPopup()">
@@ -1139,7 +1135,7 @@ document.getElementById('businessPopupOverlay').addEventListener('click', functi
                     this.items.push(product);
                 }
                 this.saveCart();
-                alert(`${product.name} added to cart!`);
+               
             },
             updateQuantity: function(id, delta) {
                 const item = this.items.find(i => i.id === id);

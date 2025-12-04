@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+     <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nothing Fancy </title>
@@ -1022,46 +1024,8 @@
                             </div>
                         </div>
                     </li>
-                    <li class="dropdown">
-                        <a href="#"><i class="fas fa-box"></i> Businesses</a>
-                        <div class="dropdown-content">
-                            <div class="submenu">
-                                <a href="#">
-                                    <span><i class="fas fa-sticky-note"></i>Home Businesses</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                                <div class="submenu-content">
-                                    <a href="#BIG-POPS">home business 1 </a>
-                                    <a href="#FLIGOS">home business 2</a>
-                                    <a href="#SOCCER-POPS">home business 3</a>
-                                    <a href="#STUMBO">home business 4</a>
-                                </div>
-                            </div>
-                            <div class="submenu">
-                                <a href="#">
-                                    <span><i class="fas fa-circle"></i>Retail Shops</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                                <div class="submenu-content">
-                                    <a href="Polar ice cream.html">Polar Ice Cream</a>
-                                    <a href="broadway page.html">Broadway Sweets</a>
-                                    <a href="Sweet Mart.html">Sweet Mart</a>
-                                </div>
-                            </div>
-                            <div class="submenu">
-                                <a href="#">
-                                    <span><i class="fas fa-star"></i> Wholesale</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                                <div class="submenu-content">
-                                    <a href="#HARTBEAT">Africa Cash n Carry</a>
-                                    <a href="#ICE-UP">Devland Cash & Carry</a>
-                                    <a href="#STUMBO-CANDY">Continental Cash & Carry</a>
-                                    <a href="#ZOUR-BOMB">Jumbo Cash & Carry</a>
-                                  </div>
-                            </div>
-                        </div>
-                    </li>
+                  <!-- Business Menu Placeholder -->
+<li id="business-menu-placeholder"></li>
                 </ul>
             </nav>
             <div class="user-section">
@@ -1071,36 +1035,8 @@
             </div>
         </div>
     </header>
-  <section class="slider-section">
-    <div class="slider-container" id="sliderContainer">
-        <div class="slider" id="slider">
-            <div class="slide">
-                <a href="Polar ice cream.html" target="_blank" rel="noopener">
-                    <img src="images-logo/polar-ice-cream-long.jpg" alt="Polar Ice Cream">
-                </a>
-            </div>
-            <div class="slide">
-                <a href="broadway page.html" target="_blank" rel="noopener">
-                    <img src="images-logo/broadway-sweets-long.jpg" alt="Broadway Sweets">
-                </a>
-            </div>
-            <div class="slide">
-                <a href="Sweet Depot website.html" target="_blank" rel="noopener">
-                    <img src="images-logo/sweet-deport-long.jpg" alt="Sweet Depot">
-                </a>
-            </div>
-            <div class="slide">
-                <a href="Sweet Mart.html" target="_blank" rel="noopener">
-                    <img src="images-logo/sweet-mart-long.jpg" alt="Sweet mart">
-                </a>
-            </div>
-        </div>
-        <div class="slide-indicators">
-            <div class="indicator active" onclick="changeSlide(0)"></div>
-            <div class="indicator" onclick="changeSlide(1)"></div>
-            <div class="indicator" onclick="changeSlide(2)"></div>
-            <div class="indicator" onclick="changeSlide(3)"></div>
-        </div>
+   <div id="slider-container"></div>
+<div class="search-filter-container">
     </div>
 </section>
   <div class="content-section">
@@ -1237,7 +1173,7 @@
     <h2 id="kitchen-towels" class="section-title">KITCHEN TOWELS</h2>
     <div class="products-grid" id="kitchenTowelsProductsGrid">
         <div class="product-card" data-id="kt-nova-2-hq" data-category="kitchen-towels" data-price="25.00">
-            <img src="images-sweetmart/Nova-Brand-2-Pack-High-Quality-chocolate.jpg" alt="Nova Brand 2-Pack High Quality" class="product-image">
+            <img src="images-nothingfancy/towl-Nova Premium.jpg" alt="Nova Brand 2-Pack High Quality" class="product-image">
             <div class="product-info">
                 <div class="product-name">Nova Brand 2-Pack High Quality</div>
                 <div class="product-price">R25.00</div>
@@ -1245,7 +1181,7 @@
             </div>
         </div>
         <div class="product-card" data-id="kt-nova-2-sq" data-category="kitchen-towels" data-price="20.00">
-            <img src="images-sweetmart/Nova-Brand-2-Pack-Standard-Quality-chocolate.jpg" alt="Nova Brand 2-Pack Standard Quality" class="product-image">
+            <img src="images-nothingfancy/towl-Nova Standard.jpg" alt="Nova Brand 2-Pack Standard Quality" class="product-image">
             <div class="product-info">
                 <div class="product-name">Nova Brand 2-Pack Standard Quality</div>
                 <div class="product-price">R20.00</div>
@@ -1253,7 +1189,7 @@
             </div>
         </div>
         <div class="product-card" data-id="kt-nova-12-hq-bale2" data-category="kitchen-towels" data-price="245.00">
-            <img src="images-sweetmart/Nova-Brand-12-Pack-High-Quality-Bale-of-2-chocolate.jpg" alt="Nova Brand 12-Pack High Quality Bale of 2" class="product-image">
+            <img src="images-nothingfancy/towl-Nova Standard.jpg" alt="Nova Brand 12-Pack High Quality Bale of 2" class="product-image">
             <div class="product-info">
                 <div class="product-name">Nova Brand 12-Pack High Quality Bale of 2</div>
                 <div class="product-price">R245.00 per bale of 2</div>
@@ -1261,7 +1197,7 @@
             </div>
         </div>
         <div class="product-card" data-id="kt-nova-12-sq-bale2" data-category="kitchen-towels" data-price="195.00">
-            <img src="images-sweetmart/Nova-Brand-12-Pack-Standard-Quality-Bale-of-2-chocolate.jpg" alt="Nova Brand 12-Pack Standard Quality Bale of 2" class="product-image">
+            <img src="images-nothingfancy/towl-Nova Standard.jpg" alt="Nova Brand 12-Pack Standard Quality Bale of 2" class="product-image">
             <div class="product-info">
                 <div class="product-name">Nova Brand 12-Pack Standard Quality Bale of 2</div>
                 <div class="product-price">R195.00 per bale of 2</div>
@@ -1741,7 +1677,7 @@
                     this.items.push(product);
                 }
                 this.saveCart();
-                alert(`${product.name} added to cart!`);
+               
             },
             updateQuantity: function(id, delta) {
                 const item = this.items.find(i => i.id === id);
@@ -1870,5 +1806,61 @@ const stored = localStorage.getItem(STORAGE_KEY);
 }
     </script>
     <script src="/js/cart.js"></script>
+     <div class="floating-contact">
+    <a href="https://wa.me/27615023930?text=Hello, I'd like to inquire about your products." target="_blank" rel="noopener noreferrer" class="float-btn whatsapp-float" title="Contact via WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="mailto:contact@broadwaysweets.co.za?subject=Inquiry from Website&body=Hello, I'd like to inquire about your products." class="float-btn email-float" title="Contact via Email">
+        <i class="fas fa-envelope"></i>
+    </a>
+</div>
+<!-- 1. Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- 2. Fetch slider and initialize -->
+<script>
+  fetch('slider.html')
+    .then(response => {
+      if (!response.ok) throw new Error('slider.html not found (404)');
+      return response.text();
+    })
+    .then(html => {
+      document.getElementById('slider-container').innerHTML = html;
+      new Swiper('.mySwiper', {
+        spaceBetween: 0,
+        centeredSlides: true,
+        autoplay: { delay: 3000, disableOnInteraction: false },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        },
+        loop: true,
+        effect: 'fade',
+        fadeEffect: { crossFade: true }
+      });
+    })
+    .catch(err => {
+      console.error('Slider error:', err);
+      document.getElementById('slider-container').innerHTML = '<p style="text-align:center;color:red;">❌ ' + err.message + '</p>';
+    });
+</script>
+<script>
+  // Load Business Dropdown Menu
+  fetch('businesses-dropdown.html')
+    .then(response => {
+      if (!response.ok) throw new Error('businesses-dropdown.html not found');
+      return response.text();
+    })
+    .then(html => {
+      const placeholder = document.getElementById('business-menu-placeholder');
+      if (placeholder) {
+        placeholder.outerHTML = html; // Replaces <li id="..."> with full menu HTML
+      }
+    })
+    .catch(err => {
+      console.error('Business menu failed to load:', err);
+    });
+</script>
 </body>
 </html>

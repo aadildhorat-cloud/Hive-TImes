@@ -1067,7 +1067,7 @@ document.getElementById('businessPopupOverlay').addEventListener('click', functi
                     this.items.push(product);
                 }
                 this.saveCart();
-                alert(`${product.name} added to cart!`);
+                
             },
             updateQuantity: function(id, delta) {
                 const item = this.items.find(i => i.id === id);
