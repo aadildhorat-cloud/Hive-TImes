@@ -2,16 +2,15 @@
 <html lang="en">
 <head>
     <!-- Swiper CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DTPGZ964FD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-DTPGZ964FD');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DTPGZ964FD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-DTPGZ964FD');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hive Times - Businesses</title>
@@ -19,59 +18,44 @@
     <link rel="stylesheet" href="css/slider.css">
     <style>
         /* --- Shopping Cart Modal Styles (Updated for Business Groups) --- */
-/* ... (keep your existing .cart-modal, .cart-item, etc. styles) ... */
-
-/* Style for the business group container */
-.cart-business-group {
-    border: 1px solid #eee;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    overflow: hidden; /* Ensures rounded corners contain content */
-    background-color: #fafafa; /* Slight background for group */
-}
-
-/* Style for the business header containing logo and name */
-.cart-business-header {
-    background-color: #f1f1f1; /* Light background for header */
-    padding: 10px 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Space between logo and name */
-    border-bottom: 1px solid #eee;
-}
-
-.cart-business-logo {
-    height: 30px; /* Adjust size as needed */
-    width: auto;
-    border-radius: 4px; /* Optional: Add border radius */
-    object-fit: contain; /* Ensure logo scales nicely */
-}
-
-.cart-business-name {
-    margin: 0;
-    font-size: 1.1em; /* Adjust size as needed */
-    font-weight: 600;
-    color: #34495e; /* Match your theme's secondary color */
-}
-
-/* Style for the container holding items from the same business */
-.cart-business-items {
-    padding: 10px 0; /* Add padding inside the items container */
-}
-
-/* Adjust styles for items within the business group if needed */
-.cart-business-items .cart-item {
-    border-bottom: 1px solid #eee; /* Separator between items within group */
-    padding: 10px 15px; /* Padding for each item */
-    align-items: center; /* Ensure alignment */
-}
-
-/* Remove the bottom border from the last item in a group */
-.cart-business-items .cart-item:last-child {
-    border-bottom: none;
-}
-
-/* ... (keep your existing .cart-quantity-btn, .remove-item-btn, .cart-total, etc. styles) ... */
+        .cart-business-group {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            background-color: #fafafa;
+        }
+        .cart-business-header {
+            background-color: #f1f1f1;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .cart-business-logo {
+            height: 30px;
+            width: auto;
+            border-radius: 4px;
+            object-fit: contain;
+        }
+        .cart-business-name {
+            margin: 0;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #34495e;
+        }
+        .cart-business-items {
+            padding: 10px 0;
+        }
+        .cart-business-items .cart-item {
+            border-bottom: 1px solid #eee;
+            padding: 10px 15px;
+            align-items: center;
+        }
+        .cart-business-items .cart-item:last-child {
+            border-bottom: none;
+        }
         /* --- Freelance Section Styles --- */
         .freelancer-grid {
             display: grid;
@@ -559,136 +543,117 @@
             background: linear-gradient(135deg, #3498db, #2980b9);
         }
         /* --- ADVANCED SLIDER SECTION --- */
-     
-.slider-section {
-    padding: 2rem 0;
-    background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
-    text-align: center;
-    width: 100%;
-}
-
-.slider-container {
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    overflow: hidden;
-    position: relative;
-    border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-}
-
-.slider {
-    position: relative;
-    width: 100%;
-    height: 200%;
-    padding-bottom: 45%; /* ~16:9 on desktop, but taller on mobile via media query */
-    overflow: hidden;
-}
-
-.slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 1.8s ease-in-out, transform 1.6s ease-in-out;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.slide.active {
-    opacity: 1;
-    z-index: 10;
-}
-
-.slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    pointer-events: none;
-}
-
-/* Controls */
-.slider-controls {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-    z-index: 20;
-    padding: 0 20px;
-}
-
-.slider-btn {
-    background: rgba(255, 255, 255, 0.9);
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    color: #333;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-.slider-btn:hover {
-    background: white;
-    transform: scale(1.1);
-}
-
-.slider-indicators {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-    z-index: 20;
-}
-
-.indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.6);
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.indicator.active {
-    background: white;
-    transform: scale(1.2);
-}
-
-/* Mobile Improvements */
-@media (max-width: 768px) {
-    .slider {
-        padding-bottom: 60%; /* Taller on mobile */
-    }
-
-    .slider-btn {
-        width: 44px;
-        height: 44px;
-        font-size: 1rem;
-    }
-
-    .slider-indicators {
-        bottom: 15px;
-    }
-
-    .indicator {
-        width: 10px;
-        height: 10px;
-    }
-}
-
+        .slider-section {
+            padding: 2rem 0;
+            background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
+            text-align: center;
+            width: 100%;
+        }
+        .slider-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+        .slider {
+            position: relative;
+            width: 100%;
+            height: 200%;
+            padding-bottom: 45%;
+            overflow: hidden;
+        }
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.8s ease-in-out, transform 1.6s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .slide.active {
+            opacity: 1;
+            z-index: 10;
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+        .slider-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            z-index: 20;
+            padding: 0 20px;
+        }
+        .slider-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .slider-btn:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+        .slider-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+        }
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .indicator.active {
+            background: white;
+            transform: scale(1.2);
+        }
+        @media (max-width: 768px) {
+            .slider {
+                padding-bottom: 60%;
+            }
+            .slider-btn {
+                width: 44px;
+                height: 44px;
+                font-size: 1rem;
+            }
+            .slider-indicators {
+                bottom: 15px;
+            }
+            .indicator {
+                width: 10px;
+                height: 10px;
+            }
+        }
         /* --- Main Content --- */
         main {
             flex-grow: 1;
@@ -752,19 +717,19 @@
             color: var(--secondary-color);
             font-weight: 700;
         }
-     .block p {
-    font-size: 1.05rem;
-    color: #555;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-       .block button {
+        .block p {
+            font-size: 1.05rem;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .block button {
             background: linear-gradient(135deg, var(--primary-color) 0%, #c0392b 100%);
             color: #fff;
             border: none;
@@ -781,7 +746,6 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
         }
-        /* --- RATING SYSTEM STYLES --- */
         .rating-section {
             margin-top: 15px;
             padding-top: 15px;
@@ -804,9 +768,7 @@
             transition: color 0.2s;
             margin: 0;
         }
-        .star:hover,
-        .star.hover,
-        .star.selected {
+        .star:hover, .star.hover, .star.selected {
             color: #f8ce0b;
         }
         .rating-count {
@@ -814,8 +776,6 @@
             color: #718096;
             margin-top: 5px;
         }
-        
-        /* View Comments Button */
         .view-comments-btn {
             background-color: #f8f9fa;
             color: #495057;
@@ -832,7 +792,6 @@
             gap: 5px;
             text-decoration: none;
         }
-        
         .view-comments-btn:hover {
             background-color: #e9ecef;
             color: #343a40;
@@ -840,28 +799,22 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        
         .view-comments-btn i {
             font-size: 0.9rem;
         }
-        
-        /* --- COMMENT SECTION STYLES --- */
         .comments-section {
             margin-top: 15px;
             padding-top: 15px;
             border-top: 1px solid #eee;
-            display: none; /* Hidden by default */
+            display: none;
             transition: all 0.3s ease;
         }
-        
         .comments-section.active {
             display: block;
         }
-        
         .comment-form {
             margin-bottom: 15px;
         }
-        
         .comment-input {
             width: 100%;
             padding: 10px;
@@ -872,7 +825,6 @@
             font-family: inherit;
             box-sizing: border-box;
         }
-        
         .submit-comment-btn {
             background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
             color: white;
@@ -885,57 +837,46 @@
             transition: var(--transition);
             width: 100%;
         }
-        
         .submit-comment-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(52, 148, 219, 0.3);
         }
-        
         .comments-list {
             max-height: 150px;
             overflow-y: auto;
             padding-right: 5px;
         }
-        
         .comments-list::-webkit-scrollbar {
             width: 6px;
         }
-        
         .comments-list::-webkit-scrollbar-track {
             background: #f1f1f1;
             border-radius: 10px;
         }
-        
         .comments-list::-webkit-scrollbar-thumb {
             background: #c1c1c1;
             border-radius: 10px;
         }
-        
         .comments-list::-webkit-scrollbar-thumb:hover {
             background: #a8a8a8;
         }
-        
         .comment-item {
             padding: 10px 0;
             border-bottom: 1px solid #f5f5f5;
         }
-        
         .comment-item:last-child {
             border-bottom: none;
         }
-        
         .comment-author {
             font-weight: 600;
             color: var(--secondary-color);
             font-size: 0.9rem;
         }
-        
         .comment-date {
             font-size: 0.8rem;
             color: #718096;
             margin-left: 8px;
         }
-        
         .comment-text {
             margin-top: 5px;
             font-size: 0.95rem;
@@ -943,8 +884,6 @@
             line-height: 1.5;
             text-align: left;
         }
-        
-        /* --- SHARE SECTION STYLES --- */
         .share-section {
             margin-top: 15px;
             padding-top: 15px;
@@ -953,7 +892,6 @@
             justify-content: center;
             gap: 12px;
         }
-        
         .share-btn {
             display: flex;
             align-items: center;
@@ -968,28 +906,22 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             text-decoration: none;
         }
-        
         .share-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         }
-        
         .share-btn.facebook:hover {
             background: #3b5998;
             color: white;
         }
-        
         .share-btn.whatsapp:hover {
             background: #25D366;
             color: white;
         }
-        
         .share-btn.email:hover {
             background: #EA4335;
             color: white;
         }
-        
-        /* --- Footer --- */
         footer {
             background: linear-gradient(135deg, #610d00 0%, #4a0a00 100%);
             color: #fff;
@@ -1071,7 +1003,6 @@
             color: #e74c3c;
             animation: pulse 2s infinite;
         }
-        /* --- Pop-up Styles --- */
         .popup {
             display: none;
             position: fixed;
@@ -1129,7 +1060,6 @@
             background: rgba(231, 76, 60, 0.1);
             transform: rotate(90deg);
         }
-        /* --- Contact Widget --- */
         .advanced-contact-widget {
             position: fixed;
             bottom: 110px;
@@ -1226,7 +1156,6 @@
             opacity: 1;
             transform: translateX(0);
         }
-        /* --- Back to Top --- */
         .back-to-top {
             display: none;
             position: fixed;
@@ -1249,7 +1178,6 @@
             background: linear-gradient(135deg, #610d00 0%, #4a0a00 100%);
             transform: translateY(-5px) rotate(15deg);
         }
-        /* --- SHOPPING CART MODAL STYLES --- */
         .cart-modal-overlay {
             display: none;
             position: fixed;
@@ -1404,7 +1332,6 @@
             background-color: #95a5a6;
             transform: translateY(-2px);
         }
-        /* --- Animations --- */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -1414,7 +1341,6 @@
             50% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
-        /* --- Responsive Design --- */
         @media (min-width: 769px) {
             header {
                 flex-direction: row;
@@ -1464,14 +1390,12 @@
                 <button class="auth-tab-btn active" data-tab="signin">Sign In</button>
                 <button class="auth-tab-btn" data-tab="signup">Sign Up</button>
             </div>
-            <!-- Sign In Form -->
             <form id="signinForm">
                 <h3>Sign In to Your Account</h3>
                 <input type="email" placeholder="Email" required>
                 <input type="password" placeholder="Password" required>
                 <button type="submit">Sign In</button>
             </form>
-            <!-- Sign Up Form -->
             <form id="signupForm" style="display: none;">
                 <h3>Create New Account</h3>
                 <input type="text" placeholder="Full Name" required>
@@ -1512,7 +1436,6 @@
                 <a href="about page home.html">About</a>
             </nav>
             <div class="header-action-icons">
-                <!-- Updated: no href, triggers modal -->
                 <a href="#" class="action-icon" id="accountIcon">
                     <i class="fas fa-user-circle"></i>
                 </a>
@@ -1529,25 +1452,17 @@
     </header>
     <div id="slider-container"></div>
     <main>
-         
-<div class="search-filter-container">
-        <section class="slider-section">
-          
-               
-            </div>
-        </section>
         <section id="home-businesses">
             <h2 class="section-title">Home Businesses</h2>
             <div class="businesses-grid">
-                <div class="block">
-                    <a href="nothing fancy.html">
+                <div class="block" id="biz-nothing-fancy" data-href="nothing-fancy.html">
+                    <a href="nothing-fancy.html">
                         <img src="images-logo/nothing-fancy-logo.jpg" alt="Broadway-sweets-logo">
                     </a>
                     <div class="info">
                         <h3>Nothing Fancy</h3>
                         <p>Toilet Paper, 2-Ply Bales, 1-Ply, Kitchen Towels, Garage Rolls, etc..</p>
                         <button class="open-popup" data-popup-target="broadwaysweetsPopup">Learn More</button>
-                        <!-- Rating Section -->
                         <div class="rating-section">
                             <div class="rating-stars" data-business="nothing-fancy">
                                 <i class="far fa-star star"></i>
@@ -1561,7 +1476,6 @@
                                 <i class="fas fa-comment"></i> View Comments
                             </a>
                         </div>
-                        <!-- Comment Section -->
                         <div class="comments-section" id="nothing-fancy-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
@@ -1577,7 +1491,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Share Section -->
                         <div class="share-section">
                             <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -1585,7 +1498,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="block">
+                <div class="block" id="biz-sweet-depot" data-href="Sweet Depot website.html">
                     <a href="Sweet Depot website.html">
                         <img src="images-logo/sweet-deport-logo.jpg" alt="sweet-deport">
                     </a>
@@ -1593,7 +1506,6 @@
                         <h3>Sweet Depot</h3>
                         <p>Chocolates, Candy, Biscuits, Drinks, Chewing Gum, Lollipops, Spreads, Toffees, Fudge, Turkish Delight, Nougat, Crisp & Snacks, Sugar Free, Exclusive Imports.</p>
                         <button class="open-popup" data-popup-target="sweetdeportPopup">Learn More</button>
-                        <!-- Rating Section -->
                         <div class="rating-section">
                             <div class="rating-stars" data-business="sweet-depot">
                                 <i class="far fa-star star"></i>
@@ -1607,7 +1519,6 @@
                                 <i class="fas fa-comment"></i> View Comments
                             </a>
                         </div>
-                        <!-- Comment Section -->
                         <div class="comments-section" id="sweet-depot-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
@@ -1623,7 +1534,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Share Section -->
                         <div class="share-section">
                             <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -1631,7 +1541,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="block">
+                <div class="block" id="biz-sweet-mart" data-href="Sweet Mart.html">
                     <a href="Sweet Mart.html">
                         <img src="images-logo/sweet-mart-logo.jpg" alt="Sweet-Mart-Logo">
                     </a>
@@ -1639,7 +1549,6 @@
                         <h3>Sweet Mart</h3>
                         <p>Chocolates, Candy, Biscuits, Drinks, Chewing Gum, Lollipops, Spreads</p>
                         <button class="open-popup" data-popup-target="sweetmartPopup">Learn More</button>
-                        <!-- Rating Section -->
                         <div class="rating-section">
                             <div class="rating-stars" data-business="sweet-mart">
                                 <i class="far fa-star star"></i>
@@ -1653,7 +1562,6 @@
                                 <i class="fas fa-comment"></i> View Comments
                             </a>
                         </div>
-                        <!-- Comment Section -->
                         <div class="comments-section" id="sweet-mart-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
@@ -1669,7 +1577,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Share Section -->
                         <div class="share-section">
                             <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -1677,7 +1584,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="block">
+                <div class="block" id="biz-polar-ice-cream" data-href="Polar ice cream.html">
                     <a href="Polar ice cream.html">
                         <img src="images-logo/polar-ice-cream-logo.png" alt="Polar-Ice-Cream-Logo">
                     </a>
@@ -1685,7 +1592,6 @@
                         <h3>Polar Ice Cream</h3>
                         <p>Ice cream, Stick Novelties, Frozen Desserts, Artisanal</p>
                         <button class="open-popup" data-popup-target="polaricecreampopup">Learn More</button>
-                        <!-- Rating Section -->
                         <div class="rating-section">
                             <div class="rating-stars" data-business="polar-ice-cream">
                                 <i class="far fa-star star"></i>
@@ -1699,7 +1605,6 @@
                                 <i class="fas fa-comment"></i> View Comments
                             </a>
                         </div>
-                        <!-- Comment Section -->
                         <div class="comments-section" id="polar-ice-cream-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
@@ -1715,7 +1620,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Share Section -->
                         <div class="share-section">
                             <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -1728,7 +1632,7 @@
         <section id="retail-shops">
             <h2 class="section-title">Retail Shops</h2>
             <div class="businesses-grid">
-                 <div class="block">
+                <div class="block" id="biz-polar-ice-cream-retail" data-href="Polar ice cream.html">
                     <a href="Polar ice cream.html">
                         <img src="images-logo/polar-ice-cream-logo.png" alt="Polar-Ice-Cream-Logo">
                     </a>
@@ -1736,7 +1640,6 @@
                         <h3>Polar Ice Cream</h3>
                         <p>Ice cream, Stick Novelties, Frozen Desserts, Artisanal</p>
                         <button class="open-popup" data-popup-target="polaricecreampopup">Learn More</button>
-                        <!-- Rating Section -->
                         <div class="rating-section">
                             <div class="rating-stars" data-business="polar-ice-cream-retail">
                                 <i class="far fa-star star"></i>
@@ -1750,7 +1653,6 @@
                                 <i class="fas fa-comment"></i> View Comments
                             </a>
                         </div>
-                        <!-- Comment Section -->
                         <div class="comments-section" id="polar-ice-cream-retail-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
@@ -1766,7 +1668,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Share Section -->
                         <div class="share-section">
                             <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -1774,7 +1675,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="block">
+                <div class="block" id="biz-broadway-sweets" data-href="broadway page.html">
                     <a href="broadway page.html">
                         <img src="images-logo/broadway-sweets-logo.jpg" alt="Broadway-sweets-logo">
                     </a>
@@ -1782,7 +1683,6 @@
                         <h3>Broadway Sweets</h3>
                         <p>Lollipops, Sour Candy, Bubblegum, Lozenges, Snacks, Party Packs</p>
                         <button class="open-popup" data-popup-target="broadwaysweetsPopup">Learn More</button>
-                        <!-- Rating Section -->
                         <div class="rating-section">
                             <div class="rating-stars" data-business="broadway-sweets">
                                 <i class="far fa-star star"></i>
@@ -1796,7 +1696,6 @@
                                 <i class="fas fa-comment"></i> View Comments
                             </a>
                         </div>
-                        <!-- Comment Section -->
                         <div class="comments-section" id="broadway-sweets-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
@@ -1812,7 +1711,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Share Section -->
                         <div class="share-section">
                             <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -1820,7 +1718,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="block">
+                <div class="block" id="biz-sweet-depot-retail" data-href="Sweet Depot website.html">
                     <a href="Sweet Depot website.html">
                         <img src="images-logo/sweet-deport-logo.jpg" alt="sweet-deport">
                     </a>
@@ -1828,7 +1726,6 @@
                         <h3>Sweet Depot</h3>
                         <p>Chocolates, Candy, Biscuits, Drinks, Chewing Gum, Lollipops, Spreads, Toffees, Fudge, Turkish Delight, Nougat, Crisp & Snacks, Sugar Free, Exclusive Imports.</p>
                         <button class="open-popup" data-popup-target="sweetdeportPopup">Learn More</button>
-                        <!-- Rating Section -->
                         <div class="rating-section">
                             <div class="rating-stars" data-business="sweet-depot-retail">
                                 <i class="far fa-star star"></i>
@@ -1842,7 +1739,6 @@
                                 <i class="fas fa-comment"></i> View Comments
                             </a>
                         </div>
-                        <!-- Comment Section -->
                         <div class="comments-section" id="sweet-depot-retail-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
@@ -1858,7 +1754,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Share Section -->
                         <div class="share-section">
                             <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -1866,7 +1761,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="block">
+                <div class="block" id="biz-sweet-mart-retail" data-href="Sweet Mart.html">
                     <a href="Sweet Mart.html">
                         <img src="images-logo/sweet-mart-logo.jpg" alt="Sweet-Mart-Logo">
                     </a>
@@ -1874,7 +1769,6 @@
                         <h3>Sweet Mart</h3>
                         <p>Chocolates, Candy, Biscuits, Drinks, Chewing Gum, Lollipops, Spreads</p>
                         <button class="open-popup" data-popup-target="sweetmartPopup">Learn More</button>
-                        <!-- Rating Section -->
                         <div class="rating-section">
                             <div class="rating-stars" data-business="sweet-mart-retail">
                                 <i class="far fa-star star"></i>
@@ -1888,7 +1782,6 @@
                                 <i class="fas fa-comment"></i> View Comments
                             </a>
                         </div>
-                        <!-- Comment Section -->
                         <div class="comments-section" id="sweet-mart-retail-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
@@ -1904,7 +1797,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Share Section -->
                         <div class="share-section">
                             <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -1917,7 +1809,7 @@
         <section id="wholesale">
             <h2 class="section-title">Wholesale</h2>
             <div class="businesses-grid">
-                <div class="block">
+                <div class="block" id="biz-butcher-block" data-href="butcher-shop.html">
                     <a href="butcher-shop.html">
                         <img src="images-logo/butcherblock-logo.jpg" alt="africa cash n carry logo">
                     </a>
@@ -1925,7 +1817,6 @@
                         <h3>BUTCHER BLOCK</h3>
                         <p></p>
                         <button class="open-popup" data-popup-target="africacashncarryPopup">Learn More</button>
-                        <!-- Rating Section -->
                         <div class="rating-section">
                             <div class="rating-stars" data-business="africa-cash-n-carry">
                                 <i class="far fa-star star"></i>
@@ -1939,7 +1830,6 @@
                                 <i class="fas fa-comment"></i> View Comments
                             </a>
                         </div>
-                        <!-- Comment Section -->
                         <div class="comments-section" id="africa-cash-n-carry-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
@@ -1955,7 +1845,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Share Section -->
                         <div class="share-section">
                             <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -1963,7 +1852,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="block">
+                <div class="block" id="biz-devland-cash-carry" data-href="Sweet Depot website.html">
                     <a href="Sweet Depot website.html">
                         <img src="images-logo/devland-logo.jpg" alt="devland logo">
                     </a>
@@ -1971,7 +1860,6 @@
                         <h3>Devland Cash & Carry</h3>
                         <p></p>
                         <button class="open-popup" data-popup-target="devlandcash&carryPopup">Learn More</button>
-                        <!-- Rating Section -->
                         <div class="rating-section">
                             <div class="rating-stars" data-business="devland-cash-carry">
                                 <i class="far fa-star star"></i>
@@ -1985,7 +1873,6 @@
                                 <i class="fas fa-comment"></i> View Comments
                             </a>
                         </div>
-                        <!-- Comment Section -->
                         <div class="comments-section" id="devland-cash-carry-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
@@ -2001,7 +1888,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Share Section -->
                         <div class="share-section">
                             <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -2009,7 +1895,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="block">
+                <div class="block" id="biz-continental-cash-carry" data-href="Sweet Mart.html">
                     <a href="Sweet Mart.html">
                         <img src="images-logo/continental-logo.jpg" alt="continental logo">
                     </a>
@@ -2017,7 +1903,6 @@
                         <h3>Continental Cash & Carry</h3>
                         <p></p>
                         <button class="open-popup" data-popup-target="continentalcash&carryPopup">Learn More</button>
-                        <!-- Rating Section -->
                         <div class="rating-section">
                             <div class="rating-stars" data-business="continental-cash-carry">
                                 <i class="far fa-star star"></i>
@@ -2031,7 +1916,6 @@
                                 <i class="fas fa-comment"></i> View Comments
                             </a>
                         </div>
-                        <!-- Comment Section -->
                         <div class="comments-section" id="continental-cash-carry-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
@@ -2047,7 +1931,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Share Section -->
                         <div class="share-section">
                             <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -2055,7 +1938,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="block">
+                <div class="block" id="biz-jumbo-cash-carry" data-href="Polar ice cream.html">
                     <a href="Polar ice cream.html">
                         <img src="images-logo/jumbo-logo.jpg" alt="jumbo-logo">
                     </a>
@@ -2063,7 +1946,6 @@
                         <h3>Jumbo Cash & Carry</h3>
                         <p></p>
                         <button class="open-popup" data-popup-target="jumbocash&carryPopup">Learn More</button>
-                        <!-- Rating Section -->
                         <div class="rating-section">
                             <div class="rating-stars" data-business="jumbo-cash-carry">
                                 <i class="far fa-star star"></i>
@@ -2077,7 +1959,6 @@
                                 <i class="fas fa-comment"></i> View Comments
                             </a>
                         </div>
-                        <!-- Comment Section -->
                         <div class="comments-section" id="jumbo-cash-carry-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
@@ -2093,7 +1974,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Share Section -->
                         <div class="share-section">
                             <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -2106,27 +1986,18 @@
         <section id="services">
             <h2 class="section-title">Services</h2>
             <div class="freelancer-grid">
-                <div class="freelancer-card">
+                <div class="freelancer-card" id="svc-butcher-block" data-href="butcher-shop.html">
                     <div class="card-background" style="background-image: url('images-logo/butcherblock-long.jpg');"></div>
                     <div class="profile-container">
-                        <img src="images-logo/butcherblock-logo.jpg" 
-                             alt="BUTHER BLOCK" 
-                             class="profile-picture" 
-                             onerror="this.onerror=null;this.src='https://placehold.co/100x100/34495e/ffffff?text=AS';">
+                        <img src="images-logo/butcherblock-logo.jpg" alt="BUTHER BLOCK" class="profile-picture" onerror="this.onerror=null;this.src='https://placehold.co/100x100/34495e/ffffff?text=AS';">
                     </div>
                     <div class="card-content">
                         <h3>BUTCHER BLOCK</h3>
                         <p>FOODSERVICE  CATERING EQUIPMENT </p>
                         <div class="contact-buttons">
-                            <a href="tel:+27615023930" class="contact-btn btn-call">
-                                <i class="fas fa-phone"></i> Call
-                            </a>
-                          <a href="https://wa.me/27615023930?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*%20and%20would%20like%20to%20know%20more%20about%20your%20services." target="_blank" class="contact-btn btn-whatsapp">
-    <i class="fab fa-whatsapp"></i> WhatsApp
-</a>
-                            </a>
+                            <a href="tel:+27615023930" class="contact-btn btn-call"><i class="fas fa-phone"></i> Call</a>
+                            <a href="https://wa.me/27615023930?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*%20and%20would%20like%20to%20know%20more%20about%20your%20services." target="_blank" class="contact-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                         </div>
-                        <!-- Rating Section -->
                         <div class="rating-section">
                             <div class="rating-stars" data-service="butcher-block">
                                 <i class="far fa-star star"></i>
@@ -2136,11 +2007,8 @@
                                 <i class="far fa-star star"></i>
                             </div>
                             <div class="rating-count">0 ratings</div>
-                            <a href="#" class="view-comments-btn" data-target="butcher-block-comments">
-                                <i class="fas fa-comment"></i> View Comments
-                            </a>
+                            <a href="#" class="view-comments-btn" data-target="butcher-block-comments"><i class="fas fa-comment"></i> View Comments</a>
                         </div>
-                        <!-- Comment Section -->
                         <div class="comments-section" id="butcher-block-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
@@ -2156,7 +2024,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Share Section -->
                         <div class="share-section">
                             <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -2164,7 +2031,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="freelancer-card">
+                <div class="freelancer-card" id="svc-shafique-salim" data-href="Shafique Salim.html">
                     <div class="card-background" style="background-image: url('image-services/Shafique\ Salim-background.jpg');"></div>
                     <div class="profile-container">
                         <img src="image-services/Shafique Salim.jpg" alt="Ben Carter Profile" class="profile-picture">
@@ -2173,15 +2040,9 @@
                         <h3>Shafique Salim</h3>
                         <p>Carpenter</p>
                         <div class="contact-buttons">
-                            <a href="tel:+27826774402" class="contact-btn btn-call">
-                                <i class="fas fa-phone"></i> Call
-                            </a>
-                           <a href="https://wa.me/27826774402?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*%20and%20would%20like%20to%20know%20more%20about%20your%20services." target="_blank" class="contact-btn btn-whatsapp">
-    <i class="fab fa-whatsapp"></i> WhatsApp
-</a>
-                            </a>
+                            <a href="tel:+27826774402" class="contact-btn btn-call"><i class="fas fa-phone"></i> Call</a>
+                            <a href="https://wa.me/27826774402?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*%20and%20would%20like%20to%20know%20more%20about%20your%20services." target="_blank" class="contact-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                         </div>
-                        <!-- Rating Section -->
                         <div class="rating-section">
                             <div class="rating-stars" data-service="ben-carter">
                                 <i class="far fa-star star"></i>
@@ -2191,11 +2052,8 @@
                                 <i class="far fa-star star"></i>
                             </div>
                             <div class="rating-count">0 ratings</div>
-                            <a href="#" class="view-comments-btn" data-target="ben-carter-comments">
-                                <i class="fas fa-comment"></i> View Comments
-                            </a>
+                            <a href="#" class="view-comments-btn" data-target="ben-carter-comments"><i class="fas fa-comment"></i> View Comments</a>
                         </div>
-                        <!-- Comment Section -->
                         <div class="comments-section" id="ben-carter-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
@@ -2211,7 +2069,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Share Section -->
                         <div class="share-section">
                             <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -2219,7 +2076,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="freelancer-card">
+                <div class="freelancer-card" id="svc-rahima-zainab" data-href="Rahima Zainab.html">
                     <div class="card-background" style="background-image: url('image-services/Exquisite-catering-\ background.jpg');"></div>
                     <div class="profile-container">
                         <img src="image-services/Exquisite-catering.jpg" alt="Chloe Lee Profile" class="profile-picture">
@@ -2228,15 +2085,9 @@
                         <h3>Rahima & Zainab</h3>
                         <p>Customised Wedding & Event, Event Design, Event Counsulting, Floral Design, Set Up and Clear Up</p>
                         <div class="contact-buttons">
-                            <a href="tel:+27829737700" class="contact-btn btn-call">
-                                <i class="fas fa-phone"></i> Call
-                            </a>
-                           <a href="https://wa.me/27829737700?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*%20and%20would%20like%20to%20know%20more%20about%20your%20services." target="_blank" class="contact-btn btn-whatsapp">
-    <i class="fab fa-whatsapp"></i> WhatsApp
-</a>
-                            </a>
+                            <a href="tel:+27829737700" class="contact-btn btn-call"><i class="fas fa-phone"></i> Call</a>
+                            <a href="https://wa.me/27829737700?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*%20and%20would%20like%20to%20know%20more%20about%20your%20services." target="_blank" class="contact-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                         </div>
-                        <!-- Rating Section -->
                         <div class="rating-section">
                             <div class="rating-stars" data-service="chloe-lee">
                                 <i class="far fa-star star"></i>
@@ -2246,11 +2097,8 @@
                                 <i class="far fa-star star"></i>
                             </div>
                             <div class="rating-count">0 ratings</div>
-                            <a href="#" class="view-comments-btn" data-target="chloe-lee-comments">
-                                <i class="fas fa-comment"></i> View Comments
-                            </a>
+                            <a href="#" class="view-comments-btn" data-target="chloe-lee-comments"><i class="fas fa-comment"></i> View Comments</a>
                         </div>
-                        <!-- Comment Section -->
                         <div class="comments-section" id="chloe-lee-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
@@ -2266,7 +2114,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Share Section -->
                         <div class="share-section">
                             <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -2274,7 +2121,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="freelancer-card">
+                <div class="freelancer-card" id="svc-melody" data-href="Melody.html">
                     <div class="card-background" style="background-image: url('image-services/melody-background.jpg');"></div>
                     <div class="profile-container">
                         <img src="https://placehold.co/100x100/9b59b6/ffffff?text=DK" alt="David Kross Profile" class="profile-picture">
@@ -2283,15 +2130,9 @@
                         <h3>Melody</h3>
                         <p>Wooden Floors, Sanding and Sealing</p>
                         <div class="contact-buttons">
-                            <a href="tel:+27783737005" class="contact-btn btn-call">
-                                <i class="fas fa-phone"></i> Call
-                            </a>
-                           <a href="https://wa.me/27783737005?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*%20and%20would%20like%20to%20know%20more%20about%20your%20services." target="_blank" class="contact-btn btn-whatsapp">
-    <i class="fab fa-whatsapp"></i> WhatsApp
-</a>
-                            </a>
+                            <a href="tel:+27783737005" class="contact-btn btn-call"><i class="fas fa-phone"></i> Call</a>
+                            <a href="https://wa.me/27783737005?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*%20and%20would%20like%20to%20know%20more%20about%20your%20services." target="_blank" class="contact-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                         </div>
-                        <!-- Rating Section -->
                         <div class="rating-section">
                             <div class="rating-stars" data-service="david-kross">
                                 <i class="far fa-star star"></i>
@@ -2301,12 +2142,9 @@
                                 <i class="far fa-star star"></i>
                             </div>
                             <div class="rating-count">0 ratings</div>
-                            <a href="#" class="view-comments-btn" data-target="david-kross-comments">
-                                <i class="fas fa-comment"></i> View Comments
-                            </a>
+                            <a href="#" class="view-comments-btn" data-target="david-kross-comments"><i class="fas fa-comment"></i> View Comments</a>
                         </div>
-                        <!-- Comment Section -->
-                        <div class="comments-section" id="david-kross-comments">    
+                        <div class="comments-section" id="david-kross-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
                                 <button class="submit-comment-btn">Post Comment</button>
@@ -2321,7 +2159,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Share Section -->
                         <div class="share-section">
                             <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -2329,7 +2166,7 @@
                         </div>
                     </div>
                 </div>
-                        <div class="freelancer-card">
+                <div class="freelancer-card" id="svc-samson" data-href="Samson.html">
                     <div class="card-background" style="background-image: url('image-services/melody-background.jpg');"></div>
                     <div class="profile-container">
                         <img src="https://placehold.co/100x100/9b59b6/ffffff?text=DK" alt="David Kross Profile" class="profile-picture">
@@ -2338,17 +2175,11 @@
                         <h3>Samson</h3>
                         <p>Celings</p>
                         <div class="contact-buttons">
-                            <a href="tel:+27826254431" class="contact-btn btn-call">
-                                <i class="fas fa-phone"></i> Call
-                            </a>
-                            <a href="https://wa.me/27826254431?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*%20and%20would%20like%20to%20know%20more%20about%20your%20services." target="_blank" class="contact-btn btn-whatsapp">
-    <i class="fab fa-whatsapp"></i> WhatsApp
-</a>
-                            </a>
+                            <a href="tel:+27826254431" class="contact-btn btn-call"><i class="fas fa-phone"></i> Call</a>
+                            <a href="https://wa.me/27826254431?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*%20and%20would%20like%20to%20know%20more%20about%20your%20services." target="_blank" class="contact-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                         </div>
-                        <!-- Rating Section -->
                         <div class="rating-section">
-                            <div class="rating-stars" data-service="david-kross">
+                            <div class="rating-stars" data-service="samson">
                                 <i class="far fa-star star"></i>
                                 <i class="far fa-star star"></i>
                                 <i class="far fa-star star"></i>
@@ -2356,12 +2187,9 @@
                                 <i class="far fa-star star"></i>
                             </div>
                             <div class="rating-count">0 ratings</div>
-                            <a href="#" class="view-comments-btn" data-target="david-kross-comments">
-                                <i class="fas fa-comment"></i> View Comments
-                            </a>
+                            <a href="#" class="view-comments-btn" data-target="samson-comments"><i class="fas fa-comment"></i> View Comments</a>
                         </div>
-                        <!-- Comment Section -->
-                        <div class="comments-section" id="david-kross-comments">
+                        <div class="comments-section" id="samson-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
                                 <button class="submit-comment-btn">Post Comment</button>
@@ -2376,7 +2204,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Share Section -->
                         <div class="share-section">
                             <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -2384,7 +2211,7 @@
                         </div>
                     </div>
                 </div>
-            <div class="freelancer-card">
+                <div class="freelancer-card" id="svc-robert" data-href="Robert.html">
                     <div class="card-background" style="background-image: url('image-services/melody-background.jpg');"></div>
                     <div class="profile-container">
                         <img src="https://placehold.co/100x100/9b59b6/ffffff?text=DK" alt="David Kross Profile" class="profile-picture">
@@ -2393,17 +2220,11 @@
                         <h3>Robert</h3>
                         <p>Wood and Floor</p>
                         <div class="contact-buttons">
-                            <a href="tel:+27710450760" class="contact-btn btn-call">
-                                <i class="fas fa-phone"></i> Call
-                            </a>
-                           <a href="https://wa.me/27710450760?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*%20and%20would%20like%20to%20know%20more%20about%20your%20services." target="_blank" class="contact-btn btn-whatsapp">
-    <i class="fab fa-whatsapp"></i> WhatsApp
-</a>
-                            </a>
+                            <a href="tel:+27710450760" class="contact-btn btn-call"><i class="fas fa-phone"></i> Call</a>
+                            <a href="https://wa.me/27710450760?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*%20and%20would%20like%20to%20know%20more%20about%20your%20services." target="_blank" class="contact-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                         </div>
-                        <!-- Rating Section -->
                         <div class="rating-section">
-                            <div class="rating-stars" data-service="david-kross">
+                            <div class="rating-stars" data-service="robert">
                                 <i class="far fa-star star"></i>
                                 <i class="far fa-star star"></i>
                                 <i class="far fa-star star"></i>
@@ -2411,12 +2232,9 @@
                                 <i class="far fa-star star"></i>
                             </div>
                             <div class="rating-count">0 ratings</div>
-                            <a href="#" class="view-comments-btn" data-target="david-kross-comments">
-                                <i class="fas fa-comment"></i> View Comments
-                            </a>
+                            <a href="#" class="view-comments-btn" data-target="robert-comments"><i class="fas fa-comment"></i> View Comments</a>
                         </div>
-                        <!-- Comment Section -->
-                        <div class="comments-section" id="david-kross-comments">
+                        <div class="comments-section" id="robert-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
                                 <button class="submit-comment-btn">Post Comment</button>
@@ -2431,15 +2249,14 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Share Section -->
                         <div class="share-section">
                             <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
                             <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
-            </div>
-                                <div class="freelancer-card">
+                </div>
+                <div class="freelancer-card" id="svc-duncan" data-href="Duncan.html">
                     <div class="card-background" style="background-image: url('image-services/melody-background.jpg');"></div>
                     <div class="profile-container">
                         <img src="https://placehold.co/100x100/9b59b6/ffffff?text=DK" alt="David Kross Profile" class="profile-picture">
@@ -2448,17 +2265,11 @@
                         <h3>Duncan</h3>
                         <p>laying and sanding Wood floors, laying of laminate floors and skirting</p>
                         <div class="contact-buttons">
-                            <a href="tel:+27633817445" class="contact-btn btn-call">
-                                <i class="fas fa-phone"></i> Call
-                            </a>
-                           <a href="https://wa.me/27633817445?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*%20and%20would%20like%20to%20know%20more%20about%20your%20services." target="_blank" class="contact-btn btn-whatsapp">
-    <i class="fab fa-whatsapp"></i> WhatsApp
-</a>
-                            </a>
+                            <a href="tel:+27633817445" class="contact-btn btn-call"><i class="fas fa-phone"></i> Call</a>
+                            <a href="https://wa.me/27633817445?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*%20and%20would%20like%20to%20know%20more%20about%20your%20services." target="_blank" class="contact-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                         </div>
-                        <!-- Rating Section -->
                         <div class="rating-section">
-                            <div class="rating-stars" data-service="david-kross">
+                            <div class="rating-stars" data-service="duncan">
                                 <i class="far fa-star star"></i>
                                 <i class="far fa-star star"></i>
                                 <i class="far fa-star star"></i>
@@ -2466,12 +2277,9 @@
                                 <i class="far fa-star star"></i>
                             </div>
                             <div class="rating-count">0 ratings</div>
-                            <a href="#" class="view-comments-btn" data-target="david-kross-comments">
-                                <i class="fas fa-comment"></i> View Comments
-                            </a>
+                            <a href="#" class="view-comments-btn" data-target="duncan-comments"><i class="fas fa-comment"></i> View Comments</a>
                         </div>
-                        <!-- Comment Section -->
-                        <div class="comments-section" id="david-kross-comments">
+                        <div class="comments-section" id="duncan-comments">
                             <div class="comment-form">
                                 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
                                 <button class="submit-comment-btn">Post Comment</button>
@@ -2486,14 +2294,12 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Share Section -->
                         <div class="share-section">
                             <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
                             <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -2548,7 +2354,6 @@
             <p id="popupText"></p>
         </div>
     </div>
-    <!-- SHOPPING CART MODAL -->
     <div class="cart-modal-overlay">
         <div class="cart-modal">
             <h3 class="cart-modal-title"><i class="fas fa-shopping-cart"></i> Your Shopping Cart</h3>
@@ -2565,17 +2370,11 @@
             <i class="fas fa-headset"></i>
         </button>
         <div class="contact-links-container" id="contact-links-container">
-            <a href="https://wa.me/+27649220145?text=Hello%2C%20I%20have%20an%20inquiry%20from%20Hive%20Times%20website." 
-               target="_blank" 
-               class="contact-link whatsapp-link"
-               aria-label="Chat with us on WhatsApp">
+            <a href="https://wa.me/+27649220145?text=Hello%2C%20I%20have%20an%20inquiry%20from%20Hive%20Times%20website." target="_blank" class="contact-link whatsapp-link" aria-label="Chat with us on WhatsApp">
                 <i class="fab fa-whatsapp"></i>
                 <span class="tooltip">WhatsApp Chat</span>
             </a>
-            <a href="mailto:hivetimes.co.za@gmail.com?subject=Inquiry%20from%20Hive%20Times%20Website" 
-               target="_blank" 
-               class="contact-link email-link"
-               aria-label="Send us an Email">
+            <a href="mailto:hivetimes.co.za@gmail.com?subject=Inquiry%20from%20Hive%20Times%20Website" target="_blank" class="contact-link email-link" aria-label="Send us an Email">
                 <i class="fas fa-envelope"></i>
                 <span class="tooltip">Email Support</span>
             </a>
@@ -2583,705 +2382,170 @@
     </div>
     <button class="back-to-top" id="backToTopBtn" aria-label="Back to top" style="display: none;"><i class="fas fa-chevron-up"></i></button>
     <script>
-        // === EXISTING POPUP, SLIDER, SIDEBAR LOGIC (UNCHANGED) ===
-        const businessInfo = {
-            "broadwaysweetsPopup": { title: "Broadway Sweets", text: "Broadway Sweets offers a delightful selection of traditional Indian confections and mouth-watering savory snacks. Their commitment to quality and authentic recipes has made them a local favorite for generations." },
-            "sweetdeportPopup": { title: "Sweet Depot", text: "Sweet Depot is your international candy and dessert headquarters. They stock a massive variety of hard-to-find international treats alongside classic local favorites. Perfect for stocking up for parties or a quick sugar fix." },
-            "sweetmartPopup": { title: "Sweet Mart", text: "Sweet Mart is a classic institution, known for its extensive range of festive delights, traditional sweets, and ready-to-eat savory items. A perfect stop for all your holiday and everyday snack needs." },
-            "polaricecreampopup": { title: "Polar Ice Cream", text: "Polar Ice Cream specializes in homemade, artisanal ice creams and frozen desserts. From classic flavors to unique seasonal concoctions, they use only the freshest ingredients for a truly chilling treat." },
-            "sunrisesweetsPopup": { title: "Sunrise Sweets", text: "Sunrise Sweets specializes in morning confections and traditional breakfast pastries. Their menu features warm, freshly baked goods perfect for starting your day on a sweet note." },
-            "zandsweetsPopup": { title: "Z and S Sweets", text: "Z and S Sweets prides itself on crafting specialty sweets with generations of expertise. They focus on sophisticated, traditional methods to create desserts that are both elegant and delicious." },
-            "desertsweetsPopup": { title: "Desert Sweets", text: "Desert Sweets offers a unique culinary journey with confections inspired by rich Middle Eastern and Mediterranean flavors. Expect exotic spices, honey, and nuts in their traditional recipes." },
-            "royalsweetsPopup": { title: "Royal Sweets", text: "Royal Sweets defines luxury in confectionery. Using only premium, high-end ingredients, their desserts are crafted for special occasions and boast exquisite presentation and flavor complexity." },
-            "goldensweetsPopup": { title: "Golden Sweets", text: "Golden Sweets' signature line features exclusive desserts that often incorporate edible gold and the finest ingredients available. A truly decadent experience for the most discerning sweet tooth." },
-            "africacashncarryPopup": { title: "Africa Cash n Carry", text: "Africa Cash & Carry operates its main location at Cnr Crownwood Road & Coach Street, Crown Mines, Johannesburg, with a secondary branch in Polokwane. They sell vast volumes of Fast-Moving Consumer Goods (FMCG), including groceries, personal care products, household goods, and electronics, aimed at supplying independent retailers.." },
-            "devlandcash&carryPopup": { title: "Devland Cash & Carry", text: "Devland Cash & Carry is a leading wholesaler located in Johannesburg, South Africa. They offer a wide range of products including groceries, household items, and electronics, catering to both individual customers and businesses with competitive pricing and bulk purchase options." },
-            "continentalcash&carryPopup": { title: "Continental Cash & Carry", text: "Continental Cash & Carry is a South African wholesaler established in 2012, aiming to offer competitive prices and a wide range of goods in a single location for independent retailers and small businesses. It operates from Johannesburg, serving customers with weekly specials and catalogues for general merchandise and food products." },
-            "jumbocash&carryPopup": { title: "Jumbo Cash & Carry", text: "Jumbo Cash & Carry is a large South African wholesale business, owned by Massmart, that supplies general merchandise, cosmetics, and food products in bulk. It operates a low-cost, 'no frills' model primarily targeting independent traders and small commercial users across Southern Africa, serving the entry-to-middle market segments.." },
-            "pixelperfectPopup": { title: "Pixel Perfect Web Design", text: "Need a stunning website? Pixel Perfect specializes in creating modern, mobile-friendly websites for small to medium-sized businesses, focusing on speed, user experience, and SEO optimization." },
-            "creativecanvasPopup": { title: "Creative Canvas Studio", text: "Your one-stop shop for visual branding. From a fresh logo to a full brand identity kit, Creative Canvas delivers impactful and memorable graphic design solutions tailored to your market." },
-            "lensandlightPopup": { title: "Lens & Light Photography", text: "Professional visual storytelling for your business. Specializing in high-resolution product photography, corporate events, and compelling commercial visuals that drive sales and engagement." },
-            "contentcuratorPopup": { title: "The Content Curator", text: "Stop staring at a blank page! The Content Curator provides expertly written, engaging content, including website copy, articles, newsletters, and social media posts, to connect you with your audience." }
-        };
-        const popup = document.getElementById('infoPopup');
-        const closeInfoPopup = document.getElementById('closeInfoPopup');
-        const popupTitle = document.querySelector('#infoPopup h3');
-        const popupText = document.getElementById('popupText');
-        const openPopupButtons = document.querySelectorAll('.open-popup');
-        function openInfoPopup(target) {
-            const data = businessInfo[target];
-            if (data) {
-                popupTitle.textContent = data.title;
-                popupText.textContent = data.text;
-                popup.style.display = 'flex';
-            }
-        }
-        openPopupButtons.forEach(button => {
-            button.addEventListener('click', (event) => {
-                event.preventDefault();
-                const target = button.getAttribute('data-popup-target');
-                openInfoPopup(target);
-            });
-        });
-        closeInfoPopup.addEventListener('click', () => popup.style.display = 'none');
-        window.addEventListener('click', (event) => {
-            if (event.target === popup) popup.style.display = 'none';
-        });
-        // ADVANCED SLIDER LOGIC
-       // ==== Advanced Responsive Slider ====
-const slider = document.getElementById('slider');
-const slides = Array.from(document.querySelectorAll('.slide'));
-const indicators = Array.from(document.querySelectorAll('.indicator'));
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-
-let currentSlide = 3000;
-let slideInterval;
-const slideDuration = 5000;
-
-// Show specific slide
-function showSlide(index) {
-    slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-    });
-    indicators.forEach((ind, i) => {
-        ind.classList.toggle('active', i === index);
-    });
-    currentSlide = index;
-}
-
-// Navigation
-function nextSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-}
-
-function prevSlide() {
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    showSlide(currentSlide);
-}
-
-// Auto rotate
-function startAutoSlide() {
-    slideInterval = setInterval(nextSlide, slideDuration);
-}
-
-function resetAutoSlide() {
-    clearInterval(slideInterval);
-    startAutoSlide();
-}
-
-// Event listeners
-nextBtn.addEventListener('click', () => { nextSlide(); resetAutoSlide(); });
-prevBtn.addEventListener('click', () => { prevSlide(); resetAutoSlide(); });
-
-indicators.forEach((ind, idx) => {
-    ind.addEventListener('click', () => {
-        showSlide(idx);
-        resetAutoSlide();
-    });
-});
-
-// Keyboard support
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight') nextSlide();
-    if (e.key === 'ArrowLeft') prevSlide();
-});
-
-// Touch swipe (mobile)
-let touchStartX = 0;
-let touchEndX = 0;
-
-slider.addEventListener('touchstart', e => {
-    touchStartX = e.changedTouches[0].screenX;
-});
-
-slider.addEventListener('touchend', e => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-});
-
-function handleSwipe() {
-    const diff = touchStartX - touchEndX;
-    if (Math.abs(diff) > 50) {
-        if (diff > 0) nextSlide(); // swipe left → next
-        else prevSlide();           // swipe right → prev
-        resetAutoSlide();
-    }
-}
-
-// Pause on hover/focus
-slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
-slider.addEventListener('mouseleave', startAutoSlide);
-slider.addEventListener('focusin', () => clearInterval(slideInterval));
-slider.addEventListener('focusout', startAutoSlide);
-
-// Start!
-showSlide(0);
-startAutoSlide();
-        // Event listeners for buttons and indicators
-        nextBtn.addEventListener('click', () => {
-            nextSlide();
-            resetSlideInterval();
-        });
-        prevBtn.addEventListener('click', () => {
-            prevSlide();
-            resetSlideInterval();
-        });
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => {
-                showSlide(index);
-                resetSlideInterval();
-            });
-        });
-        // Auto-advance the slider
-        function startSlideInterval() {
-            slideInterval = setInterval(nextSlide, slideDuration);
-        }
-        function resetSlideInterval() {
-            clearInterval(slideInterval);
-            startSlideInterval();
-        }
-        startSlideInterval();
-        // Pause auto-advance on hover
-        slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
-        slider.addEventListener('mouseleave', startSlideInterval);
-        // Sidebar & scroll logic
-        function closeSidebar() {
-            document.getElementById('sidebar').classList.remove('active');
-            document.getElementById('overlay').classList.remove('active');
-            document.getElementById('hamburgerMenu').classList.remove('active');
-            document.body.style.overflow = '';
-        }
+        // ===================================================
+        // === DEEP-LINKING + WHATSAPP SHARE FUNCTIONALITY ===
+        // ===================================================
         document.addEventListener('DOMContentLoaded', () => {
+            // 1. AUTO-SCROLL TO HASH ON PAGE LOAD
+            if (window.location.hash) {
+                setTimeout(() => {
+                    const targetId = window.location.hash.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        const offset = 100; // Account for fixed header
+                        const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+                        window.scrollTo({
+                            top: elementPosition - offset,
+                            behavior: 'smooth'
+                        });
+                    }
+                }, 300);
+            }
+
+            // 2. SHARE BUTTON LOGIC (WHATSAPP, FACEBOOK, EMAIL)
+            document.querySelectorAll('.share-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const shareType = btn.classList.contains('facebook') ? 'Facebook' :
+                        btn.classList.contains('whatsapp') ? 'WhatsApp' :
+                        'Email';
+
+                    const card = btn.closest('.block') || btn.closest('.freelancer-card');
+                    const businessName = card.querySelector('h3').textContent.trim();
+                    const baseUrl = window.location.origin + window.location.pathname;
+                    const shareUrl = `${baseUrl}#${card.id}`;
+                    const message = `Check out ${businessName} on Hive Times!\n${shareUrl}`;
+
+                    if (shareType === 'WhatsApp') {
+                        if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+                            // Mobile: Open WhatsApp with pre-filled message
+                            window.open(`whatsapp://send?text=${encodeURIComponent(message)}`);
+                        } else {
+                            // Desktop: Copy to clipboard + show tooltip
+                            navigator.clipboard.writeText(message).then(() => {
+                                const originalTitle = btn.title;
+                                btn.title = "Link copied! Paste into WhatsApp";
+                                setTimeout(() => btn.title = originalTitle, 3000);
+                            }).catch(() => {
+                                alert('Failed to copy. Please share manually.');
+                            });
+                        }
+                    } else if (shareType === 'Facebook') {
+                        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`, '_blank', 'width=600,height=400');
+                    } else if (shareType === 'Email') {
+                        const subject = `Check out ${businessName} on Hive Times!`;
+                        const body = message;
+                        window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                    }
+                });
+            });
+
+            // =========================================================================
+            // === KEEP ALL YOUR EXISTING LOGIC BELOW (popup, cart, search, rating, etc.) ===
+            // =========================================================================
+            const businessInfo = {
+                "broadwaysweetsPopup": { title: "Broadway Sweets", text: "Broadway Sweets offers a delightful selection of traditional Indian confections and mouth-watering savory snacks. Their commitment to quality and authentic recipes has made them a local favorite for generations." },
+                "sweetdeportPopup": { title: "Sweet Depot", text: "Sweet Depot is your international candy and dessert headquarters. They stock a massive variety of hard-to-find international treats alongside classic local favorites. Perfect for stocking up for parties or a quick sugar fix." },
+                "sweetmartPopup": { title: "Sweet Mart", text: "Sweet Mart is a classic institution, known for its extensive range of festive delights, traditional sweets, and ready-to-eat savory items. A perfect stop for all your holiday and everyday snack needs." },
+                "polaricecreampopup": { title: "Polar Ice Cream", text: "Polar Ice Cream specializes in homemade, artisanal ice creams and frozen desserts. From classic flavors to unique seasonal concoctions, they use only the freshest ingredients for a truly chilling treat." }
+            };
+            const popup = document.getElementById('infoPopup');
+            const closeInfoPopup = document.getElementById('closeInfoPopup');
+            const popupTitle = document.querySelector('#infoPopup h3');
+            const popupText = document.getElementById('popupText');
+            const openPopupButtons = document.querySelectorAll('.open-popup');
+            function openInfoPopup(target) {
+                const data = businessInfo[target];
+                if (data) {
+                    popupTitle.textContent = data.title;
+                    popupText.textContent = data.text;
+                    popup.style.display = 'flex';
+                }
+            }
+            openPopupButtons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const target = button.getAttribute('data-popup-target');
+                    openInfoPopup(target);
+                });
+            });
+            closeInfoPopup.addEventListener('click', () => popup.style.display = 'none');
+            window.addEventListener('click', (event) => {
+                if (event.target === popup) popup.style.display = 'none';
+            });
+            // Sidebar toggle
             const hamburger = document.getElementById('hamburgerMenu');
             const overlay = document.getElementById('overlay');
-            const sidebarLinks = document.querySelectorAll('.sidebar-menu a');
+            const sidebar = document.getElementById('sidebar');
             hamburger?.addEventListener('click', () => {
-                document.getElementById('sidebar').classList.toggle('active');
+                sidebar.classList.toggle('active');
                 overlay.classList.toggle('active');
                 hamburger.classList.toggle('active');
-                document.body.style.overflow = document.getElementById('sidebar').classList.contains('active') ? 'hidden' : '';
+                document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
             });
-            overlay?.addEventListener('click', closeSidebar);
-            sidebarLinks.forEach(link => link.addEventListener('click', closeSidebar));
-            const mobileSearch = document.getElementById('mobileSearchTrigger');
-            const searchInput = document.getElementById('mainSearchContainer')?.querySelector('input');
-            mobileSearch?.addEventListener('click', () => searchInput?.focus());
-        });
-        const backToTopBtn = document.getElementById('backToTopBtn');
-        window.onscroll = () => {
-            backToTopBtn.style.display = (window.scrollY > 300) ? "flex" : "none";
-        };
-        backToTopBtn?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-        const toggleBtn = document.getElementById('toggle-contact-buttons');
-        const linksContainer = document.getElementById('contact-links-container');
-        toggleBtn?.addEventListener('click', () => {
-            linksContainer.classList.toggle('open');
-            toggleBtn.classList.toggle('is-open');
-        });
-        // =========================================================================
-        // === SHOPPING CART FUNCTIONALITY (FULLY INTEGRATED FROM BROADWAY SWEETS) ===
-        // =========================================================================
-        const cart = {
-            items: [],
-            saveCart() {
-                try {
-                    const STORAGE_KEY = 'hivetimes_unified_cart_v3';
-                    this.updateCartDisplay();
-                } catch (e) {
-                    console.error('Error saving cart:', e);
-                }
-            },
-            init() {
-                const stored = localStorage.getItem('hiveTimesCart');
-                if (stored) {
-                    try {
-                        this.items = JSON.parse(stored);
-                    } catch (e) {
-                        this.items = [];
-                    }
-                }
-                this.updateCartDisplay();
-            },
-            addToCart(product) {
-                const existing = this.items.find(item => item.id === product.id);
-                if (existing) {
-                    existing.quantity += product.quantity;
-                } else {
-                    this.items.push(product);
-                }
-                this.saveCart();
-                alert(`${product.name} added to cart!`);
-            },
-            updateQuantity(id, delta) {
-                const item = this.items.find(i => i.id === id);
-                if (item) {
-                    item.quantity += delta;
-                    if (item.quantity <= 0) {
-                        this.removeItem(id);
+            overlay?.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+                hamburger.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+            // Cart functionality stub
+            window.showCartModal = () => {
+                document.querySelector('.cart-modal-overlay').style.display = 'flex';
+                document.querySelector('.cart-modal').classList.add('active');
+            };
+            window.closeCartModal = () => {
+                document.querySelector('.cart-modal').classList.remove('active');
+                setTimeout(() => document.querySelector('.cart-modal-overlay').style.display = 'none', 300);
+            };
+            // Back to top
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            window.onscroll = () => {
+                backToTopBtn.style.display = (window.scrollY > 300) ? "flex" : "none";
+            };
+            backToTopBtn?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+            // Comment toggle
+            document.querySelectorAll('.view-comments-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = btn.getAttribute('data-target');
+                    const section = document.getElementById(targetId);
+                    section.classList.toggle('active');
+                    if (section.classList.contains('active')) {
+                        btn.innerHTML = '<i class="fas fa-angle-up"></i> Hide Comments';
                     } else {
-                        this.saveCart();
+                        btn.innerHTML = '<i class="fas fa-comment"></i> View Comments';
                     }
-                }
-            },
-            removeItem(id) {
-                this.items = this.items.filter(item => item.id !== id);
-                this.saveCart();
-            },
-            calculateTotal() {
-                return this.items.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
-            },
-            updateCartDisplay() {
-                const countEl = document.getElementById('cartCount');
-                const itemsEl = document.querySelector('.cart-items');
-                const totalEl = document.getElementById('cartTotal');
-                const totalItems = this.items.reduce((sum, item) => sum + item.quantity, 0);
-                if (countEl) countEl.textContent = totalItems;
-                if (itemsEl) {
-                    if (this.items.length === 0) {
-                        itemsEl.innerHTML = '<p style="text-align: center; color: #555;">Your cart is empty.</p>';
-                    } else {
-                        itemsEl.innerHTML = this.items.map(item => `
-                            <div class="cart-item">
-                                <img src="${item.image}" alt="${item.name}" class="cart-item-image">
-                                <div class="cart-item-details">
-                                    <div class="cart-item-name">${item.name}</div>
-                                    <div class="cart-item-variant">Business: ${item.businessName}</div>
-                                    <div class="cart-item-price">R${(item.price * item.quantity).toFixed(2)} (${item.price.toFixed(2)} each)</div>
-                                    <div class="cart-item-quantity">
-                                        <button class="cart-quantity-btn" onclick="cart.updateQuantity('${item.id}', -1)">-</button>
-                                        <span class="cart-quantity-display">${item.quantity}</span>
-                                        <button class="cart-quantity-btn" onclick="cart.updateQuantity('${item.id}', 1)">+</button>
-                                    </div>
-                                </div>
-                                <button class="remove-item-btn" onclick="cart.removeItem('${item.id}')">
-                                    <i class="fas fa-trash-alt"></i> Remove
-                                </button>
-                            </div>
-                        `).join('');
-                    }
-                }
-                if (totalEl) {
-                    totalEl.textContent = `Total: R${this.calculateTotal()}`;
-                }
-            }
-        };
-        function showCartModal() {
-            document.querySelector('.cart-modal-overlay').style.display = 'flex';
-            setTimeout(() => document.querySelector('.cart-modal').classList.add('active'), 10);
-            cart.updateCartDisplay();
-        }
-        function closeCartModal() {
-            const modal = document.querySelector('.cart-modal');
-            modal.classList.remove('active');
-            setTimeout(() => document.querySelector('.cart-modal-overlay').style.display = 'none', 300);
-        }
-        // Initialize cart on load
-        document.addEventListener('DOMContentLoaded', () => {
-            cart.init();
-        });
-        // === AUTH MODAL LOGIC ===
-        const authModal = document.getElementById('authModal');
-        const closeAuthModal = document.getElementById('closeAuthModal');
-        const accountIcon = document.getElementById('accountIcon');
-        accountIcon.addEventListener('click', (e) => {
-            e.preventDefault();
-            authModal.style.display = 'flex';
-        });
-        closeAuthModal.addEventListener('click', () => {
-            authModal.style.display = 'none';
-        });
-        window.addEventListener('click', (e) => {
-            if (e.target === authModal) {
-                authModal.style.display = 'none';
-            }
-        });
-        // Tab switching
-        document.querySelectorAll('.auth-tab-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.auth-tab-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const tab = btn.getAttribute('data-tab');
-                document.getElementById('signinForm').style.display = tab === 'signin' ? 'block' : 'none';
-                document.getElementById('signupForm').style.display = tab === 'signup' ? 'block' : 'none';
+                });
             });
         });
-        // Optional: Form submission handling
-        document.getElementById('signinForm')?.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Sign in functionality would be handled here.');
-            authModal.style.display = 'none';
-        });
-        document.getElementById('signupForm')?.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Sign up functionality would be handled here.');
-            authModal.style.display = 'none';
-        });
-        document.addEventListener('DOMContentLoaded', () => {
-    const searchInput = document.getElementById('searchInput');
-    const allBlocks = document.querySelectorAll('.businesses-grid .block');
-    // Optional: map section IDs to category names
-    const sectionToCategory = {
-        'home-businesses': 'Home Business',
-        'retail-shops': 'Retail Shop',
-        'wholesale': 'Wholesale',
-        'services': 'Service'
-    };
-    function performSearch(query) {
-    const normalizedQuery = query.trim().toLowerCase();
-    const blocks = document.querySelectorAll('.businesses-grid .block, .freelancer-grid .freelancer-card');
-
-    blocks.forEach(block => {
-        let name = '', desc = '', category = '';
-
-        // For business blocks
-        if (block.classList.contains('block')) {
-            name = block.querySelector('h3')?.textContent.trim().toLowerCase() || '';
-            desc = block.querySelector('p')?.textContent.trim().toLowerCase() || '';
-            const section = block.closest('section');
-            const sectionId = section?.id || '';
-            category = (sectionToCategory[sectionId] || '').toLowerCase();
-        }
-        // For service/freelancer cards
-        else if (block.classList.contains('freelancer-card')) {
-            name = block.querySelector('h3')?.textContent.trim().toLowerCase() || '';
-            desc = block.querySelector('p')?.textContent.trim().toLowerCase() || '';
-            // All freelancer cards are in #services → "Service"
-            category = 'service';
-        }
-
-        const matches =
-            name.includes(normalizedQuery) ||
-            desc.includes(normalizedQuery) ||
-            category.includes(normalizedQuery) ||
-            normalizedQuery === '';
-
-        block.style.display = matches ? 'block' : 'none';
-    });
-
-    }
-    // Debounce to avoid excessive calls (optional but nice)
-    let timeout;
-    searchInput?.addEventListener('input', (e) => {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-            performSearch(e.target.value);
-        }, 300);
-    });
-});
-// === RATING, COMMENT & SHARE FUNCTIONALITY ===
-document.addEventListener('DOMContentLoaded', () => {
-    // Rating System
-    const allRatingStars = document.querySelectorAll('.rating-stars');
-    allRatingStars.forEach(ratingGroup => {
-        const stars = ratingGroup.querySelectorAll('.star');
-        const ratingCount = ratingGroup.parentElement.querySelector('.rating-count');
-        const businessId = ratingGroup.dataset.business || ratingGroup.dataset.service;
-        // Load saved ratings
-        const savedRating = localStorage.getItem(`rating_${businessId}`);
-        const savedComments = JSON.parse(localStorage.getItem(`comments_${businessId}`)) || [];
-        if (savedRating) {
-            const ratingValue = parseInt(savedRating);
-            updateStars(ratingGroup, ratingValue);
-            updateRatingCount(ratingCount, ratingValue, 1);
-        }
-        // Hover effect
-        stars.forEach((star, index) => {
-            star.addEventListener('mouseover', () => {
-                stars.forEach(s => s.classList.remove('hover'));
-                for (let i = 0; i <= index; i++) {
-                    stars[i].classList.add('hover');
-                }
-            });
-            star.addEventListener('mouseout', () => {
-                stars.forEach(s => s.classList.remove('hover'));
-                if (savedRating) {
-                    updateStars(ratingGroup, parseInt(savedRating));
-                }
-            });
-            // Click to rate
-            star.addEventListener('click', () => {
-                const ratingValue = index + 1;
-                localStorage.setItem(`rating_${businessId}`, ratingValue.toString());
-                // Update UI
-                updateStars(ratingGroup, ratingValue);
-                // Update rating count (for demo purposes, we'll just show "1 rating")
-                updateRatingCount(ratingCount, ratingValue, 1);
-                alert(`Thank you for rating ${ratingValue} star${ratingValue !== 1 ? 's' : ''}!`);
-            });
-        });
-    });
-    
-    // View Comments Button Functionality
-    const viewCommentsButtons = document.querySelectorAll('.view-comments-btn');
-    viewCommentsButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = button.getAttribute('data-target');
-            const commentSection = document.getElementById(targetId);
-            
-            if (commentSection) {
-                commentSection.classList.toggle('active');
-                // Update button text based on state
-                const icon = button.querySelector('i');
-                if (commentSection.classList.contains('active')) {
-                    button.innerHTML = '<i class="fas fa-angle-up"></i> Hide Comments';
-                } else {
-                    button.innerHTML = '<i class="fas fa-comment"></i> View Comments';
-                }
-            }
-        });
-    });
-    
-    // Comment System
-    const allCommentForms = document.querySelectorAll('.comment-form');
-    allCommentForms.forEach(form => {
-        const textarea = form.querySelector('.comment-input');
-        const submitBtn = form.querySelector('.submit-comment-btn');
-        const commentsList = form.parentElement.querySelector('.comments-list');
-        const businessId = form.closest('.block')?.querySelector('.rating-stars')?.dataset.business || 
-                           form.closest('.freelancer-card')?.querySelector('.rating-stars')?.dataset.service;
-        
-        // Load saved comments
-        const savedComments = JSON.parse(localStorage.getItem(`comments_${businessId}`)) || [];
-        
-        // Display saved comments
-        displayComments(commentsList, savedComments);
-        
-        // Submit comment
-        submitBtn.addEventListener('click', () => {
-            const commentText = textarea.value.trim();
-            if (commentText) {
-                const now = new Date();
-                const comment = {
-                    id: Date.now(),
-                    author: 'Anonymous',
-                    date: now.toLocaleDateString(),
-                    text: commentText
-                };
-                
-                savedComments.unshift(comment); // Add to beginning
-                localStorage.setItem(`comments_${businessId}`, JSON.stringify(savedComments));
-                
-                // Update UI
-                displayComments(commentsList, savedComments);
-                textarea.value = '';
-                alert('Thank you for your comment!');
-            }
-        });
-    });
-    
-    // Share Functionality
-    const allShareButtons = document.querySelectorAll('.share-btn');
-    allShareButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const shareType = btn.classList.contains('facebook') ? 'Facebook' :
-                            btn.classList.contains('whatsapp') ? 'WhatsApp' :
-                            'Email';
-                            
-            const businessBlock = btn.closest('.block') || btn.closest('.freelancer-card');
-            const businessName = businessBlock.querySelector('h3').textContent;
-            const businessDesc = businessBlock.querySelector('p').textContent;
-            
-            // Get current URL
-            const currentUrl = window.location.href;
-            const shareMessage = `Check out ${businessName} on Hive Times: ${currentUrl}`;
-            
-            // Handle different share types
-            if (shareType === 'Facebook') {
-                window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}&quote=${encodeURIComponent(shareMessage)}`, '_blank', 'width=600,height=400');
-            } else if (shareType === 'WhatsApp') {
-                if (/Mobi|Android/i.test(navigator.userAgent)) {
-                    // Mobile
-                    window.open(`whatsapp://send?text=${encodeURIComponent(shareMessage)}`);
-                } else {
-                    // Desktop
-                    window.open(`https://web.whatsapp.com/send?text=${encodeURIComponent(shareMessage)}`, '_blank');
-                }
-            } else if (shareType === 'Email') {
-                const mailtoLink = `mailto:?subject=Check out ${businessName} on Hive Times&body=${encodeURIComponent(shareMessage)}`;
-                window.location.href = mailtoLink;
-            }
-            
-            alert(`Sharing ${businessName} via ${shareType}...`);
-        });
-    });
-});
-
-// Helper functions for rating system
-function updateStars(ratingGroup, ratingValue) {
-    const stars = ratingGroup.querySelectorAll('.star');
-    stars.forEach((star, index) => {
-        if (index < ratingValue) {
-            star.classList.add('selected');
-            star.classList.remove('far');
-            star.classList.add('fas');
-        } else {
-            star.classList.remove('selected');
-            star.classList.add('far');
-            star.classList.remove('fas');
-        }
-    });
-}
-
-function updateRatingCount(ratingCountElement, ratingValue, numberOfRatings) {
-    const ratingText = numberOfRatings === 1 
-        ? `${numberOfRatings} rating` 
-        : `${numberOfRatings} ratings`;
-    ratingCountElement.textContent = ratingText;
-}
-
-function displayComments(commentsList, comments) {
-    if (comments.length === 0) {
-        commentsList.innerHTML = '<div class="comment-item"><div class="comment-text">No comments yet. Be the first to comment!</div></div>';
-        return;
-    }
-    
-    commentsList.innerHTML = comments.map(comment => `
-        <div class="comment-item">
-            <div class="comment-meta">
-                <span class="comment-author">${comment.author}</span>
-                <span class="comment-date">${comment.date}</span>
-            </div>
-            <div class="comment-text">${comment.text}</div>
-        </div>
-    `).join('');
-}
     </script>
-      <script src="product_data.js"></script> <!-- Adjust path if needed -->
-
-    <script>
-        // ... (existing popup, slider, sidebar, cart, auth, search, rating, comment, share logic remains) ...
-
-        // --- NEW: Function to Render Product Cards ---
-        function renderProductCards(products, containerId) {
-            const container = document.getElementById(containerId);
-            if (!container) {
-                console.error(`Container with ID ${containerId} not found.`);
-                return;
-            }
-
-            // Clear existing content (in case of re-rendering)
-            container.innerHTML = '';
-
-            if (!products || products.length === 0) {
-                container.innerHTML = '<p style="text-align: center; width: 100%;">No products available.</p>';
-                return;
-            }
-
-            products.forEach(product => {
-                // Create the main block div
-                const blockDiv = document.createElement('div');
-                blockDiv.className = 'block';
-
-                // Create the content string for the block
-                blockDiv.innerHTML = `
-                    <a href="#" onclick="showProductDetail('${product.id}')">Product</a>
-                `;
-                container.appendChild(blockDiv);
-            });
-        }
-        document.addEventListener('DOMContentLoaded', () => {
-  const hamburger = document.getElementById('hamburgerMenu');
-  const overlay   = document.getElementById('overlay');
-  const sidebar   = document.getElementById('sidebar');
-
-  if (!hamburger || !overlay || !sidebar) {
-    console.warn('Hamburger / overlay / sidebar not found');
-    return;
-  }
-
-  hamburger.addEventListener('click', () => {
-    sidebar.classList.toggle('active');
-    overlay.classList.toggle('active');
-    hamburger.classList.toggle('active');
-    document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
-  });
-
-  overlay.addEventListener('click', () => {
-    sidebar.classList.remove('active');
-    overlay.classList.remove('active');
-    hamburger.classList.remove('active');
-    document.body.style.overflow = '';
-  });
-});
-/* ---- SEARCH BAR ---- */
-document.addEventListener('DOMContentLoaded', () => {
-  const searchInput = document.getElementById('searchInput');
-  if (!searchInput) return;
-
-  const sectionToCategory = {
-    'home-businesses': 'Home Business',
-    'retail-shops': 'Retail Shop',
-    'wholesale': 'Wholesale',
-    'services': 'Service'
-  };
-
-  function performSearch(query) {
-    const q = query.trim().toLowerCase();
-    document.querySelectorAll('.businesses-grid .block, .freelancer-grid .freelancer-card')
-      .forEach(card => {
-        const name = card.querySelector('h3')?.textContent.trim().toLowerCase() || '';
-        const desc = card.querySelector('p')?.textContent.trim().toLowerCase() || '';
-        const section = card.closest('section')?.id || '';
-        const cat  = (sectionToCategory[section] || '').toLowerCase();
-        const show = !q || name.includes(q) || desc.includes(q) || cat.includes(q);
-        card.style.display = show ? 'block' : 'none';
-      });
-  }
-
-  let t;
-  searchInput.addEventListener('input', e => {
-    clearTimeout(t);
-    t = setTimeout(() => performSearch(e.target.value), 200);
-  });
-});
-    </script>
-    
+    <script src="product_data.js"></script>
     <script src="cart.js"></script>
-    <!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-<!-- Load slider from external file -->
-<script>
-  fetch('slider.html')
-    .then(response => {
-      if (!response.ok) throw new Error('slider.html not found (404)');
-      return response.text();
-    })
-    .then(html => {
-      document.getElementById('slider-container').innerHTML = html;
-      new Swiper('.mySwiper', {
-        spaceBetween: 0,
-        centeredSlides: true,
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: false
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
-        },
-        loop: true,
-        effect: 'fade',
-        fadeEffect: {
-          crossFade: true
-        },
-        touchRatio: 1,
-        simulateTouch: true
-      });
-    })
-    .catch(err => {
-      console.error('Slider failed to load:', err);
-      document.getElementById('slider-container').innerHTML = 
-        '<p style="text-align:center; padding:40px; color:#a30909; font-weight:600;">❌ Slider error: ' + err.message + '</p>';
-    });
-</script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        fetch('slider.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('slider-container').innerHTML = html;
+                new Swiper('.mySwiper', {
+                    spaceBetween: 0,
+                    centeredSlides: true,
+                    autoplay: { delay: 3000, disableOnInteraction: false },
+                    pagination: { el: '.swiper-pagination', clickable: true },
+                    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+                    loop: true,
+                    effect: 'fade',
+                    fadeEffect: { crossFade: true },
+                    touchRatio: 1,
+                    simulateTouch: true
+                });
+            })
+            .catch(err => {
+                console.error('Slider failed to load:', err);
+                document.getElementById('slider-container').innerHTML =
+                    '<p style="text-align:center; padding:40px; color:#a30909; font-weight:600;">❌ Slider error: ' + err.message + '</p>';
+            });
+    </script>
 </body>
 </html>
