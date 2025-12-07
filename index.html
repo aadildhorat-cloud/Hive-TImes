@@ -16,8 +16,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hive Times - Businesses</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/slider.css">
     <style>
-    /* === UPGRADED FILTER BAR (Animated & Reordered) === */
+  /* === COMPLETE UPGRADED FILTER BAR CSS === */
+
+/* --- Base Container --- */
 .filter-bar {
   position: relative;
   background: rgba(255, 255, 255, 0.95);
@@ -33,6 +36,7 @@
   animation: slideUpFade 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
+/* --- Fixed/Sticky State (Smaller Bar) --- */
 .filter-bar.fixed {
   position: fixed;
   top: 90px;
@@ -42,13 +46,18 @@
   max-width: 1000px;
   margin: 0;
   box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-  animation: none; /* Stop animation when fixed to prevent jumping */
+  animation: none;
+  /* Adjustments for smaller fixed size */
+  padding: 15px 20px; /* Reduced overall padding */
+  border-radius: 10px; /* Slightly smaller border radius */
 }
 
 /* Hide the old collapsed trigger */
-.filter-bar-collapsed { display: none !important; }
+.filter-bar-collapsed { 
+  display: none !important; 
+}
 
-/* Layout Container */
+/* --- Layout Container --- */
 .filter-bar-expanded {
   display: flex;
   flex-direction: column;
@@ -91,6 +100,18 @@
   box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
 }
 
+/* Adjust search input when the bar is fixed (for smaller size) */
+.filter-bar.fixed .filter-search input {
+    padding: 12px 20px 12px 55px; /* Smaller padding */
+    font-size: 1rem; /* Slightly smaller font */
+}
+
+/* Adjust icon position for fixed bar */
+.filter-bar.fixed .search-input-wrapper i {
+    top: 50%;
+}
+
+
 /* Search Focus Animation */
 .filter-search input:focus {
   background: #fff;
@@ -125,6 +146,11 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-left: 10px;
+}
+
+/* Reduce label size when the bar is fixed */
+.filter-bar.fixed .filter-group label {
+    font-size: 0.7rem;
 }
 
 .select-wrapper {
@@ -162,6 +188,11 @@
   transition: all 0.3s ease;
 }
 
+/* Reduce select element size when the bar is fixed */
+.filter-bar.fixed .filter-group select {
+    padding: 10px 15px; /* Reduced vertical padding */
+}
+
 .filter-group select:hover {
   border-color: #bbb;
   background-color: #fcfcfc;
@@ -185,7 +216,7 @@
   }
 }
 
-/* Responsive */
+/* --- Responsive --- */
 @media (max-width: 768px) {
   .filters-grid {
     grid-template-columns: 1fr; /* Stack vertically on mobile */
@@ -196,43 +227,18 @@
     padding: 20px;
   }
   
+  .filter-bar.fixed {
+    top: 70px;
+    width: calc(100% - 20px);
+    max-width: none;
+    left: 10px;
+    transform: none;
+  }
+  
   .filter-search input:focus {
     transform: none; /* Disable scale on mobile to prevent zoom issues */
   }
 }
-
-/* Responsive: Mobile */
-@media (max-width: 768px) {
-  .filter-bar.fixed {
-    top: 70px;
-    width: calc(100% - 20px);
-    max-width: none;
-    left: 10px;
-    transform: none;
-  }
-  .filter-bar-expanded {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Responsive: Mobile */
-@media (max-width: 768px) {
-  .filter-bar.fixed {
-    top: 70px;
-    width: calc(100% - 20px);
-    max-width: none;
-    left: 10px;
-    transform: none;
-  }
-
-  .filter-bar-expanded {
-    grid-template-columns: 1fr;
-  }
-}
-        /* --- Shopping Cart Modal Styles (Updated for Business Groups) --- */
-/* ... (keep your existing .cart-modal, .cart-item, etc. styles) ... */
-
-/* Style for the business group container */
 .cart-business-group {
     border: 1px solid #eee;
     border-radius: 8px;
@@ -1801,7 +1807,7 @@
       <!-- === ALL BUSINESSES & SERVICES IN ONE CONTAINER === -->
 <div class="businesses-grid">
   <!-- Nothing Fancy -->
-  <div class="block" id="business-nothing-fancy" data-category="wholesale" data-type="toilet-paper" data-location="johannesburg">
+  <div class="block" id="business-nothing-fancy" data-category="home-businesses" data-type="toilet-paper" data-location="johannesburg">
     <a href="nothing fancy.html">
       <img src="images-logo/nothing-fancy-logo.jpg" alt="Nothing Fancy">
     </a>
