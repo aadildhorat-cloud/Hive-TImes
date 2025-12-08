@@ -18,6 +18,249 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="css/slider.css">
     <style>
+      /* --- ABSOLUTE TOP LOGO BAR --- */
+.header-logo-bar {
+  background: linear-gradient(135deg, #610d00 0%, #8b1a00 100%);
+  padding: 12px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1001;
+}
+
+.header-logo-bar .logo img {
+  height: 50px;
+  width: auto;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
+}
+
+/* --- STICKY ACTION BAR (SEARCH + ICONS) --- */
+.header-action-bar {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: sticky;
+  top: 74px; /* logo height (50px + 2*12px padding = ~74px) */
+  z-index: 1000;
+}
+
+/* Glass pill background */
+/* ---- Updated "JOIN THE HIVE" button style ---- */
+.icon-group-bg nav a {
+  color: #ffffff !important; /* Text color */
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%) !important; /* Red gradient like your buttons */
+  padding: 8px 16px !important;
+  border-radius: 30px !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  transition: all 0.3s ease !important;
+}
+
+.icon-group-bg nav a:hover {
+  background: linear-gradient(135deg, #c0392b 0%, #a93226 100%) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3) !important;
+}
+.icon-group-bg {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.icon-group-bg a,
+.icon-group-bg .action-icon {
+  color: #34495e;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.icon-group-bg .action-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+}
+
+/* Search styling */
+.search-container {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 30px;
+  padding: 8px 16px;
+  flex-grow: 1;
+  max-width: 600px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.search-container i {
+  color: #8b1a00;
+  margin-right: 10px;
+  font-size: 1.1rem;
+}
+
+.search-container input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 1rem;
+  padding: 4px 0;
+  background: transparent;
+  color: #333;
+}
+
+/* --- Mobile: hide search in header (use filter bar instead) --- */
+@media (max-width: 768px) {
+  .search-container {
+    display: none;
+  }
+  .header-action-bar {
+    justify-content: flex-end;
+    padding: 10px 15px;
+  }
+  .header-logo-bar {
+    padding: 10px 15px;
+  }
+  .header-logo-bar .logo img {
+    height: 40px;
+  }
+  .header-action-bar {
+    top: 60px; /* adjust for smaller logo */
+  }
+}
+/* Glass pill for actions */
+.icon-group-bg {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.icon-group-bg nav a,
+.icon-group-bg .action-icon {
+  color: #34495e;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.icon-group-bg .action-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+}
+
+.icon-group-bg .action-icon:hover {
+  background: rgba(231, 76, 60, 0.1);
+}
+
+/* Search in action bar */
+.search-container {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 30px;
+  padding: 8px 16px;
+  flex-grow: 1;
+  max-width: 600px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.search-container i {
+  color: #8b1a00;
+  margin-right: 10px;
+  font-size: 1.1rem;
+}
+
+.search-container input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 1rem;
+  padding: 4px 0;
+  background: transparent;
+  color: #333;
+}
+
+.search-container input::placeholder {
+  color: #999;
+}
+
+/* Hide search on mobile – use filter bar instead */
+@media (max-width: 768px) {
+  .search-container {
+    display: none;
+  }
+
+  .header-action-bar {
+    justify-content: flex-end;
+    padding: 10px 15px;
+  }
+
+  .header-logo-section {
+    padding: 12px 15px;
+  }
+
+  .header-logo-section .logo img {
+    height: 40px;
+  }
+}
+        /* ----- glass pill stays the same ----- */
+.icon-group-bg {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    border-radius: 30px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ----- bigger icons ----- */
+.icon-group-bg .action-icon i,
+.icon-group-bg nav a {
+    font-size: 1rem;          /* size of the icon itself */
+    line-height: 1;
+}
+
+/* ----- slightly larger badge ----- */
+.cart-count {
+    font-size: 0.75rem;
+    width: 10px;
+    height: 15px;
+}
   /* === COMPLETE UPGRADED FILTER BAR CSS === */
 
 /* --- Base Container --- */
@@ -27,7 +270,7 @@
   backdrop-filter: blur(10px);
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  margin: -40px auto 2.5rem; /* Negative margin pulls it up into the slider slightly for a modern look */
+  margin: 40px auto 2.5rem; /* Negative margin pulls it up into the slider slightly for a modern look */
   max-width: 1000px;
   z-index: 998;
   border: 1px solid rgba(255,255,255,0.8);
@@ -553,18 +796,15 @@
             visibility: visible;
         }
         /* --- Header & Navigation --- */
-        header {
-            background: linear-gradient(135deg, #610d00 0%, #8b1a00 100%);
-            color: #fff;
-            padding: 0.8rem 30px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            position: sticky;
-            top: 0;
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+   header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  z-index: 10000 !important; /* higher than everything */
+  transform: none !important;
+  transition: none !important;
+}
         .header-top-row {
             display: flex;
             align-items: center;
@@ -1699,49 +1939,45 @@
             </form>
         </div>
     </div>
-    <div class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <h3>Hive Times Menu</h3>
-        </div>
-        <ul class="sidebar-menu">
-            <hr style="border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 20px 0;">
-            <li><a href="#home-businesses"><i class="fas fa-cookie-bite"></i> Home Businesses</a></li>
-            <li><a href="#retail-shops"><i class="fas fa-utensils"></i> Retail Shops</a></li>
-            <li><a href="#wholesale"><i class="fas fa-boxes"></i> Wholesale</a></li>
-            <li><a href="#services"><i class="fas fa-paint-brush"></i> Services</a></li>
-            <hr style="border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 20px 0;">
-            <li><a href="about page home.html"><i class="fas fa-info-circle"></i> About Us</a></li>
-            <li><a href=""><i class="fas fa-hands-helping"></i> Charity</a></li>
-        </ul>
+    
+       
     </div>
     <div class="overlay" id="overlay"></div>
     <header>
-        <div class="header-top-row">
-            <div class="hamburger-menu" id="hamburgerMenu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="logo">
-                <img src="images-logo/hive-times-logo.png" alt="hive times logo">
-            </div>
-            <nav>
-                <a href="about page home.html">About</a>
-            </nav>
-            <div class="header-action-icons">
-                <!-- Updated: no href, triggers modal -->
-                <a href="#" class="action-icon" id="accountIcon">
-                    <i class="fas fa-user-circle"></i>
-                </a>
-                <button class="action-icon" onclick="showCartModal()" style="background: none; border: none; cursor: pointer;">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count" id="cartCount">0</span>
-                </button>
-            </div>
-        </div>
-      
-    </header>
-    <div id="slider-container"></div>
+  <!-- Fixed Logo – stays at absolute top -->
+  <div class="header-logo-section">
+    <div class="logo">
+      <img src="images-logo/hive-times-logo.png" alt="Hive Times Logo">
+    </div>
+  </div>
+
+ <!-- FIXED LOGO — always at top -->
+<div class="header-logo-bar">
+  <div class="logo">
+    <img src="images-logo/hive-times-logo.png" alt="Hive Times Logo">
+  </div>
+</div>
+
+<!-- STICKY ACTION BAR — scrolls and sticks below logo -->
+<div class="header-action-bar">
+  <div class="icon-group-bg">
+    <nav><a href="about page home.html">JOIN THE HIVE</a></nav>
+    <a href="#" class="action-icon" id="accountIcon">
+      <i class="fas fa-user-circle"></i>
+    </a>
+    <button class="action-icon" onclick="showCartModal()" style="background: none; border: none; cursor: pointer;">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+  <!-- Search only on desktop (mobile uses filter bar) -->
+  <div class="search-container">
+    <i class="fas fa-search"></i>
+    <input type="text" id="mainSearchInput" placeholder="What are you looking for today?">
+  </div>
+</div>
+</header>
+  
     <main>
          <div id="filterBar" class="filter-bar">
     <div class="filter-bar-expanded" id="filterBarExpanded">
@@ -1801,6 +2037,8 @@
     </div>
 </div>
             </div>
+        </div>
+              <div id="slider-container"></div>
         </section>
       
             
@@ -3297,7 +3535,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   }
 
-  window.addEventListener('scroll', handleScroll);
+
   window.addEventListener('resize', initFilterBarPosition);
 
   // Initialize
@@ -3405,6 +3643,22 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 500);
 });
     </script>
+    <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const actionBar = document.querySelector('.header-action-bar');
+    let isScrolled = false;
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10 && !isScrolled) {
+        actionBar.classList.add('scrolled');
+        isScrolled = true;
+      } else if (window.scrollY <= 10 && isScrolled) {
+        actionBar.classList.remove('scrolled');
+        isScrolled = false;
+      }
+    });
+  });
+</script>
     
     <script src="cart.js"></script>
     <!-- Swiper JS -->
