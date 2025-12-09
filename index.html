@@ -2,294 +2,235 @@
 <html lang="en">
 <head>
     <!-- Swiper CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DTPGZ964FD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-DTPGZ964FD');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DTPGZ964FD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-DTPGZ964FD');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hive Times - Businesses</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="css/slider.css">
     <style>
-  /* === COMPLETE UPGRADED FILTER BAR CSS === */
-
-/* --- Base Container --- */
-.filter-bar {
-  position: relative;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  margin: -40px auto 2.5rem; /* Negative margin pulls it up into the slider slightly for a modern look */
-  max-width: 1000px;
-  z-index: 998;
-  border: 1px solid rgba(255,255,255,0.8);
-  transition: all 0.3s ease;
-  padding: 30px;
-  animation: slideUpFade 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-/* --- Fixed/Sticky State (Smaller Bar) --- */
-.filter-bar.fixed {
-
-  top: 90px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 95%;
-  max-width: 1000px;
-  margin: 0;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-  animation: none;
-  /* Adjustments for smaller fixed size */
-  padding: 15px 20px; /* Reduced overall padding */
-  border-radius: 10px; /* Slightly smaller border radius */
-}
-
-/* Hide the old collapsed trigger */
-.filter-bar-collapsed { 
-  display: none !important; 
-}
-
-/* --- Layout Container --- */
-.filter-bar-expanded {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  opacity: 1;
-  max-height: none;
-}
-
-/* --- Search Row Styles --- */
-.search-row {
-  width: 100%;
-  position: relative;
-}
-
-.search-input-wrapper {
-  position: relative;
-  width: 100%;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.search-input-wrapper i {
-  position: absolute;
-  left: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--primary-color);
-  font-size: 1.2rem;
-  transition: all 0.3s ease;
-}
-
-.filter-search input {
-  width: 100%;
-  padding: 18px 20px 18px 55px; /* Space for icon */
-  border: 2px solid #eee;
-  border-radius: 50px;
-  font-size: 1.1rem;
-  background: #f8f9fa;
-  transition: all 0.3s ease;
-  outline: none;
-  box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
-}
-
-/* Adjust search input when the bar is fixed (for smaller size) */
-.filter-bar.fixed .filter-search input {
-    padding: 12px 20px 12px 55px; /* Smaller padding */
-    font-size: 1rem; /* Slightly smaller font */
-}
-
-/* Adjust icon position for fixed bar */
-.filter-bar.fixed .search-input-wrapper i {
-    top: 50%;
-}
-
-
-/* Search Focus Animation */
-.filter-search input:focus {
-  background: #fff;
-  border-color: var(--primary-color);
-  box-shadow: 0 5px 20px rgba(231, 76, 60, 0.15);
-  transform: scale(1.02);
-}
-
-.filter-search input:focus + i {
-  transform: translateY(-50%) scale(1.1);
-  color: #c0392b;
-}
-
-/* --- Filters Grid Styles --- */
-.filters-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 Columns side by side */
-  gap: 15px;
-}
-
-.filter-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  transition: transform 0.3s ease;
-}
-
-.filter-group label {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #555;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-left: 10px;
-}
-
-/* Reduce label size when the bar is fixed */
-.filter-bar.fixed .filter-group label {
-    font-size: 0.7rem;
-}
-
-.select-wrapper {
-  position: relative;
-}
-
-.select-wrapper::after {
-  content: '\f107'; /* FontAwesome Chevron Down */
-  font-family: "Font Awesome 6 Free"; 
-  font-weight: 900;
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #888;
-  pointer-events: none;
-  transition: transform 0.3s ease;
-}
-
-.filter-group:hover .select-wrapper::after {
-  transform: translateY(-50%) rotate(180deg);
-  color: var(--primary-color);
-}
-
-.filter-group select {
-  width: 100%;
-  padding: 14px 15px;
-  border: 1px solid #e1e1e1;
-  border-radius: 12px;
-  font-size: 0.95rem;
-  color: #444;
-  appearance: none; /* Hide default arrow */
-  background: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-/* Reduce select element size when the bar is fixed */
-.filter-bar.fixed .filter-group select {
-    padding: 10px 15px; /* Reduced vertical padding */
-}
-
-.filter-group select:hover {
-  border-color: #bbb;
-  background-color: #fcfcfc;
-}
-
-.filter-group select:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 4px rgba(231, 76, 60, 0.1);
-  outline: none;
-}
-
-/* Animation Keyframes */
-@keyframes slideUpFade {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* --- Responsive --- */
-@media (max-width:) {
-  .filters-grid {
-    grid-template-columns: 1fr; /* Stack vertically on mobile */
-  }
-  
-  .filter-bar {
-    margin-top: 20px;
-    padding: 20px;
-  }
-  
-  .filter-bar.fixed {
-    top: 70px;
-    width: calc(100% - 20px);
-    max-width: none;
-    left: 10px;
-    transform: none;
-  }
-  
-  .filter-search input:focus {
-    transform: none; /* Disable scale on mobile to prevent zoom issues */
-  }
-}
-.cart-business-group {
-    border: 1px solid #eee;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    overflow: hidden; /* Ensures rounded corners contain content */
-    background-color: #fafafa; /* Slight background for group */
-}
-
-/* Style for the business header containing logo and name */
-.cart-business-header {
-    background-color: #f1f1f1; /* Light background for header */
-    padding: 10px 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Space between logo and name */
-    border-bottom: 1px solid #eee;
-}
-
-.cart-business-logo {
-    height: 30px; /* Adjust size as needed */
-    width: auto;
-    border-radius: 4px; /* Optional: Add border radius */
-    object-fit: contain; /* Ensure logo scales nicely */
-}
-
-.cart-business-name {
-    margin: 0;
-    font-size: 1.1em; /* Adjust size as needed */
-    font-weight: 600;
-    color: #34495e; /* Match your theme's secondary color */
-}
-
-/* Style for the container holding items from the same business */
-.cart-business-items {
-    padding: 10px 0; /* Add padding inside the items container */
-}
-
-/* Adjust styles for items within the business group if needed */
-.cart-business-items .cart-item {
-    border-bottom: 1px solid #eee; /* Separator between items within group */
-    padding: 10px 15px; /* Padding for each item */
-    align-items: center; /* Ensure alignment */
-}
-
-/* Remove the bottom border from the last item in a group */
-.cart-business-items .cart-item:last-child {
-    border-bottom: none;
-}
-
-/* ... (keep your existing .cart-quantity-btn, .remove-item-btn, .cart-total, etc. styles) ... */
-        /* --- Freelance Section Styles --- */
+        /* === COMPLETE UPGRADED FILTER BAR CSS === */
+        .filter-bar {
+            position: relative;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin: -40px auto 2.5rem;
+            max-width: 1000px;
+            z-index: 998;
+            border: 1px solid rgba(255,255,255,0.8);
+            transition: all 0.3s ease;
+            padding: 30px;
+            animation: slideUpFade 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .filter-bar.fixed {
+            position: fixed;
+            top: 90px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 95%;
+            max-width: 1000px;
+            margin: 0;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            animation: none;
+            padding: 15px 20px;
+            border-radius: 10px;
+        }
+        .filter-bar-collapsed { 
+            display: none !important; 
+        }
+        .filter-bar-expanded {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            opacity: 1;
+            max-height: none;
+        }
+        .search-row {
+            width: 100%;
+            position: relative;
+        }
+        .search-input-wrapper {
+            position: relative;
+            width: 100%;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .search-input-wrapper i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        .filter-search input {
+            width: 100%;
+            padding: 18px 20px 18px 55px;
+            border: 2px solid #eee;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+            outline: none;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
+        }
+        .filter-bar.fixed .filter-search input {
+            padding: 12px 20px 12px 55px;
+            font-size: 1rem;
+        }
+        .filter-bar.fixed .search-input-wrapper i {
+            top: 50%;
+        }
+        .filter-search input:focus {
+            background: #fff;
+            border-color: var(--primary-color);
+            box-shadow: 0 5px 20px rgba(231, 76, 60, 0.15);
+            transform: scale(1.02);
+        }
+        .filters-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: transform 0.3s ease;
+        }
+        .filter-group label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-left: 10px;
+        }
+        .filter-bar.fixed .filter-group label {
+            font-size: 0.7rem;
+        }
+        .select-wrapper {
+            position: relative;
+        }
+        .select-wrapper::after {
+            content: '\f107';
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+            pointer-events: none;
+            transition: transform 0.3s ease;
+        }
+        .filter-group:hover .select-wrapper::after {
+            transform: translateY(-50%) rotate(180deg);
+            color: var(--primary-color);
+        }
+        .filter-group select {
+            width: 100%;
+            padding: 14px 15px;
+            border: 1px solid #e1e1e1;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            color: #444;
+            appearance: none;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .filter-bar.fixed .filter-group select {
+            padding: 10px 15px;
+        }
+        .filter-group select:hover {
+            border-color: #bbb;
+            background-color: #fcfcfc;
+        }
+        .filter-group select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(231, 76, 60, 0.1);
+            outline: none;
+        }
+        @keyframes slideUpFade {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media (max-width: 768px) {
+            .filters-grid {
+                grid-template-columns: 1fr;
+            }
+            .filter-bar {
+                margin-top: 20px;
+                padding: 20px;
+            }
+            .filter-bar.fixed {
+                top: 70px;
+                width: calc(100% - 20px);
+                max-width: none;
+                left: 10px;
+                transform: none;
+            }
+            .filter-search input:focus {
+                transform: none;
+            }
+        }
+        /* Cart Grouping */
+        .cart-business-group {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            background-color: #fafafa;
+        }
+        .cart-business-header {
+            background-color: #f1f1f1;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .cart-business-logo {
+            height: 30px;
+            width: auto;
+            border-radius: 4px;
+            object-fit: contain;
+        }
+        .cart-business-name {
+            margin: 0;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #34495e;
+        }
+        .cart-business-items {
+            padding: 10px 0;
+        }
+        .cart-business-items .cart-item {
+            border-bottom: 1px solid #eee;
+            padding: 10px 15px;
+            align-items: center;
+        }
+        .cart-business-items .cart-item:last-child {
+            border-bottom: none;
+        }
+        /* Freelancer Grid */
         .freelancer-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -448,7 +389,7 @@
             min-height: 100vh;
             overflow-x: hidden;
         }
-        /* --- Sidebar Menu --- */
+        /* Sidebar */
         .sidebar {
             position: fixed;
             top: 0;
@@ -552,7 +493,7 @@
             opacity: 1;
             visibility: visible;
         }
-        /* --- Header & Navigation --- */
+        /* Header */
         header {
             background: linear-gradient(135deg, #610d00 0%, #8b1a00 100%);
             color: #fff;
@@ -722,7 +663,7 @@
             align-items: center;
             justify-content: center;
         }
-        /* --- AUTH MODAL STYLES --- */
+        /* Auth Modal */
         #authModal .popup-content {
             max-width: 500px;
             padding: 2.5rem;
@@ -775,138 +716,23 @@
         #signupForm button {
             background: linear-gradient(135deg, #3498db, #2980b9);
         }
-        /* --- ADVANCED SLIDER SECTION --- */
-     
-.slider-section {
-    padding: 2rem 0;
-    background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
-    text-align: center;
-    width: 100%;
-}
-
-.slider-container {
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    overflow: hidden;
-    position: relative;
-    border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-}
-
-.slider {
-    position: relative;
-    width: 100%;
-    height: 200%;
-    padding-bottom: 45%; /* ~16:9 on desktop, but taller on mobile via media query */
-    overflow: hidden;
-}
-
-.slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 1.8s ease-in-out, transform 1.6s ease-in-out;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.slide.active {
-    opacity: 1;
-    z-index: 10;
-}
-
-.slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    pointer-events: none;
-}
-
-/* Controls */
-.slider-controls {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-    z-index: 20;
-    padding: 0 20px;
-}
-
-.slider-btn {
-    background: rgba(255, 255, 255, 0.9);
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    color: #333;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-.slider-btn:hover {
-    background: white;
-    transform: scale(1.1);
-}
-
-.slider-indicators {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-    z-index: 20;
-}
-
-.indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.6);
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.indicator.active {
-    background: white;
-    transform: scale(1.2);
-}
-
-/* Mobile Improvements */
-@media (max-width: 768px) {
-    .slider {
-        padding-bottom: 60%; /* Taller on mobile */
-    }
-
-    .slider-btn {
-        width: 44px;
-        height: 44px;
-        font-size: 1rem;
-    }
-
-    .slider-indicators {
-        bottom: 15px;
-    }
-
-    .indicator {
-        width: 10px;
-        height: 10px;
-    }
-}
-
-        /* --- Main Content --- */
+        /* Slider fallback */
+        .slider-section {
+            padding: 2rem 0;
+            background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
+            text-align: center;
+            width: 100%;
+        }
+        .slider-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+        /* Main Content */
         main {
             flex-grow: 1;
             padding: 3rem 2rem;
@@ -969,19 +795,19 @@
             color: var(--secondary-color);
             font-weight: 700;
         }
-     .block p {
-    font-size: 1.05rem;
-    color: #555;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-       .block button {
+        .block p {
+            font-size: 1.05rem;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .block button {
             background: linear-gradient(135deg, var(--primary-color) 0%, #c0392b 100%);
             color: #fff;
             border: none;
@@ -998,7 +824,7 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
         }
-        /* --- RATING SYSTEM STYLES --- */
+        /* Rating */
         .rating-section {
             margin-top: 15px;
             padding-top: 15px;
@@ -1031,8 +857,7 @@
             color: #718096;
             margin-top: 5px;
         }
-        
-        /* View Comments Button */
+        /* Comments */
         .view-comments-btn {
             background-color: #f8f9fa;
             color: #495057;
@@ -1049,7 +874,6 @@
             gap: 5px;
             text-decoration: none;
         }
-        
         .view-comments-btn:hover {
             background-color: #e9ecef;
             color: #343a40;
@@ -1057,28 +881,22 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        
         .view-comments-btn i {
             font-size: 0.9rem;
         }
-        
-        /* --- COMMENT SECTION STYLES --- */
         .comments-section {
             margin-top: 15px;
-            padding-top: 15px;
+            padding-top: 15;
             border-top: 1px solid #eee;
-            display: none; /* Hidden by default */
+            display: none;
             transition: all 0.3s ease;
         }
-        
         .comments-section.active {
             display: block;
         }
-        
         .comment-form {
             margin-bottom: 15px;
         }
-        
         .comment-input {
             width: 100%;
             padding: 10px;
@@ -1089,7 +907,6 @@
             font-family: inherit;
             box-sizing: border-box;
         }
-        
         .submit-comment-btn {
             background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
             color: white;
@@ -1102,57 +919,46 @@
             transition: var(--transition);
             width: 100%;
         }
-        
         .submit-comment-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(52, 148, 219, 0.3);
         }
-        
         .comments-list {
             max-height: 150px;
             overflow-y: auto;
             padding-right: 5px;
         }
-        
         .comments-list::-webkit-scrollbar {
             width: 6px;
         }
-        
         .comments-list::-webkit-scrollbar-track {
             background: #f1f1f1;
             border-radius: 10px;
         }
-        
         .comments-list::-webkit-scrollbar-thumb {
             background: #c1c1c1;
             border-radius: 10px;
         }
-        
         .comments-list::-webkit-scrollbar-thumb:hover {
             background: #a8a8a8;
         }
-        
         .comment-item {
             padding: 10px 0;
             border-bottom: 1px solid #f5f5f5;
         }
-        
         .comment-item:last-child {
             border-bottom: none;
         }
-        
         .comment-author {
             font-weight: 600;
             color: var(--secondary-color);
             font-size: 0.9rem;
         }
-        
         .comment-date {
             font-size: 0.8rem;
             color: #718096;
             margin-left: 8px;
         }
-        
         .comment-text {
             margin-top: 5px;
             font-size: 0.95rem;
@@ -1160,8 +966,7 @@
             line-height: 1.5;
             text-align: left;
         }
-        
-        /* --- SHARE SECTION STYLES --- */
+        /* Share */
         .share-section {
             margin-top: 15px;
             padding-top: 15px;
@@ -1170,7 +975,6 @@
             justify-content: center;
             gap: 12px;
         }
-        
         .share-btn {
             display: flex;
             align-items: center;
@@ -1185,28 +989,23 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             text-decoration: none;
         }
-        
         .share-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         }
-        
         .share-btn.facebook:hover {
             background: #3b5998;
             color: white;
         }
-        
         .share-btn.whatsapp:hover {
             background: #25D366;
             color: white;
         }
-        
         .share-btn.email:hover {
             background: #EA4335;
             color: white;
         }
-        
-        /* --- Footer --- */
+        /* Footer */
         footer {
             background: linear-gradient(135deg, #610d00 0%, #4a0a00 100%);
             color: #fff;
@@ -1288,7 +1087,7 @@
             color: #e74c3c;
             animation: pulse 2s infinite;
         }
-        /* --- Pop-up Styles --- */
+        /* Popup */
         .popup {
             display: none;
             position: fixed;
@@ -1346,7 +1145,7 @@
             background: rgba(231, 76, 60, 0.1);
             transform: rotate(90deg);
         }
-        /* --- Contact Widget --- */
+        /* Contact Widget */
         .advanced-contact-widget {
             position: fixed;
             bottom: 110px;
@@ -1443,7 +1242,7 @@
             opacity: 1;
             transform: translateX(0);
         }
-        /* --- Back to Top --- */
+        /* Back to Top */
         .back-to-top {
             display: none;
             position: fixed;
@@ -1466,7 +1265,7 @@
             background: linear-gradient(135deg, #610d00 0%, #4a0a00 100%);
             transform: translateY(-5px) rotate(15deg);
         }
-        /* --- SHOPPING CART MODAL STYLES --- */
+        /* Cart Modal */
         .cart-modal-overlay {
             display: none;
             position: fixed;
@@ -1621,7 +1420,7 @@
             background-color: #95a5a6;
             transform: translateY(-2px);
         }
-        /* --- Animations --- */
+        /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -1631,7 +1430,7 @@
             50% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
-        /* --- Responsive Design --- */
+        /* Responsive */
         @media (min-width: 769px) {
             header {
                 flex-direction: row;
@@ -1673,7 +1472,7 @@
     </style>
 </head>
 <body>
-    <!-- AUTHENTICATION MODAL -->
+    <!-- AUTH MODAL -->
     <div id="authModal" class="popup">
         <div class="popup-content">
             <span class="close-button" id="closeAuthModal">&times;</span>
@@ -1681,14 +1480,12 @@
                 <button class="auth-tab-btn active" data-tab="signin">Sign In</button>
                 <button class="auth-tab-btn" data-tab="signup">Sign Up</button>
             </div>
-            <!-- Sign In Form -->
             <form id="signinForm">
                 <h3>Sign In to Your Account</h3>
                 <input type="email" placeholder="Email" required>
                 <input type="password" placeholder="Password" required>
                 <button type="submit">Sign In</button>
             </form>
-            <!-- Sign Up Form -->
             <form id="signupForm" style="display: none;">
                 <h3>Create New Account</h3>
                 <input type="text" placeholder="Full Name" required>
@@ -1699,6 +1496,7 @@
             </form>
         </div>
     </div>
+    <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <h3>Hive Times Menu</h3>
@@ -1715,6 +1513,7 @@
         </ul>
     </div>
     <div class="overlay" id="overlay"></div>
+    <!-- Header -->
     <header>
         <div class="header-top-row">
             <div class="hamburger-menu" id="hamburgerMenu">
@@ -1729,7 +1528,6 @@
                 <a href="about page home.html">About</a>
             </nav>
             <div class="header-action-icons">
-                <!-- Updated: no href, triggers modal -->
                 <a href="#" class="action-icon" id="accountIcon">
                     <i class="fas fa-user-circle"></i>
                 </a>
@@ -1739,666 +1537,647 @@
                 </button>
             </div>
         </div>
-      
     </header>
+    <!-- Slider -->
     <div id="slider-container"></div>
+    <!-- Main Content -->
     <main>
-         <div id="filterBar" class="filter-bar">
-    <div class="filter-bar-expanded" id="filterBarExpanded">
-        
-        <div class="search-row">
-            <div class="filter-search">
-                <div class="search-input-wrapper">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="filterSearch" placeholder="What are you looking for today?">
+        <!-- Filter Bar -->
+        <div id="filterBar" class="filter-bar">
+            <div class="filter-bar-expanded" id="filterBarExpanded">
+                <div class="search-row">
+                    <div class="filter-search">
+                        <div class="search-input-wrapper">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="filterSearch" placeholder="What are you looking for today?">
+                        </div>
+                    </div>
+                </div>
+                <div class="filters-grid">
+                    <div class="filter-group">
+                        <label><i class="fas fa-briefcase"></i> Businesses</label>
+                        <div class="select-wrapper">
+                            <select id="filterCategory">
+                                <option value="">All Types</option>
+                                <option value="home-businesses">Home Businesses</option>
+                                <option value="retail-shops">Retail Shops</option>
+                                <option value="wholesale">Wholesale</option>
+                                <option value="services">Services</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <label><i class="fas fa-tags"></i> Category</label>
+                        <div class="select-wrapper">
+                            <select id="filterType">
+                                <option value="">All Categories</option>
+                                <option value="sweet-shop">Sweet Shop</option>
+                                <option value="ice-cream">Ice Cream</option>
+                                <option value="butcher">Butcher</option>
+                                <option value="carpenter">Carpenter</option>
+                                <option value="catering">Catering</option>
+                                <option value="flooring">Flooring</option>
+                                <option value="ceilings">Ceilings</option>
+                                <option value="toilet-paper">Toilet Paper</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <label><i class="fas fa-map-marker-alt"></i> Location</label>
+                        <div class="select-wrapper">
+                            <select id="filterLocation">
+                                <option value="">All Locations</option>
+                                <option value="johannesburg">Johannesburg</option>
+                                <option value="polokwane">Polokwane</option>
+                                <option value="crown-mines">Crown Mines</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="filters-grid">
-            <div class="filter-group">
-                <label><i class="fas fa-briefcase"></i>Businesses</label>
-                <div class="select-wrapper">
-                    <select id="filterCategory">
-                        <option value="">All Types</option>
-                        <option value="home-businesses">Home Businesses</option>
-                        <option value="retail-shops">Retail Shops</option>
-                        <option value="wholesale">Wholesale</option>
-                        <option value="services">Services</option>
-                    </select>
+        <!-- Businesses Grid -->
+        <div class="businesses-grid">
+            <!-- Nothing Fancy -->
+            <div class="block" id="business-nothing-fancy" data-category="home-businesses" data-type="toilet-paper" data-location="johannesburg">
+                <a href="nothing fancy.html">
+                    <img src="images-logo/nothing-fancy-logo.jpg" alt="Nothing Fancy">
+                </a>
+                <div class="info">
+                    <h3>Nothing Fancy</h3>
+                    <p>Toilet Paper, 2-Ply Bales, 1-Ply, Kitchen Towels, Garage Rolls, etc..</p>
+                    <button class="open-popup" data-popup-target="nothingfancyPopup">Learn More</button>
+                    <div class="rating-section">
+                        <div class="rating-stars" data-business="nothing-fancy">
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                        </div>
+                        <div class="rating-count">0 ratings</div>
+                        <a href="#" class="view-comments-btn" data-target="nothing-fancy-comments">
+                            <i class="fas fa-comment"></i> View Comments
+                        </a>
+                    </div>
+                    <div class="comments-section" id="nothing-fancy-comments">
+                        <div class="comment-form">
+                            <textarea class="comment-input" placeholder="Share your experience..."></textarea>
+                            <button class="submit-comment-btn">Post Comment</button>
+                        </div>
+                        <div class="comments-list"></div>
+                    </div>
+                    <div class="share-section">
+                        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+                    </div>
                 </div>
             </div>
-
-            <div class="filter-group">
-                <label><i class="fas fa-tags"></i> Category</label>
-                <div class="select-wrapper">
-                    <select id="filterType">
-                        <option value="">All Categories</option>
-                        <option value="sweet-shop">Sweet Shop</option>
-                        <option value="ice-cream">Ice Cream</option>
-                        <option value="butcher">Butcher</option>
-                        <option value="carpenter">Carpenter</option>
-                        <option value="catering">Catering</option>
-                        <option value="flooring">Flooring</option>
-                        <option value="ceilings">Ceilings</option>
-                    </select>
+            <!-- Sweet Depot -->
+            <div class="block" id="business-sweet-depot" data-category="retail-shops" data-type="sweet-shop" data-location="johannesburg">
+                <a href="Sweet Depot website.html">
+                    <img src="images-logo/sweet-deport-logo.jpg" alt="Sweet Depot">
+                </a>
+                <div class="info">
+                    <h3>Sweet Depot</h3>
+                    <p>Chocolates, Candy, Biscuits, Drinks, Chewing Gum, Lollipops...</p>
+                    <button class="open-popup" data-popup-target="sweetdeportPopup">Learn More</button>
+                    <div class="rating-section">
+                        <div class="rating-stars" data-business="sweet-depot">
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                        </div>
+                        <div class="rating-count">0 ratings</div>
+                        <a href="#" class="view-comments-btn" data-target="sweet-depot-comments">
+                            <i class="fas fa-comment"></i> View Comments
+                        </a>
+                    </div>
+                    <div class="comments-section" id="sweet-depot-comments">
+                        <div class="comment-form">
+                            <textarea class="comment-input" placeholder="Share your experience..."></textarea>
+                            <button class="submit-comment-btn">Post Comment</button>
+                        </div>
+                        <div class="comments-list"></div>
+                    </div>
+                    <div class="share-section">
+                        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+                    </div>
                 </div>
             </div>
-
-            <div class="filter-group">
-                <label><i class="fas fa-map-marker-alt"></i> Location</label>
-                <div class="select-wrapper">
-                    <select id="filterLocation">
-                        <option value="">All Locations</option>
-                        <option value="johannesburg">Johannesburg</option>
-                        <option value="polokwane">Polokwane</option>
-                        <option value="crown-mines">Crown Mines</option>
-                    </select>
+            <!-- Sweet Mart -->
+            <div class="block" id="business-sweet-mart" data-category="retail-shops" data-type="sweet-shop" data-location="johannesburg">
+                <a href="Sweet Mart.html">
+                    <img src="images-logo/sweet-mart-logo.jpg" alt="Sweet Mart">
+                </a>
+                <div class="info">
+                    <h3>Sweet Mart</h3>
+                    <p>Chocolates, Candy, Biscuits, Drinks, Chewing Gum, Lollipops, Spreads</p>
+                    <button class="open-popup" data-popup-target="sweetmartPopup">Learn More</button>
+                    <div class="rating-section">
+                        <div class="rating-stars" data-business="sweet-mart">
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                        </div>
+                        <div class="rating-count">0 ratings</div>
+                        <a href="#" class="view-comments-btn" data-target="sweet-mart-comments">
+                            <i class="fas fa-comment"></i> View Comments
+                        </a>
+                    </div>
+                    <div class="comments-section" id="sweet-mart-comments">
+                        <div class="comment-form">
+                            <textarea class="comment-input" placeholder="Share your experience..."></textarea>
+                            <button class="submit-comment-btn">Post Comment</button>
+                        </div>
+                        <div class="comments-list"></div>
+                    </div>
+                    <div class="share-section">
+                        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Polar Ice Cream -->
+            <div class="block" id="business-polar-ice-cream" data-category="retail-shops" data-type="ice-cream" data-location="johannesburg">
+                <a href="Polar ice cream.html">
+                    <img src="images-logo/polar-ice-cream-logo.png" alt="Polar Ice Cream">
+                </a>
+                <div class="info">
+                    <h3>Polar Ice Cream</h3>
+                    <p>Ice cream, Stick Novelties, Frozen Desserts, Artisanal</p>
+                    <button class="open-popup" data-popup-target="polaricecreampopup">Learn More</button>
+                    <div class="rating-section">
+                        <div class="rating-stars" data-business="polar-ice-cream">
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                        </div>
+                        <div class="rating-count">0 ratings</div>
+                        <a href="#" class="view-comments-btn" data-target="polar-ice-cream-comments">
+                            <i class="fas fa-comment"></i> View Comments
+                        </a>
+                    </div>
+                    <div class="comments-section" id="polar-ice-cream-comments">
+                        <div class="comment-form">
+                            <textarea class="comment-input" placeholder="Share your experience..."></textarea>
+                            <button class="submit-comment-btn">Post Comment</button>
+                        </div>
+                        <div class="comments-list"></div>
+                    </div>
+                    <div class="share-section">
+                        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- BUTCHER BLOCK -->
+            <div class="block" id="business-butcher-block-wholesale" data-category="wholesale" data-type="butcher" data-location="johannesburg">
+                <a href="butcher-shop.html">
+                    <img src="images-logo/butcherblock-logo.jpg" alt="Butcher Block">
+                </a>
+                <div class="info">
+                    <h3>BUTCHER BLOCK</h3>
+                    <p>Wholesale meat supplier for retailers and foodservice</p>
+                    <button class="open-popup" data-popup-target="africacashncarryPopup">Learn More</button>
+                    <div class="rating-section">
+                        <div class="rating-stars" data-business="butcher-block-wholesale">
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                        </div>
+                        <div class="rating-count">0 ratings</div>
+                        <a href="#" class="view-comments-btn" data-target="butcher-block-wholesale-comments">
+                            <i class="fas fa-comment"></i> View Comments
+                        </a>
+                    </div>
+                    <div class="comments-section" id="butcher-block-wholesale-comments">
+                        <div class="comment-form">
+                            <textarea class="comment-input" placeholder="Share your experience..."></textarea>
+                            <button class="submit-comment-btn">Post Comment</button>
+                        </div>
+                        <div class="comments-list"></div>
+                    </div>
+                    <div class="share-section">
+                        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Devland Cash & Carry -->
+            <div class="block" id="business-devland-cash-carry" data-category="wholesale" data-type="general" data-location="johannesburg">
+                <a href="Sweet Depot website.html">
+                    <img src="images-logo/devland-logo.jpg" alt="Devland Cash & Carry">
+                </a>
+                <div class="info">
+                    <h3>Devland Cash & Carry</h3>
+                    <p>Bulk FMCG, groceries, and household goods for retailers</p>
+                    <button class="open-popup" data-popup-target="devlandcash&carryPopup">Learn More</button>
+                    <div class="rating-section">
+                        <div class="rating-stars" data-business="devland-cash-carry">
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                        </div>
+                        <div class="rating-count">0 ratings</div>
+                        <a href="#" class="view-comments-btn" data-target="devland-cash-carry-comments">
+                            <i class="fas fa-comment"></i> View Comments
+                        </a>
+                    </div>
+                    <div class="comments-section" id="devland-cash-carry-comments">
+                        <div class="comment-form">
+                            <textarea class="comment-input" placeholder="Share your experience..."></textarea>
+                            <button class="submit-comment-btn">Post Comment</button>
+                        </div>
+                        <div class="comments-list"></div>
+                    </div>
+                    <div class="share-section">
+                        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Continental Cash & Carry -->
+            <div class="block" id="business-continental-cash-carry" data-category="wholesale" data-type="general" data-location="johannesburg">
+                <a href="Sweet Mart.html">
+                    <img src="images-logo/continental-logo.jpg" alt="Continental Cash & Carry">
+                </a>
+                <div class="info">
+                    <h3>Continental Cash & Carry</h3>
+                    <p>Wholesale supplier for independent retailers since 2012</p>
+                    <button class="open-popup" data-popup-target="continentalcash&carryPopup">Learn More</button>
+                    <div class="rating-section">
+                        <div class="rating-stars" data-business="continental-cash-carry">
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                        </div>
+                        <div class="rating-count">0 ratings</div>
+                        <a href="#" class="view-comments-btn" data-target="continental-cash-carry-comments">
+                            <i class="fas fa-comment"></i> View Comments
+                        </a>
+                    </div>
+                    <div class="comments-section" id="continental-cash-carry-comments">
+                        <div class="comment-form">
+                            <textarea class="comment-input" placeholder="Share your experience..."></textarea>
+                            <button class="submit-comment-btn">Post Comment</button>
+                        </div>
+                        <div class="comments-list"></div>
+                    </div>
+                    <div class="share-section">
+                        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Jumbo Cash & Carry -->
+            <div class="block" id="business-jumbo-cash-carry" data-category="wholesale" data-type="general" data-location="johannesburg">
+                <a href="Polar ice cream.html">
+                    <img src="images-logo/jumbo-logo.jpg" alt="Jumbo Cash & Carry">
+                </a>
+                <div class="info">
+                    <h3>Jumbo Cash & Carry</h3>
+                    <p>Massmart-owned wholesaler for traders and small businesses</p>
+                    <button class="open-popup" data-popup-target="jumbocash&carryPopup">Learn More</button>
+                    <div class="rating-section">
+                        <div class="rating-stars" data-business="jumbo-cash-carry">
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                        </div>
+                        <div class="rating-count">0 ratings</div>
+                        <a href="#" class="view-comments-btn" data-target="jumbo-cash-carry-comments">
+                            <i class="fas fa-comment"></i> View Comments
+                        </a>
+                    </div>
+                    <div class="comments-section" id="jumbo-cash-carry-comments">
+                        <div class="comment-form">
+                            <textarea class="comment-input" placeholder="Share your experience..."></textarea>
+                            <button class="submit-comment-btn">Post Comment</button>
+                        </div>
+                        <div class="comments-list"></div>
+                    </div>
+                    <div class="share-section">
+                        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
-        
-    </div>
-</div>
+
+        <!-- Services Section -->
+        <div class="section-header-container">
+            <h2 class="section-title" id="services">Services</h2>
+        </div>
+        <div class="freelancer-grid">
+            <!-- BUTCHER BLOCK Service -->
+            <div class="freelancer-card" id="service-butcher-block" data-category="services" data-type="catering" data-location="johannesburg">
+                <div class="card-background" style="background-image: url('images-logo/butcherblock-long.jpg');"></div>
+                <div class="profile-container">
+                    <img src="images-logo/butcherblock-logo.jpg" alt="BUTCHER BLOCK" class="profile-picture">
+                </div>
+                <div class="card-content">
+                    <h3>BUTCHER BLOCK</h3>
+                    <p>FOODSERVICE CATERING EQUIPMENT</p>
+                    <div class="contact-buttons">
+                        <a href="tel:+27615023930" class="contact-btn btn-call"><i class="fas fa-phone"></i> Call</a>
+                        <a href="https://wa.me/27615023930?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*..." target="_blank" class="contact-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    </div>
+                    <div class="rating-section">
+                        <div class="rating-stars" data-service="butcher-block">
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                        </div>
+                        <div class="rating-count">0 ratings</div>
+                        <a href="#" class="view-comments-btn" data-target="butcher-block-comments">
+                            <i class="fas fa-comment"></i> View Comments
+                        </a>
+                    </div>
+                    <div class="comments-section" id="butcher-block-comments">
+                        <div class="comment-form">
+                            <textarea class="comment-input" placeholder="Share your experience..."></textarea>
+                            <button class="submit-comment-btn">Post Comment</button>
+                        </div>
+                        <div class="comments-list"></div>
+                    </div>
+                    <div class="share-section">
+                        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
             </div>
-        </section>
-      
-            
-      <!-- === ALL BUSINESSES & SERVICES IN ONE CONTAINER === -->
-<div class="businesses-grid">
-  <!-- Nothing Fancy -->
-  <div class="block" id="business-nothing-fancy" data-category="home-businesses" data-type="toilet-paper" data-location="johannesburg">
-    <a href="nothing fancy.html">
-      <img src="images-logo/nothing-fancy-logo.jpg" alt="Nothing Fancy">
-    </a>
-    <div class="info">
-      <h3>Nothing Fancy</h3>
-      <p>Toilet Paper, 2-Ply Bales, 1-Ply, Kitchen Towels, Garage Rolls, etc..</p>
-      <button class="open-popup" data-popup-target="broadwaysweetsPopup">Learn More</button>
-      <!-- Rating -->
-      <div class="rating-section">
-        <div class="rating-stars" data-business="nothing-fancy">
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
+            <!-- Shafique Salim - Carpenter -->
+            <div class="freelancer-card" id="service-shafique-salim" data-category="services" data-type="carpenter" data-location="johannesburg">
+                <div class="card-background" style="background-image: url('image-services/Shafique Salim-background.jpg');"></div>
+                <div class="profile-container">
+                    <img src="image-services/Shafique Salim.jpg" alt="Shafique Salim" class="profile-picture">
+                </div>
+                <div class="card-content">
+                    <h3>Shafique Salim</h3>
+                    <p>Carpenter</p>
+                    <div class="contact-buttons">
+                        <a href="tel:+27826774402" class="contact-btn btn-call"><i class="fas fa-phone"></i> Call</a>
+                        <a href="https://wa.me/27826774402?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*..." target="_blank" class="contact-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    </div>
+                    <div class="rating-section">
+                        <div class="rating-stars" data-service="shafique-salim">
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                        </div>
+                        <div class="rating-count">0 ratings</div>
+                        <a href="#" class="view-comments-btn" data-target="shafique-salim-comments">
+                            <i class="fas fa-comment"></i> View Comments
+                        </a>
+                    </div>
+                    <div class="comments-section" id="shafique-salim-comments">
+                        <div class="comment-form">
+                            <textarea class="comment-input" placeholder="Share your experience..."></textarea>
+                            <button class="submit-comment-btn">Post Comment</button>
+                        </div>
+                        <div class="comments-list"></div>
+                    </div>
+                    <div class="share-section">
+                        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Rahima & Zainab - Catering -->
+            <div class="freelancer-card" id="service-rahima-zainab" data-category="services" data-type="catering" data-location="johannesburg">
+                <div class="card-background" style="background-image: url('image-services/Exquisite-catering- background.jpg');"></div>
+                <div class="profile-container">
+                    <img src="image-services/Exquisite-catering.jpg" alt="Rahima & Zainab" class="profile-picture">
+                </div>
+                <div class="card-content">
+                    <h3>Rahima & Zainab</h3>
+                    <p>Customised Wedding & Event, Event Design, Floral Design</p>
+                    <div class="contact-buttons">
+                        <a href="tel:+27829737700" class="contact-btn btn-call"><i class="fas fa-phone"></i> Call</a>
+                        <a href="https://wa.me/27829737700?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*..." target="_blank" class="contact-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    </div>
+                    <div class="rating-section">
+                        <div class="rating-stars" data-service="rahima-zainab">
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                        </div>
+                        <div class="rating-count">0 ratings</div>
+                        <a href="#" class="view-comments-btn" data-target="rahima-zainab-comments">
+                            <i class="fas fa-comment"></i> View Comments
+                        </a>
+                    </div>
+                    <div class="comments-section" id="rahima-zainab-comments">
+                        <div class="comment-form">
+                            <textarea class="comment-input" placeholder="Share your experience..."></textarea>
+                            <button class="submit-comment-btn">Post Comment</button>
+                        </div>
+                        <div class="comments-list"></div>
+                    </div>
+                    <div class="share-section">
+                        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Melody - Flooring -->
+            <div class="freelancer-card" id="service-melody" data-category="services" data-type="flooring" data-location="johannesburg">
+                <div class="card-background" style="background-image: url('image-services/melody-background.jpg');"></div>
+                <div class="profile-container">
+                    <img src="https://placehold.co/100x100/9b59b6/ffffff?text=DK" alt="Melody" class="profile-picture">
+                </div>
+                <div class="card-content">
+                    <h3>Melody</h3>
+                    <p>Wooden Floors, Sanding and Sealing</p>
+                    <div class="contact-buttons">
+                        <a href="tel:+27783737005" class="contact-btn btn-call"><i class="fas fa-phone"></i> Call</a>
+                        <a href="https://wa.me/27783737005?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*..." target="_blank" class="contact-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    </div>
+                    <div class="rating-section">
+                        <div class="rating-stars" data-service="melody">
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                        </div>
+                        <div class="rating-count">0 ratings</div>
+                        <a href="#" class="view-comments-btn" data-target="melody-comments">
+                            <i class="fas fa-comment"></i> View Comments
+                        </a>
+                    </div>
+                    <div class="comments-section" id="melody-comments">
+                        <div class="comment-form">
+                            <textarea class="comment-input" placeholder="Share your experience..."></textarea>
+                            <button class="submit-comment-btn">Post Comment</button>
+                        </div>
+                        <div class="comments-list"></div>
+                    </div>
+                    <div class="share-section">
+                        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Samson - Ceilings -->
+            <div class="freelancer-card" id="service-samson" data-category="services" data-type="ceilings" data-location="johannesburg">
+                <div class="card-background" style="background-image: url('image-services/melody-background.jpg');"></div>
+                <div class="profile-container">
+                    <img src="https://placehold.co/100x100/9b59b6/ffffff?text=DK" alt="Samson" class="profile-picture">
+                </div>
+                <div class="card-content">
+                    <h3>Samson</h3>
+                    <p>Ceilings</p>
+                    <div class="contact-buttons">
+                        <a href="tel:+27826254431" class="contact-btn btn-call"><i class="fas fa-phone"></i> Call</a>
+                        <a href="https://wa.me/27826254431?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*..." target="_blank" class="contact-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    </div>
+                    <div class="rating-section">
+                        <div class="rating-stars" data-service="samson">
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                        </div>
+                        <div class="rating-count">0 ratings</div>
+                        <a href="#" class="view-comments-btn" data-target="samson-comments">
+                            <i class="fas fa-comment"></i> View Comments
+                        </a>
+                    </div>
+                    <div class="comments-section" id="samson-comments">
+                        <div class="comment-form">
+                            <textarea class="comment-input" placeholder="Share your experience..."></textarea>
+                            <button class="submit-comment-btn">Post Comment</button>
+                        </div>
+                        <div class="comments-list"></div>
+                    </div>
+                    <div class="share-section">
+                        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Robert - Wood and Floor -->
+            <div class="freelancer-card" id="service-robert" data-category="services" data-type="flooring" data-location="johannesburg">
+                <div class="card-background" style="background-image: url('image-services/melody-background.jpg');"></div>
+                <div class="profile-container">
+                    <img src="https://placehold.co/100x100/9b59b6/ffffff?text=DK" alt="Robert" class="profile-picture">
+                </div>
+                <div class="card-content">
+                    <h3>Robert</h3>
+                    <p>Wood and Floor</p>
+                    <div class="contact-buttons">
+                        <a href="tel:+27710450760" class="contact-btn btn-call"><i class="fas fa-phone"></i> Call</a>
+                        <a href="https://wa.me/27710450760?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*..." target="_blank" class="contact-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    </div>
+                    <div class="rating-section">
+                        <div class="rating-stars" data-service="robert">
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                        </div>
+                        <div class="rating-count">0 ratings</div>
+                        <a href="#" class="view-comments-btn" data-target="robert-comments">
+                            <i class="fas fa-comment"></i> View Comments
+                        </a>
+                    </div>
+                    <div class="comments-section" id="robert-comments">
+                        <div class="comment-form">
+                            <textarea class="comment-input" placeholder="Share your experience..."></textarea>
+                            <button class="submit-comment-btn">Post Comment</button>
+                        </div>
+                        <div class="comments-list"></div>
+                    </div>
+                    <div class="share-section">
+                        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Duncan - Flooring Specialist -->
+            <div class="freelancer-card" id="service-duncan" data-category="services" data-type="flooring" data-location="johannesburg">
+                <div class="card-background" style="background-image: url('image-services/melody-background.jpg');"></div>
+                <div class="profile-container">
+                    <img src="https://placehold.co/100x100/9b59b6/ffffff?text=DK" alt="Duncan" class="profile-picture">
+                </div>
+                <div class="card-content">
+                    <h3>Duncan</h3>
+                    <p>laying and sanding Wood floors, laying of laminate floors and skirting</p>
+                    <div class="contact-buttons">
+                        <a href="tel:+27633817445" class="contact-btn btn-call"><i class="fas fa-phone"></i> Call</a>
+                        <a href="https://wa.me/27633817445?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*..." target="_blank" class="contact-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    </div>
+                    <div class="rating-section">
+                        <div class="rating-stars" data-service="duncan">
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                        </div>
+                        <div class="rating-count">0 ratings</div>
+                        <a href="#" class="view-comments-btn" data-target="duncan-comments">
+                            <i class="fas fa-comment"></i> View Comments
+                        </a>
+                    </div>
+                    <div class="comments-section" id="duncan-comments">
+                        <div class="comment-form">
+                            <textarea class="comment-input" placeholder="Share your experience..."></textarea>
+                            <button class="submit-comment-btn">Post Comment</button>
+                        </div>
+                        <div class="comments-list"></div>
+                    </div>
+                    <div class="share-section">
+                        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="rating-count">0 ratings</div>
-        <a href="#" class="view-comments-btn" data-target="nothing-fancy-comments">
-          <i class="fas fa-comment"></i> View Comments
-        </a>
-      </div>
-      <div class="comments-section" id="nothing-fancy-comments">
-        <div class="comment-form">
-          <textarea class="comment-input" placeholder="Share your experience..."></textarea>
-          <button class="submit-comment-btn">Post Comment</button>
-        </div>
-        <div class="comments-list"></div>
-      </div>
-      <div class="share-section">
-        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Sweet Depot -->
-  <div class="block" id="business-sweet-depot" data-category="retail-shops" data-type="sweet-shop" data-location="johannesburg">
-    <a href="Sweet Depot website.html">
-      <img src="images-logo/sweet-deport-logo.jpg" alt="Sweet Depot">
-    </a>
-    <div class="info">
-      <h3>Sweet Depot</h3>
-      <p>Chocolates, Candy, Biscuits, Drinks, Chewing Gum, Lollipops...</p>
-      <button class="open-popup" data-popup-target="sweetdeportPopup">Learn More</button>
-      <div class="rating-section">
-        <div class="rating-stars" data-business="sweet-depot">
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-        </div>
-        <div class="rating-count">0 ratings</div>
-        <a href="#" class="view-comments-btn" data-target="sweet-depot-comments">
-          <i class="fas fa-comment"></i> View Comments
-        </a>
-      </div>
-      <div class="comments-section" id="sweet-depot-comments">
-        <div class="comment-form">
-          <textarea class="comment-input" placeholder="Share your experience..."></textarea>
-          <button class="submit-comment-btn">Post Comment</button>
-        </div>
-        <div class="comments-list"></div>
-      </div>
-      <div class="share-section">
-        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Sweet Mart -->
-  <div class="block" id="business-sweet-mart" data-category="retail-shops" data-type="sweet-shop" data-location="johannesburg">
-    <a href="Sweet Mart.html">
-      <img src="images-logo/sweet-mart-logo.jpg" alt="Sweet Mart">
-    </a>
-    <div class="info">
-      <h3>Sweet Mart</h3>
-      <p>Chocolates, Candy, Biscuits, Drinks, Chewing Gum, Lollipops, Spreads</p>
-      <button class="open-popup" data-popup-target="sweetmartPopup">Learn More</button>
-      <div class="rating-section">
-        <div class="rating-stars" data-business="sweet-mart">
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-        </div>
-        <div class="rating-count">0 ratings</div>
-        <a href="#" class="view-comments-btn" data-target="sweet-mart-comments">
-          <i class="fas fa-comment"></i> View Comments
-        </a>
-      </div>
-      <div class="comments-section" id="sweet-mart-comments">
-        <div class="comment-form">
-          <textarea class="comment-input" placeholder="Share your experience..."></textarea>
-          <button class="submit-comment-btn">Post Comment</button>
-        </div>
-        <div class="comments-list"></div>
-      </div>
-      <div class="share-section">
-        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Polar Ice Cream -->
-  <div class="block" id="business-polar-ice-cream" data-category="retail-shops" data-type="ice-cream" data-location="johannesburg">
-    <a href="Polar ice cream.html">
-      <img src="images-logo/polar-ice-cream-logo.png" alt="Polar Ice Cream">
-    </a>
-    <div class="info">
-      <h3>Polar Ice Cream</h3>
-      <p>Ice cream, Stick Novelties, Frozen Desserts, Artisanal</p>
-      <button class="open-popup" data-popup-target="polaricecreampopup">Learn More</button>
-      <div class="rating-section">
-        <div class="rating-stars" data-business="polar-ice-cream">
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-        </div>
-        <div class="rating-count">0 ratings</div>
-        <a href="#" class="view-comments-btn" data-target="polar-ice-cream-comments">
-          <i class="fas fa-comment"></i> View Comments
-        </a>
-      </div>
-      <div class="comments-section" id="polar-ice-cream-comments">
-        <div class="comment-form">
-          <textarea class="comment-input" placeholder="Share your experience..."></textarea>
-          <button class="submit-comment-btn">Post Comment</button>
-        </div>
-        <div class="comments-list"></div>
-      </div>
-      <div class="share-section">
-        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- BUTCHER BLOCK -->
-  <div class="block" id="business-butcher-block-wholesale" data-category="wholesale" data-type="butcher" data-location="johannesburg">
-    <a href="butcher-shop.html">
-      <img src="images-logo/butcherblock-logo.jpg" alt="Butcher Block">
-    </a>
-    <div class="info">
-      <h3>BUTCHER BLOCK</h3>
-      <p>Wholesale meat supplier for retailers and foodservice</p>
-      <button class="open-popup" data-popup-target="africacashncarryPopup">Learn More</button>
-      <div class="rating-section">
-        <div class="rating-stars" data-business="butcher-block-wholesale">
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-        </div>
-        <div class="rating-count">0 ratings</div>
-        <a href="#" class="view-comments-btn" data-target="butcher-block-wholesale-comments">
-          <i class="fas fa-comment"></i> View Comments
-        </a>
-      </div>
-      <div class="comments-section" id="butcher-block-wholesale-comments">
-        <div class="comment-form">
-          <textarea class="comment-input" placeholder="Share your experience..."></textarea>
-          <button class="submit-comment-btn">Post Comment</button>
-        </div>
-        <div class="comments-list"></div>
-      </div>
-      <div class="share-section">
-        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Devland Cash & Carry -->
-  <div class="block" id="business-devland-cash-carry" data-category="wholesale" data-type="general" data-location="johannesburg">
-    <a href="Sweet Depot website.html">
-      <img src="images-logo/devland-logo.jpg" alt="Devland Cash & Carry">
-    </a>
-    <div class="info">
-      <h3>Devland Cash & Carry</h3>
-      <p>Bulk FMCG, groceries, and household goods for retailers</p>
-      <button class="open-popup" data-popup-target="devlandcash&carryPopup">Learn More</button>
-      <div class="rating-section">
-        <div class="rating-stars" data-business="devland-cash-carry">
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-        </div>
-        <div class="rating-count">0 ratings</div>
-        <a href="#" class="view-comments-btn" data-target="devland-cash-carry-comments">
-          <i class="fas fa-comment"></i> View Comments
-        </a>
-      </div>
-      <div class="comments-section" id="devland-cash-carry-comments">
-        <div class="comment-form">
-          <textarea class="comment-input" placeholder="Share your experience..."></textarea>
-          <button class="submit-comment-btn">Post Comment</button>
-        </div>
-        <div class="comments-list"></div>
-      </div>
-      <div class="share-section">
-        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Continental Cash & Carry -->
-  <div class="block" id="business-continental-cash-carry" data-category="wholesale" data-type="general" data-location="johannesburg">
-    <a href="Sweet Mart.html">
-      <img src="images-logo/continental-logo.jpg" alt="Continental Cash & Carry">
-    </a>
-    <div class="info">
-      <h3>Continental Cash & Carry</h3>
-      <p>Wholesale supplier for independent retailers since 2012</p>
-      <button class="open-popup" data-popup-target="continentalcash&carryPopup">Learn More</button>
-      <div class="rating-section">
-        <div class="rating-stars" data-business="continental-cash-carry">
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-        </div>
-        <div class="rating-count">0 ratings</div>
-        <a href="#" class="view-comments-btn" data-target="continental-cash-carry-comments">
-          <i class="fas fa-comment"></i> View Comments
-        </a>
-      </div>
-      <div class="comments-section" id="continental-cash-carry-comments">
-        <div class="comment-form">
-          <textarea class="comment-input" placeholder="Share your experience..."></textarea>
-          <button class="submit-comment-btn">Post Comment</button>
-        </div>
-        <div class="comments-list"></div>
-      </div>
-      <div class="share-section">
-        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Jumbo Cash & Carry -->
-  <div class="block" id="business-jumbo-cash-carry" data-category="wholesale" data-type="general" data-location="johannesburg">
-    <a href="Polar ice cream.html">
-      <img src="images-logo/jumbo-logo.jpg" alt="Jumbo Cash & Carry">
-    </a>
-    <div class="info">
-      <h3>Jumbo Cash & Carry</h3>
-      <p>Massmart-owned wholesaler for traders and small businesses</p>
-      <button class="open-popup" data-popup-target="jumbocash&carryPopup">Learn More</button>
-      <div class="rating-section">
-        <div class="rating-stars" data-business="jumbo-cash-carry">
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-        </div>
-        <div class="rating-count">0 ratings</div>
-        <a href="#" class="view-comments-btn" data-target="jumbo-cash-carry-comments">
-          <i class="fas fa-comment"></i> View Comments
-        </a>
-      </div>
-      <div class="comments-section" id="jumbo-cash-carry-comments">
-        <div class="comment-form">
-          <textarea class="comment-input" placeholder="Share your experience..."></textarea>
-          <button class="submit-comment-btn">Post Comment</button>
-        </div>
-        <div class="comments-list"></div>
-      </div>
-      <div class="share-section">
-        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Services Section Header -->
-<div class="section-header-container">
-  <h2 class="section-title" id="services">Services</h2>
-</div>
-
-<!-- === SERVICES (Freelancers) === -->
-<div class="freelancer-grid">
-  <!-- BUTCHER BLOCK Service -->
-  <div class="freelancer-card" id="service-butcher-block" data-category="services" data-type="catering" data-location="johannesburg">
-    <div class="card-background" style="background-image: url('images-logo/butcherblock-long.jpg');"></div>
-    <div class="profile-container">
-      <img src="images-logo/butcherblock-logo.jpg" alt="BUTCHER BLOCK" class="profile-picture">
-    </div>
-    <div class="card-content">
-      <h3>BUTCHER BLOCK</h3>
-      <p>FOODSERVICE CATERING EQUIPMENT</p>
-      <div class="contact-buttons">
-        <a href="tel:+27615023930" class="contact-btn btn-call"><i class="fas fa-phone"></i> Call</a>
-        <a href="https://wa.me/27615023930?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*..." target="_blank" class="contact-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-      </div>
-      <div class="rating-section">
-        <div class="rating-stars" data-service="butcher-block">
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-        </div>
-        <div class="rating-count">0 ratings</div>
-        <a href="#" class="view-comments-btn" data-target="butcher-block-comments">
-          <i class="fas fa-comment"></i> View Comments
-        </a>
-      </div>
-      <div class="comments-section" id="butcher-block-comments">
-        <div class="comment-form">
-          <textarea class="comment-input" placeholder="Share your experience..."></textarea>
-          <button class="submit-comment-btn">Post Comment</button>
-        </div>
-        <div class="comments-list"></div>
-      </div>
-      <div class="share-section">
-        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Shafique Salim - Carpenter -->
-  <div class="freelancer-card" id="service-shafique-salim" data-category="services" data-type="carpenter" data-location="johannesburg">
-    <div class="card-background" style="background-image: url('image-services/Shafique Salim-background.jpg');"></div>
-    <div class="profile-container">
-      <img src="image-services/Shafique Salim.jpg" alt="Shafique Salim" class="profile-picture">
-    </div>
-    <div class="card-content">
-      <h3>Shafique Salim</h3>
-      <p>Carpenter</p>
-      <div class="contact-buttons">
-        <a href="tel:+27826774402" class="contact-btn btn-call"><i class="fas fa-phone"></i> Call</a>
-        <a href="https://wa.me/27826774402?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*..." target="_blank" class="contact-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-      </div>
-      <div class="rating-section">
-        <div class="rating-stars" data-service="shafique-salim">
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-        </div>
-        <div class="rating-count">0 ratings</div>
-        <a href="#" class="view-comments-btn" data-target="shafique-salim-comments">
-          <i class="fas fa-comment"></i> View Comments
-        </a>
-      </div>
-      <div class="comments-section" id="shafique-salim-comments">
-        <div class="comment-form">
-          <textarea class="comment-input" placeholder="Share your experience..."></textarea>
-          <button class="submit-comment-btn">Post Comment</button>
-        </div>
-        <div class="comments-list"></div>
-      </div>
-      <div class="share-section">
-        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Rahima & Zainab - Catering -->
-  <div class="freelancer-card" id="service-rahima-zainab" data-category="services" data-type="catering" data-location="johannesburg">
-    <div class="card-background" style="background-image: url('image-services/Exquisite-catering- background.jpg');"></div>
-    <div class="profile-container">
-      <img src="image-services/Exquisite-catering.jpg" alt="Rahima & Zainab" class="profile-picture">
-    </div>
-    <div class="card-content">
-      <h3>Rahima & Zainab</h3>
-      <p>Customised Wedding & Event, Event Design, Floral Design</p>
-      <div class="contact-buttons">
-        <a href="tel:+27829737700" class="contact-btn btn-call"><i class="fas fa-phone"></i> Call</a>
-        <a href="https://wa.me/27829737700?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*..." target="_blank" class="contact-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-      </div>
-      <div class="rating-section">
-        <div class="rating-stars" data-service="rahima-zainab">
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-        </div>
-        <div class="rating-count">0 ratings</div>
-        <a href="#" class="view-comments-btn" data-target="rahima-zainab-comments">
-          <i class="fas fa-comment"></i> View Comments
-        </a>
-      </div>
-      <div class="comments-section" id="rahima-zainab-comments">
-        <div class="comment-form">
-          <textarea class="comment-input" placeholder="Share your experience..."></textarea>
-          <button class="submit-comment-btn">Post Comment</button>
-        </div>
-        <div class="comments-list"></div>
-      </div>
-      <div class="share-section">
-        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Melody - Flooring -->
-  <div class="freelancer-card" id="service-melody" data-category="services" data-type="flooring" data-location="johannesburg">
-    <div class="card-background" style="background-image: url('image-services/melody-background.jpg');"></div>
-    <div class="profile-container">
-      <img src="https://placehold.co/100x100/9b59b6/ffffff?text=DK" alt="Melody" class="profile-picture">
-    </div>
-    <div class="card-content">
-      <h3>Melody</h3>
-      <p>Wooden Floors, Sanding and Sealing</p>
-      <div class="contact-buttons">
-        <a href="tel:+27783737005" class="contact-btn btn-call"><i class="fas fa-phone"></i> Call</a>
-        <a href="https://wa.me/27783737005?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*..." target="_blank" class="contact-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-      </div>
-      <div class="rating-section">
-        <div class="rating-stars" data-service="melody">
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-        </div>
-        <div class="rating-count">0 ratings</div>
-        <a href="#" class="view-comments-btn" data-target="melody-comments">
-          <i class="fas fa-comment"></i> View Comments
-        </a>
-      </div>
-      <div class="comments-section" id="melody-comments">
-        <div class="comment-form">
-          <textarea class="comment-input" placeholder="Share your experience..."></textarea>
-          <button class="submit-comment-btn">Post Comment</button>
-        </div>
-        <div class="comments-list"></div>
-      </div>
-      <div class="share-section">
-        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Samson - Ceilings -->
-  <div class="freelancer-card" id="service-samson" data-category="services" data-type="ceilings" data-location="johannesburg">
-    <div class="card-background" style="background-image: url('image-services/melody-background.jpg');"></div>
-    <div class="profile-container">
-      <img src="https://placehold.co/100x100/9b59b6/ffffff?text=DK" alt="Samson" class="profile-picture">
-    </div>
-    <div class="card-content">
-      <h3>Samson</h3>
-      <p>Ceilings</p>
-      <div class="contact-buttons">
-        <a href="tel:+27826254431" class="contact-btn btn-call"><i class="fas fa-phone"></i> Call</a>
-        <a href="https://wa.me/27826254431?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*..." target="_blank" class="contact-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-      </div>
-      <div class="rating-section">
-        <div class="rating-stars" data-service="samson">
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-        </div>
-        <div class="rating-count">0 ratings</div>
-        <a href="#" class="view-comments-btn" data-target="samson-comments">
-          <i class="fas fa-comment"></i> View Comments
-        </a>
-      </div>
-      <div class="comments-section" id="samson-comments">
-        <div class="comment-form">
-          <textarea class="comment-input" placeholder="Share your experience..."></textarea>
-          <button class="submit-comment-btn">Post Comment</button>
-        </div>
-        <div class="comments-list"></div>
-      </div>
-      <div class="share-section">
-        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Robert - Wood and Floor -->
-  <div class="freelancer-card" id="service-robert" data-category="services" data-type="flooring" data-location="johannesburg">
-    <div class="card-background" style="background-image: url('image-services/melody-background.jpg');"></div>
-    <div class="profile-container">
-      <img src="https://placehold.co/100x100/9b59b6/ffffff?text=DK" alt="Robert" class="profile-picture">
-    </div>
-    <div class="card-content">
-      <h3>Robert</h3>
-      <p>Wood and Floor</p>
-      <div class="contact-buttons">
-        <a href="tel:+27710450760" class="contact-btn btn-call"><i class="fas fa-phone"></i> Call</a>
-        <a href="https://wa.me/27710450760?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*..." target="_blank" class="contact-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-      </div>
-      <div class="rating-section">
-        <div class="rating-stars" data-service="robert">
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-        </div>
-        <div class="rating-count">0 ratings</div>
-        <a href="#" class="view-comments-btn" data-target="robert-comments">
-          <i class="fas fa-comment"></i> View Comments
-        </a>
-      </div>
-      <div class="comments-section" id="robert-comments">
-        <div class="comment-form">
-          <textarea class="comment-input" placeholder="Share your experience..."></textarea>
-          <button class="submit-comment-btn">Post Comment</button>
-        </div>
-        <div class="comments-list"></div>
-      </div>
-      <div class="share-section">
-        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Duncan - Flooring Specialist -->
-  <div class="freelancer-card" id="service-duncan" data-category="services" data-type="flooring" data-location="johannesburg">
-    <div class="card-background" style="background-image: url('image-services/melody-background.jpg');"></div>
-    <div class="profile-container">
-      <img src="https://placehold.co/100x100/9b59b6/ffffff?text=DK" alt="Duncan" class="profile-picture">
-    </div>
-    <div class="card-content">
-      <h3>Duncan</h3>
-      <p>laying and sanding Wood floors, laying of laminate floors and skirting</p>
-      <div class="contact-buttons">
-        <a href="tel:+27633817445" class="contact-btn btn-call"><i class="fas fa-phone"></i> Call</a>
-        <a href="https://wa.me/27633817445?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*..." target="_blank" class="contact-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-      </div>
-      <div class="rating-section">
-        <div class="rating-stars" data-service="duncan">
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-          <i class="far fa-star star"></i>
-        </div>
-        <div class="rating-count">0 ratings</div>
-        <a href="#" class="view-comments-btn" data-target="duncan-comments">
-          <i class="fas fa-comment"></i> View Comments
-        </a>
-      </div>
-      <div class="comments-section" id="duncan-comments">
-        <div class="comment-form">
-          <textarea class="comment-input" placeholder="Share your experience..."></textarea>
-          <button class="submit-comment-btn">Post Comment</button>
-        </div>
-        <div class="comments-list"></div>
-      </div>
-      <div class="share-section">
-        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
-      </div>
-    </div>
-  </div>
-</div>
-        </section>
     </main>
+
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-logo">
@@ -2435,13 +2214,15 @@
                 <h4>Contact</h4>
                 <ul>
                     <li><a href="#"><i class="fas fa-phone"></i> (27) 64 922 0145</a></li>
-                    <li><a href="#"><i class="fas fa-envelope"></i> hivetimes@gmail.com</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i> hivetimes.co.za@gmail.com</a></li>
                     <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 9am-5pm</a></li>
                 </ul>
             </div>
         </div>
         <p class="footer-bottom">©  Hive Times. Crafted with <i class="fas fa-heart"></i> for the community.</p>
     </footer>
+
+    <!-- Info Popup -->
     <div id="infoPopup" class="popup">
         <div class="popup-content">
             <span class="close-button" id="closeInfoPopup">&times;</span>
@@ -2449,7 +2230,8 @@
             <p id="popupText"></p>
         </div>
     </div>
-    <!-- SHOPPING CART MODAL -->
+
+    <!-- Cart Modal -->
     <div class="cart-modal-overlay">
         <div class="cart-modal">
             <h3 class="cart-modal-title"><i class="fas fa-shopping-cart"></i> Your Shopping Cart</h3>
@@ -2461,48 +2243,65 @@
             <button class="close-cart-btn" onclick="closeCartModal()">Continue Shopping</button>
         </div>
     </div>
+
+    <!-- Contact Widget -->
     <div class="advanced-contact-widget">
         <button class="main-contact-button" id="toggle-contact-buttons" aria-label="Open contact options">
             <i class="fas fa-headset"></i>
         </button>
         <div class="contact-links-container" id="contact-links-container">
-            <a href="https://wa.me/+27649220145?text=Hello%2C%20I%20have%20an%20inquiry%20from%20Hive%20Times%20website." 
-               target="_blank" 
-               class="contact-link whatsapp-link"
-               aria-label="Chat with us on WhatsApp">
+            <a href="https://wa.me/+27649220145?text=Hello%2C%20I%20have%20an%20inquiry%20from%20Hive%20Times%20website." target="_blank" class="contact-link whatsapp-link" aria-label="Chat with us on WhatsApp">
                 <i class="fab fa-whatsapp"></i>
                 <span class="tooltip">WhatsApp Chat</span>
             </a>
-            <a href="mailto:hivetimes.co.za@gmail.com?subject=Inquiry%20from%20Hive%20Times%20Website" 
-               target="_blank" 
-               class="contact-link email-link"
-               aria-label="Send us an Email">
+            <a href="mailto:hivetimes.co.za@gmail.com?subject=Inquiry%20from%20Hive%20Times%20Website" target="_blank" class="contact-link email-link" aria-label="Send us an Email">
                 <i class="fas fa-envelope"></i>
                 <span class="tooltip">Email Support</span>
             </a>
         </div>
     </div>
+
+    <!-- Back to Top -->
     <button class="back-to-top" id="backToTopBtn" aria-label="Back to top" style="display: none;"><i class="fas fa-chevron-up"></i></button>
+
+    <!-- Unified JavaScript -->
     <script>
-        // === EXISTING POPUP, SLIDER, SIDEBAR LOGIC (UNCHANGED) ===
+        // ==========================
+        // POPUP INFO
+        // ==========================
         const businessInfo = {
-            "broadwaysweetsPopup": { title: "Broadway Sweets", text: "Broadway Sweets offers a delightful selection of traditional Indian confections and mouth-watering savory snacks. Their commitment to quality and authentic recipes has made them a local favorite for generations." },
-            "sweetdeportPopup": { title: "Sweet Depot", text: "Sweet Depot is your international candy and dessert headquarters. They stock a massive variety of hard-to-find international treats alongside classic local favorites. Perfect for stocking up for parties or a quick sugar fix." },
-            "sweetmartPopup": { title: "Sweet Mart", text: "Sweet Mart is a classic institution, known for its extensive range of festive delights, traditional sweets, and ready-to-eat savory items. A perfect stop for all your holiday and everyday snack needs." },
-            "polaricecreampopup": { title: "Polar Ice Cream", text: "Polar Ice Cream specializes in homemade, artisanal ice creams and frozen desserts. From classic flavors to unique seasonal concoctions, they use only the freshest ingredients for a truly chilling treat." },
-            "sunrisesweetsPopup": { title: "Sunrise Sweets", text: "Sunrise Sweets specializes in morning confections and traditional breakfast pastries. Their menu features warm, freshly baked goods perfect for starting your day on a sweet note." },
-            "zandsweetsPopup": { title: "Z and S Sweets", text: "Z and S Sweets prides itself on crafting specialty sweets with generations of expertise. They focus on sophisticated, traditional methods to create desserts that are both elegant and delicious." },
-            "desertsweetsPopup": { title: "Desert Sweets", text: "Desert Sweets offers a unique culinary journey with confections inspired by rich Middle Eastern and Mediterranean flavors. Expect exotic spices, honey, and nuts in their traditional recipes." },
-            "royalsweetsPopup": { title: "Royal Sweets", text: "Royal Sweets defines luxury in confectionery. Using only premium, high-end ingredients, their desserts are crafted for special occasions and boast exquisite presentation and flavor complexity." },
-            "goldensweetsPopup": { title: "Golden Sweets", text: "Golden Sweets' signature line features exclusive desserts that often incorporate edible gold and the finest ingredients available. A truly decadent experience for the most discerning sweet tooth." },
-            "africacashncarryPopup": { title: "Africa Cash n Carry", text: "Africa Cash & Carry operates its main location at Cnr Crownwood Road & Coach Street, Crown Mines, Johannesburg, with a secondary branch in Polokwane. They sell vast volumes of Fast-Moving Consumer Goods (FMCG), including groceries, personal care products, household goods, and electronics, aimed at supplying independent retailers.." },
-            "devlandcash&carryPopup": { title: "Devland Cash & Carry", text: "Devland Cash & Carry is a leading wholesaler located in Johannesburg, South Africa. They offer a wide range of products including groceries, household items, and electronics, catering to both individual customers and businesses with competitive pricing and bulk purchase options." },
-            "continentalcash&carryPopup": { title: "Continental Cash & Carry", text: "Continental Cash & Carry is a South African wholesaler established in 2012, aiming to offer competitive prices and a wide range of goods in a single location for independent retailers and small businesses. It operates from Johannesburg, serving customers with weekly specials and catalogues for general merchandise and food products." },
-            "jumbocash&carryPopup": { title: "Jumbo Cash & Carry", text: "Jumbo Cash & Carry is a large South African wholesale business, owned by Massmart, that supplies general merchandise, cosmetics, and food products in bulk. It operates a low-cost, 'no frills' model primarily targeting independent traders and small commercial users across Southern Africa, serving the entry-to-middle market segments.." },
-            "pixelperfectPopup": { title: "Pixel Perfect Web Design", text: "Need a stunning website? Pixel Perfect specializes in creating modern, mobile-friendly websites for small to medium-sized businesses, focusing on speed, user experience, and SEO optimization." },
-            "creativecanvasPopup": { title: "Creative Canvas Studio", text: "Your one-stop shop for visual branding. From a fresh logo to a full brand identity kit, Creative Canvas delivers impactful and memorable graphic design solutions tailored to your market." },
-            "lensandlightPopup": { title: "Lens & Light Photography", text: "Professional visual storytelling for your business. Specializing in high-resolution product photography, corporate events, and compelling commercial visuals that drive sales and engagement." },
-            "contentcuratorPopup": { title: "The Content Curator", text: "Stop staring at a blank page! The Content Curator provides expertly written, engaging content, including website copy, articles, newsletters, and social media posts, to connect you with your audience." }
+            "nothingfancyPopup": {
+                title: "Nothing Fancy",
+                text: "Specializing in premium toilet paper, 2-ply bales, kitchen towels, and industrial-grade paper products for homes and businesses."
+            },
+            "sweetdeportPopup": {
+                title: "Sweet Depot",
+                text: "Sweet Depot is your international candy and dessert headquarters. They stock a massive variety of hard-to-find international treats alongside classic local favorites."
+            },
+            "sweetmartPopup": {
+                title: "Sweet Mart",
+                text: "Sweet Mart is a classic institution, known for its extensive range of festive delights, traditional sweets, and ready-to-eat savory items."
+            },
+            "polaricecreampopup": {
+                title: "Polar Ice Cream",
+                text: "Polar Ice Cream specializes in homemade, artisanal ice creams and frozen desserts made with the freshest ingredients."
+            },
+            "africacashncarryPopup": {
+                title: "Africa Cash n Carry",
+                text: "Africa Cash & Carry operates its main location at Cnr Crownwood Road & Coach Street, Crown Mines, Johannesburg..."
+            },
+            "devlandcash&carryPopup": {
+                title: "Devland Cash & Carry",
+                text: "Devland Cash & Carry is a leading wholesaler located in Johannesburg, South Africa..."
+            },
+            "continentalcash&carryPopup": {
+                title: "Continental Cash & Carry",
+                text: "Continental Cash & Carry is a South African wholesaler established in 2012..."
+            },
+            "jumbocash&carryPopup": {
+                title: "Jumbo Cash & Carry",
+                text: "Jumbo Cash & Carry is a large South African wholesale business, owned by Massmart..."
+            }
         };
         const popup = document.getElementById('infoPopup');
         const closeInfoPopup = document.getElementById('closeInfoPopup');
@@ -2515,6 +2314,8 @@
                 popupTitle.textContent = data.title;
                 popupText.textContent = data.text;
                 popup.style.display = 'flex';
+            } else {
+                console.warn(`No popup info for target: ${target}`);
             }
         }
         openPopupButtons.forEach(button => {
@@ -2528,126 +2329,10 @@
         window.addEventListener('click', (event) => {
             if (event.target === popup) popup.style.display = 'none';
         });
-        // ADVANCED SLIDER LOGIC
-       // ==== Advanced Responsive Slider ====
-const slider = document.getElementById('slider');
-const slides = Array.from(document.querySelectorAll('.slide'));
-const indicators = Array.from(document.querySelectorAll('.indicator'));
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
 
-let currentSlide = 3000;
-let slideInterval;
-const slideDuration = 5000;
-
-// Show specific slide
-function showSlide(index) {
-    slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-    });
-    indicators.forEach((ind, i) => {
-        ind.classList.toggle('active', i === index);
-    });
-    currentSlide = index;
-}
-
-// Navigation
-function nextSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-}
-
-function prevSlide() {
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    showSlide(currentSlide);
-}
-
-// Auto rotate
-function startAutoSlide() {
-    slideInterval = setInterval(nextSlide, slideDuration);
-}
-
-function resetAutoSlide() {
-    clearInterval(slideInterval);
-    startAutoSlide();
-}
-
-// Event listeners
-nextBtn.addEventListener('click', () => { nextSlide(); resetAutoSlide(); });
-prevBtn.addEventListener('click', () => { prevSlide(); resetAutoSlide(); });
-
-indicators.forEach((ind, idx) => {
-    ind.addEventListener('click', () => {
-        showSlide(idx);
-        resetAutoSlide();
-    });
-});
-
-// Keyboard support
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight') nextSlide();
-    if (e.key === 'ArrowLeft') prevSlide();
-});
-
-// Touch swipe (mobile)
-let touchStartX = 0;
-let touchEndX = 0;
-
-slider.addEventListener('touchstart', e => {
-    touchStartX = e.changedTouches[0].screenX;
-});
-
-slider.addEventListener('touchend', e => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-});
-
-function handleSwipe() {
-    const diff = touchStartX - touchEndX;
-    if (Math.abs(diff) > 50) {
-        if (diff > 0) nextSlide(); // swipe left → next
-        else prevSlide();           // swipe right → prev
-        resetAutoSlide();
-    }
-}
-
-// Pause on hover/focus
-slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
-slider.addEventListener('mouseleave', startAutoSlide);
-slider.addEventListener('focusin', () => clearInterval(slideInterval));
-slider.addEventListener('focusout', startAutoSlide);
-
-// Start!
-showSlide(0);
-startAutoSlide();
-        // Event listeners for buttons and indicators
-        nextBtn.addEventListener('click', () => {
-            nextSlide();
-            resetSlideInterval();
-        });
-        prevBtn.addEventListener('click', () => {
-            prevSlide();
-            resetSlideInterval();
-        });
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => {
-                showSlide(index);
-                resetSlideInterval();
-            });
-        });
-        // Auto-advance the slider
-        function startSlideInterval() {
-            slideInterval = setInterval(nextSlide, slideDuration);
-        }
-        function resetSlideInterval() {
-            clearInterval(slideInterval);
-            startSlideInterval();
-        }
-        startSlideInterval();
-        // Pause auto-advance on hover
-        slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
-        slider.addEventListener('mouseleave', startSlideInterval);
-        // Sidebar & scroll logic
+        // ==========================
+        // SIDEBAR & UI CONTROLS
+        // ==========================
         function closeSidebar() {
             document.getElementById('sidebar').classList.remove('active');
             document.getElementById('overlay').classList.remove('active');
@@ -2658,42 +2343,46 @@ startAutoSlide();
             const hamburger = document.getElementById('hamburgerMenu');
             const overlay = document.getElementById('overlay');
             const sidebarLinks = document.querySelectorAll('.sidebar-menu a');
-            hamburger?.addEventListener('click', () => {
-                document.getElementById('sidebar').classList.toggle('active');
-                overlay.classList.toggle('active');
-                hamburger.classList.toggle('active');
-                document.body.style.overflow = document.getElementById('sidebar').classList.contains('active') ? 'hidden' : '';
-            });
-            overlay?.addEventListener('click', closeSidebar);
+            if (hamburger) {
+                hamburger.addEventListener('click', () => {
+                    document.getElementById('sidebar').classList.toggle('active');
+                    overlay.classList.toggle('active');
+                    hamburger.classList.toggle('active');
+                    document.body.style.overflow = document.getElementById('sidebar').classList.contains('active') ? 'hidden' : '';
+                });
+            }
+            if (overlay) {
+                overlay.addEventListener('click', closeSidebar);
+            }
             sidebarLinks.forEach(link => link.addEventListener('click', closeSidebar));
-            const mobileSearch = document.getElementById('mobileSearchTrigger');
-            const searchInput = document.getElementById('mainSearchContainer')?.querySelector('input');
-            mobileSearch?.addEventListener('click', () => searchInput?.focus());
         });
+
+        // Back to Top
         const backToTopBtn = document.getElementById('backToTopBtn');
         window.onscroll = () => {
-            backToTopBtn.style.display = (window.scrollY > 300) ? "flex" : "none";
+            if (backToTopBtn) {
+                backToTopBtn.style.display = (window.scrollY > 300) ? "flex" : "none";
+            }
         };
-        backToTopBtn?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        if (backToTopBtn) {
+            backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        }
+
+        // Contact Widget
         const toggleBtn = document.getElementById('toggle-contact-buttons');
         const linksContainer = document.getElementById('contact-links-container');
-        toggleBtn?.addEventListener('click', () => {
-            linksContainer.classList.toggle('open');
-            toggleBtn.classList.toggle('is-open');
-        });
-        // =========================================================================
-        // === SHOPPING CART FUNCTIONALITY (FULLY INTEGRATED FROM BROADWAY SWEETS) ===
-        // =========================================================================
+        if (toggleBtn && linksContainer) {
+            toggleBtn.addEventListener('click', () => {
+                linksContainer.classList.toggle('open');
+                toggleBtn.classList.toggle('is-open');
+            });
+        }
+
+        // ==========================
+        // SHOPPING CART
+        // ==========================
         const cart = {
             items: [],
-            saveCart() {
-                try {
-                    const STORAGE_KEY = 'hivetimes_unified_cart_v3';
-                    this.updateCartDisplay();
-                } catch (e) {
-                    console.error('Error saving cart:', e);
-                }
-            },
             init() {
                 const stored = localStorage.getItem('hiveTimesCart');
                 if (stored) {
@@ -2704,6 +2393,14 @@ startAutoSlide();
                     }
                 }
                 this.updateCartDisplay();
+            },
+            saveCart() {
+                try {
+                    localStorage.setItem('hiveTimesCart', JSON.stringify(this.items));
+                    this.updateCartDisplay();
+                } catch (e) {
+                    console.error('Error saving cart:', e);
+                }
             },
             addToCart(product) {
                 const existing = this.items.find(item => item.id === product.id);
@@ -2778,676 +2475,267 @@ startAutoSlide();
             modal.classList.remove('active');
             setTimeout(() => document.querySelector('.cart-modal-overlay').style.display = 'none', 300);
         }
-        // Initialize cart on load
+
+        // ==========================
+        // AUTH MODAL
+        // ==========================
         document.addEventListener('DOMContentLoaded', () => {
+            const authModal = document.getElementById('authModal');
+            const closeAuthModal = document.getElementById('closeAuthModal');
+            const accountIcon = document.getElementById('accountIcon');
+            if (accountIcon) {
+                accountIcon.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    authModal.style.display = 'flex';
+                });
+            }
+            if (closeAuthModal) {
+                closeAuthModal.addEventListener('click', () => {
+                    authModal.style.display = 'none';
+                });
+            }
+            window.addEventListener('click', (e) => {
+                if (e.target === authModal) {
+                    authModal.style.display = 'none';
+                }
+            });
+            document.querySelectorAll('.auth-tab-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.auth-tab-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const tab = btn.getAttribute('data-tab');
+                    document.getElementById('signinForm').style.display = tab === 'signin' ? 'block' : 'none';
+                    document.getElementById('signupForm').style.display = tab === 'signup' ? 'block' : 'none';
+                });
+            });
+            document.getElementById('signinForm')?.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Sign in functionality would be handled here.');
+                authModal.style.display = 'none';
+            });
+            document.getElementById('signupForm')?.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Sign up functionality would be handled here.');
+                authModal.style.display = 'none';
+            });
+            // Initialize cart
             cart.init();
         });
-        // === AUTH MODAL LOGIC ===
-        const authModal = document.getElementById('authModal');
-        const closeAuthModal = document.getElementById('closeAuthModal');
-        const accountIcon = document.getElementById('accountIcon');
-        accountIcon.addEventListener('click', (e) => {
-            e.preventDefault();
-            authModal.style.display = 'flex';
-        });
-        closeAuthModal.addEventListener('click', () => {
-            authModal.style.display = 'none';
-        });
-        window.addEventListener('click', (e) => {
-            if (e.target === authModal) {
-                authModal.style.display = 'none';
-            }
-        });
-        // Tab switching
-        document.querySelectorAll('.auth-tab-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.auth-tab-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const tab = btn.getAttribute('data-tab');
-                document.getElementById('signinForm').style.display = tab === 'signin' ? 'block' : 'none';
-                document.getElementById('signupForm').style.display = tab === 'signup' ? 'block' : 'none';
-            });
-        });
-        // Optional: Form submission handling
-        document.getElementById('signinForm')?.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Sign in functionality would be handled here.');
-            authModal.style.display = 'none';
-        });
-        document.getElementById('signupForm')?.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Sign up functionality would be handled here.');
-            authModal.style.display = 'none';
-        });
+
+        // ==========================
+        // FILTER BAR LOGIC (SINGLE IMPLEMENTATION)
+        // ==========================
         document.addEventListener('DOMContentLoaded', () => {
-    const searchInput = document.getElementById('searchInput');
-    const allBlocks = document.querySelectorAll('.businesses-grid .block');
-    // Optional: map section IDs to category names
-    const sectionToCategory = {
-        'home-businesses': 'Home Business',
-        'retail-shops': 'Retail Shop',
-        'wholesale': 'Wholesale',
-        'services': 'Service'
-    };
-    function performSearch(query) {
-    const normalizedQuery = query.trim().toLowerCase();
-    const blocks = document.querySelectorAll('.businesses-grid .block, .freelancer-grid .freelancer-card');
-
-    blocks.forEach(block => {
-        let name = '', desc = '', category = '';
-
-        // For business blocks
-        if (block.classList.contains('block')) {
-            name = block.querySelector('h3')?.textContent.trim().toLowerCase() || '';
-            desc = block.querySelector('p')?.textContent.trim().toLowerCase() || '';
-            const section = block.closest('section');
-            const sectionId = section?.id || '';
-            category = (sectionToCategory[sectionId] || '').toLowerCase();
-        }
-        // For service/freelancer cards
-        else if (block.classList.contains('freelancer-card')) {
-            name = block.querySelector('h3')?.textContent.trim().toLowerCase() || '';
-            desc = block.querySelector('p')?.textContent.trim().toLowerCase() || '';
-            // All freelancer cards are in #services → "Service"
-            category = 'service';
-        }
-
-        const matches =
-            name.includes(normalizedQuery) ||
-            desc.includes(normalizedQuery) ||
-            category.includes(normalizedQuery) ||
-            normalizedQuery === '';
-
-        block.style.display = matches ? 'block' : 'none';
-    });
-
-    }
-    // Debounce to avoid excessive calls (optional but nice)
-    let timeout;
-    searchInput?.addEventListener('input', (e) => {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-            performSearch(e.target.value);
-        }, 300);
-    });
-});
-// === RATING, COMMENT & SHARE FUNCTIONALITY ===
-document.addEventListener('DOMContentLoaded', () => {
-    // Rating System
-    const allRatingStars = document.querySelectorAll('.rating-stars');
-    allRatingStars.forEach(ratingGroup => {
-        const stars = ratingGroup.querySelectorAll('.star');
-        const ratingCount = ratingGroup.parentElement.querySelector('.rating-count');
-        const businessId = ratingGroup.dataset.business || ratingGroup.dataset.service;
-        // Load saved ratings
-        const savedRating = localStorage.getItem(`rating_${businessId}`);
-        const savedComments = JSON.parse(localStorage.getItem(`comments_${businessId}`)) || [];
-        if (savedRating) {
-            const ratingValue = parseInt(savedRating);
-            updateStars(ratingGroup, ratingValue);
-            updateRatingCount(ratingCount, ratingValue, 1);
-        }
-        // Hover effect
-        stars.forEach((star, index) => {
-            star.addEventListener('mouseover', () => {
-                stars.forEach(s => s.classList.remove('hover'));
-                for (let i = 0; i <= index; i++) {
-                    stars[i].classList.add('hover');
+            const filterBar = document.getElementById('filterBar');
+            const filterCategory = document.getElementById('filterCategory');
+            const filterType = document.getElementById('filterType');
+            const filterLocation = document.getElementById('filterLocation');
+            const filterSearch = document.getElementById('filterSearch');
+            if (!filterBar || !filterCategory || !filterType || !filterLocation || !filterSearch) return;
+            let originalFilterBarTop = 0;
+            let isFixed = false;
+            function initFilterBarPosition() {
+                const rect = filterBar.getBoundingClientRect();
+                originalFilterBarTop = rect.top + window.scrollY;
+            }
+            function applyFilters() {
+                const searchTerm = filterSearch.value.trim().toLowerCase();
+                const category = filterCategory.value;
+                const type = filterType.value;
+                const location = filterLocation.value;
+                const cards = document.querySelectorAll('.businesses-grid .block, .freelancer-grid .freelancer-card');
+                cards.forEach(card => {
+                    const cardCategory = card.dataset.category || '';
+                    const cardType = card.dataset.type || '';
+                    const cardLocation = card.dataset.location || '';
+                    const name = card.querySelector('h3')?.textContent.trim().toLowerCase() || '';
+                    const desc = card.querySelector('p')?.textContent.trim().toLowerCase() || '';
+                    const matchesCategory = !category || cardCategory === category;
+                    const matchesType = !type || cardType.includes(type) || desc.includes(type);
+                    const matchesLocation = !location || cardLocation === location;
+                    const matchesSearch = !searchTerm || name.includes(searchTerm) || desc.includes(searchTerm);
+                    card.style.display = (matchesCategory && matchesType && matchesLocation && matchesSearch) ? 'block' : 'none';
+                });
+            }
+            function handleScroll() {
+                const scrollY = window.scrollY;
+                const shouldBeFixed = scrollY >= originalFilterBarTop - 90;
+                if (shouldBeFixed && !isFixed) {
+                    filterBar.classList.add('fixed');
+                    isFixed = true;
+                } else if (!shouldBeFixed && isFixed) {
+                    filterBar.classList.remove('fixed');
+                    isFixed = false;
                 }
+            }
+            [filterCategory, filterType, filterLocation, filterSearch].forEach(el => {
+                el.addEventListener('input', applyFilters);
             });
-            star.addEventListener('mouseout', () => {
-                stars.forEach(s => s.classList.remove('hover'));
+            window.addEventListener('scroll', handleScroll);
+            window.addEventListener('resize', initFilterBarPosition);
+            setTimeout(initFilterBarPosition, 300);
+            applyFilters(); // Initial filter
+        });
+
+        // ==========================
+        // RATING, COMMENTS & SHARE
+        // ==========================
+        document.addEventListener('DOMContentLoaded', () => {
+            // Rating
+            const allRatingStars = document.querySelectorAll('.rating-stars');
+            allRatingStars.forEach(ratingGroup => {
+                const stars = ratingGroup.querySelectorAll('.star');
+                const ratingCount = ratingGroup.parentElement.querySelector('.rating-count');
+                const businessId = ratingGroup.dataset.business || ratingGroup.dataset.service;
+                const savedRating = localStorage.getItem(`rating_${businessId}`);
                 if (savedRating) {
                     updateStars(ratingGroup, parseInt(savedRating));
+                    updateRatingCount(ratingCount, parseInt(savedRating), 1);
                 }
+                stars.forEach((star, index) => {
+                    star.addEventListener('mouseover', () => {
+                        stars.forEach(s => s.classList.remove('hover'));
+                        for (let i = 0; i <= index; i++) stars[i].classList.add('hover');
+                    });
+                    star.addEventListener('mouseout', () => {
+                        stars.forEach(s => s.classList.remove('hover'));
+                        if (savedRating) updateStars(ratingGroup, parseInt(savedRating));
+                    });
+                    star.addEventListener('click', () => {
+                        const ratingValue = index + 1;
+                        localStorage.setItem(`rating_${businessId}`, ratingValue.toString());
+                        updateStars(ratingGroup, ratingValue);
+                        updateRatingCount(ratingCount, ratingValue, 1);
+                        alert(`Thank you for rating ${ratingValue} star${ratingValue !== 1 ? 's' : ''}!`);
+                    });
+                });
             });
-            // Click to rate
-            star.addEventListener('click', () => {
-                const ratingValue = index + 1;
-                localStorage.setItem(`rating_${businessId}`, ratingValue.toString());
-                // Update UI
-                updateStars(ratingGroup, ratingValue);
-                // Update rating count (for demo purposes, we'll just show "1 rating")
-                updateRatingCount(ratingCount, ratingValue, 1);
-                alert(`Thank you for rating ${ratingValue} star${ratingValue !== 1 ? 's' : ''}!`);
+            // Comments toggle
+            document.querySelectorAll('.view-comments-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = button.getAttribute('data-target');
+                    const commentSection = document.getElementById(targetId);
+                    if (commentSection) {
+                        commentSection.classList.toggle('active');
+                        button.innerHTML = commentSection.classList.contains('active')
+                            ? '<i class="fas fa-angle-up"></i> Hide Comments'
+                            : '<i class="fas fa-comment"></i> View Comments';
+                    }
+                });
             });
-        });
-    });
-    
-    // View Comments Button Functionality
-    const viewCommentsButtons = document.querySelectorAll('.view-comments-btn');
-    viewCommentsButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = button.getAttribute('data-target');
-            const commentSection = document.getElementById(targetId);
-            
-            if (commentSection) {
-                commentSection.classList.toggle('active');
-                // Update button text based on state
-                const icon = button.querySelector('i');
-                if (commentSection.classList.contains('active')) {
-                    button.innerHTML = '<i class="fas fa-angle-up"></i> Hide Comments';
-                } else {
-                    button.innerHTML = '<i class="fas fa-comment"></i> View Comments';
-                }
-            }
-        });
-    });
-    
-    // Comment System
-    const allCommentForms = document.querySelectorAll('.comment-form');
-    allCommentForms.forEach(form => {
-        const textarea = form.querySelector('.comment-input');
-        const submitBtn = form.querySelector('.submit-comment-btn');
-        const commentsList = form.parentElement.querySelector('.comments-list');
-        const businessId = form.closest('.block')?.querySelector('.rating-stars')?.dataset.business || 
-                           form.closest('.freelancer-card')?.querySelector('.rating-stars')?.dataset.service;
-        
-        // Load saved comments
-        const savedComments = JSON.parse(localStorage.getItem(`comments_${businessId}`)) || [];
-        
-        // Display saved comments
-        displayComments(commentsList, savedComments);
-        
-        // Submit comment
-        submitBtn.addEventListener('click', () => {
-            const commentText = textarea.value.trim();
-            if (commentText) {
-                const now = new Date();
-                const comment = {
-                    id: Date.now(),
-                    author: 'Anonymous',
-                    date: now.toLocaleDateString(),
-                    text: commentText
-                };
-                
-                savedComments.unshift(comment); // Add to beginning
-                localStorage.setItem(`comments_${businessId}`, JSON.stringify(savedComments));
-                
-                // Update UI
+            // Comment submission
+            document.querySelectorAll('.comment-form').forEach(form => {
+                const textarea = form.querySelector('.comment-input');
+                const submitBtn = form.querySelector('.submit-comment-btn');
+                const commentsList = form.parentElement.querySelector('.comments-list');
+                const businessId = form.closest('.block')?.querySelector('.rating-stars')?.dataset.business ||
+                                   form.closest('.freelancer-card')?.querySelector('.rating-stars')?.dataset.service;
+                if (!businessId || !commentsList) return;
+                const savedComments = JSON.parse(localStorage.getItem(`comments_${businessId}`)) || [];
                 displayComments(commentsList, savedComments);
-                textarea.value = '';
-                alert('Thank you for your comment!');
-            }
+                submitBtn.addEventListener('click', () => {
+                    const text = textarea.value.trim();
+                    if (text) {
+                        const comment = {
+                            id: Date.now(),
+                            author: 'Anonymous',
+                            date: new Date().toLocaleDateString(),
+                            text
+                        };
+                        savedComments.unshift(comment);
+                        localStorage.setItem(`comments_${businessId}`, JSON.stringify(savedComments));
+                        displayComments(commentsList, savedComments);
+                        textarea.value = '';
+                        alert('Thank you for your comment!');
+                    }
+                });
+            });
+            // Share
+            document.querySelectorAll('.share-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const block = btn.closest('.block') || btn.closest('.freelancer-card');
+                    const name = block.querySelector('h3').textContent;
+                    const url = window.location.href;
+                    const msg = `Check out ${name} on Hive Times: ${url}`;
+                    if (btn.classList.contains('facebook')) {
+                        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(msg)}`, '_blank', 'width=600,height=400');
+                    } else if (btn.classList.contains('whatsapp')) {
+                        if (/Mobi|Android/i.test(navigator.userAgent)) {
+                            window.open(`whatsapp://send?text=${encodeURIComponent(msg)}`);
+                        } else {
+                            window.open(`https://web.whatsapp.com/send?text=${encodeURIComponent(msg)}`, '_blank');
+                        }
+                    } else if (btn.classList.contains('email')) {
+                        window.location.href = `mailto:?subject=Check out ${name}&body=${encodeURIComponent(msg)}`;
+                    }
+                    alert(`Sharing ${name}...`);
+                });
+            });
         });
-    });
-    
-    // Share Functionality
-    const allShareButtons = document.querySelectorAll('.share-btn');
-    allShareButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const shareType = btn.classList.contains('facebook') ? 'Facebook' :
-                            btn.classList.contains('whatsapp') ? 'WhatsApp' :
-                            'Email';
-                            
-            const businessBlock = btn.closest('.block') || btn.closest('.freelancer-card');
-            const businessName = businessBlock.querySelector('h3').textContent;
-            const businessDesc = businessBlock.querySelector('p').textContent;
-            
-            // Get current URL
-            const currentUrl = window.location.href;
-            const shareMessage = `Check out ${businessName} on Hive Times: ${currentUrl}`;
-            
-            // Handle different share types
-            if (shareType === 'Facebook') {
-                window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}&quote=${encodeURIComponent(shareMessage)}`, '_blank', 'width=600,height=400');
-            } else if (shareType === 'WhatsApp') {
-                if (/Mobi|Android/i.test(navigator.userAgent)) {
-                    // Mobile
-                    window.open(`whatsapp://send?text=${encodeURIComponent(shareMessage)}`);
+
+        // Helpers
+        function updateStars(ratingGroup, ratingValue) {
+            const stars = ratingGroup.querySelectorAll('.star');
+            stars.forEach((star, i) => {
+                if (i < ratingValue) {
+                    star.classList.add('selected', 'fas');
+                    star.classList.remove('far');
                 } else {
-                    // Desktop
-                    window.open(`https://web.whatsapp.com/send?text=${encodeURIComponent(shareMessage)}`, '_blank');
+                    star.classList.remove('selected', 'fas');
+                    star.classList.add('far');
                 }
-            } else if (shareType === 'Email') {
-                const mailtoLink = `mailto:?subject=Check out ${businessName} on Hive Times&body=${encodeURIComponent(shareMessage)}`;
-                window.location.href = mailtoLink;
-            }
-            
-            alert(`Sharing ${businessName} via ${shareType}...`);
-        });
-    });
-});
-
-// Helper functions for rating system
-function updateStars(ratingGroup, ratingValue) {
-    const stars = ratingGroup.querySelectorAll('.star');
-    stars.forEach((star, index) => {
-        if (index < ratingValue) {
-            star.classList.add('selected');
-            star.classList.remove('far');
-            star.classList.add('fas');
-        } else {
-            star.classList.remove('selected');
-            star.classList.add('far');
-            star.classList.remove('fas');
-        }
-    });
-}
-
-function updateRatingCount(ratingCountElement, ratingValue, numberOfRatings) {
-    const ratingText = numberOfRatings === 1 
-        ? `${numberOfRatings} rating` 
-        : `${numberOfRatings} ratings`;
-    ratingCountElement.textContent = ratingText;
-}
-
-function displayComments(commentsList, comments) {
-    if (comments.length === 0) {
-        commentsList.innerHTML = '<div class="comment-item"><div class="comment-text">No comments yet. Be the first to comment!</div></div>';
-        return;
-    }
-    
-    commentsList.innerHTML = comments.map(comment => `
-        <div class="comment-item">
-            <div class="comment-meta">
-                <span class="comment-author">${comment.author}</span>
-                <span class="comment-date">${comment.date}</span>
-            </div>
-            <div class="comment-text">${comment.text}</div>
-        </div>
-    `).join('');
-}
-    </script>
-      <script src="product_data.js"></script> <!-- Adjust path if needed -->
-
-    <script>
-        // ... (existing popup, slider, sidebar, cart, auth, search, rating, comment, share logic remains) ...
-
-        // --- NEW: Function to Render Product Cards ---
-        function renderProductCards(products, containerId) {
-            const container = document.getElementById(containerId);
-            if (!container) {
-                console.error(`Container with ID ${containerId} not found.`);
-                return;
-            }
-
-            // Clear existing content (in case of re-rendering)
-            container.innerHTML = '';
-
-            if (!products || products.length === 0) {
-                container.innerHTML = '<p style="text-align: center; width: 100%;">No products available.</p>';
-                return;
-            }
-
-            products.forEach(product => {
-                // Create the main block div
-                const blockDiv = document.createElement('div');
-                blockDiv.className = 'block';
-
-                // Create the content string for the block
-                blockDiv.innerHTML = `
-                    <a href="#" onclick="showProductDetail('${product.id}')">Product</a>
-                `;
-                container.appendChild(blockDiv);
             });
         }
-        document.addEventListener('DOMContentLoaded', () => {
-  const hamburger = document.getElementById('hamburgerMenu');
-  const overlay   = document.getElementById('overlay');
-  const sidebar   = document.getElementById('sidebar');
-
-  if (!hamburger || !overlay || !sidebar) {
-    console.warn('Hamburger / overlay / sidebar not found');
-    return;
-  }
-
-  hamburger.addEventListener('click', () => {
-    sidebar.classList.toggle('active');
-    overlay.classList.toggle('active');
-    hamburger.classList.toggle('active');
-    document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
-  });
-
-  overlay.addEventListener('click', () => {
-    sidebar.classList.remove('active');
-    overlay.classList.remove('active');
-    hamburger.classList.remove('active');
-    document.body.style.overflow = '';
-  });
-});
-/* ---- SEARCH BAR ---- */
-document.addEventListener('DOMContentLoaded', () => {
-  const searchInput = document.getElementById('searchInput');
-  if (!searchInput) return;
-
-  const sectionToCategory = {
-    'home-businesses': 'Home Business',
-    'retail-shops': 'Retail Shop',
-    'wholesale': 'Wholesale',
-    'services': 'Service'
-  };
-
-  function performSearch(query) {
-    const q = query.trim().toLowerCase();
-    document.querySelectorAll('.businesses-grid .block, .freelancer-grid .freelancer-card')
-      .forEach(card => {
-        const name = card.querySelector('h3')?.textContent.trim().toLowerCase() || '';
-        const desc = card.querySelector('p')?.textContent.trim().toLowerCase() || '';
-        const section = card.closest('section')?.id || '';
-        const cat  = (sectionToCategory[section] || '').toLowerCase();
-        const show = !q || name.includes(q) || desc.includes(q) || cat.includes(q);
-        card.style.display = show ? 'block' : 'none';
-      });
-  }
-
-  let t;
-  searchInput.addEventListener('input', e => {
-    clearTimeout(t);
-    t = setTimeout(() => performSearch(e.target.value), 200);
-  });
-});
-// ==========================
-// ADVANCED FILTER BAR LOGIC
-// ==========================
-document.addEventListener('DOMContentLoaded', () => {
-  const filterBar = document.getElementById('filterBar');
-  const filterBarCollapsed = document.getElementById('filterBarCollapsed');
-  const filterBarExpanded = document.getElementById('filterBarExpanded');
-  const filterCategory = document.getElementById('filterCategory');
-  const filterType = document.getElementById('filterType');
-  const filterLocation = document.getElementById('filterLocation');
-  const filterSearch = document.getElementById('filterSearch');
-
-  let originalFilterBarTop = 0;
-  let isFixed = false;
-
-  // Capture original position
-  function initFilterBarPosition() {
-    originalFilterBarTop = filterBar.getBoundingClientRect().top + window.scrollY;
-  }
-
-  // Toggle expanded state
-  function toggleFilterBar() {
-    filterBar.classList.toggle('expanded');
-    if (filterBar.classList.contains('expanded')) {
-      filterSearch.focus();
-    }
-  }
-
-  // Apply filters to all cards
-  function applyFilters() {
-    const searchTerm = filterSearch.value.trim().toLowerCase();
-    const category = filterCategory.value;
-    const type = filterType.value;
-    const location = filterLocation.value;
-
-    const cards = document.querySelectorAll('.businesses-grid .block, .freelancer-grid .freelancer-card');
-
-    cards.forEach(card => {
-      const cardCategory = card.dataset.category || '';
-      const cardType = card.dataset.type || '';
-      const cardLocation = card.dataset.location || '';
-      const name = card.querySelector('h3')?.textContent.trim().toLowerCase() || '';
-      const desc = card.querySelector('p')?.textContent.trim().toLowerCase() || '';
-
-      const matchesCategory = !category || cardCategory === category;
-      const matchesType = !type || cardType.includes(type);
-      const matchesLocation = !location || cardLocation === location;
-      const matchesSearch = !searchTerm || name.includes(searchTerm) || desc.includes(searchTerm);
-
-      card.style.display = (matchesCategory && matchesType && matchesLocation && matchesSearch) ? 'block' : 'none';
-    });
-  }
-
-  // Handle scroll for fixed behavior
-  function handleScroll() {
-    const scrollY = window.scrollY;
-    const shouldBeFixed = scrollY >= originalFilterBarTop;
-
-    if (shouldBeFixed && !isFixed) {
-      filterBar.classList.add('fixed');
-      isFixed = true;
-    } else if (!shouldBeFixed && isFixed) {
-      filterBar.classList.remove('fixed');
-      isFixed = false;
-    }
-  }
-
-  // Event Listeners
-  filterBarCollapsed.addEventListener('click', toggleFilterBar);
-  [filterCategory, filterType, filterLocation, filterSearch].forEach(el => {
-    el.addEventListener('input', applyFilters);
-  });
-
-  window.addEventListener('scroll', handleScroll);
-  window.addEventListener('resize', initFilterBarPosition);
-
-  // Initialize
-  initFilterBarPosition();
-  applyFilters(); // Initial render
-});
-// ==========================
-// ADVANCED FILTER BAR LOGIC (FIXED: ALWAYS OPEN)
-// ==========================
-document.addEventListener('DOMContentLoaded', () => {
-  const filterBar = document.getElementById('filterBar');
-  // Removed filterBarCollapsed reference
-  const filterCategory = document.getElementById('filterCategory');
-  const filterType = document.getElementById('filterType');
-  const filterLocation = document.getElementById('filterLocation');
-  const filterSearch = document.getElementById('filterSearch');
-
-  let originalFilterBarTop = 0;
-  let isFixed = false;
-
-  // Capture original position
-  function initFilterBarPosition() {
-    if(filterBar) {
-        originalFilterBarTop = filterBar.getBoundingClientRect().top + window.scrollY;
-    }
-  }
-
-  // Removed toggleFilterBar function
-
-  // Apply filters to all cards
-  function applyFilters() {
-    const searchTerm = filterSearch.value.trim().toLowerCase();
-    const category = filterCategory.value;
-    const type = filterType.value;
-    const location = filterLocation.value;
-
-    const cards = document.querySelectorAll('.businesses-grid .block, .freelancer-grid .freelancer-card');
-
-    cards.forEach(card => {
-      // Logic to get data from cards (make sure your HTML elements have these data attributes if you use them)
-      // Note: Your current HTML doesn't explicitly show data-category/type attributes on blocks, 
-      // but this matches your existing logic logic.
-      const cardCategory = card.dataset.category || ''; 
-      const cardType = card.dataset.type || '';
-      const cardLocation = card.dataset.location || '';
-      
-      const name = card.querySelector('h3')?.textContent.trim().toLowerCase() || '';
-      const desc = card.querySelector('p')?.textContent.trim().toLowerCase() || '';
-
-      // Simplified matching logic based on your structure
-      const matchesCategory = !category || cardCategory === category;
-      const matchesType = !type || cardType.includes(type);
-      const matchesLocation = !location || cardLocation === location;
-      const matchesSearch = !searchTerm || name.includes(searchTerm) || desc.includes(searchTerm);
-
-      card.style.display = (matchesCategory && matchesType && matchesLocation && matchesSearch) ? 'block' : 'none';
-    });
-  }
-
-  // Handle scroll for fixed behavior
-  function handleScroll() {
-    if(!filterBar) return;
-    const scrollY = window.scrollY;
-    // Adjusted logic slightly to prevent jumping
-    const shouldBeFixed = scrollY >= originalFilterBarTop - 80; 
-
-    if (shouldBeFixed && !isFixed) {
-      filterBar.classList.add('fixed');
-      isFixed = true;
-    } else if (!shouldBeFixed && isFixed) {
-      filterBar.classList.remove('fixed');
-      isFixed = false;
-    }
-  }
-
-  // Event Listeners
-  // Removed filterBarCollapsed click listener
-  
-  if (filterCategory) {
-      [filterCategory, filterType, filterLocation, filterSearch].forEach(el => {
-        el.addEventListener('input', applyFilters);
-      });
-  }
-
-  window.addEventListener('scroll', handleScroll);
-  window.addEventListener('resize', initFilterBarPosition);
-
-  // Initialize
-  setTimeout(() => {
-      initFilterBarPosition();
-      applyFilters(); 
-  }, 100);
-});
-// ==========================
-// UPGRADED FILTER BAR LOGIC
-// ==========================
-document.addEventListener('DOMContentLoaded', () => {
-  const filterBar = document.getElementById('filterBar');
-  const filterCategory = document.getElementById('filterCategory');
-  const filterType = document.getElementById('filterType');
-  const filterLocation = document.getElementById('filterLocation');
-  const filterSearch = document.getElementById('filterSearch');
-
-  let originalFilterBarTop = 0;
-  let isFixed = false;
-
-  // Capture original position
-  function initFilterBarPosition() {
-    if(filterBar) {
-        // Calculate position including scroll offset
-        const rect = filterBar.getBoundingClientRect();
-        originalFilterBarTop = rect.top + window.scrollY;
-    }
-  }
-
-  // Apply filters to all cards
-  function applyFilters() {
-    const searchTerm = filterSearch.value.trim().toLowerCase();
-    const category = filterCategory.value;
-    const type = filterType.value;
-    const location = filterLocation.value;
-
-    const cards = document.querySelectorAll('.businesses-grid .block, .freelancer-grid .freelancer-card');
-
-    cards.forEach(card => {
-        // Logic to get data from cards
-        // Note: Ensure your HTML blocks have data attributes like <div class="block" data-category="retail-shops">
-        // If not, we fall back to text content searching
-        
-        const cardCategory = card.dataset.category || ''; 
-        const cardType = card.dataset.type || '';
-        const cardLocation = card.dataset.location || '';
-        
-        const name = card.querySelector('h3')?.textContent.trim().toLowerCase() || '';
-        const desc = card.querySelector('p')?.textContent.trim().toLowerCase() || '';
-        
-        // Determine Section (fallback for category if data attribute missing)
-        let sectionCategory = '';
-        const parentSection = card.closest('section');
-        if(parentSection) {
-            sectionCategory = parentSection.id; // e.g., "retail-shops"
+        function updateRatingCount(el, value, count) {
+            el.textContent = `${count} rating${count !== 1 ? 's' : ''}`;
         }
-
-        // Matching Logic
-        const matchesCategory = !category || cardCategory === category || sectionCategory === category;
-        const matchesType = !type || cardType.includes(type) || desc.includes(type);
-        const matchesLocation = !location || cardLocation === location;
-        const matchesSearch = !searchTerm || name.includes(searchTerm) || desc.includes(searchTerm);
-
-        // Animation for filtering
-        if (matchesCategory && matchesType && matchesLocation && matchesSearch) {
-            card.style.display = 'flex'; // or 'block' depending on your card layout
-            // Optional: Add fade in animation
-            card.style.animation = 'fadeIn 0.5s ease forwards';
-        } else {
-            card.style.display = 'none';
+        function displayComments(list, comments) {
+            if (comments.length === 0) {
+                list.innerHTML = '<div class="comment-item"><div class="comment-text">No comments yet. Be the first to comment!</div></div>';
+                return;
+            }
+            list.innerHTML = comments.map(c => `
+                <div class="comment-item">
+                    <div class="comment-meta">
+                        <span class="comment-author">${c.author}</span>
+                        <span class="comment-date">${c.date}</span>
+                    </div>
+                    <div class="comment-text">${c.text}</div>
+                </div>
+            `).join('');
         }
-    });
-  }
-
-  // Handle scroll for sticky behavior
-  function handleScroll() {
-    if(!filterBar) return;
-    const scrollY = window.scrollY;
-    // Fix the bar when it hits the top (minus some header space)
-    const shouldBeFixed = scrollY >= (originalFilterBarTop - 100); 
-
-    if (shouldBeFixed && !isFixed) {
-      filterBar.classList.add('fixed');
-      isFixed = true;
-    } else if (!shouldBeFixed && isFixed) {
-      filterBar.classList.remove('fixed');
-      isFixed = false;
-    }
-  }
-
-  // Event Listeners
-  if (filterCategory) {
-      [filterCategory, filterType, filterLocation, filterSearch].forEach(el => {
-        el.addEventListener('input', applyFilters);
-      });
-  }
-
-  window.addEventListener('scroll', handleScroll);
-  window.addEventListener('resize', initFilterBarPosition);
-
-  // Initialize after a short delay to ensure layout is settled
-  setTimeout(() => {
-      initFilterBarPosition();
-  }, 500);
-});
     </script>
-    
-    <script src="cart.js"></script>
-    <!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-<!-- Load slider from external file -->
-<script>
-  fetch('slider.html')
-    .then(response => {
-      if (!response.ok) throw new Error('slider.html not found (404)');
-      return response.text();
-    })
-    .then(html => {
-      document.getElementById('slider-container').innerHTML = html;
-      new Swiper('.mySwiper', {
-        spaceBetween: 0,
-        centeredSlides: true,
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: false
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
-        },
-        loop: true,
-        effect: 'fade',
-        fadeEffect: {
-          crossFade: true
-        },
-        touchRatio: 1,
-        simulateTouch: true
-      });
-    })
-    .catch(err => {
-      console.error('Slider failed to load:', err);
-      document.getElementById('slider-container').innerHTML = 
-        '<p style="text-align:center; padding:40px; color:#a30909; font-weight:600;">❌ Slider error: ' + err.message + '</p>';
-    });
-</script>
+    <!-- Swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        fetch('slider.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('slider-container').innerHTML = html;
+                new Swiper('.mySwiper', {
+                    spaceBetween: 0,
+                    centeredSlides: true,
+                    autoplay: { delay: 3000, disableOnInteraction: false },
+                    pagination: { el: '.swiper-pagination', clickable: true },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev'
+                    },
+                    loop: true,
+                    effect: 'fade',
+                    fadeEffect: { crossFade: true },
+                    touchRatio: 1,
+                    simulateTouch: true
+                });
+            })
+            .catch(err => {
+                console.error('Slider failed to load:', err);
+                document.getElementById('slider-container').innerHTML = 
+                    '<p style="text-align:center; padding:40px; color:#a30909; font-weight:600;">❌ Slider error: ' + err.message + '</p>';
+            });
+    </script>
 </body>
 </html>
