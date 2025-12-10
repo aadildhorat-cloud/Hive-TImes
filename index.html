@@ -2752,6 +2752,46 @@ We do rebrand existing feeling station
                 document.getElementById('slider-container').innerHTML = 
                     '<p style="text-align:center; padding:40px; color:#a30909; font-weight:600;">❌ Slider error: ' + err.message + '</p>';
             });
+            // Unified filtering logic
+function applyFilters() {
+    const searchTerm = document.getElementById('filterSearch').value.toLowerCase().trim();
+    const category = document.getElementById('filterCategory').value;
+    const type = document.getElementById('filterType').value;
+    const location = document.getElementById('filterLocation').value;
+
+    // Filter business cards
+    document.querySelectorAll('.businesses-grid .block').forEach(card => {
+        const name = card.querySelector('h3').textContent.toLowerCase();
+        const desc = card.querySelector('p').textContent.toLowerCase();
+        const matchesText = name.includes(searchTerm) || desc.includes(searchTerm);
+        const matchesCat = !category || card.dataset.category === category;
+        const matchesType = !type || card.dataset.type === type;
+        const matchesLoc = !location || card.dataset.location === location;
+
+        card.style.display = (matchesText && matchesCat && matchesType && matchesLoc) ? 'block' : 'none';
+    });
+
+    // Filter service cards
+    document.querySelectorAll('.freelancer-grid .freelancer-card').forEach(card => {
+        const name = card.querySelector('h3').textContent.toLowerCase();
+        const desc = card.querySelector('p').textContent.toLowerCase();
+        const matchesText = name.includes(searchTerm) || desc.includes(searchTerm);
+        const matchesCat = !category || card.dataset.category === category;
+        const matchesType = !type || card.dataset.type === type;
+        const matchesLoc = !location || card.dataset.location === location;
+
+        card.style.display = (matchesText && matchesCat && matchesType && matchesLoc) ? 'flex' : 'none';
+    });
+}
+
+// Attach event listeners
+document.getElementById('filterSearch').addEventListener('input', applyFilters);
+document.getElementById('filterCategory').addEventListener('change', applyFilters);
+document.getElementById('filterType').addEventListener('change', applyFilters);
+document.getElementById('filterLocation').addEventListener('change', applyFilters);
+
+// Optional: run on load to handle pre-filled filters
+applyFilters();
     </script>
 </body>
 </html>
