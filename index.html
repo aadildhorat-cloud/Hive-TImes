@@ -17,6 +17,73 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="css/slider.css">
     <style>
+        .join-hive-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #FF9900 0%, #E64A19 100%);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 10px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 6px 18px rgba(230, 74, 25, 0.3);
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+}
+
+.join-hive-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(230, 74, 25, 0.45);
+    background: linear-gradient(135deg, #FFA726 0%, #D84315 100%);
+}
+
+.join-hive-btn i {
+    font-size: 1.4rem;
+    animation: hivePulse 2.5s ease-in-out infinite;
+}
+
+/* Hive glow + float animation */
+@keyframes hivePulse {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-4px) scale(1.05); }
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+    .join-hive-btn {
+        font-size: 0.95rem;
+        padding: 8px 20px;
+    }
+    .join-hive-btn i {
+        font-size: 1.2rem;
+    }
+}
+
+/* Optional: Add a micro honeycomb texture overlay (advanced touch) */
+.join-hive-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: 
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.2) 2px, transparent 2px),
+        radial-gradient(circle at 70% 70%, rgba(255,255,255,0.15) 2px, transparent 2px);
+    background-size: 40px 40px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.join-hive-btn:hover::before {
+    opacity: 0.25;
+}
         /* === COMPLETE UPGRADED FILTER BAR CSS === */
         .filter-bar {
             position: relative;
@@ -1531,9 +1598,13 @@
             <div class="logo">
                 <img src="images-logo/hive-times-logo.png" alt="hive times logo">
             </div>
-            <nav>
-                <a href="about page home.html">JOIN THE HIVE</a>
-            </nav>
+         
+               <!-- Inside .header-top-row -->
+<a href="about page home.html" class="join-hive-btn">
+    <i class="fas fa-hive"></i>
+    <span>JOIN THE HIVE</span>
+</a>
+           
             <div class="header-action-icons">
                 <a href="#" class="action-icon" id="accountIcon">
                     <i class="fas fa-user-circle"></i>
@@ -1562,13 +1633,10 @@
                 </div>
                 <div class="filters-grid">
                     <div class="filter-group">
-                        <label><i class="fas fa-briefcase"></i> Businesses</label>
+                        <label><i class="fas fa-briefcase"></i> Sections</label>
                         <div class="select-wrapper">
                             <select id="filterCategory">
-                                <option value="">All Types</option>
-                                <option value="home-businesses">Home Businesses</option>
-                                <option value="retail-shops">Retail Shops</option>
-                                <option value="wholesale">Wholesale</option>
+                                <option value="business">Businesses</option>
                                 <option value="services">Services</option>
                             </select>
                         </div>
@@ -1611,7 +1679,7 @@
         <!-- Businesses Grid -->
         <div class="businesses-grid">
             <!-- Nothing Fancy -->
-            <div class="block" id="business-nothing-fancy" data-category="home-businesses" data-type="toilet-paper" data-location="johannesburg">
+            <div class="block" id="business-nothing-fancy" data-category="business" data-type="toilet-paper" data-location="johannesburg">
                 <a href="nothing fancy.html">
                     <img src="images-logo/nothing-fancy-logo.jpg" alt="Nothing Fancy">
                 </a>
@@ -1647,7 +1715,7 @@
                 </div>
             </div>
             <!-- Sweet Depot -->
-            <div class="block" id="business-sweet-depot" data-category="retail-shops" data-type="sweet-shop" data-location="johannesburg">
+            <div class="block" id="business-sweet-depot" data-category="business" data-type="sweet-shop" data-location="johannesburg">
                 <a href="Sweet Depot website.html">
                     <img src="images-logo/sweet-deport-logo.jpg" alt="Sweet Depot">
                 </a>
@@ -1683,7 +1751,7 @@
                 </div>
             </div>
             <!-- Sweet Mart -->
-            <div class="block" id="business-sweet-mart" data-category="retail-shops" data-type="sweet-shop" data-location="johannesburg">
+            <div class="block" id="business-sweet-mart" data-category="business" data-type="sweet-shop" data-location="johannesburg">
                 <a href="Sweet Mart.html">
                     <img src="images-logo/sweet-mart-logo.jpg" alt="Sweet Mart">
                 </a>
@@ -1719,7 +1787,7 @@
                 </div>
             </div>
             <!-- Polar Ice Cream -->
-            <div class="block" id="business-polar-ice-cream" data-category="retail-shops" data-type="ice-cream" data-location="johannesburg">
+            <div class="block" id="business-polar-ice-cream" data-category="business" data-type="ice-cream" data-location="johannesburg">
                 <a href="Polar ice cream.html">
                     <img src="images-logo/polar-ice-cream-logo.png" alt="Polar Ice Cream">
                 </a>
@@ -1755,7 +1823,7 @@
                 </div>
             </div>
             <!-- BUTCHER BLOCK -->
-            <div class="block" id="business-butcher-block-wholesale" data-category="wholesale" data-type="butcher" data-location="leslie">
+            <div class="block" id="business-butcher-block-wholesale" data-category="business" data-type="butcher" data-location="leslie">
                 <a href="butcher-shop.html">
                     <img src="images-logo/butcherblock-logo.jpg" alt="Butcher Block">
                 </a>
@@ -1791,7 +1859,7 @@
                 </div>
             </div>
              <!-- White House Lighting & Elecrical -->
-            <div class="block" id="business-whitehouse-lighting-and-electrical" data-category="retail-shops" data-type="lighting-electrical" data-location="trichardt">
+            <div class="block" id="business-whitehouse-lighting-and-electrical" data-category="business" data-type="lighting-electrical" data-location="trichardt">
                 <a href="https://whitehouselightingandelectrical.co.za/?srsltid=AfmBOorpLM7ZqD9gxiPKC5z2kRp03yVjQpkNdJSHqIr8yZmev3dbSveF">
                     <img src="images-logo/whitehouse-electrical-logo.jpg" alt="white house lighting and electrical">
                 </a>
@@ -1827,7 +1895,7 @@
                 </div>
             </div>
             <!-- Devland Cash & Carry -->
-            <div class="block" id="business-devland-cash-carry" data-category="wholesale" data-type="general" data-location="johannesburg">
+            <div class="block" id="business-devland-cash-carry" data-category="business" data-type="general" data-location="johannesburg">
                 <a href="Sweet Depot website.html">
                     <img src="images-logo/devland-logo.jpg" alt="Devland Cash & Carry">
                 </a>
@@ -1863,7 +1931,7 @@
                 </div>
             </div>
             <!-- Continental Cash & Carry -->
-            <div class="block" id="business-continental-cash-carry" data-category="wholesale" data-type="general" data-location="johannesburg">
+            <div class="block" id="business-continental-cash-carry" data-category="business" data-type="general" data-location="johannesburg">
                 <a href="Sweet Mart.html">
                     <img src="images-logo/continental-logo.jpg" alt="Continental Cash & Carry">
                 </a>
@@ -1899,7 +1967,7 @@
                 </div>
             </div>
             <!-- Jumbo Cash & Carry -->
-            <div class="block" id="business-jumbo-cash-carry" data-category="wholesale" data-type="general" data-location="johannesburg">
+            <div class="block" id="business-jumbo-cash-carry" data-category="business" data-type="general" data-location="johannesburg">
                 <a href="Polar ice cream.html">
                     <img src="images-logo/jumbo-logo.jpg" alt="Jumbo Cash & Carry">
                 </a>
