@@ -1587,6 +1587,8 @@
                                 <option value="ceilings">Ceilings</option>
                                 <option value="toilet-paper">Toilet Paper</option>
                                 <option value="petrol">Petrol</option>
+                                <option value="lighting-electrical">Lighting-Electrical</option>
+                               
                             </select>
                         </div>
                     </div>
@@ -1599,6 +1601,7 @@
                                 <option value="polokwane">Polokwane</option>
                                 <option value="crown-mines">Crown Mines</option>
                                 <option value="leslie">Leslie</option>
+                                <option value="trichardt">Trichardt</option>
                             </select>
                         </div>
                     </div>
@@ -1774,6 +1777,42 @@
                         </a>
                     </div>
                     <div class="comments-section" id="butcher-block-wholesale-comments">
+                        <div class="comment-form">
+                            <textarea class="comment-input" placeholder="Share your experience..."></textarea>
+                            <button class="submit-comment-btn">Post Comment</button>
+                        </div>
+                        <div class="comments-list"></div>
+                    </div>
+                    <div class="share-section">
+                        <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+             <!-- White House Lighting & Elecrical -->
+            <div class="block" id="business-whitehouse-lighting-and-electrical" data-category="retail-shops" data-type="lighting-electrical" data-location="trichardt">
+                <a href="https://whitehouselightingandelectrical.co.za/?srsltid=AfmBOorpLM7ZqD9gxiPKC5z2kRp03yVjQpkNdJSHqIr8yZmev3dbSveF">
+                    <img src="images-logo/whitehouse-electrical-logo.jpg" alt="white house lighting and electrical">
+                </a>
+                <div class="info">
+                    <h3>White House Lighting & Elecrical</h3>
+                    <p>Explore the best of our lighting and electrical range with our Featured Products Collection, carefully selected to showcase our top-performing and most popular items. From innovative LED lighting solutions to durable electrical accessories, this collection highlights products that combine quality, efficiency, and style - trusted by professionals and homeowners alike.</p>
+                    <button class="open-popup" data-popup-target="whitehouselighting&electricalpopup">Learn More</button>
+                    <div class="rating-section">
+                        <div class="rating-stars" data-business="whitehouse-lighting-and-electrical">
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                            <i class="far fa-star star"></i>
+                        </div>
+                        <div class="rating-count">0 ratings</div>
+                        <a href="#" class="view-comments-btn" data-target="whitehouse-lighting-and-electrical-comments">
+                            <i class="fas fa-comment"></i> View Comments
+                        </a>
+                    </div>
+                    <div class="comments-section" id="whitehouse-lighting-and-electrical-comments">
                         <div class="comment-form">
                             <textarea class="comment-input" placeholder="Share your experience..."></textarea>
                             <button class="submit-comment-btn">Post Comment</button>
@@ -2351,7 +2390,12 @@ We do rebrand existing feeling station
             "jumbocash&carryPopup": {
                 title: "Jumbo Cash & Carry",
                 text: "Jumbo Cash & Carry is a large South African wholesale business, owned by Massmart..."
+            },
+            "whitehouselighting&electricalpopup": {
+                title: "White House Lighting and Electrical",
+                text: "Explore the best of our lighting and electrical range with our Featured Products Collection, carefully selected to showcase our top-performing and most popular items. From innovative LED lighting solutions to durable electrical accessories, this collection highlights products that combine quality, efficiency, and style - trusted by professionals and homeowners alike."
             }
+            
         };
         const popup = document.getElementById('infoPopup');
         const closeInfoPopup = document.getElementById('closeInfoPopup');
