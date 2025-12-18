@@ -17,72 +17,51 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="css/slider.css">
     <style>
-        .join-hive-btn {
-    display: flex;
+    .join-hive-btn {
+    display: inline-flex;
     align-items: center;
-    gap: 10px;
-    background: linear-gradient(135deg, #FF9900 0%, #E64A19 100%);
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #FF8F00 0%, #E64A19 100%);
     color: white;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    font-size: 1.05rem;
-    padding: 10px 24px;
+    font-size: 0.92rem;
+    padding: 7px 18px;
     border-radius: 50px;
     text-decoration: none;
-    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
-    box-shadow: 0 6px 18px rgba(230, 74, 25, 0.3);
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 3px 8px rgba(230, 74, 25, 0.2);
     white-space: nowrap;
     position: relative;
     overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    letter-spacing: 0.4px;
+    height: 38px;
 }
 
 .join-hive-btn:hover {
-    transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 10px 25px rgba(230, 74, 25, 0.45);
-    background: linear-gradient(135deg, #FFA726 0%, #D84315 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 14px rgba(230, 74, 25, 0.3);
+    background: linear-gradient(135deg, #FFA000 0%, #D84315 100%);
 }
 
 .join-hive-btn i {
-    font-size: 1.4rem;
-    animation: hivePulse 2.5s ease-in-out infinite;
+    font-size: 1.2rem;
+    display: inline-block;
 }
 
-/* Hive glow + float animation */
-@keyframes hivePulse {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-4px) scale(1.05); }
-}
-
-/* Mobile optimization */
+/* Mobile refinement */
 @media (max-width: 768px) {
     .join-hive-btn {
-        font-size: 0.95rem;
-        padding: 8px 20px;
+        font-size: 0.85rem;
+        padding: 6px 15px;
+        gap: 6px;
+        height: 34px;
     }
     .join-hive-btn i {
-        font-size: 1.2rem;
+        font-size: 1.05rem;
     }
-}
-
-/* Optional: Add a micro honeycomb texture overlay (advanced touch) */
-.join-hive-btn::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: 
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.2) 2px, transparent 2px),
-        radial-gradient(circle at 70% 70%, rgba(255,255,255,0.15) 2px, transparent 2px);
-    background-size: 40px 40px;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    pointer-events: none;
-}
-
-.join-hive-btn:hover::before {
-    opacity: 0.25;
 }
         /* === COMPLETE UPGRADED FILTER BAR CSS === */
         .filter-bar {
@@ -1636,6 +1615,7 @@
                         <label><i class="fas fa-briefcase"></i> Sections</label>
                         <div class="select-wrapper">
                             <select id="filterCategory">
+                                <option value="">All Sections</option>
                                 <option value="business">Businesses</option>
                                 <option value="services">Services</option>
                             </select>
