@@ -181,50 +181,48 @@ body::before {
         padding: 12px;
     }
 }
-    .join-hive-btn {
+   .join-hive-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
     background: linear-gradient(135deg, #FF8F00 0%, #E64A19 100%);
     color: white;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 0.92rem;
-    padding: 7px 18px;
-    border-radius: 50px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem; /* Smaller, professional size */
+    padding: 6px 18px;
+    border-radius: 30px;
     text-decoration: none;
     transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-    box-shadow: 0 3px 8px rgba(230, 74, 25, 0.2);
+    box-shadow: 0 2px 6px rgba(230, 74, 25, 0.25);
     white-space: nowrap;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    letter-spacing: 0.4px;
-    height: 38px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    letter-spacing: 0.3px;
+    height: 30px;
+    line-height: 1;
 }
 
 .join-hive-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 14px rgba(230, 74, 25, 0.3);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(230, 74, 25, 0.35);
     background: linear-gradient(135deg, #FFA000 0%, #D84315 100%);
-}
-
-.join-hive-btn i {
-    font-size: 1.2rem;
-    display: inline-block;
 }
 
 /* Mobile refinement */
 @media (max-width: 768px) {
     .join-hive-btn {
-        font-size: 0.85rem;
-        padding: 6px 15px;
-        gap: 6px;
-        height: 34px;
+        font-size: 0.78rem;
+        padding: 5px 16px;
+        height: 28px;
     }
-    .join-hive-btn i {
-        font-size: 1.05rem;
+}
+
+/* Extra small screens (e.g., iPhone SE) */
+@media (max-width: 480px) {
+    .join-hive-btn {
+        font-size: 0.76rem;
+        padding: 4px 14px;
+        height: 26px;
     }
 }
         /* === COMPLETE UPGRADED FILTER BAR CSS === */
@@ -1743,10 +1741,7 @@ body::before {
             </div>
          
                <!-- Inside .header-top-row -->
-<a href="about page home.html" class="join-hive-btn">
-    <i class="fas fa-hive"></i>
-    <span>JOIN THE HIVE</span>
-</a>
+<a href="about page home.html" class="join-hive-btn">JOIN THE HIVE</a>
            
             <div class="header-action-icons">
                 <a href="#" class="action-icon" id="accountIcon">
