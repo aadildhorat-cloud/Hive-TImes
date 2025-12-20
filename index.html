@@ -51,25 +51,9 @@ body::before {
   gap: 16px;
 }
 .ai-avatar img {
-  width: 100%;
-  max-width: 80px; /* Keeps it reasonable on all screens */
+  width: 60%;
   height: auto;
-  border-radius: 50%;
-  object-fit: cover;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-  aspect-ratio: 1 / 1; /* Ensures perfect circle */
-}
-@media (max-width: 480px) {
-  .ai-message {
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    text-align: center;
-  }
-  .ai-text {
-    width: 100%;
-    max-width: 320px;
-  }
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
 }
 .ai-text {
   background: white;
