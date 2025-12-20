@@ -11,6 +11,98 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/slider.css">
     <style>
+        /* === AI SEARCH BAR STYLES === */
+.ai-search-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 25px;
+  font-family: 'Inter', sans-serif;
+}
+.ai-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.ai-avatar {
+  width: 200px;
+  height: 200px;
+  flex-shrink: 0;
+}
+.ai-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+  aspect-ratio: 1 / 1;
+}
+.ai-text {
+  background: white;
+  padding: 40px 20px;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  color: #2c3e50;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  font-weight: 500;
+  line-height: 1.5;
+}
+.ai-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.ai-option-btn {
+  flex: 1;
+  min-width: 130px;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 16px;
+  background: white;
+  font-weight: 600;
+  color: #e64a19;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+}
+.ai-option-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(255, 143, 0, 0.25);
+  color: #ff6a00;
+}
+.ai-option-btn.selected {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  color: white;
+  box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+}
+.ai-back-btn {
+  background: rgba(231, 76, 60, 0.1);
+  color: #e74c3c;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  display: none;
+  align-self: flex-start;
+  transition: all 0.3s ease;
+}
+.ai-back-btn:hover {
+  background: rgba(231, 76, 60, 0.2);
+  transform: translateY(-2px);
+}
+.ai-back-btn i {
+  margin-right: 8px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .ai-avatar { width: 100px; height: 100px; }
+  .ai-text { padding: 14px 16px; font-size: 1rem; }
+  .ai-option-btn { min-width: 110px; padding: 14px 16px; font-size: 0.95rem; }
+}
         /* Floating Contact Container */
 .floating-contact {
     position: fixed;
@@ -1256,6 +1348,7 @@
     </style>
 </head>
 <body>
+    <body data-business-id="Sweet Mart"></body>
     <header>
         <div class="header-container">
             <div class="logo-container">
@@ -1266,72 +1359,7 @@
                 <ul>
                     <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                     <li class="dropdown">
-                        <a href="#"><i class="fas fa-box"></i> Categories</a>
-                        <div class="dropdown-content">
-                            <div class="submenu">
-                                <a href="#chocolate">
-                                    <span><i class="fas fa-sticky-note"></i>CHOCOLATE</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                               
-                            </div>
-                            <div class="submenu">
-                                <a href="#candy">
-                                    <span><i class="fas fa-circle"></i> CANDY</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                              </div>
-                            <div class="submenu">
-                                <a href="#biscuits-snacks">
-                                    <span><i class="fas fa-star"></i> BISCUITS & SNACKS</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                               
-                            </div>
-                            <div class="submenu">
-                                <a href="#jelly-gums">
-                                    <span><i class="fas fa-gift"></i> JELLY GUMS</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                               </div>
-                                <div class="submenu">
-                                <a href="#pasta-and-noodles">
-                                    <span><i class="fas fa-circle"></i> PASTA & NOODLES</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                              </div>
-                               <div class="submenu">
-                                <a href="#spreads-sauces-spices">
-                                    <span><i class="fas fa-circle"></i> Spreads, Sauces, Spices</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                              </div>
-                               <div class="submenu">
-                                <a href="#beverages">
-                                    <span><i class="fas fa-circle"></i> BEVERAGES</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                              </div>
-                               <div class="submenu">
-                                <a href="#hygiene-self-care">
-                                    <span><i class="fas fa-circle"></i>HYGIENE & SELF-CARE</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                              </div>
-                              <div class="submenu">
-                                <a href="#household-essentials">
-                                    <span><i class="fas fa-circle"></i>HOUSEHOLD ESSENTIALS</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                              </div>
-                              <div class="submenu">
-                                <a href="#others">
-                                    <span><i class="fas fa-circle"></i>OTHERS</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                              </div>
-                        </div>
-                    </li>
+                       
                    <!-- Business Menu Placeholder -->
 <li id="business-menu-placeholder"></li>
                 </ul>
@@ -1348,6 +1376,39 @@
   </div>
     </div>
 </section>
+<!-- Upgraded AI-Guided Search Bar for Sweet Mart -->
+<div id="filterBar" class="filter-bar">
+  <div class="ai-search-container" id="aiSearchContainer">
+    <!-- Prompt -->
+    <div class="ai-message">
+      <div class="ai-avatar">
+        <img src="images-logo/bee.jpg" alt="Hive Times Bee">
+      </div>
+      <div class="ai-text">
+        <span id="aiPrompt">Hi! What would you like to browse today?</span>
+      </div>
+    </div>
+    <!-- Options -->
+    <div class="ai-options" id="aiOptions">
+      <button class="ai-option-btn" data-value="chocolate">Chocolate</button>
+      <button class="ai-option-btn" data-value="candy">Candy</button>
+      <button class="ai-option-btn" data-value="biscuits-snacks">Biscuits & Snacks</button>
+      <button class="ai-option-btn" data-value="jelly-gums">Jelly Gums</button>
+      <button class="ai-option-btn" data-value="pasta-and-noodles">Pasta & Noodles</button>
+      <button class="ai-option-btn" data-value="spreads-sauces-spices">Spreads, Sauces & Spices</button>
+      <button class="ai-option-btn" data-value="beverages">Beverages</button>
+      <button class="ai-option-btn" data-value="hygiene-self-care">Hygiene & Self-Care</button>
+      <button class="ai-option-btn" data-value="household-essentials">Household Essentials</button>
+      <button class="ai-option-btn" data-value="others">Others</button>
+    </div>
+    <!-- Back Button -->
+    <button class="ai-back-btn" id="aiBackBtn">
+      <i class="fas fa-arrow-left"></i> Back
+    </button>
+    <!-- Hidden Input for Sync -->
+    <input type="hidden" id="filterType" value="">
+  </div>
+</div>
 <div class="business-info-container">
     <button class="business-info-btn" onclick="showBusinessPopup()">
         <img src="images-logo/sweet-mart-logo.jpg" alt="Business Logo" class="business-logo">
@@ -3123,5 +3184,56 @@ document.getElementById('checkoutForm')?.addEventListener('submit', function(e) 
       console.error('Business menu failed to load:', err);
     });
 </script>
+<script>
+
+// Upgraded AI Search for Sweet Mart — Filters product sections
+const aiSearchSweetMart = {
+    step: 0, // Only 1 step: category selection
+    selectedCategory: '',
+    init() {
+        // Handle category selection
+        document.querySelectorAll('.ai-option-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const catId = e.target.dataset.value;
+                this.selectedCategory = catId;
+                document.getElementById('filterType').value = catId;
+                this.scrollToCategory(catId);
+            });
+        });
+
+        // Back button (optional: reloads initial prompt — though not needed with 1-step flow)
+        const backBtn = document.getElementById('aiBackBtn');
+        if (backBtn) {
+            backBtn.addEventListener('click', () => {
+                this.reset();
+            });
+        }
+    },
+    scrollToCategory(categoryId) {
+        const section = document.getElementById(categoryId);
+        if (section) {
+            // Smooth scroll to the selected section
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Optional: highlight it briefly
+            section.style.outline = '3px solid #a30909';
+            setTimeout(() => { section.style.outline = ''; }, 2000);
+        }
+    },
+    reset() {
+        this.selectedCategory = '';
+        document.getElementById('filterType').value = '';
+        // Reset prompt
+        document.getElementById('aiPrompt').textContent = 'Hi! What would you like to browse today?';
+        // Ensure back button hidden (since only 1 step)
+        document.getElementById('aiBackBtn').style.display = 'none';
+    }
+};
+
+// Initialize on load
+document.addEventListener('DOMContentLoaded', () => {
+    aiSearchSweetMart.init();
+});
+</script>
+<script src="advanced-cart.js"></script>
 </body>
 </html>
