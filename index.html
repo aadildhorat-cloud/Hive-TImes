@@ -17,6 +17,161 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="css/slider.css">
     <style>
+        /* === Hive Background === */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fdf8f0; /* Warm off-white */
+  background-image: 
+    radial-gradient(circle at 30% 30%, rgba(255, 143, 0, 0.03) 2px, transparent 2px),
+    radial-gradient(circle at 70% 70%, rgba(230, 74, 25, 0.02) 2px, transparent 2px);
+  background-size: 80px 80px;
+  background-position: 0 0, 40px 40px;
+  z-index: -1;
+  pointer-events: none;
+}
+     /* === AI SEARCH BAR STYLES === */
+.ai-search-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 25px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Avatar & Message */
+.ai-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.ai-avatar img {
+  width: 60%;
+  height: auto;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
+}
+.ai-text {
+  background: white;
+  padding: 16px 20px;
+  border-radius: 18px;
+  font-size: 1.1rem;
+  color: #2c3e50;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  font-weight: 500;
+  line-height: 1.5;
+}
+.ai-text strong {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+/* Options */
+.ai-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.ai-option-btn {
+  flex: 1;
+  min-width: 130px;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 16px;
+  background: white;
+  font-weight: 600;
+  color: #e64a19;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-option-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(255, 143, 0, 0.25);
+  color: #ff6a00;
+}
+
+.ai-option-btn.selected {
+  background: linear-gradient(135deg, #FF8F00 0%, #E64A19 100%);
+  color: white;
+  box-shadow: 0 5px 18px rgba(230, 74, 25, 0.4);
+}
+
+/* Back Button */
+.ai-back-btn {
+  background: rgba(231, 76, 60, 0.1);
+  color: var(--primary-color);
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  display: none; /* Hidden by default */
+  align-self: flex-start;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.ai-back-btn:hover {
+  background: rgba(231, 76, 60, 0.2);
+  transform: translateY(-2px);
+}
+.ai-back-btn i {
+  margin-right: 8px;
+}
+
+/* Active Selection */
+.ai-option-btn.selected {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  color: white;
+  box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .ai-search-container {
+    padding: 20px 15px;
+  }
+  .ai-avatar {
+    width: 42px;
+    height: 42px;
+  }
+  .ai-text {
+    padding: 14px 16px;
+    font-size: 1rem;
+  }
+  .ai-option-btn {
+    min-width: 110px;
+    padding: 14px 16px;
+    font-size: 0.95rem;
+  }
+  .ai-back-btn {
+    padding: 8px 16px;
+    font-size: 0.95rem;
+  }
+}
+/* Responsive */
+@media (max-width: 768px) {
+    .ai-message {
+        font-size: 1rem;
+        padding: 12px 16px;
+    }
+    .ai-option-btn {
+        min-width: 100px;
+        padding: 12px;
+        font-size: 0.95rem;
+    }
+    .filter-bar.fixed {
+        padding: 12px;
+    }
+}
     .join-hive-btn {
     display: inline-flex;
     align-items: center;
@@ -1599,63 +1754,38 @@
     <div id="slider-container"></div>
     <!-- Main Content -->
     <main>
-        <!-- Filter Bar -->
-        <div id="filterBar" class="filter-bar">
-            <div class="filter-bar-expanded" id="filterBarExpanded">
-                <div class="search-row">
-                    <div class="filter-search">
-                        <div class="search-input-wrapper">
-                            <i class="fas fa-search"></i>
-                            <input type="text" id="filterSearch" placeholder="What are you looking for today?">
-                        </div>
-                    </div>
-                </div>
-                <div class="filters-grid">
-                    <div class="filter-group">
-                        <label><i class="fas fa-briefcase"></i> Sections</label>
-                        <div class="select-wrapper">
-                            <select id="filterCategory">
-                                <option value="">All Sections</option>
-                                <option value="business">Businesses</option>
-                                <option value="services">Services</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="filter-group">
-                        <label><i class="fas fa-tags"></i> Category</label>
-                        <div class="select-wrapper">
-                            <select id="filterType">
-                                <option value="">All Categories</option>
-                                <option value="sweet-shop">Sweet Shop</option>
-                                <option value="ice-cream">Ice Cream</option>
-                                <option value="butcher">Butcher</option>
-                                <option value="carpenter">Carpenter</option>
-                                <option value="catering">Catering</option>
-                                <option value="flooring">Flooring</option>
-                                <option value="ceilings">Ceilings</option>
-                                <option value="toilet-paper">Toilet Paper</option>
-                                <option value="petrol">Petrol</option>
-                                <option value="lighting-electrical">Lighting-Electrical</option>
-                               
-                            </select>
-                        </div>
-                    </div>
-                    <div class="filter-group">
-                        <label><i class="fas fa-map-marker-alt"></i> Location</label>
-                        <div class="select-wrapper">
-                            <select id="filterLocation">
-                                <option value="">All Locations</option>
-                                <option value="johannesburg">Johannesburg</option>
-                                <option value="polokwane">Polokwane</option>
-                                <option value="crown-mines">Crown Mines</option>
-                                <option value="leslie">Leslie</option>
-                                <option value="trichardt">Trichardt</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <!-- AI-Guided Search Bar -->
+<div id="filterBar" class="filter-bar">
+  <div class="ai-search-container" id="aiSearchContainer">
+    <!-- Prompt -->
+    <div class="ai-message">
+      <div class="ai-avatar">
+        <!-- Inside .ai-avatar -->
+<img src="images-logo/bee.jpg" alt="Hive Times Bee" style="width: 60%; height: auto;">
+      </div>
+      <div class="ai-text">
+        <span id="aiPrompt">Hi! Are you looking for a <strong>business</strong> or a <strong>service</strong>?</span>
+      </div>
+    </div>
+
+    <!-- Options -->
+    <div class="ai-options" id="aiOptions">
+      <button class="ai-option-btn" data-value="business">Business</button>
+      <button class="ai-option-btn" data-value="service">Service</button>
+    </div>
+
+    <!-- Back Button (Hidden Initially) -->
+    <button class="ai-back-btn" id="aiBackBtn">
+      <i class="fas fa-arrow-left"></i> Back
+    </button>
+
+    <!-- Hidden Inputs (for compatibility) -->
+    <input type="hidden" id="filterCategory" value="">
+    <input type="hidden" id="filterType" value="">
+    <input type="hidden" id="filterLocation" value="">
+    <input type="hidden" id="filterSearch" value="">
+  </div>
+</div>
         <!-- Businesses Grid -->
         <div class="businesses-grid">
             <!-- Nothing Fancy -->
@@ -1985,11 +2115,11 @@
         </div>
         <!-- Services Section -->
         <div class="section-header-container">
-            <h2 class="section-title" id="services">Services</h2>
+            <h2 class="section-title" id="service">Service</h2>
         </div>
         <div class="freelancer-grid">
             <!-- BUTCHER BLOCK Service -->
-            <div class="freelancer-card" id="service-butcher-block" data-category="services" data-type="catering" data-location="johannesburg">
+            <div class="freelancer-card" id="service-butcher-block" data-category="service" data-type="catering" data-location="johannesburg">
                 <div class="card-background" style="background-image: url('images-logo/butcherblock-long.jpg');"></div>
                 <div class="profile-container">
                     <img src="images-logo/butcherblock-logo.jpg" alt="BUTCHER BLOCK" class="profile-picture">
@@ -2029,7 +2159,7 @@
                 </div>
             </div>
             <!-- Shafique Salim - Carpenter -->
-            <div class="freelancer-card" id="service-shafique-salim" data-category="services" data-type="carpenter" data-location="johannesburg">
+            <div class="freelancer-card" id="service-shafique-salim" data-category="service" data-type="carpenter" data-location="johannesburg">
                 <div class="card-background" style="background-image: url('image-services/Shafique Salim-background.jpg');"></div>
                 <div class="profile-container">
                     <img src="image-services/Shafique Salim.jpg" alt="Shafique Salim" class="profile-picture">
@@ -2069,7 +2199,7 @@
                 </div>
             </div>
             <!-- Rahima & Zainab - Catering -->
-            <div class="freelancer-card" id="service-rahima-zainab" data-category="services" data-type="catering" data-location="johannesburg">
+            <div class="freelancer-card" id="service-rahima-zainab" data-category="service" data-type="catering" data-location="johannesburg">
                 <div class="card-background" style="background-image: url('image-services/Exquisite-catering- background.jpg');"></div>
                 <div class="profile-container">
                     <img src="image-services/Exquisite-catering.jpg" alt="Rahima & Zainab" class="profile-picture">
@@ -2109,7 +2239,7 @@
                 </div>
             </div>
             <!-- Melody - Flooring -->
-            <div class="freelancer-card" id="service-melody" data-category="services" data-type="flooring" data-location="johannesburg">
+            <div class="freelancer-card" id="service-melody" data-category="service" data-type="flooring" data-location="johannesburg">
                 <div class="card-background" style="background-image: url('image-services/melody-background.jpg');"></div>
                 <div class="profile-container">
                     <img src="https://placehold.co/100x100/9b59b6/ffffff?text=DK" alt="Melody" class="profile-picture">
@@ -2149,7 +2279,7 @@
                 </div>
             </div>
             <!-- Samson - Ceilings -->
-            <div class="freelancer-card" id="service-samson" data-category="services" data-type="ceilings" data-location="johannesburg">
+            <div class="freelancer-card" id="service-samson" data-category="service" data-type="ceilings" data-location="johannesburg">
                 <div class="card-background" style="background-image: url('image-services/melody-background.jpg');"></div>
                 <div class="profile-container">
                     <img src="https://placehold.co/100x100/9b59b6/ffffff?text=DK" alt="Samson" class="profile-picture">
@@ -2189,7 +2319,7 @@
                 </div>
             </div>
             <!-- Robert - Wood and Floor -->
-            <div class="freelancer-card" id="service-robert" data-category="services" data-type="flooring" data-location="johannesburg">
+            <div class="freelancer-card" id="service-robert" data-category="service" data-type="flooring" data-location="johannesburg">
                 <div class="card-background" style="background-image: url('image-services/melody-background.jpg');"></div>
                 <div class="profile-container">
                     <img src="https://placehold.co/100x100/9b59b6/ffffff?text=DK" alt="Robert" class="profile-picture">
@@ -2229,7 +2359,7 @@
                 </div>
             </div>
             <!-- Duncan - Flooring Specialist -->
-            <div class="freelancer-card" id="service-duncan" data-category="services" data-type="flooring" data-location="johannesburg">
+            <div class="freelancer-card" id="service-duncan" data-category="service" data-type="flooring" data-location="johannesburg">
                 <div class="card-background" style="background-image: url('image-services/melody-background.jpg');"></div>
                 <div class="profile-container">
                     <img src="https://placehold.co/100x100/9b59b6/ffffff?text=DK" alt="Duncan" class="profile-picture">
@@ -2269,7 +2399,7 @@
                 </div>
             </div>
              <!-- ABDISHAKUR WEHLIYE - oiling petroleum -->
-            <div class="freelancer-card" id="service-ABDISHAKURWEHLIYE" data-category="services" data-type="petrol" data-location="johannesburg">
+            <div class="freelancer-card" id="service-ABDISHAKURWEHLIYE" data-category="service" data-type="petrol" data-location="johannesburg">
                 <div class="card-background" style="background-image: url('image-services/wehliyePetroleum-background1.jpg');"></div>
                 <div class="profile-container">
                     <img src="image-services/wehliyePetroleum-front.jpg" alt="ABDISHAKUR WEHLIYE" class="profile-picture">
@@ -2318,7 +2448,7 @@ We do rebrand existing feeling station
             </div>
     
             <!-- Move-it-Guy - Delivery -->
-            <div class="freelancer-card" id="service-move-it" data-category="services" data-type="delivery" data-location="johannesburg">
+            <div class="freelancer-card" id="service-move-it" data-category="service" data-type="delivery" data-location="johannesburg">
                 <div class="card-background" style="background-image: url('image-services/move-it-guy-background.jpg');"></div>
                 <div class="profile-container">
                     <img src="image-services/move-it-guy.jpg" alt="move-it" class="profile-picture">
@@ -2889,12 +3019,182 @@ We do rebrand existing feeling station
                 document.getElementById('slider-container').innerHTML = 
                     '<p style="text-align:center; padding:40px; color:#a30909; font-weight:600;">❌ Slider error: ' + err.message + '</p>';
             });
-            // Unified filtering logic
+    </script>
+    <script>
+
+// AI Search Logic with Back Button & Visual Feedback
+const aiSearch = {
+    step: 0, // 0: type, 1: category, 2: location
+    selectedType: '',
+    selectedCategory: '',
+    selectedLocation: '',
+    prevStep: null,
+
+    categories: {
+        business: [
+            { value: 'sweet-shop', label: 'Sweet Shop' },
+            { value: 'ice-cream', label: 'Ice Cream' },
+            { value: 'butcher', label: 'Butcher' },
+            { value: 'toilet-paper', label: 'Toilet Paper' },
+            { value: 'lighting-electrical', label: 'Lighting & Electrical' },
+            { value: 'general', label: 'General Wholesale' }
+        ],
+        service: [
+            { value: 'carpenter', label: 'Carpenter' },
+            { value: 'catering', label: 'Catering' },
+            { value: 'flooring', label: 'Flooring' },
+            { value: 'ceilings', label: 'Ceilings' },
+            { value: 'petrol', label: 'Petrol / Fuel' },
+            { value: 'delivery', label: 'Delivery' }
+        ]
+    },
+    locations: [
+        { value: 'johannesburg', label: 'Johannesburg' },
+        { value: 'polokwane', label: 'Polokwane' },
+        { value: 'crown-mines', label: 'Crown Mines' },
+        { value: 'leslie', label: 'Leslie' },
+        { value: 'trichardt', label: 'Trichardt' }
+    ],
+
+    init() {
+        // Option selection
+        document.querySelectorAll('.ai-option-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const val = e.target.dataset.value;
+                this.prevStep = this.step;
+
+                if (this.step === 0) {
+                    this.selectedType = val;
+                    this.step = 1;
+                    this.renderCategoryStep(val);
+                } else if (this.step === 1) {
+                    this.selectedCategory = val;
+                    this.step = 2;
+                    this.renderLocationStep();
+                } else if (this.step === 2) {
+                    this.selectedLocation = val;
+                    this.applyFinalFilters();
+                }
+            });
+        });
+
+        // Back button
+        document.getElementById('aiBackBtn').addEventListener('click', () => {
+            if (this.step === 1) {
+                this.step = 0;
+                this.renderInitialStep();
+            } else if (this.step === 2) {
+                this.step = 1;
+                this.renderCategoryStep(this.selectedType);
+            }
+        });
+    },
+
+    renderInitialStep() {
+        const prompt = document.getElementById('aiPrompt');
+        const options = document.getElementById('aiOptions');
+        const backBtn = document.getElementById('aiBackBtn');
+        
+        prompt.innerHTML = 'Hi! Are you looking for a <strong>business</strong> or a <strong>service</strong>?';
+        options.innerHTML = `
+            <button class="ai-option-btn" data-value="business">Business</button>
+            <button class="ai-option-btn" data-value="service">Service</button>
+        `;
+        backBtn.style.display = 'none';
+        this.init();
+    },
+
+    renderCategoryStep(type) {
+        const prompt = document.getElementById('aiPrompt');
+        const options = document.getElementById('aiOptions');
+        const backBtn = document.getElementById('aiBackBtn');
+        const label = type === 'business' ? 'business' : 'service';
+        
+        prompt.innerHTML = `Great! What kind of <strong>${label}</strong> are you looking for?`;
+        const cats = this.categories[type] || [];
+        options.innerHTML = cats.map(cat => 
+            `<button class="ai-option-btn" data-value="${cat.value}">${cat.label}</button>`
+        ).join('');
+        backBtn.style.display = 'flex';
+        this.init();
+    },
+
+    renderLocationStep() {
+        const prompt = document.getElementById('aiPrompt');
+        const options = document.getElementById('aiOptions');
+        const backBtn = document.getElementById('aiBackBtn');
+        
+        prompt.innerHTML = `Finally, which <strong>location</strong>?`;
+        const locs = this.locations;
+        options.innerHTML = locs.map(loc => 
+            `<button class="ai-option-btn" data-value="${loc.value}">${loc.label}</button>`
+        ).join('');
+        backBtn.style.display = 'flex';
+        this.init();
+    },
+
+    applyFinalFilters() {
+        // Update hidden inputs
+        document.getElementById('filterCategory').value = this.selectedType;
+        document.getElementById('filterType').value = this.selectedCategory;
+        document.getElementById('filterLocation').value = this.selectedLocation;
+
+        applyFilters();
+
+        // Show result message
+        const prompt = document.getElementById('aiPrompt');
+        const options = document.getElementById('aiOptions');
+        const backBtn = document.getElementById('aiBackBtn');
+        
+        const catLabel = this.categories[this.selectedType]?.find(c => c.value === this.selectedCategory)?.label || this.selectedCategory;
+        const locLabel = this.locations.find(l => l.value === this.selectedLocation)?.label || this.selectedLocation;
+        
+        prompt.innerHTML = `✅ Showing results for <strong>${catLabel}</strong> in <strong>${locLabel}</strong>.`;
+        options.innerHTML = '<button class="ai-option-btn" onclick="aiSearch.reset()">Start Over</button>';
+        backBtn.style.display = 'none';
+    },
+
+    reset() {
+        this.step = 0;
+        this.selectedType = '';
+        this.selectedCategory = '';
+        this.selectedLocation = '';
+        this.renderInitialStep();
+        // Clear filters
+        document.getElementById('filterCategory').value = '';
+        document.getElementById('filterType').value = '';
+        document.getElementById('filterLocation').value = '';
+        applyFilters();
+    }
+};
+
+// Keep existing applyFilters function
 function applyFilters() {
-    const searchTerm = document.getElementById('filterSearch').value.toLowerCase().trim();
     const category = document.getElementById('filterCategory').value;
     const type = document.getElementById('filterType').value;
     const location = document.getElementById('filterLocation').value;
+
+    document.querySelectorAll('.businesses-grid .block').forEach(card => {
+        const matchesCat = !category || card.dataset.category === category;
+        const matchesType = !type || card.dataset.type === type;
+        const matchesLoc = !location || card.dataset.location === location;
+        card.style.display = (matchesCat && matchesType && matchesLoc) ? 'block' : 'none';
+    });
+
+    document.querySelectorAll('.freelancer-grid .freelancer-card').forEach(card => {
+        const matchesCat = !category || card.dataset.category === category;
+        const matchesType = !type || card.dataset.type === type;
+        const matchesLoc = !location || card.dataset.location === location;
+        card.style.display = (matchesCat && matchesType && matchesLoc) ? 'flex' : 'none';
+    });
+}
+
+// Initialize on load
+document.addEventListener('DOMContentLoaded', () => {
+    aiSearch.init();
+    applyFilters();
+});
+
 
     // Filter business cards
     document.querySelectorAll('.businesses-grid .block').forEach(card => {
@@ -2919,7 +3219,7 @@ function applyFilters() {
 
         card.style.display = (matchesText && matchesCat && matchesType && matchesLoc) ? 'flex' : 'none';
     });
-}
+
 
 // Attach event listeners
 document.getElementById('filterSearch').addEventListener('input', applyFilters);
