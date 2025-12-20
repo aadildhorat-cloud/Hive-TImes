@@ -11,8 +11,8 @@
         /* Color palette inspired by the logo */
         :root {
             --primary-color: #FF9900; /* Bright orange for accents */
-            --secondary-color: #E64A19; /* A slightly darker red-orange if needed */
-            --brand-red: #8B1A1A; /* Deep red from the logo background */
+            --secondary-color: #E64A19;
+            --brand-red: #8B1A1A;
             --text-dark: #222;
             --text-light: #444;
             --bg-light: #f8f8f8;
@@ -38,20 +38,43 @@
         .header-hero {
             text-align: center;
             padding: 40px 20px;
-            background-color: var(--brand-red); /* Use brand red for the hero background */
+            background-color: var(--brand-red);
             color: var(--bg-white);
-            border-bottom: 5px solid var(--primary-color); /* Highlight with primary color */
+            border-bottom: 5px solid var(--primary-color);
             border-radius: 0 0 10px 10px;
             margin-bottom: 20px;
+            position: relative;
+        }
+
+        /* Home button in header */
+        .home-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: var(--text-dark);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
+        .home-button:hover {
+            background-color: #FFB333;
+            transform: translateY(-2px);
         }
 
         .header-hero .logo {
-            max-width: 300px; /* Adjust logo size as needed */
+            max-width: 300px;
             height: auto;
             margin-bottom: 20px;
         }
 
-        .header-hero h1 { /* This H1 is now for descriptive text, not the main title */
+        .header-hero h1 {
             font-family: 'Montserrat', sans-serif;
             font-size: 1.8em;
             color: var(--bg-white);
@@ -74,7 +97,7 @@
 
         h2 {
             font-family: 'Montserrat', sans-serif;
-            color: var(--brand-red); /* Use brand red for section titles */
+            color: var(--brand-red);
             text-align: center;
             margin-top: 0;
             margin-bottom: 20px;
@@ -97,9 +120,9 @@
             padding: 25px;
             border-radius: 8px;
             flex: 1;
-            min-width: 280px; /* Slightly larger min-width for cards */
+            min-width: 280px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-left: 5px solid var(--primary-color); /* Add a colored border to cards */
+            border-left: 5px solid var(--primary-color);
         }
 
         .card:hover {
@@ -120,50 +143,101 @@
         .divider {
             text-align: center;
             margin: 30px 0;
-            color: var(--primary-color); /* Hexagon icon in primary color */
-            font-size: 2.5em; /* Larger icon */
-            line-height: 0; /* Adjust line height for icon centering */
+            color: var(--primary-color);
+            font-size: 2.5em;
+            line-height: 0;
         }
-        
-        .cta-section {
+
+        /* --- New Services Section --- */
+        .services-section {
             text-align: center;
-            background-color: var(--brand-red); /* CTA section background */
+            background-color: var(--brand-red);
             color: var(--bg-white);
             padding: 50px 20px;
-            border-radius: 8px;
-            margin-top: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-radius: 12px;
+            margin-top: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
         }
 
-        .cta-section h2 {
-            color: var(--bg-white); /* White text for CTA heading */
-            margin-bottom: 25px;
+        .services-section h2 {
+            color: var(--bg-white);
+            margin-bottom: 15px;
+            font-size: 2em;
         }
 
-        .cta-section p {
+        .services-section p {
             max-width: 700px;
-            margin: 0 auto 30px auto;
+            margin: 0 auto 35px;
             font-size: 1.1em;
+            opacity: 0.95;
         }
 
-        .cta-button {
+        .services-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            max-width: 900px;
+            margin: 0 auto 30px;
+        }
+
+        .service-card {
+            background-color: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(6px);
+            padding: 30px 20px;
+            border-radius: 14px;
+            flex: 1;
+            min-width: 250px;
+            max-width: 280px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-icon {
+            font-size: 2.2em;
+            margin-bottom: 18px;
+        }
+
+        .service-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+            font-size: 1.35em;
+            margin: 0 0 15px;
+        }
+
+        .service-card p {
+            color: var(--bg-white);
+            opacity: 0.9;
+            margin-bottom: 20px;
+            font-size: 1em;
+        }
+
+        .service-button {
             display: inline-block;
             background-color: var(--primary-color);
-            color: var(--text-dark); /* Dark text on bright button */
-            padding: 15px 35px;
+            color: var(--text-dark);
+            padding: 12px 24px;
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
-            letter-spacing: 1px;
-            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.1em;
+            font-size: 1em;
+            letter-spacing: 0.5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        .cta-button:hover {
-            background-color: #FFB333; /* Slightly lighter orange on hover */
-            transform: translateY(-3px);
+        .service-button:hover {
+            background-color: #FFB333;
+            transform: scale(1.04);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
         }
 
@@ -180,6 +254,15 @@
             .header-hero .logo {
                 max-width: 250px;
             }
+            .home-button {
+                position: static;
+                display: inline-block;
+                margin-top: 15px;
+            }
+            .service-card {
+                min-width: 100%;
+                max-width: 100%;
+            }
         }
     </style>
 </head>
@@ -187,6 +270,7 @@
 
 <div class="container">
     <header class="header-hero">
+        <a href="/" class="home-button">Home</a>
         <img src="images-logo/hive-times-logo.png" alt="Hive Times Logo" class="logo">
         <h1>Building a new kind of e-commerce experience.</h1>
         <p>Bridging the gap between social-first shopping and powerful professional tools.</p>
@@ -196,7 +280,8 @@
         <h2>Our Mission</h2>
         <p class="mission-text">The world of online shopping is fractured. We saw an opportunity to bridge that gap, providing a single, powerful solution that gives businesses the best of both worlds.</p>
         
-        <div class="divider">&#x2B22;</div> <h2>What We Do</h2>
+        <div class="divider">&#x2B22;</div>
+        <h2>What We Do</h2>
         <div class="what-we-do-grid">
             <div class="card">
                 <h3>For Businesses</h3>
@@ -215,11 +300,51 @@
         <p>We are a team of passionate creators and entrepreneurs who understand the challenges of running a modern business. Our goal is to empower you with a beautiful, professional storefront that has the simple, social-first appeal that customers love.</p>
     </section>
 
-    <div class="cta-section">
-        <h2>Join the Hive</h2>
-        <p>Whether you're a small business looking to launch your first online store or a seasoned entrepreneur seeking a more powerful way to connect with your customers, we invite you to join the Hive. Let us help you build a buzz around your brand.</p>
-     
-        <a href="https://wa.me/?text=Hi%20Hive%20Times%2C%20I'm%20interested%20in%20creating%20a%20website%20and%20joining%20the%20Hive!" class="cta-button" target="_blank" rel="noopener noreferrer">JOIN THE HIVE</a>
+    <!-- Upgraded Join the Hive Section with YOUR WhatsApp number -->
+    <div class="services-section">
+        <h2>Join the Hive — Choose Your Path</h2>
+        <p>Let us know what you need, and we’ll help you get started right away.</p>
+
+        <div class="services-grid">
+            <!-- Service 1: Website Creation -->
+            <div class="service-card">
+                <div class="service-icon">🌐</div>
+                <h3>We Create Websites for Your Business</h3>
+                <p>Launch a stunning, professional online store tailored to your brand — fast, secure, and mobile-ready.</p>
+                <a href="https://wa.me/27649220145?text=Hi%20Hive%20Times%2C%20I%27m%20interested%20in%20having%20a%20website%20created%20for%20my%20business!" 
+                   class="service-button" 
+                   target="_blank" 
+                   rel="noopener noreferrer">
+                    Get My Website
+                </a>
+            </div>
+
+            <!-- Service 2: Business Marketing -->
+            <div class="service-card">
+                <div class="service-icon">📣</div>
+                <h3>We Market Your Business</h3>
+                <p>Get featured on our homepage to reach thousands of active shoppers and grow your customer base.</p>
+                <a href="https://wa.me/27649220145?text=Hi%20Hive%20Times%2C%20I%27m%20interested%20in%20marketing%20my%20business%20through%20your%20homepage%20advertising!" 
+                   class="service-button" 
+                   target="_blank" 
+                   rel="noopener noreferrer">
+                    Promote My Business
+                </a>
+            </div>
+
+            <!-- Service 3: Service Advertising -->
+            <div class="service-card">
+                <div class="service-icon">✨</div>
+                <h3>We Advertise Your Service</h3>
+                <p>Showcase your unique service with dedicated banners and highlights on Hive Times’ homepage.</p>
+                <a href="https://wa.me/27649220145?text=Hi%20Hive%20Times%2C%20I%27m%20interested%20in%20advertising%20my%20service%20on%20your%20homepage!" 
+                   class="service-button" 
+                   target="_blank" 
+                   rel="noopener noreferrer">
+                    Advertise My Service
+                </a>
+            </div>
+        </div>
     </div>
 
 </div>
