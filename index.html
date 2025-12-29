@@ -3359,32 +3359,53 @@ searchBtn.addEventListener('click', applyFilters);
 }
 });
 
-// Swiper
-fetch('slider.html')
-.then(response => response.text())
-.then(html => {
-document.getElementById('slider-container').innerHTML = html;
-new Swiper('.mySwiper', {
-spaceBetween: 0,
-centeredSlides: true,
-autoplay: { delay: 3000, disableOnInteraction: false },
-pagination: { el: '.swiper-pagination', clickable: true },
-navigation: {
-nextEl: '.swiper-button-next',
-prevEl: '.swiper-button-prev'
-},
-loop: true,
-effect: 'fade',
-fadeEffect: { crossFade: true },
-touchRatio: 1,
-simulateTouch: true
-});
-})
-.catch(err => {
-console.error('Slider failed to load:', err);
-document.getElementById('slider-container').innerHTML =
-'<p style="text-align:center; padding:40px; color:#a30909; font-weight:600;">❌ Slider error: ' + err.message + '</p>';
-});
+// Swiper - load Swiper library dynamically then fetch and initialize the slider
+(function loadSwiperAndInit() {
+  const swiperScript = document.createElement('script');
+  swiperScript.src = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js';
+  swiperScript.async = true;
+
+  swiperScript.onload = () => {
+    fetch('slider.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('slider-container').innerHTML = html;
+        // initialize Swiper after the markup is injected and library loaded
+        if (typeof Swiper !== 'undefined') {
+          new Swiper('.mySwiper', {
+            spaceBetween: 0,
+            centeredSlides: true,
+            autoplay: { delay: 3000, disableOnInteraction: false },
+            pagination: { el: '.swiper-pagination', clickable: true },
+            navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev'
+            },
+            loop: true,
+            effect: 'fade',
+            fadeEffect: { crossFade: true },
+            touchRatio: 1,
+            simulateTouch: true
+          });
+        } else {
+          console.error('Swiper is not available after loading script.');
+        }
+      })
+      .catch(err => {
+        console.error('Slider failed to load:', err);
+        document.getElementById('slider-container').innerHTML =
+          '<p style="text-align:center; padding:40px; color:#a30909; font-weight:600;">❌ Slider error: ' + err.message + '</p>';
+      });
+  };
+
+  swiperScript.onerror = () => {
+    console.error('Failed to load Swiper library.');
+    document.getElementById('slider-container').innerHTML =
+      '<p style="text-align:center; padding:40px; color:#a30909; font-weight:600;">❌ Failed to load Swiper library.</p>';
+  };
+
+  document.head.appendChild(swiperScript);
+})();
 </script>
 </body>
 </html>
