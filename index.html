@@ -1759,55 +1759,54 @@ grid-template-columns: repeat(2, 1fr);
 <main>
 <!-- AI-Guided Search Bar -->
 <div id="filterBar" class="filter-bar">
-<div class="ai-search-container" id="aiSearchContainer">
-<!-- Prompt -->
-<div class="ai-message">
-<div class="ai-avatar">
-<img src="images-logo/bee.jpg" alt="Hive Times Bee">
-</div>
-<div class="ai-text">
-<span id="aiPrompt">Hi! Are you looking for a <strong>business</strong> or a <strong>service</strong>?</span>
-</div>
-</div>
-<!-- Text Search Bar (Professional) -->
-<div class="text-search-bar" style="margin-bottom: 20px;">
-<div style="display: flex; gap: 12px; width: 100%;">
-<input
-type="text"
-id="filterSearch"
-placeholder="Search businesses or services by name or keyword…"
-style="
-flex: 1;
-padding: 16px 24px;
-border: 2px solid #eee;
-border-radius: 50px;
-font-size: 1.05rem;
-font-family: 'Inter', sans-serif;
-box-shadow: inset 0 2px 6px rgba(0,0,0,0.04);
-outline: none;
-transition: all 0.3s ease;
-"
-/>
+  <div class="ai-search-container" id="aiSearchContainer">
+    <!-- Prompt -->
+    <div class="ai-message">
+      <div class="ai-avatar">
+        <img src="images-logo/bee.jpg" alt="Hive Times Bee">
+      </div>
+      <div class="ai-text">
+        <span id="aiPrompt">Hi! Are you looking for a <strong>business</strong> or a <strong>service</strong>?</span>
+      </div>
+    </div>
 
-</div>
-</div>
-<!-- Options -->
-<div class="ai-options" id="aiOptions">
-<button class="ai-option-btn" data-value="business">Business</button>
-<button class="ai-option-btn" data-value="service">Service</button>
-</div>
-<!-- Back Button (Hidden Initially) -->
-<button class="ai-back-btn" id="aiBackBtn">
-<i class="fas fa-arrow-left"></i> Back
-</button>
-<!-- Hidden Inputs (for compatibility) -->
-<input type="hidden" id="filterCategory" value="">
-<input type="hidden" id="filterType" value="">
-<input type="hidden" id="filterLocation" value="">
-<!-- ⚠️ REMOVED duplicate hidden #filterSearch -->
-</div>
-</div>
+    <!-- Text Search Bar -->
+    <div class="text-search-bar" style="margin-bottom: 20px;">
+      <input
+        type="text"
+        id="filterSearch"
+        placeholder="Search businesses or services by name or keyword…"
+        style="
+          width: 100%;
+          padding: 16px 24px;
+          border: 2px solid #eee;
+          border-radius: 50px;
+          font-size: 1.05rem;
+          font-family: 'Inter', sans-serif;
+          box-shadow: inset 0 2px 6px rgba(0,0,0,0.04);
+          outline: none;
+          transition: all 0.3s ease;
+        "
+      />
+    </div>
 
+    <!-- Options (dynamically updated) -->
+    <div class="ai-options" id="aiOptions">
+      <button class="ai-option-btn" data-value="business">Business</button>
+      <button class="ai-option-btn" data-value="service">Service</button>
+    </div>
+
+    <!-- Back Button -->
+    <button class="ai-back-btn" id="aiBackBtn">
+      <i class="fas fa-arrow-left"></i> Back
+    </button>
+
+    <!-- Hidden filter inputs -->
+    <input type="hidden" id="filterCategory" value="">
+    <input type="hidden" id="filterType" value="">
+    <input type="hidden" id="filterLocation" value="">
+  </div>
+</div>
 <!-- Businesses Grid -->
 <div class="businesses-grid">
 <!-- Nothing Fancy -->
@@ -2576,7 +2575,318 @@ Like diesel paraffin lpg gas at wholesale price 	</p>
 <button class="close-cart-btn" onclick="closeCartModal()">Continue Shopping</button>
 </div>
 </div>
+<!-- AI Chat Widget Button -->
+<div class="ai-chat-widget" id="aiChatWidget">
+  <img src="images-logo/bee.jpg" alt="Ask Beelal">
+</div>
 
+<!-- AI Chat Panel (Initially Hidden) -->
+<div class="ai-chat-panel" id="aiChatPanel">
+  <div class="ai-chat-header">
+    <div class="ai-avatar-square">
+      <img src="images-logo/bee.jpg" alt="Beelal - Hive Times AI">
+    </div>
+    <h4>Ask Beelal</h4>
+    <button class="ai-close-btn" id="aiCloseBtn">×</button>
+  </div>
+  <div class="ai-chat-messages" id="aiChatMessages">
+    <div class="ai-message bot">
+      Hello! 👋 I'm Beelal, your Hive Times assistant.<br>
+      Ask me about businesses, services, or how Hive Times can help your business grow!
+    </div>
+  </div>
+  <div class="ai-chat-input">
+    <input type="text" id="aiUserInput" placeholder="Type your question…">
+    <button id="aiSendBtn"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<style>
+/* === AI CHAT WIDGET BUTTON === */
+.ai-chat-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(230, 74, 25, 0.4);
+  cursor: pointer;
+  z-index: 999;
+  border: 3px solid white;
+  background: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: pulseGlow 2s infinite;
+}
+.ai-chat-widget:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(255, 143, 0, 0.6);
+}
+.ai-chat-widget img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 6px 20px rgba(230, 74, 25, 0.4); }
+  50% { box-shadow: 0 6px 25px rgba(255, 143, 0, 0.7); }
+  100% { box-shadow: 0 6px 20px rgba(230, 74, 25, 0.4); }
+}
+
+/* === AI CHAT PANEL === */
+.ai-chat-panel {
+  position: fixed;
+  bottom: 90px;
+  right: 24px;
+  width: 360px;
+  max-width: calc(100% - 48px);
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 12px 40px rgba(230, 74, 25, 0.35);
+  display: none; /* Hidden by default */
+  flex-direction: column;
+  z-index: 998;
+  overflow: hidden;
+  border: 1px solid rgba(255, 143, 0, 0.2);
+}
+.ai-chat-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: linear-gradient(135deg, #FF8F00 0%, #E64A19 100%);
+  color: white;
+  position: relative;
+}
+.ai-avatar-square {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid white;
+  flex-shrink: 0;
+}
+.ai-avatar-square img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.ai-chat-header h4 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.ai-close-btn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 0;
+}
+.ai-close-btn:hover {
+  background: rgba(0,0,0,0.15);
+}
+.ai-chat-messages {
+  flex: 1;
+  max-height: 260px;
+  overflow-y: auto;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #fdfdfd;
+}
+.ai-message {
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  max-width: 85%;
+  word-wrap: break-word;
+  position: relative;
+}
+.ai-message.user {
+  background: #e3f2fd;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+.ai-message.bot {
+  background: #f8f9fa;
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+  border-left: 3px solid #FF8F00;
+}
+.ai-chat-input {
+  display: flex;
+  gap: 8px;
+  padding: 14px;
+  background: white;
+  border-top: 1px solid #eee;
+}
+#aiUserInput {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 50px;
+  padding: 10px 18px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+}
+#aiUserInput:focus {
+  border-color: #FF8F00;
+  box-shadow: 0 0 0 3px rgba(255, 143, 0, 0.15);
+}
+#aiSendBtn {
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FF8F00 0%, #E64A19 100%);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 8px rgba(230, 74, 25, 0.3);
+}
+#aiSendBtn:hover {
+  transform: scale(1.05);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .ai-chat-widget {
+    bottom: 16px;
+    right: 16px;
+    width: 60px;
+    height: 60px;
+  }
+  .ai-chat-panel {
+    bottom: 80px;
+    right: 16px;
+    width: calc(100% - 32px);
+    max-height: 70vh;
+  }
+  .ai-chat-messages {
+    max-height: 180px;
+  }
+}
+</style>
+
+<script>
+// AI CHAT WIDGET LOGIC
+document.addEventListener('DOMContentLoaded', () => {
+  const widget = document.getElementById('aiChatWidget');
+  const panel = document.getElementById('aiChatPanel');
+  const closeBtn = document.getElementById('aiCloseBtn');
+  const chatMessages = document.getElementById('aiChatMessages');
+  const userInput = document.getElementById('aiUserInput');
+  const sendBtn = document.getElementById('aiSendBtn');
+
+  // Toggle panel on widget click
+  widget.addEventListener('click', () => {
+    panel.style.display = panel.style.display === 'flex' ? 'none' : 'flex';
+  });
+
+  // Close panel
+  closeBtn.addEventListener('click', () => {
+    panel.style.display = 'none';
+  });
+
+  // Auto-scroll helper
+  function scrollToBottom() {
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  // Add message to chat
+  function addMessage(text, isUser = false) {
+    const msgDiv = document.createElement('div');
+    msgDiv.classList.add('ai-message', isUser ? 'user' : 'bot');
+    msgDiv.innerHTML = text.replace(/\n/g, '<br>');
+    chatMessages.appendChild(msgDiv);
+    setTimeout(scrollToBottom, 10);
+  }
+
+  // Preload business/service data
+  const BUSINESS_DATA = Array.from(document.querySelectorAll('.businesses-grid .block')).map(card => ({
+    id: card.id,
+    name: card.querySelector('h3').textContent.trim(),
+    description: card.querySelector('p').textContent.trim(),
+    category: card.dataset.type,
+    location: card.dataset.location
+  }));
+  const SERVICE_DATA = Array.from(document.querySelectorAll('.freelancer-grid .freelancer-card')).map(card => ({
+    id: card.id,
+    name: card.querySelector('h3').textContent.trim(),
+    description: card.querySelector('p').textContent.trim(),
+    category: card.dataset.type,
+    location: card.dataset.location
+  }));
+  const businessKeywords = BUSINESS_DATA.map(b => b.name.toLowerCase());
+  const serviceKeywords = ['carpenter', 'flooring', 'catering', 'delivery', 'petrol', 'ceilings'];
+
+  // Generate AI response
+  function getResponse(query) {
+    const lower = query.toLowerCase().trim();
+
+    // Business match
+    const matchedBiz = BUSINESS_DATA.find(b => 
+      b.name.toLowerCase().includes(lower) || lower.includes(b.name.toLowerCase())
+    );
+    if (matchedBiz) {
+      return `💡 <strong>${matchedBiz.name}</strong> is featured on Hive Times! They specialize in ${
+        matchedBiz.category === 'sweet-shop' ? 'sweets and confectionery' :
+        matchedBiz.category === 'ice-cream' ? 'artisanal ice cream' :
+        matchedBiz.category === 'toilet-paper' ? 'premium paper products' :
+        'quality goods and services'
+      }. Check out their profile for more!`;
+    }
+
+    // Service match
+    if (serviceKeywords.some(kw => lower.includes(kw))) {
+      return "✅ Hive Times connects you with verified local service providers. Browse our <strong>Services</strong> section to find professionals near you!";
+    }
+
+    // Join pitch
+    if (lower.includes("join") || lower.includes("register") || lower.includes("add my business")) {
+      return "🌟 <strong>Join Hive Times today!</strong> We help local businesses like yours get discovered, build trust with reviews, and grow sales — all for free. Click <strong>“JOIN THE HIVE”</strong> to get started!";
+    }
+
+    // Value prop
+    if (lower.includes("hive times") || lower.includes("how can you help") || lower.includes("benefit")) {
+      return "🐝 <strong>Hive Times is your local business ecosystem.</strong> We feature your business to thousands, offer free listings, promotional tools, and a trusted review system — all to help you <strong>thrive</strong>!";
+    }
+
+    // Default
+    return "I can help you find a business, explore services, or explain how Hive Times helps you grow. Try: “Tell me about Broadway” or “How do I join Hive Times?”";
+  }
+
+  // Handle send
+  function handleSend() {
+    const query = userInput.value.trim();
+    if (!query) return;
+    addMessage(query, true);
+    userInput.value = '';
+    const response = getResponse(query);
+    setTimeout(() => addMessage(response), 400);
+  }
+
+  sendBtn.addEventListener('click', handleSend);
+  userInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') handleSend();
+  });
+});
+</script>
 <!-- Back to Top -->
 <button class="back-to-top" id="backToTopBtn" aria-label="Back to top" style="display: none;"><i class="fas fa-chevron-up"></i></button>
 
@@ -3024,117 +3334,141 @@ card.style.display = (matchesText && matchesCat && matchesType && matchesLoc) ? 
 });
 }
 
-// ✅ NEW: AI Search Logic
+// ✅ ENHANCED AI SEARCH WITH EVENT DELEGATION & TEXT CLEAR
 const aiSearch = {
-step: 0, // 0: type, 1: category, 2: location
-selectedType: '',
-selectedCategory: '',
-selectedLocation: '',
-prevStep: null,
-categories: {
-business: [
-{ value: 'sweet-shop', label: 'Sweet Shop' },
-{ value: 'ice-cream', label: 'Ice Cream' },
-{ value: 'butcher', label: 'Butcher' },
-{ value: 'toilet-paper', label: 'Toilet Paper' },
-{ value: 'lighting-electrical', label: 'Lighting & Electrical' },
-{ value: 'general', label: 'General Wholesale' }
-],
-service: [
-{ value: 'carpenter', label: 'Carpenter' },
-{ value: 'catering', label: 'Catering' },
-{ value: 'flooring', label: 'Flooring' },
-{ value: 'ceilings', label: 'Ceilings' },
-{ value: 'petrol', label: 'Petrol / Fuel' },
-{ value: 'delivery', label: 'Delivery' }
-]
-},
-locations: [
-{ value: 'johannesburg', label: 'Johannesburg' },
-{ value: 'polokwane', label: 'Polokwane' },
-{ value: 'crown-mines', label: 'Crown Mines' },
-{ value: 'leslie', label: 'Leslie' },
-{ value: 'trichardt', label: 'Trichardt' }
-],
-init() {
-document.querySelectorAll('.ai-option-btn').forEach(btn => {
-btn.addEventListener('click', (e) => {
-const val = e.target.dataset.value;
-this.prevStep = this.step;
-if (this.step === 0) {
-this.selectedType = val;
-this.step = 1;
-this.renderCategoryStep(val);
-} else if (this.step === 1) {
-this.selectedCategory = val;
-this.step = 2;
-this.renderLocationStep();
-} else if (this.step === 2) {
-this.selectedLocation = val;
-this.applyFinalFilters();
-}
-});
-});
-document.getElementById('aiBackBtn').addEventListener('click', () => {
-if (this.step === 1) {
-this.step = 0;
-this.renderInitialStep();
-} else if (this.step === 2) {
-this.step = 1;
-this.renderCategoryStep(this.selectedType);
-}
-});
-},
-renderInitialStep() {
-document.getElementById('aiPrompt').innerHTML = 'Hi! Are you looking for a <strong>business</strong> or a <strong>service</strong>?';
-document.getElementById('aiOptions').innerHTML = `
-<button class="ai-option-btn" data-value="business">Business</button>
-<button class="ai-option-btn" data-value="service">Service</button>
-`;
-document.getElementById('aiBackBtn').style.display = 'none';
-},
-renderCategoryStep(type) {
-const label = type === 'business' ? 'business' : 'service';
-document.getElementById('aiPrompt').innerHTML = `Great! What kind of <strong>${label}</strong> are you looking for?`;
-const cats = this.categories[type] || [];
-document.getElementById('aiOptions').innerHTML = cats.map(cat =>
-`<button class="ai-option-btn" data-value="${cat.value}">${cat.label}</button>`
-).join('');
-document.getElementById('aiBackBtn').style.display = 'flex';
-},
-renderLocationStep() {
-document.getElementById('aiPrompt').innerHTML = `Finally, which <strong>location</strong>?`;
-const locs = this.locations;
-document.getElementById('aiOptions').innerHTML = locs.map(loc =>
-`<button class="ai-option-btn" data-value="${loc.value}">${loc.label}</button>`
-).join('');
-document.getElementById('aiBackBtn').style.display = 'flex';
-},
-applyFinalFilters() {
-document.getElementById('filterCategory').value = this.selectedType;
-document.getElementById('filterType').value = this.selectedCategory;
-document.getElementById('filterLocation').value = this.selectedLocation;
-applyFilters();
+  step: 0,
+  selectedType: '',
+  selectedCategory: '',
+  selectedLocation: '',
+  categories: {
+    business: [
+      { value: 'sweet-shop', label: 'Sweet Shop' },
+      { value: 'ice-cream', label: 'Ice Cream' },
+      { value: 'butcher', label: 'Butcher' },
+      { value: 'toilet-paper', label: 'Toilet Paper' },
+      { value: 'lighting-electrical', label: 'Lighting & Electrical' },
+      { value: 'general', label: 'General Wholesale' }
+    ],
+    service: [
+      { value: 'carpenter', label: 'Carpenter' },
+      { value: 'catering', label: 'Catering' },
+      { value: 'flooring', label: 'Flooring' },
+      { value: 'ceilings', label: 'Ceilings' },
+      { value: 'petrol', label: 'Petrol / Fuel' },
+      { value: 'delivery', label: 'Delivery' }
+    ]
+  },
+  locations: [
+    { value: 'johannesburg', label: 'Johannesburg' },
+    { value: 'polokwane', label: 'Polokwane' },
+    { value: 'crown-mines', label: 'Crown Mines' },
+    { value: 'leslie', label: 'Leslie' },
+    { value: 'trichardt', label: 'Trichardt' }
+  ],
+  init() {
+    const optionsContainer = document.getElementById('aiOptions');
+    const backBtn = document.getElementById('aiBackBtn');
 
-const catLabel = this.categories[this.selectedType]?.find(c => c.value === this.selectedCategory)?.label || this.selectedCategory;
-const locLabel = this.locations.find(l => l.value === this.selectedLocation)?.label || this.selectedLocation;
-document.getElementById('aiPrompt').innerHTML = `✅ Showing results for <strong>${catLabel}</strong> in <strong>${locLabel}</strong>.`;
-document.getElementById('aiOptions').innerHTML = '<button class="ai-option-btn" onclick="aiSearch.reset()">Start Over</button>';
-document.getElementById('aiBackBtn').style.display = 'none';
-},
-reset() {
-this.step = 0;
-this.selectedType = '';
-this.selectedCategory = '';
-this.selectedLocation = '';
-this.renderInitialStep();
-document.getElementById('filterCategory').value = '';
-document.getElementById('filterType').value = '';
-document.getElementById('filterLocation').value = '';
-applyFilters();
-}
+    // 👉 EVENT DELEGATION (solves dynamic button issue)
+    optionsContainer.addEventListener('click', (e) => {
+      if (!e.target.classList.contains('ai-option-btn')) return;
+      const val = e.target.dataset.value;
+
+      if (this.step === 0) {
+        this.selectedType = val;
+        this.step = 1;
+        this.renderCategoryStep(val);
+      } else if (this.step === 1) {
+        this.selectedCategory = val;
+        this.step = 2;
+        this.renderLocationStep();
+      } else if (this.step === 2) {
+        this.selectedLocation = val;
+        this.applyFinalFilters();
+      }
+    });
+
+    backBtn.addEventListener('click', () => {
+      if (this.step === 1) {
+        this.resetToStep(0);
+      } else if (this.step === 2) {
+        this.resetToStep(1);
+      }
+    });
+  },
+  resetToStep(step) {
+    this.step = step;
+    if (step === 0) {
+      this.renderInitialStep();
+    } else if (step === 1) {
+      this.renderCategoryStep(this.selectedType);
+    }
+  },
+  renderInitialStep() {
+    document.getElementById('aiPrompt').innerHTML = 'Hi! Are you looking for a <strong>business</strong> or a <strong>service</strong>?';
+    document.getElementById('aiOptions').innerHTML = `
+      <button class="ai-option-btn" data-value="business">Business</button>
+      <button class="ai-option-btn" data-value="service">Service</button>
+    `;
+    document.getElementById('aiBackBtn').style.display = 'none';
+  },
+  renderCategoryStep(type) {
+    const label = type === 'business' ? 'business' : 'service';
+    document.getElementById('aiPrompt').innerHTML = `Great! What kind of <strong>${label}</strong> are you looking for?`;
+    const cats = this.categories[type] || [];
+    document.getElementById('aiOptions').innerHTML = cats.map(cat =>
+      `<button class="ai-option-btn" data-value="${cat.value}">${cat.label}</button>`
+    ).join('');
+    document.getElementById('aiBackBtn').style.display = 'flex';
+  },
+  renderLocationStep() {
+    document.getElementById('aiPrompt').innerHTML = `Finally, which <strong>location</strong>?`;
+    const locs = this.locations;
+    document.getElementById('aiOptions').innerHTML = locs.map(loc =>
+      `<button class="ai-option-btn" data-value="${loc.value}">${loc.label}</button>`
+    ).join('');
+    document.getElementById('aiBackBtn').style.display = 'flex';
+  },
+  applyFinalFilters() {
+    // ✅ Clear text search to avoid interference
+    document.getElementById('filterSearch').value = '';
+
+    document.getElementById('filterCategory').value = this.selectedType;
+    document.getElementById('filterType').value = this.selectedCategory;
+    document.getElementById('filterLocation').value = this.selectedLocation;
+
+    applyFilters();
+
+    const catLabel = this.categories[this.selectedType]?.find(c => c.value === this.selectedCategory)?.label || this.selectedCategory;
+    const locLabel = this.locations.find(l => l.value === this.selectedLocation)?.label || this.selectedLocation;
+
+    document.getElementById('aiPrompt').innerHTML = `✅ Showing results for <strong>${catLabel}</strong> in <strong>${locLabel}</strong>.`;
+    document.getElementById('aiOptions').innerHTML = `<button class="ai-option-btn" data-value="reset">Start Over</button>`;
+    document.getElementById('aiBackBtn').style.display = 'none';
+  },
+  reset() {
+    this.step = 0;
+    this.selectedType = '';
+    this.selectedCategory = '';
+    this.selectedLocation = '';
+
+    // Clear hidden filters & text input
+    document.getElementById('filterCategory').value = '';
+    document.getElementById('filterType').value = '';
+    document.getElementById('filterLocation').value = '';
+    document.getElementById('filterSearch').value = '';
+
+    applyFilters();
+    this.renderInitialStep();
+  }
 };
 
+// Re-initialize AI search when "Start Over" is clicked (via delegation)
+document.getElementById('aiOptions').addEventListener('click', (e) => {
+  if (e.target.dataset.value === 'reset') {
+    aiSearch.reset();
+  }
+});
 // ✅ Wire up all events once DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
 aiSearch.init();
