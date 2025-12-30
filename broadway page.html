@@ -18,7 +18,144 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/slider.css">
+<style>/* === AI PRODUCT SEARCH – STICKY TOP BAR === */
+.ai-product-search-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: white;
+  padding: 24px;
+  box-shadow: 0 6px 20px rgba(230, 74, 25, 0.25);
+  border-bottom: 3px solid #ffebd5;
+  max-width: 1400px;
+  margin: 0 auto;
+  font-family: 'Inter', sans-serif;
+  transition: box-shadow 0.3s ease;
+}
 
+/* Avatar & Prompt */
+.ai-product-search-sticky .ai-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.ai-product-search-sticky .ai-avatar img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #FF8F00;
+}
+.ai-product-search-sticky .ai-text {
+  background: linear-gradient(135deg, #fff9f0 0%, #fff3e6 100%);
+  padding: 20px;
+  border-radius: 12px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #2c3e50;
+  flex: 1;
+}
+.ai-product-search-sticky .ai-text strong {
+  color: #e64a19;
+  font-weight: 800;
+}
+
+/* Search Input */
+.ai-product-search-sticky .ai-text-search input {
+  width: 100%;
+  padding: 14px 20px;
+  border: 2px solid #ffe0b2;
+  border-radius: 50px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.ai-product-search-sticky .ai-text-search input:focus {
+  border-color: #e64a19;
+  box-shadow: 0 0 0 4px rgba(230, 74, 25, 0.15);
+}
+
+/* Buttons */
+.ai-product-search-sticky .ai-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 16px 0;
+}
+.ai-product-search-sticky .ai-option-btn {
+  flex: 1;
+  min-width: 130px;
+  padding: 14px 0;
+  background: white;
+  border: 2px solid #ffe0b2;
+  border-radius: 14px;
+  font-weight: 700;
+  color: #e64a19;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.ai-product-search-sticky .ai-option-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 143, 0, 0.3);
+  background: #fff3e0;
+}
+
+/* Back Button */
+.ai-product-search-sticky .ai-back-btn {
+  background: linear-gradient(135deg, rgba(230, 74, 25, 0.15) 0%, rgba(230, 74, 25, 0.1) 100%);
+  color: #e64a19;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-weight: 700;
+  cursor: pointer;
+  display: none; /* Hidden initially */
+  width: fit-content;
+  margin-top: 10px;
+}
+.ai-product-search-sticky .ai-back-btn:hover {
+  background: linear-gradient(135deg, rgba(230, 74, 25, 0.25) 0%, rgba(230, 74, 25, 0.2) 100%);
+  transform: translateY(-2px);
+}
+
+/* About Business Button */
+.ai-product-search-sticky .ai-about-btn {
+  background: #e8f4ff;
+  color: #1976d2;
+  border: 2px dashed #90caf9;
+  border-radius: 12px;
+  padding: 10px 0;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 12px;
+}
+.ai-product-search-sticky .ai-about-btn:hover {
+  background: #d0eaff;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .ai-product-search-sticky {
+    padding: 18px 16px;
+  }
+  .ai-product-search-sticky .ai-avatar img {
+    width: 60px;
+    height: 60px;
+  }
+  .ai-product-search-sticky .ai-text {
+    padding: 16px;
+    font-size: 1rem;
+  }
+  .ai-product-search-sticky .ai-option-btn {
+    min-width: 110px;
+    padding: 12px 0;
+    font-size: 0.95rem;
+  }
+}</style>
 </head>
 <body>
     <header>
@@ -31,65 +168,7 @@
                 <ul>
                     <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                    
-                         <li class="dropdown">
-                        <a href="#"><i class="fas fa-box"></i> Categories</a>
-                        <div class="dropdown-content">
-                            <div class="submenu">
-                                <a href="#">
-                                    <span><i class="fas fa-sticky-note"></i>LOLLIPOPS</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                                <div class="submenu-content">
-                                    <a href="#BIG-POPS">BIG POPS</a>
-                                    <a href="#FLIGOS">FLIGOS</a>
-                                    <a href="#SOCCER-POPS">SOCCER POPS</a>
-                                    <a href="#STUMBO">STUMBO</a>
-                                </div>
-                            </div>
-                            <div class="submenu">
-                                <a href="#">
-                                    <span><i class="fas fa-circle"></i> SOUR STRIPS</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                                <div class="submenu-content">
-                                    <a href="#BRATS">BRATS</a>
-                                    <a href="#SOUR-PUNK">SOUR PUNK</a>
-                                    <a href="#WOBBLES">WOBBLES</a>
-                                </div>
-                            </div>
-                            <div class="submenu">
-                                <a href="#">
-                                    <span><i class="fas fa-star"></i> CANDY</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                                <div class="submenu-content">
-                                    <a href="#HARTBEAT">HARTBEAT</a>
-                                    <a href="#ICE-UP">ICE UP</a>
-                                    <a href="#STUMBO-CANDY">STUMBO CANDY</a>
-                                    <a href="#ZOUR-BOMB">ZOUR BOMB</a>
-                                    <a href="#NOMICS">NOMICS</a>
-                                </div>
-                            </div>
-                            <div class="submenu">
-                                <a href="#BUBBLEGUM">
-                                    <span><i class="fas fa-gift"></i> BUBBLEGUM</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                            </div>
-                            <div class="submenu">
-                                <a href="#SECRET-SNACKS">
-                                    <span><i class="fas fa-star"></i> SECRET SNACKS</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                            </div>
-                            <div class="submenu">
-                                <a href="#PARTY-PACKS">
-                                    <span><i class="fas fa-star"></i> PARTY PACKS</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
+                        
                      <!-- Business Menu Placeholder -->
   <li id="business-menu-placeholder"></li>
                     
@@ -105,14 +184,37 @@
 <div id="slider-container"></div>
 <div class="search-filter-container">
   </div>
+  
+  <!-- AI Product Search – Sticky Top Bar -->
+<div id="aiProductSearchSticky" class="ai-product-search-sticky">
+  <div class="ai-message">
+    <div class="ai-avatar">
+      <img src="images-logo/bee.jpg" alt="Hive Times Bee">
+    </div>
+    <div class="ai-text">
+      <span id="aiProductPrompt">Hi! What kind of <strong>sweet</strong> are you looking for?</span>
+    </div>
+  </div>
 
-</section>
-<div class="business-info-container">
-    <button class="business-info-btn" onclick="showBusinessPopup()">
-        <img src="images-logo/polar-ice-cream-logo.png" alt="Business Logo" class="business-logo">
-        About Our Business
-    </button>
+  <!-- Text Search -->
+  <div class="ai-text-search">
+    <input type="text" id="aiProductSearchInput" placeholder="e.g. bubblegum, under R50, party packs...">
+  </div>
+
+  <!-- Category / Subcategory Buttons -->
+  <div class="ai-options" id="aiProductOptions"></div>
+
+  <!-- Back Button -->
+  <button class="ai-back-btn" id="aiProductBackBtn">
+    <i class="fas fa-arrow-left"></i> Back
+  </button>
+
+  <!-- About Business -->
+  <button class="ai-about-btn" onclick="showBusinessPopup()">ℹ️ About This Business</button>
 </div>
+</section>
+
+
 
 <div class="business-popup-overlay" id="businessPopupOverlay">
     <div class="business-popup" id="businessPopup">
@@ -908,7 +1010,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                &copy;  Hive Times. All rights reserved. | Developed by Your Company Name
+                &copy;  Hive Times. All rights reserved. | Developed by Hive Times
             </div>
         </div>
     </footer>
@@ -1368,6 +1470,122 @@ const stored = localStorage.getItem(STORAGE_KEY);
     .catch(err => {
       console.error('Business menu failed to load:', err);
     });
+  // AI Product Search for Broadway Sweets
+const aiProductSearch = {
+  step: 0, // 0 = main categories, 1 = subcategories
+  currentCategory: null,
+
+  categories: {
+    'Lollipops': [
+      { label: 'Big Pops', id: 'BIG-POPS' },
+      { label: 'Fligos', id: 'FLIGOS' },
+      { label: 'Soccer Pops', id: 'SOCCER-POPS' },
+      { label: 'Stumbo', id: 'STUMBO' }
+    ],
+    'Sour Strips': [
+      { label: 'Brats', id: 'BRATS' },
+      { label: 'Sour Punk', id: 'SOUR-PUNK' },
+      { label: 'Wobbles', id: 'WOBBLES' }
+    ],
+    'Candy': [
+      { label: 'Hartbeat', id: 'HARTBEAT' },
+      { label: 'Ice Up', id: 'ICE-UP' },
+      { label: 'Stumbo Candy', id: 'STUMBO-CANDY' },
+      { label: 'Zour Bomb', id: 'ZOUR-BOMB' },
+      { label: 'Nomics', id: 'NOMICS' }
+    ],
+    'Bubblegum': [{ label: 'All Bubblegum', id: 'BUBBLEGUM' }],
+    'Secret Snacks': [{ label: 'All Secret Snacks', id: 'SECRET-SNACKS' }],
+    'Party Packs': [{ label: 'All Party Packs', id: 'PARTY-PACKS' }]
+  },
+
+  init() {
+    this.renderStep(0);
+
+    // Handle category/subcategory clicks
+    document.getElementById('aiProductOptions').addEventListener('click', (e) => {
+      if (e.target.classList.contains('ai-option-btn')) {
+        const value = e.target.dataset.value;
+        if (this.step === 0) {
+          this.currentCategory = value;
+          this.step = 1;
+          this.renderStep(1);
+        } else if (this.step === 1) {
+          // Scroll to section
+          document.querySelector(`#${value}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+
+    // Back button
+    document.getElementById('aiProductBackBtn').addEventListener('click', () => {
+      if (this.step === 1) {
+        this.step = 0;
+        this.renderStep(0);
+      }
+    });
+
+    // Text search (name or price)
+    document.getElementById('aiProductSearchInput').addEventListener('input', (e) => {
+      const query = e.target.value.trim().toLowerCase();
+      document.querySelectorAll('.product-card').forEach(card => {
+        const name = card.querySelector('.product-name')?.textContent.toLowerCase() || '';
+        const price = parseFloat(card.getAttribute('data-price')) || 0;
+        let matches = true;
+
+        if (query) {
+          // Handle "under R50" or "under 50"
+          if (query.includes('under') || query.includes('<')) {
+            const match = query.match(/\d+(\.\d+)?/);
+            if (match) {
+              const maxPrice = parseFloat(match[0]);
+              matches = price <= maxPrice;
+            } else {
+              matches = false;
+            }
+          } else {
+            matches = name.includes(query);
+          }
+        }
+
+        card.style.display = matches ? 'block' : 'none';
+      });
+
+      // Optional: hide empty sections
+      document.querySelectorAll('.content-section').forEach(section => {
+        const visible = section.querySelectorAll('.product-card:not([style*="display: none"])');
+        section.style.display = visible.length > 0 ? 'block' : 'none';
+      });
+    });
+  },
+
+  renderStep(step) {
+    this.step = step;
+    const promptEl = document.getElementById('aiProductPrompt');
+    const optionsEl = document.getElementById('aiProductOptions');
+    const backBtn = document.getElementById('aiProductBackBtn');
+
+    if (step === 0) {
+      promptEl.innerHTML = 'Hi! What kind of <strong>sweet</strong> are you looking for?';
+      optionsEl.innerHTML = Object.keys(this.categories).map(cat =>
+        `<button class="ai-option-btn" data-value="${cat}">${cat}</button>`
+      ).join('');
+      backBtn.style.display = 'none';
+    } else if (step === 1) {
+      const subs = this.categories[this.currentCategory] || [];
+      promptEl.innerHTML = `Great! Which <strong>${this.currentCategory}</strong>?`;
+      optionsEl.innerHTML = subs.map(sub =>
+        `<button class="ai-option-btn" data-value="${sub.id}">${sub.label}</button>`
+      ).join('');
+      backBtn.style.display = 'inline-flex';
+    }
+  }
+};
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+  aiProductSearch.init();
+});
 </script>
 </body>
 </html>
