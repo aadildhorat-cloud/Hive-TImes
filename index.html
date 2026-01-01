@@ -2025,6 +2025,61 @@ grid-template-columns: repeat(2, 1fr);
 </div>
 </div>
 </div>
+<!-- Laptop Solution -->
+<div class="block" id="business-laptop-solution" data-category="business" data-type="laptop" data-location="johannesburg">
+<a href="https://laptopsolutions.co.za/">
+<img src="images-logo/laptopsolutions-logo.jpg" alt="laptop solution">
+</a>
+<div class="info">
+<h3>Laptop Solution</h3>
+<p>CMOS – Backup Battery
+Laptop Chargers
+Laptop Batteries
+Laptop Cooling Fan
+Laptop DC Jacks
+Laptop Digitizers
+Laptop Full Lcd Assemblies
+Laptop Hinges
+Laptop Internal Optical Drives
+Tablet Digitizers
+Laptop Keyboards
+Laptop LCD Inverters
+Laptop Screens
+Power Cords
+Rubber Mouse Cap
+Screen – Flex Cables
+Tablet Digitizers
+Tablet Screen
+Touchpads
+.</p>
+<button class="open-popup" data-popup-target="laptopsolutionspopup">Learn More</button>
+<div class="rating-section">
+<div class="rating-stars" data-business="laptop-solution">
+<i class="far fa-star star"></i>
+<i class="far fa-star star"></i>
+<i class="far fa-star star"></i>
+<i class="far fa-star star"></i>
+<i class="far fa-star star"></i>
+</div>
+<div class="rating-count">0 ratings</div>
+<a href="#" class="view-comments-btn" data-target="laptop-solution-comments">
+<i class="fas fa-comment"></i> View Comments
+</a>
+</div>
+<div class="comments-section" id="laptop-solution-comments">
+<div class="comment-form">
+<textarea class="comment-input" placeholder="Share your experience..."></textarea>
+<button class="submit-comment-btn">Post Comment</button>
+</div>
+<div class="comments-list"></div>
+</div>
+<div class="share-section">
+<a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+<a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+</div>
+</div>
+</div>
 <!-- Devland Cash & Carry -->
 <div class="block" id="business-devland-cash-carry" data-category="business" data-type="general" data-location="johannesburg">
 <a href="Sweet Depot website.html">
@@ -2246,6 +2301,46 @@ grid-template-columns: repeat(2, 1fr);
 </a>
 </div>
 <div class="comments-section" id="rahima-zainab-comments">
+<div class="comment-form">
+<textarea class="comment-input" placeholder="Share your experience..."></textarea>
+<button class="submit-comment-btn">Post Comment</button>
+</div>
+<div class="comments-list"></div>
+</div>
+<div class="share-section">
+<a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+<a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+</div>
+</div>
+</div>
+<!-- Laptop Repair -->
+<div class="freelancer-card" id="service-laptop-repair" data-category="service" data-type="laptop repair" data-location="johannesburg">
+<div class="card-background" style="background-image: url('image-services/laptopsolutions-background.jpg');"></div>
+<div class="profile-container">
+<img src="images-logo/laptopsolutions-logo.jpg" alt="Laptop solutions" class="profile-picture">
+</div>
+<div class="card-content">
+<h3>Laptop Solutions</h3>
+<p>Laptop repair and maintenance services</p>
+<div class="contact-buttons">
+<a href="tel:+27845804478" class="contact-btn btn-call"><i class="fas fa-phone"></i> Call</a>
+<a href="https://wa.me/27845804478?text=Hi!%20I%20saw%20your%20feature%20in%20*Hive%20Times*%20and%20would%20like%20more%20info." target="_blank" class="contact-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+</div>
+<div class="rating-section">
+<div class="rating-stars" data-service="laptop-repair">
+<i class="far fa-star star"></i>
+<i class="far fa-star star"></i>
+<i class="far fa-star star"></i>
+<i class="far fa-star star"></i>
+<i class="far fa-star star"></i>
+</div>
+<div class="rating-count">0 ratings</div>
+<a href="#" class="view-comments-btn" data-target="laptop-repair-comments">
+<i class="fas fa-comment"></i> View Comments
+</a>
+</div>
+<div class="comments-section" id="laptop-repair-comments">
 <div class="comment-form">
 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
 <button class="submit-comment-btn">Post Comment</button>
@@ -2859,7 +2954,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Join pitch
     if (lower.includes("join") || lower.includes("register") || lower.includes("add my business")) {
-      return "🌟 <strong>Join Hive Times today!</strong> We help local businesses like yours get discovered, build trust with reviews, and grow sales — all for free. Click <strong>“JOIN THE HIVE”</strong> to get started!";
+      return "🌟 <strong>Join Hive Times today!</strong> We help local businesses like yours get discovered, build trust with reviews, and grow sales . Click <strong>“JOIN THE HIVE”</strong> to get started!";
     }
 
     // Value prop
@@ -2868,7 +2963,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Default
-    return "I can help you find a business, explore services, or explain how Hive Times helps you grow. Try: “Tell me about Broadway” or “How do I join Hive Times?”";
+    return "I can help you find a business, explore services, or explain how Hive Times helps you grow. Try: “Tell me about any business” or “How do I join Hive Times?”";
   }
 
   // Handle send
@@ -2931,6 +3026,10 @@ text: "Jumbo Cash & Carry is a large South African wholesale business, owned by 
 "whitehouselighting&electricalpopup": {
 title: "White House Lighting and Electrical",
 text: "Explore the best of our lighting and electrical range with our Featured Products Collection, carefully selected to showcase our top-performing and most popular items. From innovative LED lighting solutions to durable electrical accessories, this collection highlights products that combine quality, efficiency, and style - trusted by professionals and homeowners alike."
+},
+"laptopsolutionpopup": {
+title: "Laptop Solution",
+text: "Laptop Solution is your one-stop shop for all laptop repairs and accessories, offering expert service and quality products to keep you connected."
 }
 };
 const popup = document.getElementById('infoPopup');
@@ -3347,7 +3446,9 @@ const aiSearch = {
       { value: 'butcher', label: 'Butcher' },
       { value: 'toilet-paper', label: 'Toilet Paper' },
       { value: 'lighting-electrical', label: 'Lighting & Electrical' },
-      { value: 'general', label: 'General Wholesale' }
+      { value: 'general', label: 'General Wholesale' },
+      { value: 'laptop', label: 'Laptops ' }
+      
     ],
     service: [
       { value: 'carpenter', label: 'Carpenter' },
@@ -3355,7 +3456,8 @@ const aiSearch = {
       { value: 'flooring', label: 'Flooring' },
       { value: 'ceilings', label: 'Ceilings' },
       { value: 'petrol', label: 'Petrol / Fuel' },
-      { value: 'delivery', label: 'Delivery' }
+      { value: 'delivery', label: 'Delivery' },
+      { value: 'laptop repair', label: 'Laptop repair' }
     ]
   },
   locations: [
