@@ -1193,40 +1193,40 @@ footer {
     grid-template-columns: 1fr;
   }
 }
-/* === COMPACT AI PRODUCT SEARCH – STICKY TOP BAR === */
+/* === AI PRODUCT SEARCH – STICKY TOP BAR === */
 .ai-product-search-sticky {
   position: sticky;
   top: 0;
   z-index: 999;
   background: white;
-  padding: 14px; /* reduced from 24px */
-  box-shadow: 0 4px 12px rgba(230, 74, 25, 0.2);
-  border-bottom: 2px solid #ffebd5; /* thinner */
+  padding: 24px;
+  box-shadow: 0 6px 20px rgba(230, 74, 25, 0.25);
+  border-bottom: 3px solid #ffebd5;
   max-width: 1400px;
   margin: 0 auto;
   font-family: 'Inter', sans-serif;
   transition: box-shadow 0.3s ease;
 }
 
-/* Avatar & Prompt – tighter spacing */
+/* Avatar & Prompt */
 .ai-product-search-sticky .ai-message {
   display: flex;
   align-items: flex-start;
-  gap: 12px; /* reduced from 16px */
-  margin-bottom: 14px; /* reduced from 20px */
+  gap: 16px;
+  margin-bottom: 20px;
 }
 .ai-product-search-sticky .ai-avatar img {
-  width: 64px; /* reduced from 80px */
-  height: 64px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #FF8F00; /* thinner */
+  border: 3px solid #FF8F00;
 }
 .ai-product-search-sticky .ai-text {
   background: linear-gradient(135deg, #fff9f0 0%, #fff3e6 100%);
-  padding: 14px; /* reduced from 20px */
-  border-radius: 10px; /* slightly smaller */
-  font-size: 1rem; /* reduced from 1.15rem */
+  padding: 20px;
+  border-radius: 12px;
+  font-size: 1.15rem;
   font-weight: 600;
   color: #2c3e50;
   flex: 1;
@@ -1236,36 +1236,36 @@ footer {
   font-weight: 800;
 }
 
-/* Search Input – smaller height */
+/* Search Input */
 .ai-product-search-sticky .ai-text-search input {
   width: 100%;
-  padding: 10px 16px; /* reduced vertical padding */
+  padding: 14px 20px;
   border: 2px solid #ffe0b2;
   border-radius: 50px;
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 500;
   outline: none;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 .ai-product-search-sticky .ai-text-search input:focus {
   border-color: #e64a19;
-  box-shadow: 0 0 0 3px rgba(230, 74, 25, 0.15); /* slightly smaller */
+  box-shadow: 0 0 0 4px rgba(230, 74, 25, 0.15);
 }
 
-/* Buttons – more compact */
+/* Buttons */
 .ai-product-search-sticky .ai-options {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px; /* reduced from 12px */
-  margin: 12px 0; /* reduced from 16px */
+  gap: 12px;
+  margin: 16px 0;
 }
 .ai-product-search-sticky .ai-option-btn {
   flex: 1;
-  min-width: 110px; /* reduced from 130px */
-  padding: 10px 0; /* reduced from 14px */
+  min-width: 130px;
+  padding: 14px 0;
   background: white;
   border: 2px solid #ffe0b2;
-  border-radius: 12px; /* slightly smaller */
+  border-radius: 14px;
   font-weight: 700;
   color: #e64a19;
   cursor: pointer;
@@ -1274,7 +1274,7 @@ footer {
 }
 .ai-product-search-sticky .ai-option-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 3px 10px rgba(255, 143, 0, 0.25); /* slightly softer */
+  box-shadow: 0 4px 12px rgba(255, 143, 0, 0.3);
   background: #fff3e0;
 }
 
@@ -1283,13 +1283,13 @@ footer {
   background: linear-gradient(135deg, rgba(230, 74, 25, 0.15) 0%, rgba(230, 74, 25, 0.1) 100%);
   color: #e64a19;
   border: none;
-  border-radius: 10px; /* smaller */
-  padding: 8px 16px; /* reduced */
+  border-radius: 12px;
+  padding: 10px 20px;
   font-weight: 700;
   cursor: pointer;
-  display: none;
+  display: none; /* Hidden initially */
   width: fit-content;
-  margin-top: 8px; /* reduced */
+  margin-top: 10px;
 }
 .ai-product-search-sticky .ai-back-btn:hover {
   background: linear-gradient(135deg, rgba(230, 74, 25, 0.25) 0%, rgba(230, 74, 25, 0.2) 100%);
@@ -1301,33 +1301,33 @@ footer {
   background: #e8f4ff;
   color: #1976d2;
   border: 2px dashed #90caf9;
-  border-radius: 10px;
-  padding: 8px 0;
+  border-radius: 12px;
+  padding: 10px 0;
   font-weight: 700;
   cursor: pointer;
   width: 100%;
-  margin-top: 10px; /* reduced */
+  margin-top: 12px;
 }
 .ai-product-search-sticky .ai-about-btn:hover {
   background: #d0eaff;
 }
 
-/* Mobile – already compact, but extra fine-tuning */
+/* Mobile */
 @media (max-width: 768px) {
   .ai-product-search-sticky {
-    padding: 12px 12px; /* slightly tighter */
+    padding: 18px 16px;
   }
   .ai-product-search-sticky .ai-avatar img {
-    width: 52px;
-    height: 52px;
+    width: 60px;
+    height: 60px;
   }
   .ai-product-search-sticky .ai-text {
-    padding: 12px;
-    font-size: 0.95rem;
+    padding: 16px;
+    font-size: 1rem;
   }
   .ai-product-search-sticky .ai-option-btn {
-    min-width: 100px;
-    padding: 9px 0;
-    font-size: 0.9rem;
+    min-width: 110px;
+    padding: 12px 0;
+    font-size: 0.95rem;
   }
 }
