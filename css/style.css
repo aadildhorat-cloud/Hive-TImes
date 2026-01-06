@@ -14,7 +14,6 @@ body {
 
 /* === HEADER & NAVIGATION === */
 header {
-    position: relative;
   background: linear-gradient(135deg, #a30909, #c71e1e);
   color: white;
   padding: 15px 0;
@@ -1101,7 +1100,7 @@ footer {
 
 @media (max-width: 768px) {
   header {
-    position: relative;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
