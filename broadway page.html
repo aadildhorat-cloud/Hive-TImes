@@ -1230,23 +1230,26 @@ body {
 <!-- FLOATING CONTACT -->
 <!-- === BROADWAY AI CHAT WIDGET BUTTON === -->
 <div class="ai-chat-widget" id="aiChatWidget">
-  <img src="images-logo/bee.jpg" alt="Ask Broadway Sweets">
+  <img src="images-logo/bee.jpg" alt="Ask Beelal AI">
 </div>
 
 <!-- === BROADWAY AI CHAT PANEL === -->
 <div class="ai-chat-panel" id="aiChatPanel">
   <div class="ai-chat-header">
     <div class="ai-avatar-square">
-      <img src="images-logo/bee.jpg" alt="Beelal AI">
+      <img src="images-logo/bee.jpg" alt="Ask Beelal AI">
     </div>
     <h4>Beelal</h4>
     <button class="ai-close-btn" id="aiCloseBtn">×</button>
   </div>
   <div class="ai-chat-messages" id="aiChatMessages">
-    <div class="ai-message bot">
-      Hello! 👋 I'm your <strong>Broadway Sweets</strong> assistant.<br>
-      Ask me about lollipops, party packs, or how to order!
-    </div>
+   <div class="ai-message bot">
+  Hello! 👋 I'm your <strong>Broadway Sweets</strong> assistant.<br>
+  You can ask me things like:<br>
+  • “What are your opening hours?”<br>
+  • “Do you deliver nationwide?”<br>
+  • “How do I order party packs?”
+</div>
   </div>
   <div class="ai-chat-input">
     <input type="text" id="aiUserInput" placeholder="e.g. Show me party packs under R50">
@@ -1442,44 +1445,52 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(scrollToBottom, 10);
   }
 
-  function getResponse(query) {
-    const lower = query.toLowerCase().trim();
+ function getResponse(query) {
+  const lower = query.toLowerCase().trim();
 
-    // Product categories
-    if (lower.includes('lollipop') || lower.includes('big pop') || lower.includes('fligo') || lower.includes('stumbo')) {
-      return "🍭 We offer <strong>Big Pops, Fligos, Soccer Pops & Stumbo Lollipops</strong> in dozens of flavors! Browse the Lollipops section or ask for a specific type.";
-    }
-    if (lower.includes('gummy') || lower.includes('brat') || lower.includes('sour punk') || lower.includes('wobble')) {
-      return "🍋 Try our sour treats: <strong>Brats, Sour Punk sticks & Wobbles</strong> — perfect for sour lovers!";
-    }
-    if (lower.includes('bubblegum')) {
-      return "🍬 Our <strong>Stumbo Bubblegum</strong> comes in Wintergreen, Tutti Frutti, Cherry & more!";
-    }
-    if (lower.includes('party pack') || lower.includes('party')) {
-      return "🎉 We have <strong>Adventures, Making Memories & Fun Moments Party Packs</strong> — ideal for birthdays! Prices from R35.";
-    }
-    if (lower.includes('secret snack')) {
-      return "🤫 Love surprises? Try our <strong>Secret Snacks</strong> — Choc Lava Bites, Popper’s Puffs & more!";
-    }
-
-    // Price queries
-    if (lower.includes('under') && (lower.includes('r') || lower.includes('rand'))) {
-      return "💰 Use the search bar at the top to find items like “party packs under R50” or “bubblegum under R30”!";
-    }
-
-    // Ordering
-    if (lower.includes('order') || lower.includes('buy') || lower.includes('cart') || lower.includes('whatsapp')) {
-      return "🛒 Add items to your cart and click <strong>“Send Order via WhatsApp”</strong>! We’ll confirm your order quickly.";
-    }
-
-    // Contact
-    if (lower.includes('contact') || lower.includes('phone') || lower.includes('email')) {
-      return "📞 Call us: <strong>+27 82 511 3441</strong><br>📧 Email: <strong>contact@broadwaysweets.co.za</strong>";
-    }
-
-    // Default
-    return "I can help you find sweets, check prices, or explain how to order! Try: “Show me Stumbo lollipops” or “How do I order?”";
+  // 1. Location
+  if (lower.includes('where') || lower.includes('located') || lower.includes('location') || lower.includes('address')) {
+    return "📍 We're located in <strong>Durban, South Africa</strong>. Visit us or order online for delivery!";
   }
+
+  // 2. Contact number
+  if (lower.includes('contact') || lower.includes('phone') || lower.includes('number') || lower.includes('call')) {
+    return "📞 You can reach us at <strong>+27 82 511 3441</strong>. We’re happy to help!";
+  }
+
+  // 3. Email
+  if (lower.includes('email') || lower.includes('@') || lower.includes('gmail')) {
+    return "📧 Email us at <strong>contact@broadwaysweets.co.za</strong> for inquiries or wholesale requests!";
+  }
+
+  // 4. Opening hours
+  if (lower.includes('open') || lower.includes('hour') || lower.includes('time') || lower.includes('close') || lower.includes('operating')) {
+    return "🕒 We're open:<br><strong>Mon–Fri: 8AM–5PM</strong><br><strong>Sat: 9AM–2PM</strong><br>Closed on Sundays.";
+  }
+
+  // 5. Delivery
+  if (lower.includes('deliver') || lower.includes('shipping') || lower.includes('nationwide') || lower.includes('ship')) {
+    return "🚚 Yes! We offer delivery across South Africa. Orders are sent via WhatsApp — just add items to your cart and click ‘Send Order via WhatsApp’!";
+  }
+
+  // 6. Wholesaler or retailer?
+  if (lower.includes('wholesale') || lower.includes('retail') || lower.includes('reseller') || lower.includes('bulk buyer')) {
+    return "💼 We are both! <strong>Broadway Sweets supplies retailers, schools, event planners, and individual customers</strong> — whether you need one pack or 100!";
+  }
+
+  // 7. Party packs or custom orders?
+  if (lower.includes('party') || lower.includes('custom') || lower.includes('birthday') || lower.includes('event') || lower.includes('themed')) {
+    return "🎉 Absolutely! We offer <strong>Adventures, Making Memories & Fun Moments Party Packs</strong> (from R35), and we can create <strong>custom assortments</strong> for birthdays, weddings, or corporate events!";
+  }
+
+  // 8. Bulk discounts?
+  if (lower.includes('discount') || lower.includes('bulk') || lower.includes('cheap') || lower.includes('price') || lower.includes('wholesale price')) {
+    return "💰 Yes! We offer <strong>special pricing for bulk orders</strong>. Contact us via WhatsApp or email with your quantity needs, and we’ll send you a custom quote!";
+  }
+
+  // Default fallback
+  return "I can help you find sweets, check prices, or explain how to order! Try: “Do you deliver?” or “What are your opening hours?”";
+}
 
   function handleSend() {
     const query = userInput.value.trim();
