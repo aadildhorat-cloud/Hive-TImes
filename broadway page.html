@@ -20,7 +20,7 @@ gtag('config', 'G-DTPGZ964FD');
 <style>
     /* === Restructured Header === */
 header {
-  background: linear-gradient(135deg, #a30909, #c71e1e);
+ 
   color: white;
   padding: 0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -36,6 +36,32 @@ header {
   padding: 12px 20px;
   gap: 15px;
   flex-wrap: nowrap;
+}
+
+/* === Updated Logo Styling === */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.logo {
+  font-size: 28px;          /* Increased from 18px */
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+  max-width: none;
+}
+
+.logo-img {
+  height: 110px;             /* Increased from 60px */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Hamburger stays small and aligned */
@@ -64,28 +90,7 @@ header {
   box-shadow: none;
 }
 
-/* Logo styling */
-.logo-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex: 1;
-  justify-content: center;
-  min-width: 0;
-}
-.logo-img {
-  height: 40px;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-}
-.logo {
-  font-size: 18px;
-  font-weight: 700;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 160px;
-}
+
 
 /* Cart button */
 .cart-btn {
@@ -136,17 +141,33 @@ header {
 }
 
 /* Responsive: Keep inline on all screens */
+/* Tablet & Smaller Desktop */
 @media (max-width: 1200px) {
-  .header-top-row {
-    padding: 10px 15px;
+  .logo {
+    font-size: 17px;
   }
   .logo-img {
-    height: 36px;
-  }
-  .logo {
-    font-size: 16px;
+    height: 38px;
   }
 }
+
+/* Mobile: Stack logo image and text vertically for clarity */
+@media (max-width: 576px) {
+  .logo-container {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .logo {
+    font-size: 13px;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.3;
+  }
+  .logo-img {
+    height: 50px;
+  }
+}
+
 
 @media (max-width: 576px) {
   .header-top-row {
@@ -380,12 +401,12 @@ header {
             gap: 15px;
         }
         .logo {
-            font-size: 28px;
+            
             font-weight: 700;
             letter-spacing: 1px;
         }
         .logo-img {
-            height: 60px;
+           
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
@@ -1271,15 +1292,21 @@ header {
             }
         }
 @media (max-width: 576px) {
-    .header-container {
-        padding: 0 10px;
-    }
-    .logo {
-        font-size: 12px;
-    }
-    .logo-img {
-        height: 20px;
-    }
+  .logo-container {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .logo {
+    max-width: none;
+    text-align: center;
+    font-size: 23px;
+    white-space: normal;
+    line-height: 1.2;
+  }
+  .logo-img {
+    height: 60px; /* Slightly larger for better visibility */
+  }
+}
     nav ul {
         gap: 10px;
     }
@@ -1321,7 +1348,7 @@ header {
     .main-product-image {
         height: 300px;
     }
-}
+
 /* Ensure dropdown appears above other content */
 .dropdown {
   position: relative;
@@ -1584,8 +1611,8 @@ body {
 }
 @media (max-width: 480px) {
   .side-menu {
-    width: 100%;
-    left: -100%;
+    width: 85%;
+    left: -85%;
   }
   .hamburger-btn {
     top: 15px;
@@ -1827,7 +1854,7 @@ body {
     <!-- Logo -->
     <div class="logo-container">
       <img src="images-logo/broadway-sweets-logo.jpg" alt="Logo" class="logo-img">
-      <div class="logo">BROADWAY SWEETS</div>
+      <div class="logo"></div>
     </div>
 
     <!-- Cart -->
