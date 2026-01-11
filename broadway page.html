@@ -153,28 +153,37 @@ header {
 
 @media (max-width: 576px) {
   .header-container {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 10px;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start; /* or center, but control height */
     padding: 8px 12px;
   }
 
+  /* Prevent logo from growing too tall */
   .logo-container {
-    justify-self: center;
-    flex-direction: row !important;
+    flex-direction: row; /* Keep inline */
+    align-items: center;
     gap: 8px;
-  }
-
-  .logo {
-    white-space: nowrap;
-    max-width: 120px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    max-width: 50%; /* or use flex basis */
   }
 
   .logo-img {
-    height: 32px;
+    height: 32px; /* Keep consistent */
+  }
+
+  .logo {
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100px;
+  }
+
+  .hamburger-btn,
+  .cart-btn {
+    flex-shrink: 0;
+    align-self: flex-start; /* match logo top */
+    margin-top: 4px; /* fine-tune vertical alignment */
   }
 }
 
