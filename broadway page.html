@@ -187,132 +187,174 @@ header {
   }
 }
     
-        /* Business info button */
-.business-info-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin: 10px auto;
-    flex-wrap: wrap;
+       /* === Enhanced Business Modal === */
+       /* Custom color for About Business link in hamburger menu */
+.about-business-link {
+  color: #a30909 !important; /* Your brand red */
+  font-weight: 600;
 }
-.business-info-btn {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background-color: #a30909;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(163, 9, 9, 0.3);
-    text-align: center;
+.about-business-link:hover {
+  color: #8a0808 !important;
+  background: #f8f9fa;
+  padding-left: 25px;
 }
-.business-info-btn:hover {
-    background-color: #8a0808;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(163, 9, 9, 0.4);
+.business-modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 2000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(8px);
 }
-.business-logo {
-    height: 40px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+.business-modal {
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  max-height: none;
+  background: rgb(255, 168, 168);
+  overflow-y: auto;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateY(30deg) scale(0.8) translateZ(-100px);
+  opacity: 0;
+  transition: transform 0.7s cubic-bezier(0.215, 0.61, 0.355, 1), opacity 0.5s ease;
 }
-/* Business info popup */
-.business-popup-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(5px);
+.business-modal.active {
+  transform: rotateY(0deg) scale(1) translateZ(0);
+  opacity: 1;
 }
-.business-popup {
-    background-color: white;
-    padding: 30px;
-    border-radius: 15px;
-    width: 90%;
-    max-width: 600px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    transform: scale(0.8);
-    opacity: 0;
-    transition: all 0.3s ease;
-    position: relative;
-    max-height: 80vh;
-    overflow-y: auto;
+.business-modal::-webkit-scrollbar {
+  width: 8px;
 }
-.business-popup.active {
-    transform: scale(1);
-    opacity: 1;
-}
-.business-popup-title {
-    font-size: 24px;
-    color: #a30909;
-    margin-bottom: 20px;
-    text-align: center;
-    font-weight: 600;
-    padding-bottom: 15px;
-    border-bottom: 2px solid #f8f9fa;
-}
-.business-info-content {
-    margin-bottom: 20px;
-    line-height: 1.8;
-}
-.business-info-content p {
-    margin-bottom: 15px;
-    text-align: justify;
-}
-.business-info-content ul {
-    margin-left: 20px;
-    margin-bottom: 15px;
-}
-.business-info-content li {
-    margin-bottom: 10px;
-}
-.close-business-btn {
-    background-color: #a30909;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    display: block;
-    margin: 0 auto;
-    transition: all 0.3s ease;
-    width: 120px;
-}
-.close-business-btn:hover {
-    background-color: #8a0808;
-    transform: translateY(-2px);
+.business-modal::-webkit-scrollbar-thumb {
+  background: #c71e1e;
+  border-radius: 4px;
 }
 
-/* Responsive design adjustments for this section */
-@media (max-width: 992px) {
-    .business-info-container {
-        flex-direction: column;
-        gap: 10px;
-    }
-    .business-info-btn {
-        width: auto;
-        justify-content: center;
-    }
+/* Close Button */
+.close-business-modal {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #a30909;
+  color: white;
+  border: none;
+  font-size: 24px;
+  z-index: 2001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(163, 9, 9, 0.4);
+  transition: all 0.3s ease;
 }
-@media (max-width: 576px) {
-    .business-logo {
-        height: 35px;
-    }
+.close-business-modal:hover {
+  background: #8a0808;
+  transform: scale(1.1);
 }
+
+/* Modal Content */
+.business-modal-content {
+  padding: 20px;
+  padding-top: 80px;
+}
+.business-hero {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 20px;
+  background: linear-gradient(135deg, #f9ab24, #e9ecef);
+  border-radius: 16px;
+}
+.business-hero-logo {
+  height: 100px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  margin-bottom: 15px;
+}
+.business-hero-title {
+  font-size: 2.5rem;
+  color: #a30909;
+  margin: 0;
+}
+.business-hero-tagline {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Info Grid */
+.business-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+.business-section {
+  background: #fff;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+.business-section:hover {
+  transform: translateY(-5px);
+}
+.business-section h2 {
+  color: #a30909;
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+}
+.business-section ul {
+  padding-left: 20px;
+}
+.business-section li {
+  margin-bottom: 8px;
+}
+
+/* Gallery */
+.business-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.business-gallery-img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+.business-gallery-img:hover {
+  transform: scale(1.05);
+}
+
+/* Map */
+.business-map-section iframe {
+  margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .business-hero-title { font-size: 2rem; }
+  .business-hero-tagline { font-size: 1rem; }
+  .business-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .business-gallery-img { height: 80px; }
+}
+@media (max-width: 480px) {
+  .business-info-grid {
+    grid-template-columns: 1fr;
+  }
+  .business-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+
         /* Floating Contact Container */
 .floating-contact {
     position: fixed;
@@ -1665,6 +1707,12 @@ body {
   transition: box-shadow 0.3s ease;
 }
 /* Avatar & Prompt */
+.ai-chat-header .ai-avatar-square img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 .ai-product-search-sticky .ai-message {
   display: flex;
   align-items: flex-start;
@@ -1806,13 +1854,13 @@ body {
       <div class="menu-items">
         <div class="menu-item">
           <a href="index.html" class="menu-link" onclick="toggleMenu()">
-            <span><i class="fas fa-home"></i> Home</span>
+            <span><i class="fas fa-home"></i> Hive Times</span>
           </a>
         </div>
         <div class="menu-item">
-          <a href="javascript:void(0)" class="menu-link" onclick="showBusinessPopup(); toggleMenu()">
-            <span><i class="fas fa-info-circle"></i> About Business</span>
-          </a>
+         <a href="javascript:void(0)" class="menu-link about-business-link" onclick="showBusinessModal(); toggleMenu()">
+  <span><i class="fas fa-info-circle"></i> About Business</span>
+</a>
         </div>
         <div class="menu-item">
           <div class="menu-link" onclick="toggleSubmenu('lollipops')">
@@ -1900,20 +1948,66 @@ body {
 
 <div id="slider-container"></div>
 
-<!-- Business Popup -->
-<div class="business-popup-overlay" id="businessPopupOverlay">
-  <div class="business-popup" id="businessPopup">
-    <h3 class="business-popup-title">About Our Business</h3>
-    <div class="business-info-content">
-      <p>Welcome to Broadway Sweets, your premier destination for the finest confectionery treats.</p>
-      <ul>
-        <li><strong>Location:</strong> Durban, South Africa</li>
-        <li><strong>Open Hours:</strong> Mon–Fri 8AM–5PM, Sat 9AM–2PM</li>
-        <li><strong>Contact:</strong> +27 82 511 3441</li>
-        <li><strong>Type:</strong> Wholesaler & Retailer of Premium Sweets</li>
-      </ul>
+<!-- Enhanced Full-Page Business Modal -->
+<div class="business-modal-overlay" id="businessModalOverlay">
+  <div class="business-modal" id="businessModal">
+    <button class="close-business-modal" id="closeBusinessModal">
+      <i class="fas fa-times"></i>
+    </button>
+
+    <div class="business-modal-content">
+      <!-- Business Header -->
+      <div class="business-hero">
+        <img src="images-logo/broadway-sweets-logo.jpg" alt="Broadway Sweets Logo" class="business-hero-logo">
+        <h1 class="business-hero-title">Broadway Sweets</h1>
+        <p class="business-hero-tagline">Premium Wholesaler & Retailer of Confectionery in Durban</p>
+      </div>
+
+      <!-- Info Grid -->
+      <div class="business-info-grid">
+        <!-- Section: About -->
+        <section class="business-section">
+          <h2><i class="fas fa-info-circle"></i> About Us</h2>
+          <p>Established in Durban, Broadway Sweets is your trusted source for high-quality sweets, lollipops, gummies, and party packs. We serve retailers, schools, event planners, and individual customers across South Africa with passion and precision. Location: 92 Main Reef Rd, Germiston</p>
+        </section>
+
+        <!-- Section: Contact & Hours -->
+        <section class="business-section">
+          <h2><i class="fas fa-clock"></i> Opening Hours</h2>
+          <ul>
+            <li>Monday – Friday: 8:00 AM – 5:00 PM</li>
+            <li>Saturday: 9:00 AM – 2:00 PM</li>
+            <li>Sunday: Closed</li>
+          </ul>
+          <h3 style="margin-top: 15px;"><i class="fas fa-phone"></i> +27 82 511 3441</h3>
+          <p><i class="fas fa-envelope"></i> contact@broadwaysweets.co.za</p>
+        </section>
+
+        <!-- Section: Gallery -->
+        <section class="business-section">
+          <h2><i class="fas fa-images"></i> Our Store</h2>
+          <div class="business-gallery">
+            <img src="images-broadway-sweets/store1.jpg" alt="Storefront" class="business-gallery-img">
+            <img src="images-broadway-sweets/store2.jpg" alt="Warehouse" class="business-gallery-img">
+            <img src="images-broadway-sweets/store3.jpg" alt="Packaging" class="business-gallery-img">
+          </div>
+        </section>
+
+        <!-- Section: Map -->
+        <section class="business-section business-map-section">
+          <h2><i class="fas fa-map-marker-alt"></i> Find Us</h2>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.946983692892!2d30.828561315381334!3d-29.776825181433427!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zItCw4oKw4oKw4oKw4oKw4oKw4oKw4oKw4oKw4oKw4oKw4oKw4oKw4oKw4oKw4oKw4oKw4oKw4oKw4oKw4oKw4oKw4oKw4oKw4oKw4oKw4oKw4oKw4oKw4oKw!5e0!3m2!1sen!2sza!4v1700000000000!5m2!1sen!2sza"
+            width="100%"
+            height="200"
+            style="border:0; border-radius: 10px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </section>
+      </div>
     </div>
-    <button class="close-business-btn" onclick="hideBusinessPopup()">Close</button>
   </div>
 </div>
  <div class="content-section">
@@ -2641,7 +2735,7 @@ body {
 <div class="ai-chat-panel" id="aiChatPanel">
   <div class="ai-chat-header">
     <div class="ai-avatar-square">
-      <img src="images-logo/bee.jpg" alt="Ask Beelal AI">
+        <img src="images-logo/bee.jpg" alt="Ask Beelal AI">
     </div>
     <h4>Beelal</h4>
     <button class="ai-close-btn" id="aiCloseBtn">×</button>
@@ -3058,17 +3152,23 @@ const aiProductSearch = {
   }
 };  
 // === MODALS ===
-function showBusinessPopup() {
-  document.getElementById('businessPopupOverlay').style.display = 'flex';
-  setTimeout(() => document.getElementById('businessPopup').classList.add('active'), 10);
+function showBusinessModal() {
+  const overlay = document.getElementById('businessModalOverlay');
+  const modal = document.getElementById('businessModal');
+  overlay.style.display = 'flex';
+  setTimeout(() => modal.classList.add('active'), 10);
 }
-function hideBusinessPopup() {
-  document.getElementById('businessPopup').classList.remove('active');
-  setTimeout(() => document.getElementById('businessPopupOverlay').style.display = 'none', 300);
+function hideBusinessModal() {
+  const modal = document.getElementById('businessModal');
+  const overlay = document.getElementById('businessModalOverlay');
+  modal.classList.remove('active');
+  setTimeout(() => overlay.style.display = 'none', 700);
 }
-document.getElementById('businessPopupOverlay').addEventListener('click', (e) => {
-  if (e.target === e.currentTarget) hideBusinessPopup();
+document.getElementById('closeBusinessModal').addEventListener('click', hideBusinessModal);
+document.getElementById('businessModalOverlay').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) hideBusinessModal();
 });
+
 
 // === HAMBURGER MENU ===
 const hamburgerBtn = document.getElementById('hamburgerBtn');
