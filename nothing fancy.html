@@ -1,964 +1,910 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
-    <!-- Swiper CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    <!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DTPGZ964FD"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-DTPGZ964FD');
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-DTPGZ964FD');
 </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Polar Ice Cream </title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Swiper CSS -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nothing Fancy</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Swiper CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/slider.css">
+<link rel="stylesheet" href="css/style.css"
+
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <div class="logo-container">
-                <img src="images-logo/nothing-fancy-logo.jpg" alt="Logo" class="logo-img">
-                <div class="logo">NOTHING FANCY</div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                    <li class="dropdown">
-                        <a href="#"><i class="fas fa-box"></i> Categories</a>
-                        <div class="dropdown-content">
-                            <div class="submenu">
-                                <a href="#">
-                                    <span><i class="fas fa-sticky-note"></i>TOILET PAPER</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                                <div class="submenu-content">
-                                    <a href="#2-ply">2-PLY</a>
-                                    <a href="#2-ply-bales">2-PLY BALES</a>
-                                    <a href="#1-ply">1 PLY</a>
-                                </div>
-                            </div>
-                            <div class="submenu">
-                                <a href="#kitchen-towels">
-                                    <span><i class="fas fa-circle"></i> KITCHEN TOWELS</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                               
-                            </div>
-                            <div class="submenu">
-                                <a href="#garage-rolls">
-                                    <span><i class="fas fa-star"></i> GARAGE ROLLS</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                            </div>
-                            <div class="submenu">
-                                <a href="#other">
-                                    <span><i class="fas fa-gift"></i> OTHER</span>
-                                    <i class="fas fa-chevron-right" style="font-size: 0.8em; margin-left: 10px;"></i>
-                                </a>
-                              
-                            </div>
-                        </div>
-                    </li>
-               </li>
-                  <!-- Business Menu Placeholder -->
-<li id="business-menu-placeholder"></li>
-                    </li>
-                </ul>
-            </nav>
-            <div class="user-section">
-                <button class="cart-btn" onclick="showCartModal()">
-                    <i class="fas fa-shopping-cart"></i> Cart (<span id="cartCount">0</span>)
-                </button>
-            </div>
-        </div>
-    </header>
-    <div id="slider-container"></div>
-<div class="search-filter-container">
- 
-<div class="business-info-container">
-    <button class="business-info-btn" onclick="showBusinessPopup()">
-        <img src="images-logo/nothing-fancy-logo.jpg" alt="Business Logo" class="business-logo">
-        About Our Business
+
+<!-- HEADER -->
+<header>
+  <div class="header-container">
+    <!-- Hamburger Button -->
+    <button class="hamburger-btn" id="hamburgerBtn">
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Side Menu -->
+    <nav class="side-menu" id="sideMenu">
+      <div class="menu-header">
+        <img src="images-logo/nothing-fancy-logo.jpg" alt="Nothing Fancy Logo">
+        <h2>NOTHING FANCY</h2>
+      </div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <a href="index.html" class="menu-link" onclick="toggleMenu()">
+            <span><i class="fas fa-home"></i> Hive Times</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="javascript:void(0)" class="menu-link about-business-link" onclick="showBusinessModal(); toggleMenu()" style="color: #a30909 !important;">
+            <span><i class="fas fa-info-circle"></i> About Business</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <div class="menu-link" onclick="toggleSubmenu('toilet-paper')">
+            <span><i class="fas fa-toilet-paper"></i> Toilet Paper</span>
+            <i class="fas fa-chevron-down arrow"></i>
+          </div>
+          <div class="submenu" id="toilet-paper-submenu">
+            <a href="#2-ply" class="submenu-item" onclick="scrollToSection('2-ply')">2-PLY</a>
+            <a href="#2-ply-bales" class="submenu-item" onclick="scrollToSection('2-ply-bales')">2-PLY BALES</a>
+            <a href="#1-ply" class="submenu-item" onclick="scrollToSection('1-ply')">1-PLY</a>
+          </div>
+        </div>
+        <div class="menu-item">
+          <a href="#kitchen-towels" class="menu-link" onclick="scrollToSection('kitchen-towels')">
+            <span><i class="fas fa-kitchen-set"></i> Kitchen Towels</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="#garage-rolls" class="menu-link" onclick="scrollToSection('garage-rolls')">
+            <span><i class="fas fa-car"></i> Garage Rolls</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="#other" class="menu-link" onclick="scrollToSection('other')">
+            <span><i class="fas fa-box-open"></i> Other</span>
+          </a>
+        </div>
+      </div>
+      <div class="menu-footer">
+        <div class="contact-info">
+          <p><i class="fas fa-phone"></i> 071 021 8554</p>
+          <p><i class="fas fa-envelope"></i> contact@nothingfancy.co.za</p>
+        </div>
+        <div class="social-links">
+          <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://wa.me/27710218554" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Logo -->
+    <div class="logo-container">
+      <img src="images-logo/nothing-fancy-logo.jpg" alt="Logo" class="logo-img">
+      <div class="logo">NOTHING FANCY</div>
+    </div>
+
+    <!-- Cart -->
+    <button class="cart-btn" onclick="showCartModal()">
+      <i class="fas fa-shopping-cart"></i> Cart (<span id="cartCount">0</span>)
+    </button>
+  </div>
+
+  <!-- AI Search Bar -->
+  <div class="ai-search-bar-container">
+    <input type="text" id="aiProductSearchInput" placeholder="e.g. 2-ply, under R100, kitchen towels...">
+  </div>
+</header>
+
+<!-- SLIDER -->
+<div id="slider-container"></div>
+
+<!-- BUSINESS MODAL -->
+<div class="business-modal-overlay" id="businessModalOverlay">
+  <div class="business-modal" id="businessModal">
+    <button class="close-business-modal" id="closeBusinessModal">
+      <i class="fas fa-times"></i>
+    </button>
+    <div class="business-modal-content">
+      <div class="business-hero">
+        <img src="images-logo/nothing-fancy-logo.jpg" alt="Nothing Fancy Logo" class="business-hero-logo">
+        <h1 class="business-hero-title">Nothing Fancy</h1>
+        <p class="business-hero-tagline">The softest hearts with the smoothest prices</p>
+      </div>
+      <div class="business-info-grid">
+        <section class="business-section">
+          <h2><i class="fas fa-info-circle"></i> About Us</h2>
+          <p>Welcome to Nothing Fancy — your trusted supplier of premium toilet paper, kitchen towels, and garage rolls across Johannesburg. We serve retailers, schools, and event planners with reliable quality and competitive pricing.</p>
+        </section>
+        <section class="business-section">
+          <h2><i class="fas fa-clock"></i> Opening Hours</h2>
+          <ul>
+            <li>Monday – Friday: 9:00 AM – 5:30 PM</li>
+            <li>Saturday: 9:00 AM – 3:30 PM</li>
+            <li>Sunday: 9:30 AM – 1:00 PM</li>
+          </ul>
+          <h3 style="margin-top: 15px;"><i class="fas fa-phone"></i> 071 021 8554</h3>
+          <p><i class="fas fa-envelope"></i> contact@nothingfancy.co.za</p>
+        </section>
+        <section class="business-section business-map-section">
+          <h2><i class="fas fa-map-marker-alt"></i> Find Us</h2>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.6842370920644!2d28.12810667588992!3d-26.206948177074935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e9511c8b8df046f%3A0x9e90e795828e63eb!2sBroadway%20Sweets!5e0!3m2!1sen!2sza!4v1768465817105!5m2!1sen!2sza" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </section>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="business-popup-overlay" id="businessPopupOverlay">
-    <div class="business-popup" id="businessPopup">
-        <h3 class="business-popup-title">About Our Business</h3>
-        <div class="business-info-content">
-            <p>Welcome to Nothing Fancy, the softest hearts with the smoothest prices</p>
-            
-            <p></p>
-            
-            <p>Information:</p>
-            <ul>
-                <li><strong>Location:</strong> Johannesburg</li>
-                <li><strong>Open hours:</strong> MON - FRI (09:00 - 17:30)  SAT - (09:00 - 15:30) SUN -( 09:30 - 13:00)</li>
-                <li><strong>Contact Number:</strong> 071 021 8554</li>
-                <li><strong>Email:</strong> </li>
-                </ul>
-            
-            <p></p>
-        </div>
-        <button class="close-business-btn" onclick="hideBusinessPopup()">Close</button>
+<!-- PRODUCT SECTIONS -->
+<div class="content-section">
+  <h2 id="2-ply" class="section-title">2-PLY</h2>
+  <div class="products-grid" id="toiletPaperProductsGrid">
+    <div class="product-card" data-id="tp-lefleur-48-350" data-category="toilet-paper" data-price="275.00">
+      <img src="images-nothingfancy/La-Fleur-48-Pack-350-Sheets-Bale-of-4-chocolate.jpg" alt="Le Fleur 48-Pack 350 Sheets" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Le Fleur 48-Pack 350 Sheets</div>
+        <div class="product-price">R275.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'tp-lefleur-48-350', name: 'Le Fleur 48-Pack 350 Sheets', price: 275.00, quantity: 1, image: 'images-nothingfancy/La-Fleur-48-Pack-350-Sheets-Bale-of-4-chocolate.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
     </div>
-</div>
-
-   <div class="content-section">
-    <h2 id="2-ply" class="section-title">2-PLY</h2>
-    <div class="products-grid" id="toiletPaperProductsGrid">
-        <div class="product-card" data-id="tp-lefleur-48-350" data-category="toilet-paper" data-price="275.00">
-            <img src="images-nothingfancy/La-Fleur-48-Pack-350-Sheets-Bale-of-4-chocolate.jpg" alt="Le Fleur 48-Pack 350 Sheets" class="product-image">
-            <div class="product-info">
-                <div class="product-name">Le Fleur 48-Pack 350 Sheets</div>
-                <div class="product-price">R275.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'tp-lefleur-48-350', name: 'Le Fleur 48-Pack 350 Sheets', price: 275.00, quantity: 1, image: 'images-sweetmart/Le-Fleur-48-Pack-350-Sheets-chocolate.jpg', businessName: 'SweetMart', businessLogo: 'images-logo/sweetmart-logo.png' })">Add to Cart</button>
-            </div>
-        </div>
-        <div class="product-card" data-id="tp-lefleur-18-350" data-category="toilet-paper" data-price="105.00">
-            <img src="images-nothingfancy/La-Fleur-18-Pack-350-Sheets-Bale-of-4-chocolate.jpg" alt="Le Fleur 18-Pack 350 Sheets" class="product-image">
-            <div class="product-info">
-                <div class="product-name">Le Fleur 18-Pack 350 Sheets</div>
-                <div class="product-price">R105.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'tp-lefleur-18-350', name: 'Le Fleur 18-Pack 350 Sheets', price: 105.00, quantity: 1, image: 'images-sweetmart/Le-Fleur-18-Pack-350-Sheets-chocolate.jpg', businessName: 'SweetMart', businessLogo: 'images-logo/sweetmart-logo.png' })">Add to Cart</button>
-            </div>
-        </div>
-        <div class="product-card" data-id="tp-lefleur-18-350-recycled" data-category="toilet-paper" data-price="95.00">
-            <img src="images-nothingfancy/La-Fleur-18-Pack-350-Sheets(recycled-paper).jpg" alt="Le Fleur 18-Pack 350 Sheets Recycled Paper" class="product-image">
-            <div class="product-info">
-                <div class="product-name">Le Fleur 18-Pack 350 Sheets Recycled Paper</div>
-                <div class="product-price">R95.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'tp-lefleur-18-350-recycled', name: 'Le Fleur 18-Pack 350 Sheets Recycled Paper', price: 95.00, quantity: 1, image: 'images-sweetmart/Le-Fleur-18-Pack-350-Sheets-Recycled-Paper-chocolate.jpg', businessName: 'SweetMart', businessLogo: 'images-logo/sweetmart-logo.png' })">Add to Cart</button>
-            </div>
-        </div>
-        <div class="product-card" data-id="tp-lefleur-9-350" data-category="toilet-paper" data-price="70.00">
-            <img src="images-nothingfancy/La-Fleur-9-Pack-350-Sheets.jpg" alt="Le Fleur 9-Pack 350 Sheets" class="product-image">
-            <div class="product-info">
-                <div class="product-name">Le Fleur 9-Pack 350 Sheets</div>
-                <div class="product-price">R70.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'tp-lefleur-9-350', name: 'Le Fleur 9-Pack 350 Sheets', price: 70.00, quantity: 1, image: 'images-sweetmart/Le-Fleur-9-Pack-350-Sheets-chocolate.jpg', businessName: 'SweetMart', businessLogo: 'images-logo/sweetmart-logo.png' })">Add to Cart</button>
-            </div>
-        </div>
-        <div class="product-card" data-id="tp-lefleur-4-350" data-category="toilet-paper" data-price="40.00">
-            <img src="images-nothingfancy/La-Fleur-4-Pack-350-Sheets.jpg" alt="Le Fleur 4-Pack 350 Sheets" class="product-image">
-            <div class="product-info">
-                <div class="product-name">Le Fleur 4-Pack 350 Sheets</div>
-                <div class="product-price">R40.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'tp-lefleur-4-350', name: 'Le Fleur 4-Pack 350 Sheets', price: 40.00, quantity: 1, image: 'images-sweetmart/Le-Fleur-4-Pack-350-Sheets-chocolate.jpg', businessName: 'SweetMart', businessLogo: 'images-logo/sweetmart-logo.png' })">Add to Cart</button>
-            </div>
-        </div>
-        <div class="product-card" data-id="tp-plain-48-200" data-category="toilet-paper" data-price="205.00">
-            <img src="images-nothingfancy/plan-packaging-48-pack-200-sheets.jpg" alt="Plain Packaging 48-Pack 200 Sheets" class="product-image">
-            <div class="product-info">
-                <div class="product-name">Plain Packaging 48-Pack 200 Sheets</div>
-                <div class="product-price">R205.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'tp-plain-48-200', name: 'Plain Packaging 48-Pack 200 Sheets', price: 205.00, quantity: 1, image: 'images-sweetmart/Plain-Packaging-48-Pack-200-Sheets-chocolate.jpg', businessName: 'SweetMart', businessLogo: 'images-logo/sweetmart-logo.png' })">Add to Cart</button>
-            </div>
-        </div>
-        <div class="product-card" data-id="tp-plain-30-200" data-category="toilet-paper" data-price="125.00">
-            <img src="images-nothingfancy/plan-packaging-30-pack-200-sheets.jpg" alt="Plain Packaging 30-Pack 200 Sheets" class="product-image">
-            <div class="product-info">
-                <div class="product-name">Plain Packaging 30-Pack 200 Sheets</div>
-                <div class="product-price">R125.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'tp-plain-30-200', name: 'Plain Packaging 30-Pack 200 Sheets', price: 125.00, quantity: 1, image: 'images-sweetmart/Plain-Packaging-30-Pack-200-Sheets-chocolate.jpg', businessName: 'SweetMart', businessLogo: 'images-logo/sweetmart-logo.png' })">Add to Cart</button>
-            </div>
-        </div>
+    <div class="product-card" data-id="tp-lefleur-18-350" data-category="toilet-paper" data-price="105.00">
+      <img src="images-nothingfancy/La-Fleur-18-Pack-350-Sheets-Bale-of-4-chocolate.jpg" alt="Le Fleur 18-Pack 350 Sheets" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Le Fleur 18-Pack 350 Sheets</div>
+        <div class="product-price">R105.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'tp-lefleur-18-350', name: 'Le Fleur 18-Pack 350 Sheets', price: 105.00, quantity: 1, image: 'images-nothingfancy/La-Fleur-18-Pack-350-Sheets-Bale-of-4-chocolate.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
     </div>
+    <div class="product-card" data-id="tp-lefleur-18-350-recycled" data-category="toilet-paper" data-price="95.00">
+      <img src="images-nothingfancy/La-Fleur-18-Pack-350-Sheets(recycled-paper).jpg" alt="Le Fleur 18-Pack 350 Sheets Recycled Paper" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Le Fleur 18-Pack 350 Sheets Recycled Paper</div>
+        <div class="product-price">R95.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'tp-lefleur-18-350-recycled', name: 'Le Fleur 18-Pack 350 Sheets Recycled Paper', price: 95.00, quantity: 1, image: 'images-nothingfancy/La-Fleur-18-Pack-350-Sheets(recycled-paper).jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="tp-lefleur-9-350" data-category="toilet-paper" data-price="70.00">
+      <img src="images-nothingfancy/La-Fleur-9-Pack-350-Sheets.jpg" alt="Le Fleur 9-Pack 350 Sheets" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Le Fleur 9-Pack 350 Sheets</div>
+        <div class="product-price">R70.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'tp-lefleur-9-350', name: 'Le Fleur 9-Pack 350 Sheets', price: 70.00, quantity: 1, image: 'images-nothingfancy/La-Fleur-9-Pack-350-Sheets.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="tp-lefleur-4-350" data-category="toilet-paper" data-price="40.00">
+      <img src="images-nothingfancy/La-Fleur-4-Pack-350-Sheets.jpg" alt="Le Fleur 4-Pack 350 Sheets" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Le Fleur 4-Pack 350 Sheets</div>
+        <div class="product-price">R40.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'tp-lefleur-4-350', name: 'Le Fleur 4-Pack 350 Sheets', price: 40.00, quantity: 1, image: 'images-nothingfancy/La-Fleur-4-Pack-350-Sheets.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="tp-plain-48-200" data-category="toilet-paper" data-price="205.00">
+      <img src="images-nothingfancy/plan-packaging-48-pack-200-sheets.jpg" alt="Plain Packaging 48-Pack 200 Sheets" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Plain Packaging 48-Pack 200 Sheets</div>
+        <div class="product-price">R205.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'tp-plain-48-200', name: 'Plain Packaging 48-Pack 200 Sheets', price: 205.00, quantity: 1, image: 'images-nothingfancy/plan-packaging-48-pack-200-sheets.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="tp-plain-30-200" data-category="toilet-paper" data-price="125.00">
+      <img src="images-nothingfancy/plan-packaging-30-pack-200-sheets.jpg" alt="Plain Packaging 30-Pack 200 Sheets" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Plain Packaging 30-Pack 200 Sheets</div>
+        <div class="product-price">R125.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'tp-plain-30-200', name: 'Plain Packaging 30-Pack 200 Sheets', price: 125.00, quantity: 1, image: 'images-nothingfancy/plan-packaging-30-pack-200-sheets.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="content-section">
-    <h2 id="2-ply-bales" class="section-title">2-PLY BALES</h2>
-    <div class="products-grid" id="twoPlyBalesProductsGrid">
-        <div class="product-card" data-id="bale-lefleur-18-350-x4" data-category="bales" data-price="405.00">
-            <img src="images-nothingfancy/Le-Fleur-18-Pack-350-Sheets-Bale-of-4-chocolate.jpg" alt="Le Fleur 18-Pack 350 Sheets Bale of 4" class="product-image">
-            <div class="product-info">
-                <div class="product-name">Le Fleur 18-Pack 350 Sheets Bale of 4</div>
-                <div class="product-price">R405.00 per bale of 4</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'bale-lefleur-18-350-x4', name: 'Le Fleur 18-Pack 350 Sheets Bale of 4', price: 405.00, quantity: 1, image: 'images-sweetmart/Le-Fleur-18-Pack-350-Sheets-Bale-of-4-chocolate.jpg', businessName: 'SweetMart', businessLogo: 'images-logo/sweetmart-logo.png' })">Add to Cart</button>
-            </div>
-        </div>
-        <div class="product-card" data-id="bale-lefleur-18-350-recycled-x4" data-category="bales" data-price="365.00">
-            <img src="images-nothingfancy/La-Fleur-18-Pack-350-Sheets(recycled-paper).jpg" alt="Le Fleur 18-Pack 350 Sheets Recycled Paper Bale of 4" class="product-image">
-            <div class="product-info">
-                <div class="product-name">Le Fleur 18-Pack 350 Sheets Recycled Paper Bale of 4</div>
-                <div class="product-price">R365.00 per bale of 4</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'bale-lefleur-18-350-recycled-x4', name: 'Le Fleur 18-Pack 350 Sheets Recycled Paper Bale of 4', price: 365.00, quantity: 1, image: 'images-sweetmart/Le-Fleur-18-Pack-350-Sheets-Recycled-Paper-Bale-of-4-chocolate.jpg', businessName: 'SweetMart', businessLogo: 'images-logo/sweetmart-logo.png' })">Add to Cart</button>
-            </div>
-        </div>
-        <div class="product-card" data-id="bale-lefleur-9-350-x8" data-category="bales" data-price="525.00">
-            <img src="images-nothingfancy/La-Fleur-9-Pack-350-Sheets.jpg" alt="Le Fleur 9-Pack 350 Sheets Bale of 8" class="product-image">
-            <div class="product-info">
-                <div class="product-name">Le Fleur 9-Pack 350 Sheets Bale of 8</div>
-                <div class="product-price">R525.00 per bale of 8</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'bale-lefleur-9-350-x8', name: 'Le Fleur 9-Pack 350 Sheets Bale of 8', price: 525.00, quantity: 1, image: 'images-sweetmart/Le-Fleur-9-Pack-350-Sheets-Bale-of-8-chocolate.jpg', businessName: 'SweetMart', businessLogo: 'images-logo/sweetmart-logo.png' })">Add to Cart</button>
-            </div>
-        </div>
-        <div class="product-card" data-id="bale-lefleur-4-350-x12" data-category="bales" data-price="450.00">
-            <img src="images-nothingfancy/La-Fleur-18-Pack-350-Sheets-Bale-of-4-chocolate.jpg" alt="Le Fleur 4-Pack 350 Sheets Bale of 12" class="product-image">
-            <div class="product-info">
-                <div class="product-name">Le Fleur 4-Pack 350 Sheets Bale of 12</div>
-                <div class="product-price">R450.00 per bale of 12</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'bale-lefleur-4-350-x12', name: 'Le Fleur 4-Pack 350 Sheets Bale of 12', price: 450.00, quantity: 1, image: 'images-sweetmart/Le-Fleur-4-Pack-350-Sheets-Bale-of-12-chocolate.jpg', businessName: 'SweetMart', businessLogo: 'images-logo/sweetmart-logo.png' })">Add to Cart</button>
-            </div>
-        </div>
+  <h2 id="2-ply-bales" class="section-title">2-PLY BALES</h2>
+  <div class="products-grid" id="twoPlyBalesProductsGrid">
+    <div class="product-card" data-id="bale-lefleur-18-350-x4" data-category="bales" data-price="405.00">
+      <img src="images-nothingfancy/Le-Fleur-18-Pack-350-Sheets-Bale-of-4-chocolate.jpg" alt="Le Fleur 18-Pack 350 Sheets Bale of 4" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Le Fleur 18-Pack 350 Sheets Bale of 4</div>
+        <div class="product-price">R405.00 per bale of 4</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'bale-lefleur-18-350-x4', name: 'Le Fleur 18-Pack 350 Sheets Bale of 4', price: 405.00, quantity: 1, image: 'images-nothingfancy/Le-Fleur-18-Pack-350-Sheets-Bale-of-4-chocolate.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
     </div>
+    <div class="product-card" data-id="bale-lefleur-18-350-recycled-x4" data-category="bales" data-price="365.00">
+      <img src="images-nothingfancy/La-Fleur-18-Pack-350-Sheets(recycled-paper).jpg" alt="Le Fleur 18-Pack 350 Sheets Recycled Paper Bale of 4" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Le Fleur 18-Pack 350 Sheets Recycled Paper Bale of 4</div>
+        <div class="product-price">R365.00 per bale of 4</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'bale-lefleur-18-350-recycled-x4', name: 'Le Fleur 18-Pack 350 Sheets Recycled Paper Bale of 4', price: 365.00, quantity: 1, image: 'images-nothingfancy/La-Fleur-18-Pack-350-Sheets(recycled-paper).jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="bale-lefleur-9-350-x8" data-category="bales" data-price="525.00">
+      <img src="images-nothingfancy/La-Fleur-9-Pack-350-Sheets.jpg" alt="Le Fleur 9-Pack 350 Sheets Bale of 8" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Le Fleur 9-Pack 350 Sheets Bale of 8</div>
+        <div class="product-price">R525.00 per bale of 8</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'bale-lefleur-9-350-x8', name: 'Le Fleur 9-Pack 350 Sheets Bale of 8', price: 525.00, quantity: 1, image: 'images-nothingfancy/La-Fleur-9-Pack-350-Sheets.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="bale-lefleur-4-350-x12" data-category="bales" data-price="450.00">
+      <img src="images-nothingfancy/La-Fleur-18-Pack-350-Sheets-Bale-of-4-chocolate.jpg" alt="Le Fleur 4-Pack 350 Sheets Bale of 12" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Le Fleur 4-Pack 350 Sheets Bale of 12</div>
+        <div class="product-price">R450.00 per bale of 12</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'bale-lefleur-4-350-x12', name: 'Le Fleur 4-Pack 350 Sheets Bale of 12', price: 450.00, quantity: 1, image: 'images-nothingfancy/La-Fleur-18-Pack-350-Sheets-Bale-of-4-chocolate.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="content-section">
-    <h2 id="1-ply" class="section-title">1-PLY</h2>
-    <div class="products-grid" id="onePlyProductsGrid">
-        <div class="product-card" data-id="1ply-virgin-48-500" data-category="1-ply" data-price="225.00">
-            <img src="images-nothingfancy/1ply-virgin-paper-48pack-500-sheets.jpg" alt="Virgin Paper 48-Pack 500 Sheets" class="product-image">
-            <div class="product-info">
-                <div class="product-name">Virgin Paper 48-Pack 500 Sheets</div>
-                <div class="product-price">R225.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: '1ply-virgin-48-500', name: 'Virgin Paper 48-Pack 500 Sheets', price: 225.00, quantity: 1, image: 'images-sweetmart/Virgin-Paper-48-Pack-500-Sheets-chocolate.jpg', businessName: 'SweetMart', businessLogo: 'images-logo/sweetmart-logo.png' })">Add to Cart</button>
-            </div>
-        </div>
-        <div class="product-card" data-id="1ply-recycled-48-500" data-category="1-ply" data-price="175.00">
-            <img src="images-nothingfancy/recycled-paper-48-pack-500-sheets.jpg" alt="Recycled Paper 48-Pack 500 Sheets" class="product-image">
-            <div class="product-info">
-                <div class="product-name">Recycled Paper 48-Pack 500 Sheets</div>
-                <div class="product-price">R175.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: '1ply-recycled-48-500', name: 'Recycled Paper 48-Pack 500 Sheets', price: 175.00, quantity: 1, image: 'images-sweetmart/Recycled-Paper-48-Pack-500-Sheets-chocolate.jpg', businessName: 'SweetMart', businessLogo: 'images-logo/sweetmart-logo.png' })">Add to Cart</button>
-            </div>
-        </div>
-        <div class="product-card" data-id="1ply-recycled-2nd-48-500" data-category="1-ply" data-price="125.00">
-            <img src="images-nothingfancy/recycled-paper-48-pack-500-sheets(2nd-grade-paper).jpg" alt="Recycled Paper 48-Pack 500 Sheets 2nd Grade" class="product-image">
-            <div class="product-info">
-                <div class="product-name">Recycled Paper 48-Pack 500 Sheets 2nd Grade</div>
-                <div class="product-price">R125.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: '1ply-recycled-2nd-48-500', name: 'Recycled Paper 48-Pack 500 Sheets 2nd Grade', price: 125.00, quantity: 1, image: 'images-sweetmart/Recycled-Paper-48-Pack-500-Sheets-2nd-Grade-chocolate.jpg', businessName: 'SweetMart', businessLogo: 'images-logo/sweetmart-logo.png' })">Add to Cart</button>
-            </div>
-        </div>
+  <h2 id="1-ply" class="section-title">1-PLY</h2>
+  <div class="products-grid" id="onePlyProductsGrid">
+    <div class="product-card" data-id="1ply-virgin-48-500" data-category="1-ply" data-price="225.00">
+      <img src="images-nothingfancy/1ply-virgin-paper-48pack-500-sheets.jpg" alt="Virgin Paper 48-Pack 500 Sheets" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Virgin Paper 48-Pack 500 Sheets</div>
+        <div class="product-price">R225.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: '1ply-virgin-48-500', name: 'Virgin Paper 48-Pack 500 Sheets', price: 225.00, quantity: 1, image: 'images-nothingfancy/1ply-virgin-paper-48pack-500-sheets.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
     </div>
+    <div class="product-card" data-id="1ply-recycled-48-500" data-category="1-ply" data-price="175.00">
+      <img src="images-nothingfancy/recycled-paper-48-pack-500-sheets.jpg" alt="Recycled Paper 48-Pack 500 Sheets" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Recycled Paper 48-Pack 500 Sheets</div>
+        <div class="product-price">R175.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: '1ply-recycled-48-500', name: 'Recycled Paper 48-Pack 500 Sheets', price: 175.00, quantity: 1, image: 'images-nothingfancy/recycled-paper-48-pack-500-sheets.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="1ply-recycled-2nd-48-500" data-category="1-ply" data-price="125.00">
+      <img src="images-nothingfancy/recycled-paper-48-pack-500-sheets(2nd-grade-paper).jpg" alt="Recycled Paper 48-Pack 500 Sheets 2nd Grade" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Recycled Paper 48-Pack 500 Sheets 2nd Grade</div>
+        <div class="product-price">R125.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: '1ply-recycled-2nd-48-500', name: 'Recycled Paper 48-Pack 500 Sheets 2nd Grade', price: 125.00, quantity: 1, image: 'images-nothingfancy/recycled-paper-48-pack-500-sheets(2nd-grade-paper).jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="content-section">
-    <h2 id="kitchen-towels" class="section-title">KITCHEN TOWELS</h2>
-    <div class="products-grid" id="kitchenTowelsProductsGrid">
-        <div class="product-card" data-id="kt-nova-2-hq" data-category="kitchen-towels" data-price="25.00">
-            <img src="images-nothingfancy/towl-Nova Premium.jpg" alt="Nova Brand 2-Pack High Quality" class="product-image">
-            <div class="product-info">
-                <div class="product-name">Nova Brand 2-Pack High Quality</div>
-                <div class="product-price">R25.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'kt-nova-2-hq', name: 'Nova Brand 2-Pack High Quality', price: 25.00, quantity: 1, image: 'images-sweetmart/Nova-Brand-2-Pack-High-Quality-chocolate.jpg', businessName: 'SweetMart', businessLogo: 'images-logo/sweetmart-logo.png' })">Add to Cart</button>
-            </div>
-        </div>
-        <div class="product-card" data-id="kt-nova-2-sq" data-category="kitchen-towels" data-price="20.00">
-            <img src="images-nothingfancy/towl-Nova Standard.jpg" alt="Nova Brand 2-Pack Standard Quality" class="product-image">
-            <div class="product-info">
-                <div class="product-name">Nova Brand 2-Pack Standard Quality</div>
-                <div class="product-price">R20.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'kt-nova-2-sq', name: 'Nova Brand 2-Pack Standard Quality', price: 20.00, quantity: 1, image: 'images-sweetmart/Nova-Brand-2-Pack-Standard-Quality-chocolate.jpg', businessName: 'SweetMart', businessLogo: 'images-logo/sweetmart-logo.png' })">Add to Cart</button>
-            </div>
-        </div>
-        <div class="product-card" data-id="kt-nova-12-hq-bale2" data-category="kitchen-towels" data-price="245.00">
-            <img src="images-nothingfancy/towl-Nova Standard.jpg" alt="Nova Brand 12-Pack High Quality Bale of 2" class="product-image">
-            <div class="product-info">
-                <div class="product-name">Nova Brand 12-Pack High Quality Bale of 2</div>
-                <div class="product-price">R245.00 per bale of 2</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'kt-nova-12-hq-bale2', name: 'Nova Brand 12-Pack High Quality Bale of 2', price: 245.00, quantity: 1, image: 'images-sweetmart/Nova-Brand-12-Pack-High-Quality-Bale-of-2-chocolate.jpg', businessName: 'SweetMart', businessLogo: 'images-logo/sweetmart-logo.png' })">Add to Cart</button>
-            </div>
-        </div>
-        <div class="product-card" data-id="kt-nova-12-sq-bale2" data-category="kitchen-towels" data-price="195.00">
-            <img src="images-nothingfancy/towl-Nova Standard.jpg" alt="Nova Brand 12-Pack Standard Quality Bale of 2" class="product-image">
-            <div class="product-info">
-                <div class="product-name">Nova Brand 12-Pack Standard Quality Bale of 2</div>
-                <div class="product-price">R195.00 per bale of 2</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'kt-nova-12-sq-bale2', name: 'Nova Brand 12-Pack Standard Quality Bale of 2', price: 195.00, quantity: 1, image: 'images-sweetmart/Nova-Brand-12-Pack-Standard-Quality-Bale-of-2-chocolate.jpg', businessName: 'SweetMart', businessLogo: 'images-logo/sweetmart-logo.png' })">Add to Cart</button>
-            </div>
-        </div>
+  <h2 id="kitchen-towels" class="section-title">KITCHEN TOWELS</h2>
+  <div class="products-grid" id="kitchenTowelsProductsGrid">
+    <div class="product-card" data-id="kt-nova-2-hq" data-category="kitchen-towels" data-price="25.00">
+      <img src="images-nothingfancy/towl-Nova Premium.jpg" alt="Nova Brand 2-Pack High Quality" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Nova Brand 2-Pack High Quality</div>
+        <div class="product-price">R25.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'kt-nova-2-hq', name: 'Nova Brand 2-Pack High Quality', price: 25.00, quantity: 1, image: 'images-nothingfancy/towl-Nova Premium.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
     </div>
+    <div class="product-card" data-id="kt-nova-2-sq" data-category="kitchen-towels" data-price="20.00">
+      <img src="images-nothingfancy/towl-Nova Standard.jpg" alt="Nova Brand 2-Pack Standard Quality" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Nova Brand 2-Pack Standard Quality</div>
+        <div class="product-price">R20.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'kt-nova-2-sq', name: 'Nova Brand 2-Pack Standard Quality', price: 20.00, quantity: 1, image: 'images-nothingfancy/towl-Nova Standard.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="kt-nova-12-hq-bale2" data-category="kitchen-towels" data-price="245.00">
+      <img src="images-nothingfancy/towl-Nova Standard.jpg" alt="Nova Brand 12-Pack High Quality Bale of 2" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Nova Brand 12-Pack High Quality Bale of 2</div>
+        <div class="product-price">R245.00 per bale of 2</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'kt-nova-12-hq-bale2', name: 'Nova Brand 12-Pack High Quality Bale of 2', price: 245.00, quantity: 1, image: 'images-nothingfancy/towl-Nova Standard.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="kt-nova-12-sq-bale2" data-category="kitchen-towels" data-price="195.00">
+      <img src="images-nothingfancy/towl-Nova Standard.jpg" alt="Nova Brand 12-Pack Standard Quality Bale of 2" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Nova Brand 12-Pack Standard Quality Bale of 2</div>
+        <div class="product-price">R195.00 per bale of 2</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'kt-nova-12-sq-bale2', name: 'Nova Brand 12-Pack Standard Quality Bale of 2', price: 195.00, quantity: 1, image: 'images-nothingfancy/towl-Nova Standard.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="content-section">
-    <h2 id="garage-rolls" class="section-title">GARAGE ROLLS</h2>
-    <div class="products-grid" id="garageRollsProductsGrid">
-        <div class="product-card" data-id="gr-super-wipes" data-category="garage-rolls" data-price="200.00">
-            <img src="images-sweetmart/Super-Wipes-170mm-3-2kg-1500m-chocolate.jpg" alt="Super Wipes 170mm 3.2kg 1500m" class="product-image">
-            <div class="product-info">
-                <div class="product-name">Super Wipes 170mm 3.2kg 1500m</div>
-                <div class="product-price">R200.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'gr-super-wipes', name: 'Super Wipes 170mm 3.2kg 1500m', price: 200.00, quantity: 1, image: 'images-sweetmart/Super-Wipes-170mm-3-2kg-1500m-chocolate.jpg', businessName: 'SweetMart', businessLogo: 'images-logo/sweetmart-logo.png' })">Add to Cart</button>
-            </div>
-        </div>
-        <div class="product-card" data-id="gr-econo-wipes" data-category="garage-rolls" data-price="170.00">
-            <img src="images-sweetmart/Econo-Wipes-160m-Width-860m-Length-chocolate.jpg" alt="Econo Wipes 160m Width 860m Length" class="product-image">
-            <div class="product-info">
-                <div class="product-name">Econo Wipes 160m Width 860m Length</div>
-                <div class="product-price">R170.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'gr-econo-wipes', name: 'Econo Wipes 160m Width 860m Length', price: 170.00, quantity: 1, image: 'images-sweetmart/Econo-Wipes-160m-Width-860m-Length-chocolate.jpg', businessName: 'SweetMart', businessLogo: 'images-logo/sweetmart-logo.png' })">Add to Cart</button>
-            </div>
-        </div>
-        <div class="product-card" data-id="gr-standard-2.5kg" data-category="garage-rolls" data-price="125.00">
-            <img src="images-sweetmart/Standard-Quality-160m-Width-750m-Length-2-5kg-chocolate.jpg" alt="Standard Quality 160m Width 750m Length 2.5kg" class="product-image">
-            <div class="product-info">
-                <div class="product-name">Standard Quality 160m Width 750m Length 2.5kg</div>
-                <div class="product-price">R125.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'gr-standard-2.5kg', name: 'Standard Quality 160m Width 750m Length 2.5kg', price: 125.00, quantity: 1, image: 'images-sweetmart/Standard-Quality-160m-Width-750m-Length-2-5kg-chocolate.jpg', businessName: 'SweetMart', businessLogo: 'images-logo/sweetmart-logo.png' })">Add to Cart</button>
-            </div>
-        </div>
+  <h2 id="garage-rolls" class="section-title">GARAGE ROLLS</h2>
+  <div class="products-grid" id="garageRollsProductsGrid">
+    <div class="product-card" data-id="gr-super-wipes" data-category="garage-rolls" data-price="200.00">
+      <img src="images-sweetmart/Super-Wipes-170mm-3-2kg-1500m-chocolate.jpg" alt="Super Wipes 170mm 3.2kg 1500m" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Super Wipes 170mm 3.2kg 1500m</div>
+        <div class="product-price">R200.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'gr-super-wipes', name: 'Super Wipes 170mm 3.2kg 1500m', price: 200.00, quantity: 1, image: 'images-sweetmart/Super-Wipes-170mm-3-2kg-1500m-chocolate.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
     </div>
+    <div class="product-card" data-id="gr-econo-wipes" data-category="garage-rolls" data-price="170.00">
+      <img src="images-sweetmart/Econo-Wipes-160m-Width-860m-Length-chocolate.jpg" alt="Econo Wipes 160m Width 860m Length" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Econo Wipes 160m Width 860m Length</div>
+        <div class="product-price">R170.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'gr-econo-wipes', name: 'Econo Wipes 160m Width 860m Length', price: 170.00, quantity: 1, image: 'images-sweetmart/Econo-Wipes-160m-Width-860m-Length-chocolate.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="gr-standard-2.5kg" data-category="garage-rolls" data-price="125.00">
+      <img src="images-sweetmart/Standard-Quality-160m-Width-750m-Length-2-5kg-chocolate.jpg" alt="Standard Quality 160m Width 750m Length 2.5kg" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Standard Quality 160m Width 750m Length 2.5kg</div>
+        <div class="product-price">R125.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'gr-standard-2.5kg', name: 'Standard Quality 160m Width 750m Length 2.5kg', price: 125.00, quantity: 1, image: 'images-sweetmart/Standard-Quality-160m-Width-750m-Length-2-5kg-chocolate.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="content-section">
-    <h2 id="other" class="section-title">OTHER</h2>
-    <div class="products-grid" id="otherProductsGrid">
-        <div class="product-card" data-id="other-2ply-laminated-1pack" data-category="other" data-price="85.00">
-            <img src="images-sweetmart/2-Ply-Laminated-Paper-Towels-1-Pack-196mm-x-125mm-chocolate.jpg" alt="2-Ply Laminated Paper Towels 1-Pack 196mm x 125mm" class="product-image">
-            <div class="product-info">
-                <div class="product-name">2-Ply Laminated Paper Towels 1-Pack 196mm x 125mm</div>
-                <div class="product-price">R85.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'other-2ply-laminated-1pack', name: '2-Ply Laminated Paper Towels 1-Pack 196mm x 125mm', price: 85.00, quantity: 1, image: 'images-sweetmart/2-Ply-Laminated-Paper-Towels-1-Pack-196mm-x-125mm-chocolate.jpg', businessName: 'SweetMart', businessLogo: 'images-logo/sweetmart-logo.png' })">Add to Cart</button>
-            </div>
-        </div>
-        <div class="product-card" data-id="other-2ply-laminated-6pack" data-category="other" data-price="450.00">
-            <img src="images-sweetmart/2-Ply-Laminated-Paper-Towels-6-Pack-196mm-x-125mm-chocolate.jpg" alt="2-Ply Laminated Paper Towels 6-Pack 196mm x 125mm" class="product-image">
-            <div class="product-info">
-                <div class="product-name">2-Ply Laminated Paper Towels 6-Pack 196mm x 125mm</div>
-                <div class="product-price">R450.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'other-2ply-laminated-6pack', name: '2-Ply Laminated Paper Towels 6-Pack 196mm x 125mm', price: 450.00, quantity: 1, image: 'images-sweetmart/2-Ply-Laminated-Paper-Towels-6-Pack-196mm-x-125mm-chocolate.jpg', businessName: 'SweetMart', businessLogo: 'images-logo/sweetmart-logo.png' })">Add to Cart</button>
-            </div>
-        </div>
-        <div class="product-card" data-id="other-garage-roll-stand" data-category="other" data-price="475.00">
-            <img src="images-sweetmart/Garage-Roll-Stand-chocolate.jpg" alt="Garage Roll Stand" class="product-image">
-            <div class="product-info">
-                <div class="product-name">Garage Roll Stand</div>
-                <div class="product-price">R475.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'other-garage-roll-stand', name: 'Garage Roll Stand', price: 475.00, quantity: 1, image: 'images-sweetmart/Garage-Roll-Stand-chocolate.jpg', businessName: 'SweetMart', businessLogo: 'images-logo/sweetmart-logo.png' })">Add to Cart</button>
-            </div>
-        </div>
-        <div class="product-card" data-id="other-toilet-holder-tr2" data-category="other" data-price="285.00">
-            <img src="images-sweetmart/3-Toilet-Rolls-Holder-TR2-chocolate.jpg" alt="3 Toilet Rolls Holder TR2" class="product-image">
-            <div class="product-info">
-                <div class="product-name">3 Toilet Rolls Holder TR2</div>
-                <div class="product-price">R285.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'other-toilet-holder-tr2', name: '3 Toilet Rolls Holder TR2', price: 285.00, quantity: 1, image: 'images-sweetmart/3-Toilet-Rolls-Holder-TR2-chocolate.jpg', businessName: 'SweetMart', businessLogo: 'images-logo/sweetmart-logo.png' })">Add to Cart</button>
-            </div>
-        </div>
+  <h2 id="other" class="section-title">OTHER</h2>
+  <div class="products-grid" id="otherProductsGrid">
+    <div class="product-card" data-id="other-2ply-laminated-1pack" data-category="other" data-price="85.00">
+      <img src="images-sweetmart/2-Ply-Laminated-Paper-Towels-1-Pack-196mm-x-125mm-chocolate.jpg" alt="2-Ply Laminated Paper Towels 1-Pack 196mm x 125mm" class="product-image">
+      <div class="product-info">
+        <div class="product-name">2-Ply Laminated Paper Towels 1-Pack 196mm x 125mm</div>
+        <div class="product-price">R85.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'other-2ply-laminated-1pack', name: '2-Ply Laminated Paper Towels 1-Pack 196mm x 125mm', price: 85.00, quantity: 1, image: 'images-sweetmart/2-Ply-Laminated-Paper-Towels-1-Pack-196mm-x-125mm-chocolate.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
     </div>
+    <div class="product-card" data-id="other-2ply-laminated-6pack" data-category="other" data-price="450.00">
+      <img src="images-sweetmart/2-Ply-Laminated-Paper-Towels-6-Pack-196mm-x-125mm-chocolate.jpg" alt="2-Ply Laminated Paper Towels 6-Pack 196mm x 125mm" class="product-image">
+      <div class="product-info">
+        <div class="product-name">2-Ply Laminated Paper Towels 6-Pack 196mm x 125mm</div>
+        <div class="product-price">R450.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'other-2ply-laminated-6pack', name: '2-Ply Laminated Paper Towels 6-Pack 196mm x 125mm', price: 450.00, quantity: 1, image: 'images-sweetmart/2-Ply-Laminated-Paper-Towels-6-Pack-196mm-x-125mm-chocolate.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="other-garage-roll-stand" data-category="other" data-price="475.00">
+      <img src="images-sweetmart/Garage-Roll-Stand-chocolate.jpg" alt="Garage Roll Stand" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Garage Roll Stand</div>
+        <div class="product-price">R475.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'other-garage-roll-stand', name: 'Garage Roll Stand', price: 475.00, quantity: 1, image: 'images-sweetmart/Garage-Roll-Stand-chocolate.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="other-toilet-holder-tr2" data-category="other" data-price="285.00">
+      <img src="images-sweetmart/3-Toilet-Rolls-Holder-TR2-chocolate.jpg" alt="3 Toilet Rolls Holder TR2" class="product-image">
+      <div class="product-info">
+        <div class="product-name">3 Toilet Rolls Holder TR2</div>
+        <div class="product-price">R285.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'other-toilet-holder-tr2', name: '3 Toilet Rolls Holder TR2', price: 285.00, quantity: 1, image: 'images-sweetmart/3-Toilet-Rolls-Holder-TR2-chocolate.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- PRODUCT MODAL -->
+<div class="product-modal-overlay">
+  <div class="product-modal">
+    <button class="close-product-modal" onclick="closeProductModal()"><i class="fas fa-times"></i></button>
+    <div class="product-modal-content">
+      <div class="product-modal-images">
+        <img src="" alt="Main Product Image" class="main-product-image" id="modalMainImage">
+        <div class="product-thumbnails" id="productThumbnails"></div>
+      </div>
+      <div class="product-modal-details">
+        <h3 class="product-modal-title" id="modalProductName">Product Name</h3>
+        <div class="product-modal-price" id="modalProductPrice">R0.00</div>
+        <p class="product-modal-description" id="modalProductDescription">Description</p>
+        <div class="quantity-selector">
+          <div class="variant-title">Quantity:</div>
+          <button class="quantity-btn" id="decreaseQuantity">-</button>
+          <span class="quantity-display" id="modalQuantity">1</span>
+          <button class="quantity-btn" id="increaseQuantity">+</button>
+        </div>
+        <button class="add-to-cart-modal-btn" id="modalAddToCartBtn">
+          <i class="fas fa-cart-plus"></i> Add to Cart
+        </button>
+      </div>
     </div>
+  </div>
 </div>
-    <div class="product-modal-overlay">
-        <div class="product-modal">
-            <button class="close-product-modal" onclick="closeProductModal()"><i class="fas fa-times"></i></button>
-            <div class="product-modal-content">
-                <div class="product-modal-images">
-                    <img src="" alt="Main Product Image" class="main-product-image" id="modalMainImage">
-                    <div class="product-thumbnails" id="productThumbnails">
-                        </div>
-                </div>
-                <div class="product-modal-details">
-                    <h3 class="product-modal-title" id="modalProductName">Product Name</h3>
-                    <div class="product-modal-price" id="modalProductPrice">R0.00</div>
-                    <p class="product-modal-description" id="modalProductDescription">A delicious treat for everyone!</p>
-                    <div class="product-variants" id="productVariantsContainer">
-                        </div>
-                    <div class="quantity-selector">
-                        <div class="variant-title">Quantity:</div>
-                        <button class="quantity-btn" id="decreaseQuantity">-</button>
-                        <span class="quantity-display" id="modalQuantity">1</span>
-                        <button class="quantity-btn" id="increaseQuantity">+</button>
-                    </div>
-                    <button class="add-to-cart-modal-btn" id="modalAddToCartBtn">
-                        <i class="fas fa-cart-plus"></i> Add to Cart
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="cart-modal-overlay">
-        <div class="cart-modal">
-            <h3 class="cart-modal-title"><i class="fas fa-shopping-cart"></i> Your Shopping Cart</h3>
-            <div class="cart-items">
-                <p style="text-align: center; color: #555;">Your cart is empty.</p>
-            </div>
-            <div class="cart-total" id="cartTotal">Total: R0.00</div>
-        <button class="checkout-btn" onclick="sendCartToWhatsApp()"><i class="fab fa-whatsapp"></i> Send Order via WhatsApp</button>
-            <button class="close-cart-btn" onclick="closeCartModal()">Continue Shopping</button>
-        </div>
-    </div>
-    <div class="user-modal-overlay">
-        <div class="user-modal">
-            <h3 class="user-modal-title" id="userModalTitle">Login</h3>
-            <form class="auth-form" id="loginForm">
-                <div class="form-group">
-                    <label for="loginEmail" class="form-label">Email:</label>
-                    <input type="email" id="loginEmail" class="form-input" required>
-                </div>
-                <div class="form-group">
-                    <label for="loginPassword" class="form-label">Password:</label>
-                    <input type="password" id="loginPassword" class="form-input" required>
-                </div>
-                <button type="submit" class="auth-btn">Login</button>
-            </form>
-            <form class="auth-form" id="registerForm" style="display: none;">
-                <div class="form-group">
-                    <label for="registerName" class="form-label">Name:</label>
-                    <input type="text" id="registerName" class="form-input" required>
-                </div>
-                <div class="form-group">
-                    <label for="registerEmail" class="form-label">Email:</label>
-                    <input type="email" id="registerEmail" class="form-input" required>
-                </div>
-                <div class="form-group">
-                    <label for="registerPassword" class="form-label">Password:</label>
-                    <input type="password" id="registerPassword" class="form-input" required>
-                </div>
-                <button type="submit" class="auth-btn">Register</button>
-            </form>
-            <div class="switch-auth">
-                <span id="switchAuthText">New user?</span>
-                <span class="switch-auth-btn" onclick="toggleAuthForm()">Register here</span>
-            </div>
-            <button class="close-product-modal" style="top: 10px; right: 10px; background-color: #a30909;" onclick="closeUserModal()"><i class="fas fa-times"></i></button>
-        </div>
-    </div>
-    <footer>
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <h3>NOTHING FANCY</h3>
-                    <p>A delicious frozen treat for everyone!</p>
-                    <div class="social-media">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <nav class="footer-nav">
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="#BIG-POPS">Shop</a></li>
-                            <li><a href="about page home.html">About Us</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                &copy;  Hive Times. All rights reserved. | Developed by Your Company Name
-            </div>
-        </div>
-    </footer>
-    <script>
-        // Business info popup functionality
-function showBusinessPopup() {
-    document.getElementById('businessPopupOverlay').style.display = 'flex';
-    setTimeout(() => {
-        document.getElementById('businessPopup').classList.add('active');
-    }, 10);
-}
 
-function hideBusinessPopup() {
-    document.getElementById('businessPopup').classList.remove('active');
-    setTimeout(() => {
-        document.getElementById('businessPopupOverlay').style.display = 'none';
-    }, 300);
-}
+<!-- CART MODAL -->
+<div class="cart-modal-overlay">
+  <div class="cart-modal">
+    <h3 class="cart-modal-title"><i class="fas fa-shopping-cart"></i> Your Shopping Cart</h3>
+    <div class="cart-items">
+      <p style="text-align: center; color: #555;">Your cart is empty.</p>
+    </div>
+    <div class="cart-total" id="cartTotal">Total: R0.00</div>
+    <button class="checkout-btn" onclick="sendCartToWhatsApp()"><i class="fab fa-whatsapp"></i> Send Order via WhatsApp</button>
+    <button class="close-cart-btn" onclick="closeCartModal()">Continue Shopping</button>
+  </div>
+</div>
 
-// Close business popup when clicking outside
-document.getElementById('businessPopupOverlay').addEventListener('click', function(e) {
-    if (e.target === this) {
-        hideBusinessPopup();
+<!-- === FLOATING AI CHAT WIDGET BUTTON (FOR NOTHING FANCY) === -->
+<div class="ai-chat-widget" id="aiChatWidget">
+  <img src="images-logo/bee.jpg" alt="Ask Beelal AI" />
+</div>
+
+<!-- === BEELAL AI CHAT PANEL (NOTHING FANCY VERSION) === -->
+<div class="ai-chat-panel" id="aiChatPanel">
+  <div class="ai-chat-header">
+    <div class="ai-avatar-square">
+      <img src="images-logo/bee.jpg" alt="Beelal AI" />
+    </div>
+    <h4>Beelal AI</h4>
+    <button class="ai-close-btn" id="aiCloseBtn">×</button>
+  </div>
+  <div class="ai-chat-messages" id="aiChatMessages">
+    <div class="ai-message bot">
+      Hello! 👋 I'm your <strong>Nothing Fancy</strong> assistant.<br>
+      You can ask me things like:<br>
+      • “What are your opening hours?”<br>
+      • “Where are you located?”<br>
+      • “Do you deliver toilet paper?”<br>
+      • “Send me your bulk price list”
+    </div>
+  </div>
+  <div class="ai-chat-input">
+    <input type="text" id="aiUserInput" placeholder="e.g. Do you supply kitchen towels in bales?">
+    <button id="aiSendBtn"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="footer-info">
+        <h3>NOTHING FANCY</h3>
+        <p>The softest hearts with the smoothest prices.</p>
+        <div class="social-media">
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <nav class="footer-nav">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#2-ply">Shop</a></li>
+            <li><a href="#" onclick="showBusinessModal()">About Us</a></li>
+            <li><a href="mailto:contact@nothingfancy.co.za">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; Hive Times. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+// === CART ===
+const cart = {
+  items: [],
+  STORAGE_KEY: 'nothing_fancy_cart_v1',
+  init() {
+    const stored = localStorage.getItem(this.STORAGE_KEY);
+    if (stored) {
+      try {
+        this.items = JSON.parse(stored);
+      } catch (e) {
+        this.items = [];
+      }
     }
-});
-        // Define global variables
-        const productModalOverlay = document.querySelector('.product-modal-overlay');
-        const productModal = document.querySelector('.product-modal');
-        const cartModalOverlay = document.querySelector('.cart-modal-overlay');
-        const cartModal = document.querySelector('.cart-modal');
-        const userModalOverlay = document.querySelector('.user-modal-overlay');
-        const userModal = document.querySelector('.user-modal');
-        // Product data structure
-        const allProducts = [
-  // Premier Ice Cream
-  { id: 'premier-1', name: 'Premier Ice Cream 1L (Vanilla)', price: 45.00, category: 'premier-ice-cream', image: 'Premier ice cream picture 1.jpg', description: 'Classic vanilla ice cream in a 1L tub.', thumbnails: ['Premier ice cream picture 1.jpg'], variants: [], businessName: 'Premier Ice Cream' },
-  { id: 'premier-2', name: 'Premier Ice Cream 2L (Chocolate)', price: 49.00, category: 'premier-ice-cream', image: 'Premier ice cream picture 2.jpg', description: 'Rich chocolate ice cream in a 2L tub.', thumbnails: ['Premier ice cream picture 2.jpg'], variants: [], businessName: 'Premier Ice Cream' },
-  { id: 'premier-3', name: 'Premier Ice Cream 5L Tub (Strawberry)', price: 55.00, category: 'premier-ice-cream', image: 'Premier ice cream picture 3.jpg', description: 'Refreshing strawberry flavor in a large 5L tub.', thumbnails: ['Premier ice cream picture 3.jpg'], variants: [], businessName: 'Premier Ice Cream' },
-  { id: 'premier-4', name: 'Premier Ice Cream Mixed Selection', price: 60.00, category: 'premier-ice-cream', image: 'Premier ice cream picture 4.jpg', description: 'A delightful mix of popular ice cream flavors.', thumbnails: ['Premier ice cream picture 4.jpg'], variants: [], businessName: 'Premier Ice Cream' },
-  { id: 'premier-5', name: 'Premier Ice Cream Cone Pack (6 units)', price: 35.00, category: 'premier-ice-cream', image: 'Premier ice cream picture 5.jpg', description: 'Six ready-to-eat ice cream cones.', thumbnails: ['Premier ice cream picture 5.jpg'], variants: [], businessName: 'Premier Ice Cream' },
-  { id: 'premier-6', name: 'Premier Ice Cream Lollies (6 Pack)', price: 42.50, category: 'premier-ice-cream', image: 'Premier ice cream picture 6.jpg', description: 'Six fruity ice cream lollies.', thumbnails: ['Premier ice cream picture 6.jpg'], variants: [], businessName: 'Premier Ice Cream' },
-  { id: 'premier-7', name: 'Premier Ice Cream Individual Pop', price: 25.00, category: 'premier-ice-cream', image: 'Premier ice cream picture 7.jpg', description: 'Single-serve ice cream pop for a quick treat.', thumbnails: ['Premier ice cream picture 7.jpg'], variants: [], businessName: 'Premier Ice Cream' },
-  { id: 'premier-8', name: 'Premier Ice Cream Deluxe Party Tub 10L', price: 89.99, category: 'premier-ice-cream', image: 'Premier ice cream picture 8.jpg', description: 'Large 10L tub perfect for parties and events.', thumbnails: ['Premier ice cream picture 8.jpg'], variants: [], businessName: 'Premier Ice Cream' },
-  { id: 'premier-9', name: 'Premier Ice Cream Mini Cups (4 Pack)', price: 19.99, category: 'premier-ice-cream', image: 'Premier ice cream picture 9.jpg', description: 'Four mini cups of creamy ice cream.', thumbnails: ['Premier ice cream picture 9.jpg'], variants: [], businessName: 'Premier Ice Cream' },
-  // Premier Dairy Ice Cream
-  { id: 'premier-dairy-21', name: 'Premier Dairy 4L Bulk Vanilla Tub', price: 44.00, category: 'premier-dairy-ice-cream', image: 'Premier Dairy ice cream picture 1.jpg', description: 'Creamy dairy-based vanilla in a 4L bulk tub.', thumbnails: ['Premier Dairy ice cream picture 1.jpg'], variants: [], businessName: 'Premier Dairy' },
-  { id: 'premier-dairy-22', name: 'Premier Dairy 4L Bulk Strawberry Tub', price: 46.00, category: 'premier-dairy-ice-cream', image: 'Premier Dairy ice cream picture 2.jpg', description: 'Dairy strawberry ice cream in a 4L tub.', thumbnails: ['Premier Dairy ice cream picture 2.jpg'], variants: [], businessName: 'Premier Dairy' },
-  { id: 'premier-dairy-23', name: 'Premier Dairy 4L Bulk Chocolate Tub', price: 48.00, category: 'premier-dairy-ice-cream', image: 'Premier Dairy ice cream picture 3.jpg', description: 'Decadent chocolate dairy ice cream, 4L.', thumbnails: ['Premier Dairy ice cream picture 3.jpg'], variants: [], businessName: 'Premier Dairy' },
-  { id: 'premier-dairy-24', name: 'Premier Dairy Mini Fruity Lolly (6 Pack)', price: 21.50, category: 'premier-dairy-ice-cream', image: 'Premier Dairy ice cream picture 4.jpg', description: 'Six mini fruity dairy lollies.', thumbnails: ['Premier Dairy ice cream picture 4.jpg'], variants: [], businessName: 'Premier Dairy' },
-  { id: 'premier-dairy-25', name: 'Premier Dairy Classic Ice Cream Lolly', price: 28.99, category: 'premier-dairy-ice-cream', image: 'Premier Dairy ice cream picture 5.jpg', description: 'Classic dairy ice cream on a stick.', thumbnails: ['Premier Dairy ice cream picture 5.jpg'], variants: [], businessName: 'Premier Dairy' },
-  { id: 'premier-dairy-26', name: 'Premier Dairy Mini Dessert Tubs (4 Pack)', price: 39.50, category: 'premier-dairy-ice-cream', image: 'Premier Dairy ice cream picture 6.jpg', description: 'Four individual dessert tubs.', thumbnails: ['Premier Dairy ice cream picture 6.jpg'], variants: [], businessName: 'Premier Dairy' },
-  { id: 'premier-dairy-27', name: 'Premier Dairy Chocolate Sandwich (6 Pack)', price: 33.00, category: 'premier-dairy-ice-cream', image: 'Premier Dairy ice cream picture 7.jpg', description: 'Chocolate ice cream sandwiched between wafers.', thumbnails: ['Premier Dairy ice cream picture 7.jpg'], variants: [], businessName: 'Premier Dairy' },
-  { id: 'premier-dairy-28', name: 'Premier Dairy Gourmet Wafer Cones (4 Pack)', price: 49.99, category: 'premier-dairy-ice-cream', image: 'Premier Dairy ice cream picture 8.jpg', description: 'Premium wafer cones filled with dairy ice cream.', thumbnails: ['Premier Dairy ice cream picture 8.jpg'], variants: [], businessName: 'Premier Dairy' },
-  { id: 'premier-dairy-30', name: 'Premier Dairy Tin Roof 5L', price: 55.00, category: 'premier-dairy-ice-cream', image: 'Premier Dairy ice cream picture 10.jpg', description: 'Vanilla with chocolate and almonds, 5L tub.', thumbnails: ['Premier Dairy ice cream picture 10.jpg'], variants: [], businessName: 'Premier Dairy' },
-  { id: 'premier-dairy-29', name: 'Premier Dairy Double Cream Indulgence 5L', price: 55.00, category: 'premier-dairy-ice-cream', image: 'Premier Dairy ice cream picture 10.jpg', description: 'Extra creamy double cream ice cream, 5L.', thumbnails: ['Premier Dairy ice cream picture 10.jpg'], variants: [], businessName: 'Premier Dairy' },
-  { id: 'premier-dairy-31', name: 'Premier Dairy Swiss Chocolate 5L', price: 55.00, category: 'premier-dairy-ice-cream', image: 'Premier Dairy Swiss Chocolate 5L.jpg', description: 'Swiss chocolate flavor in a 5L dairy tub.', thumbnails: ['Premier Dairy Swiss Chocolate 5L.jpg'], variants: [], businessName: 'Premier Dairy' },
-  { id: 'premier-dairy-32', name: 'Premier Dairy Double Vanilla 5L', price: 55.00, category: 'premier-dairy-ice-cream', image: 'Premier Dairy Double Vanilla 5L.jpg', description: 'Double-strength vanilla in a 5L tub.', thumbnails: ['Premier Dairy Double Vanilla 5L.jpg'], variants: [], businessName: 'Premier Dairy' },
-  { id: 'premier-dairy-33', name: 'Premier Dairy Coconut 5L', price: 55.00, category: 'premier-dairy-ice-cream', image: 'Premier Dairy Coconut 5L.jpg', description: 'Tropical coconut flavor, 5L dairy tub.', thumbnails: ['Premier Dairy Coconut 5L.jpg'], variants: [], businessName: 'Premier Dairy' },
-  // Guilt Free
-  { id: 'guilt-free-01', name: 'Guilt Free Mint Choc 1L', price: 55.00, category: 'guilt-free-ice-cream', image: 'Guilt Free Mint Choc 1L.jpg', description: 'Low-calorie mint chocolate ice cream.', thumbnails: ['Guilt Free Mint Choc 1L.jpg'], variants: [], businessName: 'Guilt Free' },
-  { id: 'guilt-free-02', name: 'Guilt Free Vanilla 1L', price: 55.00, category: 'guilt-free-ice-cream', image: 'Guilt Free Vanilla 1L.jpg', description: 'Light vanilla ice cream with fewer calories.', thumbnails: ['Guilt Free Vanilla 1L.jpg'], variants: [], businessName: 'Guilt Free' },
-  { id: 'guilt-free-03', name: 'Guilt Free Espresso Choc Chip 1L', price: 55.00, category: 'guilt-free-ice-cream', image: 'Guilt Free Espresso Choc Chip 1L.jpg', description: 'Coffee-infused with chocolate chips, guilt-free.', thumbnails: ['Guilt Free Espresso Choc Chip 1L.jpg'], variants: [], businessName: 'Guilt Free' },
-  // iCUP
-  { id: 'polar-1', name: 'iCUP Almond (Vanilla with Roasted Almonds)', price: 12.00, category: 'ice-cream', image: 'picture 11.jpg', description: 'Vanilla ice cream with crunchy roasted almonds.', thumbnails: ['picture 11.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-2', name: 'iCUP Mango', price: 12.00, category: 'ice-cream', image: 'picture 10.jpg', description: 'Tropical mango-flavored ice cream cup.', thumbnails: ['picture 10.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-3', name: 'iCUP Pista & Nuts (Pistachio with Nuts)', price: 12.00, category: 'ice-cream', image: 'picture 13.jpg', description: 'Pistachio ice cream with mixed nuts.', thumbnails: ['picture 13.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-4', name: 'iCUP Burfee (Sweet Burfee with Almonds & Cardamon)', price: 12.00, category: 'ice-cream', image: 'picture 9.jpg', description: 'Indian-inspired burfee flavor with cardamom.', thumbnails: ['picture 9.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-5', name: 'iCUP Tin Roof (Vanilla with Roasted Almonds & Chocolate Sauce)', price: 12.00, category: 'ice-cream', image: 'picture 12.jpg', description: 'Classic tin roof flavor in a cup.', thumbnails: ['picture 12.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  // Polar Lollies
-  { id: 'polar-01', name: 'Berry Blaze', price: 10.00, category: 'polar-popsicles', image: 'Polar Berry Blaze.jpg', description: 'Mixed berry ice lolly.', thumbnails: ['Polar Berry Blaze.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-02', name: 'Bubblegum', price: 10.00, category: 'polar-popsicles', image: 'Polar Bubblegum.jpg', description: 'Classic bubblegum-flavored ice pop.', thumbnails: ['Polar Bubblegum.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-03', name: 'Lemonlik', price: 10.00, category: 'polar-popsicles', image: 'Polar Lemonlik.jpg', description: 'Zesty lemon ice lolly.', thumbnails: ['Polar Lemonlik.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-04', name: 'Tropaz', price: 10.00, category: 'polar-popsicles', image: 'Polar Tropaz.jpg', description: 'Tropical fruit blend.', thumbnails: ['Polar Tropaz.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-05', name: 'Mr Apple', price: 10.00, category: 'polar-popsicles', image: 'Polar Mr Apple.jpg', description: 'Crisp apple flavor.', thumbnails: ['Polar Mr Apple.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-06', name: 'Polar Split', price: 10.00, category: 'polar-popsicles', image: 'Polar Polar Split.jpg', description: 'Chocolate and vanilla swirl.', thumbnails: ['Polar Polar Split.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-07', name: 'Mango Bango', price: 10.00, category: 'polar-popsicles', image: 'Polar Mango Bango.jpg', description: 'Sweet mango flavor.', thumbnails: ['Polar Mango Bango.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-08', name: 'LichiLik', price: 10.00, category: 'polar-popsicles', image: 'Polar LichiLik.jpg', description: 'Exotic lychee taste.', thumbnails: ['Polar LichiLik.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-09', name: 'Milky Pie', price: 10.00, category: 'polar-popsicles', image: 'Polar Milky Pie.jpg', description: 'Creamy milky dessert pop.', thumbnails: ['Polar Milky Pie.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-10', name: 'Strawberry Sensation', price: 10.00, category: 'polar-popsicles', image: 'Polar Strawberry Sensation.jpg', description: 'Rich strawberry flavor.', thumbnails: ['Polar Strawberry Sensation.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-11', name: 'Three in One', price: 10.00, category: 'polar-popsicles', image: 'Polar Three in One.jpg', description: 'Triple fruit swirl.', thumbnails: ['Polar Three in One.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-12', name: 'Viva', price: 10.00, category: 'polar-popsicles', image: 'Polar Viva.jpg', description: 'Fruity tropical blend.', thumbnails: ['Polar Viva.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-13', name: 'Banana Berry', price: 10.00, category: 'polar-popsicles', image: 'Polar Banana Berry.jpg', description: 'Banana and mixed berry.', thumbnails: ['Polar Banana Berry.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-14', name: 'Choc Overload', price: 10.00, category: 'polar-popsicles', image: 'Polar Choc Overload.jpg', description: 'Double chocolate delight.', thumbnails: ['Polar Choc Overload.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-15', name: 'Banana Split', price: 10.00, category: 'polar-popsicles', image: 'Polar Banana Split.jpg', description: 'Classic banana split flavor.', thumbnails: ['Polar Banana Split.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-16', name: 'Coconut Bar', price: 10.00, category: 'polar-popsicles', image: 'Polar Coconut Bar.jpg', description: 'Tropical coconut bar.', thumbnails: ['Polar Coconut Bar.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-17', name: 'Custard Jelly', price: 10.00, category: 'polar-popsicles', image: 'Polar Custard Jelly.jpg', description: 'Creamy custard with jelly bits.', thumbnails: ['Polar Custard Jelly.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-18', name: 'Eish!', price: 10.00, category: 'polar-popsicles', image: 'Polar Eish!.jpg', description: 'Surprise fruit flavor.', thumbnails: ['Polar Eish!.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-19', name: 'Grandelch', price: 10.00, category: 'polar-popsicles', image: 'Polar Grandelch.jpg', description: 'Grand fruit medley.', thumbnails: ['Polar Grandelch.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-20', name: 'Granadilla Sherbet', price: 10.00, category: 'polar-popsicles', image: 'Polar Granadilla Sherbet.jpg', description: 'Tangy passion fruit sherbet.', thumbnails: ['Polar Granadilla Sherbet.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-21', name: 'Jolly Pine', price: 10.00, category: 'polar-popsicles', image: 'Polar Jolly Pine.jpg', description: 'Pineapple party pop.', thumbnails: ['Polar Jolly Pine.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-22', name: 'Caramello', price: 10.00, category: 'polar-popsicles', image: 'Polar Caramello.jpg', description: 'Smooth caramel swirl.', thumbnails: ['Polar Caramello.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-23', name: 'Choc99', price: 10.00, category: 'polar-popsicles', image: 'Polar Choc99.jpg', description: 'Chocolate with a crunch.', thumbnails: ['Polar Choc99.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-24', name: 'Cocomint', price: 10.00, category: 'polar-popsicles', image: 'Polar Cocomint.jpg', description: 'Coconut and mint fusion.', thumbnails: ['Polar Cocomint.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-25', name: 'Just Jelly', price: 10.00, category: 'polar-popsicles', image: 'Polar Just Jelly.jpg', description: 'Pure fruit jelly pop.', thumbnails: ['Polar Just Jelly.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-26', name: 'iCone', price: 10.00, category: 'polar-popsicles', image: 'Polar iCone.jpg', description: 'Mini ice cream cone pop.', thumbnails: ['Polar iCone.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  // Polar Milky
-  { id: 'polar-milky-01', name: 'Strawberry flavoured milky treat', price: 10.00, category: 'polar-milky-treats', image: 'Polar Milky Strawberry.jpg', description: 'Creamy strawberry milk pop.', thumbnails: ['Polar Milky Strawberry.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-milky-02', name: 'Chocolate flavoured milky treat', price: 10.00, category: 'polar-milky-treats', image: 'Polar Milky Chocolate.jpg', description: 'Rich chocolate milk pop.', thumbnails: ['Polar Milky Chocolate.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-milky-03', name: 'Litchi flavoured milky treat', price: 10.00, category: 'polar-milky-treats', image: 'Polar Milky Litchi.jpg', description: 'Exotic lychee milk pop.', thumbnails: ['Polar Milky Litchi.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-milky-04', name: 'Apple flavoured milky treat', price: 10.00, category: 'polar-milky-treats', image: 'Polar Milky Apple.jpg', description: 'Crisp apple milk pop.', thumbnails: ['Polar Milky Apple.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-milky-05', name: 'Blueberry flavoured milky treat', price: 10.00, category: 'polar-milky-treats', image: 'Polar Milky Blueberry.jpg', description: 'Tangy blueberry milk pop.', thumbnails: ['Polar Milky Blueberry.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-milky-06', name: 'Mango flavoured milky treat', price: 10.00, category: 'polar-milky-treats', image: 'Polar Milky Mango.jpg', description: 'Sweet mango milk pop.', thumbnails: ['Polar Milky Mango.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  // MAXI
-  { id: 'maxi-vanilla-milk-chocolate', name: 'Vanilla Flavoured Ice Cream Coated in Milk Chocolate', price: 12.00, category: 'maxi-ice-creams', image: 'MAXI Vanilla Milk Chocolate.jpg', description: 'Vanilla core with milk chocolate shell.', thumbnails: ['MAXI Vanilla Milk Chocolate.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'maxi-vanilla-milk-chocolate-almonds', name: 'Vanilla Flavoured Ice Cream Coated in Milk Chocolate with Roasted Almonds', price: 12.00, category: 'maxi-ice-creams', image: 'MAXI Vanilla Milk Chocolate Almonds.jpg', description: 'Vanilla with almonds in chocolate.', thumbnails: ['MAXI Vanilla Milk Chocolate Almonds.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'maxi-white-chocolate-almonds', name: 'White chocolate flavoured ice cream, coated in white chocolate with roasted almonds', price: 12.00, category: 'maxi-ice-creams', image: 'MAXI White Chocolate Almonds.jpg', description: 'White chocolate indulgence.', thumbnails: ['MAXI White Chocolate Almonds.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'maxi-black-cherry-ruby-chocolate', name: 'Dairy ice cream with black cherry fruit, coated in ruby chocolate', price: 12.00, category: 'maxi-ice-creams', image: 'MAXI Black Cherry Ruby Chocolate.jpg', description: 'Ruby chocolate with cherry swirl.', thumbnails: ['MAXI Black Cherry Ruby Chocolate.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'maxi-chocolate-sauce-cashew-almond-coconut', name: 'Chocolate dairy ice cream with a chocolate sauce, coated in milk chocolate with roasted cashews, almond and coconut', price: 12.00, category: 'maxi-ice-creams', image: 'MAXI Chocolate Sauce Cashew Almond Coconut.jpg', description: 'Triple nut chocolate delight.', thumbnails: ['MAXI Chocolate Sauce Cashew Almond Coconut.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  // Polar Sandwich
-  { id: 'polar-sandwich-01', name: 'Vanilla flavoured ice cream in a wafer sandwich', price: 10.00, category: 'polar-sandwiches', image: 'Polar Sandwich Vanilla.jpg', description: 'Classic vanilla wafer sandwich.', thumbnails: ['Polar Sandwich Vanilla.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-sandwich-02', name: 'Vanilla and strawberry flavoured ice cream in a wafer sandwich', price: 10.00, category: 'polar-sandwiches', image: 'Polar Sandwich Vanilla Strawberry.jpg', description: 'Dual-flavor wafer delight.', thumbnails: ['Polar Sandwich Vanilla Strawberry.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  // RAVE
-  { id: 'rave-01', name: 'Lemon Cheesecake Flavoured ice Cream with Blueberry Flavoured Ripple', price: 12.00, category: 'stick-novelties', image: 'Rave Page 1.png', description: 'Tangy lemon cheesecake with blueberry.', thumbnails: ['Rave Page 1.png'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'rave-02', name: 'Vanilla Flavoured Ice Cream with Strawberry Flavoured Ripple', price: 12.00, category: 'stick-novelties', image: 'Rave Page 1.png', description: 'Vanilla with strawberry swirl.', thumbnails: ['Rave Page 1.png'], variants: [], businessName: 'Polar Ice Cream' },
-  // FRUITY LICKS
-  { id: 'fruity-licks-orange', name: 'Orange flavoured ice lollie', price: 8.00, category: 'fruity-licks', image: 'Fruity Licks Orange.jpg', description: 'Refreshing orange ice pop.', thumbnails: ['Fruity Licks Orange.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'fruity-licks-pineapple', name: 'Pineapple flavoured ice lollie', price: 8.00, category: 'fruity-licks', image: 'Fruity Licks Pineapple.jpg', description: 'Tropical pineapple pop.', thumbnails: ['Fruity Licks Pineapple.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'fruity-licks-raspberry', name: 'Raspberry flavoured ice lollie', price: 8.00, category: 'fruity-licks', image: 'Fruity Licks Raspberry.jpg', description: 'Tart raspberry ice pop.', thumbnails: ['Fruity Licks Raspberry.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  // POLAR POP
-  { id: 'polar-pop-01', name: 'Orange flavoured ice', price: 10.00, category: 'ice-lollies', image: 'polar Pop Page 1.png', description: 'Citrus orange ice pop.', thumbnails: ['polar Pop Page 1.png'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-pop-02', name: 'Raspberry flavoured ice', price: 10.00, category: 'ice-lollies', image: 'polar Pop Page 1.png', description: 'Berry raspberry ice pop.', thumbnails: ['polar Pop Page 1.png'], variants: [], businessName: 'Polar Ice Cream' },
-  // FLOAT
-  { id: 'float-orange-vanilla', name: 'Orange Vanilla flavoured ice cream in a fruit ice shell', price: 9.00, category: 'float-ice-creams', image: 'FLOAT Orange Vanilla.jpg', description: 'Orange shell with vanilla core.', thumbnails: ['FLOAT Orange Vanilla.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'float-strawberry-vanilla', name: 'Strawberry Vanilla flavoured ice cream in a fruit ice shell', price: 9.00, category: 'float-ice-creams', image: 'FLOAT Strawberry Vanilla.jpg', description: 'Strawberry shell with vanilla core.', thumbnails: ['FLOAT Strawberry Vanilla.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'float-passionfruit-vanilla', name: 'Passion Fruit Vanilla flavoured ice cream in a fruit ice shell', price: 9.00, category: 'float-ice-creams', image: 'FLOAT Passion Fruit Vanilla.jpg', description: 'Passion fruit shell with vanilla.', thumbnails: ['FLOAT Passion Fruit Vanilla.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  // WOZA
-  { id: 'wowza-chocolate-vanilla', name: 'Chocolate and Vanilla Flavoured Ice Cream', price: 10.00, category: 'wowza-ice-creams', image: 'WOWZA Chocolate Vanilla.jpg', description: 'Swirled chocolate and vanilla.', thumbnails: ['WOWZA Chocolate Vanilla.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  // POLAR CUPS
-  { id: 'nja-chocolate-125ml', name: 'NJA 125ml Chocolate Cup - Chocolate Flavoured Frozen Dessert', price: 15.00, category: 'polar-cups', image: 'NJA Chocolate 125ml.jpg', description: 'Individual chocolate dessert cup.', thumbnails: ['NJA Chocolate 125ml.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'nja-strawberry-125ml', name: 'NJA 125ml Strawberry Cup - Strawberry Flavoured Frozen Dessert', price: 15.00, category: 'polar-cups', image: 'NJA Strawberry 125ml.jpg', description: 'Individual strawberry dessert cup.', thumbnails: ['NJA Strawberry 125ml.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'nja-vanilla-125ml', name: 'NJA 125ml Vanilla Cup - Vanilla Flavoured Frozen Dessert', price: 15.00, category: 'polar-cups', image: 'NJA Vanilla 125ml.jpg', description: 'Individual vanilla dessert cup.', thumbnails: ['NJA Vanilla 125ml.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'pint-banana-berry-bliss-500ml', name: '500ML Banana Berry Bliss - Banana and Strawberry Flavoured Frozen Dessert', price: 25.00, category: 'polar-cups', image: 'Pint Banana Berry Bliss 500ml.jpg', description: 'Fruity banana-berry pint.', thumbnails: ['Pint Banana Berry Bliss 500ml.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'pint-choc-mint-500ml', name: '500ML Choc Mint - Chocolate and Mint Flavoured Frozen Dessert', price: 25.00, category: 'polar-cups', image: 'Pint Choc Mint 500ml.jpg', description: 'Cool choc-mint pint.', thumbnails: ['Pint Choc Mint 500ml.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'pint-black-forest-500ml', name: '500ML Black Forest - Chocolate and Vanilla Flavoured Frozen Dessert With a Cherry Flavoured Ripple', price: 25.00, category: 'polar-cups', image: 'Pint Black Forest 500ml.jpg', description: 'Black Forest inspired dessert.', thumbnails: ['Pint Black Forest 500ml.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'pint-choc-vanilla-chilla-500ml', name: '500ML Choc Vanilla Chilla - Chocolate and Vanilla Flavoured Frozen Dessert', price: 25.00, category: 'polar-cups', image: 'Pint Choc Vanilla Chilla 500ml.jpg', description: 'Chocolate-vanilla swirl.', thumbnails: ['Pint Choc Vanilla Chilla 500ml.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'pint-neapolitan-500ml', name: '500ML Neapolitan - Chocolate, Vanilla and Strawberry Flavoured Frozen Dessert', price: 25.00, category: 'polar-cups', image: 'Pint Neapolitan 500ml.jpg', description: 'Classic trio of flavors.', thumbnails: ['Pint Neapolitan 500ml.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'pint-strawberry-bubblegum-500ml', name: '500ML Strawberry and Bubblegum - Strawberry and Bubblegum Flavoured Frozen Dessert', price: 25.00, category: 'polar-cups', image: 'Pint Strawberry Bubblegum 500ml.jpg', description: 'Fun strawberry-bubblegum combo.', thumbnails: ['Pint Strawberry Bubblegum 500ml.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'pint-vanilla-500ml', name: '500ML Vanilla - Vanilla Flavoured Frozen Dessert', price: 25.00, category: 'polar-cups', image: 'Pint Vanilla 500ml.jpg', description: 'Pure vanilla pint.', thumbnails: ['Pint Vanilla 500ml.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'pint-vanilla-strawberry-500ml', name: '500ML Vanilla Strawberry - Vanilla and Strawberry Flavoured Frozen Dessert', price: 25.00, category: 'polar-cups', image: 'Pint Vanilla Strawberry 500ml.jpg', description: 'Vanilla-strawberry duo.', thumbnails: ['Pint Vanilla Strawberry 500ml.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  // POLAR BUCKET
-  { id: 'rainbow-2.5l-5l-10l', name: 'Rainbow 2.5L, 5L, and 10L - Swirl of Colorful Flavoured Frozen Dessert', price: 50.00, category: 'polar-cups', image: 'Rainbow 2.5L 5L 10L.jpg', description: 'Colorful fruit swirl in large tub.', thumbnails: ['Rainbow 2.5L 5L 10L.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'blueberry-cheesecake-2.5l-5l-10l', name: 'Blueberry Cheesecake 2.5L, 5L, and 10L - Creamy Cheesecake with Blueberry Swirl Frozen Dessert', price: 50.00, category: 'polar-cups', image: 'Blueberry Cheesecake 2.5L 5L 10L.jpg', description: 'Cheesecake with blueberry ripple.', thumbnails: ['Blueberry Cheesecake 2.5L 5L 10L.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'chocolate-chip-2.5l-5l-10l', name: 'Chocolate Chip 2.5L, 5L, and 10L - Rich Chocolate Ice Cream with Chocolate Chips Frozen Dessert', price: 50.00, category: 'polar-cups', image: 'Chocolate Chip 2.5L 5L 10L.jpg', description: 'Chunky chocolate chip dessert.', thumbnails: ['Chocolate Chip 2.5L 5L 10L.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  // NOT JUST ANY
-  { id: 'banana-strawberry-frozen-dessert', name: 'Banana and Strawberry Flavoured Frozen Dessert', price: 35.00, category: 'not-just-any', image: 'Banana and Strawberry Flavoured Frozen Dessert.jpg', description: 'Fruity banana-strawberry blend.', thumbnails: ['Banana and Strawberry Flavoured Frozen Dessert.jpg'], variants: [], businessName: 'Not Just Any' },
-  { id: 'chocolate-mint-frozen-dessert', name: 'Chocolate and Mint Flavoured Frozen Dessert', price: 35.00, category: 'not-just-any', image: 'Chocolate and Mint Flavoured Frozen Dessert.jpg', description: 'Cool chocolate-mint fusion.', thumbnails: ['Chocolate and Mint Flavoured Frozen Dessert.jpg'], variants: [], businessName: 'Not Just Any' },
-  { id: 'vanilla-chocolate-peanuts-frozen-dessert', name: 'Vanilla Flavoured Frozen Dessert with chocolate shavings and crushed peanuts', price: 35.00, category: 'not-just-any', image: 'Vanilla Flavoured Frozen Dessert with chocolate shavings and crushed peanuts.jpg', description: 'Vanilla with nuts and chocolate.', thumbnails: ['Vanilla Flavoured Frozen Dessert with chocolate shavings and crushed peanuts.jpg'], variants: [], businessName: 'Not Just Any' },
-  { id: 'chocolate-frozen-dessert', name: 'Chocolate Flavoured Frozen Dessert', price: 35.00, category: 'not-just-any', image: 'Chocolate Flavoured Frozen Dessert.jpg', description: 'Rich chocolate dessert.', thumbnails: ['Chocolate Flavoured Frozen Dessert.jpg'], variants: [], businessName: 'Not Just Any' },
-  { id: 'chocolate-vanilla-frozen-dessert', name: 'Chocolate and Vanilla Frozen Dessert', price: 35.00, category: 'not-just-any', image: 'Chocolate and Vanilla Frozen Dessert.jpg', description: 'Classic chocolate-vanilla swirl.', thumbnails: ['Chocolate and Vanilla Frozen Dessert.jpg'], variants: [], businessName: 'Not Just Any' },
-  { id: 'caramel-frozen-dessert-sauce', name: 'Caramel Flavoured Frozen Dessert with Caramel Flavoured Sauce', price: 35.00, category: 'not-just-any', image: 'Caramel Flavoured Frozen Dessert with Caramel Flavoured Sauce.jpg', description: 'Caramel with extra sauce swirl.', thumbnails: ['Caramel Flavoured Frozen Dessert with Caramel Flavoured Sauce.jpg'], variants: [], businessName: 'Not Just Any' },
-  { id: 'mint-chocolate-shavings-frozen-dessert', name: 'Mint Flavoured Frozen Dessert With Mint Chocolate Shavings', price: 35.00, category: 'not-just-any', image: 'Mint Flavoured Frozen Dessert With Mint Chocolate Shavings.jpg', description: 'Mint with chocolate shavings.', thumbnails: ['Mint Flavoured Frozen Dessert With Mint Chocolate Shavings.jpg'], variants: [], businessName: 'Not Just Any' },
-  { id: 'vanilla-strawberry-frozen-dessert', name: 'Vanilla and Strawberry Flavoured Frozen Dessert', price: 35.00, category: 'not-just-any', image: 'Vanilla and Strawberry Flavoured Frozen Dessert.jpg', description: 'Sweet vanilla-strawberry mix.', thumbnails: ['Vanilla and Strawberry Flavoured Frozen Dessert.jpg'], variants: [], businessName: 'Not Just Any' },
-  { id: 'rum-raisin-frozen-dessert', name: 'Rum and Raisin Flavoured Frozen Dessert with Raisins', price: 35.00, category: 'not-just-any', image: 'Rum and Raisin Flavoured Frozen Dessert with Raisins.jpg', description: 'Adult-inspired rum raisin.', thumbnails: ['Rum and Raisin Flavoured Frozen Dessert with Raisins.jpg'], variants: [], businessName: 'Not Just Any' },
-  { id: 'strawberry-frozen-dessert', name: 'Strawberry Flavoured Frozen Dessert', price: 35.00, category: 'not-just-any', image: 'Strawberry Flavoured Frozen Dessert.jpg', description: 'Pure strawberry delight.', thumbnails: ['Strawberry Flavoured Frozen Dessert.jpg'], variants: [], businessName: 'Not Just Any' },
-  { id: 'vanilla-chocolate-sauce-frozen-dessert', name: 'Vanilla Flavoured Frozen Dessert with Chocolate Sauce', price: 35.00, category: 'not-just-any', image: 'Vanilla Flavoured Frozen Dessert with Chocolate Sauce.jpg', description: 'Vanilla with chocolate swirl.', thumbnails: ['Vanilla Flavoured Frozen Dessert with Chocolate Sauce.jpg'], variants: [], businessName: 'Not Just Any' },
-  // POLAR 5L TUBS
-  { id: 'polar-5l-tub-01', name: 'Polar 5L Tub - Orange Swirl', price: 55.00, category: 'polar-5l-tubs', image: 'Fruity Licks Orange.jpg', description: '5L tub of orange swirl.', thumbnails: ['Fruity Licks Orange.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-5l-tub-02', name: 'Polar 5L Tub - Pineapple Swirl', price: 55.00, category: 'polar-5l-tubs', image: 'Fruity Licks Pineapple.jpg', description: '5L tub of pineapple swirl.', thumbnails: ['Fruity Licks Pineapple.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  { id: 'polar-5l-tub-03', name: 'Polar 5L Tub - Raspberry Swirl', price: 55.00, category: 'polar-5l-tubs', image: 'Fruity Licks Raspberry.jpg', description: '5L tub of raspberry swirl.', thumbnails: ['Fruity Licks Raspberry.jpg'], variants: [], businessName: 'Polar Ice Cream' },
-  // KISSES
-  { id: 'multi-flavor-pack-frozen-dessert', name: 'Multi-Flavor Frozen Dessert Pack - Hazelnut', price: 38.00, category: 'multi-pack-desserts', image: 'Multi-Flavor Pack Frozen Dessert.jpg', description: 'Hazelnut flavor pack.', thumbnails: ['Multi-Flavor Pack Frozen Dessert.jpg'], variants: [], businessName: 'Not Just Any' },
-  // CANNOLI
-  { id: 'rolled-wafer-biscuit-milk-chocolate', name: 'Rolled wafer biscuit, filled with dairy ice cream dipped in milk chocolate', price: 28.00, category: 'frozen-snacks', image: 'Rolled Wafer Biscuit Milk Chocolate.jpg', description: 'Italian-style cannoli ice cream.', thumbnails: ['Rolled Wafer Biscuit Milk Chocolate.jpg'], variants: [], businessName: 'Not Just Any' },
-  // ARTISANAL CUPS
-  { id: 'banana-nut-fudge', name: 'Banana Nut Fudge - Banana ice cream with chocolate fudge chunks and roasted walnuts', price: 35.00, category: 'premium-ice-cream', image: 'Banana Nut Fudge.jpg', description: 'Banana with fudge and walnuts.', thumbnails: ['Banana Nut Fudge.jpg'], variants: [], businessName: 'Not Just Any' },
-  { id: 'strawberry-cheesecake', name: 'Strawberry Cheesecake - Tangy cheesecake ice cream with the sweetness of strawberries', price: 35.00, category: 'premium-ice-cream', image: 'Strawberry Cheesecake.jpg', description: 'Cheesecake with strawberry ripple.', thumbnails: ['Strawberry Cheesecake.jpg'], variants: [], businessName: 'Not Just Any' },
-  { id: 'choc-fudge-brownie', name: 'Choc Fudge Brownie - Chocolate ice cream with chunks of chocolate fudge brownies', price: 35.00, category: 'premium-ice-cream', image: 'Choc Fudge Brownie.jpg', description: 'Chocolate with brownie bits.', thumbnails: ['Choc Fudge Brownie.jpg'], variants: [], businessName: 'Not Just Any' },
-  { id: 'madagascan-vanilla', name: 'Madagascan Vanilla - Thick, rich ice cream made with madagascan vanilla pods', price: 35.00, category: 'premium-ice-cream', image: 'Madagascan Vanilla.jpg', description: 'Premium vanilla from Madagascar.', thumbnails: ['Madagascan Vanilla.jpg'], variants: [], businessName: 'Not Just Any' },
-  { id: 'pralines-cream', name: 'Pralines & Cream - Caramel and cashew pralines in vanilla ice cream and fudge sauce', price: 35.00, category: 'premium-ice-cream', image: 'Pralines & Cream.jpg', description: 'Pralines in creamy vanilla.', thumbnails: ['Pralines & Cream.jpg'], variants: [], businessName: 'Not Just Any' },
-  { id: 'salted-caramel', name: 'Salted Caramel - Caramel ice cream & buttery caramel sauce with a sprinkling of sea salt', price: 35.00, category: 'premium-ice-cream', image: 'Salted Caramel.jpg', description: 'Sweet and salty caramel.', thumbnails: ['Salted Caramel.jpg'], variants: [], businessName: 'Not Just Any' }
-];
-        // Filter and Search Logic
-        function getProductCards() {
-            return document.querySelectorAll('.product-card');
-        }
-        function applyFilters() {
-            const searchQuery = document.getElementById('searchInput')?.value.toLowerCase() || '';
-            const categoryFilter = document.getElementById('categoryFilter')?.value || '';
-            const priceSort = document.getElementById('priceSort')?.value || '';
-            const allCards = Array.from(getProductCards());
-            allCards.forEach(card => {
-                const productName = card.querySelector('.product-name').textContent.toLowerCase();
-                const productCategory = card.getAttribute('data-category');
-                let isVisible = true;
-                if (searchQuery && !productName.includes(searchQuery)) {
-                    isVisible = false;
-                }
-                if (categoryFilter && productCategory !== categoryFilter) {
-                    isVisible = false;
-                }
-                card.style.display = isVisible ? 'block' : 'none';
-            });
-            let visibleCards = allCards.filter(card => card.style.display !== 'none');
-            if (priceSort) {
-                visibleCards.sort((a, b) => {
-                    const priceA = parseFloat(a.getAttribute('data-price'));
-                    const priceB = parseFloat(b.getAttribute('data-price'));
-                    return priceSort === 'asc' ? priceA - priceB : priceB - priceA;
-                });
-                const gridContainer = document.querySelector('.products-grid');
-                if (gridContainer) {
-                    const fragment = document.createDocumentFragment();
-                    visibleCards.forEach(card => fragment.appendChild(card));
-                    gridContainer.innerHTML = '';
-                    gridContainer.appendChild(fragment);
-                }
-            }
-        }
-        // Modal Functions
-        function showProductModal(productId) {
-            const product = allProducts.find(p => p.id === productId);
-            if (!product) return;
-            document.getElementById('modalProductName').textContent = product.name;
-            document.getElementById('modalProductPrice').textContent = `R${product.price.toFixed(2)}`;
-            document.getElementById('modalProductDescription').textContent = product.description || 'A delicious frozen treat for everyone!';
-            document.getElementById('modalMainImage').src = product.image;
-            document.getElementById('modalQuantity').textContent = 1;
-            const modalAddToCartBtn = document.getElementById('modalAddToCartBtn');
-            modalAddToCartBtn.onclick = () => {
-                const quantity = parseInt(document.getElementById('modalQuantity').textContent);
-                cart.addToCart({ 
-                    id: product.id, 
-                    name: product.name, 
-                    price: product.price, 
-                    quantity: quantity, 
-                   image: `/images/polar-ice-cream/${product.image}`,
-                    businessName: product.businessName,
-                    businessLogo: 'polar-ice-cream-logo.png' 
-                });
-                closeProductModal();
-            };
-            document.getElementById('increaseQuantity').onclick = () => {
-                let quantity = parseInt(document.getElementById('modalQuantity').textContent);
-                document.getElementById('modalQuantity').textContent = quantity + 1;
-            };
-            document.getElementById('decreaseQuantity').onclick = () => {
-                let quantity = parseInt(document.getElementById('modalQuantity').textContent);
-                if (quantity > 1) {
-                    document.getElementById('modalQuantity').textContent = quantity - 1;
-                }
-            };
-            productModalOverlay.style.display = 'flex';
-            setTimeout(() => productModal.classList.add('active'), 10);
-        }
-        function closeProductModal() {
-            productModal.classList.remove('active');
-            setTimeout(() => productModalOverlay.style.display = 'none', 300);
-        }
-        function showCartModal() {
-            cartModalOverlay.style.display = 'flex';
-            setTimeout(() => cartModal.classList.add('active'), 10);
-            cart.updateCartDisplay();
-        }
-        function closeCartModal() {
-            cartModal.classList.remove('active');
-            setTimeout(() => cartModalOverlay.style.display = 'none', 300);
-        }
-        function showUserModal() {
-            userModalOverlay.style.display = 'flex';
-            setTimeout(() => userModal.classList.add('active'), 10);
-        }
-        function closeUserModal() {
-            userModal.classList.remove('active');
-            setTimeout(() => userModalOverlay.style.display = 'none', 300);
-        }
-        function toggleAuthForm() {
-            const loginForm = document.getElementById('loginForm');
-            const registerForm = document.getElementById('registerForm');
-            const modalTitle = document.getElementById('userModalTitle');
-            const switchAuthText = document.getElementById('switchAuthText');
-            if (loginForm.style.display !== 'none') {
-                loginForm.style.display = 'none';
-                registerForm.style.display = 'flex';
-                modalTitle.textContent = 'Register Account';
-                switchAuthText.textContent = 'Have an account?';
-            } else {
-                loginForm.style.display = 'flex';
-                registerForm.style.display = 'none';
-                modalTitle.textContent = 'Login';
-                switchAuthText.textContent = 'New user?';
-            }
-        }
-        document.addEventListener('click', (e) => {
-            const card = e.target.closest('.product-card');
-            if (card && !e.target.closest('.add-to-cart-btn')) {
-                const productId = card.getAttribute('data-id');
-                const product = allProducts.find(p => p.id === productId);
-                if (product) {
-                    showProductModal(product.id);
-                }
-            }
-        });
-        // CART FUNCTIONALITY WITH LOCAL STORAGE
-        const cart = {
-            items: [],
-            saveCart: function() {
-                try {
-                   const STORAGE_KEY = 'hivetimes_unified_cart_v3';
-                    this.updateCartDisplay();
-                } catch (e) {
-                    console.error('Error saving cart:', e);
-                }
-            },
-            init: function() {
-                const storedCart = localStorage.getItem('polarIceCreamCart');
-                if (storedCart) {
-                    try {
-                        this.items = JSON.parse(storedCart);
-                    } catch (e) {
-                        console.error("Error parsing cart, starting fresh:", e);
-                        this.items = [];
-                    }
-                }
-                this.updateCartDisplay();
-            },
-            addToCart: function(product) {
-                const existingItem = this.items.find(item => item.id === product.id);
-                if (existingItem) {
-                    existingItem.quantity += product.quantity;
-                } else {
-                    this.items.push(product);
-                }
-                this.saveCart();
-                alert(`${product.name} added to cart!`);
-            },
-            updateQuantity: function(id, delta) {
-                const item = this.items.find(i => i.id === id);
-                if (item) {
-                    item.quantity += delta;
-                    if (item.quantity <= 0) {
-                        this.removeItem(id);
-                    } else {
-                        this.saveCart();
-                    }
-                }
-            },
-            removeItem: function(id) {
-                this.items = this.items.filter(item => item.id !== id);
-                this.saveCart();
-            },
-            calculateTotal: function() {
-                return this.items.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
-            },
-            updateCartDisplay: function() {
-                const cartCountElement = document.getElementById('cartCount');
-                const cartItemsContainer = document.querySelector('.cart-items');
-                const cartTotalElement = document.getElementById('cartTotal');
-                const totalItems = this.items.reduce((sum, item) => sum + item.quantity, 0);
-                if (cartCountElement) cartCountElement.textContent = totalItems;
-                if (cartItemsContainer) {
-                    cartItemsContainer.innerHTML = '';
-                    if (this.items.length === 0) {
-                        cartItemsContainer.innerHTML = '<p style="text-align: center; color: #555;">Your cart is empty.</p>';
-                    } else {
-                        this.items.forEach(item => {
-                            const itemElement = document.createElement('div');
-                            itemElement.className = 'cart-item';
-                            itemElement.innerHTML = `
-                                <img src="${item.image}" alt="${item.name}" class="cart-item-image">
-                                <div class="cart-item-details">
-                                    <div class="cart-item-name">${item.name}</div>
-                                    <div class="cart-item-variant">Business: ${item.businessName}</div>
-                                    <div class="cart-item-price">R${(item.price * item.quantity).toFixed(2)} (${item.price.toFixed(2)} each)</div>
-                                    <div class="cart-item-quantity">
-                                        <button class="cart-quantity-btn" onclick="cart.updateQuantity('${item.id}', -1)">-</button>
-                                        <span class="cart-quantity-display">${item.quantity}</span>
-                                        <button class="cart-quantity-btn" onclick="cart.updateQuantity('${item.id}', 1)">+</button>
-                                    </div>
-                                </div>
-                                <button class="remove-item-btn" onclick="cart.removeItem('${item.id}')"><i class="fas fa-trash-alt"></i> Remove</button>
-                            `;
-                            cartItemsContainer.appendChild(itemElement);
-                        });
-                    }
-                }
-                if (cartTotalElement) {
-                    cartTotalElement.textContent = `Total: R${this.calculateTotal()}`;
-                }
-            }
-        };
-        // Save
-
-
-// Load
-const stored = localStorage.getItem('hivetimes_unified_cart_v3');
-        // SLIDER LOGIC
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const indicators = document.querySelectorAll('.indicator');
-        const totalSlides = slides.length;
-        const slider = document.getElementById('slider');
-        let slideInterval;
-        function updateSlider() {
-            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-            indicators.forEach((indicator, index) => {
-                indicator.classList.toggle('active', index === currentSlide);
-            });
-        }
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateSlider();
-        }
-        function changeSlide(index) {
-            currentSlide = index;
-            updateSlider();
-            resetAutoSlide();
-        }
-        function startAutoSlide() {
-            slideInterval = setInterval(nextSlide, 5000);
-        }
-        function resetAutoSlide() {
-            clearInterval(slideInterval);
-            startAutoSlide();
-        }
-        function initializeSlider() {
-            updateSlider();
-            startAutoSlide();
-            const sliderContainer = document.getElementById('sliderContainer');
-            if (sliderContainer) {
-                sliderContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
-                sliderContainer.addEventListener('mouseleave', resetAutoSlide);
-            }
-        }
-        document.addEventListener('DOMContentLoaded', () => {
-            initializeSlider();
-            cart.init();
-        });
-        function sendCartToWhatsApp() {
-    if (cart.items.length === 0) {
-        alert("Your cart is empty. Add some items before sending!");
-        return;
+    this.updateCartDisplay();
+  },
+  saveCart() {
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.items));
+    this.updateCartDisplay();
+  },
+  addToCart(product) {
+    const existing = this.items.find(item => item.id === product.id);
+    if (existing) {
+      existing.quantity += product.quantity;
+    } else {
+      this.items.push(product);
     }
+    this.saveCart();
+  },
+  updateQuantity(id, delta) {
+    const item = this.items.find(i => i.id === id);
+    if (item) {
+      item.quantity += delta;
+      if (item.quantity <= 0) {
+        this.removeItem(id);
+      } else {
+        this.saveCart();
+      }
+    }
+  },
+  removeItem(id) {
+    this.items = this.items.filter(item => item.id !== id);
+    this.saveCart();
+  },
+  calculateTotal() {
+    return this.items.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
+  },
+  updateCartDisplay() {
+    const countEl = document.getElementById('cartCount');
+    const itemsEl = document.querySelector('.cart-items');
+    const totalEl = document.getElementById('cartTotal');
+    const totalItems = this.items.reduce((sum, item) => sum + item.quantity, 0);
+    if (countEl) countEl.textContent = totalItems;
+    if (itemsEl) {
+      if (this.items.length === 0) {
+        itemsEl.innerHTML = '<p style="text-align: center; color: #555;">Your cart is empty.</p>';
+      } else {
+        itemsEl.innerHTML = '';
+        this.items.forEach(item => {
+          const div = document.createElement('div');
+          div.className = 'cart-item';
+          div.innerHTML = `
+            <img src="${item.image}" alt="${item.name}" class="cart-item-image" style="width:60px;height:60px;object-fit:cover;">
+            <div class="cart-item-details">
+              <div class="cart-item-name">${item.name}</div>
+              <div class="cart-item-price">R${(item.price * item.quantity).toFixed(2)} (${item.price.toFixed(2)} each)</div>
+              <div class="cart-item-quantity">
+                <button class="cart-quantity-btn" onclick="cart.updateQuantity('${item.id}', -1)">-</button>
+                <span class="cart-quantity-display">${item.quantity}</span>
+                <button class="cart-quantity-btn" onclick="cart.updateQuantity('${item.id}', 1)">+</button>
+              </div>
+            </div>
+            <button class="remove-item-btn" onclick="cart.removeItem('${item.id}')"><i class="fas fa-trash"></i></button>
+          `;
+          itemsEl.appendChild(div);
+        });
+      }
+    }
+    if (totalEl) totalEl.textContent = `Total: R${this.calculateTotal()}`;
+  }
+};
 
-    // 🔹 Replace with your business WhatsApp number (include country code, no + or spaces)
-    const businessNumber = "27710218554"; // Example: South Africa number
-
-    // 🔹 Build message
-    let message = "Hi! I'm enquiring from **Hive Times** and would like to place the following order from *Polar Ice Cream*:\n\n";
-    cart.items.forEach(item => {
-        message += `• ${item.name} x${item.quantity} — R${(item.price * item.quantity).toFixed(2)}\n`;
+// === AI SEARCH ===
+document.getElementById('aiProductSearchInput').addEventListener('input', (e) => {
+  const query = e.target.value.trim().toLowerCase();
+  document.querySelectorAll('.content-section').forEach(section => {
+    let hasVisible = false;
+    const cards = section.querySelectorAll('.product-card');
+    cards.forEach(card => {
+      const name = card.querySelector('.product-name').textContent.toLowerCase();
+      const price = parseFloat(card.getAttribute('data-price'));
+      let show = true;
+      if (query) {
+        if (query.includes('under') || query.includes('<')) {
+          const match = query.match(/\d+(\.\d+)?/);
+          if (match) {
+            const max = parseFloat(match[0]);
+            show = price <= max;
+          } else {
+            show = false;
+          }
+        } else {
+          show = name.includes(query);
+        }
+      }
+      card.style.display = show ? 'block' : 'none';
+      if (show) hasVisible = true;
     });
-    message += `\n*Total: R${cart.calculateTotal()}*\n\nThank you!`;
+    section.style.display = hasVisible ? 'block' : 'none';
+  });
+});
 
-    // 🔹 URL-encode and open WhatsApp
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${businessNumber}?text=${encodedMessage}`;
-    
-    // Open in new tab (works on desktop & mobile)
-    window.open(whatsappUrl, '_blank');
+// === MODALS ===
+function showBusinessModal() {
+  const overlay = document.getElementById('businessModalOverlay');
+  const modal = document.getElementById('businessModal');
+  overlay.style.display = 'flex';
+  setTimeout(() => modal.classList.add('active'), 10);
 }
-    </script>
-   <!-- <script src="/js/cart.js"></script> -->
-    <div class="floating-contact">
-    <a href="https://wa.me/27710218554?text=Hello, I'd like to inquire about your products." target="_blank" rel="noopener noreferrer" class="float-btn whatsapp-float" title="Contact via WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-    <a href="mailto:contact@broadwaysweets.co.za?subject=Inquiry from Website&body=Hello, I'd like to inquire about your products." class="float-btn email-float" title="Contact via Email">
-        <i class="fas fa-envelope"></i>
-    </a>
-</div>
+function hideBusinessModal() {
+  const modal = document.getElementById('businessModal');
+  const overlay = document.getElementById('businessModalOverlay');
+  modal.classList.remove('active');
+  setTimeout(() => overlay.style.display = 'none', 700);
+}
+document.getElementById('closeBusinessModal').addEventListener('click', hideBusinessModal);
+document.getElementById('businessModalOverlay').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) hideBusinessModal();
+});
 
-<!-- 1. Swiper JS -->
+// === HAMBURGER MENU ===
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const menuOverlay = document.getElementById('menuOverlay');
+const sideMenu = document.getElementById('sideMenu');
+
+function toggleMenu() {
+  hamburgerBtn.classList.toggle('active');
+  menuOverlay.classList.toggle('active');
+  sideMenu.classList.toggle('active');
+  document.body.style.overflow = sideMenu.classList.contains('active') ? 'hidden' : '';
+}
+hamburgerBtn.addEventListener('click', toggleMenu);
+menuOverlay.addEventListener('click', toggleMenu);
+
+function toggleSubmenu(id) {
+  const submenu = document.getElementById(id + '-submenu');
+  submenu.classList.toggle('active');
+  submenu.previousElementSibling.classList.toggle('active');
+}
+
+function scrollToSection(id) {
+  toggleMenu();
+  setTimeout(() => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 300);
+}
+
+// === PRODUCT MODAL ===
+function showProductModal(productId) {
+  const productCard = document.querySelector(`.product-card[data-id="${productId}"]`);
+  if (!productCard) return;
+
+  const name = productCard.querySelector('.product-name').textContent;
+  const price = parseFloat(productCard.getAttribute('data-price'));
+  const image = productCard.querySelector('.product-image').src;
+
+  document.getElementById('modalProductName').textContent = name;
+  document.getElementById('modalProductPrice').textContent = `R${price.toFixed(2)}`;
+  document.getElementById('modalProductDescription').textContent = 'Premium tissue product from Nothing Fancy.';
+  document.getElementById('modalMainImage').src = image;
+  document.getElementById('modalQuantity').textContent = 1;
+
+  // Thumbnails
+  const thumbs = document.getElementById('productThumbnails');
+  thumbs.innerHTML = '';
+  const img = document.createElement('img');
+  img.src = image;
+  img.className = 'thumbnail';
+  img.style.width = '80px';
+  img.style.height = '80px';
+  img.style.objectFit = 'cover';
+  img.style.borderRadius = '8px';
+  thumbs.appendChild(img);
+
+  // Add to cart handler
+  document.getElementById('modalAddToCartBtn').onclick = () => {
+    const qty = parseInt(document.getElementById('modalQuantity').textContent);
+    cart.addToCart({
+      id: productId,
+      name: name,
+      price: price,
+      quantity: qty,
+      image: image,
+      businessName: 'Nothing Fancy',
+      businessLogo: 'images-logo/nothing-fancy-logo.jpg'
+    });
+    closeProductModal();
+  };
+
+  // Quantity buttons
+  document.getElementById('increaseQuantity').onclick = () => {
+    let q = parseInt(document.getElementById('modalQuantity').textContent);
+    document.getElementById('modalQuantity').textContent = q + 1;
+  };
+  document.getElementById('decreaseQuantity').onclick = () => {
+    let q = parseInt(document.getElementById('modalQuantity').textContent);
+    if (q > 1) document.getElementById('modalQuantity').textContent = q - 1;
+  };
+
+  document.querySelector('.product-modal-overlay').style.display = 'flex';
+  setTimeout(() => document.querySelector('.product-modal').classList.add('active'), 10);
+}
+
+function closeProductModal() {
+  document.querySelector('.product-modal').classList.remove('active');
+  setTimeout(() => document.querySelector('.product-modal-overlay').style.display = 'none', 300);
+}
+
+document.addEventListener('click', (e) => {
+  const card = e.target.closest('.product-card');
+  if (card && !e.target.closest('.add-to-cart-btn')) {
+    const id = card.getAttribute('data-id');
+    showProductModal(id);
+  }
+});
+
+// === CART MODAL ===
+function showCartModal() {
+  document.querySelector('.cart-modal-overlay').style.display = 'flex';
+  setTimeout(() => document.querySelector('.cart-modal').classList.add('active'), 10);
+  cart.updateCartDisplay();
+}
+function closeCartModal() {
+  document.querySelector('.cart-modal').classList.remove('active');
+  setTimeout(() => document.querySelector('.cart-modal-overlay').style.display = 'none', 300);
+}
+
+// === WHATSAPP ORDER ===
+function sendCartToWhatsApp() {
+  if (cart.items.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+  let msg = "Hi! I'd like to place an order from Nothing Fancy:\n";
+  cart.items.forEach(item => {
+    msg += `• ${item.name} x${item.quantity} — R${(item.price * item.quantity).toFixed(2)}\n`;
+  });
+  msg += `\nTotal: R${cart.calculateTotal()}\nThank you!`;
+  const url = `https://wa.me/27710218554?text=${encodeURIComponent(msg)}`;
+  window.open(url, '_blank');
+}
+
+// === SLIDER ===
+fetch('slider.html')
+  .then(res => res.ok ? res.text() : Promise.reject('slider.html not found'))
+  .then(html => {
+    document.getElementById('slider-container').innerHTML = html;
+    new Swiper('.mySwiper', {
+      spaceBetween: 0,
+      centeredSlides: true,
+      autoplay: { delay: 3000, disableOnInteraction: false },
+      pagination: { el: '.swiper-pagination', clickable: true },
+      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+      loop: true,
+      effect: 'fade',
+      fadeEffect: { crossFade: true }
+    });
+  })
+  .catch(err => {
+    console.error('Slider error:', err);
+    document.getElementById('slider-container').innerHTML = `<div style="text-align:center;padding:40px;color:#c71e1e;">⚠️ Slider unavailable</div>`;
+  });
+
+// === INIT ===
+document.addEventListener('DOMContentLoaded', () => {
+  cart.init();
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && sideMenu.classList.contains('active')) {
+      toggleMenu();
+    }
+  });
+});
+
+
+// === CART, SLIDER, MODALS – KEEP YOUR EXISTING CODE HERE ===
+// (All your current JS for cart, product modal, slider, etc.)
+// ...
+
+// === AI PRODUCT SEARCH (Keep as-is) ===
+const aiProductSearch = {
+  init() {
+    document.getElementById('aiProductSearchInput').addEventListener('input', (e) => {
+      const query = e.target.value.trim().toLowerCase();
+      document.querySelectorAll('.content-section').forEach(section => {
+        let hasVisible = false;
+        section.querySelectorAll('.product-card').forEach(card => {
+          const name = card.querySelector('.product-name')?.textContent.toLowerCase() || '';
+          const category = card.getAttribute('data-category') || '';
+          const price = parseFloat(card.getAttribute('data-price')) || 0;
+          let show = true;
+
+          if (query) {
+            if (query.includes('under') || query.includes('<')) {
+              const match = query.match(/(\d+(\.\d+)?)/);
+              if (match) {
+                const max = parseFloat(match[0]);
+                show = price <= max && price > 0;
+              } else {
+                show = false;
+              }
+            } else {
+              show = name.includes(query) || category.includes(query.replace(/\s+/g, '-'));
+            }
+          }
+
+          card.style.display = show ? 'block' : 'none';
+          if (show) hasVisible = true;
+        });
+        section.style.display = hasVisible ? 'block' : 'none';
+      });
+    });
+  }
+};
+
+// === AI CHAT WIDGET LOGIC (CORRECTED FOR BUTCHER BLOCK) ===
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize other components
+  cart.init();
+  aiProductSearch.init();
+
+  // AI Chat Widget Elements
+  const widget = document.getElementById('aiChatWidget');
+  const panel = document.getElementById('aiChatPanel');
+  const closeBtn = document.getElementById('aiCloseBtn');
+  const chatMessages = document.getElementById('aiChatMessages');
+  const userInput = document.getElementById('aiUserInput');
+  const sendBtn = document.getElementById('aiSendBtn');
+
+  // Toggle chat panel
+  widget?.addEventListener('click', () => {
+    panel.style.display = panel.style.display === 'flex' ? 'none' : 'flex';
+  });
+
+  closeBtn?.addEventListener('click', () => {
+    panel.style.display = 'none';
+  });
+
+  function scrollToBottom() {
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function addMessage(text, isUser = false) {
+    const msgDiv = document.createElement('div');
+    msgDiv.classList.add('ai-message', isUser ? 'user' : 'bot');
+    msgDiv.innerHTML = text.replace(/\n/g, '<br>');
+    chatMessages.appendChild(msgDiv);
+    setTimeout(scrollToBottom, 10);
+  }
+
+// ✅ CORRECTED RESPONSES FOR NOTHING FANCY
+function getResponse(query) {
+  const lower = query.toLowerCase().trim();
+
+  if (lower.includes('where') || lower.includes('located') || lower.includes('address') || lower.includes('find')) {
+    return "📍 We're based in <strong>Johannesburg, South Africa</strong>. We deliver nationwide — just ask for a quote!";
+  }
+  if (lower.includes('contact') || lower.includes('phone') || lower.includes('call') || lower.includes('number') || lower.includes('whatsapp')) {
+    return "📞 Call or WhatsApp us at <strong>071 021 8554</strong> for orders, quotes, or inquiries!";
+  }
+  if (lower.includes('email') || lower.includes('@')) {
+    return "📧 Email us at <strong>contact@nothingfancy.co.za</strong> for wholesale orders or custom requests!";
+  }
+  if (lower.includes('open') || lower.includes('hour') || lower.includes('time') || lower.includes('close')) {
+    return "🕒 Our office hours are:<br><strong>Monday–Friday: 9:00 AM – 5:30 PM<br>Saturday: 9:00 AM – 3:30 PM<br>Sunday: 9:30 AM – 1:00 PM</strong>";
+  }
+  if (lower.includes('deliver') || lower.includes('shipping') || lower.includes('nationwide') || lower.includes('ship') || lower.includes('delivery')) {
+    return "🚚 Yes! We offer <strong>nationwide delivery across South Africa</strong>. Minimum order applies. Message us on WhatsApp for rates!";
+  }
+  if (lower.includes('bulk') || lower.includes('wholesale') || lower.includes('quote') || lower.includes('bale') || lower.includes('reseller')) {
+    return "💼 We specialize in <strong>bulk toilet paper, kitchen towels, garage rolls, and jumbo reels</strong> for retailers, schools, offices, and events. Request a price list via WhatsApp!";
+  }
+  if (lower.includes('toilet') || lower.includes('tp') || lower.includes('2-ply') || lower.includes('1-ply') || lower.includes('soft') || lower.includes('roll')) {
+    return "🧻 We stock premium <strong>1-ply and 2-ply toilet paper</strong> in single rolls, packs, and bales. Ideal for homes, businesses, and institutions!";
+  }
+  if (lower.includes('kitchen') || lower.includes('towel') || lower.includes('paper towel')) {
+    return "🧽 Our <strong>kitchen towels</strong> are highly absorbent, strong when wet, and perfect for commercial or home use. Available in bulk packs!";
+  }
+  if (lower.includes('garage') || lower.includes('jumbo') || lower.includes('industrial') || lower.includes('reel')) {
+    return "🏭 Need heavy-duty solutions? We supply <strong>garage rolls and jumbo industrial reels</strong> for workshops, factories, and cleaning services.";
+  }
+
+  return "I can help with product info, pricing, delivery, or bulk orders! Try: “Do you deliver toilet paper?” or “Send me your bulk price list.”";
+}
+
+  function handleSend() {
+    const query = userInput.value.trim();
+    if (!query) return;
+    addMessage(query, true);
+    userInput.value = '';
+    const response = getResponse(query);
+    setTimeout(() => addMessage(response), 400);
+  }
+
+  sendBtn?.addEventListener('click', handleSend);
+  userInput?.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') handleSend();
+  });
+});
+</script>
+
+<!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-<!-- 2. Fetch slider and initialize -->
-<script>
-  fetch('slider.html')
-    .then(response => {
-      if (!response.ok) throw new Error('slider.html not found (404)');
-      return response.text();
-    })
-    .then(html => {
-      document.getElementById('slider-container').innerHTML = html;
-      new Swiper('.mySwiper', {
-        spaceBetween: 0,
-        centeredSlides: true,
-        autoplay: { delay: 3000, disableOnInteraction: false },
-        pagination: { el: '.swiper-pagination', clickable: true },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
-        },
-        loop: true,
-        effect: 'fade',
-        fadeEffect: { crossFade: true }
-      });
-    })
-    .catch(err => {
-      console.error('Slider error:', err);
-      document.getElementById('slider-container').innerHTML = '<p style="text-align:center;color:red;">❌ ' + err.message + '</p>';
-    });
-</script>
-<script>
-  // Load Business Dropdown Menu
-  fetch('businesses-dropdown.html')
-    .then(response => {
-      if (!response.ok) throw new Error('businesses-dropdown.html not found');
-      return response.text();
-    })
-    .then(html => {
-      const placeholder = document.getElementById('business-menu-placeholder');
-      if (placeholder) {
-        placeholder.outerHTML = html; // Replaces <li id="..."> with full menu HTML
-      }
-    })
-    .catch(err => {
-      console.error('Business menu failed to load:', err);
-    });
+</body>
+</html>
+
 </script>
 </body>
 </html>
