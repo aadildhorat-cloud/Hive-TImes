@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exquisite Catering by Raheema</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #b5a27d;
+      --gold-light: #d4c9b3;
+      --cream: #f8f4ee;
+      --dark: #2a2a2a;
+      --light: #ffffff;
+      --shadow: 0 4px 20px rgba(0,0,0,0.08);
+      --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--cream);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
+
+    /* ===== HEADER / HERO ===== */
+    .hero {
+      background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.9)), 
+                  url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      padding: 5rem 1.5rem 4rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .logo {
+      font-size: clamp(2.5rem, 8vw, 4.2rem);
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+      line-height: 1.1;
+    }
+
+    .tagline {
+      font-size: clamp(1rem, 4vw, 1.3rem);
+      color: var(--dark);
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      opacity: 0.9;
+    }
+
+    /* ===== SERVICES ===== */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
+      padding: 4rem 1.5rem;
+      background: var(--light);
+    }
+
+    .service-card {
+      background: var(--cream);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border: 1px solid rgba(181, 162, 125, 0.1);
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+      border-color: rgba(181, 162, 125, 0.3);
+    }
+
+    .service-card h3 {
+      color: var(--gold);
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    /* ===== EVENTS SECTION ===== */
+    .events {
+      padding: 3rem 1.5rem;
+      text-align: center;
+      background: var(--gold-light);
+      color: var(--dark);
+    }
+
+    .events h2 {
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+
+    .event-types {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .event-type {
+      background: rgba(255,255,255,0.6);
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    /* ===== BOOKING CTA ===== */
+    .booking-section {
+      padding: 4rem 1.5rem;
+      text-align: center;
+      background: var(--light);
+    }
+
+    .booking-section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .booking-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--gold);
+      color: white;
+      padding: 0.9rem 2rem;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+    }
+
+    .booking-btn:hover {
+      background: #a08c6a;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(181, 162, 125, 0.3);
+    }
+
+    .whatsapp-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: #987b45; /* WhatsApp green */
+  color: white;
+  text-decoration: none;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.whatsapp-btn:hover {
+  background: #a08c6a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(235, 218, 110, 0.3);
+}
+
+    .contacts {
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      color: var(--dark);
+      opacity: 0.85;
+    }
+
+    /* ===== GALLERY ===== */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.2rem;
+      padding: 3rem 1.5rem;
+    }
+
+    .gallery-item {
+      aspect-ratio: 4/3;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark);
+      color: var(--light);
+      text-align: center;
+      padding: 2.5rem 1.5rem 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    /* ===== AI CHAT BUTTON ===== */
+    .ai-chat-button {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 6px 20px rgba(181, 162, 125, 0.4);
+      cursor: pointer;
+      z-index: 1000;
+      transition: var(--transition);
+    }
+
+    .ai-chat-button:hover {
+      transform: scale(1.1) rotate(5deg);
+      background: #a08c6a;
+    }
+
+    /* ===== CHATBOX ===== */
+    .chatbox {
+      position: fixed;
+      bottom: 96px;
+      right: 24px;
+      width: 360px;
+      max-height: 480px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+      display: none;
+      flex-direction: column;
+      z-index: 999;
+      overflow: hidden;
+      border: 1px solid rgba(181, 162, 125, 0.2);
+    }
+
+    .chat-header {
+      background: var(--gold);
+      color: white;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-header h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .close-chat {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+
+    .close-chat:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .chat-messages {
+      padding: 16px;
+      flex-grow: 1;
+      overflow-y: auto;
+      background: #fafafa;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .message {
+      padding: 12px 16px;
+      border-radius: 18px;
+      max-width: 85%;
+      word-wrap: break-word;
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+
+    .user-message {
+      background: var(--gold-light);
+      align-self: flex-end;
+      border-bottom-right-radius: 5px;
+    }
+
+    .ai-message {
+      background: #eef2f6;
+      align-self: flex-start;
+      border-bottom-left-radius: 5px;
+    }
+
+    .chat-input {
+      display: flex;
+      padding: 12px;
+      background: white;
+      border-top: 1px solid #eee;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 10px 16px;
+      border: 1px solid #ddd;
+      border-radius: 24px;
+      outline: none;
+      font-size: 0.95rem;
+    }
+
+    .chat-input button {
+      background: var(--gold);
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 24px;
+      margin-left: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .chat-input button:hover {
+      background: #a08c6a;
+    }
+
+    /* ===== RESPONSIVE TWEAKS ===== */
+    @media (max-width: 768px) {
+      .chatbox {
+        width: calc(100% - 48px);
+        right: 24px;
+        max-height: 400px;
+      }
+      .hero {
+        padding: 3rem 1.2rem 2.5rem;
+      }
+      .logo {
+        font-size: clamp(2rem, 10vw, 3.2rem);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .booking-btn {
+        padding: 0.8rem 1.6rem;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+    
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1 class="logo">Exquisite Catering</h1>
+    <div class="tagline">by Raheema — where elegance meets flavor</div>
+  </section>
+
+   <!-- Event Types -->
+  <section class="events">
+    <h2>Perfect For Every Occasion</h2>
+    <div class="event-types">
+      <span class="event-type">Weddings</span>
+      <span class="event-type">Birthdays</span>
+      <span class="event-type">Corporate Events</span>
+      <span class="event-type">Funerals</span>
+      <span class="event-type">Engagements</span>
+      <span class="event-type">Conferences</span>
+    </div>
+  </section>
+ <!-- Services -->
+<section class="services">
+  <div class="service-card">
+    <h3>Customized Weddings</h3>
+    <p>Tailored menus, décor, and service for your perfect day.</p>
+    <a href="https://wa.me/27829737700?text=Hi%20Raheema%2C%20I'm%20interested%20in%20your%20Customized%20Weddings%20service.%20Can%20we%20discuss%20details%3F" 
+       class="whatsapp-btn" target="_blank" rel="noopener">💬 Ask about this service</a>
+  </div>
+  <div class="service-card">
+    <h3>Event Design</h3>
+    <p>From concept to execution — we bring your vision to life.</p>
+    <a href="https://wa.me/27829737700?text=Hi%20Raheema%2C%20I'm%20interested%20in%20your%20Event%20Design%20service.%20Can%20we%20discuss%20details%3F" 
+       class="whatsapp-btn" target="_blank" rel="noopener">💬 Ask about this service</a>
+  </div>
+  <div class="service-card">
+    <h3>Floral Arrangements</h3>
+    <p>Handcrafted blooms that complement your theme.</p>
+    <a href="https://wa.me/27829737700?text=Hi%20Raheema%2C%20I'm%20interested%20in%20your%20Floral%20Arrangements%20service.%20Can%20we%20discuss%20details%3F" 
+       class="whatsapp-btn" target="_blank" rel="noopener">💬 Ask about this service</a>
+  </div>
+  <div class="service-card">
+    <h3>Full Setup & Clear Up</h3>
+    <p>We handle every detail so you can relax and enjoy.</p>
+    <a href="https://wa.me/27829737700?text=Hi%20Raheema%2C%20I'm%20interested%20in%20your%20Full%20Setup%20%26%20Clear%20Up%20service.%20Can%20we%20discuss%20details%3F" 
+       class="whatsapp-btn" target="_blank" rel="noopener">💬 Ask about this service</a>
+  </div>
+  <div class="service-card">
+    <h3>Corporate Catering</h3>
+    <p>Impress clients with refined, professional service.</p>
+    <a href="https://wa.me/27829737700?text=Hi%20Raheema%2C%20I'm%20interested%20in%20your%20Corporate%20Catering%20service.%20Can%20we%20discuss%20details%3F" 
+       class="whatsapp-btn" target="_blank" rel="noopener">💬 Ask about this service</a>
+  </div>
+</section>
+
+ 
+
+  <!-- Booking CTA -->
+  <section class="booking-section">
+    <h2>Ready to Plan Your Event?</h2>
+    <a href="https://wa.me/27829737700?text=Hi%20Raheema%2C%20I%20would%20like%20to%20book%20an%20event%20with%20you." 
+       class="booking-btn" target="_blank" rel="noopener">
+      💬 Book via WhatsApp
+    </a>
+    <div class="contacts">
+      <p>Raheema: 082 973 7700 | Zaynab: 072 292 5656</p>
+    </div>
+  </section>
+
+  
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Exquisite Catering by Raheema. All rights reserved.</p>
+    <p>Crafting unforgettable moments with passion and precision.</p>
+  </footer>
+
+  <!-- AI Chat Button -->
+  <div class="ai-chat-button" id="aiChatBtn" aria-label="Open AI assistant">
+  <img src="images-logo/bee.jpg" alt="Beelal AI" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
+</div>
+
+  <!-- Chatbox -->
+  <div class="chatbox" id="chatBox">
+    <div class="chat-header">
+  <div style="display:flex; align-items:center; gap:10px;">
+    <img src="images-logo/bee.jpg" alt="Beelal AI" style="width:32px; height:32px; border-radius:50%; object-fit:cover;">
+    <h4>Beelal</h4>
+  </div>
+  <button class="close-chat" id="closeChat" aria-label="Close chat">×</button>
+</div>
+    <div class="chat-messages" id="chatMessages">
+    <div class="message ai-message">
+  Hi! 👋 I'm <strong>Beelal</strong>
+  <br><br>
+  Ask me about weddings, pricing, or how to book!
+</div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="userMessage" placeholder="Ask about weddings, pricing, or availability..." />
+      <button id="sendButton">Send</button>
+    </div>
+  </div>
+
+ <script>
+  // DOM Elements
+  const chatBtn = document.getElementById('aiChatBtn');
+  const chatBox = document.getElementById('chatBox');
+  const closeChat = document.getElementById('closeChat');
+  const sendButton = document.getElementById('sendButton');
+  const userMessageInput = document.getElementById('userMessage');
+  const chatMessages = document.getElementById('chatMessages');
+
+  // Toggle chat
+  chatBtn.addEventListener('click', () => {
+    chatBox.style.display = chatBox.style.display === 'flex' ? 'none' : 'flex';
+  });
+
+  closeChat.addEventListener('click', () => {
+    chatBox.style.display = 'none';
+  });
+
+  function sendMessage() {
+    const msg = userMessageInput.value.trim();
+    if (!msg) return;
+
+    // Add user message
+    const userMsg = document.createElement('div');
+    userMsg.className = 'message user-message';
+    userMsg.textContent = msg;
+    chatMessages.appendChild(userMsg);
+
+    userMessageInput.value = '';
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    // Generate Beelal-style response
+    setTimeout(() => {
+      const response = getBeelalResponse(msg.toLowerCase());
+      const aiMsg = document.createElement('div');
+      aiMsg.className = 'message ai-message';
+      aiMsg.innerHTML = response;
+      chatMessages.appendChild(aiMsg);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }, 600);
+  }
+
+  sendButton.addEventListener('click', sendMessage);
+  userMessageInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') sendMessage();
+  });
+
+  function getBeelalResponse(msg) {
+    if (msg.includes('hello') || msg.includes('hi') || msg.includes('hey')) {
+      return "Hi there! 👋 I'm <strong>Beelal</strong> — I built this site for Raheema through <strong>Hive Times</strong>. How can I help you plan your event?";
+    }
+    else if (msg.includes('beelal') || msg.includes('who are you') || msg.includes('built this')) {
+      return "I'm Beelal! 🐝 I'm a frontend developer and founder of <strong>Hive Times</strong> — a platform that helps premium local businesses like Raheema showcase their services beautifully online. Glad you're here!";
+    }
+    else if (msg.includes('hive times') || msg.includes('join') || msg.includes('business')) {
+      return "🌟 <strong>Hive Times</strong> empowers South African businesses with stunning, high-conversion websites — just like this one!<br><br>If you're a business owner, I’d love to help you build your own digital presence. Just say: “How do I join Hive Times?”";
+    }
+    else if (msg.includes('wedding') || msg.includes('marriage')) {
+      return "Raheema specializes in <strong>luxury wedding catering</strong> — from custom menus to full event styling. Every detail is crafted with elegance.<br><br>Want to speak with her directly?";
+    }
+    else if (msg.includes('price') || msg.includes('cost') || msg.includes('quote')) {
+      return "Packages start from <strong>R8,500</strong> and are tailored to your guest count, menu, and service needs.<br><br>For a personalized quote, just tap the WhatsApp button below — Raheema responds quickly!";
+    }
+    else if (msg.includes('whatsapp') || msg.includes('contact') || msg.includes('number') || msg.includes('raheema')) {
+      return "📲 You can reach Raheema at:<br><strong>082 973 7700</strong><br>Zaynab: <strong>072 292 5656</strong><br><br>Or click the green “Book via WhatsApp” button — it sends a pre-filled message so she knows you’re interested!";
+    }
+    else if (msg.includes('corporate') || msg.includes('business event') || msg.includes('conference')) {
+      return "Yes! Raheema offers <strong>premium corporate catering</strong> with elegant plating, dietary accommodations (halal, gluten-free, etc.), and seamless service — perfect for launches, meetings, or executive dinners.";
+    }
+    else if (msg.includes('thank')) {
+      return "You're very welcome! 😊<br>It’s an honor to connect you with Raheema’s exquisite service. Don’t hesitate to reach out!";
+    }
+    else {
+      return "I’m Beelal — happy to help! 😊<br><br>You can ask me:<br>• “How much for a wedding?”<br>• “Do you cater corporate events?”<br>• “How do I contact Raheema?”<br>• “What is Hive Times?”";
+    }
+  }
+</script>
+</body>
+</html>
