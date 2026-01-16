@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IES Consult – Elevator Solutions South Africa</title>
+  <meta name="description" content="Premium commercial & home elevator services across South Africa. Safety, reliability, affordability guaranteed." />
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "IES Consult",
+    "telephone": "+27786687163",
+    "address": { "@type": "PostalAddress", "addressCountry": "ZA" },
+    "serviceArea": "South Africa"
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@600;700&family=Public+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== GLOBAL RESET & VARIABLES ===== */
+    :root {
+      --primary: #0a0a0a;
+      --accent: #ff5149;
+      --white: #ffffff;
+      --light-gray: #f9f9f9;
+      --dark-gray: #2d2d2d;
+      --elevator-bg: #1e1e1e;
+      --transition: all 0.3s ease;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Public Sans', sans-serif;
+      color: var(--primary);
+      background: var(--white);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Urbanist', sans-serif;
+      line-height: 1.2;
+    }
+
+    .container {
+      width: min(90%, 1300px);
+      margin-inline: auto;
+      padding-inline: 1.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 0.85rem 1.8rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: 0 4px 12px rgba(255, 81, 73, 0.3);
+    }
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(255, 81, 73, 0.4);
+    }
+
+    section {
+      padding: 5rem 0;
+    }
+
+    /* ===== HEADER ===== */
+    .fixed-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      min-height: 64px;
+    }
+
+    .logo img {
+      height: 48px;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark-gray);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--accent);
+    }
+
+    .ai-search-bar {
+      display: flex;
+      align-items: center;
+      background: #f5f5f5;
+      border-radius: 30px;
+      padding: 0.4rem 0.8rem;
+      margin: 0 1rem;
+    }
+    .ai-search-bar input {
+      border: none;
+      background: transparent;
+      padding: 0.3rem 0.6rem;
+      font-family: 'Public Sans', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      width: 130px;
+    }
+    .ai-search-bar button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .whatsapp-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      margin-left: 0.8rem;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    .hamburger span {
+      height: 3px;
+      width: 100%;
+      background: var(--primary);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 64px;
+      left: 0;
+      width: 100%;
+      background: white;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      padding: 2rem;
+      transform: translateY(-150%);
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+    }
+    .mobile-menu.active {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+    .mobile-menu ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .mobile-menu a {
+      text-decoration: none;
+      color: var(--primary);
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 0.5rem 0;
+    }
+    .mobile-menu a:hover {
+      color: var(--accent);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      position: relative;
+      overflow: hidden;
+      background: var(--light-gray);
+    }
+    .hero-content {
+      max-width: 600px;
+      z-index: 2;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      margin-bottom: 1.2rem;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .elevator-scene {
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 200px;
+      height: 500px;
+      perspective: 1000px;
+    }
+    .elevator-shaft {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+    }
+    .shaft-wall {
+      position: absolute;
+      background: var(--elevator-bg);
+      border: 2px solid #444;
+    }
+    .shaft-front { width: 100%; height: 100%; transform: translateZ(0); }
+    .shaft-side {
+      width: 30px;
+      height: 100%;
+      transform: rotateY(90deg) translateZ(100px);
+      background: #121212;
+    }
+    .elevator-cabin {
+      position: absolute;
+      width: 80%;
+      height: 120px;
+      background: #2a2a2a;
+      border: 2px solid #555;
+      border-radius: 8px;
+      left: 10%;
+      top: 0;
+    }
+
+    /* ===== FEATURES / SECTIONS ===== */
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .feature-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: var(--transition);
+    }
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    .feature-card h3 {
+      color: var(--accent);
+      margin: 1rem 0;
+    }
+
+    /* ===== ABOUT / COMMERCIAL / DOMESTIC ===== */
+    .split-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .split-text h2 {
+      margin-bottom: 1.5rem;
+    }
+    .split-image {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    .split-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--light-gray);
+      padding: 3rem 0 1.5rem;
+      margin-top: 3rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .footer-col h3 {
+      margin-bottom: 1rem;
+      color: var(--dark-gray);
+    }
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-col ul li {
+      margin-bottom: 0.6rem;
+    }
+    .footer-col a {
+      text-decoration: none;
+      color: var(--primary);
+      transition: color 0.2s;
+    }
+    .footer-col a:hover {
+      color: var(--accent);
+    }
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .social-links a {
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #e0e0e0;
+      text-align: center;
+      line-height: 36px;
+    }
+
+    /* ===== FLOATING WHATSAPP (MOBILE) ===== */
+    .floating-whatsapp {
+      display: none;
+      position: fixed;
+      bottom: 90px; /* raised to avoid overlap with AI widget */
+      right: 24px;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 990;
+      animation: pulse 2s infinite;
+    }
+    .floating-whatsapp svg {
+      width: 32px;
+      height: 32px;
+      fill: white;
+    }
+
+    /* ===== BEELAL AI WIDGET ===== */
+    #beelalAIWidget {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      overflow: hidden;
+      cursor: pointer;
+      z-index: 999;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      transition: transform 0.3s ease;
+    }
+    #beelalAIWidget:hover {
+      transform: scale(1.1);
+    }
+    #beelalAIWidget img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    #beelalAIChatPanel {
+      position: fixed;
+      bottom: 90px;
+      right: 24px;
+      width: 340px;
+      max-height: 500px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      display: none;
+      flex-direction: column;
+      z-index: 998;
+      overflow: hidden;
+    }
+    .ai-chat-header {
+      background: linear-gradient(135deg, var(--accent), #d93b33);
+      color: white;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .ai-avatar-square {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .ai-avatar-square img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .ai-close-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ai-chat-messages {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      max-height: 300px;
+      background: #f9f9f9;
+    }
+    .ai-message {
+      margin-bottom: 12px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      line-height: 1.4;
+    }
+    .ai-message.bot {
+      background: white;
+      border: 1px solid #eee;
+    }
+    .ai-message.user {
+      background: var(--accent);
+      color: white;
+      align-self: flex-end;
+      text-align: right;
+    }
+    .ai-chat-input {
+      display: flex;
+      padding: 12px;
+      background: white;
+      border-top: 1px solid #eee;
+    }
+    .ai-chat-input input {
+      flex: 1;
+      padding: 10px 14px;
+      border: 1px solid #ddd;
+      border-radius: 24px;
+      outline: none;
+    }
+    .ai-chat-input button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-left: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    @media (max-width: 900px) {
+      .nav-links, .ai-search-bar, .whatsapp-cta {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .elevator-scene {
+        display: none;
+      }
+      .split-section {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .hero {
+        text-align: center;
+      }
+      .hero-content {
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .floating-whatsapp {
+        display: flex;
+      }
+      #beelalAIChatPanel {
+        width: calc(100% - 48px);
+        max-width: 400px;
+        bottom: 90px;
+        right: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="fixed-header">
+    <div class="container header-container">
+      <a href="#home" class="logo">
+        <img src="https://iesconsult.co.za/wp-content/uploads/2025/08/WhatsApp_Image_2025-08-11_at_11.16.38-removebg-preview.png" alt="IES Consult Logo" />
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#commercial">Commercial</a></li>
+        <li><a href="#domestic">Domestic</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="ai-search-bar" role="search">
+        <input type="text" placeholder="Ask about elevators…" aria-label="AI service search" />
+        <button>🔍</button>
+      </div>
+
+      <a href="https://wa.me/27786687163" class="whatsapp-cta" target="_blank" aria-label="WhatsApp">💬</a>
+
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#commercial">Commercial</a></li>
+        <li><a href="#domestic">Domestic</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- HOME -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>The Ups and Downs, Perfected.</h1>
+        <p>Reliable, safe, and affordable elevator solutions engineered for residential and commercial excellence across South Africa.</p>
+        <a href="https://wa.me/27786687163?text=Hello%20IES%20Consult!%20I%27d%20like%20to%20book%20a%20free%20consultation." 
+           class="btn" target="_blank">Book a Free Consultation</a>
+      </div>
+    </div>
+    <div class="elevator-scene">
+      <div class="elevator-shaft">
+        <div class="shaft-wall shaft-front"></div>
+        <div class="shaft-wall shaft-side"></div>
+        <div class="elevator-cabin" id="elevator"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About IES Consult</h2>
+      <div class="split-section">
+        <div class="split-text">
+          <p>Founded on principles of integrity and engineering excellence, IES Consult delivers vertical mobility solutions that prioritize <strong>safety, reliability, and customer satisfaction</strong>.</p>
+          <p>Our team of certified technicians and project managers ensures every installation meets SANS 1515 and international standards.</p>
+          <h3>Core Values</h3>
+          <ul class="features-grid">
+            <li>✅ Safety First</li>
+            <li>✅ Transparent Pricing</li>
+            <li>✅ 24/7 Support</li>
+            <li>✅ Local Expertise</li>
+          </ul>
+        </div>
+        <div class="split-image">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="Elevator installation team" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMERCIAL -->
+  <section id="commercial" style="background: var(--light-gray);">
+    <div class="container">
+      <h2 class="section-title">Commercial Elevator Solutions</h2>
+      <div class="split-section">
+        <div class="split-image">
+          <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=600&q=80" alt="Office building elevator" />
+        </div>
+        <div class="split-text">
+          <p>Built for high-traffic environments: office towers, shopping malls, hospitals, and industrial facilities.</p>
+          <h3>Key Features:</h3>
+          <ul>
+            <li>Load capacity: 630kg – 2000kg</li>
+            <li>Speed: 1.0m/s – 2.5m/s</li>
+            <li>Full SANS 1515 compliance</li>
+            <li>Remote monitoring & predictive maintenance</li>
+            <li>Energy-efficient regenerative drives</li>
+          </ul>
+          <a href="https://wa.me/27786687163?text=I%20need%20a%20quote%20for%20a%20commercial%20elevator." class="btn" target="_blank">Request Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOMESTIC -->
+  <section id="domestic">
+    <div class="container">
+      <h2 class="section-title">Domestic Home Elevators</h2>
+      <div class="split-section">
+        <div class="split-text">
+          <p>Elegant, space-saving lifts designed for aging-in-place, luxury homes, and accessibility needs.</p>
+          <h3>Why Choose Our Home Elevators?</h3>
+          <ul>
+            <li>No pit or machine room required</li>
+            <li>Custom finishes: wood, glass, metal</li>
+            <li>Increases property value</li>
+            <li>Quiet operation (< 55 dB)</li>
+            <li>Backup battery for power outages</li>
+          </ul>
+          <a href="https://wa.me/27786687163?text=I%27d%20like%20to%20see%20home%20elevator%20options." class="btn" target="_blank">View Designs</a>
+        </div>
+        <div class="split-image">
+          <img src="https://images.unsplash.com/photo-1617134583204-391e75e0c481?auto=format&fit=crop&w=600&q=80" alt="Modern home elevator" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="background: var(--light-gray);">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+      <div style="text-align:center; max-width:600px; margin:0 auto;">
+        <p><strong>Phone:</strong> +27 78 668 7163</p>
+        <p><strong>Email:</strong> info@iesconsult.co.za</p>
+        <p><strong>Service Area:</strong> Nationwide – South Africa</p>
+        <a href="https://wa.me/27786687163" class="btn" style="margin-top:1.5rem;" target="_blank">Chat on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <img src="https://iesconsult.co.za/wp-content/uploads/2025/08/Untitled-2.png" alt="IES Consult" style="height:40px;" />
+          <p>Premium elevator solutions across South Africa.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Navigation</h3>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#commercial">Commercial</a></li>
+            <li><a href="#domestic">Domestic</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Connect</h3>
+          <p>+27 78 668 7163<br />info@iesconsult.co.za</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Twitter">x</a>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center; padding-top:1.5rem; font-size:0.9rem; opacity:0.8;">
+        &copy; 2026 IES Consult. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/27786687163" class="floating-whatsapp" target="_blank" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <!-- === BEELAL AI WIDGET === -->
+  <div id="beelalAIWidget">
+    <img src="images-logo/bee.jpg" alt="Ask Beelal AI">
+  </div>
+
+  <div id="beelalAIChatPanel">
+    <div class="ai-chat-header">
+      <div class="ai-avatar-square">
+        <img src="images-logo/bee.jpg" alt="Beelal">
+      </div>
+      <h4 style="margin: 0 10px; font-weight: 600;">Beelal – IES AI Assistant</h4>
+      <button class="ai-close-btn" id="beelalCloseBtn">×</button>
+    </div>
+    <div class="ai-chat-messages" id="beelalChatMessages">
+      <div class="ai-message bot">
+        Hello! 👋 I'm your <strong>IES Consult</strong> assistant.<br>
+        You can ask me things like:<br>
+        • “What’s the difference between commercial and home elevators?”<br>
+        • “Do you offer maintenance contracts?”<br>
+        • “How much does a home elevator cost?”
+      </div>
+    </div>
+    <div class="ai-chat-input">
+      <input type="text" id="beelalUserInput" placeholder="e.g. Show me home elevator options">
+      <button id="beelalSendBtn"><i>➤</i></button>
+    </div>
+  </div>
+
+  <!-- GSAP & AI Logic -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+    // Elevator Animation
+    const cabin = document.getElementById('elevator');
+    if (cabin) {
+      gsap.to(cabin, {
+        y: "80%",
+        duration: 8,
+        repeat: -1,
+        yoyo: true,
+        ease: "power1.inOut"
+      });
+    }
+
+    // Mobile Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+      const spans = hamburger.querySelectorAll('span');
+      if (mobileMenu.classList.contains('active')) {
+        spans[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
+      } else {
+        spans[0].style.transform = 'rotate(0) translate(0, 0)';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'rotate(0) translate(0, 0)';
+      }
+    });
+
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        hamburger.querySelectorAll('span').forEach(span => {
+          span.style.transform = 'rotate(0) translate(0, 0)';
+          span.style.opacity = '1';
+        });
+      });
+    });
+
+    // === BEELAL AI CHAT ===
+    const widget = document.getElementById('beelalAIWidget');
+    const panel = document.getElementById('beelalAIChatPanel');
+    const closeBtn = document.getElementById('beelalCloseBtn');
+    const chatMessages = document.getElementById('beelalChatMessages');
+    const userInput = document.getElementById('beelalUserInput');
+    const sendBtn = document.getElementById('beelalSendBtn');
+
+    widget.addEventListener('click', () => {
+      panel.style.display = panel.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    closeBtn.addEventListener('click', () => {
+      panel.style.display = 'none';
+    });
+
+    function scrollToBottom() {
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function addMessage(text, isUser = false) {
+      const msgDiv = document.createElement('div');
+      msgDiv.classList.add('ai-message', isUser ? 'user' : 'bot');
+      msgDiv.innerHTML = text.replace(/\n/g, '<br>');
+      chatMessages.appendChild(msgDiv);
+      setTimeout(scrollToBottom, 10);
+    }
+
+    function getResponse(query) {
+      const lower = query.toLowerCase().trim();
+      if (lower.includes('home') && (lower.includes('cost') || lower.includes('price'))) {
+        return "🏡 Home elevators start from **R180,000** installed. We offer custom quotes based on your layout, finish, and features. Would you like a free site assessment?";
+      }
+      if (lower.includes('commercial') && lower.includes('cost')) {
+        return "🏢 Commercial elevators start from **R450,000**, depending on capacity, speed, and compliance needs. We provide full turnkey solutions including design, approval, and installation.";
+      }
+      if (lower.includes('maintain') || lower.includes('service contract')) {
+        return "🔧 Yes! We offer **preventative maintenance contracts** starting at R1,200/month, including 24/7 emergency support and quarterly safety inspections.";
+      }
+      if (lower.includes('difference') && (lower.includes('home') || lower.includes('domestic')) && lower.includes('commercial')) {
+        return "🏠 **Home elevators**: Compact, quiet, aesthetic-focused, no machine room needed.\n🏢 **Commercial elevators**: High-capacity, faster, built for heavy daily use, full SANS compliance.";
+      }
+      if (lower.includes('install') || lower.includes('time') || lower.includes('how long')) {
+        return "⏱️ Installation takes **2–4 weeks** after approval. Home units are faster (2 weeks); commercial may take longer due to inspections.";
+      }
+      if (lower.includes('contact') || lower.includes('phone') || lower.includes('whatsapp')) {
+        return "📱 Chat with us directly on WhatsApp: <a href='https://wa.me/27786687163' target='_blank' style='color:#ff5149;'>Click here to message us</a>";
+      }
+      return "I specialize in elevator solutions! Try asking:\n• “What’s included in a home elevator quote?”\n• “Do you serve Cape Town?”\n• “Can you retrofit an old building?”";
+    }
+
+    function handleSend() {
+      const query = userInput.value.trim();
+      if (!query) return;
+      addMessage(query, true);
+      userInput.value = '';
+      const response = getResponse(query);
+      setTimeout(() => addMessage(response), 400);
+    }
+
+    sendBtn.addEventListener('click', handleSend);
+    userInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') handleSend();
+    });
+  </script>
+</body>
+</html>
