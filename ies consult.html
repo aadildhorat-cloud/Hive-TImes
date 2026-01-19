@@ -24,6 +24,47 @@
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@600;700&family=Public+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
+    /* ===== IMAGE GALLERY ===== */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.image-item {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  transition: var(--transition);
+  aspect-ratio: 4 / 3;
+  background: #f0f0f0;
+}
+
+.image-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.image-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+}
+
+.image-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  .image-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+}
     /* ===== GLOBAL RESET & VARIABLES ===== */
     :root {
       --primary: #0a0a0a;
@@ -558,6 +599,7 @@
       <ul class="nav-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#commercial">Commercial</a></li>
         <li><a href="#domestic">Domestic</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -581,6 +623,7 @@
       <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#commercial">Commercial</a></li>
         <li><a href="#domestic">Domestic</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -598,14 +641,33 @@
            class="btn" target="_blank">Book a Free Consultation</a>
       </div>
     </div>
-    <div class="elevator-scene">
-      <div class="elevator-shaft">
-        <div class="shaft-wall shaft-front"></div>
-        <div class="shaft-wall shaft-side"></div>
-        <div class="elevator-cabin" id="elevator"></div>
+      <!-- Embedded Video -->
+      <div style="margin: 2rem 0; max-width: 600px; width: 100%;">
+        <video 
+          src="image-services/ies-elavators-video.mp4" 
+          controls
+          playsinline
+          poster="image-services/upscaled-video.mp4"
+          style="width: 100%; border-radius: 12px; box-shadow: 0 6px 16px rgba(0,0,0,0.15); display: block;"
+        >
+          Your browser does not support the video tag.
+        </video>
       </div>
-    </div>
   </section>
+  
+  <!-- IMAGE GALLERY -->
+<section id="gallery" style="background: var(--white);">
+  <div class="container">
+    <h2 class="section-title">Our Elevator Installations</h2>
+    <div class="image-grid">
+      <!-- Replace with your actual image paths -->
+      <div class="image-item"><img src="image-services/ies-elavators-about.jpg" alt="Commercial elevator installation"></div>
+      <div class="image-item"><img src="image-services/ies-elavators-modern.jpg" alt="Home elevator interior"></div>
+      <div class="image-item"><img src="image-services/ies-elavators-multiple.jpg" alt="Elevator control panel"></div>
+        </div>
+  </div>
+</section>
+  
 
   <!-- ABOUT -->
   <section id="about">
@@ -624,7 +686,7 @@
           </ul>
         </div>
         <div class="split-image">
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="Elevator installation team" />
+          <img src="image-services/ies-elavators-about.jpg" alt="Elevator installation team" />
         </div>
       </div>
     </div>
@@ -672,7 +734,7 @@
           <a href="https://wa.me/27786687163?text=I%27d%20like%20to%20see%20home%20elevator%20options." class="btn" target="_blank">View Designs</a>
         </div>
         <div class="split-image">
-          <img src="https://images.unsplash.com/photo-1617134583204-391e75e0c481?auto=format&fit=crop&w=600&q=80" alt="Modern home elevator" />
+          <img src="image-services/ies-elavators-modern.jpg" alt="Modern home elevator" />
         </div>
       </div>
     </div>
