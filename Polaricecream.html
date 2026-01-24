@@ -1335,13 +1335,33 @@ gtag('config', 'G-DTPGZ964FD');
 </div>
 
 <!-- FLOATING CONTACT -->
-<div class="floating-contact">
-  <a href="https://wa.me/27104956227" target="_blank" class="float-btn whatsapp-float" title="WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-  <a href="mailto:polarnorthcliff@gmail.com" class="float-btn email-float" title="Email">
-    <i class="fas fa-envelope"></i>
-  </a>
+ <!-- === POLAR ICE CREAM AI CHAT WIDGET BUTTON === -->
+<div class="ai-chat-widget" id="aiChatWidget">
+  <img src="images-logo/bee.jpg" alt="Ask Beelal AI">
+</div>
+
+<!-- === POLAR ICE CREAM AI CHAT PANEL === -->
+<div class="ai-chat-panel" id="aiChatPanel">
+  <div class="ai-chat-header">
+    <div class="ai-avatar-square">
+      <img src="images-logo/bee.jpg" alt="Ask Beelal AI">
+    </div>
+    <h4>Ask Beelal</h4>
+    <button class="ai-close-btn" id="aiCloseBtn">×</button>
+  </div>
+  <div class="ai-chat-messages" id="aiChatMessages">
+    <div class="ai-message bot">
+      Hello! 👋 I'm your <strong>Polar Ice Cream</strong> assistant.<br>
+      You can ask me things like:<br>
+      • “What are your opening hours?”<br>
+      • “where are you located”<br>
+      • “what is your contact information?”
+    </div>
+  </div>
+  <div class="ai-chat-input">
+    <input type="text" id="aiUserInput" placeholder="e.g. tell me about POLAR ICE CREAM">
+    <button id="aiSendBtn"><i class="fas fa-paper-plane"></i></button>
+  </div>
 </div>
 
 <!-- FOOTER -->
@@ -1643,6 +1663,110 @@ document.addEventListener('DOMContentLoaded', () => {
   cart.init();
   aiProductSearch.init();
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const widget = document.getElementById('aiChatWidget');
+  const panel = document.getElementById('aiChatPanel');
+  const closeBtn = document.getElementById('aiCloseBtn');
+  const chatMessages = document.getElementById('aiChatMessages');
+  const userInput = document.getElementById('aiUserInput');
+  const sendBtn = document.getElementById('aiSendBtn');
+
+  widget.addEventListener('click', () => {
+    panel.style.display = panel.style.display === 'flex' ? 'none' : 'flex';
+  });
+
+  closeBtn.addEventListener('click', () => {
+    panel.style.display = 'none';
+  });
+
+  function scrollToBottom() {
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function addMessage(text, isUser = false) {
+    const msgDiv = document.createElement('div');
+    msgDiv.classList.add('ai-message', isUser ? 'user' : 'bot');
+    msgDiv.innerHTML = text.replace(/\n/g, '<br>');
+    chatMessages.appendChild(msgDiv);
+    setTimeout(scrollToBottom, 10);
+  }
+
+  function getResponse(query) {
+  const lower = query.toLowerCase().trim();
+
+  if (/(where|located|address|find.*you|directions)/.test(lower)) {
+    return "📍 We're located at <strong>92 Main Reef Rd, Germiston, South Africa</strong>.<br>Feel free to visit us or order online for nationwide delivery!";
+  }
+  if (/(contact|phone|call|number|reach|whatsapp)/.test(lower)) {
+    return "📞 Call or WhatsApp us at <strong>010 495 6227</strong>!<br>We’re happy to help with orders, custom requests, or general questions.";
+  }
+  if (/(email|gmail|message|write.*you)/.test(lower)) {
+    return "📧 Email us anytime: <strong>polarnorthcliff@gmail.com</strong>";
+  }
+  if (/(open|close|hours|time|when.*open|operating)/.test(lower)) {
+    return "🕒 Our opening hours:<br>" +
+           "<strong>Mon–Fri:</strong> 9:00 AM – 5:30 PM<br>" +
+           "<strong>Sat:</strong> 9:00 AM – 3:30 PM<br>" +
+           "<strong>Sun:</strong> 9:30 AM – 1:00 PM";
+  }
+  if (/(deliver|delivery|ship|nationwide|send|courier)/.test(lower)) {
+    return "🚚 Yes! We deliver across South Africa.<br>Just add items to your cart and click <strong>‘Send Order via WhatsApp’</strong> to place your order instantly!";
+  }
+  if (/(bulk|wholesale|event|party|wedding|school|discount|large.*order)/.test(lower)) {
+    return "🎉 Perfect! We offer <strong>special pricing for events, schools, retailers, and bulk buyers</strong>.<br>Please contact us via WhatsApp or email with your quantity needs—we’ll send a custom quote!";
+  }
+  if (/(tub|bucket|2\.5l|5l|10l|size|how.*big)/.test(lower)) {
+    return "🧊 We offer frozen desserts in multiple sizes:<br>" +
+           "• Single cups (125ml)<br>" +
+           "• Family tubs (500ml, 2L, 2.5L)<br>" +
+           "• Commercial sizes (5L, 10L)<br>" +
+           "Popular flavours: Rainbow, Blueberry Cheesecake, Chocolate Chip, Vanilla, and more!";
+  }
+  if (/(flavor|flavour|what.*have|options|varieties)/.test(lower)) {
+    return "🍦 We have over 50 delicious flavours! Some fan favourites:<br>" +
+           "• <strong>Premier Range:</strong> Rum & Raisin, Roasted Almond, Toffee<br>" +
+           "• <strong>Frozen Desserts:</strong> Rainbow, Strawberry, Choc Mint<br>" +
+           "• <strong>Novelties:</strong> Polar Lollies, iCUP, FLOAT, WOZA<br>" +
+           "Browse our website or ask for recommendations!";
+  }
+  if (/(how.*order|place.*order|buy|purchase|checkout)/.test(lower)) {
+    return "🛒 Ordering is easy!<br>" +
+           "1. Browse products and click <strong>‘Add to Cart’</strong><br>" +
+           "2. Click the <strong>Cart</strong> button (top right)<br>" +
+           "3. Press <strong>‘Send Order via WhatsApp’</strong><br>" +
+           "We’ll confirm your order and delivery details right away!";
+  }
+  if (/(pay|payment|cash|card|eft|deposit)/.test(lower)) {
+    return "💳 We accept:<br>" +
+           "• Cash on delivery<br>" +
+           "• EFT/bank deposit<br>" +
+           "• WhatsApp Pay (via supported banks)<br>" +
+           "Payment details are sent when we confirm your order.";
+  }
+
+  // Updated fallback to match your requested starter questions
+  return "I can help you with store info, ordering, or product details!<br>Try asking:<br>" +
+         "• “What are your opening hours?”<br>" +
+         "• “where are you located”<br>" +
+         "• “what is your contact information?”";
+}
+
+  function handleSend() {
+    const query = userInput.value.trim();
+    if (!query) return;
+    addMessage(query, true);
+    userInput.value = '';
+    const response = getResponse(query);
+    setTimeout(() => addMessage(response), 400);
+  }
+
+  sendBtn.addEventListener('click', handleSend);
+  userInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') handleSend();
+  });
+});
+</script>
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
