@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jassats Attorneys | Boutique Law Firm</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .logo img {
+    height: 50px; /* Adjust height as needed */
+    width: auto; /* Maintains aspect ratio */
+    display: block;
+    transition: var(--transition);
+}
+
+.logo img:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+        /* Modern Global Reset with Box-Sizing */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #0f172a;
+            --accent-color: #f59e0b;
+            --whatsapp-color: #25d366;
+            --light-color: #f8fafc;
+            --text-color: #1e293b;
+            --gray-color: #64748b;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            color: var(--accent-color);
+            font-size: 2rem;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05rem;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .contact-info a:hover {
+            color: var(--accent-color);
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(30,58,138,0.1)"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 1;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+        }
+
+        .cta-button:hover {
+            background: #e18a0a;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.6);
+        }
+
+        .whatsapp-button {
+            display: inline-block;
+            background: var(--whatsapp-color);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .whatsapp-button i {
+            margin-right: 0.5rem;
+        }
+
+        .whatsapp-button:hover {
+            background: #128c7e;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .whatsapp-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Section Base Styles */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--gray-color);
+            margin-top: 1.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Section */
+        .about {
+            background-color: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--gray-color);
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat-label {
+            color: var(--gray-color);
+            font-size: 0.95rem;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Services Section */
+        .services {
+            background-color: var(--light-color);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-content h3 {
+            font-size: 1.6rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .service-content p {
+            color: var(--gray-color);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Team Section */
+        .team {
+            background-color: white;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+        }
+
+        .team-member {
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        .member-image {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--accent-color);
+            position: relative;
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .team-member:hover .member-image img {
+            transform: scale(1.1);
+        }
+
+        .member-info h3 {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .member-title {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .member-bio {
+            color: var(--gray-color);
+            padding: 0 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+        }
+
+        .contact .section-title h2 {
+            color: white;
+        }
+
+        .contact .section-title h2::after {
+            background: var(--accent-color);
+        }
+
+        .contact .section-title p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-info-item {
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .contact-info-item i {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            min-width: 30px;
+        }
+
+        .contact-info-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .contact-info-item p, .contact-info-item a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-info-item a:hover {
+            color: var(--accent-color);
+        }
+
+        .business-hours {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .hours-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hours-day {
+            font-weight: 600;
+            color: white;
+        }
+
+        .hours-time {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .map-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .map-placeholder {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .map-placeholder i {
+            font-size: 4rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .map-placeholder p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .footer-col h3 {
+            color: white;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+
+        .footer-col p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2.5rem;
+            margin-top: 2.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--whatsapp-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            text-decoration: none;
+            z-index: 999;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .header-container {
+                padding: 0 1.5rem;
+            }
+
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            nav a {
+                font-size: 0.95rem;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                order: -1;
+            }
+
+            .business-hours {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                flex-direction: column;
+                background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+                width: 280px;
+                height: calc(100vh - 80px);
+                padding: 2rem;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+                gap: 1.5rem;
+            }
+
+            nav ul.active {
+                right: 0;
+            }
+
+            .contact-info {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+
+            section {
+                padding: 3.5rem 1.5rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .service-icon {
+                height: 150px;
+                font-size: 3rem;
+            }
+
+            .member-image {
+                width: 180px;
+                height: 180px;
+            }
+
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-container {
+                height: 70px;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .logo i {
+                font-size: 1.6rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .map-container {
+                height: 300px;
+            }
+
+            .whatsapp-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.95rem;
+            }
+
+            .whatsapp-button i {
+                margin-right: 0.3rem;
+            }
+        }
+        @media (max-width: 768px) {
+    .logo img {
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo img {
+        height: 35px;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="jassatsattoneys.html" class="logo">
+    <img src="image-services/jassatattorneys-logo1.jpg" alt="Jassats Attorneys Logo">
+</a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="contact-info">
+                <a href="tel:+27731430038"><i class="fas fa-phone"></i> (73) 143 0038</a>
+                <a href="mailto:info@jassatsattorneys.co.za"><i class="fas fa-envelope"></i> info@jassatsattorneys.co.za</a>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Expert Legal Solutions for Your Peace of Mind</h1>
+            <p>Boutique law firm specializing in deceased estates, conveyancing, and notarial work with personalized attention and professional excellence.</p>
+            <a href="https://wa.me/27731430038?text=Hello%20Jassats%20Attorneys%2C%0A%0AI%20would%20like%20to%20schedule%20a%20consultation%20regarding%20legal%20services.%0A%0APlease%20contact%20me%20at%20your%20earliest%20convenience.%0A%0AThank%20you!" class="cta-button">
+                <i class="fab fa-whatsapp"></i> Schedule Consultation
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Jassats Attorneys</h2>
+                <p>Established with a commitment to excellence and client-focused legal services</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Trusted Legal Partnership Since 2015</h3>
+                    <p>Jassats Attorneys is a boutique law firm dedicated to providing exceptional legal services with a personal touch. Our team of qualified professionals brings years of experience and expertise to every case we handle.</p>
+                    <p>Founded by legal professionals holding LLB degrees from the University of the Witwatersrand, we pride ourselves on maintaining the highest standards of legal practice while ensuring our clients receive individualized attention and support throughout their legal journey.</p>
+                    <p>Our approach combines technical legal expertise with compassionate understanding, ensuring that each client's unique needs and circumstances are addressed with care and professionalism.</p>
+                    
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Cases Handled</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">98%</div>
+                            <div class="stat-label">Success Rate</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Client Support</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&h=400&fit=crop" alt="Jassats Attorneys Team">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Specialized Services</h2>
+                <p>Comprehensive legal solutions tailored to your specific needs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Deceased Estates</h3>
+                        <p>Compassionate and efficient administration of deceased estates, ensuring all legal requirements are met while providing support to grieving families during difficult times.</p>
+                        <p>Our services include estate planning, executorship, asset distribution, and compliance with all regulatory requirements.</p>
+                        <a href="https://wa.me/27161234567?text=Hello%20Jassats%20Attorneys%2C%0A%0AI%20am%20interested%20in%20your%20Deceased%20Estates%20services.%20I%20would%20like%20to%20inquire%20about%3A%0A-%20Estate%20administration%20process%0A-%20Required%20documentation%0A-%20Timeline%20and%20fees%0A-%20Executorship%20services%0A%0APlease%20provide%20me%20with%20more%20information.%20Thank%20you!" class="whatsapp-button">
+                            <i class="fab fa-whatsapp"></i> Contact Us Now
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Conveyancing</h3>
+                        <p>Expert property transfer services ensuring smooth and legally compliant real estate transactions. We handle all aspects of property transfers with precision and care.</p>
+                        <p>From purchase agreements to registration, our conveyancing team ensures your property transaction is completed efficiently and without complications.</p>
+                        <a href="https://wa.me/27161234567?text=Hello%20Jassats%20Attorneys%2C%0A%0AI%20am%20interested%20in%20your%20Conveyancing%20services.%20I%20would%20like%20to%20inquire%20about%3A%0A-%20Property%20transfer%20process%0A-%20Transfer%20costs%20and%20fees%0A-%20Required%20documentation%0A-%20Timeline%20for%20completion%0A%0APlease%20provide%20me%20with%20more%20information.%20Thank%20you!" class="whatsapp-button">
+                            <i class="fab fa-whatsapp"></i> Contact Us Now
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-stamp"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Notarial Work</h3>
+                        <p>Professional notarial services including authentication of documents, certification of copies, and preparation of notarial deeds and contracts.</p>
+                        <p>Our notary public services ensure your important documents meet all legal requirements for validity and acceptance both locally and internationally.</p>
+                        <a href="https://wa.me/27161234567?text=Hello%20Jassats%20Attorneys%2C%0A%0AI%20am%20interested%20in%20your%20Notarial%20Work%20services.%20I%20would%20like%20to%20inquire%20about%3A%0A-%20Document%20authentication%20services%0A-%20Certification%20of%20copies%0A-%20Notarial%20deeds%20and%20contracts%0A-%20Fees%20and%20appointment%20availability%0A%0APlease%20provide%20me%20with%20more%20information.%20Thank%20you!" class="whatsapp-button">
+                            <i class="fab fa-whatsapp"></i> Contact Us Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team" id="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet Our Team</h2>
+                <p>Dedicated professionals committed to your legal success</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="image-services/jassatattorneys-1.jpg" alt="Sameera - Head of Deceased Estates and Conveyancing">
+                    </div>
+                    <div class="member-info">
+                        <h3>Sameera</h3>
+                        <span class="member-title">Head of Deceased Estates & Conveyancing</span>
+                        <p class="member-bio">Leading our deceased estates and conveyancing divisions with extensive experience and dedication to client satisfaction. LLB Degree, University of the Witwatersrand (2015).</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="image-services/jassatattorneys-2.jpg" alt="Legal Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Legal Team</h3>
+                        <span class="member-title">Qualified Attorneys</span>
+                        <p class="member-bio">Our team of dedicated legal professionals brings diverse expertise and unwavering commitment to providing exceptional legal services across all practice areas.</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="image-services/jassatattorneys-3.jpg" alt="Support Staff">
+                    </div>
+                    <div class="member-info">
+                        <h3>Support Staff</h3>
+                        <span class="member-title">Administrative Team</span>
+                        <p class="member-bio">Our dedicated support team ensures smooth operations and provides excellent client service, handling all administrative aspects with efficiency and professionalism.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Reach out to schedule your consultation or inquire about our services</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info-box">
+                    <div class="contact-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Our Location</h4>
+                            <p>Suite 3, Muydene Building<br>15 Joubert Street<br>Vereeniging, 1939</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Business Hours</h4>
+                            <div class="business-hours">
+                                <div class="hours-item">
+                                    <div class="hours-day">Monday - Friday</div>
+                                    <div class="hours-time">9:00 AM - 4:00 PM</div>
+                                </div>
+                                <div class="hours-item">
+                                    <div class="hours-day">Saturday</div>
+                                    <div class="hours-time">By Appointment</div>
+                                </div>
+                                <div class="hours-item">
+                                    <div class="hours-day">Sunday</div>
+                                    <div class="hours-time">Closed</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <a href="tel:+27161234567">(016) 123 4567</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <a href="mailto:info@jassatsattorneys.co.za">info@jassatsattorneys.co.za</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <a href="https://wa.me/27161234567?text=Hello%20Jassats%20Attorneys%2C%0A%0AI%20would%20like%20to%20inquire%20about%20your%20legal%20services.%0A%0APlease%20contact%20me%20at%20your%20earliest%20convenience.%0A%0AThank%20you!" style="color: var(--whatsapp-color); font-weight: 600;">
+                                Click to Chat on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <p>Interactive map will be integrated here showing our location in Vereeniging</p>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.7;">Suite 3, Muydene Building, 15 Joubert Street, Vereeniging</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/27161234567?text=Hello%20Jassats%20Attorneys%2C%0A%0AI%20would%20like%20to%20inquire%20about%20your%20legal%20services.%0A%0APlease%20contact%20me%20at%20your%20earliest%20convenience.%0A%0AThank%20you!" class="whatsapp-float" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Jassats Attorneys</h3>
+                <p>Boutique law firm providing specialized legal services in deceased estates, conveyancing, and notarial work with personalized attention and professional excellence.</p>
+            </div>
+
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                    <li><a href="#team"><i class="fas fa-chevron-right"></i> Our Team</a></li>
+                    <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Our Services</h3>
+                <ul class="footer-links">
+                    <li><a href="#services"><i class="fas fa-chevron-right"></i> Deceased Estates</a></li>
+                    <li><a href="#services"><i class="fas fa-chevron-right"></i> Conveyancing</a></li>
+                    <li><a href="#services"><i class="fas fa-chevron-right"></i> Notarial Work</a></li>
+                    <li><a href="#contact"><i class="fas fa-chevron-right"></i> Consultations</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-map-marker-alt"></i> Suite 3, Muydene Building, 15 Joubert Street, Vereeniging</li>
+                    <li><i class="fas fa-phone"></i> (016) 123 4567</li>
+                    <li><i class="fas fa-envelope"></i> info@jassatsattorneys.co.za</li>
+                    <li><i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 4:00 PM</li>
+                    <li><a href="https://wa.me/27161234567" style="color: var(--whatsapp-color);"><i class="fab fa-whatsapp"></i> WhatsApp: +27 16 123 4567</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+    <p>&copy; 2026 Jassats Attorneys. All Rights Reserved. | Website developed by <a href="https://hivetimes.co.za" target="_blank" style="color: var(--accent-color); text-decoration: none; font-weight: 600; transition: var(--transition);">hivetimes.co.za</a></p>
+</div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.querySelector('nav ul');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                header.style.background = 'linear-gradient(135deg, rgba(30, 58, 138, 0.98) 0%, rgba(15, 23, 42, 0.98) 100%)';
+            } else {
+                header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.2)';
+                header.style.background = 'linear-gradient(135deg, rgba(30, 58, 138, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%)';
+            }
+        });
+
+        // Service card hover effect enhancement
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Team member hover effect
+        const teamMembers = document.querySelectorAll('.team-member');
+        teamMembers.forEach(member => {
+            member.addEventListener('mouseenter', () => {
+                member.style.transform = 'translateY(-10px)';
+            });
+            member.addEventListener('mouseleave', () => {
+                member.style.transform = 'translateY(0)';
+            });
+        });
+
+        // WhatsApp button click tracking (optional)
+        document.querySelectorAll('.whatsapp-button, .whatsapp-float').forEach(button => {
+            button.addEventListener('click', function() {
+                // You can add analytics tracking here if needed
+                console.log('WhatsApp contact initiated for:', this.closest('.service-card')?.querySelector('h3')?.textContent || 'General inquiry');
+            });
+        });
+    </script>
+</body>
+</html>
