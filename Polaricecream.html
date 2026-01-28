@@ -1628,7 +1628,7 @@ function sendCartToWhatsApp() {
     alert("Your cart is empty!");
     return;
   }
-  let msg = "Hi! I'd like to place an order from Polar Ice Cream:\n";
+  let msg = "Hi! I am enquiring from Hive Times, I'd like to place an order from Polar Ice Cream:\n";
   cart.items.forEach(item => {
     msg += `• ${item.name} x${item.quantity} — R${(item.price * item.quantity).toFixed(2)}\n`;
   });
