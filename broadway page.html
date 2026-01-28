@@ -3119,7 +3119,7 @@ function sendCartToWhatsApp() {
     alert("Your cart is empty!");
     return;
   }
-  let msg = "Hi! iam enquiring from Hive Times, I'd like to place an order from Broadway Sweets:\n\n";
+  let msg = "Hi! i am enquiring from Hive Times, I'd like to place an order from Broadway Sweets:\n\n";
   cart.items.forEach(item => {
     msg += `• ${item.name} x${item.quantity} — R${(item.price * item.quantity).toFixed(2)}\n`;
   });
