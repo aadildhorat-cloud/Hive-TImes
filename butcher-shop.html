@@ -703,30 +703,25 @@
             <button class="close-cart-btn" onclick="closeCartModal()">Continue Shopping</button>
         </div>
     </div>
-    
-    <!-- FLOATING CONTACT BUTTONS -->
-    <!-- === BEELAL AI CHAT WIDGET BUTTON === -->
-<div class="ai-chat-widget" id="aiChatWidget">
-  <img src="images-logo/bee.jpg" alt="Beelal AI Assistant">
-</div>
+ 
 
 <!-- === BEELAL AI CHAT PANEL === -->
 <div class="ai-chat-panel" id="aiChatPanel">
   <div class="ai-chat-header">
     <div class="ai-avatar-square">
-       <img src="images-logo/bee.jpg" alt="Ask Beelal AI">
+      <img src="images-logo/bee.jpg" alt="Ask Beelal AI">
     </div>
     <h4>Beelal AI</h4>
     <button class="ai-close-btn" id="aiCloseBtn">×</button>
   </div>
   <div class="ai-chat-messages" id="aiChatMessages">
     <div class="ai-message bot">
-      Hello! 👋 I'm your <strong>Butcher Block</strong> assistant.<br>
+      Hello! 👋 I'm your <strong>Nothing Fancy</strong> assistant.<br>
       You can ask me things like:<br>
       • “What are your opening hours?”<br>
       • “Where are you located?”<br>
       • “Do you deliver?”<br>
-      • “How do I order bulk meat?”
+      • “Show me kitchen towels under R50”
     </div>
   </div>
   <div class="ai-chat-input">
@@ -1054,7 +1049,7 @@
                 return;
             }
             
-            let msg = "Hi! I'd like to place an order from Butcher Block:\n";
+            let msg = "Hi! i am enquiring from Hive Times, I'd like to place an order from Butcher Block:\n";
             let hasPricedItems = false;
             
             cart.items.forEach(item => {
@@ -1111,7 +1106,7 @@
                 }
             });
         });
-        // === AI CHAT WIDGET LOGIC ===
+    // === AI CHAT WIDGET LOGIC ===
 document.addEventListener('DOMContentLoaded', () => {
   const widget = document.getElementById('aiChatWidget');
   const panel = document.getElementById('aiChatPanel');
@@ -1142,29 +1137,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function getResponse(query) {
     const lower = query.toLowerCase().trim();
-
     if (lower.includes('where') || lower.includes('located') || lower.includes('address') || lower.includes('find')) {
       return "📍 We're located at <strong>239 Norda St, Leslie, Thuli Fakude, 2265</strong>. Visit us during business hours!";
     }
     if (lower.includes('contact') || lower.includes('phone') || lower.includes('call') || lower.includes('number')) {
-      return "📞 Call or WhatsApp us at <strong>+27 61 502 3930</strong> for orders or inquiries!";
+      return "📞 Call or WhatsApp us at <strong>071 021 8554</strong> for orders or inquiries!";
     }
     if (lower.includes('email') || lower.includes('@')) {
-      return "📧 Email us at <strong>info@butcherblock.co.za</strong> for wholesale or custom orders!";
+      return "📧 Email us at <strong>contact@nothingfancy.co.za</strong> for wholesale or custom orders!";
     }
     if (lower.includes('open') || lower.includes('hour') || lower.includes('time') || lower.includes('close')) {
-      return "🕒 We're open:<br><strong>Monday–Friday: 6:00 AM – 6:00 PM</strong><br>Closed on weekends.";
+      return "🕒 We're open:<br><strong>Monday–Friday: 9:00 AM – 5:30 PM<br>Saturday: 9:00 AM – 3:30 PM<br>Sunday: 9:30 AM – 1:00 PM</strong>";
     }
     if (lower.includes('deliver') || lower.includes('shipping') || lower.includes('nationwide') || lower.includes('ship')) {
-      return "🚚 Yes! We offer delivery across South Africa. Place your order via WhatsApp or email for a quote!";
+      return "🚚 Yes! We offer delivery across Johannesburg. Place your order via WhatsApp or email for a quote!";
     }
-    if (lower.includes('bulk') || lower.includes('wholesale') || lower.includes('quote') || lower.includes('hamper')) {
-      return "💼 We specialize in <strong>bulk meat, hampers, and wholesale supply</strong> for restaurants and retailers. Contact us for custom quotes!";
+    if (lower.includes('bulk') || lower.includes('wholesale') || lower.includes('quote') || lower.includes('bale')) {
+      return "💼 We specialize in <strong>bulk toilet paper, kitchen towels, and garage rolls</strong> for retailers, schools, and events. Contact us for custom quotes!";
     }
-    if (lower.includes('steak') || lower.includes('lamb') || lower.includes('chicken') || lower.includes('meat')) {
-      return "🥩 Browse our categories using the menu! We offer premium <strong>beef, lamb, chicken, processed meats, and specialty cuts</strong>. All products are fresh and high-quality.";
+    if (lower.includes('toilet') || lower.includes('kitchen') || lower.includes('garage') || lower.includes('towel') || lower.includes('roll')) {
+      return "🧻 Browse our categories using the menu! We offer premium <strong>2-ply, 1-ply, bales, kitchen towels, garage rolls, and more</strong>. All products are high-quality and competitively priced.";
     }
-
     return "I can help with location, hours, delivery, or product info! Try: “Do you deliver?” or “What are your opening hours?”";
   }
 
