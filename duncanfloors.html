@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Duncan Wooden Floors | Premium Flooring Solutions</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* Global Reset & Base Styles */
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+:root {
+--primary-color: #8B4513;
+--secondary-color: #D2691E;
+--accent-color: #A0522D;
+--light-color: #F5F5DC;
+--dark-color: #3E2723;
+--white: #FFFFFF;
+--shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+--shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.2);
+--transition: all 0.3s ease;
+--transition-fast: all 0.2s ease;
+}
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+line-height: 1.6;
+color: #333;
+background-color: var(--light-color);
+overflow-x: hidden;
+}
+/* Header Styles */
+header {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+padding: 15px 5%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+z-index: 1000;
+box-shadow: var(--shadow);
+transition: var(--transition);
+}
+.logo {
+font-size: 28px;
+font-weight: bold;
+color: var(--white);
+text-decoration: none;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.logo i {
+font-size: 32px;
+animation: rotate 3s linear infinite;
+}
+@keyframes rotate {
+from { transform: rotate(0deg); }
+to { transform: rotate(360deg); }
+}
+.logo span {
+color: var(--light-color);
+font-size: 14px;
+display: block;
+letter-spacing: 1px;
+}
+.nav-links {
+display: flex;
+gap: 30px;
+}
+.nav-links a {
+color: var(--white);
+text-decoration: none;
+font-weight: 500;
+font-size: 16px;
+transition: var(--transition);
+position: relative;
+padding: 5px 0;
+}
+.nav-links a:hover {
+color: var(--light-color);
+}
+.nav-links a::after {
+content: '';
+position: absolute;
+bottom: 0;
+left: 0;
+width: 0;
+height: 2px;
+background: var(--light-color);
+transition: var(--transition);
+}
+.nav-links a:hover::after {
+width: 100%;
+}
+.hivetimes-btn {
+background: linear-gradient(135deg, #667eea, #764ba2);
+color: white;
+padding: 12px 25px;
+border-radius: 50px;
+text-decoration: none;
+font-weight: bold;
+display: flex;
+align-items: center;
+gap: 10px;
+transition: var(--transition);
+box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+position: relative;
+overflow: hidden;
+}
+.hivetimes-btn::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+transition: var(--transition);
+}
+.hivetimes-btn:hover::before {
+left: 100%;
+}
+.hivetimes-btn:hover {
+transform: translateY(-2px);
+box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+background: linear-gradient(135deg, #764ba2, #5a67d8);
+}
+.hamburger {
+display: none;
+background: none;
+border: none;
+color: white;
+font-size: 24px;
+cursor: pointer;
+transition: var(--transition);
+}
+.hamburger:hover {
+transform: rotate(90deg);
+}
+/* Hero Section */
+.hero {
+height: 100vh;
+background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+url('https://images.unsplash.com/photo-1583512525935-0c34c5c5c5c5?w=1600') center/cover;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+color: var(--white);
+padding: 0 20px;
+position: relative;
+}
+.hero::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+z-index: 1;
+}
+.hero-content {
+max-width: 800px;
+animation: fadeInUp 1s ease;
+position: relative;
+z-index: 2;
+}
+.hero h1 {
+font-size: 48px;
+margin-bottom: 20px;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+background: linear-gradient(to right, var(--white), var(--light-color));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+.hero p {
+font-size: 20px;
+margin-bottom: 30px;
+text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+.cta-buttons {
+display: flex;
+gap: 20px;
+justify-content: center;
+}
+.btn {
+padding: 15px 40px;
+border-radius: 50px;
+text-decoration: none;
+font-weight: bold;
+font-size: 16px;
+transition: var(--transition);
+display: inline-block;
+position: relative;
+overflow: hidden;
+}
+.btn::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+transition: var(--transition);
+}
+.btn:hover::before {
+left: 100%;
+}
+.btn-primary {
+background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+color: var(--white);
+box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+}
+.btn-primary:hover {
+transform: translateY(-3px);
+box-shadow: 0 10px 25px rgba(139, 69, 19, 0.5);
+}
+.btn-secondary {
+background: transparent;
+color: var(--white);
+border: 2px solid var(--white);
+}
+.btn-secondary:hover {
+background: var(--white);
+color: var(--primary-color);
+transform: translateY(-3px);
+box-shadow: 0 10px 20px rgba(255, 255, 255, 0.3);
+}
+/* Services Section */
+.services {
+padding: 100px 5%;
+background: var(--white);
+position: relative;
+}
+.services::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: radial-gradient(circle at center, var(--light-color) 0%, transparent 70%);
+z-index: 0;
+}
+.section-title {
+text-align: center;
+margin-bottom: 60px;
+position: relative;
+z-index: 1;
+}
+.section-title h2 {
+font-size: 42px;
+color: var(--primary-color);
+margin-bottom: 15px;
+position: relative;
+display: inline-block;
+}
+.section-title h2::after {
+content: '';
+position: absolute;
+bottom: -10px;
+left: 50%;
+transform: translateX(-50%);
+width: 80px;
+height: 4px;
+background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+border-radius: 2px;
+}
+.section-title p {
+font-size: 18px;
+color: #666;
+max-width: 600px;
+margin: 25px auto 0;
+}
+.services-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 40px;
+position: relative;
+z-index: 1;
+}
+.service-card {
+background: var(--white);
+border-radius: 20px;
+overflow: hidden;
+box-shadow: var(--shadow);
+transition: var(--transition);
+position: relative;
+border: 2px solid transparent;
+background-clip: padding-box;
+}
+.service-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+z-index: -1;
+border-radius: 20px;
+opacity: 0;
+transition: var(--transition);
+}
+.service-card:hover {
+transform: translateY(-15px);
+box-shadow: var(--shadow-lg);
+border-color: var(--secondary-color);
+}
+.service-card:hover::before {
+opacity: 0.1;
+}
+.service-img {
+height: 250px;
+background-size: cover;
+background-position: center;
+position: relative;
+overflow: hidden;
+}
+.service-img::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+opacity: 0;
+transition: var(--transition);
+}
+.service-card:hover .service-img::before {
+opacity: 1;
+}
+.service-wood {
+background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+url('https://images.unsplash.com/photo-1583512525935-0c34c5c5c5c5?w=600') center/cover;
+}
+.service-laminate {
+background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+url('https://images.unsplash.com/photo-1598928506311-c55ded91a20c?w=600') center/cover;
+}
+.service-skirting {
+background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+url('https://images.unsplash.com/photo-1583512525935-0c34c5c5c5c5?w=600') center/cover;
+}
+.service-content {
+padding: 30px;
+}
+.service-content h3 {
+font-size: 26px;
+color: var(--primary-color);
+margin-bottom: 15px;
+position: relative;
+padding-bottom: 10px;
+}
+.service-content h3::after {
+content: '';
+position: absolute;
+bottom: 0;
+left: 0;
+width: 50px;
+height: 3px;
+background: var(--secondary-color);
+border-radius: 3px;
+}
+.service-content p {
+color: #666;
+margin-bottom: 25px;
+line-height: 1.8;
+}
+.service-price {
+font-size: 22px;
+font-weight: bold;
+color: var(--secondary-color);
+margin-bottom: 20px;
+display: block;
+}
+.service-whatsapp {
+display: block;
+width: 100%;
+padding: 12px 20px;
+background: linear-gradient(135deg, #25D366, #128C7E);
+color: white;
+text-decoration: none;
+border-radius: 10px;
+font-weight: bold;
+text-align: center;
+transition: var(--transition);
+border: none;
+cursor: pointer;
+box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+}
+.service-whatsapp:hover {
+transform: translateY(-3px);
+box-shadow: 0 6px 15px rgba(37, 211, 102, 0.5);
+background: linear-gradient(135deg, #128C7E, #075E54);
+}
+.service-whatsapp i {
+font-size: 18px;
+}
+/* About Section */
+.about {
+padding: 100px 5%;
+background: linear-gradient(135deg, var(--light-color), var(--white));
+position: relative;
+overflow: hidden;
+}
+.about::before {
+content: '';
+position: absolute;
+top: -50%;
+right: -10%;
+width: 600px;
+height: 600px;
+background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+opacity: 0.05;
+border-radius: 50%;
+}
+.about::after {
+content: '';
+position: absolute;
+bottom: -50%;
+left: -10%;
+width: 600px;
+height: 600px;
+background: radial-gradient(circle, var(--secondary-color) 0%, transparent 70%);
+opacity: 0.05;
+border-radius: 50%;
+}
+.about-content {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 50px;
+align-items: center;
+position: relative;
+z-index: 1;
+}
+.about-text h2 {
+font-size: 42px;
+color: var(--primary-color);
+margin-bottom: 20px;
+position: relative;
+display: inline-block;
+}
+.about-text h2::after {
+content: '';
+position: absolute;
+bottom: -10px;
+left: 0;
+width: 100px;
+height: 4px;
+background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+border-radius: 2px;
+}
+.about-text p {
+margin-bottom: 20px;
+color: #555;
+line-height: 1.8;
+}
+.about-stats {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 20px;
+margin-top: 30px;
+}
+.stat-item {
+text-align: center;
+padding: 25px;
+background: var(--white);
+border-radius: 15px;
+box-shadow: var(--shadow);
+transition: var(--transition);
+border: 2px solid transparent;
+}
+.stat-item:hover {
+transform: translateY(-5px);
+border-color: var(--secondary-color);
+box-shadow: var(--shadow-lg);
+}
+.stat-number {
+font-size: 42px;
+font-weight: bold;
+color: var(--secondary-color);
+margin-bottom: 5px;
+}
+.stat-label {
+font-size: 14px;
+color: #666;
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+.about-image {
+border-radius: 20px;
+overflow: hidden;
+box-shadow: var(--shadow-lg);
+height: 400px;
+background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+url('https://images.unsplash.com/photo-1583512525935-0c34c5c5c5c5?w=800') center/cover;
+position: relative;
+animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(-20px); }
+}
+/* Contact Section */
+.contact {
+padding: 100px 5%;
+background: var(--white);
+position: relative;
+}
+.contact::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: radial-gradient(circle at center, var(--light-color) 0%, transparent 70%);
+z-index: 0;
+}
+.contact-container {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 50px;
+position: relative;
+z-index: 1;
+}
+.contact-info h3 {
+font-size: 36px;
+color: var(--primary-color);
+margin-bottom: 30px;
+position: relative;
+display: inline-block;
+}
+.contact-info h3::after {
+content: '';
+position: absolute;
+bottom: -10px;
+left: 0;
+width: 80px;
+height: 4px;
+background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+border-radius: 2px;
+}
+.contact-details {
+margin-bottom: 30px;
+}
+.contact-item {
+display: flex;
+align-items: flex-start;
+gap: 15px;
+margin-bottom: 25px;
+padding: 15px;
+background: var(--white);
+border-radius: 10px;
+box-shadow: var(--shadow);
+transition: var(--transition);
+border-left: 4px solid var(--secondary-color);
+}
+.contact-item:hover {
+transform: translateX(10px);
+box-shadow: var(--shadow-lg);
+}
+.contact-icon {
+font-size: 28px;
+color: var(--secondary-color);
+min-width: 40px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.contact-text h4 {
+font-size: 18px;
+color: var(--dark-color);
+margin-bottom: 8px;
+font-weight: 600;
+}
+.contact-text p, .contact-text a {
+color: #666;
+text-decoration: none;
+transition: var(--transition);
+line-height: 1.6;
+}
+.contact-text a:hover {
+color: var(--secondary-color);
+text-decoration: underline;
+}
+.contact-form h3 {
+font-size: 36px;
+color: var(--primary-color);
+margin-bottom: 30px;
+position: relative;
+display: inline-block;
+}
+.contact-form h3::after {
+content: '';
+position: absolute;
+bottom: -10px;
+left: 0;
+width: 80px;
+height: 4px;
+background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+border-radius: 2px;
+}
+.form-group {
+margin-bottom: 25px;
+}
+.form-group label {
+display: block;
+margin-bottom: 10px;
+color: var(--dark-color);
+font-weight: 600;
+font-size: 15px;
+}
+.form-control {
+width: 100%;
+padding: 15px 20px;
+border: 2px solid #ddd;
+border-radius: 12px;
+font-size: 16px;
+transition: var(--transition);
+background: var(--white);
+}
+.form-control:focus {
+outline: none;
+border-color: var(--secondary-color);
+box-shadow: 0 0 0 4px rgba(210, 105, 30, 0.1);
+}
+textarea.form-control {
+min-height: 180px;
+resize: vertical;
+padding: 15px 20px;
+}
+.submit-btn {
+background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+color: var(--white);
+padding: 18px 40px;
+border: none;
+border-radius: 12px;
+font-size: 18px;
+font-weight: bold;
+cursor: pointer;
+transition: var(--transition);
+width: 100%;
+box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+position: relative;
+overflow: hidden;
+}
+.submit-btn::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+transition: var(--transition);
+}
+.submit-btn:hover::before {
+left: 100%;
+}
+.submit-btn:hover {
+transform: translateY(-3px);
+box-shadow: 0 10px 25px rgba(139, 69, 19, 0.5);
+}
+/* Footer */
+footer {
+background: linear-gradient(135deg, var(--dark-color), var(--primary-color));
+color: var(--white);
+padding: 80px 5% 40px;
+position: relative;
+overflow: hidden;
+}
+footer::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+z-index: 0;
+}
+.footer-content {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 40px;
+position: relative;
+z-index: 1;
+}
+.footer-column h3 {
+font-size: 26px;
+margin-bottom: 30px;
+position: relative;
+padding-bottom: 15px;
+}
+.footer-column h3::after {
+content: '';
+position: absolute;
+bottom: 0;
+left: 0;
+width: 60px;
+height: 4px;
+background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+border-radius: 2px;
+}
+.footer-links {
+list-style: none;
+}
+.footer-links li {
+margin-bottom: 15px;
+}
+.footer-links a {
+color: #ccc;
+text-decoration: none;
+transition: var(--transition);
+display: block;
+padding: 8px 0;
+border-left: 3px solid transparent;
+}
+.footer-links a:hover {
+color: var(--light-color);
+transform: translateX(8px);
+border-left-color: var(--secondary-color);
+}
+.footer-contact p {
+margin-bottom: 15px;
+color: #ccc;
+display: flex;
+align-items: center;
+gap: 12px;
+padding: 8px 0;
+transition: var(--transition);
+}
+.footer-contact p:hover {
+color: var(--light-color);
+transform: translateX(5px);
+}
+.footer-contact i {
+color: var(--secondary-color);
+font-size: 18px;
+min-width: 25px;
+}
+.copyright {
+text-align: center;
+padding-top: 40px;
+margin-top: 40px;
+border-top: 1px solid rgba(255, 255, 255, 0.1);
+color: #aaa;
+font-size: 15px;
+position: relative;
+z-index: 1;
+}
+/* Floating WhatsApp Button */
+.floating-whatsapp {
+position: fixed;
+bottom: 30px;
+right: 30px;
+background: linear-gradient(135deg, #25D366, #128C7E);
+color: white;
+width: 65px;
+height: 65px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+text-decoration: none;
+font-size: 30px;
+box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+z-index: 999;
+transition: var(--transition);
+animation: pulse 2s infinite;
+border: 4px solid white;
+}
+.floating-whatsapp:hover {
+transform: scale(1.15) rotate(10deg);
+box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+}
+/* Animations */
+@keyframes fadeInUp {
+from {
+opacity: 0;
+transform: translateY(50px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+@keyframes pulse {
+0%, 100% {
+box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+}
+50% {
+box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
+}
+}
+@keyframes bounce {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(-10px); }
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+.hamburger {
+display: block;
+}
+.nav-links {
+position: fixed;
+top: 80px;
+right: -100%;
+flex-direction: column;
+background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+width: 100%;
+padding: 30px;
+transition: var(--transition);
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+gap: 20px;
+}
+.nav-links.active {
+right: 0;
+}
+.hero h1 {
+font-size: 36px;
+}
+.hero p {
+font-size: 18px;
+}
+.cta-buttons {
+flex-direction: column;
+align-items: center;
+}
+.about-content,
+.contact-container {
+grid-template-columns: 1fr;
+}
+.about-image {
+height: 300px;
+}
+.footer-content {
+grid-template-columns: 1fr;
+}
+.floating-whatsapp {
+bottom: 20px;
+right: 20px;
+width: 55px;
+height: 55px;
+font-size: 26px;
+}
+}
+@media (max-width: 480px) {
+header {
+padding: 12px 5%;
+}
+.logo {
+font-size: 24px;
+}
+.logo i {
+font-size: 26px;
+}
+.hero h1 {
+font-size: 28px;
+}
+.section-title h2 {
+font-size: 32px;
+}
+.services-grid {
+gap: 25px;
+}
+.service-content {
+padding: 20px;
+}
+.contact-item {
+flex-direction: column;
+align-items: flex-start;
+gap: 10px;
+}
+.contact-icon {
+font-size: 24px;
+}
+}
+</style>
+</head>
+<body>
+<!-- Header -->
+<header>
+<a href="#" class="logo">
+<i class="fas fa-tree"></i>
+DUNCAN
+<span>WOODEN FLOORS</span>
+</a>
+<nav>
+<button class="hamburger" id="hamburger">☰</button>
+<div class="nav-links" id="navLinks">
+<a href="#home"><i class="fas fa-home"></i> Home</a>
+<a href="#services"><i class="fas fa-cubes"></i> Services</a>
+<a href="#about"><i class="fas fa-info-circle"></i> About</a>
+<a href="#contact"><i class="fas fa-envelope"></i> Get in Touch</a>
+<a href="https://hivetimes.co.za" class="hivetimes-btn" target="_blank">
+<i class="fas fa-globe"></i> HiveTimes
+</a>
+</div>
+</nav>
+</header>
+<!-- Hero Section -->
+<section class="hero" id="home">
+<div class="hero-content">
+<h1>Premium Wooden Flooring Solutions</h1>
+<p>Expert installation of wooden floors, laminate flooring, and skirting boards. Quality craftsmanship guaranteed for residential and commercial spaces.</p>
+<div class="cta-buttons">
+<a href="#services" class="btn btn-primary"><i class="fas fa-arrow-down"></i> Explore Services</a>
+<a href="https://wa.me/27633817445?text=I'm%20enquiring%20from%20hivetimes.co.za%20about%20your%20service" class="btn btn-secondary">
+<i class="fab fa-whatsapp"></i> Get Free Quote
+</a>
+</div>
+</div>
+</section>
+<!-- Services Section -->
+<section class="services" id="services">
+<div class="section-title">
+<h2><i class="fas fa-cubes"></i> Our Premium Services</h2>
+<p>Specializing in high-quality wooden flooring solutions for residential and commercial spaces</p>
+</div>
+<div class="services-grid">
+<div class="service-card">
+<div class="service-img service-wood"></div>
+<div class="service-content">
+<h3><i class="fas fa-tree"></i> Wooden Flooring</h3>
+<p>Authentic hardwood floors that add warmth, elegance, and lasting value to your home or business. Premium quality installation guaranteed.</p>
+<span class="service-price"><i class="fas fa-tag"></i> From R350/m²</span>
+<a href="https://wa.me/27633817445?text=I'm%20enquiring%20from%20hivetimes.co.za%20about%20your%20Wooden%20Flooring%20service.%20Please%20send%20me%20more%20information%20and%20a%20quote." class="service-whatsapp">
+<i class="fab fa-whatsapp"></i> Enquire About Wooden Flooring
+</a>
+</div>
+</div>
+<div class="service-card">
+<div class="service-img service-laminate"></div>
+<div class="service-content">
+<h3><i class="fas fa-layer-group"></i> Laminate Flooring</h3>
+<p>Modern, durable, and cost-effective laminate options that mimic the look of real wood beautifully. Perfect for high-traffic areas.</p>
+<span class="service-price"><i class="fas fa-tag"></i> From R180/m²</span>
+<a href="https://wa.me/27633817445?text=I'm%20enquiring%20from%20hivetimes.co.za%20about%20your%20Laminate%20Flooring%20service.%20Please%20send%20me%20more%20information%20and%20a%20quote." class="service-whatsapp">
+<i class="fab fa-whatsapp"></i> Enquire About Laminate Flooring
+</a>
+</div>
+</div>
+<div class="service-card">
+<div class="service-img service-skirting"></div>
+<div class="service-content">
+<h3><i class="fas fa-ruler-combined"></i> Skirting Boards</h3>
+<p>Professional skirting board installation to complete your flooring project with perfect finishing touches. Various styles available.</p>
+<span class="service-price"><i class="fas fa-tag"></i> From R85/m</span>
+<a href="https://wa.me/27633817445?text=I'm%20enquiring%20from%20hivetimes.co.za%20about%20your%20Skirting%20Boards%20service.%20Please%20send%20me%20more%20information%20and%20a%20quote." class="service-whatsapp">
+<i class="fab fa-whatsapp"></i> Enquire About Skirting Boards
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="about" id="about">
+<div class="about-content">
+<div class="about-text">
+<h2><i class="fas fa-info-circle"></i> About Duncan Wooden Floors</h2>
+<p><strong>Located at Darras Center, Kitchener Avenue, Kensington</strong>, we are your trusted experts in wooden flooring solutions. With years of experience and a commitment to quality craftsmanship, we transform spaces with beautiful, durable flooring.</p>
+<p>Our team of skilled professionals ensures every installation meets the highest standards, using only premium materials and proven techniques. Whether you're renovating your home or outfitting a commercial space, we deliver exceptional results that stand the test of time.</p>
+<div class="about-stats">
+<div class="stat-item">
+<div class="stat-number">500+</div>
+<div class="stat-label">Projects Completed</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">10+</div>
+<div class="stat-label">Years Experience</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">98%</div>
+<div class="stat-label">Customer Satisfaction</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">24h</div>
+<div class="stat-label">Quick Response</div>
+</div>
+</div>
+</div>
+<div class="about-image"></div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="contact" id="contact">
+<div class="section-title">
+<h2><i class="fas fa-envelope"></i> Get in Touch</h2>
+<p>Get in touch for a free consultation and quote. We respond within 24 hours.</p>
+</div>
+<div class="contact-container">
+<div class="contact-info">
+<h3><i class="fas fa-map-marker-alt"></i> Contact Information</h3>
+<div class="contact-details">
+<div class="contact-item">
+<div class="contact-icon">
+<i class="fas fa-map-marker-alt"></i>
+</div>
+<div class="contact-text">
+<h4>Our Location</h4>
+<p>Darras Center, Kitchener Avenue, Kensington</p>
+</div>
+</div>
+<div class="contact-item">
+<div class="contact-icon">
+<i class="fab fa-whatsapp"></i>
+</div>
+<div class="contact-text">
+<h4>WhatsApp</h4>
+<a href="https://wa.me/27633817445?text=I'm%20enquiring%20from%20hivetimes.co.za%20about%20your%20service">+27 63 381 7445</a>
+</div>
+</div>
+<div class="contact-item">
+<div class="contact-icon">
+<i class="fas fa-clock"></i>
+</div>
+<div class="contact-text">
+<h4>Working Hours</h4>
+<p>Monday - Friday: 8:00 AM - 5:00 PM<br>
+Saturday: 9:00 AM - 2:00 PM<br>
+Sunday: Closed</p>
+</div>
+</div>
+</div>
+<div style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); padding: 30px; border-radius: 15px; color: white; box-shadow: var(--shadow-lg);">
+<h3 style="color: white; margin-bottom: 15px;"><i class="fas fa-bolt"></i> Quick Enquiry</h3>
+<p style="margin-bottom: 20px; line-height: 1.6;">Send us a WhatsApp message with your requirements and we'll get back to you within 24 hours with a free quote.</p>
+<a href="https://wa.me/27633817445?text=I'm%20enquiring%20from%20hivetimes.co.za%20about%20your%20service" class="btn btn-primary" style="display: block; text-align: center; width: 100%;">
+<i class="fab fa-whatsapp"></i> WhatsApp Now
+</a>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer>
+<div class="footer-content">
+<div class="footer-column">
+<h3><i class="fas fa-tree"></i> DUNCAN WOODEN FLOORS</h3>
+<p>Providing premium wooden flooring solutions in Kensington and surrounding areas. Quality craftsmanship guaranteed for over 10 years.</p>
+</div>
+<div class="footer-column">
+<h3><i class="fas fa-link"></i> Quick Links</h3>
+<ul class="footer-links">
+<li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+<li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+<li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+<li><a href="#contact"><i class="fas fa-chevron-right"></i> Get in Touch</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h3><i class="fas fa-cubes"></i> Our Services</h3>
+<ul class="footer-links">
+<li><a href="#services"><i class="fas fa-chevron-right"></i> Wooden Flooring</a></li>
+<li><a href="#services"><i class="fas fa-chevron-right"></i> Laminate Flooring</a></li>
+<li><a href="#services"><i class="fas fa-chevron-right"></i> Skirting Boards</a></li>
+<li><a href="#contact"><i class="fas fa-chevron-right"></i> Free Consultation</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h3><i class="fas fa-address-book"></i> Contact Info</h3>
+<div class="footer-contact">
+<p><i class="fas fa-map-marker-alt"></i> Darras Center, Kitchener Avenue, Kensington</p>
+<p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/27633817445?text=I'm%20enquiring%20from%20hivetimes.co.za%20about%20your%20service">+27 63 381 7445</a></p>
+<p><i class="fas fa-envelope"></i> info@duncanwoodenfloors.co.za</p>
+<p><i class="fas fa-clock"></i> Mon-Fri: 8AM-5PM | Sat: 9AM-2PM</p>
+</div>
+</div>
+</div>
+<div class="copyright">
+<p>&copy; 2026 Duncan Wooden Floors. All Rights Reserved. | Enquiries from hivetimes.co.za welcome</p>
+</div>
+</footer>
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/27633817445?text=I'm%20enquiring%20from%20hivetimes.co.za%20about%20your%20service" class="floating-whatsapp" title="WhatsApp Us">
+<i class="fab fa-whatsapp"></i>
+</a>
+<script>
+// Mobile Navigation Toggle
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+navLinks.classList.toggle('active');
+hamburger.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+});
+// Close mobile menu when clicking a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+link.addEventListener('click', () => {
+navLinks.classList.remove('active');
+hamburger.textContent = '☰';
+});
+});
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e) {
+e.preventDefault();
+const target = document.querySelector(this.getAttribute('href'));
+if (target) {
+window.scrollTo({
+top: target.offsetTop - 80,
+behavior: 'smooth'
+});
+}
+});
+});
+// Form submission handling
+const enquiryForm = document.getElementById('enquiryForm');
+if (enquiryForm) {
+enquiryForm.addEventListener('submit', function(e) {
+e.preventDefault();
+// Get form values
+const name = document.getElementById('name').value;
+const phone = document.getElementById('phone').value;
+const email = document.getElementById('email').value;
+const service = document.getElementById('service').value;
+const message = document.getElementById('message').value;
+// Create WhatsApp message
+const whatsappMessage = `I'm enquiring from hivetimes.co.za about your service.%0A%0AName: ${name}%0APhone: ${phone}%0AEmail: ${email}%0AService: ${service}%0AMessage: ${message}`;
+// Redirect to WhatsApp
+window.location.href = `https://wa.me/27633817445?text=${whatsappMessage}`;
+});
+}
+// Header scroll effect
+window.addEventListener('scroll', function() {
+const header = document.querySelector('header');
+if (window.scrollY > 100) {
+header.style.background = 'linear-gradient(135deg, rgba(139, 69, 19, 0.98), rgba(210, 105, 30, 0.98))';
+header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.2)';
+header.style.padding = '10px 5%';
+} else {
+header.style.background = 'linear-gradient(135deg, var(--primary-color), var(--secondary-color))';
+header.style.boxShadow = 'var(--shadow)';
+header.style.padding = '15px 5%';
+}
+});
+// Animate service cards on scroll
+const serviceCards = document.querySelectorAll('.service-card');
+serviceCards.forEach((card, index) => {
+card.style.opacity = '0';
+card.style.transform = 'translateY(30px)';
+card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+setTimeout(() => {
+card.style.opacity = '1';
+card.style.transform = 'translateY(0)';
+}, 300 + (index * 200));
+});
+// Add bounce animation to floating WhatsApp button on page load
+setTimeout(() => {
+document.querySelector('.floating-whatsapp').style.animation = 'bounce 1s ease infinite';
+}, 1000);
+</script>
+</body>
+</html>
