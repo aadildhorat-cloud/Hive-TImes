@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DTPGZ964FD"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-DTPGZ964FD');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nothing Fancy</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<link rel="stylesheet" href="css/style.css"
+
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-container">
+    <!-- Hamburger Button -->
+    <button class="hamburger-btn" id="hamburgerBtn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Side Menu -->
+    <nav class="side-menu" id="sideMenu">
+      <div class="menu-header">
+        <img src="images-logo/nothing-fancy-logo.jpg" alt="Nothing Fancy Logo">
+        <h2>NOTHING FANCY</h2>
+      </div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <a href="index.html" class="menu-link" onclick="toggleMenu()">
+            <span><i class="fas fa-home"></i> Hive Times</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="javascript:void(0)" class="menu-link about-business-link" onclick="showBusinessModal(); toggleMenu()" style="color: #a30909 !important;">
+            <span><i class="fas fa-info-circle"></i> About Business</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <div class="menu-link" onclick="toggleSubmenu('toilet-paper')">
+            <span><i class="fas fa-toilet-paper"></i> Toilet Paper</span>
+            <i class="fas fa-chevron-down arrow"></i>
+          </div>
+          <div class="submenu" id="toilet-paper-submenu">
+            <a href="#2-ply" class="submenu-item" onclick="scrollToSection('2-ply')">2-PLY</a>
+            <a href="#2-ply-bales" class="submenu-item" onclick="scrollToSection('2-ply-bales')">2-PLY BALES</a>
+            <a href="#1-ply" class="submenu-item" onclick="scrollToSection('1-ply')">1-PLY</a>
+          </div>
+        </div>
+        <div class="menu-item">
+          <a href="#kitchen-towels" class="menu-link" onclick="scrollToSection('kitchen-towels')">
+            <span><i class="fas fa-kitchen-set"></i> Kitchen Towels</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="#garage-rolls" class="menu-link" onclick="scrollToSection('garage-rolls')">
+            <span><i class="fas fa-car"></i> Garage Rolls</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="#other" class="menu-link" onclick="scrollToSection('other')">
+            <span><i class="fas fa-box-open"></i> Other</span>
+          </a>
+        </div>
+      </div>
+      <div class="menu-footer">
+        <div class="contact-info">
+          <p><i class="fas fa-phone"></i> 071 021 8554</p>
+          <p><i class="fas fa-envelope"></i> contact@nothingfancy.co.za</p>
+        </div>
+        <div class="social-links">
+          <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://wa.me/27710218554" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Logo -->
+    <div class="logo-container">
+      <img src="images-logo/nothing-fancy-logo.jpg" alt="Logo" class="logo-img">
+      <div class="logo">NOTHING FANCY</div>
+    </div>
+
+    <!-- Cart -->
+    <button class="cart-btn" onclick="showCartModal()">
+      <i class="fas fa-shopping-cart"></i> Cart (<span id="cartCount">0</span>)
+    </button>
+  </div>
+
+  <!-- AI Search Bar -->
+  <div class="ai-search-bar-container">
+    <input type="text" id="aiProductSearchInput" placeholder="e.g. 2-ply, under R100, kitchen towels...">
+  </div>
+</header>
+
+<!-- SLIDER -->
+<div id="slider-container"></div>
+
+<!-- BUSINESS MODAL -->
+<div class="business-modal-overlay" id="businessModalOverlay">
+  <div class="business-modal" id="businessModal">
+    <button class="close-business-modal" id="closeBusinessModal">
+      <i class="fas fa-times"></i>
+    </button>
+    <div class="business-modal-content">
+      <div class="business-hero">
+        <img src="images-logo/nothing-fancy-logo.jpg" alt="Nothing Fancy Logo" class="business-hero-logo">
+        <h1 class="business-hero-title">Nothing Fancy</h1>
+        <p class="business-hero-tagline">The softest hearts with the smoothest prices</p>
+      </div>
+      <div class="business-info-grid">
+        <section class="business-section">
+          <h2><i class="fas fa-info-circle"></i> About Us</h2>
+          <p>Welcome to Nothing Fancy — your trusted supplier of premium toilet paper, kitchen towels, and garage rolls across Johannesburg. We serve retailers, schools, and event planners with reliable quality and competitive pricing.</p>
+        </section>
+        <section class="business-section">
+          <h2><i class="fas fa-clock"></i> Opening Hours</h2>
+          <ul>
+            <li>Monday – Friday: 9:00 AM – 5:30 PM</li>
+            <li>Saturday: 9:00 AM – 3:30 PM</li>
+            <li>Sunday: 9:30 AM – 1:00 PM</li>
+          </ul>
+          <h3 style="margin-top: 15px;"><i class="fas fa-phone"></i> 071 021 8554</h3>
+          <p><i class="fas fa-envelope"></i> contact@nothingfancy.co.za</p>
+        </section>
+        <section class="business-section business-map-section">
+          <h2><i class="fas fa-map-marker-alt"></i> Find Us</h2>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.6842370920644!2d28.12810667588992!3d-26.206948177074935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e9511c8b8df046f%3A0x9e90e795828e63eb!2sBroadway%20Sweets!5e0!3m2!1sen!2sza!4v1768465817105!5m2!1sen!2sza" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT SECTIONS -->
+<div class="content-section">
+  <h2 id="2-ply" class="section-title">2-PLY</h2>
+  <div class="products-grid" id="toiletPaperProductsGrid">
+    <div class="product-card" data-id="tp-lefleur-48-350" data-category="toilet-paper" data-price="275.00">
+      <img src="images-nothingfancy/La-Fleur-48-Pack-350-Sheets-Bale-of-4-chocolate.jpg" alt="Le Fleur 48-Pack 350 Sheets" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Le Fleur 48-Pack 350 Sheets</div>
+        <div class="product-price">R275.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'tp-lefleur-48-350', name: 'Le Fleur 48-Pack 350 Sheets', price: 275.00, quantity: 1, image: 'images-nothingfancy/La-Fleur-48-Pack-350-Sheets-Bale-of-4-chocolate.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="tp-lefleur-18-350" data-category="toilet-paper" data-price="105.00">
+      <img src="images-nothingfancy/La-Fleur-18-Pack-350-Sheets-Bale-of-4-chocolate.jpg" alt="Le Fleur 18-Pack 350 Sheets" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Le Fleur 18-Pack 350 Sheets</div>
+        <div class="product-price">R105.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'tp-lefleur-18-350', name: 'Le Fleur 18-Pack 350 Sheets', price: 105.00, quantity: 1, image: 'images-nothingfancy/La-Fleur-18-Pack-350-Sheets-Bale-of-4-chocolate.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="tp-lefleur-18-350-recycled" data-category="toilet-paper" data-price="95.00">
+      <img src="images-nothingfancy/La-Fleur-18-Pack-350-Sheets(recycled-paper).jpg" alt="Le Fleur 18-Pack 350 Sheets Recycled Paper" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Le Fleur 18-Pack 350 Sheets Recycled Paper</div>
+        <div class="product-price">R95.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'tp-lefleur-18-350-recycled', name: 'Le Fleur 18-Pack 350 Sheets Recycled Paper', price: 95.00, quantity: 1, image: 'images-nothingfancy/La-Fleur-18-Pack-350-Sheets(recycled-paper).jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="tp-lefleur-9-350" data-category="toilet-paper" data-price="70.00">
+      <img src="images-nothingfancy/La-Fleur-9-Pack-350-Sheets.jpg" alt="Le Fleur 9-Pack 350 Sheets" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Le Fleur 9-Pack 350 Sheets</div>
+        <div class="product-price">R70.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'tp-lefleur-9-350', name: 'Le Fleur 9-Pack 350 Sheets', price: 70.00, quantity: 1, image: 'images-nothingfancy/La-Fleur-9-Pack-350-Sheets.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="tp-lefleur-4-350" data-category="toilet-paper" data-price="40.00">
+      <img src="images-nothingfancy/La-Fleur-4-Pack-350-Sheets.jpg" alt="Le Fleur 4-Pack 350 Sheets" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Le Fleur 4-Pack 350 Sheets</div>
+        <div class="product-price">R40.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'tp-lefleur-4-350', name: 'Le Fleur 4-Pack 350 Sheets', price: 40.00, quantity: 1, image: 'images-nothingfancy/La-Fleur-4-Pack-350-Sheets.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="tp-plain-48-200" data-category="toilet-paper" data-price="205.00">
+      <img src="images-nothingfancy/plan-packaging-48-pack-200-sheets.jpg" alt="Plain Packaging 48-Pack 200 Sheets" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Plain Packaging 48-Pack 200 Sheets</div>
+        <div class="product-price">R205.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'tp-plain-48-200', name: 'Plain Packaging 48-Pack 200 Sheets', price: 205.00, quantity: 1, image: 'images-nothingfancy/plan-packaging-48-pack-200-sheets.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="tp-plain-30-200" data-category="toilet-paper" data-price="125.00">
+      <img src="images-nothingfancy/plan-packaging-30-pack-200-sheets.jpg" alt="Plain Packaging 30-Pack 200 Sheets" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Plain Packaging 30-Pack 200 Sheets</div>
+        <div class="product-price">R125.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'tp-plain-30-200', name: 'Plain Packaging 30-Pack 200 Sheets', price: 125.00, quantity: 1, image: 'images-nothingfancy/plan-packaging-30-pack-200-sheets.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-section">
+  <h2 id="2-ply-bales" class="section-title">2-PLY BALES</h2>
+  <div class="products-grid" id="twoPlyBalesProductsGrid">
+    <div class="product-card" data-id="bale-lefleur-18-350-x4" data-category="bales" data-price="405.00">
+      <img src="images-nothingfancy/Le-Fleur-18-Pack-350-Sheets-Bale-of-4-chocolate.jpg" alt="Le Fleur 18-Pack 350 Sheets Bale of 4" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Le Fleur 18-Pack 350 Sheets Bale of 4</div>
+        <div class="product-price">R405.00 per bale of 4</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'bale-lefleur-18-350-x4', name: 'Le Fleur 18-Pack 350 Sheets Bale of 4', price: 405.00, quantity: 1, image: 'images-nothingfancy/Le-Fleur-18-Pack-350-Sheets-Bale-of-4-chocolate.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="bale-lefleur-18-350-recycled-x4" data-category="bales" data-price="365.00">
+      <img src="images-nothingfancy/La-Fleur-18-Pack-350-Sheets(recycled-paper).jpg" alt="Le Fleur 18-Pack 350 Sheets Recycled Paper Bale of 4" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Le Fleur 18-Pack 350 Sheets Recycled Paper Bale of 4</div>
+        <div class="product-price">R365.00 per bale of 4</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'bale-lefleur-18-350-recycled-x4', name: 'Le Fleur 18-Pack 350 Sheets Recycled Paper Bale of 4', price: 365.00, quantity: 1, image: 'images-nothingfancy/La-Fleur-18-Pack-350-Sheets(recycled-paper).jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="bale-lefleur-9-350-x8" data-category="bales" data-price="525.00">
+      <img src="images-nothingfancy/La-Fleur-9-Pack-350-Sheets.jpg" alt="Le Fleur 9-Pack 350 Sheets Bale of 8" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Le Fleur 9-Pack 350 Sheets Bale of 8</div>
+        <div class="product-price">R525.00 per bale of 8</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'bale-lefleur-9-350-x8', name: 'Le Fleur 9-Pack 350 Sheets Bale of 8', price: 525.00, quantity: 1, image: 'images-nothingfancy/La-Fleur-9-Pack-350-Sheets.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="bale-lefleur-4-350-x12" data-category="bales" data-price="450.00">
+      <img src="images-nothingfancy/La-Fleur-18-Pack-350-Sheets-Bale-of-4-chocolate.jpg" alt="Le Fleur 4-Pack 350 Sheets Bale of 12" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Le Fleur 4-Pack 350 Sheets Bale of 12</div>
+        <div class="product-price">R450.00 per bale of 12</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'bale-lefleur-4-350-x12', name: 'Le Fleur 4-Pack 350 Sheets Bale of 12', price: 450.00, quantity: 1, image: 'images-nothingfancy/La-Fleur-18-Pack-350-Sheets-Bale-of-4-chocolate.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-section">
+  <h2 id="1-ply" class="section-title">1-PLY</h2>
+  <div class="products-grid" id="onePlyProductsGrid">
+    <div class="product-card" data-id="1ply-virgin-48-500" data-category="1-ply" data-price="225.00">
+      <img src="images-nothingfancy/1ply-virgin-paper-48pack-500-sheets.jpg" alt="Virgin Paper 48-Pack 500 Sheets" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Virgin Paper 48-Pack 500 Sheets</div>
+        <div class="product-price">R225.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: '1ply-virgin-48-500', name: 'Virgin Paper 48-Pack 500 Sheets', price: 225.00, quantity: 1, image: 'images-nothingfancy/1ply-virgin-paper-48pack-500-sheets.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="1ply-recycled-48-500" data-category="1-ply" data-price="175.00">
+      <img src="images-nothingfancy/recycled-paper-48-pack-500-sheets.jpg" alt="Recycled Paper 48-Pack 500 Sheets" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Recycled Paper 48-Pack 500 Sheets</div>
+        <div class="product-price">R175.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: '1ply-recycled-48-500', name: 'Recycled Paper 48-Pack 500 Sheets', price: 175.00, quantity: 1, image: 'images-nothingfancy/recycled-paper-48-pack-500-sheets.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="1ply-recycled-2nd-48-500" data-category="1-ply" data-price="125.00">
+      <img src="images-nothingfancy/recycled-paper-48-pack-500-sheets(2nd-grade-paper).jpg" alt="Recycled Paper 48-Pack 500 Sheets 2nd Grade" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Recycled Paper 48-Pack 500 Sheets 2nd Grade</div>
+        <div class="product-price">R125.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: '1ply-recycled-2nd-48-500', name: 'Recycled Paper 48-Pack 500 Sheets 2nd Grade', price: 125.00, quantity: 1, image: 'images-nothingfancy/recycled-paper-48-pack-500-sheets(2nd-grade-paper).jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-section">
+  <h2 id="kitchen-towels" class="section-title">KITCHEN TOWELS</h2>
+  <div class="products-grid" id="kitchenTowelsProductsGrid">
+    <div class="product-card" data-id="kt-nova-2-hq" data-category="kitchen-towels" data-price="25.00">
+      <img src="images-nothingfancy/towl-Nova Premium.jpg" alt="Nova Brand 2-Pack High Quality" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Nova Brand 2-Pack High Quality</div>
+        <div class="product-price">R25.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'kt-nova-2-hq', name: 'Nova Brand 2-Pack High Quality', price: 25.00, quantity: 1, image: 'images-nothingfancy/towl-Nova Premium.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="kt-nova-2-sq" data-category="kitchen-towels" data-price="20.00">
+      <img src="images-nothingfancy/towl-Nova Standard.jpg" alt="Nova Brand 2-Pack Standard Quality" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Nova Brand 2-Pack Standard Quality</div>
+        <div class="product-price">R20.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'kt-nova-2-sq', name: 'Nova Brand 2-Pack Standard Quality', price: 20.00, quantity: 1, image: 'images-nothingfancy/towl-Nova Standard.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="kt-nova-12-hq-bale2" data-category="kitchen-towels" data-price="245.00">
+      <img src="images-nothingfancy/towl-Nova Standard.jpg" alt="Nova Brand 12-Pack High Quality Bale of 2" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Nova Brand 12-Pack High Quality Bale of 2</div>
+        <div class="product-price">R245.00 per bale of 2</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'kt-nova-12-hq-bale2', name: 'Nova Brand 12-Pack High Quality Bale of 2', price: 245.00, quantity: 1, image: 'images-nothingfancy/towl-Nova Standard.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="kt-nova-12-sq-bale2" data-category="kitchen-towels" data-price="195.00">
+      <img src="images-nothingfancy/towl-Nova Standard.jpg" alt="Nova Brand 12-Pack Standard Quality Bale of 2" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Nova Brand 12-Pack Standard Quality Bale of 2</div>
+        <div class="product-price">R195.00 per bale of 2</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'kt-nova-12-sq-bale2', name: 'Nova Brand 12-Pack Standard Quality Bale of 2', price: 195.00, quantity: 1, image: 'images-nothingfancy/towl-Nova Standard.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-section">
+  <h2 id="garage-rolls" class="section-title">GARAGE ROLLS</h2>
+  <div class="products-grid" id="garageRollsProductsGrid">
+    <div class="product-card" data-id="gr-super-wipes" data-category="garage-rolls" data-price="200.00">
+      <img src="images-sweetmart/Super-Wipes-170mm-3-2kg-1500m-chocolate.jpg" alt="Super Wipes 170mm 3.2kg 1500m" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Super Wipes 170mm 3.2kg 1500m</div>
+        <div class="product-price">R200.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'gr-super-wipes', name: 'Super Wipes 170mm 3.2kg 1500m', price: 200.00, quantity: 1, image: 'images-sweetmart/Super-Wipes-170mm-3-2kg-1500m-chocolate.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="gr-econo-wipes" data-category="garage-rolls" data-price="170.00">
+      <img src="images-sweetmart/Econo-Wipes-160m-Width-860m-Length-chocolate.jpg" alt="Econo Wipes 160m Width 860m Length" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Econo Wipes 160m Width 860m Length</div>
+        <div class="product-price">R170.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'gr-econo-wipes', name: 'Econo Wipes 160m Width 860m Length', price: 170.00, quantity: 1, image: 'images-sweetmart/Econo-Wipes-160m-Width-860m-Length-chocolate.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="gr-standard-2.5kg" data-category="garage-rolls" data-price="125.00">
+      <img src="images-sweetmart/Standard-Quality-160m-Width-750m-Length-2-5kg-chocolate.jpg" alt="Standard Quality 160m Width 750m Length 2.5kg" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Standard Quality 160m Width 750m Length 2.5kg</div>
+        <div class="product-price">R125.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'gr-standard-2.5kg', name: 'Standard Quality 160m Width 750m Length 2.5kg', price: 125.00, quantity: 1, image: 'images-sweetmart/Standard-Quality-160m-Width-750m-Length-2-5kg-chocolate.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-section">
+  <h2 id="other" class="section-title">OTHER</h2>
+  <div class="products-grid" id="otherProductsGrid">
+    <div class="product-card" data-id="other-2ply-laminated-1pack" data-category="other" data-price="85.00">
+      <img src="images-sweetmart/2-Ply-Laminated-Paper-Towels-1-Pack-196mm-x-125mm-chocolate.jpg" alt="2-Ply Laminated Paper Towels 1-Pack 196mm x 125mm" class="product-image">
+      <div class="product-info">
+        <div class="product-name">2-Ply Laminated Paper Towels 1-Pack 196mm x 125mm</div>
+        <div class="product-price">R85.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'other-2ply-laminated-1pack', name: '2-Ply Laminated Paper Towels 1-Pack 196mm x 125mm', price: 85.00, quantity: 1, image: 'images-sweetmart/2-Ply-Laminated-Paper-Towels-1-Pack-196mm-x-125mm-chocolate.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="other-2ply-laminated-6pack" data-category="other" data-price="450.00">
+      <img src="images-sweetmart/2-Ply-Laminated-Paper-Towels-6-Pack-196mm-x-125mm-chocolate.jpg" alt="2-Ply Laminated Paper Towels 6-Pack 196mm x 125mm" class="product-image">
+      <div class="product-info">
+        <div class="product-name">2-Ply Laminated Paper Towels 6-Pack 196mm x 125mm</div>
+        <div class="product-price">R450.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'other-2ply-laminated-6pack', name: '2-Ply Laminated Paper Towels 6-Pack 196mm x 125mm', price: 450.00, quantity: 1, image: 'images-sweetmart/2-Ply-Laminated-Paper-Towels-6-Pack-196mm-x-125mm-chocolate.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="other-garage-roll-stand" data-category="other" data-price="475.00">
+      <img src="images-sweetmart/Garage-Roll-Stand-chocolate.jpg" alt="Garage Roll Stand" class="product-image">
+      <div class="product-info">
+        <div class="product-name">Garage Roll Stand</div>
+        <div class="product-price">R475.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'other-garage-roll-stand', name: 'Garage Roll Stand', price: 475.00, quantity: 1, image: 'images-sweetmart/Garage-Roll-Stand-chocolate.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-card" data-id="other-toilet-holder-tr2" data-category="other" data-price="285.00">
+      <img src="images-sweetmart/3-Toilet-Rolls-Holder-TR2-chocolate.jpg" alt="3 Toilet Rolls Holder TR2" class="product-image">
+      <div class="product-info">
+        <div class="product-name">3 Toilet Rolls Holder TR2</div>
+        <div class="product-price">R285.00</div>
+        <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'other-toilet-holder-tr2', name: '3 Toilet Rolls Holder TR2', price: 285.00, quantity: 1, image: 'images-sweetmart/3-Toilet-Rolls-Holder-TR2-chocolate.jpg', businessName: 'Nothing Fancy', businessLogo: 'images-logo/nothing-fancy-logo.jpg' })">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT MODAL -->
+<div class="product-modal-overlay">
+  <div class="product-modal">
+    <button class="close-product-modal" onclick="closeProductModal()"><i class="fas fa-times"></i></button>
+    <div class="product-modal-content">
+      <div class="product-modal-images">
+        <img src="" alt="Main Product Image" class="main-product-image" id="modalMainImage">
+        <div class="product-thumbnails" id="productThumbnails"></div>
+      </div>
+      <div class="product-modal-details">
+        <h3 class="product-modal-title" id="modalProductName">Product Name</h3>
+        <div class="product-modal-price" id="modalProductPrice">R0.00</div>
+        <p class="product-modal-description" id="modalProductDescription">Description</p>
+        <div class="quantity-selector">
+          <div class="variant-title">Quantity:</div>
+          <button class="quantity-btn" id="decreaseQuantity">-</button>
+          <span class="quantity-display" id="modalQuantity">1</span>
+          <button class="quantity-btn" id="increaseQuantity">+</button>
+        </div>
+        <button class="add-to-cart-modal-btn" id="modalAddToCartBtn">
+          <i class="fas fa-cart-plus"></i> Add to Cart
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CART MODAL -->
+<div class="cart-modal-overlay">
+  <div class="cart-modal">
+    <h3 class="cart-modal-title"><i class="fas fa-shopping-cart"></i> Your Shopping Cart</h3>
+    <div class="cart-items">
+      <p style="text-align: center; color: #555;">Your cart is empty.</p>
+    </div>
+    <div class="cart-total" id="cartTotal">Total: R0.00</div>
+    <button class="checkout-btn" onclick="sendCartToWhatsApp()"><i class="fab fa-whatsapp"></i> Send Order via WhatsApp</button>
+    <button class="close-cart-btn" onclick="closeCartModal()">Continue Shopping</button>
+  </div>
+</div>
+
+<!-- === FLOATING AI CHAT WIDGET BUTTON (FOR NOTHING FANCY) === -->
+<div class="ai-chat-widget" id="aiChatWidget">
+  <img src="images-logo/bee.jpg" alt="Ask Beelal AI" />
+</div>
+
+<!-- === BEELAL AI CHAT PANEL (NOTHING FANCY VERSION) === -->
+<div class="ai-chat-panel" id="aiChatPanel">
+  <div class="ai-chat-header">
+    <div class="ai-avatar-square">
+      <img src="images-logo/bee.jpg" alt="Beelal AI" />
+    </div>
+    <h4>Beelal AI</h4>
+    <button class="ai-close-btn" id="aiCloseBtn">×</button>
+  </div>
+  <div class="ai-chat-messages" id="aiChatMessages">
+    <div class="ai-message bot">
+      Hello! 👋 I'm your <strong>Nothing Fancy</strong> assistant.<br>
+      You can ask me things like:<br>
+      • “What are your opening hours?”<br>
+      • “Where are you located?”<br>
+      • “Do you deliver toilet paper?”<br>
+      • “Send me your bulk price list”
+    </div>
+  </div>
+  <div class="ai-chat-input">
+    <input type="text" id="aiUserInput" placeholder="e.g. Do you supply kitchen towels in bales?">
+    <button id="aiSendBtn"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="footer-info">
+        <h3>NOTHING FANCY</h3>
+        <p>The softest hearts with the smoothest prices.</p>
+        <div class="social-media">
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <nav class="footer-nav">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#2-ply">Shop</a></li>
+            <li><a href="#" onclick="showBusinessModal()">About Us</a></li>
+            <li><a href="mailto:contact@nothingfancy.co.za">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; Hive Times. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+// === CART ===
+const cart = {
+  items: [],
+  STORAGE_KEY: 'nothing_fancy_cart_v1',
+  init() {
+    const stored = localStorage.getItem(this.STORAGE_KEY);
+    if (stored) {
+      try {
+        this.items = JSON.parse(stored);
+      } catch (e) {
+        this.items = [];
+      }
+    }
+    this.updateCartDisplay();
+  },
+  saveCart() {
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.items));
+    this.updateCartDisplay();
+  },
+  addToCart(product) {
+    const existing = this.items.find(item => item.id === product.id);
+    if (existing) {
+      existing.quantity += product.quantity;
+    } else {
+      this.items.push(product);
+    }
+    this.saveCart();
+  },
+  updateQuantity(id, delta) {
+    const item = this.items.find(i => i.id === id);
+    if (item) {
+      item.quantity += delta;
+      if (item.quantity <= 0) {
+        this.removeItem(id);
+      } else {
+        this.saveCart();
+      }
+    }
+  },
+  removeItem(id) {
+    this.items = this.items.filter(item => item.id !== id);
+    this.saveCart();
+  },
+  calculateTotal() {
+    return this.items.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
+  },
+  updateCartDisplay() {
+    const countEl = document.getElementById('cartCount');
+    const itemsEl = document.querySelector('.cart-items');
+    const totalEl = document.getElementById('cartTotal');
+    const totalItems = this.items.reduce((sum, item) => sum + item.quantity, 0);
+    if (countEl) countEl.textContent = totalItems;
+    if (itemsEl) {
+      if (this.items.length === 0) {
+        itemsEl.innerHTML = '<p style="text-align: center; color: #555;">Your cart is empty.</p>';
+      } else {
+        itemsEl.innerHTML = '';
+        this.items.forEach(item => {
+          const div = document.createElement('div');
+          div.className = 'cart-item';
+          div.innerHTML = `
+            <img src="${item.image}" alt="${item.name}" class="cart-item-image" style="width:60px;height:60px;object-fit:cover;">
+            <div class="cart-item-details">
+              <div class="cart-item-name">${item.name}</div>
+              <div class="cart-item-price">R${(item.price * item.quantity).toFixed(2)} (${item.price.toFixed(2)} each)</div>
+              <div class="cart-item-quantity">
+                <button class="cart-quantity-btn" onclick="cart.updateQuantity('${item.id}', -1)">-</button>
+                <span class="cart-quantity-display">${item.quantity}</span>
+                <button class="cart-quantity-btn" onclick="cart.updateQuantity('${item.id}', 1)">+</button>
+              </div>
+            </div>
+            <button class="remove-item-btn" onclick="cart.removeItem('${item.id}')"><i class="fas fa-trash"></i></button>
+          `;
+          itemsEl.appendChild(div);
+        });
+      }
+    }
+    if (totalEl) totalEl.textContent = `Total: R${this.calculateTotal()}`;
+  }
+};
+
+// === AI SEARCH ===
+document.getElementById('aiProductSearchInput').addEventListener('input', (e) => {
+  const query = e.target.value.trim().toLowerCase();
+  document.querySelectorAll('.content-section').forEach(section => {
+    let hasVisible = false;
+    const cards = section.querySelectorAll('.product-card');
+    cards.forEach(card => {
+      const name = card.querySelector('.product-name').textContent.toLowerCase();
+      const price = parseFloat(card.getAttribute('data-price'));
+      let show = true;
+      if (query) {
+        if (query.includes('under') || query.includes('<')) {
+          const match = query.match(/\d+(\.\d+)?/);
+          if (match) {
+            const max = parseFloat(match[0]);
+            show = price <= max;
+          } else {
+            show = false;
+          }
+        } else {
+          show = name.includes(query);
+        }
+      }
+      card.style.display = show ? 'block' : 'none';
+      if (show) hasVisible = true;
+    });
+    section.style.display = hasVisible ? 'block' : 'none';
+  });
+});
+
+// === MODALS ===
+function showBusinessModal() {
+  const overlay = document.getElementById('businessModalOverlay');
+  const modal = document.getElementById('businessModal');
+  overlay.style.display = 'flex';
+  setTimeout(() => modal.classList.add('active'), 10);
+}
+function hideBusinessModal() {
+  const modal = document.getElementById('businessModal');
+  const overlay = document.getElementById('businessModalOverlay');
+  modal.classList.remove('active');
+  setTimeout(() => overlay.style.display = 'none', 700);
+}
+document.getElementById('closeBusinessModal').addEventListener('click', hideBusinessModal);
+document.getElementById('businessModalOverlay').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) hideBusinessModal();
+});
+
+// === HAMBURGER MENU ===
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const menuOverlay = document.getElementById('menuOverlay');
+const sideMenu = document.getElementById('sideMenu');
+
+function toggleMenu() {
+  hamburgerBtn.classList.toggle('active');
+  menuOverlay.classList.toggle('active');
+  sideMenu.classList.toggle('active');
+  document.body.style.overflow = sideMenu.classList.contains('active') ? 'hidden' : '';
+}
+hamburgerBtn.addEventListener('click', toggleMenu);
+menuOverlay.addEventListener('click', toggleMenu);
+
+function toggleSubmenu(id) {
+  const submenu = document.getElementById(id + '-submenu');
+  submenu.classList.toggle('active');
+  submenu.previousElementSibling.classList.toggle('active');
+}
+
+function scrollToSection(id) {
+  toggleMenu();
+  setTimeout(() => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 300);
+}
+
+// === PRODUCT MODAL ===
+function showProductModal(productId) {
+  const productCard = document.querySelector(`.product-card[data-id="${productId}"]`);
+  if (!productCard) return;
+
+  const name = productCard.querySelector('.product-name').textContent;
+  const price = parseFloat(productCard.getAttribute('data-price'));
+  const image = productCard.querySelector('.product-image').src;
+
+  document.getElementById('modalProductName').textContent = name;
+  document.getElementById('modalProductPrice').textContent = `R${price.toFixed(2)}`;
+  document.getElementById('modalProductDescription').textContent = 'Premium tissue product from Nothing Fancy.';
+  document.getElementById('modalMainImage').src = image;
+  document.getElementById('modalQuantity').textContent = 1;
+
+  // Thumbnails
+  const thumbs = document.getElementById('productThumbnails');
+  thumbs.innerHTML = '';
+  const img = document.createElement('img');
+  img.src = image;
+  img.className = 'thumbnail';
+  img.style.width = '80px';
+  img.style.height = '80px';
+  img.style.objectFit = 'cover';
+  img.style.borderRadius = '8px';
+  thumbs.appendChild(img);
+
+  // Add to cart handler
+  document.getElementById('modalAddToCartBtn').onclick = () => {
+    const qty = parseInt(document.getElementById('modalQuantity').textContent);
+    cart.addToCart({
+      id: productId,
+      name: name,
+      price: price,
+      quantity: qty,
+      image: image,
+      businessName: 'Nothing Fancy',
+      businessLogo: 'images-logo/nothing-fancy-logo.jpg'
+    });
+    closeProductModal();
+  };
+
+  // Quantity buttons
+  document.getElementById('increaseQuantity').onclick = () => {
+    let q = parseInt(document.getElementById('modalQuantity').textContent);
+    document.getElementById('modalQuantity').textContent = q + 1;
+  };
+  document.getElementById('decreaseQuantity').onclick = () => {
+    let q = parseInt(document.getElementById('modalQuantity').textContent);
+    if (q > 1) document.getElementById('modalQuantity').textContent = q - 1;
+  };
+
+  document.querySelector('.product-modal-overlay').style.display = 'flex';
+  setTimeout(() => document.querySelector('.product-modal').classList.add('active'), 10);
+}
+
+function closeProductModal() {
+  document.querySelector('.product-modal').classList.remove('active');
+  setTimeout(() => document.querySelector('.product-modal-overlay').style.display = 'none', 300);
+}
+
+document.addEventListener('click', (e) => {
+  const card = e.target.closest('.product-card');
+  if (card && !e.target.closest('.add-to-cart-btn')) {
+    const id = card.getAttribute('data-id');
+    showProductModal(id);
+  }
+});
+
+// === CART MODAL ===
+function showCartModal() {
+  document.querySelector('.cart-modal-overlay').style.display = 'flex';
+  setTimeout(() => document.querySelector('.cart-modal').classList.add('active'), 10);
+  cart.updateCartDisplay();
+}
+function closeCartModal() {
+  document.querySelector('.cart-modal').classList.remove('active');
+  setTimeout(() => document.querySelector('.cart-modal-overlay').style.display = 'none', 300);
+}
+
+// === WHATSAPP ORDER ===
+function sendCartToWhatsApp() {
+  if (cart.items.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+  let msg = "Hi!I am enquiring from Hive Times, I'd like to place an order from Nothing Fancy:\n";
+  cart.items.forEach(item => {
+    msg += `• ${item.name} x${item.quantity} — R${(item.price * item.quantity).toFixed(2)}\n`;
+  });
+  msg += `\nTotal: R${cart.calculateTotal()}\nThank you!`;
+  const url = `https://wa.me/27710218554?text=${encodeURIComponent(msg)}`;
+  window.open(url, '_blank');
+}
+
+// === SLIDER ===
+fetch('slider.html')
+  .then(res => res.ok ? res.text() : Promise.reject('slider.html not found'))
+  .then(html => {
+    document.getElementById('slider-container').innerHTML = html;
+    new Swiper('.mySwiper', {
+      spaceBetween: 0,
+      centeredSlides: true,
+      autoplay: { delay: 3000, disableOnInteraction: false },
+      pagination: { el: '.swiper-pagination', clickable: true },
+      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+      loop: true,
+      effect: 'fade',
+      fadeEffect: { crossFade: true }
+    });
+  })
+  .catch(err => {
+    console.error('Slider error:', err);
+    document.getElementById('slider-container').innerHTML = `<div style="text-align:center;padding:40px;color:#c71e1e;">⚠️ Slider unavailable</div>`;
+  });
+
+// === INIT ===
+document.addEventListener('DOMContentLoaded', () => {
+  cart.init();
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && sideMenu.classList.contains('active')) {
+      toggleMenu();
+    }
+  });
+});
+
+
+// === CART, SLIDER, MODALS – KEEP YOUR EXISTING CODE HERE ===
+// (All your current JS for cart, product modal, slider, etc.)
+// ...
+
+// === AI PRODUCT SEARCH (Keep as-is) ===
+const aiProductSearch = {
+  init() {
+    document.getElementById('aiProductSearchInput').addEventListener('input', (e) => {
+      const query = e.target.value.trim().toLowerCase();
+      document.querySelectorAll('.content-section').forEach(section => {
+        let hasVisible = false;
+        section.querySelectorAll('.product-card').forEach(card => {
+          const name = card.querySelector('.product-name')?.textContent.toLowerCase() || '';
+          const category = card.getAttribute('data-category') || '';
+          const price = parseFloat(card.getAttribute('data-price')) || 0;
+          let show = true;
+
+          if (query) {
+            if (query.includes('under') || query.includes('<')) {
+              const match = query.match(/(\d+(\.\d+)?)/);
+              if (match) {
+                const max = parseFloat(match[0]);
+                show = price <= max && price > 0;
+              } else {
+                show = false;
+              }
+            } else {
+              show = name.includes(query) || category.includes(query.replace(/\s+/g, '-'));
+            }
+          }
+
+          card.style.display = show ? 'block' : 'none';
+          if (show) hasVisible = true;
+        });
+        section.style.display = hasVisible ? 'block' : 'none';
+      });
+    });
+  }
+};
+
+// === AI CHAT WIDGET LOGIC (CORRECTED FOR BUTCHER BLOCK) ===
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize other components
+  cart.init();
+  aiProductSearch.init();
+
+  // AI Chat Widget Elements
+  const widget = document.getElementById('aiChatWidget');
+  const panel = document.getElementById('aiChatPanel');
+  const closeBtn = document.getElementById('aiCloseBtn');
+  const chatMessages = document.getElementById('aiChatMessages');
+  const userInput = document.getElementById('aiUserInput');
+  const sendBtn = document.getElementById('aiSendBtn');
+
+  // Toggle chat panel
+  widget?.addEventListener('click', () => {
+    panel.style.display = panel.style.display === 'flex' ? 'none' : 'flex';
+  });
+
+  closeBtn?.addEventListener('click', () => {
+    panel.style.display = 'none';
+  });
+
+  function scrollToBottom() {
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function addMessage(text, isUser = false) {
+    const msgDiv = document.createElement('div');
+    msgDiv.classList.add('ai-message', isUser ? 'user' : 'bot');
+    msgDiv.innerHTML = text.replace(/\n/g, '<br>');
+    chatMessages.appendChild(msgDiv);
+    setTimeout(scrollToBottom, 10);
+  }
+
+// ✅ CORRECTED RESPONSES FOR NOTHING FANCY
+function getResponse(query) {
+  const lower = query.toLowerCase().trim();
+
+  if (lower.includes('where') || lower.includes('located') || lower.includes('address') || lower.includes('find')) {
+    return "📍 We're based in <strong>Johannesburg, South Africa</strong>. We deliver nationwide — just ask for a quote!";
+  }
+  if (lower.includes('contact') || lower.includes('phone') || lower.includes('call') || lower.includes('number') || lower.includes('whatsapp')) {
+    return "📞 Call or WhatsApp us at <strong>071 021 8554</strong> for orders, quotes, or inquiries!";
+  }
+  if (lower.includes('email') || lower.includes('@')) {
+    return "📧 Email us at <strong>contact@nothingfancy.co.za</strong> for wholesale orders or custom requests!";
+  }
+  if (lower.includes('open') || lower.includes('hour') || lower.includes('time') || lower.includes('close')) {
+    return "🕒 Our office hours are:<br><strong>Monday–Friday: 9:00 AM – 5:30 PM<br>Saturday: 9:00 AM – 3:30 PM<br>Sunday: 9:30 AM – 1:00 PM</strong>";
+  }
+  if (lower.includes('deliver') || lower.includes('shipping') || lower.includes('nationwide') || lower.includes('ship') || lower.includes('delivery')) {
+    return "🚚 Yes! We offer <strong>nationwide delivery across South Africa</strong>. Minimum order applies. Message us on WhatsApp for rates!";
+  }
+  if (lower.includes('bulk') || lower.includes('wholesale') || lower.includes('quote') || lower.includes('bale') || lower.includes('reseller')) {
+    return "💼 We specialize in <strong>bulk toilet paper, kitchen towels, garage rolls, and jumbo reels</strong> for retailers, schools, offices, and events. Request a price list via WhatsApp!";
+  }
+  if (lower.includes('toilet') || lower.includes('tp') || lower.includes('2-ply') || lower.includes('1-ply') || lower.includes('soft') || lower.includes('roll')) {
+    return "🧻 We stock premium <strong>1-ply and 2-ply toilet paper</strong> in single rolls, packs, and bales. Ideal for homes, businesses, and institutions!";
+  }
+  if (lower.includes('kitchen') || lower.includes('towel') || lower.includes('paper towel')) {
+    return "🧽 Our <strong>kitchen towels</strong> are highly absorbent, strong when wet, and perfect for commercial or home use. Available in bulk packs!";
+  }
+  if (lower.includes('garage') || lower.includes('jumbo') || lower.includes('industrial') || lower.includes('reel')) {
+    return "🏭 Need heavy-duty solutions? We supply <strong>garage rolls and jumbo industrial reels</strong> for workshops, factories, and cleaning services.";
+  }
+
+  return "I can help with product info, pricing, delivery, or bulk orders! Try: “Do you deliver toilet paper?” or “Send me your bulk price list.”";
+}
+
+  function handleSend() {
+    const query = userInput.value.trim();
+    if (!query) return;
+    addMessage(query, true);
+    userInput.value = '';
+    const response = getResponse(query);
+    setTimeout(() => addMessage(response), 400);
+  }
+
+  sendBtn?.addEventListener('click', handleSend);
+  userInput?.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') handleSend();
+  });
+});
+</script>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+</body>
+</html>
+
+</script>
+</body>
+</html>
