@@ -6,6 +6,16 @@
 <title>Horizon Home Designs | Premium Custom Furniture in Gauteng</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DTPGZ964FD"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-DTPGZ964FD');
+</script>
+
+
 <style>
 /* Global Reset & Base Styles */
 * {
@@ -51,40 +61,135 @@ body {
   margin: 0 auto;
   padding: 0 var(--spacing-sm);
 }
-
-/* Header Styles */
+/* Header Styles - Modified to match TINO WELDS design */
 header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  padding: 16px var(--spacing-sm);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1000;
-  box-shadow: var(--shadow);
-  transition: var(--transition);
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+padding: 15px var(--spacing-sm);
+display: flex;
+justify-content: space-between;
+align-items: center;
+z-index: 1000;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+transition: all 0.3s ease;
 }
-
 header.scrolled {
-  padding: 12px var(--spacing-sm);
-  background: rgba(93, 64, 55, 0.95);
-  box-shadow: var(--shadow-lg);
+padding: 10px var(--spacing-sm);
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
-
-.logo-container {
-  height: 60px;
-  display: flex;
-  align-items: center;
+.logo {
+font-family: 'Playfair Display', serif;
+font-size: 28px;
+font-weight: bold;
+color: white;
+text-decoration: none;
+display: flex;
+align-items: center;
+gap: 10px;
 }
-
-.logo-image {
-  height: 150%;
-  max-width: 220px;
-  object-fit: contain;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+.logo i {
+font-size: 32px;
+animation: rotate 3s linear infinite;
+}
+@keyframes rotate {
+from { transform: rotate(0deg); }
+to { transform: rotate(360deg); }
+}
+.logo span {
+color: rgba(255, 255, 255, 0.9);
+font-size: 14px;
+display: block;
+letter-spacing: 1px;
+font-family: 'Montserrat', sans-serif;
+font-weight: 500;
+}
+.nav-links {
+display: flex;
+gap: 30px;
+align-items: center;
+}
+.nav-links a {
+color: white;
+text-decoration: none;
+font-weight: 500;
+font-size: 16px;
+transition: all 0.3s ease;
+position: relative;
+padding: 5px 0;
+display: flex;
+align-items: center;
+gap: 6px;
+}
+.nav-links a:hover {
+color: rgba(255, 255, 255, 0.9);
+}
+.nav-links a::after {
+content: '';
+position: absolute;
+bottom: 0;
+left: 0;
+width: 0;
+height: 2px;
+background: rgba(255, 255, 255, 0.9);
+transition: all 0.3s ease;
+}
+.nav-links a:hover::after,
+.nav-links a.active::after {
+width: 100%;
+}
+.contact-btn {
+background: linear-gradient(135deg, #25D366, #128C7E);
+color: white;
+padding: 12px 25px;
+border-radius: 50px;
+text-decoration: none;
+font-weight: bold;
+display: flex;
+align-items: center;
+gap: 10px;
+transition: all 0.3s ease;
+box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+position: relative;
+overflow: hidden;
+border: none;
+cursor: pointer;
+white-space: nowrap;
+}
+.contact-btn::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+transition: all 0.3s ease;
+}
+.contact-btn:hover::before {
+left: 100%;
+}
+.contact-btn:hover {
+transform: translateY(-2px);
+box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+background: linear-gradient(135deg, #128C7E, #075E54);
+}
+.hamburger {
+display: none;
+background: none;
+border: none;
+color: white;
+font-size: 24px;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+.hamburger:hover {
+transform: rotate(90deg);
+}
+.hamburger.active {
+color: rgba(255, 255, 255, 0.9);
 }
 
 /* Navigation */
@@ -1229,27 +1334,31 @@ img[loading="lazy"]:not([src]) {
 
 <!-- Header -->
 <header id="header">
-  <div class="container">
-    <a href="#" class="logo">
-      <div class="logo-container">
-        <img src="image-services/horizonhomedesigns-logo.jpg" class="logo-image" alt="Horizon Home Designs">
-      </div>
-    </a>
-    <nav>
-      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
-        <span>☰</span>
-      </button>
-      <div class="nav-links" id="navLinks">
-        <a href="#home" class="active"><i class="fas fa-home"></i> Home</a>
-        <a href="#services"><i class="fas fa-couch"></i> Services</a>
-        <a href="#about"><i class="fas fa-info-circle"></i> About</a>
-        <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
-        <a href="https://hivetimes.co.za" class="hivetimes-btn" target="_blank" rel="noopener noreferrer">
-          <i class="fas fa-globe"></i> HiveTimes
-        </a>
-      </div>
-    </nav>
-  </div>
+<div class="container">
+<a href="#" class="logo">
+<i class="fas fa-couch"></i>
+HORIZON HOME DESIGNS
+<span>PREMIUM CUSTOM FURNITURE</span>
+</a>
+<nav>
+<button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+<span>☰</span>
+</button>
+<div class="nav-links" id="navLinks">
+<a href="#home" class="active"><i class="fas fa-home"></i> Home</a>
+<a href="#services"><i class="fas fa-couch"></i> Services</a>
+<a href="#about"><i class="fas fa-info-circle"></i> About</a>
+<a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+<a href="https://hivetimes.co.za" target="_blank" rel="noopener noreferrer">
+<i class="fas fa-globe"></i> HiveTimes
+</a>
+<a href="https://wa.me/27606665866?text=I%20am%20enquiring%20from%20hivetimes.co.za%20about%20your%20custom%20furniture%20services.%20Please%20send%20me%20more%20information%20and%20a%20quote." 
+   class="contact-btn" target="_blank">
+<i class="fab fa-whatsapp"></i> Get Free Quote
+</a>
+</div>
+</nav>
+</div>
 </header>
 <!-- Hero Section -->
 <section class="hero" id="home">
