@@ -1741,9 +1741,7 @@ grid-template-columns: repeat(2, 1fr);
 </div>
 <ul class="sidebar-menu">
 <hr style="border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 20px 0;">
-<li><a href="#home-businesses"><i class="fas fa-cookie-bite"></i> Home Businesses</a></li>
-<li><a href="#retail-shops"><i class="fas fa-utensils"></i> Retail Shops</a></li>
-<li><a href="#wholesale"><i class="fas fa-boxes"></i> Wholesale</a></li>
+<li><a href="#business"><i class="fas fa-boxes"></i> Business</a></li>
 <li><a href="#services"><i class="fas fa-paint-brush"></i> Services</a></li>
 <hr style="border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 20px 0;">
 <li><a href="about page home.html"><i class="fas fa-info-circle"></i> About Us</a></li>
@@ -1837,7 +1835,7 @@ grid-template-columns: repeat(2, 1fr);
 <div class="info">
 <h3>Nothing Fancy</h3>
 <p>Toilet Paper, 2-Ply Bales, 1-Ply, Kitchen Towels, Garage Rolls, etc..</p>
-<button class="open-popup" data-popup-target="nothingfancyPopup">Learn More</button>
+
 <div class="rating-section">
 <div class="rating-stars" data-business="nothing-fancy">
 <i class="far fa-star star"></i>
@@ -1873,7 +1871,7 @@ grid-template-columns: repeat(2, 1fr);
 <div class="info">
 <h3>Broadway</h3>
 <p>Chocolates, Candy, Biscuits, Drinks, Chewing Gum, Lollipops...</p>
-<button class="open-popup" data-popup-target="broadwaysweetsPopup">Learn More</button>
+
 <div class="rating-section">
 <div class="rating-stars" data-business="broadway-sweets">
 <i class="far fa-star star"></i>
@@ -1909,7 +1907,7 @@ grid-template-columns: repeat(2, 1fr);
 <div class="info">
 <h3>Sweet Mart</h3>
 <p>Chocolates, Candy, Biscuits, Drinks, Chewing Gum, Lollipops, Spreads</p>
-<button class="open-popup" data-popup-target="sweetmartPopup">Learn More</button>
+
 <div class="rating-section">
 <div class="rating-stars" data-business="sweet-mart">
 <i class="far fa-star star"></i>
@@ -1937,6 +1935,42 @@ grid-template-columns: repeat(2, 1fr);
 </div>
 </div>
 </div>
+<!-- Sweet Deport -->
+<div class="block" id="business-sweet-deport" data-category="business" data-type="sweet-shop" data-location="johannesburg">
+<a href="https://www.sweetdepot.co.za/">
+<img src="images-logo/sweet-deport-logo.jpg" alt="Sweet Deport">
+</a>
+<div class="info">
+<h3>Sweet Deport</h3>
+<p>Chocolates, Candy, Biscuits, Drinks, Chewing Gum, Lollipops, Spreads</p>
+
+<div class="rating-section">
+<div class="rating-stars" data-business="sweet-deport">
+<i class="far fa-star star"></i>
+<i class="far fa-star star"></i>
+<i class="far fa-star star"></i>
+<i class="far fa-star star"></i>
+<i class="far fa-star star"></i>
+</div>
+<div class="rating-count">0 ratings</div>
+<a href="#" class="view-comments-btn" data-target="sweet-deport-comments">
+<i class="fas fa-comment"></i> View Comments
+</a>
+</div>
+<div class="comments-section" id="sweet-deport-comments">
+<div class="comment-form">
+<textarea class="comment-input" placeholder="Share your experience..."></textarea>
+<button class="submit-comment-btn">Post Comment</button>
+</div>
+<div class="comments-list"></div>
+</div>
+<div class="share-section">
+<a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+<a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+</div>
+</div>
+</div>
 <!-- Polar Ice Cream -->
 <div class="block" id="business-polar-ice-cream" data-category="business" data-type="ice-cream" data-location="johannesburg">
 <a href="Polaricecream.html">
@@ -1945,7 +1979,7 @@ grid-template-columns: repeat(2, 1fr);
 <div class="info">
 <h3>Polar Ice Cream</h3>
 <p>Ice cream, Stick Novelties, Frozen Desserts, Artisanal</p>
-<button class="open-popup" data-popup-target="polaricecreampopup">Learn More</button>
+
 <div class="rating-section">
 <div class="rating-stars" data-business="polar-ice-cream">
 <i class="far fa-star star"></i>
@@ -1981,7 +2015,7 @@ grid-template-columns: repeat(2, 1fr);
 <div class="info">
 <h3>DOUGH & CO</h3>
 <p>Bakery, Bread, Pastries, Cakes</p>
-<button class="open-popup" data-popup-target="doughandcoPopup">Learn More</button>
+
 <div class="rating-section">
 <div class="rating-stars" data-business="dough-and-co">
 <i class="far fa-star star"></i>
@@ -2017,7 +2051,7 @@ grid-template-columns: repeat(2, 1fr);
 <div class="info">
 <h3>BUTCHER BLOCK</h3>
 <p>Wholesale meat supplier for retailers and foodservice</p>
-<button class="open-popup" data-popup-target="africacashncarryPopup">Learn More</button>
+
 <div class="rating-section">
 <div class="rating-stars" data-business="butcher-block-wholesale">
 <i class="far fa-star star"></i>
@@ -2053,7 +2087,7 @@ grid-template-columns: repeat(2, 1fr);
 <div class="info">
 <h3>White House Lighting & Elecrical</h3>
 <p>Explore the best of our lighting and electrical range with our Featured Products Collection, carefully selected to showcase our top-performing and most popular items. From innovative LED lighting solutions to durable electrical accessories, this collection highlights products that combine quality, efficiency, and style - trusted by professionals and homeowners alike.</p>
-<button class="open-popup" data-popup-target="whitehouselighting&electricalpopup">Learn More</button>
+
 <div class="rating-section">
 <div class="rating-stars" data-business="whitehouse-lighting-and-electrical">
 <i class="far fa-star star"></i>
@@ -2108,7 +2142,7 @@ Tablet Digitizers
 Tablet Screen
 Touchpads
 .</p>
-<button class="open-popup" data-popup-target="laptopsolutionspopup">Learn More</button>
+
 <div class="rating-section">
 <div class="rating-stars" data-business="laptop-solution">
 <i class="far fa-star star"></i>
@@ -2146,7 +2180,7 @@ Touchpads
 <p>Africa Cash and Carry is a major wholesaler specializing in a vast range of FMCG (Fast-Moving Consumer Goods) including toiletries, hair care, cosmetics, and confectionery.
 
 They also stock extensive departments for electronics, hardware, stationery, and household essentials, catering to both independent retailers and individual bulk buyers.</p>
-<button class="open-popup" data-popup-target="africacash&carryPopup">Learn More</button>
+
 <div class="rating-section">
 <div class="rating-stars" data-business="africa-cash-carry">
 <i class="far fa-star star"></i>
@@ -2182,7 +2216,7 @@ They also stock extensive departments for electronics, hardware, stationery, and
 <div class="info">
 <h3>Devland Cash & Carry</h3>
 <p>Bulk FMCG, groceries, and household goods for retailers</p>
-<button class="open-popup" data-popup-target="devlandcash&carryPopup">Learn More</button>
+
 <div class="rating-section">
 <div class="rating-stars" data-business="devland-cash-carry">
 <i class="far fa-star star"></i>
@@ -2218,7 +2252,7 @@ They also stock extensive departments for electronics, hardware, stationery, and
 <div class="info">
 <h3>Continental Cash & Carry</h3>
 <p>Wholesale supplier for independent retailers since 2012</p>
-<button class="open-popup" data-popup-target="continentalcash&carryPopup">Learn More</button>
+
 <div class="rating-section">
 <div class="rating-stars" data-business="continental-cash-carry">
 <i class="far fa-star star"></i>
@@ -2254,7 +2288,7 @@ They also stock extensive departments for electronics, hardware, stationery, and
 <div class="info">
 <h3>Jumbo Cash & Carry</h3>
 <p>Massmart-owned wholesaler for traders and small businesses</p>
-<button class="open-popup" data-popup-target="jumbocash&carryPopup">Learn More</button>
+
 <div class="rating-section">
 <div class="rating-stars" data-business="jumbo-cash-carry">
 <i class="far fa-star star"></i>
@@ -2290,7 +2324,7 @@ They also stock extensive departments for electronics, hardware, stationery, and
 <div class="info">
 <h3>JAM Clothing</h3>
 <p>JAM Clothing is a South African retailer that sells brand-name apparel, footwear, and accessories for men, women, and children at significantly discounted prices. They specialize in "overruns," which are authentic garments sourced from well-known international and local brands that were produced in excess of their original orders.</p>
-<button class="open-popup" data-popup-target="jamclothingpopup">Learn More</button>
+
 <div class="rating-section">
 <div class="rating-stars" data-business="jam-clothing">
 <i class="far fa-star star"></i>
@@ -2334,7 +2368,7 @@ They also stock extensive departments for electronics, hardware, stationery, and
   <h3>Exquisite Catering</h3>
   <p>Specializes in luxury, full-service event catering — including weddings, corporate functions, and private celebrations — with customized menus, floral arrangements, and complete setup. They blend elegance, flavor, and seamless execution to create unforgettable experiences.</p>
   <div class="contact-buttons">
-    <a href="http://exquisitecatering.hivetimes.co.za/" class="contact-btn btn-call"><i class="fas fa-heart"></i> Learn More</a>
+    <a href="http://exquisitecatering.hivetimes.co.za/" class="contact-btn btn-call"><i class="fas fa-heart"></i> Visit Website</a>
   </div>
 
   <!-- Rating Section -->
@@ -2379,7 +2413,7 @@ They also stock extensive departments for electronics, hardware, stationery, and
   <h3>Water Of Life</h3>
   <p>contribute to the most in need - sadaqa jaariya - every rand given goes towards the intended - no admin or other costs</p>
   <div class="contact-buttons">
-    <a href="http://wateroflife.hivetimes.co.za/" class="contact-btn btn-call"><i class="fas fa-heart"></i> Learn More</a>
+    <a href="http://wateroflife.hivetimes.co.za/" class="contact-btn btn-call"><i class="fas fa-heart"></i> Visit Website</a>
   </div>
 
   <!-- Rating Section -->
@@ -2424,7 +2458,7 @@ They also stock extensive departments for electronics, hardware, stationery, and
   <h3>Horizon Home Designs</h3>
   <p>Premium custom furniture and home design solutions for modern living spaces.</p>
   <div class="contact-buttons">
-    <a href="horizonhomedesigner.html" class="contact-btn btn-call"><i class="fas fa-heart"></i> Learn More</a>
+    <a href="horizonhomedesigner.html" class="contact-btn btn-call"><i class="fas fa-heart"></i> Visit Website</a>
   </div>
 
   <!-- Rating Section -->
@@ -2469,7 +2503,7 @@ They also stock extensive departments for electronics, hardware, stationery, and
   <h3>Stashdel</h3>
   <p>South African wholesale distribution and logistics services.</p>
   <div class="contact-buttons">
-    <a href="stashdel.html" class="contact-btn btn-call"><i class="fas fa-heart"></i> Learn More</a>
+    <a href="stashdel.html" class="contact-btn btn-call"><i class="fas fa-heart"></i> Visit Website</a>
   </div>
 
   <!-- Rating Section -->
@@ -2514,7 +2548,7 @@ They also stock extensive departments for electronics, hardware, stationery, and
   <h3>Tino Welds & Woodwork</h3>
   <p>Professional welding and carpentry services for residential and commercial projects.</p>
   <div class="contact-buttons">
-    <a href="https://tww.hivetimes.co.za/" class="contact-btn btn-call"><i class="fas fa-heart"></i> Learn More</a>
+    <a href="https://tww.hivetimes.co.za/" class="contact-btn btn-call"><i class="fas fa-heart"></i> Visit Website</a>
   </div>
 
   <!-- Rating Section -->
@@ -2559,7 +2593,7 @@ They also stock extensive departments for electronics, hardware, stationery, and
   <h3>IES Consulting Elevator</h3>
   <p>IES Consult provides premium **commercial and home elevator solutions** across South Africa, specializing in safe, reliable, and compliant vertical mobility systems. They offer end-to-end services—from design and installation to maintenance—tailored for both residential comfort and high-traffic commercial environments.s</p>
   <div class="contact-buttons">
-    <a href="https://ieselevators.hivetimes.co.za/" class="contact-btn btn-call"><i class="fas fa-heart"></i> Learn More</a>
+    <a href="https://ieselevators.hivetimes.co.za/" class="contact-btn btn-call"><i class="fas fa-heart"></i> Visit Website</a>
   </div>
 
   <!-- Rating Section -->
@@ -2604,7 +2638,7 @@ They also stock extensive departments for electronics, hardware, stationery, and
   <h3>Duncan Wooden Floors</h3>
   <p>Duncan Wooden Floors is a premium flooring company offering high-quality wooden flooring solutions for residential and commercial properties across South Africa.</p>
   <div class="contact-buttons">
-    <a href="duncanfloors.html" class="contact-btn btn-call"><i class="fas fa-heart"></i> Learn More</a>
+    <a href="duncanfloors.html" class="contact-btn btn-call"><i class="fas fa-heart"></i> Visit Website</a>
   </div>
 
   <!-- Rating Section -->
