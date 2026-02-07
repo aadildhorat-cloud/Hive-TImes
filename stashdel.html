@@ -1,1085 +1,1293 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stashsell - South African Wholesale Distribution</title>
-  <meta name="description" content="Verified, compliant, and reliable wholesale distribution for businesses and consumers across South Africa">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    :root {
-      --primary-color: #000000;
-      --secondary-color: #28A745;
-      --whatsapp-color: #25D366;
-      --light-color: #ffffff;
-      --dark-color: #212529;
-      --gray-color: #f8f9fa;
-      --transition: all 0.3s ease;
-      --shadow: 0 4px 6px rgba(0,0,0,0.1);
-      --radius: 8px;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: var(--dark-color);
-      overflow-x: hidden;
-      background-color: var(--light-color);
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    /* Header & Navigation Styles */
-    header {
-      background-color: var(--light-color);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      transition: var(--transition);
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 0;
-    }
-
-    .logo {
-      height: 60px;
-      display: flex;
-      align-items: center;
-    }
-
-    .logo img {
-      height: 100%;
-      width: auto;
-      max-width: 200px;
-    }
-
-    /* Hamburger Menu Styles */
-    .hamburger {
-      display: none;
-      cursor: pointer;
-      z-index: 2000;
-      position: relative;
-    }
-
-    .hamburger span {
-      display: block;
-      width: 30px;
-      height: 3px;
-      background-color: var(--primary-color);
-      margin: 5px 0;
-      transition: var(--transition);
-      border-radius: 2px;
-    }
-
-    .nav-links {
-      display: flex;
-      list-style: none;
-    }
-
-    .nav-links li {
-      margin-left: 30px;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--primary-color);
-      font-weight: 600;
-      font-size: 16px;
-      transition: var(--transition);
-      position: relative;
-      padding: 5px 0;
-    }
-
-    .nav-links a:after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background: var(--secondary-color);
-      transition: var(--transition);
-    }
-
-    .nav-links a:hover:after {
-      width: 100%;
-    }
-
-    .nav-links a:hover {
-      color: var(--secondary-color);
-    }
-
-    /* Hero Section */
-    .hero {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1551288049-bebda07e12601?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
-      color: var(--light-color);
-      text-align: center;
-      margin-top: 60px;
-      position: relative;
-    }
-
-    .hero-content {
-      max-width: 800px;
-      margin: 0 auto;
-      padding-top: 50px;
-    }
-
-    .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 20px;
-      line-height: 1.2;
-    }
-
-    .hero p {
-      font-size: 1.5rem;
-      margin-bottom: 30px;
-      opacity: 0.9;
-    }
-
-    .btn {
-      display: inline-block;
-      background: var(--secondary-color);
-      color: var(--light-color);
-      padding: 15px 35px;
-      border: none;
-      border-radius: var(--radius);
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: var(--transition);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      box-shadow: var(--shadow);
-    }
-
-    .btn:hover {
-      background: #218838;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      border: 2px solid var(--light-color);
-      margin-left: 15px;
-    }
-
-    .btn-secondary:hover {
-      background: var(--light-color);
-      color: var(--primary-color);
-    }
-
-    .btn-whatsapp {
-      display: inline-block;
-      background: var(--whatsapp-color);
-      color: var(--light-color);
-      padding: 12px 25px;
-      border: none;
-      border-radius: 50px;
-      text-decoration: none;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-      text-transform: none;
-      letter-spacing: 0.5px;
-      box-shadow: var(--shadow);
-      margin-top: 15px;
-    }
-
-    .btn-whatsapp:hover {
-      background: #128C7E;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
-    }
-
-    .btn-whatsapp i {
-      margin-right: 8px;
-      font-size: 18px;
-    }
-
-    /* Section Styling */
-    section {
-      padding: 100px 0;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 60px;
-    }
-
-    .section-title h2 {
-      font-size: 2.5rem;
-      color: var(--primary-color);
-      position: relative;
-      display: inline-block;
-      margin-bottom: 20px;
-    }
-
-    .section-title h2:after {
-      content: '';
-      position: absolute;
-      width: 80px;
-      height: 4px;
-      background: var(--secondary-color);
-      bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .section-title p {
-      font-size: 1.2rem;
-      color: #666;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    /* About Section */
-    .about-content {
-      display: flex;
-      align-items: center;
-      gap: 50px;
-    }
-
-    .about-text {
-      flex: 1;
-    }
-
-    .about-text h3 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: var(--primary-color);
-    }
-
-    .about-text p {
-      margin-bottom: 20px;
-      font-size: 1.1rem;
-    }
-
-    .about-image {
-      flex: 1;
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-
-    .about-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: var(--transition);
-    }
-
-    .about-image:hover img {
-      transform: scale(1.05);
-    }
-
-    /* Services Section */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-
-    .service-card {
-      background: var(--light-color);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .service-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 12px 20px rgba(0,0,0,0.15);
-    }
-
-    .service-icon {
-      height: 120px;
-      background: linear-gradient(135deg, var(--secondary-color), #1e7e34);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 4rem;
-      color: var(--light-color);
-    }
-
-    .service-content {
-      padding: 30px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .service-content h3 {
-      font-size: 1.8rem;
-      margin-bottom: 15px;
-      color: var(--primary-color);
-    }
-
-    .service-content p {
-      margin-bottom: 20px;
-      flex-grow: 1;
-    }
-
-    .service-whatsapp {
-      margin-top: auto;
-    }
-
-    /* Why Choose Us */
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-    }
-
-    .feature {
-      text-align: center;
-      padding: 30px;
-      border-radius: var(--radius);
-      background: var(--gray-color);
-      transition: var(--transition);
-    }
-
-    .feature:hover {
-      background: var(--light-color);
-      box-shadow: var(--shadow);
-      transform: translateY(-5px);
-    }
-
-    .feature-icon {
-      font-size: 3rem;
-      color: var(--secondary-color);
-      margin-bottom: 20px;
-    }
-
-    .feature h3 {
-      margin-bottom: 15px;
-      color: var(--primary-color);
-    }
-
-    /* Partners Section */
-    .partners {
-      background: var(--light-color);
-      padding: 80px 0;
-    }
-
-    .partners-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 30px;
-      align-items: center;
-    }
-
-    .partner-card {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      background: var(--gray-color);
-      border-radius: var(--radius);
-      transition: var(--transition);
-      box-shadow: var(--shadow);
-      height: 100%;
-    }
-
-    .partner-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      background: var(--light-color);
-    }
-
-    .partner-card img {
-      max-width: 100%;
-      max-height: 120px;
-      object-fit: contain;
-      filter: grayscale(0);
-      transition: var(--transition);
-    }
-
-    .partner-card:hover img {
-      filter: grayscale(0);
-      transform: scale(1.05);
-    }
-
-    .partner-description {
-      text-align: center;
-      margin-top: 25px;
-      padding: 0 15px;
-    }
-
-    .partner-description h3 {
-      font-size: 1.5rem;
-      color: var(--primary-color);
-      margin-bottom: 15px;
-    }
-
-    .partner-description p {
-      color: #666;
-      line-height: 1.7;
-    }
-
-    /* Footer */
-    footer {
-      background: var(--primary-color);
-      color: var(--light-color);
-      padding: 60px 0 30px;
-    }
-
-    .footer-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-      margin-bottom: 40px;
-    }
-
-    .footer-column h3 {
-      font-size: 1.5rem;
-      margin-bottom: 25px;
-      position: relative;
-      padding-bottom: 10px;
-    }
-
-    .footer-column h3:after {
-      content: '';
-      position: absolute;
-      width: 50px;
-      height: 3px;
-      background: var(--secondary-color);
-      bottom: 0;
-      left: 0;
-    }
-
-    .footer-column p {
-      margin-bottom: 20px;
-      opacity: 0.8;
-    }
-
-    .footer-links {
-      list-style: none;
-    }
-
-    .footer-links li {
-      margin-bottom: 15px;
-    }
-
-    .footer-links a {
-      color: var(--light-color);
-      text-decoration: none;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-    }
-
-    .footer-links a:hover {
-      color: var(--secondary-color);
-      transform: translateX(5px);
-    }
-
-    .footer-links a i {
-      margin-right: 10px;
-      width: 20px;
-      text-align: center;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .social-links a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 50%;
-      color: var(--light-color);
-      transition: var(--transition);
-    }
-
-    .social-links a:hover {
-      background: var(--secondary-color);
-      transform: translateY(-3px);
-    }
-
-    /* Floating WhatsApp Button */
-    .floating-whatsapp {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      z-index: 1000;
-    }
-
-    .floating-whatsapp-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 60px;
-      height: 60px;
-      background: var(--whatsapp-color);
-      color: var(--light-color);
-      border-radius: 50%;
-      text-decoration: none;
-      font-size: 28px;
-      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.5);
-      transition: var(--transition);
-      animation: pulse 2s infinite;
-    }
-
-    .floating-whatsapp-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.7);
-    }
-
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-      70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-    }
-
-    /* Mobile Menu Overlay */
-    .mobile-menu-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0,0,0,0.5);
-      z-index: 1500;
-      opacity: 0;
-      visibility: hidden;
-      transition: var(--transition);
-    }
-
-    .mobile-menu-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 992px) {
-      .hero h1 {
-        font-size: 2.8rem;
-      }
-      
-      .hero p {
-        font-size: 1.2rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      /* Show hamburger menu */
-      .hamburger {
-        display: block;
-      }
-      
-      /* Hide regular navigation */
-      .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        flex-direction: column;
-        background: var(--light-color);
-        width: 80%;
-        height: 100vh;
-        padding: 80px 30px 30px;
-        transition: 0.3s ease;
-        box-shadow: -2px 0 15px rgba(0,0,0,0.1);
-        z-index: 1600;
-        overflow-y: auto;
-      }
-      
-      .nav-links.active {
-        right: 0;
-      }
-      
-      .nav-links li {
-        margin: 20px 0;
-      }
-      
-      /* Hamburger animation when open */
-      .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-      }
-      
-      .hamburger.active span:nth-child(2) {
-        opacity: 0;
-      }
-      
-      .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
-      }
-      
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-      
-      .hero p {
-        font-size: 1rem;
-      }
-      
-      .btn {
-        display: block;
-        width: 100%;
-        margin-bottom: 15px;
-      }
-      
-      .btn-secondary {
-        margin-left: 0;
-      }
-      
-      .about-content {
-        flex-direction: column;
-      }
-    }
-
-    @media (max-width: 576px) {
-      .hero h1 {
-        font-size: 1.8rem;
-      }
-      
-      .section-title h2 {
-        font-size: 2rem;
-      }
-      
-      .floating-whatsapp {
-        bottom: 20px;
-        right: 20px;
-      }
-      
-      .partner-card {
-        padding: 15px;
-      }
-      
-      .nav-links {
-        width: 90%;
-      }
-    }
-
-    /* Animation for sections */
-    .animate {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .animate.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stashdel Logistics | Professional Freight Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #000000;
+            --secondary: #FFD700;
+            --accent: #FFD700;
+            --light: #f8f9fa;
+            --dark: #000000;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --success: #28a745;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: #ffffff;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            z-index: 1001;
+        }
+        
+        .logo-img {
+            height: 80px;
+            width: auto;
+        }
+        
+        .logo-text {
+            display: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo-text span {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-links a:hover, 
+        .nav-links a.active {
+            color: var(--accent);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.9)), url('https://images.unsplash.com/photo-1560448204-8cf87f3c39c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-top: 60px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: 2px solid var(--accent);
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            margin-left: 15px;
+            border-color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+            border-color: #25D366;
+            display: inline-flex;
+            align-items: center;
+            margin-top: 15px;
+        }
+        
+        .btn-whatsapp i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+        
+        .btn-whatsapp:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        }
+        
+        /* Services Section */
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            margin-top: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .road-img { background-image: url('https://images.unsplash.com/photo-1595235010254-6f227b3995a4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80'); }
+        .air-img { background-image: url('https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80'); }
+        .ocean-img { background-image: url('https://images.unsplash.com/photo-1581235734341-4f7e1d374c54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80'); }
+        .customs-img { background-image: url('https://images.unsplash.com/photo-1560544270-6ca87b4f9c9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80'); }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .service-content p {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+        
+        /* Quote Calculator Section */
+        .calculator-container {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .calculator-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .tab-btn {
+            padding: 15px 25px;
+            background: none;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            position: relative;
+            color: var(--gray);
+            transition: var(--transition);
+        }
+        
+        .tab-btn.active {
+            color: var(--primary);
+        }
+        
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+            outline: none;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .result-container {
+            background: var(--light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-top: 30px;
+            display: none;
+        }
+        
+        .result-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary);
+            text-align: center;
+        }
+        
+        .result-breakdown {
+            margin-top: 20px;
+        }
+        
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed #ccc;
+        }
+        
+        .result-item:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-top: 10px;
+        }
+        
+        /* Features Section */
+        .features {
+            background-color: var(--light);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.95)), url('https://images.unsplash.com/photo-1560448204-8cf87f3c39c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            color: white;
+            padding: 80px 0;
+        }
+        
+        .cta h2 {
+            font-size: 2.8rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 70px 0 0;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-col h3 {
+            color: white;
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .footer-col p {
+            margin: 15px 0;
+            line-height: 1.7;
+        }
+        
+        .footer-links {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+            padding: 5px 0;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+        
+        .footer-contact li {
+            margin-bottom: 15px;
+            display: flex;
+        }
+        
+        .footer-contact i {
+            color: var(--accent);
+            font-size: 1.2rem;
+            width: 25px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding: 25px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 30px;
+            font-size: 0.95rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 40px;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+                padding: 12px;
+            }
+            
+            .btn-secondary {
+                margin-left: 0;
+            }
+            
+            .section {
+                padding: 70px 0;
+            }
+            
+            .calculator-container {
+                padding: 25px;
+            }
+            
+            .logo {
+                position: static;
+                right: auto;
+                top: auto;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+            
+            .logo-img {
+                height: 60px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.1rem;
+            }
+            
+            .calculator-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .tab-btn {
+                padding: 12px 15px;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Header with Enhanced Hamburger Menu -->
-  <header>
-    <nav class="container">
-      <div class="logo">
-        <img src="image-services/stashsell-logo.jpg" alt="Stashsell Logo">
-      </div>
-      
-      <!-- Hamburger Menu Button -->
-      <div class="hamburger" id="hamburger-menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      
-      <!-- Navigation Links -->
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#features">Why Choose Us</a></li>
-        <li><a href="#partners">Partners</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- Mobile Menu Overlay -->
-  <div class="mobile-menu-overlay" id="menu-overlay"></div>
-
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <div class="container hero-content">
-      <h1>Verified, Compliant & Reliable Wholesale Distribution</h1>
-      <p>Access to bulk products for resellers, businesses, and consumers across South Africa through our integrated supply chain solution</p>
-      <div class="hero-btns">
-        <a href="#partners" class="btn">Explore Partners</a>
-        <a href="#services" class="btn btn-secondary">Learn More</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="about animate">
-    <div class="container">
-      <div class="section-title">
-        <h2>About Stashsell</h2>
-        <p>Stashsell, a division of Haddag Holdings, is a South African wholesale distribution company supplying both general market products and imported goods. We provide verified, compliant, and reliable access to bulk items for resellers, businesses, and consumers across the country.</p>
-      </div>
-      
-      <div class="about-content">
-        <div class="about-text">
-          <h3>Integrated Supply Chain Excellence</h3>
-          <p>Stashsell, a division of Haddag Holdings, is a South African wholesale distribution company supplying both general market products and imported goods. We provide verified, compliant, and reliable access to bulk items for resellers, businesses, and consumers across the country.</p>
-          
-          <p>Our sister company, Stashdel, manages customs clearance, documentation, and transport, ensuring smooth movement. Through this integrated partnership, Stashsell delivers a transparent, efficient, and trusted supply chain within South Africa.</p>
-          
-          <p>With our commitment to quality and compliance, we've established ourselves as a preferred partner for businesses seeking reliable wholesale distribution solutions in the South African market.</p>
-          
-          <a href="#partners" class="btn" style="margin-top: 20px;">Explore Our Partners</a>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="image-services/stashdell-logo.jpg" alt="Stashdel Logistics" class="logo-img">
+                </div>
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#calculator">Get a Quote</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-        
-        <div class="about-image">
-          <img src="https://images.unsplash.com/photo-1561070845974-cc00f5bdb965?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Stashsell Distribution Center">
-        </div>
-      </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- Services Section -->
-  <section id="services" class="services animate">
-    <div class="container">
-      <div class="section-title">
-        <h2>Our Services</h2>
-        <p>Comprehensive wholesale distribution solutions designed to meet the unique needs of South African businesses</p>
-      </div>
-      
-      <div class="services-grid">
-        <div class="service-card animate">
-          <div class="service-icon">
-            <i class="fas fa-boxes"></i>
-          </div>
-          <div class="service-content">
-            <h3>Wholesale Distribution</h3>
-            <p>Access to a wide range of general market products and imported goods in bulk quantities at competitive prices. Our extensive inventory ensures you can find the products your business needs.</p>
-            <div class="service-whatsapp">
-              <a href="https://wa.me/27111234567?text=Hello%20Stashsell!%20I'm%20interested%20in%20your%20Wholesale%20Distribution%20services.%20Please%20send%20me%20your%20product%20catalogue%20and%20pricing%20information." class="btn-whatsapp">
-                <i class="fab fa-whatsapp"></i> Enquire Now
-              </a>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Professional Logistics Solutions Across Africa</h1>
+                <p>Reliable road, air, and ocean freight services with transparent pricing and seamless customs clearance</p>
+                <div>
+                    <a href="#calculator" class="btn">Get a Free Quote</a>
+                    <a href="#services" class="btn btn-secondary">Our Services</a>
+                </div>
             </div>
-          </div>
         </div>
-        
-        <div class="service-card animate">
-          <div class="service-icon">
-            <i class="fas fa-shipping-fast"></i>
-          </div>
-          <div class="service-content">
-            <h3>Customs Clearance</h3>
-            <p>Seamless customs processing handled by our sister company, Stashdel. We manage all documentation and clearance procedures to ensure your imported goods move smoothly through South African customs.</p>
-            <div class="service-whatsapp">
-              <a href="https://wa.me/27111234567?text=Hello%20Stashsell!%20I%20need%20assistance%20with%20Customs%20Clearance%20for%20my%20imported%20goods.%20Please%20provide%20me%20with%20your%20customs%20clearance%20process%20and%20pricing." class="btn-whatsapp">
-                <i class="fab fa-whatsapp"></i> Get Quote
-              </a>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Comprehensive logistics solutions tailored to your business needs</p>
             </div>
-          </div>
-        </div>
-        
-        <div class="service-card animate">
-          <div class="service-icon">
-            <i class="fas fa-truck-moving"></i>
-          </div>
-          <div class="service-content">
-            <h3>Reliable Transport</h3>
-            <p>Efficient logistics and transportation solutions across South Africa. Our integrated transport network ensures timely delivery of your products to any location in the country.</p>
-            <div class="service-whatsapp">
-              <a href="https://wa.me/27111234567?text=Hello%20Stashsell!%20I%20need%20transport%20services%20for%20my%20products.%20Please%20provide%20me%20with%20your%20transport%20rates%20and%20delivery%20timeframes%20to%20my%20location." class="btn-whatsapp">
-                <i class="fab fa-whatsapp"></i> Request Transport
-              </a>
+            
+            <div class="services-grid">
+                <!-- Road Freight -->
+                <div class="service-card">
+                    <div class="service-img road-img"></div>
+                    <div class="service-content">
+                        <h3>Road Freight</h3>
+                        <p>Efficient LTL (Less Than Truckload) and FTL (Full Truckload) solutions for local and cross-border shipments across Southern Africa.</p>
+                        <p><strong>Features:</strong> Real-time tracking, fuel surcharge transparency, toll fee inclusion, and automated weight calculations.</p>
+                        <a href="https://wa.me/27123456789?text=Hi%20Stashdel%20Logistics,%20I%20would%20like%20to%20request%20a%20quote%20for%20Road%20Freight%20services.%20Please%20contact%20me%20with%20more%20information." class="btn btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i> WhatsApp Quote
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Air Freight -->
+                <div class="service-card">
+                    <div class="service-img air-img"></div>
+                    <div class="service-content">
+                        <h3>Air Freight</h3>
+                        <p>Fast and secure air cargo services with partners like FedEx and Skynet for urgent international and domestic shipments.</p>
+                        <p><strong>Features:</strong> Door-to-door delivery, priority handling, customs documentation support, and real-time shipment visibility.</p>
+                        <a href="https://wa.me/27123456789?text=Hi%20Stashdel%20Logistics,%20I%20would%20like%20to%20request%20a%20quote%20for%20Air%20Freight%20services.%20Please%20contact%20me%20with%20more%20information." class="btn btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i> WhatsApp Quote
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Ocean Freight -->
+                <div class="service-card">
+                    <div class="service-img ocean-img"></div>
+                    <div class="service-content">
+                        <h3>Ocean Freight</h3>
+                        <p>Cost-effective sea freight solutions with MSC (Door-to-Door) and CMA CGM (Port-to-Port) for large volume international shipments.</p>
+                        <p><strong>Features:</strong> Container tracking, consolidation services, port handling coordination, and comprehensive documentation.</p>
+                        <a href="https://wa.me/27123456789?text=Hi%20Stashdel%20Logistics,%20I%20would%20like%20to%20request%20a%20quote%20for%20Ocean%20Freight%20services.%20Please%20contact%20me%20with%20more%20information." class="btn btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i> WhatsApp Quote
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Customs Clearance -->
+                <div class="service-card">
+                    <div class="service-img customs-img"></div>
+                    <div class="service-content">
+                        <h3>Customs Clearance</h3>
+                        <p>Expert customs brokerage services to ensure smooth clearance of your imports and exports with duty fee calculations.</p>
+                        <p><strong>Features:</strong> Duty fee estimation, documentation preparation, regulatory compliance, and dedicated customs agents.</p>
+                        <a href="https://wa.me/27123456789?text=Hi%20Stashdel%20Logistics,%20I%20would%20like%20to%20inquire%20about%20your%20Customs%20Clearance%20services.%20Please%20contact%20me%20with%20more%20information." class="btn btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i> WhatsApp Inquiry
+                        </a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-        
-        <div class="service-card animate">
-          <div class="service-icon">
-            <i class="fas fa-shield-alt"></i>
-          </div>
-          <div class="service-content">
-            <h3>Verified Products</h3>
-            <p>Ensuring all products meet compliance and quality standards. We verify every product in our inventory to guarantee you receive only the highest quality goods for your business.</p>
-            <div class="service-whatsapp">
-              <a href="https://wa.me/27111234567?text=Hello%20Stashsell!%20I%20want%20to%20verify%20products%20before%20purchasing.%20Please%20send%20me%20your%20product%20certification%20and%20compliance%20documents." class="btn-whatsapp">
-                <i class="fab fa-whatsapp"></i> Verify Products
-              </a>
+    </section>
+
+    <!-- Quote Calculator Section -->
+    <section class="section" id="calculator" style="background-color: #f5f7fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Freight Calculator</h2>
+                <p>Get an instant quote for road freight or request a manual quote for air and ocean shipments</p>
             </div>
-          </div>
+            
+            <div class="calculator-container">
+                <div class="calculator-tabs">
+                    <button class="tab-btn active" data-tab="road">Road Freight</button>
+                    <button class="tab-btn" data-tab="air">Air Freight</button>
+                    <button class="tab-btn" data-tab="ocean">Ocean Freight</button>
+                </div>
+                
+                <!-- Road Freight Calculator -->
+                <div class="tab-content active" id="road-tab">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="freight-type">Freight Type</label>
+                            <select class="form-control" id="freight-type">
+                                <option value="ltl">LTL (Less Than Truckload)</option>
+                                <option value="ftl">FTL (Full Truckload)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="route-type">Route Type</label>
+                            <select class="form-control" id="route-type">
+                                <option value="local">Local</option>
+                                <option value="cross-border">Cross-Border</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="actual-weight">Actual Weight (kg)</label>
+                            <input type="number" class="form-control" id="actual-weight" placeholder="e.g. 1000" min="1" value="1000">
+                        </div>
+                        <div class="form-group">
+                            <label for="volume">Volume (m³)</label>
+                            <input type="number" class="form-control" id="volume" placeholder="e.g. 2" min="0.1" step="0.1" value="2">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="distance">Distance (km)</label>
+                            <input type="number" class="form-control" id="distance" placeholder="e.g. 100" min="1" value="00">
+                        </div>
+                        <div class="form-group">
+                            <label for="toll-fees">Toll Fees (ZAR)</label>
+                            <input type="number" class="form-control" id="toll-fees" placeholder="e.g. 50" min="0" value="50">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cargo-type">Cargo Type</label>
+                        <select class="form-control" id="cargo-type">
+                            <option value="general">General Goods</option>
+                            <option value="furniture">Furniture</option>
+                            <option value="commodities">Commodities</option>
+                            <option value="fragile">Fragile Items</option>
+                        </select>
+                    </div>
+                    
+                    <button class="btn" id="calculate-road">Calculate Freight Cost</button>
+                    
+                    <div class="result-container" id="road-result">
+                        <div class="result-title">Quote Summary</div>
+                        <div class="result-breakdown">
+                            <div class="result-item">
+                                <span>Chargeable Weight:</span>
+                                <span id="chargeable-weight">1.2 tons</span>
+                            </div>
+                            <div class="result-item">
+                                <span>Base Freight Cost:</span>
+                                <span id="base-freight">R 960.00</span>
+                            </div>
+                            <div class="result-item">
+                                <span>Fuel Surcharge (17%):</span>
+                                <span id="fuel-surcharge">R 163.20</span>
+                            </div>
+                            <div class="result-item">
+                                <span>Toll Fees:</span>
+                                <span id="toll-fees-result">R 50.00</span>
+                            </div>
+                            <div class="result-item">
+                                <span><strong>Total Cost:</strong></span>
+                                <span><strong id="total-cost">R 1,173.20</strong></span>
+                            </div>
+                        </div>
+                        <p style="margin-top: 15px; text-align: center; font-weight: 600;">Estimated Delivery Time: <span id="delivery-time">1-2 business days</span></p>
+                    </div>
+                </div>
+                
+                <!-- Air Freight Calculator -->
+                <div class="tab-content" id="air-tab">
+                    <div class="form-group">
+                        <label for="air-weight">Weight (kg)</label>
+                        <input type="number" class="form-control" id="air-weight" placeholder="e.g. 50" min="1" value="50">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="air-volume">Volume (m³)</label>
+                        <input type="number" class="form-control" id="air-volume" placeholder="e.g. 0.5" min="0.1" step="0.1" value="0.5">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="air-origin">Origin</label>
+                            <input type="text" class="form-control" id="air-origin" placeholder="e.g. Johannesburg" value="Johannesburg">
+                        </div>
+                        <div class="form-group">
+                            <label for="air-destination">Destination</label>
+                            <input type="text" class="form-control" id="air-destination" placeholder="e.g. London" value="London">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="air-service">Service Provider</label>
+                        <select class="form-control" id="air-service">
+                            <option value="fedex">FedEx Priority</option>
+                            <option value="skynet">Skynet Global</option>
+                        </select>
+                    </div>
+                    
+                    <button class="btn" id="request-air-quote">Request Manual Quote</button>
+                    
+                    <div class="result-container" id="air-result" style="display: none;">
+                        <div class="result-title">Quote Request Submitted</div>
+                        <p>Thank you for your request! Our logistics team will review your air freight requirements and contact you within 2 business hours with a detailed quote.</p>
+                        <p style="margin-top: 15px; font-weight: 600;">Reference Number: <span style="color: var(--accent);">AIR-23092023-7845</span></p>
+                    </div>
+                </div>
+                
+                <!-- Ocean Freight Calculator -->
+                <div class="tab-content" id="ocean-tab">
+                    <div class="form-group">
+                        <label for="ocean-weight">Weight (kg)</label>
+                        <input type="number" class="form-control" id="ocean-weight" placeholder="e.g. 5000" min="1" value="5000">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ocean-volume">Volume (m³)</label>
+                        <input type="number" class="form-control" id="ocean-volume" placeholder="e.g. 10" min="0.1" step="0.1" value="10">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="ocean-origin">Origin Port</label>
+                            <input type="text" class="form-control" id="ocean-origin" placeholder="e.g. Durban" value="Durban">
+                        </div>
+                        <div class="form-group">
+                            <label for="ocean-destination">Destination Port</label>
+                            <input type="text" class="form-control" id="ocean-destination" placeholder="e.g. Rotterdam" value="Rotterdam">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ocean-service">Service Type</label>
+                        <select class="form-control" id="ocean-service">
+                            <option value="msc">MSC (Door-to-Door)</option>
+                            <option value="cma-cgm">CMA CGM (Port-to-Port)</option>
+                        </select>
+                    </div>
+                    
+                    <button class="btn" id="request-ocean-quote">Request Manual Quote</button>
+                    
+                    <div class="result-container" id="ocean-result" style="display: none;">
+                        <div class="result-title">Quote Request Submitted</div>
+                        <p>Thank you for your request! Our ocean freight specialists will prepare a detailed quote including customs clearance options and contact you within 24 hours.</p>
+                        <p style="margin-top: 15px; font-weight: 600;">Reference Number: <span style="color: var(--accent);">OCEAN-23092023-9213</span></p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Why Choose Us Section -->
-  <section id="features" class="features-section" style="background-color: var(--gray-color);">
-    <div class="container">
-      <div class="section-title">
-        <h2>Why Choose Stashsell</h2>
-        <p>We've built our reputation on delivering exceptional service and reliable solutions to our clients across South Africa</p>
-      </div>
-      
-      <div class="features">
-        <div class="feature animate">
-          <div class="feature-icon">
-            <i class="fas fa-check-circle"></i>
-          </div>
-          <h3>Verified & Compliant</h3>
-          <p>All products undergo rigorous verification to ensure compliance with South African regulations and quality standards.</p>
+    <!-- Features Section -->
+    <section class="section features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Stashdel Logistics?</h2>
+                <p>We deliver excellence through our specialized services and technology-driven approach</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-weight-hanging"></i>
+                    </div>
+                    <h3>Smart Weight Calculation</h3>
+                    <p>Automatic CBM to KG conversion with chargeable weight calculation (higher of actual or volumetric weight)</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3>Transparent Pricing</h3>
+                    <p>Clear breakdown of freight costs, fuel surcharges (17%), toll fees, customs duties, and clearance fees</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck-loading"></i>
+                    </div>
+                    <h3>Verified Truck Owners</h3>
+                    <p>Registered and approved truck owners with verified capacity, insurance, and route preferences</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Customs Expertise</h3>
+                    <p>Dedicated customs clearance team with accurate duty fee calculations and documentation support</p>
+                </div>
+            </div>
         </div>
-        
-        <div class="feature animate">
-          <div class="feature-icon">
-            <i class="fas fa-sync-alt"></i>
-          </div>
-          <h3>Integrated Supply Chain</h3>
-          <p>Seamless coordination between Stashsell and Stashdel ensures smooth movement from import to final delivery.</p>
-        </div>
-        
-        <div class="feature animate">
-          <div class="feature-icon">
-            <i class="fas fa-warehouse"></i>
-          </div>
-          <h3>Nationwide Coverage</h3>
-          <p>Access to our extensive distribution network across all provinces of South Africa for reliable delivery.</p>
-        </div>
-        
-        <div class="feature animate">
-          <div class="feature-icon">
-            <i class="fas fa-handshake"></i>
-          </div>
-          <h3>Trusted Partnership</h3>
-          <p>Build a reliable long-term relationship with a partner committed to your business success.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Partners Section -->
-  <section id="partners" class="partners animate">
-    <div class="container">
-      <div class="section-title">
-        <h2>Our Trusted Partners</h2>
-        <p>We collaborate with leading logistics and freight forwarding companies to ensure seamless movement of goods across South Africa and internationally</p>
-      </div>
-      
-      <div class="partners-container">
-        <!-- Partner 1 -->
-        <div class="partner-card animate">
-          <img src="https://i.imgur.com/9Y9Y5xN.png" alt="SKYNET Worldwide Express">
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Stashdel Logistics</h2>
+                <p>Professional logistics solutions built on reliability, transparency, and technology</p>
+            </div>
+            
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p style="margin-bottom: 20px; font-size: 1.1rem;">Stashdel Logistics is a premier freight management company specializing in road, air, and ocean freight solutions across Southern Africa and beyond. Founded on principles of transparency and efficiency, we leverage technology to provide accurate pricing and seamless shipment tracking.</p>
+                <p style="margin-bottom: 20px; font-size: 1.1rem;">Our platform connects businesses with verified truck owners, streamlines customs clearance processes, and provides real-time visibility into your supply chain. With Stashdel, you get the reliability of established carriers like DHL and FedEx with the personalized service of a dedicated logistics partner.</p>
+                <p style="font-weight: 600; font-size: 1.1rem; color: var(--primary);">Trusted by over 5,000 businesses for their logistics needs since 2018.</p>
+            </div>
         </div>
-        
-        <!-- Partner 2 -->
-        <div class="partner-card animate">
-          <img src="https://i.imgur.com/8c3bQcG.png" alt="FedEx">
-        </div>
-        
-        <!-- Partner 3 -->
-        <div class="partner-card animate">
-          <img src="https://i.imgur.com/5QjX5dP.png" alt="MSC">
-        </div>
-        
-        <!-- Partner 4 -->
-        <div class="partner-card animate">
-          <img src="https://i.imgur.com/1xX9Z6D.png" alt="The Courier Guy">
-        </div>
-        
-        <!-- Partner 5 -->
-        <div class="partner-card animate">
-          <img src="https://i.imgur.com/2yXQYjD.png" alt="CMA CGM">
-        </div>
-        
-        <!-- Partner 6 -->
-        <div class="partner-card animate">
-          <img src="https://i.imgur.com/gkZ6q8q.png" alt="Marsh">
-        </div>
-      </div>
-      
-      <div class="partner-description animate" style="margin-top: 50px;">
-        <h3>Strategic Partnerships for Excellence</h3>
-        <p>Our strategic partnerships with these industry-leading logistics and freight forwarding companies enable us to provide comprehensive end-to-end supply chain solutions. These collaborations ensure that your products move efficiently through customs, transportation, and delivery channels with maximum reliability and security. Whether you need domestic distribution or international shipping, our partner network delivers the expertise and infrastructure to meet your specific requirements.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-column">
-          <h3>Stashsell</h3>
-          <p>South Africa's leading wholesale distribution company providing verified, compliant, and reliable access to bulk products for businesses and consumers nationwide.</p>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/27111234567" style="background: var(--whatsapp-color);">
-              <i class="fab fa-whatsapp"></i>
-            </a>
-          </div>
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Streamline Your Logistics?</h2>
+            <p>Get instant quotes, track shipments in real-time, and experience hassle-free customs clearance with Stashdel Logistics.</p>
+            <a href="#calculator" class="btn" style="background: white; color: var(--primary);">Get Your Free Quote Now</a>
         </div>
-        
-        <div class="footer-column">
-          <h3>Quick Links</h3>
-          <ul class="footer-links">
-            <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
-            <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
-            <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
-            <li><a href="#features"><i class="fas fa-chevron-right"></i> Why Choose Us</a></li>
-            <li><a href="#partners"><i class="fas fa-chevron-right"></i> Partners</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-column">
-          <h3>Our Services</h3>
-          <ul class="footer-links">
-            <li><a href="#"><i class="fas fa-chevron-right"></i> Wholesale Distribution</a></li>
-            <li><a href="#"><i class="fas fa-chevron-right"></i> Customs Clearance</a></li>
-            <li><a href="#"><i class="fas fa-chevron-right"></i> Transport & Logistics</a></li>
-            <li><a href="#"><i class="fas fa-chevron-right"></i> Product Verification</a></li>
-            <li><a href="#"><i class="fas fa-chevron-right"></i> Business Solutions</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-column">
-          <h3>Newsletter</h3>
-          <p>Subscribe to our newsletter for the latest updates and special offers.</p>
-          <div class="form-group">
-            <input type="email" placeholder="Your Email" required>
-          </div>
-          <button type="submit" class="btn" style="width: 100%;">Subscribe</button>
-        </div>
-      </div>
-      
-      <div class="copyright">
-        <p>&copy; 2026 Stashsell, a division of Haddag Holdings. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+    </section>
 
-  <!-- Floating WhatsApp Button -->
-  <div class="floating-whatsapp">
-    <a href="https://wa.me/27111234567?text=Hello%20Stashsell!%20I%20would%20like%20to%20discuss%20my%20wholesale%20distribution%20needs%20with%20your%20team." class="floating-whatsapp-btn" title="Chat on WhatsApp">
-      <i class="fab fa-whatsapp"></i>
-    </a>
-  </div>
+    <!-- Contact Section -->
+    <section class="section" id="contact" style="background-color: #f5f7fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Reach out to our logistics experts for any inquiries or support</p>
+            </div>
+            
+            <div style="max-width: 800px; margin: 0 auto; background: white; padding: 40px; border-radius: var(--border-radius); box-shadow: var(--shadow);">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="contact-name">Full Name</label>
+                        <input type="text" class="form-control" id="contact-name" placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Email Address</label>
+                        <input type="email" class="form-control" id="contact-email" placeholder="your.email@example.com">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact-phone">Phone Number</label>
+                    <input type="tel" class="form-control" id="contact-phone" placeholder="+27 12 345 6789">
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact-message">Message</label>
+                    <textarea class="form-control" id="contact-message" rows="5" placeholder="How can we help you?"></textarea>
+                </div>
+                
+                <button class="btn" style="width: 100%; padding: 16px;">Send Message</button>
+                
+                <div style="text-align: center; margin-top: 25px;">
+                    <p style="margin-bottom: 15px;"><strong>Or contact us directly:</strong></p>
+                    <p><i class="fas fa-phone" style="color: var(--accent); margin-right: 10px;"></i> +27 11 234 5678</p>
+                    <p><i class="fas fa-envelope" style="color: var(--accent); margin-right: 10px; margin-top: 8px;"></i> info@stashdel.co.za</p>
+                    <p><i class="fas fa-map-marker-alt" style="color: var(--accent); margin-right: 10px; margin-top: 8px;"></i> 123 Logistics Avenue, Sandton, Johannesburg, 2196</p>
+                    
+                    <a href="https://wa.me/27123456789?text=Hi%20Stashdel%20Logistics,%20I%20have%20a%20general%20inquiry%20about%20your%20services.%20Please%20contact%20me%20at%20your%20earliest%20convenience." class="btn btn-whatsapp" style="margin-top: 20px;">
+                        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <script>
-    // Hamburger menu functionality
-    document.addEventListener('DOMContentLoaded', function() {
-      const hamburger = document.getElementById('hamburger-menu');
-      const navLinks = document.getElementById('nav-links');
-      const menuOverlay = document.getElementById('menu-overlay');
-      
-      // Toggle menu
-      hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navLinks.classList.toggle('active');
-        menuOverlay.classList.toggle('active');
-        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
-      });
-      
-      // Close menu when clicking overlay
-      menuOverlay.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('active');
-        menuOverlay.classList.remove('active');
-        document.body.style.overflow = 'auto';
-      });
-      
-      // Close menu when clicking a link
-      document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-          hamburger.classList.remove('active');
-          navLinks.classList.remove('active');
-          menuOverlay.classList.remove('active');
-          document.body.style.overflow = 'auto';
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="-grid">
+                <div class="footer-col">
+                    <div class="logo-text" style="color: white; font-size: 2.2rem; margin-bottom: 25px;">Stash<span style="color: var(--accent);">del</span></div>
+                    <p>Professional logistics solutions across Africa with transparent pricing and seamless customs clearance.</p>
+                    <p style="margin-top: 15px;"><i class="fas fa-truck" style="color: var(--accent); margin-right: 10px;"></i> Road, Air & Ocean Freight</p>
+                    <p><i class="fas fa-globe-africa" style="color: var(--accent); margin-right: 10px;"></i> Serving Southern Africa & Beyond</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Our Services</a></li>
+                        <li><a href="#calculator">Get a Quote</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services">Road Freight (LTL/FTL)</a></li>
+                        <li><a href="#services">Air Freight</a></li>
+                        <li><a href="#services">Ocean Freight</a></li>
+                        <li><a href="#services">Customs Clearance</a></li>
+                        <li><a href="#services">Duty Fee Calculation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Logistics Avenue, Sandton, Johannesburg, 2196</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+27 11 234 5678</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@stashdel.co.za</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon-Fri: 8:00 AM - 5:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 Stashdel Logistics. All Rights Reserved. | Professional Freight Solutions Across Africa</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
         });
-      });
-      
-      // Close menu when clicking outside on mobile
-      document.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768) {
-          if (!navLinks.contains(e.target) && !hamburger.contains(e.target) && navLinks.classList.contains('active')) {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
-            menuOverlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-          }
-        }
-      });
-      
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          // Don't prevent default for external links or WhatsApp links
-          if (this.href.includes('wa.me') || this.href.includes('http')) {
-            return;
-          }
-          
-          e.preventDefault();
-          
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth'
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
             });
-          }
         });
-      });
-      
-      // Animation on scroll
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
+        
+        // Tab Switching for Calculator
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                // Show corresponding tab content
+                const tabId = btn.getAttribute('data-tab');
+                document.getElementById(`${tabId}-tab`).classList.add('active');
+                
+                // Hide any previous results
+                document.getElementById('road-result').style.display = 'none';
+                document.getElementById('air-result').style.display = 'none';
+                document.getElementById('ocean-result').style.display = 'none';
+            });
         });
-      }, {
-        threshold: 0.1
-      });
-      
-      document.querySelectorAll('.animate').forEach(section => {
-        observer.observe(section);
-      });
-      
-      // Header scroll effect
-      window.addEventListener('scroll', () => {
-        const header = document.querySelector('header');
-        if (window.scrollY > 50) {
-          header.style.boxShadow = '0 2px 15px rgba(0,0,0,0.15)';
-          header.style.padding = '10px 0';
-        } else {
-          header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
-          header.style.padding = '15px 0';
-        }
-      });
-    });
-  </script>
+        
+        // Road Freight Calculator
+        document.getElementById('calculate-road').addEventListener('click', () => {
+            // Get input values
+            const freightType = document.getElementById('freight-type').value; // ltl or ftl
+            const routeType = document.getElementById('route-type').value; // local or cross-border
+            const actualWeight = parseFloat(document.getElementById('actual-weight').value);
+            const volume = parseFloat(document.getElementById('volume').value);
+            const distance = parseFloat(document.getElementById('distance').value);
+            const tollFees = parseFloat(document.getElementById('toll-fees').value) || 0;
+            
+            // CBM to KG conversion factors
+            const conversionFactors = {
+                'ltl': {
+                    'local': 600,
+                    'cross-border': 1000
+                },
+                'ftl': {
+                    'local': 500,
+                    'cross-border': 1250
+                }
+            };
+            
+            // Get conversion factor based on selections
+            const conversionFactor = conversionFactors[freightType][routeType];
+            
+            // Calculate volumetric weight
+            const volumetricWeight = volume * conversionFactor;
+            
+            // Determine chargeable weight (higher of actual or volumetric)
+            const chargeableWeightKg = Math.max(actualWeight, volumetricWeight);
+            const chargeableWeightTons = chargeableWeightKg / 1000;
+            
+            // Base rates per ton per km
+            const rates = {
+                'ltl': 8,
+                'ftl': 13
+            };
+            
+            // Calculate base freight cost
+            const baseFreight = chargeableWeightTons * distance * rates[freightType];
+            
+            // Calculate fuel surcharge (17%)
+            const fuelSurcharge = baseFreight * 0.17;
+            
+            // Calculate total cost
+            const totalCost = baseFreight + fuelSurcharge + tollFees;
+            
+            // Determine delivery time estimate
+            let deliveryTime;
+            if (distance <= 200) {
+                deliveryTime = "Same day";
+            } else if (distance <= 500) {
+                deliveryTime = "1 business day";
+            } else if (distance <= 1000) {
+                deliveryTime = "1-2 business days";
+            } else {
+                deliveryTime = "2-3 business days";
+            }
+            
+            // Update result display
+            document.getElementById('chargeable-weight').textContent = `${chargeableWeightTons.toFixed(1)} tons`;
+            document.getElementById('base-freight').textContent = `R ${baseFreight.toFixed(2)}`;
+            document.getElementById('fuel-surcharge').textContent = `R ${fuelSurcharge.toFixed(2)}`;
+            document.getElementById('toll-fees-result').textContent = `R ${tollFees.toFixed(2)}`;
+            document.getElementById('total-cost').textContent = `R ${totalCost.toFixed(2)}`;
+            document.getElementById('delivery-time').textContent = deliveryTime;
+            
+            // Show result container
+            document.getElementById('road-result').style.display = 'block';
+            
+            // Scroll to result
+            document.getElementById('road-result').scrollIntoView({behavior: 'smooth', block: 'center'});
+        });
+        
+        // Air Freight Quote Request
+        document.getElementById('request-air-quote').addEventListener('click', () => {
+            // In a real application, this would submit to a backend
+            document.getElementById('air-result').style.display = 'block';
+            document.getElementById('air-result').scrollIntoView({behavior: 'smooth', block: 'center'});
+        });
+        
+        // Ocean Freight Quote Request
+        document.getElementById('request-ocean-quote').addEventListener('click', () => {
+            // In a real application, this would submit to a backend
+            document.getElementById('ocean-result').style.display = 'block';
+            document.getElementById('ocean-result').scrollIntoView({behavior: 'smooth', block: 'center'});
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Set active navigation link based on scroll position
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const scrollPos = window.scrollY + 80;
+            
+            sections.forEach(section => {
+                if (scrollPos >= section.offsetTop && scrollPos < (section.offsetTop + section.offsetHeight)) {
+                    const id = section.getAttribute('id');
+                    document.querySelectorAll('.nav-links a').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
