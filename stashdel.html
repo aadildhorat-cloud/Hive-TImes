@@ -682,7 +682,7 @@
                     <li><a href="#services">Services</a></li>
                     <li><a href="#calculator">Get a Quote</a></li>
                     <li><a href="#about">About Us</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#truck-registration">Truck Registration</a></li>
                 </ul>
             </nav>
         </div>
@@ -1014,51 +1014,347 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="section" id="contact" style="background-color: #f5f7fa;">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contact Us</h2>
-                <p>Reach out to our logistics experts for any inquiries or support</p>
-            </div>
-            
-            <div style="max-width: 800px; margin: 0 auto; background: white; padding: 40px; border-radius: var(--border-radius); box-shadow: var(--shadow);">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="contact-name">Full Name</label>
-                        <input type="text" class="form-control" id="contact-name" placeholder="Your name">
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-email">Email Address</label>
-                        <input type="email" class="form-control" id="contact-email" placeholder="your.email@example.com">
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="contact-phone">Phone Number</label>
-                    <input type="tel" class="form-control" id="contact-phone" placeholder="+27 12 345 6789">
-                </div>
-                
-                <div class="form-group">
-                    <label for="contact-message">Message</label>
-                    <textarea class="form-control" id="contact-message" rows="5" placeholder="How can we help you?"></textarea>
-                </div>
-                
-                <button class="btn" style="width: 100%; padding: 16px;">Send Message</button>
-                
-                <div style="text-align: center; margin-top: 25px;">
-                    <p style="margin-bottom: 15px;"><strong>Or contact us directly:</strong></p>
-                    <p><i class="fas fa-phone" style="color: var(--accent); margin-right: 10px;"></i> +27 11 234 5678</p>
-                    <p><i class="fas fa-envelope" style="color: var(--accent); margin-right: 10px; margin-top: 8px;"></i> info@stashdel.co.za</p>
-                    <p><i class="fas fa-map-marker-alt" style="color: var(--accent); margin-right: 10px; margin-top: 8px;"></i> 123 Logistics Avenue, Sandton, Johannesburg, 2196</p>
-                    
-                    <a href="https://wa.me/27123456789?text=Hi%20Stashdel%20Logistics,%20I%20have%20a%20general%20inquiry%20about%20your%20services.%20Please%20contact%20me%20at%20your%20earliest%20convenience." class="btn btn-whatsapp" style="margin-top: 20px;">
-                        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+   <!-- Truck Registration Section -->
+<section class="section" id="truck-registration" style="background-color: #f5f7fa;">
+<div class="container">
+<div class="section-title">
+<h2>Truck Registration</h2>
+<p>Register your vehicle with Stashdel Logistics to become a verified transport partner</p>
+</div>
+<div style="max-width: 1000px; margin: 0 auto; background: white; padding: 40px; border-radius: var(--border-radius); box-shadow: var(--shadow);">
+<form id="truck-registration-form">
+<!-- Section 1: Owner/Company Details -->
+<div style="border-bottom: 2px solid var(--light-gray); padding-bottom: 30px; margin-bottom: 30px;">
+<h3 style="color: var(--primary); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--accent);">Section 1: Owner/Company Details</h3>
+<div class="form-row">
+<div class="form-group">
+<label for="owner-name">Full Name of Owner / Fleet Manager <span style="color: red;">*</span></label>
+<input type="text" class="form-control" id="owner-name" placeholder="Enter full name" required>
+</div>
+<div class="form-group">
+<label for="company-name">Company Name (if applicable)</label>
+<input type="text" class="form-control" id="company-name" placeholder="Enter company name">
+</div>
+</div>
+<div class="form-row">
+<div class="form-group">
+<label for="owner-email">Email Address <span style="color: red;">*</span></label>
+<input type="email" class="form-control" id="owner-email" placeholder="your.email@example.com" required>
+</div>
+<div class="form-group">
+<label for="owner-phone">Phone Number (WhatsApp preferred) <span style="color: red;">*</span></label>
+<input type="tel" class="form-control" id="owner-phone" placeholder="+27 12 345 6789" required>
+</div>
+</div>
+<div class="form-group">
+<label for="owner-location">Location (City & State) <span style="color: red;">*</span></label>
+<input type="text" class="form-control" id="owner-location" placeholder="e.g., Johannesburg, Gauteng" required>
+</div>
+</div>
+
+<!-- Section 2: Vehicle/Truck Details -->
+<div style="border-bottom: 2px solid var(--light-gray); padding-bottom: 30px; margin-bottom: 30px;">
+<h3 style="color: var(--primary); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--accent);">Section 2: Vehicle/Truck Details</h3>
+<div class="form-group">
+<label for="vehicle-type">Vehicle Type <span style="color: red;">*</span></label>
+<select class="form-control" id="vehicle-type" required>
+<option value="">Select Vehicle Type</option>
+<optgroup label="Small Vehicles (0-1 ton)">
+<option value="panelvan">Panelvan (0–1 ton) – Compact enclosed vehicle for small deliveries</option>
+<option value="full-bakkie">Full Bakkies (0–1 ton) – Compact vehicles for light deliveries</option>
+<option value="small-bakkie">Small Bakkies (0–1 ton) – Ideal for personal use and small-scale deliveries</option>
+<option value="half-ton-bakkie">Half Ton Bakkie with Canopy – Enclosed cargo space for secure transport</option>
+</optgroup>
+<optgroup label="Small Trucks (1-4 ton)">
+<option value="1-ton-truck">1 Ton Truck – Ideal for small deliveries and light hauling</option>
+<option value="small-truck">Small Truck (1–4 ton) – Versatile for various transport needs</option>
+<option value="large-bakkie">Large Bakkies (1–4 ton) – Additional capacity for larger loads</option>
+<option value="close-body-non-ref">Close Body Non-Refrigerated (1–4 ton) – Secure transport for general cargo</option>
+<option value="refrigerated-close-body-small">Refrigerated Close Body (1–4 ton) – Cold storage for perishable items</option>
+<option value="medium-dropside">Medium Truck Dropside (1–4 ton) – Easy loading and unloading</option>
+<option value="other">Other (1–4 ton) – Miscellaneous truck types</option>
+</optgroup>
+<optgroup label="Medium Trucks (5-8 ton)">
+<option value="dropside">Dropside (5–8 ton) – Sides drop down for easy loading/unloading</option>
+<option value="medium-close-body">Medium Close Body (5–8 ton) – Versatile enclosed protection</option>
+<option value="medium-refrigerated">Medium Refrigerated Close Body (5–8 ton) – Temperature-sensitive items</option>
+<option value="large-refrigerated">Large Refrigerated Close Body (5–8 ton) – Perishable goods transport</option>
+<option value="tautliner-medium">Tautliner (5–8 ton) – Curtain sides for easy access</option>
+<option value="8-ton-closed">8 Ton Closed Truck – Secure weather-protected transport</option>
+<option value="8-ton-drop-curtain">8 Ton Drop Curtain Sides – Flexible side loading/unloading</option>
+</optgroup>
+<optgroup label="Large Trucks (9-15 ton)">
+<option value="10-cubes">10 Cubes (9–15 ton) – Medium-sized enclosed cargo</option>
+<option value="large-drop-sides">Large Drop Sides (9–15 ton) – Extensive cargo space</option>
+<option value="crane-truck">Crane Truck (9–15 ton) – Lifting and moving heavy items</option>
+</optgroup>
+<optgroup label="Heavy Duty Trucks (1-40 ton)">
+<option value="heavy-dropside">Heavy Dropside Truck (1–40 ton) – Large or heavy loads</option>
+<option value="heavy-duty-dropsides">Heavy Duty Dropsides (33–34 ton) – Heavy-duty hauling</option>
+<option value="34-ton-flatbed">34 Ton Flatbed Link – Oversized items without walls</option>
+<option value="34-ton-fuel-tanker">34 Ton Fuel Tanker – Liquid fuels transport</option>
+<option value="34-ton-side-tipper">34 Ton Side Tipper – Loose materials unloading</option>
+<option value="side-tipper">Side Tipper (33–34 ton) – Efficient loose material unloading</option>
+<option value="34-ton-tautliner">34 Ton Tautliner – Palletized goods transport</option>
+<option value="30-ton-dump">30 Ton Dump Truck – Sand, gravel, construction materials</option>
+<option value="triaxles">Triaxles (21–28 ton) – Heavy loads with stability</option>
+<option value="abnormal-trucks">Abnormal Trucks (29–32 ton) – Oversized/heavy loads</option>
+<option value="vehicle-carrier">Vehicle Carrier Lowbed (33–34 ton) – Vehicle transport</option>
+<option value="water-tanker">Water Tanker (33–34 ton) – Construction/agricultural water delivery</option>
+<option value="septic-tank">Septic Tank (39–42 ton) – Septic waste transport/disposal</option>
+</optgroup>
+</select>
+</div>
+<div class="form-row">
+<div class="form-group">
+<label for="vehicle-make">Vehicle Make and Model <span style="color: red;">*</span></label>
+<input type="text" class="form-control" id="vehicle-make" placeholder="e.g., Mercedes-Benz Actros" required>
+</div>
+<div class="form-group">
+<label for="vehicle-reg">Vehicle Registration Number (Plate Number) <span style="color: red;">*</span></label>
+<input type="text" class="form-control" id="vehicle-reg" placeholder="e.g., ABC123GP" required>
+</div>
+</div>
+<div class="form-row">
+<div class="form-group">
+<label for="vehicle-year">Vehicle Year of Manufacture <span style="color: red;">*</span></label>
+<input type="number" class="form-control" id="vehicle-year" placeholder="e.g., 2020" min="1980" max="2026" required>
+</div>
+<div class="form-group">
+<label for="cross-border-permits">Does the Vehicle have Cross Border Permits? <span style="color: red;">*</span></label>
+<select class="form-control" id="cross-border-permits" required>
+<option value="">Select an option</option>
+<option value="yes">Yes</option>
+<option value="no">No</option>
+</select>
+</div>
+</div>
+<div class="form-row">
+<div class="form-group">
+<label for="insurance-validity">Insurance Validity Date <span style="color: red;">*</span></label>
+<input type="date" class="form-control" id="insurance-validity" required>
+</div>
+<div class="form-group">
+<label for="goods-type">Type of Goods You Usually Carry <span style="color: red;">*</span></label>
+<input type="text" class="form-control" id="goods-type" placeholder="e.g., General goods, perishables, construction materials" required>
+</div>
+</div>
+<div class="form-group">
+<label for="vehicle-documents">Vehicle Registration Certificate <span style="color: red;">*</span></label>
+<div style="background: var(--light); padding: 15px; border-radius: 4px; border: 1px dashed #ddd;">
+<p style="margin-bottom: 10px; color: var(--gray);"><i class="fas fa-info-circle" style="margin-right: 8px;"></i>Upload up to 5 supported files: PDF. Max 100 MB per file.</p>
+<input type="file" class="form-control" id="vehicle-documents" accept=".pdf" multiple>
+</div>
+</div>
+<div class="form-group">
+<label for="insurance-documents">Vehicle Insurance Certificate <span style="color: red;">*</span></label>
+<div style="background: var(--light); padding: 15px; border-radius: 4px; border: 1px dashed #ddd;">
+<p style="margin-bottom: 10px; color: var(--gray);"><i class="fas fa-info-circle" style="margin-right: 8px;"></i>Upload up to 5 supported files: PDF. Max 100 MB per file.</p>
+<input type="file" class="form-control" id="insurance-documents" accept=".pdf" multiple>
+</div>
+</div>
+</div>
+
+<!-- Section 3: Driver Details -->
+<div style="border-bottom: 2px solid var(--light-gray); padding-bottom: 30px; margin-bottom: 30px;">
+<h3 style="color: var(--primary); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--accent);">Section 3: Driver Details</h3>
+<div class="form-group">
+<label for="driver-assigned">Is a Driver Assigned to This Vehicle? <span style="color: red;">*</span></label>
+<select class="form-control" id="driver-assigned" required>
+<option value="">Select an option</option>
+<option value="yes">Yes</option>
+<option value="no">No</option>
+</select>
+</div>
+<div id="driver-details-section" style="display: none;">
+<div class="form-row">
+<div class="form-group">
+<label for="driver-name">Driver's Full Name <span style="color: red;">*</span></label>
+<input type="text" class="form-control" id="driver-name" placeholder="Enter driver's full name">
+</div>
+<div class="form-group">
+<label for="driver-phone">Driver's Phone Number (WhatsApp preferred) <span style="color: red;">*</span></label>
+<input type="tel" class="form-control" id="driver-phone" placeholder="+27 12 345 6789">
+</div>
+</div>
+<div class="form-row">
+<div class="form-group">
+<label for="driver-license">Driver's License Number <span style="color: red;">*</span></label>
+<input type="text" class="form-control" id="driver-license" placeholder="Enter license number">
+</div>
+<div class="form-group">
+<label for="driver-id">Driver's ID/Passport No. <span style="color: red;">*</span></label>
+<input type="text" class="form-control" id="driver-id" placeholder="Enter ID or passport number">
+</div>
+</div>
+<div class="form-group">
+<label for="driver-license-upload">Upload Driver's License <span style="color: red;">*</span></label>
+<div style="background: var(--light); padding: 15px; border-radius: 4px; border: 1px dashed #ddd;">
+<p style="margin-bottom: 10px; color: var(--gray);"><i class="fas fa-info-circle" style="margin-right: 8px;"></i>Upload 1 supported file: PDF. Max 10 MB.</p>
+<input type="file" class="form-control" id="driver-license-upload" accept=".pdf">
+</div>
+</div>
+</div>
+</div>
+
+<!-- Section 4: Availability & Preferences -->
+<div style="border-bottom: 2px solid var(--light-gray); padding-bottom: 30px; margin-bottom: 30px;">
+<h3 style="color: var(--primary); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--accent);">Section 4: Availability & Preferences</h3>
+<div class="form-group">
+<label for="operating-locations">Preferred Operating Locations <span style="color: red;">*</span></label>
+<select class="form-control" id="operating-locations" required>
+<option value="">Select operating locations</option>
+<option value="local">Local (Within South Africa)</option>
+<option value="cross-border">Cross Border (Across Africa)</option>
+<option value="both">Both Local and Cross Border</option>
+</select>
+</div>
+<div class="form-group">
+<label>Usual Operating Days <span style="color: red;">*</span></label>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-top: 10px;">
+<label style="display: flex; align-items: center; cursor: pointer;">
+<input type="checkbox" name="operating-days" value="monday" style="margin-right: 8px;"> Monday
+</label>
+<label style="display: flex; align-items: center; cursor: pointer;">
+<input type="checkbox" name="operating-days" value="tuesday" style="margin-right: 8px;"> Tuesday
+</label>
+<label style="display: flex; align-items: center; cursor: pointer;">
+<input type="checkbox" name="operating-days" value="wednesday" style="margin-right: 8px;"> Wednesday
+</label>
+<label style="display: flex; align-items: center; cursor: pointer;">
+<input type="checkbox" name="operating-days" value="thursday" style="margin-right: 8px;"> Thursday
+</label>
+<label style="display: flex; align-items: center; cursor: pointer;">
+<input type="checkbox" name="operating-days" value="friday" style="margin-right: 8px;"> Friday
+</label>
+<label style="display: flex; align-items: center; cursor: pointer;">
+<input type="checkbox" name="operating-days" value="saturday" style="margin-right: 8px;"> Saturday
+</label>
+<label style="display: flex; align-items: center; cursor: pointer;">
+<input type="checkbox" name="operating-days" value="sunday" style="margin-right: 8px;"> Sunday
+</label>
+</div>
+</div>
+<div class="form-group">
+<label for="gps-enabled">Is your vehicle GPS-enabled? <span style="color: red;">*</span></label>
+<select class="form-control" id="gps-enabled" required>
+<option value="">Select an option</option>
+<option value="yes">Yes</option>
+<option value="no">No</option>
+</select>
+</div>
+<div class="form-group">
+<label for="additional-notes">Additional Notes / Special Equipment (e.g., tarpaulin, locks, refrigeration) (Optional)</label>
+<textarea class="form-control" id="additional-notes" rows="3" placeholder="Enter any additional notes or special equipment details"></textarea>
+</div>
+</div>
+
+<!-- Section 5: Terms & Declaration -->
+<div style="padding-bottom: 30px;">
+<h3 style="color: var(--primary); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--accent);">Section 5: Terms & Declaration</h3>
+<div style="background: var(--light); padding: 20px; border-radius: var(--border-radius); margin-bottom: 20px; max-height: 300px; overflow-y: auto; border: 1px solid var(--light-gray);">
+<h4 style="margin-bottom: 15px; color: var(--primary);">Stashdel – Truck Owner / Fleet Partner Terms & Conditions</h4>
+<ol style="margin-left: 20px; line-height: 1.8;">
+<li><strong>Definitions</strong>
+<ul style="margin-left: 20px; margin-bottom: 10px;">
+<li><strong>"Stashdel"</strong> refers to the logistics and freight forwarding company facilitating load assignments and transport coordination.</li>
+<li><strong>"Partner"</strong> refers to the truck owner, driver, or fleet operator registering vehicles for service under Stashdel.</li>
+<li><strong>"Vehicle"</strong> refers to the truck or fleet unit registered with Stashdel.</li>
+</ul>
+</li>
+<li><strong>Registration & Compliance</strong>
+<ul style="margin-left: 20px; margin-bottom: 10px;">
+<li>All vehicles must be properly registered and comply with local transport authority regulations.</li>
+<li>Partners must provide valid documentation including RC, insurance, fitness certificate, and driver's license.</li>
+<li>Vehicles must be roadworthy and well-maintained for commercial transport use.</li>
+</ul>
+</li>
+<li><strong>Assignment of Loads</strong>
+<ul style="margin-left: 20px; margin-bottom: 10px;">
+<li>Stashdel does not guarantee load availability but will assign loads based on demand, vehicle type, and route suitability.</li>
+<li>The partner has the right to accept or decline a load offer, but repeated refusals without valid reason may affect future assignments.</li>
+</ul>
+</li>
+<li><strong>Driver Conduct & Safety</strong>
+<ul style="margin-left: 20px; margin-bottom: 10px;">
+<li>Drivers must be professional, licensed, and sober at all times.</li>
+<li>Any incident of unsafe driving, unprofessional behavior, or delay must be reported immediately.</li>
+<li>Partner is fully responsible for the behavior and actions of their drivers during shipment handling.</li>
+</ul>
+</li>
+<li><strong>Timeliness & Communication</strong>
+<ul style="margin-left: 20px; margin-bottom: 10px;">
+<li>Vehicles must report on time for pickup and delivery.</li>
+<li>Any delays, breakdowns, or emergencies must be reported to Stashdel immediately.</li>
+<li>Failure to communicate delays may result in penalties or suspension from the platform.</li>
+</ul>
+</li>
+<li><strong>Cargo Handling</strong>
+<ul style="margin-left: 20px; margin-bottom: 10px;">
+<li>Partner is responsible for safe handling and transit of cargo.</li>
+<li>Any damage, theft, or loss caused due to negligence or non-compliance may be charged to the partner.</li>
+<li>Proper securing of goods (tarpaulin, strapping, etc.) is expected where applicable.</li>
+</ul>
+</li>
+<li><strong>Payments</strong>
+<ul style="margin-left: 20px; margin-bottom: 10px;">
+<li>Payment terms will be communicated clearly before each trip or assignment.</li>
+<li>Payments will be processed upon successful delivery and confirmation, subject to deduction of any penalties or claims.</li>
+<li>Partner must provide correct bank or UPI details for payment processing.</li>
+</ul>
+</li>
+<li><strong>Insurance & Liability</strong>
+<ul style="margin-left: 20px; margin-bottom: 10px;">
+<li>Vehicles must have valid third-party and goods-in-transit insurance.</li>
+<li>Stashdel is not responsible for vehicle breakdowns, traffic fines, or mechanical issues during transit.</li>
+<li>In case of an accident or claim, the partner must cooperate fully with Stashdel and relevant authorities.</li>
+</ul>
+</li>
+<li><strong>Termination</strong>
+<ul style="margin-left: 20px; margin-bottom: 10px;">
+<li>Stashdel reserves the right to suspend or permanently remove any partner due to repeated delays, misconduct, fraud, or safety violations.</li>
+<li>Partners may also request deactivation of their account by providing notice.</li>
+</ul>
+</li>
+<li><strong>Confidentiality</strong>
+<ul style="margin-left: 20px; margin-bottom: 10px;">
+<li>All information regarding clients, loads, and operations shared by Stashdel must be kept confidential.</li>
+<li>Sharing client details or subcontracting work without permission is prohibited.</li>
+</ul>
+</li>
+<li><strong>Dispute Resolution</strong>
+<ul style="margin-left: 20px; margin-bottom: 10px;">
+<li>In case of any disputes, Stashdel will aim to resolve them amicably.</li>
+<li>If unresolved, disputes will be subject to the jurisdiction of the courts where Stashdel is registered.</li>
+</ul>
+</li>
+<li><strong>Acceptance</strong>
+<ul style="margin-left: 20px; margin-bottom: 10px;">
+<li>By registering your vehicle or fleet with Stashdel, you acknowledge and agree to the above terms and conditions.</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="form-group">
+<label style="display: flex; align-items: center; cursor: pointer;">
+<input type="checkbox" id="terms-agreed" required style="margin-right: 10px; width: 18px; height: 18px;">
+<span>Do you agree to Stashdel – Truck Owner / Fleet Partner Terms & Conditions <span style="color: red;">*</span></span>
+</label>
+</div>
+<div class="form-group">
+<label style="display: flex; align-items: center; cursor: pointer;">
+<input type="checkbox" id="declaration" required style="margin-right: 10px; width: 18px; height: 18px;">
+<span>I confirm all details provided above are true and correct to the best of my knowledge. <span style="color: red;">*</span></span>
+</label>
+</div>
+</div>
+
+<!-- Submit Button -->
+<button type="submit" class="btn" style="width: 100%; padding: 16px; margin-top: 20px;">Submit Registration</button>
+</form>
+</div>
+</div>
+</section>
 
     <!-- Footer -->
     <footer>
