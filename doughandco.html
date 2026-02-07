@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DTPGZ964FD"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-DTPGZ964FD');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DOUGH & CO</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+/* Custom styling for DOUGH & CO */
+:root {
+  --primary-color: #8B4513;
+  --secondary-color: #D2B48C;
+  --accent-color: #A0522D; /* This is the cart button color */
+  --text-color: #333;
+  --background-color: #F5F5DC;
+  --card-background: #FFFFFF;
+  --border-color: #D2B48C;
+}
+
+body {
+  font-family: 'Poppins', 'Arial', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+/* HEADER STYLING - UPDATED TO MATCH CART COLOR */
+.header-top-row {
+  background-color: var(--accent-color); /* Changed to match cart button */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  position: relative;
+  color: white; /* Text color changed to white for contrast */
+}
+
+/* Hamburger menu styling */
+.hamburger-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  z-index: 1000;
+}
+
+.hamburger-btn span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: white; /* Changed to white for visibility */
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger-btn.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-btn.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Logo styling */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  justify-content: center;
+}
+
+.logo-img {
+  height: 40px;
+  width: auto;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: white; /* Changed to white for visibility */
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Cart button styling */
+.cart-btn {
+  background-color: rgba(255, 255, 255, 0.15); /* Slightly lighter for contrast */
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 8px 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  justify-content: center;
+}
+
+.cart-btn:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.cart-btn i {
+  font-size: 1.1rem;
+}
+
+/* AI Search Bar */
+.ai-search-bar-container {
+  background-color: white;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#aiProductSearchInput {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+#aiProductSearchInput:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(160, 82, 45, 0.2);
+}
+
+/* Menu Overlay & Side Menu */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 280px;
+  height: 100%;
+  background: white;
+  z-index: 999;
+  transition: left 0.3s ease;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 70px;
+}
+
+.side-menu.active {
+  left: 0;
+}
+
+.menu-header {
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.menu-header img {
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.menu-header h2 {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+}
+
+.menu-items {
+  padding: 20px 0;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.menu-item {
+  padding: 0 20px;
+  margin-bottom: 5px;
+}
+
+.menu-link {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+.menu-link:hover, .menu-link.active {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+.menu-link i {
+  margin-right: 10px;
+  width: 20px;
+  text-align: center;
+}
+
+.menu-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 15px 20px;
+  background: white;
+  border-top: 1px solid #eee;
+}
+
+.contact-info {
+  margin-bottom: 15px;
+  color: var(--text-color);
+  font-size: 0.9rem;
+}
+
+.contact-info p {
+  margin: 5px 0;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-links a {
+  color: var(--accent-color);
+  font-size: 1.5rem;
+  transition: transform 0.3s;
+}
+
+.social-links a:hover {
+  transform: scale(1.2);
+}
+
+/* Business Modal */
+.business-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.business-modal-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
+.business-modal {
+  background: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+}
+
+.business-modal.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.close-business-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-business-modal:hover {
+  color: var(--accent-color);
+}
+
+.business-modal-content {
+  padding: 30px;
+}
+
+.business-hero {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.business-hero-logo {
+  max-width: 150px;
+  margin: 0 auto 20px;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+.business-hero-title {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+}
+
+.business-hero-tagline {
+  color: var(--accent-color);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.business-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.business-section {
+  background: var(--card-background);
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  border: 1px solid #eee;
+}
+
+.business-section h2 {
+  color: var(--primary-color);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 8px;
+  margin-top: 0;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.business-section p, .business-section ul {
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.business-section ul {
+  padding-left: 20px;
+}
+
+.business-section li {
+  margin-bottom: 8px;
+}
+
+.business-map-section iframe {
+  border-radius: 8px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+}
+
+/* Content Sections */
+.content-section {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 10px;
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Products Grid */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px;
+  justify-content: center;
+}
+
+.product-card {
+  background: var(--card-background);
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+
+.product-info {
+  padding: 15px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-name {
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.product-description {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  flex-grow: 1;
+}
+
+.product-price {
+  color: var(--accent-color);
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin: 8px 0;
+}
+
+.add-to-cart-btn {
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-weight: 500;
+  margin-top: 5px;
+  align-self: center;
+  width: 100%;
+}
+
+.add-to-cart-btn:hover {
+  background: var(--primary-color);
+}
+
+/* Footer */
+.footer {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 40px 20px 20px;
+  margin-top: 40px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.footer-info h3, .footer-links h3 {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-info h3::after, .footer-links h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: var(--secondary-color);
+}
+
+.footer-info p {
+  margin: 15px 0;
+  line-height: 1.6;
+}
+
+.social-media {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.social-link {
+  color: white;
+  font-size: 1.2rem;
+  transition: transform 0.3s;
+}
+
+.social-link:hover {
+  transform: scale(1.2);
+}
+
+.footer-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-nav li {
+  margin-bottom: 10px;
+}
+
+.footer-nav a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+  display: block;
+}
+
+.footer-nav a:hover {
+  color: var(--secondary-color);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  margin-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.7);
+}
+
+/* Cart Modal */
+.cart-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  z-index: 1001;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.cart-modal-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
+.cart-modal {
+  background: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  transform: scale(0.9);
+  opacity: 0;
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+}
+
+.cart-modal.active {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.cart-modal-title {
+  text-align: center;
+  padding: 20px;
+  background-color: var(--accent-color);
+  color: white;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.cart-items {
+  padding: 20px;
+}
+
+.cart-item {
+  display: flex;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+  align-items: center;
+}
+
+.cart-item-image {
+  border-radius: 4px;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.cart-item-details {
+  flex-grow: 1;
+}
+
+.cart-item-name {
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 5px;
+}
+
+.cart-item-price {
+  color: var(--accent-color);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.cart-item-quantity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.cart-quantity-btn {
+  width: 25px;
+  height: 25px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.cart-quantity-btn:hover {
+  background: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.cart-quantity-display {
+  min-width: 25px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.remove-item-btn {
+  background: none;
+  border: none;
+  color: #c71e1e;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: transform 0.2s;
+  padding: 5px;
+}
+
+.remove-item-btn:hover {
+  transform: scale(1.2);
+}
+
+.cart-total {
+  padding: 15px 20px;
+  text-align: right;
+  font-size: 1.3rem;
+  font-weight: 700;
+  border-top: 2px solid var(--border-color);
+  margin-top: 10px;
+  color: var(--primary-color);
+}
+
+.checkout-btn, .close-cart-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin: 10px;
+}
+
+.checkout-btn {
+  background-color: #25D366;
+  color: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.checkout-btn:hover {
+  background-color: #128C7E;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.close-cart-btn {
+  background-color: #eee;
+  color: var(--text-color);
+  border-radius: 8px;
+}
+
+.close-cart-btn:hover {
+  background-color: #ddd;
+}
+
+/* AI Chat Panel styling */
+.ai-chat-widget {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100;
+  transition: all 0.3s ease;
+  border: 2px solid var(--accent-color);
+}
+
+.ai-chat-widget:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+.ai-chat-widget img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+.ai-chat-panel {
+  position: fixed;
+  bottom: 100px;
+  right: 25px;
+  width: 350px;
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+  display: none;
+  flex-direction: column;
+  z-index: 100;
+  overflow: hidden;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.ai-chat-panel.active {
+  display: flex;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.ai-chat-header {
+  background-color: var(--accent-color);
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.ai-avatar-square {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-right: 10px;
+  border: 2px solid white;
+}
+
+.ai-avatar-square img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ai-chat-header h4 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+#aiCloseBtn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+#aiCloseBtn:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.ai-chat-messages {
+  flex-grow: 1;
+  padding: 15px;
+  overflow-y: auto;
+  max-height: 300px;
+  background-color: #faf9f7;
+}
+
+.ai-message {
+  margin-bottom: 15px;
+  padding: 12px 15px;
+  border-radius: 18px;
+  max-width: 85%;
+  line-height: 1.5;
+  position: relative;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ai-message.bot {
+  background-color: #f0e6d2;
+  border-left: 3px solid var(--accent-color);
+  align-self: flex-start;
+  border-bottom-left-radius: 5px;
+}
+
+.ai-message.user {
+  background-color: #e6f7ff;
+  border-right: 3px solid #4da6ff;
+  margin-left: auto;
+  align-self: flex-end;
+  border-bottom-right-radius: 5px;
+}
+
+.ai-chat-input {
+  padding: 15px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  gap: 10px;
+}
+
+#aiUserInput {
+  flex-grow: 1;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  outline: none;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+#aiSendBtn {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+#aiSendBtn:hover {
+  background-color: var(--primary-color);
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-top-row {
+    padding: 10px 15px;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+  }
+  
+  .cart-btn {
+    padding: 6px 12px;
+    min-width: auto;
+    font-size: 0.9rem;
+  }
+  
+  .cart-btn i {
+    font-size: 0.9rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+  
+  .ai-chat-panel {
+    width: 95%;
+    max-width: 400px;
+    right: 10px;
+    bottom: 90px;
+  }
+  
+  .business-info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Slider placeholder styling */
+#slider-container {
+  width: 100%;
+  background: linear-gradient(135deg, var(--accent-color) 0%, var(--primary-color) 100%);
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+  margin-bottom: 30px;
+}
+
+#slider-container::before {
+  content: "✨ Eid-ul-Fitr Specials 2026 ✨";
+  font-size: 2rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+#slider-container::after {
+  content: "Artisanal baked goods made with love for your celebrations";
+  display: block;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* Additional styles for missing elements */
+.product-modal-overlay, .cart-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  z-index: 1001;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-modal {
+  background: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  transform: scale(0.9);
+  opacity: 0;
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+}
+
+.product-modal.active {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.close-product-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-product-modal:hover {
+  color: var(--accent-color);
+}
+
+/* Floating contact button for mobile */
+.floating-contact {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .floating-contact {
+    display: block;
+    z-index: 99;
+  }
+  
+  .floating-contact-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #25D366;
+    color: white;
+    border: none;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .floating-contact-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+}
+</style>
+</head>
+<body>
+<!-- HEADER - NOW SAME COLOR AS CART -->
+<header>
+<div class="header-top-row">
+<!-- Hamburger -->
+<button class="hamburger-btn" id="hamburgerBtn">
+<span></span>
+<span></span>
+<span></span>
+</button>
+<!-- Logo -->
+<div class="logo-container">
+<img src="images-logo/dough-co-logo.png" alt="DOUGH & CO Logo" class="logo-img">
+<div class="logo">DOUGH & CO</div>
+</div>
+<!-- Cart -->
+<button class="cart-btn" onclick="showCartModal()">
+<i class="fas fa-shopping-cart"></i> Cart (<span id="cartCount">0</span>)
+</button>
+</div>
+<!-- AI Search Bar -->
+<div class="ai-search-bar-container">
+<input type="text" id="aiProductSearchInput" placeholder="e.g. butter biscuits, under R150, Eid specials...">
+</div>
+</header>
+<!-- Menu Overlay & Side Menu -->
+<div class="menu-overlay" id="menuOverlay"></div>
+<nav class="side-menu" id="sideMenu">
+<div class="menu-header">
+<img src="images-logo/dough-co-logo.png" alt="DOUGH & CO Logo">
+<h2>DOUGH & CO</h2>
+</div>
+<div class="menu-items">
+<div class="menu-item">
+<a href="index.html" class="menu-link" onclick="toggleMenu()">
+<span><i class="fas fa-home"></i> HIVE TIMES</span>
+</a>
+</div>
+<div class="menu-item">
+<a href="javascript:void(0)" class="menu-link about-business-link" onclick="showBusinessModal(); toggleMenu()">
+<span><i class="fas fa-info-circle"></i> About Business</span>
+</a>
+</div>
+<div class="menu-item">
+<a href="#butter-biscuits" class="menu-link" onclick="scrollToSection('butter-biscuits')">
+<span><i class="fas fa-cookie-bite"></i> BUTTER BISCUITS</span>
+</a>
+</div>
+<div class="menu-item">
+<a href="#sugar-cookies" class="menu-link" onclick="scrollToSection('sugar-cookies')">
+<span><i class="fas fa-cookie"></i> SUGAR COOKIES</span>
+</a>
+</div>
+<div class="menu-item">
+<a href="#tea-cakes" class="menu-link" onclick="scrollToSection('tea-cakes')">
+<span><i class="fas fa-cake-candles"></i> TEA CAKES</span>
+</a>
+</div>
+<div class="menu-item">
+<a href="#almond-rocca" class="menu-link" onclick="scrollToSection('almond-rocca')">
+<span><i class="fas fa-candy-cane"></i> ALMOND ROCCA</span>
+</a>
+</div>
+</div>
+<div class="menu-footer">
+<div class="contact-info">
+<p><i class="fas fa-phone"></i> 010 495 6227</p>
+<p><i class="fas fa-envelope"></i> doughandco@gmail.com</p>
+</div>
+<div class="social-links">
+<a href="https://wa.me/27104956227" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+</div>
+</div>
+</nav>
+<!-- Slider -->
+<div id="slider-container"></div>
+<!-- ABOUT BUSINESS MODAL -->
+<div class="business-modal-overlay" id="businessModalOverlay">
+<div class="business-modal" id="businessModal">
+<button class="close-business-modal" id="closeBusinessModal"><i class="fas fa-times"></i></button>
+<div class="business-modal-content">
+<div class="business-hero">
+<img src="images-logo/dough-co-logo.png" alt="DOUGH & CO Logo" class="business-hero-logo">
+<h1 class="business-hero-title">DOUGH & CO</h1>
+
+</div>
+<div class="business-info-grid">
+<section class="business-section">
+<h2><i class="fas fa-info-circle"></i> About Us</h2>
+<p>Welcome to DOUGH & CO, a premium bakery specializing in artisanal baked goods . We craft delicious butter biscuits, sugar cookies, and tea cakes using only the finest ingredients to bring joy.</p>
+</section>
+<section class="business-section">
+<h2><i class="fas fa-clock"></i> Opening Hours</h2>
+<ul>
+<li>Monday – Friday: 08:00 – 18:00</li>
+<li>Saturday: 08:00 – 16:00</li>
+<li>Sunday: 09:00 – 14:00</li>
+</ul>
+<h3 style="margin-top: 15px;"><i class="fas fa-phone"></i> 010 495 6227</h3>
+<p><i class="fas fa-envelope"></i> doughandco@gmail.com</p>
+</section>
+<section class="business-section business-map-section">
+<h2><i class="fas fa-map-marker-alt"></i> Find Us</h2>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.6842370920644!2d28.12810667588992!3d-26.206948177074935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e9511c8b8df046f%3A0x9e90e795828e63eb!2sBroadway%20Sweets!5e0!3m2!1sen!2sza!4v1768465817105!5m2!1sen!2sza" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</section>
+</div>
+</div>
+</div>
+</div>
+<!-- PRODUCT SECTIONS -->
+<div class="content-section">
+<h2 id="butter-biscuits" class="section-title">BUTTER BISCUITS</h2>
+<div class="products-grid">
+<!-- FLAKE -->
+<div class="product-card" data-id="flake-1" data-category="butter-biscuits" data-price="125.00">
+<img src="https://via.placeholder.com/300x200/e0d3c5/8B4513?text=Flake+Biscuits" alt="Flake Butter Biscuits" class="product-image">
+<div class="product-info">
+<div class="product-name">Flake Butter Biscuits</div>
+<div class="product-price">R125.00</div>
+<button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'flake-1', name: 'Flake Butter Biscuits', price: 125.00, quantity: 1, image: 'https://via.placeholder.com/300x200/e0d3c5/8B4513?text=Flake+Biscuits', businessName: 'DOUGH & CO', businessLogo: 'images-logo/dough-co-logo.png' })">Add to Cart</button>
+</div>
+</div>
+<!-- NUTTY FLAKE -->
+<div class="product-card" data-id="nutty-flake-1" data-category="butter-biscuits" data-price="125.00">
+<img src="https://via.placeholder.com/300x200/e0d3c5/8B4513?text=Nutty+Flake" alt="Nutty Flake Butter Biscuits" class="product-image">
+<div class="product-info">
+<div class="product-name">Nutty Flake Butter Biscuits</div>
+<div class="product-price">R125.00</div>
+<button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'nutty-flake-1', name: 'Nutty Flake Butter Biscuits', price: 125.00, quantity: 1, image: 'https://via.placeholder.com/300x200/e0d3c5/8B4513?text=Nutty+Flake', businessName: 'DOUGH & CO', businessLogo: 'images-logo/dough-co-logo.png' })">Add to Cart</button>
+</div>
+</div>
+<!-- FERRERO -->
+<div class="product-card" data-id="ferrero-1" data-category="butter-biscuits" data-price="125.00">
+<img src="https://via.placeholder.com/300x200/e0d3c5/8B4513?text=Ferrero+Biscuits" alt="Ferrero Butter Biscuits" class="product-image">
+<div class="product-info">
+<div class="product-name">Ferrero Butter Biscuits</div>
+<div class="product-price">R125.00</div>
+<button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'ferrero-1', name: 'Ferrero Butter Biscuits', price: 125.00, quantity: 1, image: 'https://via.placeholder.com/300x200/e0d3c5/8B4513?text=Ferrero+Biscuits', businessName: 'DOUGH & CO', businessLogo: 'images-logo/dough-co-logo.png' })">Add to Cart</button>
+</div>
+</div>
+<!-- ASSORTED -->
+<div class="product-card" data-id="assorted-1" data-category="butter-biscuits" data-price="130.00">
+<img src="https://via.placeholder.com/300x200/e0d3c5/8B4513?text=Assorted+Biscuits" alt="Assorted Butter Biscuits" class="product-image">
+<div class="product-info">
+<div class="product-name">Assorted Butter Biscuits</div>
+<div class="product-price">R130.00</div>
+<button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'assorted-1', name: 'Assorted Butter Biscuits', price: 130.00, quantity: 1, image: 'https://via.placeholder.com/300x200/e0d3c5/8B4513?text=Assorted+Biscuits', businessName: 'DOUGH & CO', businessLogo: 'images-logo/dough-co-logo.png' })">Add to Cart</button>
+</div>
+</div>
+<!-- MINT AERO -->
+<div class="product-card" data-id="mint-aero-1" data-category="butter-biscuits" data-price="115.00">
+<img src="https://via.placeholder.com/300x200/e0d3c5/8B4513?text=Mint+Aero" alt="Mint Aero Butter Biscuits" class="product-image">
+<div class="product-info">
+<div class="product-name">Mint Aero Butter Biscuits</div>
+<div class="product-price">R115.00</div>
+<button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'mint-aero-1', name: 'Mint Aero Butter Biscuits', price: 115.00, quantity: 1, image: 'https://via.placeholder.com/300x200/e0d3c5/8B4513?text=Mint+Aero', businessName: 'DOUGH & CO', businessLogo: 'images-logo/dough-co-logo.png' })">Add to Cart</button>
+</div>
+</div>
+<!-- PEPPERMINT -->
+<div class="product-card" data-id="peppermint-1" data-category="butter-biscuits" data-price="115.00">
+<img src="https://via.placeholder.com/300x200/e0d3c5/8B4513?text=Peppermint" alt="Peppermint Butter Biscuits" class="product-image">
+<div class="product-info">
+<div class="product-name">Peppermint Butter Biscuits</div>
+<div class="product-price">R115.00</div>
+<button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'peppermint-1', name: 'Peppermint Butter Biscuits', price: 115.00, quantity: 1, image: 'https://via.placeholder.com/300x200/e0d3c5/8B4513?text=Peppermint', businessName: 'DOUGH & CO', businessLogo: 'images-logo/dough-co-logo.png' })">Add to Cart</button>
+</div>
+</div>
+<!-- MOCHA & PECAN -->
+<div class="product-card" data-id="mocha-pecan-1" data-category="butter-biscuits" data-price="115.00">
+<img src="https://via.placeholder.com/300x200/e0d3c5/8B4513?text=Mocha+%26+Pecan" alt="Mocha & Pecan Butter Biscuits" class="product-image">
+<div class="product-info">
+<div class="product-name">Mocha & Pecan Butter Biscuits</div>
+<div class="product-price">R115.00</div>
+<button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'mocha-pecan-1', name: 'Mocha & Pecan Butter Biscuits', price: 115.00, quantity: 1, image: 'https://via.placeholder.com/300x200/e0d3c5/8B4513?text=Mocha+%26+Pecan', businessName: 'DOUGH & CO', businessLogo: 'images-logo/dough-co-logo.png' })">Add to Cart</button>
+</div>
+</div>
+<!-- BURFEE -->
+<div class="product-card" data-id="burfee-1" data-category="butter-biscuits" data-price="115.00">
+<img src="https://via.placeholder.com/300x200/e0d3c5/8B4513?text=Burfee" alt="Burfee Butter Biscuits" class="product-image">
+<div class="product-info">
+<div class="product-name">Burfee Butter Biscuits</div>
+<div class="product-price">R115.00</div>
+<button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'burfee-1', name: 'Burfee Butter Biscuits', price: 115.00, quantity: 1, image: 'https://via.placeholder.com/300x200/e0d3c5/8B4513?text=Burfee', businessName: 'DOUGH & CO', businessLogo: 'images-logo/dough-co-logo.png' })">Add to Cart</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="content-section">
+<h2 id="sugar-cookies" class="section-title">SUGAR COOKIES</h2>
+<div class="products-grid">
+<!-- EID THEMED COOKIES -->
+<div class="product-card" data-id="sugar-cookies-1" data-category="sugar-cookies" data-price="200.00">
+<img src="https://via.placeholder.com/300x200/e0d3c5/8B4513?text=Eid+Cookies" alt="Eid Themed Sugar Cookies" class="product-image">
+<div class="product-info">
+<div class="product-name">Eid Themed Sugar Cookies</div>
+<div class="product-description">Individually wrapped and laid in a transparent box</div>
+<div class="product-price">R200.00</div>
+<button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'sugar-cookies-1', name: 'Eid Themed Sugar Cookies', price: 200.00, quantity: 1, image: 'https://via.placeholder.com/300x200/e0d3c5/8B4513?text=Eid+Cookies', businessName: 'DOUGH & CO', businessLogo: 'images-logo/dough-co-logo.png' })">Add to Cart</button>
+</div>
+</div>
+<!-- DIY COOKIE KITS -->
+<div class="product-card" data-id="cookie-kits-1" data-category="sugar-cookies" data-price="50.00">
+<img src="https://via.placeholder.com/300x200/e0d3c5/8B4513?text=DIY+Kit" alt="DIY Cookie Kit" class="product-image">
+<div class="product-info">
+<div class="product-name">DIY Cookie Kit</div>
+<div class="product-description">Includes cookies, icing & sprinkles</div>
+<div class="product-price">R50.00</div>
+<button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'cookie-kits-1', name: 'DIY Cookie Kit', price: 50.00, quantity: 1, image: 'https://via.placeholder.com/300x200/e0d3c5/8B4513?text=DIY+Kit', businessName: 'DOUGH & CO', businessLogo: 'images-logo/dough-co-logo.png' })">Add to Cart</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="content-section">
+<h2 id="tea-cakes" class="section-title">TEA CAKES</h2>
+<div class="products-grid">
+<div class="product-card" data-id="tea-cakes-1" data-category="tea-cakes" data-price="150.00">
+<img src="https://via.placeholder.com/300x200/e0d3c5/8B4513?text=Tea+Cakes" alt="Tea Cakes" class="product-image">
+<div class="product-info">
+<div class="product-name">Tea Cakes</div>
+<div class="product-description">6 delicate mini sponge cakes topped with silky vanilla frosting and hand-placed edible blooms</div>
+<div class="product-price">R150.00</div>
+<button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'tea-cakes-1', name: 'Tea Cakes', price: 150.00, quantity: 1, image: 'https://via.placeholder.com/300x200/e0d3c5/8B4513?text=Tea+Cakes', businessName: 'DOUGH & CO', businessLogo: 'images-logo/dough-co-logo.png' })">Add to Cart</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="content-section">
+<h2 id="almond-rocca" class="section-title">ALMOND ROCCA</h2>
+<div class="products-grid">
+<div class="product-card" data-id="almond-rocca-1" data-category="almond-rocca" data-price="40.00">
+<img src="https://via.placeholder.com/300x200/e0d3c5/8B4513?text=Almond+Rocca" alt="Almond Rocca" class="product-image">
+<div class="product-info">
+<div class="product-name">Almond Rocca</div>
+<div class="product-description">A fan favourite sweet treat in the cutest clear tin with a lid and handle</div>
+<div class="product-price">R40.00</div>
+<button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'almond-rocca-1', name: 'Almond Rocca', price: 40.00, quantity: 1, image: 'https://via.placeholder.com/300x200/e0d3c5/8B4513?text=Almond+Rocca', businessName: 'DOUGH & CO', businessLogo: 'images-logo/dough-co-logo.png' })">Add to Cart</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- MODALS -->
+<div class="product-modal-overlay">
+<div class="product-modal">
+<button class="close-product-modal" onclick="closeProductModal()"><i class="fas fa-times"></i></button>
+<div class="product-modal-content">
+<div class="product-modal-images">
+<img src="" alt="Main Product Image" class="main-product-image" id="modalMainImage">
+<div class="product-thumbnails" id="productThumbnails"></div>
+</div>
+<div class="product-modal-details">
+<h3 class="product-modal-title" id="modalProductName">Product Name</h3>
+<div class="product-modal-price" id="modalProductPrice">R0.00</div>
+<p class="product-modal-description" id="modalProductDescription">Description</p>
+<div class="quantity-selector">
+<button class="quantity-btn" id="decreaseQuantity">-</button>
+<span class="quantity-display" id="modalQuantity">1</span>
+<button class="quantity-btn" id="increaseQuantity">+</button>
+</div>
+<button class="add-to-cart-modal-btn" id="modalAddToCartBtn">
+<i class="fas fa-cart-plus"></i> Add to Cart
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="cart-modal-overlay">
+<div class="cart-modal">
+<h3 class="cart-modal-title"><i class="fas fa-shopping-cart"></i> Your Shopping Cart</h3>
+<div class="cart-items">
+<p style="text-align: center; color: #555;">Your cart is empty.</p>
+</div>
+<div class="cart-total" id="cartTotal">Total: R0.00</div>
+<button class="checkout-btn" onclick="sendCartToWhatsApp()"><i class="fab fa-whatsapp"></i> Send Order via WhatsApp</button>
+<button class="close-cart-btn" onclick="closeCartModal()">Continue Shopping</button>
+</div>
+</div>
+<!-- FLOATING CONTACT -->
+<div class="floating-contact">
+<button class="floating-contact-btn" onclick="window.open('https://wa.me/27104956227', '_blank')">
+<i class="fab fa-whatsapp"></i>
+</button>
+</div>
+<!-- === DOUGH & CO AI CHAT WIDGET BUTTON === -->
+<div class="ai-chat-widget" id="aiChatWidget">
+<img src="images-logo/bee.jpg" alt="Ask DOUGH & CO AI">
+</div>
+<!-- === DOUGH & CO AI CHAT PANEL === -->
+<div class="ai-chat-panel" id="aiChatPanel">
+<div class="ai-chat-header">
+<div class="ai-avatar-square">
+<img src="images-logo/bee.jpg" alt="Ask DOUGH & CO AI">
+</div>
+<h4>Ask Beelal</h4>
+<button id="aiCloseBtn">×</button>
+</div>
+<div class="ai-chat-messages" id="aiChatMessages">
+<div class="ai-message bot">
+Hello! 👋 I'm your <strong>DOUGH & CO</strong> assistant.<br>
+You can ask me things like:<br>
+• "What are your opening hours?"<br>
+• "where are you located"<br>
+• "what is your contact information?"
+</div>
+</div>
+<div class="ai-chat-input">
+<input type="text" id="aiUserInput" placeholder="e.g. tell me about DOUGH & CO">
+<button id="aiSendBtn"><i class="fas fa-paper-plane"></i></button>
+</div>
+</div>
+<!-- FOOTER -->
+<footer class="footer">
+<div class="footer-container">
+<div class="footer-content">
+<div class="footer-info">
+<h3>DOUGH & CO</h3>
+<p>Artisanal baked goods </p>
+<div class="social-media">
+<a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+<a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+<a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+</div>
+</div>
+<div class="footer-links">
+<h3>Quick Links</h3>
+<nav class="footer-nav">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="#butter-biscuits">Shop</a></li>
+<li><a href="#" onclick="showBusinessModal()">About Us</a></li>
+<li><a href="mailto:doughandco@gmail.com">Contact</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="footer-bottom">
+&copy; DOUGH & CO. All rights reserved.
+</div>
+</div>
+</footer>
+<script>
+// === CART ===
+const cart = {
+items: [],
+STORAGE_KEY: 'dough_co_cart_v1',
+init() {
+const stored = localStorage.getItem(this.STORAGE_KEY);
+if (stored) {
+try { this.items = JSON.parse(stored); } catch (e) { this.items = []; }
+}
+this.updateCartDisplay();
+},
+saveCart() {
+localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.items));
+this.updateCartDisplay();
+},
+addToCart(product) {
+const existing = this.items.find(item => item.id === product.id);
+if (existing) {
+existing.quantity += product.quantity;
+} else {
+this.items.push(product);
+}
+this.saveCart();
+showCartModal(); // Show cart after adding item
+},
+updateQuantity(id, delta) {
+const item = this.items.find(i => i.id === id);
+if (item) {
+item.quantity += delta;
+if (item.quantity <= 0) {
+this.removeItem(id);
+} else {
+this.saveCart();
+}
+}
+},
+removeItem(id) {
+this.items = this.items.filter(item => item.id !== id);
+this.saveCart();
+},
+calculateTotal() {
+return this.items.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
+},
+updateCartDisplay() {
+const countEl = document.getElementById('cartCount');
+const itemsEl = document.querySelector('.cart-items');
+const totalEl = document.getElementById('cartTotal');
+const totalItems = this.items.reduce((sum, item) => sum + item.quantity, 0);
+if (countEl) countEl.textContent = totalItems;
+if (itemsEl) {
+if (this.items.length === 0) {
+itemsEl.innerHTML = '<p style="text-align: center; color: #555;">Your cart is empty.</p>';
+} else {
+itemsEl.innerHTML = '';
+this.items.forEach(item => {
+const div = document.createElement('div');
+div.className = 'cart-item';
+div.innerHTML = `
+<img src="${item.image}" alt="${item.name}" class="cart-item-image" style="width:60px;height:60px;object-fit:cover;border-radius:4px;">
+<div class="cart-item-details">
+<div class="cart-item-name">${item.name}</div>
+<div class="cart-item-price">R${(item.price * item.quantity).toFixed(2)} (${item.price.toFixed(2)} each)</div>
+<div class="cart-item-quantity">
+<button class="cart-quantity-btn" onclick="cart.updateQuantity('${item.id}', -1)">-</button>
+<span class="cart-quantity-display">${item.quantity}</span>
+<button class="cart-quantity-btn" onclick="cart.updateQuantity('${item.id}', 1)">+</button>
+</div>
+</div>
+<button class="remove-item-btn" onclick="cart.removeItem('${item.id}')"><i class="fas fa-trash"></i></button>
+`;
+itemsEl.appendChild(div);
+});
+}
+}
+if (totalEl) totalEl.textContent = `Total: R${this.calculateTotal()}`;
+}
+};
+// === AI SEARCH ===
+const aiProductSearch = {
+init() {
+document.getElementById('aiProductSearchInput').addEventListener('input', (e) => {
+const query = e.target.value.trim().toLowerCase();
+document.querySelectorAll('.content-section').forEach(section => {
+let hasVisible = false;
+const cards = section.querySelectorAll('.product-card');
+cards.forEach(card => {
+const name = card.querySelector('.product-name').textContent.toLowerCase();
+const price = parseFloat(card.getAttribute('data-price'));
+let show = true;
+if (query) {
+if (query.includes('under') || query.includes('<')) {
+const match = query.match(/\d+(\.\d+)?/);
+if (match) {
+const max = parseFloat(match[0]);
+show = price <= max;
+} else {
+show = false;
+}
+} else {
+show = name.includes(query);
+}
+}
+card.style.display = show ? 'block' : 'none';
+if (show) hasVisible = true;
+});
+section.style.display = hasVisible ? 'block' : 'none';
+});
+});
+}
+};
+// === MODALS ===
+function showBusinessModal() {
+const overlay = document.getElementById('businessModalOverlay');
+const modal = document.getElementById('businessModal');
+overlay.style.display = 'flex';
+setTimeout(() => {
+overlay.classList.add('active');
+modal.classList.add('active');
+}, 10);
+}
+function hideBusinessModal() {
+const modal = document.getElementById('businessModal');
+const overlay = document.getElementById('businessModalOverlay');
+modal.classList.remove('active');
+overlay.classList.remove('active');
+setTimeout(() => {
+overlay.style.display = 'none';
+}, 300);
+}
+document.getElementById('closeBusinessModal').addEventListener('click', hideBusinessModal);
+document.getElementById('businessModalOverlay').addEventListener('click', (e) => {
+if (e.target === e.currentTarget) hideBusinessModal();
+});
+// === HAMBURGER MENU ===
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const menuOverlay = document.getElementById('menuOverlay');
+const sideMenu = document.getElementById('sideMenu');
+function toggleMenu() {
+hamburgerBtn.classList.toggle('active');
+menuOverlay.classList.toggle('active');
+sideMenu.classList.toggle('active');
+document.body.style.overflow = sideMenu.classList.contains('active') ? 'hidden' : '';
+}
+hamburgerBtn.addEventListener('click', toggleMenu);
+menuOverlay.addEventListener('click', toggleMenu);
+function scrollToSection(id) {
+toggleMenu();
+setTimeout(() => {
+const el = document.getElementById(id);
+if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}, 300);
+}
+// === PRODUCT MODAL ===
+const allProducts = Array.from(document.querySelectorAll('.product-card')).map(card => ({
+id: card.getAttribute('data-id'),
+name: card.querySelector('.product-name').textContent,
+price: parseFloat(card.getAttribute('data-price')),
+image: card.querySelector('.product-image').src,
+description: card.querySelector('.product-description')?.textContent || 'Delicious baked goods from DOUGH & CO.',
+thumbnails: [card.querySelector('.product-image').src]
+}));
+function showProductModal(productId) {
+const product = allProducts.find(p => p.id === productId);
+if (!product) return;
+document.getElementById('modalProductName').textContent = product.name;
+document.getElementById('modalProductPrice').textContent = `R${product.price.toFixed(2)}`;
+document.getElementById('modalProductDescription').textContent = product.description;
+document.getElementById('modalMainImage').src = product.image;
+document.getElementById('modalQuantity').textContent = 1;
+const thumbs = document.getElementById('productThumbnails');
+thumbs.innerHTML = '';
+product.thumbnails.forEach(src => {
+const img = document.createElement('img');
+img.src = src;
+img.className = 'thumbnail';
+img.onclick = () => document.getElementById('modalMainImage').src = src;
+thumbs.appendChild(img);
+});
+document.getElementById('modalAddToCartBtn').onclick = () => {
+const qty = parseInt(document.getElementById('modalQuantity').textContent);
+cart.addToCart({
+id: product.id,
+name: product.name,
+price: product.price,
+quantity: qty,
+image: product.image,
+businessName: 'DOUGH & CO',
+businessLogo: 'images-logo/dough-co-logo.png'
+});
+closeProductModal();
+};
+document.getElementById('increaseQuantity').onclick = () => {
+let q = parseInt(document.getElementById('modalQuantity').textContent);
+document.getElementById('modalQuantity').textContent = q + 1;
+};
+document.getElementById('decreaseQuantity').onclick = () => {
+let q = parseInt(document.getElementById('modalQuantity').textContent);
+if (q > 1) document.getElementById('modalQuantity').textContent = q - 1;
+};
+document.querySelector('.product-modal-overlay').style.display = 'flex';
+setTimeout(() => document.querySelector('.product-modal').classList.add('active'), 10);
+}
+function closeProductModal() {
+document.querySelector('.product-modal').classList.remove('active');
+setTimeout(() => document.querySelector('.product-modal-overlay').style.display = 'none', 300);
+}
+document.addEventListener('click', (e) => {
+const card = e.target.closest('.product-card');
+if (card && !e.target.closest('.add-to-cart-btn')) {
+const id = card.getAttribute('data-id');
+showProductModal(id);
+}
+});
+// === CART MODAL ===
+function showCartModal() {
+document.querySelector('.cart-modal-overlay').style.display = 'flex';
+setTimeout(() => {
+document.querySelector('.cart-modal-overlay').classList.add('active');
+document.querySelector('.cart-modal').classList.add('active');
+cart.updateCartDisplay();
+}, 10);
+}
+function closeCartModal() {
+document.querySelector('.cart-modal').classList.remove('active');
+document.querySelector('.cart-modal-overlay').classList.remove('active');
+setTimeout(() => document.querySelector('.cart-modal-overlay').style.display = 'none', 300);
+}
+// === WHATSAPP ORDER ===
+function sendCartToWhatsApp() {
+if (cart.items.length === 0) {
+alert("Your cart is empty!");
+return;
+}
+let msg = "Hi! I am enquiring from DOUGH & CO, I'd like to place an order:\n";
+cart.items.forEach(item => {
+msg += `• ${item.name} x${item.quantity} — R${(item.price * item.quantity).toFixed(2)}\n`;
+});
+msg += `\nTotal: R${cart.calculateTotal()}\nThank you!`;
+const url = `https://wa.me/27104956227?text=${encodeURIComponent(msg)}`;
+window.open(url, '_blank');
+}
+// === SLIDER (Placeholder) ===
+// In a real implementation, this would fetch slider.html
+// For this example, we're using a placeholder section
+
+// === AI CHAT WIDGET ===
+document.addEventListener('DOMContentLoaded', () => {
+const widget = document.getElementById('aiChatWidget');
+const panel = document.getElementById('aiChatPanel');
+const closeBtn = document.getElementById('aiCloseBtn');
+const chatMessages = document.getElementById('aiChatMessages');
+const userInput = document.getElementById('aiUserInput');
+const sendBtn = document.getElementById('aiSendBtn');
+widget.addEventListener('click', () => {
+panel.classList.toggle('active');
+});
+closeBtn.addEventListener('click', () => {
+panel.classList.remove('active');
+});
+function scrollToBottom() {
+chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+function addMessage(text, isUser = false) {
+const msgDiv = document.createElement('div');
+msgDiv.classList.add('ai-message', isUser ? 'user' : 'bot');
+msgDiv.innerHTML = text.replace(/\n/g, '<br>');
+chatMessages.appendChild(msgDiv);
+setTimeout(scrollToBottom, 10);
+}
+function getResponse(query) {
+const lower = query.toLowerCase().trim();
+if (/(where|located|address|find.*you|directions)/.test(lower)) {
+return "📍 We're located at <strong>92 Main Reef Rd, Germiston, South Africa</strong>.<br>Feel free to visit us or order online for nationwide delivery!";
+}
+if (/(contact|phone|call|number|reach|whatsapp)/.test(lower)) {
+return "📞 Call or WhatsApp us at <strong>010 495 6227</strong>!<br>We're happy to help with orders, custom requests, or general questions.";
+}
+if (/(email|gmail|message|write.*you)/.test(lower)) {
+return "📧 Email us anytime: <strong>doughandco@gmail.com</strong>";
+}
+if (/(open|close|hours|time|when.*open|operating)/.test(lower)) {
+return "🕒 Our opening hours:<br>" +
+"<strong>Mon–Fri:</strong> 8:00 AM – 6:00 PM<br>" +
+"<strong>Sat:</strong> 8:00 AM – 4:00 PM<br>" +
+"<strong>Sun:</strong> 9:00 AM – 2:00 PM";
+}
+if (/(deliver|delivery|ship|nationwide|send|courier)/.test(lower)) {
+return "🚚 Yes! We deliver across South Africa.<br>Just add items to your cart and click <strong>‘Send Order via WhatsApp’</strong> to place your order instantly!";
+}
+if (/(bulk|wholesale|event|party|wedding|school|discount|large.*order)/.test(lower)) {
+return "🎉 Perfect! We offer <strong>special pricing for events, schools, retailers, and bulk buyers</strong>.<br>Please contact us via WhatsApp or email with your quantity needs—we'll send a custom quote!";
+}
+if (/(tub|bucket|2\.5l|5l|10l|size|how.*big)/.test(lower)) {
+return "📦 We offer baked goods in multiple packaging sizes:<br>" +
+"• Single serving boxes<br>" +
+"• Gift boxes (4-6 pieces)<br>" +
+"• Bulk boxes (12-24 pieces)<br>" +
+"Popular items: Butter Biscuits, Sugar Cookies, Tea Cakes";
+}
+if (/(flavor|flavour|what.*have|options|varieties)/.test(lower)) {
+return "🍪 We have a variety of delicious baked goods! Some fan favourites:<br>" +
+"• <strong>Butter Biscuits:</strong> Flake, Nutty Flake, Ferrero, Assorted<br>" +
+"• <strong>Sugar Cookies:</strong> Eid themed, DIY kits<br>" +
+"• <strong>Specialty Items:</strong> Tea Cakes, Almond Rocca<br>" +
+"Browse our website or ask for recommendations!";
+}
+if (/(how.*order|place.*order|buy|purchase|checkout)/.test(lower)) {
+return "🛒 Ordering is easy!<br>" +
+"1. Browse products and click <strong>‘Add to Cart’</strong><br>" +
+"2. Click the <strong>Cart</strong> button (top right)<br>" +
+"3. Press <strong>‘Send Order via WhatsApp’</strong><br>" +
+"We'll confirm your order and delivery details right away!";
+}
+if (/(pay|payment|cash|card|eft|deposit)/.test(lower)) {
+return "💳 We accept:<br>" +
+"• Cash on delivery<br>" +
+"• EFT/bank deposit<br>" +
+"• WhatsApp Pay (via supported banks)<br>" +
+"Payment details are sent when we confirm your order.";
+}
+// Updated fallback to match your requested starter questions
+return "I can help you with store info, ordering, or product details!<br>Try asking:<br>" +
+"• \"What are your opening hours?\"<br>" +
+"• \"Where are you located?\"<br>" +
+"• \"What is your contact information?\"";
+}
+function handleSend() {
+const query = userInput.value.trim();
+if (!query) return;
+addMessage(query, true);
+userInput.value = '';
+const response = getResponse(query);
+setTimeout(() => addMessage(response), 400);
+}
+sendBtn.addEventListener('click', handleSend);
+userInput.addEventListener('keypress', (e) => {
+if (e.key === 'Enter') handleSend();
+});
+});
+// === INIT ===
+document.addEventListener('DOMContentLoaded', () => {
+cart.init();
+aiProductSearch.init();
+// Close modals when clicking outside
+document.querySelector('.cart-modal-overlay').addEventListener('click', (e) => {
+if (e.target === e.currentTarget) closeCartModal();
+});
+});
+</script>
+</body>
+</html>
