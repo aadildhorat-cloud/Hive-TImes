@@ -16,55 +16,6 @@ gtag('config', 'G-DTPGZ964FD');
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
-  /* --- Slider Section --- */
-.slider-section {
-  padding: 20px 0;
-  background: #fff;
-}
-
-.swiper {
-  width: 100%;
-  max-width: 1200px;
-  height: auto; /* Let height adjust based on content */
-  margin: auto;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.15);
-}
-
-.swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  aspect-ratio: 16 / 9; /* Maintain aspect ratio (adjust based on your image ratio) */
-}
-
-.swiper-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* Use 'contain' to prevent cropping/squeezing */
-  display: block;
-}
-
-.swiper-pagination-bullet {
-  background: #fff;
-  opacity: 0.7;
-}
-
-.swiper-pagination-bullet-active {
-  background: #a30909;
-  opacity: 1;
-}
-
-.swiper-button-next,
-.swiper-button-prev {
-  color: #fff;
-  background: rgba(0, 0, 0, 0.4);
-  padding: 0px;
-  border-radius: 50%;
-  backdrop-filter: blur(4px);
-}
-
 /* Custom styling for DOUGH & CO */
 :root {
   --primary-color: #8B4513;
@@ -1025,7 +976,31 @@ body {
   }
 }
 
+/* Slider placeholder styling */
+#slider-container {
+  width: 100%;
+  background: linear-gradient(135deg, var(--accent-color) 0%, var(--primary-color) 100%);
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+  margin-bottom: 30px;
+}
 
+#slider-container::before {
+  content: "✨ Eid-ul-Fitr Specials 2026 ✨";
+  font-size: 2rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+#slider-container::after {
+  content: "Artisanal baked goods made with love for your celebrations";
+  display: block;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
 
 /* Additional styles for missing elements */
 .product-modal-overlay, .cart-modal-overlay {
@@ -1137,7 +1112,6 @@ body {
 <input type="text" id="aiProductSearchInput" placeholder="e.g. butter biscuits, under R150, Eid specials...">
 </div>
 </header>
-<div id="slider-container"></div>
 <!-- Menu Overlay & Side Menu -->
 <div class="menu-overlay" id="menuOverlay"></div>
 <nav class="side-menu" id="sideMenu">
@@ -1187,7 +1161,8 @@ body {
 </div>
 </div>
 </nav>
-
+<!-- Slider -->
+<div id="slider-container"></div>
 <!-- ABOUT BUSINESS MODAL -->
 <div class="business-modal-overlay" id="businessModalOverlay">
 <div class="business-modal" id="businessModal">
@@ -1804,38 +1779,6 @@ document.querySelector('.cart-modal-overlay').addEventListener('click', (e) => {
 if (e.target === e.currentTarget) closeCartModal();
 });
 });
-// === SLIDER ===
-fetch('slider.html')
-  .then(res => res.ok ? res.text() : Promise.reject('slider.html not found'))
-  .then(html => {
-    document.getElementById('slider-container').innerHTML = html;
-    new Swiper('.mySwiper', {
-      spaceBetween: 0,
-      centeredSlides: true,
-      autoplay: { delay: 3000, disableOnInteraction: false },
-      pagination: { el: '.swiper-pagination', clickable: true },
-      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-      loop: true,
-      effect: 'fade',
-      fadeEffect: { crossFade: true }
-    });
-  })
-  .catch(err => {
-    console.error('Slider error:', err);
-    document.getElementById('slider-container').innerHTML = `<div style="text-align:center;padding:40px;color:#c71e1e;">⚠️ Slider unavailable</div>`;
-  });
-
-// === INIT ===
-document.addEventListener('DOMContentLoaded', () => {
-  cart.init();
-  aiProductSearch.init();
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 768 && sideMenu.classList.contains('active')) {
-      toggleMenu();
-    }
-  });
-});
-</script>
 </script>
 </body>
 </html>
