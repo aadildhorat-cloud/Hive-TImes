@@ -1723,7 +1723,7 @@ transform: scale(1.05);
 <!-- FLOATING CONTACT BUTTONS -->
 <div class="floating-contact">
 <!-- WhatsApp Button -->
-<button class="float-btn whatsapp-float" onclick="window.open('https://wa.me/27104956227', '_blank')" title="WhatsApp">
+<button class="float-btn whatsapp-float" onclick="window.open('https://wa.me/2767048277', '_blank')" title="WhatsApp">
 <i class="fab fa-whatsapp"></i>
 </button>
 
@@ -2033,12 +2033,12 @@ if (cart.items.length === 0) {
 alert("Your cart is empty!");
 return;
 }
-let msg = "Hi! I am enquiring from DOUGH & CO, I'd like to place an order:\n";
+let msg = "Hi! I am enquiring from Hive Times , I'd like to place an order from DOUGH & CO:\n";
 cart.items.forEach(item => {
 msg += `• ${item.name} x${item.quantity} — R${(item.price * item.quantity).toFixed(2)}\n`;
 });
 msg += `\nTotal: R${cart.calculateTotal()}\nThank you!`;
-const url = `https://wa.me/27104956227?text=${encodeURIComponent(msg)}`;
+const url = `https://wa.me/27670068277?text=${encodeURIComponent(msg)}`;
 window.open(url, '_blank');
 }
 
@@ -2093,7 +2093,7 @@ if (/(where|located|address|find.*you|directions)/.test(lower)) {
 return "📍 We're located at <strong>92 Main Reef Rd, Germiston, South Africa</strong>.<br>Feel free to visit us or order online for nationwide delivery!";
 }
 if (/(contact|phone|call|number|reach|whatsapp)/.test(lower)) {
-return "📞 Call or WhatsApp us at <strong>010 495 6227</strong>!<br>We're happy to help with orders, custom requests, or general questions.";
+return "📞 Call or WhatsApp us at <strong>27670068277</strong>!<br>We're happy to help with orders, custom requests, or general questions.";
 }
 if (/(email|gmail|message|write.*you)/.test(lower)) {
 return "📧 Email us anytime: <strong>doughandco@gmail.com</strong>";
