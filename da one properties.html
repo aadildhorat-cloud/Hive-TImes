@@ -1,0 +1,3578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dubai One - Premium Real Estate in Dubai</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* === FLOATING WIDGET STYLES (MINIMIZED STATE) === */
+#dubai-chat-widget {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 2147483647;
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Minimized button state */
+#dubai-chat-widget.minimized {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0a0e17, #0f1a28);
+  box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+#dubai-chat-widget.minimized:hover {
+  transform: scale(1.08) rotate(5deg);
+  box-shadow: 0 8px 35px rgba(37, 211, 102, 0.7);
+}
+
+#dubai-chat-widget.minimized .chat-icon {
+  font-size: 2.1rem;
+  background: linear-gradient(45deg, #25d366, #1db954);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#dubai-chat-widget.minimized .chat-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 22px;
+  height: 22px;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: white;
+  border: 2px solid white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Expanded chat window */
+#dubai-chat-widget.expanded {
+  width: 380px;
+  max-height: 85vh;
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #0a0e17, #0f1a28);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+}
+
+/* Chat header */
+.chat-widget-header {
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid rgba(37, 211, 102, 0.25);
+  position: relative;
+}
+
+.chat-widget-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #25d366, #1db954);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.6rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.chat-widget-title h3 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+  background: linear-gradient(to right, #ffffff, #e0e6f0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.chat-widget-title p {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  margin: 0;
+  color: #a0a8b8;
+}
+
+.chat-widget-close {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.6rem;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.chat-widget-close:hover {
+  background: rgba(37, 211, 102, 0.2);
+  color: #25d366;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Chat messages */
+.chat-widget-messages {
+  padding: 20px;
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-height: 65vh;
+}
+
+.chat-message {
+  max-width: 88%;
+  padding: 16px 20px;
+  border-radius: 20px;
+  line-height: 1.55;
+  font-size: 0.98rem;
+  animation: fadeIn 0.35s ease;
+  position: relative;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.chat-message.user {
+  align-self: flex-end;
+  background: linear-gradient(45deg, #25d366, #1db954);
+  color: white;
+  border-bottom-right-radius: 8px;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.chat-message.bot {
+  align-self: flex-start;
+  background: rgba(30, 42, 70, 0.85);
+  color: #e6e9ef;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom-left-radius: 8px;
+}
+
+.chat-message.bot strong {
+  color: #25d366;
+}
+
+/* Quick suggestions */
+.chat-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.chat-suggestion-btn {
+  background: rgba(37, 211, 102, 0.12);
+  color: #25d366;
+  border: none;
+  border-radius: 18px;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.chat-suggestion-btn:hover {
+  background: rgba(37, 211, 102, 0.22);
+  transform: translateY(-2px);
+}
+
+/* Input area */
+.chat-widget-input {
+  padding: 18px;
+  background: rgba(20, 28, 45, 0.9);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  gap: 12px;
+}
+
+.chat-widget-input input {
+  flex: 1;
+  padding: 15px 20px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 28px;
+  font-size: 1.05rem;
+  background: rgba(15, 23, 42, 0.8);
+  color: white;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.chat-widget-input input:focus {
+  border-color: #25d366;
+}
+
+.chat-widget-input input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.chat-widget-input button {
+  background: linear-gradient(45deg, #25d366, #1db954);
+  color: white;
+  border: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  transition: all 0.35s ease;
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+}
+
+.chat-widget-input button:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+}
+
+/* WhatsApp handoff */
+.whatsapp-handoff {
+  background: rgba(37, 211, 102, 0.12);
+  border-left: 4px solid #25d366;
+  padding: 18px;
+  border-radius: 0 16px 16px 0;
+  margin: 15px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.whatsapp-handoff:hover {
+  background: rgba(37, 211, 102, 0.2);
+  transform: translateX(4px);
+}
+
+.whatsapp-handoff i {
+  color: #25d366;
+  font-size: 1.4rem;
+  min-width: 24px;
+}
+
+/* Developer highlights */
+.developer-highlight {
+  background: rgba(37, 211, 102, 0.09);
+  border-radius: 16px;
+  padding: 16px;
+  margin: 12px 0;
+  border-left: 3px solid #25d366;
+}
+
+.project-list {
+  margin: 10px 0 5px 15px;
+  padding-left: 10px;
+  border-left: 2px dashed rgba(37, 211, 102, 0.3);
+}
+
+.project-list li {
+  margin-bottom: 5px;
+  font-size: 0.95rem;
+  color: #a0a8b8;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  #dubai-chat-widget.minimized {
+    width: 64px;
+    height: 64px;
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  #dubai-chat-widget.minimized .chat-icon {
+    font-size: 1.9rem;
+  }
+  
+  #dubai-chat-widget.expanded {
+    width: 95%;
+    max-width: 420px;
+    max-height: 85vh;
+    bottom: 20px;
+    right: 2.5%;
+    border-radius: 28px;
+  }
+  
+  .chat-widget-messages {
+    max-height: 60vh;
+  }
+  
+  .chat-message {
+    max-width: 95%;
+  }
+  
+  .chat-widget-avatar {
+    width: 44px;
+    height: 44px;
+    font-size: 1.5rem;
+  }
+}
+    /* Modern Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --text-color: #333;
+    --light-color: #f8f9fa;
+}
+
+/* Header Styles */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 70px;
+}
+
+/* Logo Image */
+.header-logo {
+    height: 100px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.header-logo:hover {
+    transform: scale(1.05);
+}
+
+/* Navigation */
+.main-navigation {
+    display: none;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-menu li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-menu li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Dropdown Menu */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--primary-color);
+    min-width: 200px;
+    padding: 10px 0;
+    border-radius: 5px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li {
+    padding: 0;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 12px 20px;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.dropdown-menu li a:hover {
+    background: var(--secondary-color);
+    padding-left: 25px;
+}
+
+/* Cart Icon */
+.cart-icon {
+    position: relative;
+    cursor: pointer;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--accent-color);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 7px;
+    border-radius: 50%;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.hamburger-menu span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .header-container {
+        padding: 0 40px;
+    }
+    
+    .main-navigation {
+        display: block;
+    }
+    
+    .hamburger-menu {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .header-logo {
+        height: 45px;
+    }
+    
+    .cart-icon {
+        margin-left: 15px;
+    }
+}
+
+/* Smooth Scroll for Hash Links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Hover Effects */
+.header-left,
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-right {
+    gap: 25px;
+}
+
+/* Accessibility */
+.header-logo:focus,
+.nav-menu li a:focus,
+.cart-icon:focus,
+.hamburger-menu:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+/* === DEVELOPERS SECTION STYLES === */
+.developers-section {
+background: linear-gradient(135deg, #0f3460, #16213e, #1a1a2e);
+color: white;
+padding: 5rem 2rem;
+position: relative;
+overflow: hidden;
+}
+.developers-section::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0 50 L100 50" stroke="rgba(37,211,102,0.1)" stroke-width="1"/></svg>');
+opacity: 0.2;
+z-index: 1;
+}
+.developers-container {
+max-width: 1600px;
+margin: 0 auto;
+position: relative;
+z-index: 2;
+}
+.developers-header {
+text-align: center;
+margin-bottom: 4rem;
+}
+.developers-header h2 {
+font-family: 'Playfair Display', serif;
+font-size: 3.5rem;
+margin-bottom: 1.5rem;
+background: linear-gradient(45deg, #25d366, #fff);
+-webkit-background-clip: text;
+background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+.developers-header p {
+font-size: 1.3rem;
+color: #e0e0e0;
+max-width: 800px;
+margin: 0 auto;
+line-height: 1.8;
+}
+/* Developer Cards */
+.developers-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+gap: 3rem;
+}
+.developer-card {
+background: rgba(255, 255, 255, 0.05);
+border-radius: 20px;
+overflow: hidden;
+box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+border: 1px solid rgba(37, 211, 102, 0.2);
+backdrop-filter: blur(10px);
+}
+.developer-card:hover {
+transform: translateY(-10px);
+box-shadow: 0 15px 50px rgba(37, 211, 102, 0.2);
+border-color: rgba(37, 211, 102, 0.4);
+}
+.developer-header {
+padding: 2rem;
+text-align: center;
+border-bottom: 2px solid rgba(37, 211, 102, 0.3);
+}
+.developer-logo {
+    width: 140px;
+    height: 100px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(45deg, #25d366, #20c960);
+    border-radius: 15px; /* Changed from 50% to 15px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+    border: 3px solid rgba(255, 255, 255, 0.1);
+}
+.developer-logo img {
+    width: 90px;
+    height: 70px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+.developer-name {
+font-family: 'Playfair Display', serif;
+font-size: 1.8rem;
+margin-bottom: 0.5rem;
+color: #fff;
+}
+.developer-tagline {
+color: #25d366;
+font-weight: 600;
+font-size: 1rem;
+letter-spacing: 1px;
+text-transform: uppercase;
+}
+.developer-body {
+padding: 2rem;
+}
+.developer-info {
+margin-bottom: 2rem;
+}
+.developer-info h4 {
+font-family: 'Playfair Display', serif;
+font-size: 1.3rem;
+color: #25d366;
+margin-bottom: 1rem;
+display: flex;
+align-items: center;
+gap: 0.5rem;
+}
+.developer-info p {
+color: #e0e0e0;
+line-height: 1.7;
+font-size: 0.95rem;
+margin-bottom: 1rem;
+}
+/* Projects Grid */
+.projects-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+gap: 1rem;
+margin-top: 1rem;
+}
+.project-item {
+background: rgba(255, 255, 255, 0.05);
+border-radius: 8px;
+padding: 1rem;
+text-align: center;
+transition: all 0.3s ease;
+border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.project-item:hover {
+background: rgba(37, 211, 102, 0.1);
+border-color: rgba(37, 211, 102, 0.3);
+transform: translateY(-2px);
+}
+.project-item i {
+font-size: 1.5rem;
+color: #25d366;
+margin-bottom: 0.5rem;
+}
+.project-item span {
+font-size: 0.85rem;
+color: #fff;
+font-weight: 600;
+}
+/* Why Choose Section */
+.why-choose {
+background: rgba(37, 211, 102, 0.1);
+border-radius: 12px;
+padding: 1.5rem;
+margin-top: 1.5rem;
+}
+.why-choose h4 {
+font-family: 'Playfair Display', serif;
+font-size: 1.2rem;
+color: #25d366;
+margin-bottom: 1rem;
+text-align: center;
+}
+.reasons-list {
+list-style: none;
+}
+.reasons-list li {
+color: #e0e0e0;
+padding: 0.6rem 0;
+border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+display: flex;
+align-items: flex-start;
+gap: 0.8rem;
+font-size: 0.9rem;
+}
+.reasons-list li:last-child {
+border-bottom: none;
+}
+.reasons-list li i {
+color: #25d366;
+font-size: 1rem;
+min-width: 20px;
+}
+/* Developer Stats */
+.developer-stats {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 1.5rem;
+margin-top: 1.5rem;
+text-align: center;
+}
+.stat-item {
+padding: 1rem;
+}
+.stat-number {
+font-family: 'Playfair Display', serif;
+font-size: 2rem;
+font-weight: 700;
+color: #25d366;
+margin-bottom: 0.5rem;
+}
+.stat-label {
+color: #aaa;
+font-size: 0.85rem;
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+/* View More Button */
+.view-developer-btn {
+display: block;
+width: 100%;
+background: linear-gradient(45deg, #25d366, #20c960);
+color: white;
+padding: 1rem;
+border: none;
+border-radius: 10px;
+font-weight: 700;
+font-size: 1rem;
+margin-top: 1.5rem;
+cursor: pointer;
+transition: all 0.3s ease;
+box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+text-align: center;
+}
+.view-developer-btn:hover {
+transform: translateY(-3px);
+box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
+background: linear-gradient(45deg, #20c960, #1db954);
+}
+/* Developer Modal */
+.developer-modal {
+display: none;
+position: fixed;
+z-index: 2001;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.9);
+backdrop-filter: blur(5px);
+}
+.developer-modal-content {
+background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+margin: 3% auto;
+padding: 3rem;
+border-radius: 20px;
+width: 90%;
+max-width: 1000px;
+max-height: 90vh;
+overflow-y: auto;
+position: relative;
+animation: modalSlideIn 0.3s ease;
+border: 1px solid rgba(37, 211, 102, 0.3);
+}
+@keyframes modalSlideIn {
+from {
+opacity: 0;
+transform: translateY(-50px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+.developer-modal-close {
+position: absolute;
+right: 1.5rem;
+top: 1.5rem;
+font-size: 2.5rem;
+cursor: pointer;
+color: #aaa;
+transition: color 0.3s ease;
+z-index: 10;
+}
+.developer-modal-close:hover {
+color: #25d366;
+}
+.modal-developer-header {
+text-align: center;
+margin-bottom: 2.5rem;
+padding-bottom: 2rem;
+border-bottom: 2px solid rgba(37, 211, 102, 0.3);
+}
+.modal-developer-logo {
+    width: 160px;
+    height: 110px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(45deg, #25d366, #20c960);
+    border-radius: 15px; /* Changed from 50% */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+    border: 4px solid rgba(255, 255, 255, 0.1);
+}
+.modal-developer-logo img {
+    width: 110px;
+    height: 80px;
+    object-fit: contain;
+}
+.modal-developer-name {
+font-family: 'Playfair Display', serif;
+font-size: 2.5rem;
+color: #fff;
+margin-bottom: 0.5rem;
+}
+.modal-developer-tagline {
+color: #25d366;
+font-weight: 600;
+font-size: 1.1rem;
+letter-spacing: 1px;
+text-transform: uppercase;
+}
+.modal-developer-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 2.5rem;
+margin-top: 2rem;
+}
+.modal-section {
+background: rgba(255, 255, 255, 0.05);
+padding: 2rem;
+border-radius: 12px;
+border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.modal-section h3 {
+font-family: 'Playfair Display', serif;
+font-size: 1.5rem;
+color: #25d366;
+margin-bottom: 1.5rem;
+display: flex;
+align-items: center;
+gap: 0.8rem;
+}
+.modal-section p {
+color: #e0e0e0;
+line-height: 1.8;
+margin-bottom: 1rem;
+}
+.modal-projects {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 1.5rem;
+margin-top: 1.5rem;
+}
+.modal-project {
+background: rgba(255, 255, 255, 0.08);
+border-radius: 10px;
+padding: 1.5rem;
+transition: all 0.3s ease;
+border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.modal-project:hover {
+background: rgba(37, 211, 102, 0.15);
+border-color: rgba(37, 211, 102, 0.4);
+transform: translateX(5px);
+}
+.modal-project h4 {
+color: #25d366;
+font-size: 1.1rem;
+margin-bottom: 0.8rem;
+}
+.modal-project p {
+color: #aaa;
+font-size: 0.9rem;
+}
+/* Responsive Design for Developers */
+@media (max-width: 768px) {
+.developers-section {
+padding: 3rem 1rem;
+}
+.developers-header h2 {
+font-size: 2.5rem;
+}
+.developers-header p {
+font-size: 1.1rem;
+}
+.developers-grid {
+grid-template-columns: 1fr;
+gap: 2rem;
+}
+    .developer-logo {
+        width: 120px;
+        height: 85px;
+    }
+    .developer-logo img {
+        width: 80px;
+        height: 60px;
+    }
+.developer-name {
+font-size: 1.5rem;
+}
+.projects-grid {
+grid-template-columns: repeat(2, 1fr);
+}
+.developer-stats {
+grid-template-columns: repeat(2, 1fr);
+gap: 1rem;
+}
+.stat-number {
+font-size: 1.5rem;
+}
+.stat-label {
+font-size: 0.75rem;
+}
+.modal-developer-grid {
+grid-template-columns: 1fr;
+}
+    .modal-developer-logo {
+        width: 140px;
+        height: 95px;
+    }
+    .modal-developer-logo img {
+        width: 95px;
+        height: 70px;
+    }
+.modal-developer-name {
+font-size: 2rem;
+}
+}
+/* === HAMBURGER MENU STYLES === */
+.hamburger-menu {
+display: none;
+flex-direction: column;
+cursor: pointer;
+width: 35px;
+height: 30px;
+justify-content: space-between;
+z-index: 1001;
+}
+.hamburger-menu span {
+width: 100%;
+height: 3px;
+background-color: white;
+border-radius: 2px;
+transition: all 0.3s ease;
+}
+.hamburger-menu.active span:nth-child(1) {
+transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger-menu.active span:nth-child(2) {
+opacity: 0;
+}
+.hamburger-menu.active span:nth-child(3) {
+transform: rotate(-45deg) translate(5px, -5px);
+}
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.7);
+z-index: 999;
+opacity: 0;
+transition: opacity 0.3s ease;
+}
+.mobile-menu-overlay.active {
+display: block;
+opacity: 1;
+}
+/* Mobile Menu */
+.mobile-menu {
+position: fixed;
+top: 0;
+right: -100%;
+width: 80%;
+max-width: 350px;
+height: 100%;
+background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+color: white;
+padding: 2rem 1.5rem;
+z-index: 1000;
+transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+overflow-y: auto;
+}
+.mobile-menu.active {
+right: 0;
+}
+.mobile-menu-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 2rem;
+padding-bottom: 1.5rem;
+border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.mobile-menu-close {
+background: none;
+border: none;
+color: white;
+font-size: 1.8rem;
+cursor: pointer;
+padding: 0.5rem;
+transition: transform 0.3s ease;
+}
+.mobile-menu-close:hover {
+transform: rotate(90deg);
+color: #25d366;
+}
+.mobile-menu .logo {
+font-family: 'Playfair Display', serif;
+font-size: 1.8rem;
+font-weight: 700;
+color: #fff;
+letter-spacing: 1px;
+}
+.mobile-menu .logo span {
+color: #25d366;
+}
+.mobile-nav-menu {
+list-style: none;
+margin-top: 2rem;
+}
+.mobile-nav-menu li {
+margin-bottom: 1.2rem;
+border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+padding-bottom: 1.2rem;
+}
+.mobile-nav-menu li:last-child {
+border-bottom: none;
+margin-bottom: 0;
+padding-bottom: 0;
+}
+.mobile-nav-menu a {
+color: white;
+text-decoration: none;
+font-weight: 600;
+font-size: 1.2rem;
+display: block;
+padding: 0.8rem 0;
+transition: all 0.3s ease;
+position: relative;
+}
+.mobile-nav-menu a:hover {
+color: #25d366;
+transform: translateX(5px);
+}
+.mobile-nav-menu a::after {
+content: '';
+position: absolute;
+bottom: 0;
+left: 0;
+width: 0;
+height: 2px;
+background: #25d366;
+transition: width 0.3s ease;
+}
+.mobile-nav-menu a:hover::after {
+width: 30px;
+}
+.mobile-cta-button {
+display: block;
+width: 100%;
+background: linear-gradient(45deg, #25d366, #20c960);
+color: white;
+padding: 1rem;
+border: none;
+border-radius: 10px;
+cursor: pointer;
+font-weight: 700;
+font-size: 1.1rem;
+margin-top: 2rem;
+text-align: center;
+transition: all 0.3s ease;
+box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+}
+.mobile-cta-button:hover {
+transform: translateY(-2px);
+box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+.mobile-menu-social {
+margin-top: 3rem;
+padding-top: 2rem;
+border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.mobile-menu-social h4 {
+font-size: 1rem;
+color: #aaa;
+margin-bottom: 1rem;
+}
+.mobile-social-icons {
+display: flex;
+gap: 1rem;
+}
+.mobile-social-icons a {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 40px;
+height: 40px;
+background: rgba(255, 255, 255, 0.1);
+border-radius: 50%;
+color: white;
+text-decoration: none;
+transition: all 0.3s ease;
+}
+.mobile-social-icons a:hover {
+background: #25d366;
+transform: translateY(-3px);
+}
+/* Property Card Styling - Dubai One Style */
+.properties-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 2.5rem;
+max-width: 1400px;
+margin: 0 auto;
+padding: 3rem 2rem;
+}
+.property-card {
+background: white;
+border-radius: 15px;
+overflow: hidden;
+box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+transition: all 0.4s ease;
+cursor: pointer;
+position: relative;
+border: 1px solid rgba(0,0,0,0.05);
+opacity: 0;
+transform: translateY(50px);
+animation: fadeInCard 0.6s ease forwards;
+}
+.property-card:hover {
+transform: translateY(-8px);
+box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+@keyframes fadeInCard {
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+.property-card img {
+width: 100%;
+height: 250px;
+object-fit: cover;
+transition: transform 0.3s ease;
+}
+.property-card:hover img {
+transform: scale(1.05);
+}
+.property-badge {
+position: absolute;
+top: 1rem;
+right: 1rem;
+background: linear-gradient(45deg, #e74c3c, #c0392b);
+color: white;
+padding: 0.5rem 1rem;
+border-radius: 20px;
+font-size: 0.8rem;
+font-weight: 600;
+z-index: 2;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+}
+.property-info {
+padding: 2rem;
+}
+.property-card h3 {
+font-family: 'Playfair Display', serif;
+font-size: 1.5rem;
+margin-bottom: 1rem;
+color: #1a1a2e;
+line-height: 1.3;
+}
+.property-card p {
+color: #6c757d;
+margin-bottom: 1.5rem;
+line-height: 1.6;
+font-size: 0.95rem;
+}
+.property-details {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+gap: 1rem;
+margin-bottom: 1.5rem;
+}
+.detail-item {
+text-align: center;
+padding: 0.8rem;
+background: #f8fafc;
+border-radius: 8px;
+border: 1px solid #e2e8f0;
+transition: all 0.3s ease;
+}
+.property-card:hover .detail-item {
+background: #e8f5f0;
+border-color: #25d366;
+}
+.detail-item strong {
+display: block;
+color: #2c3e50;
+font-size: 0.8rem;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+margin-bottom: 0.3rem;
+font-weight: 600;
+}
+.detail-item span {
+font-weight: 700;
+color: #1a1a2e;
+font-size: 0.95rem;
+}
+.price {
+font-family: 'Playfair Display', serif;
+font-size: 1.6rem;
+font-weight: 700;
+color: #25d366;
+margin: 1rem 0;
+text-align: center;
+}
+.property-whatsapp {
+background: linear-gradient(45deg, #25d366, #20c960);
+color: white;
+padding: 0.9rem 1.5rem;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+width: 100%;
+font-weight: 700;
+font-size: 1rem;
+transition: all 0.3s ease;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 0.5rem;
+margin-top: 1rem;
+box-shadow: 0 3px 10px rgba(37, 211, 102, 0.2);
+}
+.property-whatsapp:hover {
+transform: translateY(-2px);
+box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+background: linear-gradient(45deg, #20c960, #1db954);
+}
+.property-whatsapp i {
+font-size: 1.1rem;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+.properties-grid {
+grid-template-columns: 1fr;
+padding: 2rem 1rem;
+gap: 1.5rem;
+}
+.property-card img {
+height: 200px;
+}
+.property-info {
+padding: 1.5rem;
+}
+.property-card h3 {
+font-size: 1.3rem;
+}
+.price {
+font-size: 1.4rem;
+}
+.property-details {
+grid-template-columns: repeat(2, 1fr);
+gap: 0.8rem;
+}
+}
+/* Featured Badges Colors */
+.badge-featured {
+background: linear-gradient(45deg, #25d366, #20c960);
+}
+.badge-new {
+background: linear-gradient(45deg, #3498db, #2980b9);
+}
+.badge-hot {
+background: linear-gradient(45deg, #e74c3c, #c0392b);
+}
+.badge-premium {
+background: linear-gradient(45deg, #9b59b6, #8e44ad);
+}
+/* === AI SEARCH BAR - DUBAI ONE BRANDING === */
+.ai-search-container {
+width: 100%;
+display: flex;
+flex-direction: column;
+gap: 10px;
+padding: 25px;
+font-family: 'Montserrat', sans-serif;
+background: linear-gradient(135deg, #1a1a2e, #16213e);
+border-radius: 20px;
+box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+/* Avatar & Message */
+.ai-message {
+display: flex;
+align-items: flex-start;
+gap: 16px;
+}
+.ai-avatar {
+width: 200px;
+height: 200px;
+flex-shrink: 0;
+}
+.ai-avatar img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+border-radius: 50%;
+filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+aspect-ratio: 1 / 1;
+border: 3px solid #fff;
+}
+.ai-text {
+background: linear-gradient(135deg, #0f3460, #16213e);
+color: white;
+padding: 40px 20px;
+border-radius: 15px;
+font-size: 1.1rem;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+font-weight: 500;
+line-height: 1.5;
+border-left: 4px solid #2575d3;
+}
+.ai-text strong {
+color: #fff;
+font-weight: 700;
+}
+/* Options */
+.ai-options {
+display: flex;
+flex-wrap: wrap;
+gap: 14px;
+}
+.ai-option-btn {
+flex: 1;
+min-width: 130px;
+padding: 16px 20px;
+border: 2px solid rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+background: rgba(255, 255, 255, 0.1);
+color: white;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+text-align: center;
+box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+position: relative;
+overflow: hidden;
+}
+.ai-option-btn:hover {
+transform: translateY(-3px);
+box-shadow: 0 6px 18px rgba(37, 117, 211, 0.3);
+background: rgba(255, 255, 255, 0.15);
+border-color: rgba(255, 255, 255, 0.4);
+}
+.ai-option-btn.selected {
+background: linear-gradient(135deg, #1a3a7a 0%, #2575d3 100%);
+color: white;
+border-color: #2575d3;
+box-shadow: 0 5px 20px rgba(37, 117, 211, 0.4);
+}
+.ai-option-btn.selected::after {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+transform: translateX(-100%);
+animation: shine 2s ease-in-out;
+}
+@keyframes shine {
+to {
+transform: translateX(100%);
+}
+}
+/* Back Button */
+.ai-back-btn {
+background: rgba(37, 117, 211, 0.15);
+color: white;
+border: 2px solid rgba(255, 255, 255, 0.3);
+border-radius: 12px;
+padding: 10px 20px;
+font-weight: 600;
+cursor: pointer;
+display: none;
+align-self: flex-start;
+transition: all 0.3s ease;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+.ai-back-btn:hover {
+background: linear-gradient(135deg, #1a3a7a, #2575d3);
+border-color: #2575d3;
+transform: translateY(-2px);
+box-shadow: 0 4px 12px rgba(37, 117, 211, 0.3);
+}
+.ai-back-btn i {
+margin-right: 8px;
+}
+/* Text Search Bar */
+.text-search-bar input {
+background: rgba(255, 255, 255, 0.1);
+border: 2px solid rgba(255, 255, 255, 0.2);
+color: white;
+border-radius: 50px;
+}
+.text-search-bar input::placeholder {
+color: rgba(255, 255, 255, 0.6);
+}
+.text-search-bar input:focus {
+border-color: #2575d3;
+box-shadow: 0 0 0 3px rgba(37, 117, 211, 0.2);
+}
+/* Success Message Styling */
+.ai-prompt-success {
+color: #2575d3;
+font-weight: 700;
+}
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+.ai-search-container {
+padding: 20px 15px;
+}
+.ai-avatar {
+width: 100px;
+height: 100px;
+}
+.ai-text {
+padding: 14px 16px;
+font-size: 1rem;
+}
+.ai-option-btn {
+min-width: 110px;
+padding: 14px 16px;
+font-size: 0.95rem;
+}
+.ai-back-btn {
+padding: 8px 16px;
+font-size: 0.95rem;
+}
+}
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+.ai-search-container {
+padding: 20px 15px;
+}
+.ai-avatar {
+width: 100px;
+height: 100px;
+}
+.ai-text {
+padding: 14px 16px;
+font-size: 1rem;
+}
+.ai-option-btn {
+min-width: 110px;
+padding: 14px 16px;
+font-size: 0.95rem;
+}
+.ai-back-btn {
+padding: 8px 16px;
+font-size: 0.95rem;
+}
+}
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body {
+font-family: 'Montserrat', sans-serif;
+line-height: 1.6;
+color: #333;
+background-color: #f8f9fa;
+overflow-x: hidden;
+}
+/* Enhanced Header Styles */
+/* Enhanced Header Styles */
+.header {
+position: fixed;
+top: 0;
+width: 100%;
+background: linear-gradient(135deg, rgba(26, 26, 46, 0.5), rgba(22, 33, 62, 0.5), rgba(15, 52, 96, 0.5));
+color: white;
+padding: 1rem 2rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+z-index: 1000;
+transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+border-bottom: 1px solid transparent;
+}
+
+.header.scrolled {
+background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+backdrop-filter: blur(10px);
+border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Adjust logo and text colors for transparency */
+.header .logo {
+color: white;
+transition: all 0.3s ease;
+}
+
+.header.scrolled .logo {
+color: white;
+}
+
+/* Navigation links */
+.nav-menu a {
+color: white;
+transition: all 0.3s ease;
+}
+
+.header.scrolled .nav-menu a {
+color: white;
+}
+
+/* CTA button adjustments */
+.header .cta-button {
+background: linear-gradient(45deg, rgba(37, 211, 102, 0.9), rgba(37, 211, 102, 0.8));
+transition: all 0.3s ease;
+}
+
+.header.scrolled .cta-button {
+background: linear-gradient(45deg, #25d366, #25d366);
+}
+
+/* Hamburger menu for mobile */
+.hamburger-menu span {
+background-color: white;
+transition: all 0.3s ease;
+}
+
+.header.scrolled .hamburger-menu span {
+background-color: white;
+}
+/* Hero Slider Enhanced */
+.hero-slider {
+height: 80vh;
+position: relative;
+overflow: hidden;
+margin-top: 0px;
+
+}
+.slide {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-size: cover;
+background-position: center;
+opacity: 0;
+transition: opacity 1.5s ease-in-out;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.slide.active {
+opacity: 1;
+}
+.slide::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: linear-gradient(45deg, rgba(26,26,46,0.8), rgba(15,52,96,0.6));
+}
+.slide-content {
+position: relative;
+text-align: center;
+color: white;
+max-width: 900px;
+padding: 3rem;
+z-index: 2;
+}
+.slide-content h2 {
+font-family: 'Playfair Display', serif;
+font-size: 3.5rem;
+margin-bottom: 1.5rem;
+text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+line-height: 1.2;
+}
+.slide-content p {
+font-size: 1.4rem;
+margin-bottom: 2rem;
+opacity: 0.9;
+}
+.slide-buttons {
+display: flex;
+gap: 1rem;
+justify-content: center;
+flex-wrap: wrap;
+}
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(10px); }
+to { opacity: 1; transform: translateY(0); }
+}
+/* Enhanced Property Listings */
+.property-listings {
+padding: 3rem 2rem;
+max-width: 1400px;
+margin: 0 auto;
+}
+.section-title {
+text-align: center;
+font-family: 'Playfair Display', serif;
+font-size: 2.8rem;
+margin-bottom: 3rem;
+color: #1a1a2e;
+position: relative;
+}
+.section-title::after {
+content: '';
+position: absolute;
+bottom: -10px;
+left: 50%;
+transform: translateX(-50%);
+width: 100px;
+height: 3px;
+background: linear-gradient(45deg, #25d366, #25d366);
+border-radius: 2px;
+}
+.property-grid {
+display: grid;
+gap: 2.5rem;
+}
+.property-block {
+background: white;
+border-radius: 15px;
+overflow: hidden;
+box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+transition: all 0.4s ease;
+cursor: pointer;
+position: relative;
+border: 1px solid rgba(0,0,0,0.05);
+}
+.property-block:hover {
+transform: translateY(-8px);
+box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+.property-image {
+width: 100%;
+height: 250px;
+object-fit: cover;
+transition: transform 0.3s ease;
+}
+.property-block:hover .property-image {
+transform: scale(1.05);
+}
+.property-info {
+padding: 2rem;
+}
+.property-title {
+font-family: 'Playfair Display', serif;
+font-size: 1.5rem;
+margin-bottom: 1rem;
+color: #1a1a2e;
+}
+.property-details {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+gap: 1.2rem;
+margin-bottom: 1.5rem;
+}
+.detail-item {
+text-align: center;
+padding: 0.8rem;
+background: #f8fafc;
+border-radius: 8px;
+border: 1px solid #e2e8f0;
+}
+.detail-item strong {
+display: block;
+color: #2c3e50;
+font-size: 0.85rem;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+margin-bottom: 0.3rem;
+}
+.detail-item span {
+font-weight: 600;
+color: #1a1a2e;
+font-size: 1rem;
+}
+/* Enhanced Modal */
+.modal {
+display: none;
+position: fixed;
+z-index: 2000;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0,0,0,0.9);
+backdrop-filter: blur(10px);
+}
+.modal-content {
+background-color: white;
+margin: 2% auto;
+padding: 2.5rem;
+border-radius: 15px;
+width: 90%;
+max-width: 900px;
+max-height: 90vh;
+overflow-y: auto;
+position: relative;
+animation: modalSlideIn 0.3s ease;
+}
+@keyframes modalSlideIn {
+from {
+opacity: 0;
+transform: translateY(-50px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+.close {
+position: absolute;
+right: 1.5rem;
+top: 1.5rem;
+font-size: 2.5rem;
+cursor: pointer;
+color: #aaa;
+transition: color 0.3s ease;
+z-index: 10;
+}
+.close:hover {
+color: #25d366;
+}
+.gallery {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+gap: 1.5rem;
+margin-bottom: 2rem;
+}
+.gallery img {
+width: 100%;
+height: 200px;
+object-fit: cover;
+border-radius: 8px;
+transition: transform 0.3s ease;
+cursor: pointer;
+}
+.gallery img:hover {
+transform: scale(1.05);
+}
+.modal-whatsapp {
+background: linear-gradient(45deg, #25d366, #25d366);
+color: white;
+padding: 1.2rem 2.5rem;
+border: none;
+border-radius: 10px;
+cursor: pointer;
+font-size: 1.3rem;
+font-weight: 700;
+transition: all 0.3s ease;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 0.8rem;
+margin: 2rem 0;
+width: 100%;
+}
+.modal-whatsapp:hover {
+transform: translateY(-3px);
+box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
+}
+/* Floating WhatsApp Button */
+.floating-whatsapp {
+position: fixed;
+bottom: 2rem;
+right: 2rem;
+background: #25d366;
+color: white;
+width: 60px;
+height: 60px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.8rem;
+cursor: pointer;
+z-index: 1000;
+box-shadow: 0 4px 20px rgba(37, 211, 102, 0.6);
+transition: all 0.3s ease;
+}
+.floating-whatsapp:hover {
+transform: scale(1.1) rotate(10deg);
+box-shadow: 0 6px 30px rgba(37, 211, 102, 0.8);
+}
+/* Scroll to top button */
+.scroll-to-top {
+position: fixed;
+bottom: 80px;
+right: 2rem;
+background: linear-gradient(45deg, #1a1a2e, #0f3460);
+color: white;
+width: 45px;
+height: 45px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+z-index: 999;
+opacity: 0;
+transition: all 0.3s ease;
+}
+.scroll-to-top.show {
+opacity: 1;
+}
+.scroll-to-top:hover {
+transform: translateY(-3px);
+box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+/* Footer Styles */
+.footer {
+background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+color: white;
+padding: 5rem 2rem 2rem;
+margin-top: 3rem;
+position: relative;
+overflow: hidden;
+}
+.footer::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0 50 L100 50" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></svg>');
+opacity: 0.3;
+z-index: 1;
+}
+.footer-content {
+max-width: 1400px;
+margin: 0 auto;
+position: relative;
+z-index: 2;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 3rem;
+}
+.footer-column h3 {
+font-family: 'Playfair Display', serif;
+font-size: 1.8rem;
+margin-bottom: 1.5rem;
+position: relative;
+padding-bottom: 0.8rem;
+}
+.footer-column h3::after {
+content: '';
+position: absolute;
+bottom: 0;
+left: 0;
+width: 50px;
+height: 3px;
+background: linear-gradient(45deg, #25d366, #25d366);
+}
+.footer-column p {
+margin-bottom: 1.5rem;
+color: #e0e0e0;
+line-height: 1.8;
+}
+.footer-links {
+list-style: none;
+}
+.footer-links li {
+margin-bottom: 0.8rem;
+}
+.footer-links a {
+color: #e0e0e0;
+text-decoration: none;
+transition: all 0.3s ease;
+display: flex;
+align-items: center;
+gap: 0.5rem;
+}
+.footer-links a:hover {
+color: #25d366;
+transform: translateX(5px);
+}
+.footer-links a i {
+font-size: 0.9rem;
+color: #25d366;
+}
+.contact-info {
+list-style: none;
+}
+.contact-info li {
+margin-bottom: 1rem;
+display: flex;
+align-items: flex-start;
+gap: 1rem;
+color: #e0e0e0;
+}
+.contact-info i {
+color: #25d366;
+font-size: 1.2rem;
+margin-top: 0.2rem;
+min-width: 20px;
+}
+.social-icons {
+display: flex;
+gap: 1rem;
+margin-top: 1.5rem;
+}
+.social-icons a {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 40px;
+height: 40px;
+background: rgba(255,255,255,0.1);
+border-radius: 50%;
+color: white;
+text-decoration: none;
+transition: all 0.3s ease;
+}
+.social-icons a:hover {
+background: #25d366;
+transform: translateY(-3px);
+}
+.newsletter-form {
+display: flex;
+margin-top: 1.5rem;
+}
+.newsletter-form input {
+flex: 1;
+padding: 0.8rem;
+border: none;
+border-radius: 5px 0 0 5px;
+font-size: 1rem;
+}
+.newsletter-form button {
+background: #25d366;
+color: white;
+border: none;
+padding: 0 1.2rem;
+border-radius: 0 5px 5px 0;
+cursor: pointer;
+font-weight: 600;
+transition: all 0.3s ease;
+}
+.newsletter-form button:hover {
+background: #20c960;
+}
+.footer-bottom {
+text-align: center;
+padding-top: 3rem;
+margin-top: 3rem;
+border-top: 1px solid rgba(255,255,255,0.1);
+color: #b0b0b0;
+font-size: 0.9rem;
+}
+.footer-bottom a {
+color: #25d366;
+text-decoration: none;
+}
+.footer-bottom a:hover {
+text-decoration: underline;
+}
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+.header {
+padding: 1rem;
+}
+.hamburger-menu {
+display: flex;
+}
+.nav-menu {
+display: none;
+}
+.logo {
+font-size: 1.8rem;
+}
+.hero-slider {
+height: 60vh;
+margin-top: 70px;
+}
+.slide-content h2 {
+font-size: 2.2rem;
+}
+.slide-content p {
+font-size: 1.1rem;
+}
+.property-block {
+flex-direction: column;
+}
+.property-details {
+grid-template-columns: repeat(2, 1fr);
+}
+.modal-content {
+margin: 5% auto;
+padding: 2rem;
+}
+.gallery {
+grid-template-columns: 1fr;
+}
+.floating-whatsapp {
+bottom: 1rem;
+right: 1rem;
+width: 50px;
+height: 50px;
+font-size: 1.5rem;
+}
+.footer-content {
+grid-template-columns: 1fr;
+gap: 2rem;
+}
+.footer {
+padding: 4rem 1rem 1rem;
+}
+.newsletter-form {
+flex-direction: column;
+gap: 0.5rem;
+}
+.newsletter-form input, .newsletter-form button {
+width: 100%;
+border-radius: 5px;
+}
+}
+/* Loading Animation */
+.loading {
+display: inline-block;
+width: 20px;
+height: 20px;
+border: 3px solid rgba(255,255,255,.3);
+border-radius: 50%;
+border-top-color: #fff;
+animation: spin 1s ease-in-out infinite;
+}
+@keyframes spin {
+to { transform: rotate(360deg); }
+}
+</style>
+</head>
+<body>
+<!-- Header with Hamburger Menu -->
+<header class="header">
+ <div class="header-container">
+        <div class="header-left">
+            <img src="images/daonelogo.png" alt="Business Logo" class="header-logo">
+        </div>
+<nav>
+<ul class="nav-menu">
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#properties">Properties</a></li>
+<li><a href="#developers">Developers</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+<button class="cta-button" onclick="openWhatsApp()">
+<i class="fab fa-whatsapp"></i> Enquire Now
+</button>
+<!-- Hamburger Menu Button -->
+<div class="hamburger-menu" id="hamburgerMenu">
+<span></span>
+<span></span>
+<span></span>
+</div>
+</header>
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+<div class="mobile-menu-header">
+<div class="logo">Dubai<span>One</span></div>
+<button class="mobile-menu-close" id="mobileMenuClose">
+<i class="fas fa-times"></i>
+</button>
+</div>
+<ul class="mobile-nav-menu">
+<li><a href="#home" onclick="closeMobileMenu()">Home</a></li>
+<li><a href="#about" onclick="closeMobileMenu()">About</a></li>
+<li><a href="#properties" onclick="closeMobileMenu()">Properties</a></li>
+<li><a href="#developers" onclick="closeMobileMenu()">Developers</a></li>
+<li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
+</ul>
+<button class="mobile-cta-button" onclick="openWhatsApp(); closeMobileMenu();">
+<i class="fab fa-whatsapp"></i> Enquire Now
+</button>
+<div class="mobile-menu-social">
+<h4>Follow Us</h4>
+<div class="mobile-social-icons">
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-twitter"></i></a>
+<a href="#"><i class="fab fa-linkedin-in"></i></a>
+</div>
+</div>
+</div>
+<!-- Hero Slider - Dubai 2030 Vision -->
+<section class="hero-slider">
+<div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');">
+<div class="slide-content">
+<h2>Dubai 2030: The Future is Here</h2>
+<p>Experience the next generation of smart cities and sustainable living</p>
+<div class="slide-buttons">
+<button class="cta-button" onclick="openWhatsApp()">
+<i class="fab fa-whatsapp"></i> Enquire Now
+</button>
+</div>
+</div>
+</div>
+<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');">
+<div class="slide-content">
+<h2>Dubai Creek Harbour 2030</h2>
+<p>The new downtown with the world's tallest tower and smart infrastructure</p>
+<div class="slide-buttons">
+<button class="cta-button" onclick="openWhatsApp()">
+<i class="fab fa-whatsapp"></i> Enquire Now
+</button>
+</div>
+</div>
+</div>
+<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');">
+<div class="slide-content">
+<h2>Dubai Hills Estate 2030</h2>
+<p>Integrated smart community with green spaces and autonomous transport</p>
+<div class="slide-buttons">
+<button class="cta-button" onclick="openWhatsApp()">
+<i class="fab fa-whatsapp"></i> Enquire Now
+</button>
+</div>
+</div>
+</div>
+<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1582267098481-3340e96e7d4f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');">
+<div class="slide-content">
+<h2>Dubai 2040 Urban Master Plan</h2>
+<p>Double the emirate's size with sustainable communities and green corridors</p>
+<div class="slide-buttons">
+<button class="cta-button" onclick="openWhatsApp()">
+<i class="fab fa-whatsapp"></i> Invest Now
+</button>
+</div>
+</div>
+</div>
+<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');">
+<div class="slide-content">
+<h2>Expo City Dubai 2030</h2>
+<p>Legacy district transforming into a global innovation hub and smart city</p>
+<div class="slide-buttons">
+<button class="cta-button" onclick="openWhatsApp()">
+<i class="fab fa-whatsapp"></i> Enquire Now
+</button>
+<button class="cta-button" style="background: linear-gradient(45deg, #3498db, #2980b9); box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);">
+<i class="fas fa-lightbulb"></i> Discover Innovation
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- AI-Guided Search Bar -->
+<div id="filterBar" class="filter-bar">
+<div class="ai-search-container" id="aiSearchContainer">
+<!-- Prompt -->
+<div class="ai-message">
+<div class="ai-avatar">
+<img src="images/daonelogo.png" alt="Hive Times Bee">
+</div>
+<div class="ai-text">
+<span id="aiPrompt">Hi! What type of property are you looking for?</span>
+</div>
+</div>
+<!-- Text Search Bar -->
+<div class="text-search-bar" style="margin-bottom: 20px;">
+<input
+type="text"
+id="filterSearch"
+placeholder="Search properties by name, location, or keyword…"
+style="
+width: 100%;
+padding: 16px 24px;
+border: 2px solid #eee;
+border-radius: 50px;
+font-size: 1.05rem;
+font-family: 'Inter', sans-serif;
+box-shadow: inset 0 2px 6px rgba(0,0,0,0.04);
+outline: none;
+transition: all 0.3s ease;
+"
+/>
+</div>
+<!-- Options (dynamically updated) -->
+<div class="ai-options" id="aiOptions">
+<button class="ai-option-btn" data-value="">Any Property Type</button>
+<button class="ai-option-btn" data-value="villa">Villa</button>
+<button class="ai-option-btn" data-value="townhouse">Townhouse</button>
+<button class="ai-option-btn" data-value="apartment">Apartment</button>
+<button class="ai-option-btn" data-value="studio">Studio</button>
+<button class="ai-option-btn" data-value="penthouse">Penthouse</button>
+</div>
+<!-- Back Button -->
+<button class="ai-back-btn" id="aiBackBtn">
+<i class="fas fa-arrow-left"></i> Back
+</button>
+<!-- Hidden filter inputs -->
+<input type="hidden" id="filterPropertyType" value="">
+<input type="hidden" id="filterLocation" value="">
+<input type="hidden" id="filterBedrooms" value="">
+</div>
+</div>
+<!-- Property Cards Grid -->
+<div class="properties-grid">
+<!-- Property Card 1 - Villa -->
+<div class="property-card"
+data-property-type="villa"
+data-location="palm-jumeirah"
+data-bedrooms="4"
+onclick="openModal('property1')">
+<img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Palm Villa">
+<div class="property-badge badge-premium">Premium</div>
+<div class="property-info">
+<h3>Oceanfront Villa</h3>
+<p>Exclusive 4-bedroom villa on Palm Jumeirah with private beach access, infinity pool, and stunning Arabian Gulf views.</p>
+<div class="price">AED 12,500,000</div>
+<div class="property-details">
+<div class="detail-item">
+<strong>Location</strong>
+<span>Palm Jumeirah</span>
+</div>
+<div class="detail-item">
+<strong>Type</strong>
+<span>Villa</span>
+</div>
+<div class="detail-item">
+<strong>Bedrooms</strong>
+<span>4</span>
+</div>
+<div class="detail-item">
+<strong>Developer</strong>
+<span>Nakheel</span>
+</div>
+</div>
+<button class="property-whatsapp" onclick="openWhatsApp(); event.stopPropagation();">
+<i class="fab fa-whatsapp"></i> Enquire Now
+</button>
+</div>
+</div>
+<!-- Property Card 2 - Apartment -->
+<div class="property-card"
+data-property-type="apartment"
+data-location="downtown-dubai"
+data-bedrooms="2"
+onclick="openModal('property2')">
+<img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Luxury Downtown Apartment">
+<div class="property-badge badge-featured">Featured</div>
+<div class="property-info">
+<h3>Luxury Downtown Apartment</h3>
+<p>Stunning 2-bedroom apartment with breathtaking Burj Khalifa views in the heart of Downtown Dubai. Premium finishes throughout.</p>
+<div class="price">AED 2,500,000</div>
+<div class="property-details">
+<div class="detail-item">
+<strong>Location</strong>
+<span>Downtown Dubai</span>
+</div>
+<div class="detail-item">
+<strong>Type</strong>
+<span>Apartment</span>
+</div>
+<div class="detail-item">
+<strong>Bedrooms</strong>
+<span>2</span>
+</div>
+<div class="detail-item">
+<strong>Developer</strong>
+<span>Emaar</span>
+</div>
+</div>
+<button class="property-whatsapp" onclick="openWhatsApp(); event.stopPropagation();">
+<i class="fab fa-whatsapp"></i> Enquire Now
+</button>
+</div>
+</div>
+<!-- Property Card 3 - Studio -->
+<div class="property-card"
+data-property-type="studio"
+data-location="dubai-marina"
+data-bedrooms="1"
+onclick="openModal('property3')">
+<img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern Marina Studio">
+<div class="property-badge badge-new">New</div>
+<div class="property-info">
+<h3>Modern Marina Studio</h3>
+<p>Cozy studio apartment in Dubai Marina with panoramic sea views and access to world-class amenities including pool and gym.</p>
+<div class="price">AED 65,000 / year</div>
+<div class="property-details">
+<div class="detail-item">
+<strong>Location</strong>
+<span>Dubai Marina</span>
+</div>
+<div class="detail-item">
+<strong>Type</strong>
+<span>Studio</span>
+</div>
+<div class="detail-item">
+<strong>Bedrooms</strong>
+<span>Studio</span>
+</div>
+<div class="detail-item">
+<strong>Developer</strong>
+<span>Damac</span>
+</div>
+</div>
+<button class="property-whatsapp" onclick="openWhatsApp(); event.stopPropagation();">
+<i class="fab fa-whatsapp"></i> Enquire Now
+</button>
+</div>
+</div>
+<!-- Property Card 4 - Apartment -->
+<div class="property-card"
+data-property-type="apartment"
+data-location="jumeirah-beach-residence"
+data-bedrooms="3"
+onclick="openModal('property4')">
+<img src="https://images.unsplash.com/photo-1582267098481-3340e96e7d4f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="JBR Apartment">
+<div class="property-badge badge-hot">Hot Deal</div>
+<div class="property-info">
+<h3>Beachfront Apartment</h3>
+<p>Spacious 3-bedroom apartment in JBR with direct beach access, modern amenities, and breathtaking sea views from every room.</p>
+<div class="price">AED 180,000 / year</div>
+<div class="property-details">
+<div class="detail-item">
+<strong>Location</strong>
+<span>JBR</span>
+</div>
+<div class="detail-item">
+<strong>Type</strong>
+<span>Apartment</span>
+</div>
+<div class="detail-item">
+<strong>Bedrooms</strong>
+<span>3</span>
+</div>
+<div class="detail-item">
+<strong>Developer</strong>
+<span>Meraas</span>
+</div>
+</div>
+<button class="property-whatsapp" onclick="openWhatsApp(); event.stopPropagation();">
+<i class="fab fa-whatsapp"></i> Enquire Now
+</button>
+</div>
+</div>
+</div>
+<!-- === DEVELOPERS SECTION === -->
+<section class="developers-section" id="developers">
+<div class="developers-container">
+<div class="developers-header">
+<h2><i class="fas fa-building"></i> Our Premier Developers</h2>
+<p>Dubai One partners with the most prestigious and trusted real estate developers in the UAE, ensuring exceptional quality, innovative design, and world-class amenities in every project.</p>
+</div>
+<div class="developers-grid">
+<!-- Developer Card 1 - Emaar -->
+<div class="developer-card">
+<div class="developer-header">
+<div class="developer-logo">
+<img src="images/EMAAR LOGO.png" alt="Emaar Properties">
+</div>
+<div class="developer-name">Emaar Properties</div>
+<div class="developer-tagline">Pioneering Dubai's Skyline</div>
+</div>
+<div class="developer-body">
+<div class="developer-info">
+<h4><i class="fas fa-info-circle"></i> About Emaar</h4>
+<p>Founded in 1997, Emaar Properties is one of the world's most valuable real estate companies and a pioneer in shaping Dubai's modern landscape. Known for iconic developments like Burj Khalifa and The Dubai Mall.</p>
+</div>
+<div class="projects-grid">
+<div class="project-item">
+<i class="fas fa-tower-observation"></i>
+<span>Burj Khalifa</span>
+</div>
+<div class="project-item">
+<i class="fas fa-shop"></i>
+<span>Dubai Mall</span>
+</div>
+<div class="project-item">
+<i class="fas fa-building-columns"></i>
+<span>Downtown Dubai</span>
+</div>
+<div class="project-item">
+<i class="fas fa-tree"></i>
+<span>Dubai Hills Estate</span>
+</div>
+</div>
+<div class="why-choose">
+<h4>Why Choose Emaar?</h4>
+<ul class="reasons-list">
+<li><i class="fas fa-check"></i> <span>25+ years of excellence</span></li>
+<li><i class="fas fa-check"></i> <span>AAA credit rating</span></li>
+<li><i class="fas fa-check"></i> <span>Global presence in 15+ countries</span></li>
+</ul>
+</div>
+<div class="developer-stats">
+<div class="stat-item">
+<div class="stat-number">500+</div>
+<div class="stat-label">Projects Delivered</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">150K+</div>
+<div class="stat-label">Happy Residents</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">AED 200B+</div>
+<div class="stat-label">Assets Under Mgmt</div>
+</div>
+</div>
+<button class="view-developer-btn" onclick="openDeveloperModal('emaar')">
+<i class="fas fa-arrow-right"></i> View Full Profile
+</button>
+</div>
+</div>
+<!-- Developer Card 2 - Nakheel -->
+<div class="developer-card">
+<div class="developer-header">
+<div class="developer-logo">
+<!-- Placeholder for Nakheel logo -->
+<div style="width: 80px; height: 80px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 2rem;">N</div>
+</div>
+<div class="developer-name">Nakheel</div>
+<div class="developer-tagline">Creating Landmarks</div>
+</div>
+<div class="developer-body">
+<div class="developer-info">
+<h4><i class="fas fa-info-circle"></i> About Nakheel</h4>
+<p>Nakheel is a leading Dubai-based developer renowned for its innovative, world-class real estate projects. Creator of the iconic Palm Jumeirah, The World Islands, and Deira Islands, transforming Dubai's coastline.</p>
+</div>
+<div class="projects-grid">
+<div class="project-item">
+<i class="fas fa-palm-tree"></i>
+<span>Palm Jumeirah</span>
+</div>
+<div class="project-item">
+<i class="fas fa-globe"></i>
+<span>The World Islands</span>
+</div>
+<div class="project-item">
+<i class="fas fa-water"></i>
+<span>Deira Islands</span>
+</div>
+<div class="project-item">
+<i class="fas fa-home"></i>
+<span>Jumeirah Village</span>
+</div>
+</div>
+<div class="why-choose">
+<h4>Why Choose Nakheel?</h4>
+<ul class="reasons-list">
+<li><i class="fas fa-check"></i> <span>Iconic waterfront developments</span></li>
+<li><i class="fas fa-check"></i> <span>Master community planning</span></li>
+<li><i class="fas fa-check"></i> <span>Strong government backing</span></li>
+</ul>
+</div>
+<div class="developer-stats">
+<div class="stat-item">
+<div class="stat-number">15+</div>
+<div class="stat-label">Major Projects</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">80K+</div>
+<div class="stat-label">Properties Delivered</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">AED 100B+</div>
+<div class="stat-label">Project Value</div>
+</div>
+</div>
+<button class="view-developer-btn" onclick="openDeveloperModal('nakheel')">
+<i class="fas fa-arrow-right"></i> View Full Profile
+</button>
+</div>
+</div>
+<!-- Developer Card 3 - Damac -->
+<div class="developer-card">
+<div class="developer-header">
+<div class="developer-logo">
+<!-- Placeholder for Damac logo -->
+<div style="width: 80px; height: 80px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 2rem;">D</div>
+</div>
+<div class="developer-name">Damac Properties</div>
+<div class="developer-tagline">Luxury Redefined</div>
+</div>
+<div class="developer-body">
+<div class="developer-info">
+<h4><i class="fas fa-info-circle"></i> About Damac</h4>
+<p>Established in 2002, Damac Properties is a leading luxury real estate developer in the Middle East. Known for opulent designs, premium amenities, and partnerships with global luxury brands like Versace and Paramount.</p>
+</div>
+<div class="projects-grid">
+<div class="project-item">
+<i class="fas fa-star"></i>
+<span>Versace Residences</span>
+</div>
+<div class="project-item">
+<i class="fas fa-film"></i>
+<span>Paramount Towers</span>
+</div>
+<div class="project-item">
+<i class="fas fa-golf"></i>
+<span>Damac Hills</span>
+</div>
+<div class="project-item">
+<i class="fas fa-water"></i>
+<span>Aykon City</span>
+</div>
+</div>
+<div class="why-choose">
+<h4>Why Choose Damac?</h4>
+<ul class="reasons-list">
+<li><i class="fas fa-check"></i> <span>Luxury brand partnerships</span></li>
+<li><i class="fas fa-check"></i> <span>High ROI potential</span></li>
+<li><i class="fas fa-check"></i> <span>Flexible payment plans</span></li>
+</ul>
+</div>
+<div class="developer-stats">
+<div class="stat-item">
+<div class="stat-number">250+</div>
+<div class="stat-label">Completed Projects</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">45K+</div>
+<div class="stat-label">Units Delivered</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">AED 60B+</div>
+<div class="stat-label">Total Value</div>
+</div>
+</div>
+<button class="view-developer-btn" onclick="openDeveloperModal('damac')">
+<i class="fas fa-arrow-right"></i> View Full Profile
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Developer Modal -->
+<div id="developerModal" class="developer-modal">
+<div class="developer-modal-content">
+<span class="developer-modal-close" onclick="closeDeveloperModal()">&times;</span>
+<div class="modal-developer-header">
+<div class="modal-developer-logo">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Emaar_Logo.svg/1200px-Emaar_Logo.svg.png" alt="Developer Logo" id="modalDeveloperLogo">
+</div>
+<div class="modal-developer-name" id="modalDeveloperName">Emaar Properties</div>
+<div class="modal-developer-tagline" id="modalDeveloperTagline">Pioneering Dubai's Skyline</div>
+</div>
+<div class="modal-developer-grid">
+<div class="modal-section">
+<h3><i class="fas fa-building"></i> Company Overview</h3>
+<p id="modalCompanyOverview">Founded in 1997 by Chairman Mohamed Alabbar, Emaar Properties has established itself as one of the world's most valuable real estate development companies. With a proven track record of delivering iconic projects that transform skylines and lifestyles, Emaar continues to set benchmarks in innovation, quality, and customer satisfaction.</p>
+<p>Emaar's portfolio spans residential, commercial, retail, hospitality, and leisure properties across the Middle East, North Africa, Asia, Europe, and the Americas.</p>
+</div>
+<div class="modal-section">
+<h3><i class="fas fa-medal"></i> Awards & Recognition</h3>
+<ul class="reasons-list">
+<li><i class="fas fa-trophy"></i> <span>Forbes Global 2000 List</span></li>
+<li><i class="fas fa-trophy"></i> <span>Best Developer - Arabian Business</span></li>
+<li><i class="fas fa-trophy"></i> <span>Most Admired Developer - Property Finder</span></li>
+</ul>
+</div>
+<div class="modal-section">
+<h3><i class="fas fa-briefcase"></i> Notable Projects</h3>
+<div class="modal-projects" id="modalProjects">
+<div class="modal-project">
+<h4>Burj Khalifa</h4>
+<p>World's tallest building at 828m</p>
+</div>
+<div class="modal-project">
+<h4>The Dubai Mall</h4>
+<p>World's largest shopping destination</p>
+</div>
+<div class="modal-project">
+<h4>Downtown Dubai</h4>
+<p>Flagship mixed-use development</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal -->
+<div id="propertyModal" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal()">&times;</span>
+<h2 id="modal-title">Luxury Downtown Dubai Apartment</h2>
+<div class="gallery">
+<img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Property Image 1">
+<img src="https://images.unsplash.com/photo-1582267098481-3340e96e7d4f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Property Image 2">
+<img src="https://images.unsplash.com/photo-1600585152915-d208bec867a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Property Image 3">
+<img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Property Image 4">
+</div>
+<div id="modal-description">
+<h3>Luxury Downtown Dubai Apartment</h3>
+<p>Premium luxury apartment in the heart of Downtown Dubai with stunning Burj Khalifa views. Features high-end finishes, spacious living areas, and access to world-class amenities including infinity pool, fitness center, and concierge services.</p>
+<p><strong>Specifications:</strong> 3BR, 2BA, 1,800 sq ft, Floor-to-ceiling windows, Premium kitchen appliances, Private balcony with panoramic views</p>
+<p><strong>Location Benefits:</strong> Walking distance to Dubai Mall, Metro station, and major attractions. Close to business districts and entertainment venues.</p>
+<p><strong>Amenities:</strong> 24/7 security, valet parking, spa and wellness center, children's play area, rooftop garden</p>
+</div>
+<button class="modal-whatsapp" onclick="openWhatsApp()">
+<i class="fab fa-whatsapp"></i> Speak to an Agent
+</button>
+</div>
+</div>
+<!-- Floating WhatsApp Button -->
+<div class="floating-whatsapp" onclick="openWhatsApp()">
+<i class="fab fa-whatsapp"></i>
+</div>
+<!-- Widget Container -->
+<div id="dubai-chat-widget" class="minimized">
+  <i class="fas fa-comments chat-icon"></i>
+  <span class="chat-badge">?</span>
+</div>
+
+<!-- Scroll to Top Button -->
+<div class="scroll-to-top" onclick="scrollToTop()">
+<i class="fas fa-arrow-up"></i>
+</div>
+<!-- Footer -->
+<footer class="footer">
+<div class="footer-content">
+<div class="footer-column">
+<h3>Dubai One</h3>
+<p>Dubai One is the premier luxury real estate agency in Dubai, offering exclusive access to the city's most prestigious properties. With over 15 years of experience, we connect discerning clients with their dream homes and investment opportunities.</p>
+<div class="social-icons">
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-twitter"></i></a>
+<a href="#"><i class="fab fa-linkedin-in"></i></a>
+<a href="#"><i class="fab fa-youtube"></i></a>
+</div>
+</div>
+<div class="footer-column">
+<h3>Quick Links</h3>
+<ul class="footer-links">
+<li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+<li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+<li><a href="#properties"><i class="fas fa-chevron-right"></i> Properties</a></li>
+<li><a href="#developers"><i class="fas fa-chevron-right"></i> Developers</a></li>
+<li><a href="#"><i class="fas fa-chevron-right"></i> Investment Guide</a></li>
+<li><a href="#"><i class="fas fa-chevron-right"></i> Property Management</a></li>
+<li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h3>Contact Information</h3>
+<ul class="contact-info">
+<li>
+<i class="fas fa-map-marker-alt"></i>
+<span>Office 1502, Burj Khalifa, Downtown Dubai, United Arab Emirates</span>
+</li>
+<li>
+<i class="fas fa-phone"></i>
+<span>+971 54 303 4025</span>
+</li>
+<li>
+<i class="fas fa-envelope"></i>
+<span>dawood@dubai-one.ae</span>
+</li>
+<li>
+<i class="fas fa-clock"></i>
+<span>Monday - Saturday: 9:00 AM - 8:00 PM<br>Sunday: 11:00 AM - 6:00 PM</span>
+</li>
+</ul>
+</div>
+<div class="footer-column">
+<h3>Newsletter</h3>
+<p>Subscribe to receive the latest property listings and market updates.</p>
+<form class="newsletter-form" id="newsletterForm">
+<input type="email" placeholder="Your email address" required>
+<button type="submit"><i class="fas fa-paper-plane"></i></button>
+</form>
+<p style="font-size: 0.85rem; margin-top: 1rem; color: #b0b0b0;">We respect your privacy. Unsubscribe at any time.</p>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2025 Dubai One. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Cookie Policy</a></p>
+</div>
+</footer>
+<script>
+// WhatsApp deep link function
+function openWhatsApp() {
+const messages = [
+"Hello! I'm interested in property information from your website.",
+"Hi! I'd like to learn more about your available properties.",
+"Hello! I found a property on your site and would like more details."
+];
+const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+const message = encodeURIComponent(randomMessage);
+const phoneNumber = "971543034025";
+window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+}
+// Slider functionality
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+let slideInterval;
+function showSlide(index) {
+slides.forEach((slide, i) => {
+slide.classList.remove('active');
+if (i === index) slide.classList.add('active');
+});
+}
+function nextSlide() {
+currentSlide = (currentSlide + 1) % slides.length;
+showSlide(currentSlide);
+}
+function startSlider() {
+slideInterval = setInterval(nextSlide, 6000);
+}
+function stopSlider() {
+clearInterval(slideInterval);
+}
+const slider = document.querySelector('.hero-slider');
+slider.addEventListener('mouseenter', stopSlider);
+slider.addEventListener('mouseleave', startSlider);
+startSlider();
+// Modal functionality
+function openModal(propertyId) {
+document.getElementById('propertyModal').style.display = 'block';
+document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+document.getElementById('propertyModal').style.display = 'none';
+document.body.style.overflow = 'auto';
+}
+// Developer Modal functionality
+function openDeveloperModal(developerId) {
+const modal = document.getElementById('developerModal');
+const modalLogo = document.getElementById('modalDeveloperLogo');
+const modalName = document.getElementById('modalDeveloperName');
+const modalTagline = document.getElementById('modalDeveloperTagline');
+const modalOverview = document.getElementById('modalCompanyOverview');
+const modalProjects = document.getElementById('modalProjects');
+// Developer data
+const developers = {
+emaar: {
+logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Emaar_Logo.svg/1200px-Emaar_Logo.svg.png',
+name: 'Emaar Properties',
+tagline: 'Pioneering Dubai\'s Skyline',
+overview: 'Founded in 1997 by Chairman Mohamed Alabbar, Emaar Properties has established itself as one of the world\'s most valuable real estate development companies. With a proven track record of delivering iconic projects that transform skylines and lifestyles, Emaar continues to set benchmarks in innovation, quality, and customer satisfaction.',
+projects: [
+{ name: 'Burj Khalifa', desc: 'World\'s tallest building at 828m' },
+{ name: 'The Dubai Mall', desc: 'World\'s largest shopping destination' },
+{ name: 'Downtown Dubai', desc: 'Flagship mixed-use development' },
+{ name: 'Dubai Hills Estate', desc: 'Master planned golf community' },
+{ name: 'Emaar Beachfront', desc: 'Exclusive island destination' }
+]
+},
+nakheel: {
+logo: 'https://via.placeholder.com/100/25d366/ffffff?text=N',
+name: 'Nakheel',
+tagline: 'Creating Landmarks',
+overview: 'Nakheel is a leading Dubai-based developer renowned for its innovative, world-class real estate projects. As the creator of iconic developments like Palm Jumeirah, The World Islands, and Deira Islands, Nakheel has transformed Dubai\'s coastline and established itself as a pioneer in master community planning.',
+projects: [
+{ name: 'Palm Jumeirah', desc: 'Iconic man-made island' },
+{ name: 'The World Islands', desc: 'Archipelago of 300 islands' },
+{ name: 'Deira Islands', desc: 'Waterfront destination' },
+{ name: 'Jumeirah Village', desc: 'Family-friendly communities' },
+{ name: 'Ibn Battuta Mall', desc: 'Themed shopping destination' }
+]
+},
+damac: {
+logo: 'https://via.placeholder.com/100/25d366/ffffff?text=D',
+name: 'Damac Properties',
+tagline: 'Luxury Redefined',
+overview: 'Established in 2002, Damac Properties is a leading luxury real estate developer in the Middle East. Known for opulent designs, premium amenities, and strategic partnerships with global luxury brands like Versace and Paramount, Damac has delivered over 250 completed projects across the region.',
+projects: [
+{ name: 'Versace Residences', desc: 'Ultra-luxury waterfront homes' },
+{ name: 'Paramount Towers', desc: 'Hollywood-inspired development' },
+{ name: 'Damac Hills', desc: 'Golf master community' },
+{ name: 'Aykon City', desc: 'Premium canal development' },
+{ name: 'Damac Towers', desc: 'Business Bay landmark' }
+]
+}
+};
+const dev = developers[developerId];
+modalLogo.src = dev.logo;
+modalName.textContent = dev.name;
+modalTagline.textContent = dev.tagline;
+modalOverview.textContent = dev.overview;
+// Update projects
+modalProjects.innerHTML = dev.projects.map(project => `
+<div class="modal-project">
+<h4>${project.name}</h4>
+<p>${project.desc}</p>
+</div>
+`).join('');
+modal.style.display = 'block';
+document.body.style.overflow = 'hidden';
+}
+function closeDeveloperModal() {
+document.getElementById('developerModal').style.display = 'none';
+document.body.style.overflow = 'auto';
+}
+window.onclick = function(event) {
+const propertyModal = document.getElementById('propertyModal');
+const developerModal = document.getElementById('developerModal');
+if (event.target === propertyModal) {
+closeModal();
+}
+if (event.target === developerModal) {
+closeDeveloperModal();
+}
+}
+document.addEventListener('keydown', function(event) {
+if (event.key === 'Escape') {
+closeModal();
+closeDeveloperModal();
+}
+});
+// Newsletter form
+document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+e.preventDefault();
+const email = this.querySelector('input[type="email"]').value;
+alert(`Thank you for subscribing with ${email}! You'll receive our next newsletter soon.`);
+this.reset();
+});
+// Scroll to top
+window.onscroll = function() {
+const scrollTopBtn = document.querySelector('.scroll-to-top');
+if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+scrollTopBtn.classList.add('show');
+} else {
+scrollTopBtn.classList.remove('show');
+}
+};
+function scrollToTop() {
+window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e) {
+e.preventDefault();
+const target = document.querySelector(this.getAttribute('href'));
+if (target) {
+target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+});
+});
+// ✅ FIXED: Unified applyFilters function
+function applyFilters() {
+const propertyType = document.getElementById('filterPropertyType').value;
+const location = document.getElementById('filterLocation').value;
+const bedrooms = document.getElementById('filterBedrooms').value;
+const searchTerm = (document.getElementById('filterSearch')?.value || '').toLowerCase().trim();
+document.querySelectorAll('.properties-grid .property-card').forEach(card => {
+const name = card.querySelector('h3')?.textContent.toLowerCase() || '';
+const desc = card.querySelector('p')?.textContent.toLowerCase() || '';
+const matchesText = !searchTerm || name.includes(searchTerm) || desc.includes(searchTerm);
+const matchesType = !propertyType || card.dataset.propertyType === propertyType;
+const matchesLoc = !location || card.dataset.location === location;
+const matchesBeds = !bedrooms || card.dataset.bedrooms === bedrooms;
+card.style.display = (matchesText && matchesType && matchesLoc && matchesBeds) ? 'block' : 'none';
+});
+}
+// ✅ AI SEARCH - Simplified 3-step flow
+const aiSearch = {
+step: 0,
+selectedPropertyType: '',
+selectedLocation: '',
+selectedBedrooms: '',
+propertyTypes: [
+{ value: '', label: 'Any Property Type' },
+{ value: 'villa', label: 'Villa' },
+{ value: 'townhouse', label: 'Townhouse' },
+{ value: 'apartment', label: 'Apartment' },
+{ value: 'studio', label: 'Studio' },
+{ value: 'penthouse', label: 'Penthouse' }
+],
+locations: [
+{ value: '', label: 'Any Location' },
+{ value: 'downtown-dubai', label: 'Downtown Dubai' },
+{ value: 'dubai-marina', label: 'Dubai Marina' },
+{ value: 'jumeirah-beach-residence', label: 'JBR' },
+{ value: 'palm-jumeirah', label: 'Palm Jumeirah' },
+{ value: 'business-bay', label: 'Business Bay' },
+{ value: 'dubai-hills-estate', label: 'Dubai Hills Estate' }
+],
+bedrooms: [
+{ value: '', label: 'Any Bedrooms' },
+{ value: '1', label: '1 Bedroom' },
+{ value: '2', label: '2 Bedrooms' },
+{ value: '3', label: '3 Bedrooms' },
+{ value: '4', label: '4 Bedrooms' },
+{ value: '5+', label: '5+ Bedrooms' }
+],
+init() {
+const optionsContainer = document.getElementById('aiOptions');
+const backBtn = document.getElementById('aiBackBtn');
+optionsContainer.addEventListener('click', (e) => {
+if (!e.target.classList.contains('ai-option-btn')) return;
+const val = e.target.dataset.value;
+if (this.step === 0) {
+this.selectedPropertyType = val;
+this.step = 1;
+this.renderLocationStep();
+} else if (this.step === 1) {
+this.selectedLocation = val;
+this.step = 2;
+this.renderBedroomsStep();
+} else if (this.step === 2) {
+this.selectedBedrooms = val;
+this.applyFinalFilters();
+} else if (this.step === 3 && val === 'reset') {
+this.reset();
+}
+});
+backBtn.addEventListener('click', () => {
+if (this.step === 1) {
+this.resetToStep(0);
+} else if (this.step === 2) {
+this.resetToStep(1);
+}
+});
+},
+resetToStep(step) {
+this.step = step;
+if (step === 0) this.renderInitialStep();
+else if (step === 1) this.renderLocationStep();
+else if (step === 2) this.renderBedroomsStep();
+},
+renderInitialStep() {
+document.getElementById('aiPrompt').innerHTML = 'Hi! What type of property are you looking for?';
+document.getElementById('aiOptions').innerHTML = this.propertyTypes.map(type =>
+`<button class="ai-option-btn" data-value="${type.value}">${type.label}</button>`
+).join('');
+document.getElementById('aiBackBtn').style.display = 'none';
+},
+renderLocationStep() {
+const typeLabel = this.propertyTypes.find(t => t.value === this.selectedPropertyType)?.label || 'property';
+document.getElementById('aiPrompt').innerHTML = `Great! Which <strong>Dubai location</strong> would you like to find a ${typeLabel} in?`;
+document.getElementById('aiOptions').innerHTML = this.locations.map(loc =>
+`<button class="ai-option-btn" data-value="${loc.value}">${loc.label}</button>`
+).join('');
+document.getElementById('aiBackBtn').style.display = 'flex';
+},
+renderBedroomsStep() {
+const typeLabel = this.propertyTypes.find(t => t.value === this.selectedPropertyType)?.label || 'property';
+document.getElementById('aiPrompt').innerHTML = `Excellent! How many <strong>bedrooms</strong> for your ${typeLabel}?`;
+document.getElementById('aiOptions').innerHTML = this.bedrooms.map(bed =>
+`<button class="ai-option-btn" data-value="${bed.value}">${bed.label}</button>`
+).join('');
+},
+applyFinalFilters() {
+document.getElementById('filterSearch').value = '';
+document.getElementById('filterPropertyType').value = this.selectedPropertyType;
+document.getElementById('filterLocation').value = this.selectedLocation;
+document.getElementById('filterBedrooms').value = this.selectedBedrooms;
+applyFilters();
+const typeLabel = this.propertyTypes.find(t => t.value === this.selectedPropertyType)?.label || 'any property';
+const locLabel = this.locations.find(l => l.value === this.selectedLocation)?.label || 'any location';
+const bedLabel = this.bedrooms.find(b => b.value === this.selectedBedrooms)?.label || 'any bedrooms';
+document.getElementById('aiPrompt').innerHTML = `✅ Showing <strong>${typeLabel}</strong> with <strong>${bedLabel}</strong> in <strong>${locLabel}</strong>.`;
+document.getElementById('aiOptions').innerHTML = `<button class="ai-option-btn" data-value="reset">Start Over</button>`;
+document.getElementById('aiBackBtn').style.display = 'none';
+this.step = 3;
+},
+reset() {
+this.step = 0;
+this.selectedPropertyType = '';
+this.selectedLocation = '';
+this.selectedBedrooms = '';
+document.getElementById('filterPropertyType').value = '';
+document.getElementById('filterLocation').value = '';
+document.getElementById('filterBedrooms').value = '';
+document.getElementById('filterSearch').value = '';
+applyFilters();
+this.renderInitialStep();
+}
+};
+// ✅ HAMBURGER MENU FUNCTIONALITY
+function toggleMobileMenu() {
+const menu = document.getElementById('mobileMenu');
+const overlay = document.getElementById('mobileMenuOverlay');
+const hamburger = document.getElementById('hamburgerMenu');
+menu.classList.toggle('active');
+overlay.classList.toggle('active');
+hamburger.classList.toggle('active');
+document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
+}
+function closeMobileMenu() {
+const menu = document.getElementById('mobileMenu');
+const overlay = document.getElementById('mobileMenuOverlay');
+const hamburger = document.getElementById('hamburgerMenu');
+menu.classList.remove('active');
+overlay.classList.remove('active');
+hamburger.classList.remove('active');
+document.body.style.overflow = 'auto';
+}
+// Initialize AI search and filters
+document.addEventListener('DOMContentLoaded', () => {
+aiSearch.init();
+aiSearch.renderInitialStep();
+// Text search filtering
+const filterInput = document.getElementById('filterSearch');
+if (filterInput) {
+filterInput.addEventListener('input', applyFilters);
+filterInput.addEventListener('keypress', (e) => {
+if (e.key === 'Enter') applyFilters();
+});
+}
+// Add animation delay to cards
+document.querySelectorAll('.property-card').forEach((card, index) => {
+card.style.animationDelay = `${index * 0.15}s`;
+});
+// Hamburger menu event listeners
+const hamburger = document.getElementById('hamburgerMenu');
+const mobileMenuClose = document.getElementById('mobileMenuClose');
+const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+if (hamburger) {
+hamburger.addEventListener('click', toggleMobileMenu);
+}
+if (mobileMenuClose) {
+mobileMenuClose.addEventListener('click', closeMobileMenu);
+}
+if (mobileMenuOverlay) {
+mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+}
+});
+document.addEventListener('DOMContentLoaded', () => {
+  // DOM Elements
+  const widget = document.getElementById('dubai-chat-widget');
+  const chatIcon = widget.querySelector('.chat-icon');
+  const chatBadge = widget.querySelector('.chat-badge');
+  
+  // Knowledge Base
+  const KB = {
+    developers: {
+      emaar: {
+        name: 'Emaar Properties',
+        description: 'Dubai\'s most prestigious developer, creator of Burj Khalifa and Downtown Dubai.',
+        completed: ['Burj Khalifa', 'The Dubai Mall', 'Downtown Dubai', 'Dubai Hills Estate', 'Emaar Beachfront'],
+        ongoing: ['The Oasis by Emaar', 'Emaar South', 'Dubai Creek Harbour expansion'],
+        specialties: 'Luxury high-rises, master-planned communities, iconic landmarks'
+      },
+      nakheel: {
+        name: 'Nakheel',
+        description: 'Pioneer of Dubai\'s waterfront developments and artificial islands.',
+        completed: ['Palm Jumeirah', 'The World Islands', 'Deira Islands', 'Jumeirah Village Circle', 'Ibn Battuta Mall'],
+        ongoing: ['Deira Islands Night Souk', 'Palm Jebel Ali revival', 'Dubai Islands'],
+        specialties: 'Waterfront communities, innovative island developments, family neighborhoods'
+      },
+      damac: {
+        name: 'DAMAC Properties',
+        description: 'Luxury specialist with global brand partnerships (Versace, Paramount).',
+        completed: ['Aykon City', 'DAMAC Hills', 'Versace Residences', 'Paramount Towers Dubai', 'DAMAC Towers'],
+        ongoing: ['DAMAC Lagoons', 'DAMAC Grove', 'Aykon City Phase 2', 'DAMAC Hills 2 expansion'],
+        specialties: 'Ultra-luxury residences, branded developments, golf communities'
+      },
+      meraas: {
+        name: 'Meraas',
+        description: 'Creator of Dubai\'s most innovative lifestyle destinations.',
+        completed: ['City Walk', 'La Mer', 'Bluewaters Island', 'JBR', 'The Outlet Village'],
+        ongoing: ['Dubai Harbour expansion', 'Central Beach', 'Pearl Jumeirah developments'],
+        specialties: 'Mixed-use destinations, beachfront communities, experiential retail'
+      }
+    },
+    communities: {
+      family: [
+        {
+          name: 'Dubai Hills Estate',
+          schools: ['GEMS International School', 'Dubai British School', 'GEMS Wellington Academy'],
+          highlights: 'Parks, golf course, family pools, community centers'
+        },
+        {
+          name: 'Jumeirah Village Circle (JVC)',
+          schools: ['GEMS FirstPoint School', 'Arcadia School', 'South View School'],
+          highlights: 'Central park, cycling tracks, family-friendly layout, affordable'
+        },
+        {
+          name: 'Arabian Ranches',
+          schools: ['JESS Arabian Ranches', 'Ranches Primary School'],
+          highlights: 'Equestrian facilities, parks, community pools, villa communities'
+        },
+        {
+          name: 'Mudon (by DAMAC)',
+          schools: ['GEMS schools in nearby Dubailand', 'International schools in JVC'],
+          highlights: 'Dedicated parks, cycling paths, family pools, community events'
+        }
+      ],
+      petFriendly: [
+        {
+          name: 'JBR (Jumeirah Beach Residence)',
+          parks: 'The Beach park, open beachfront areas',
+          notes: 'Many apartments allow pets; check building regulations'
+        },
+        {
+          name: 'Dubai Marina',
+          parks: 'Marina Walk green spaces, JBR park nearby',
+          notes: 'Select towers pet-friendly (e.g., Marina Diamond, Marina Quays)'
+        },
+        {
+          name: 'Mudon Community',
+          parks: 'Dedicated dog park, multiple green spaces',
+          notes: 'Specifically designed for pet owners with off-leash areas'
+        },
+        {
+          name: 'Arabian Ranches',
+          parks: 'Vast open spaces, dedicated dog walking areas',
+          notes: 'Villa communities ideal for pets with private gardens'
+        }
+      ],
+      beachfront: [
+        'Palm Jumeirah (Nakheel) - Ultra-luxury villas & apartments',
+        'JBR (Meraas) - Vibrant beachfront apartments with amenities',
+        'Bluewaters Island (Meraas) - Modern apartments with sea views',
+        'La Mer (Meraas) - Beachfront townhouses & apartments',
+        'Emaar Beachfront - Exclusive island community opposite Burj Al Arab',
+        'Dubai Harbour (Meraas) - New marina development with beach access'
+      ]
+    },
+    visaInfo: `
+      <strong>Dubai Property Visa Options:</strong>
+      <ul style="margin-top: 10px; padding-left: 20px; margin-bottom: 12px;">
+        <li><strong>Investor Visa (AED 1M+ property):</strong> 10-year renewable residency</li>
+        <li><strong>Standard Property Visa (AED 750K+):</strong> 5-year renewable residency</li>
+        <li><strong>Retirement Visa:</strong> Available for 55+ with property investment + savings</li>
+        <li><strong>Golden Visa:</strong> 10-year residency for investors, entrepreneurs, specialists</li>
+      </ul>
+      <p style="margin-top: 8px; font-size: 0.95rem; color: #a0a8b8;"><i>All visas include spouse & dependent children. Processing time: 4-8 weeks.</i></p>
+    `
+  };
+  
+  // State
+  let isExpanded = false;
+  let messagesContainer = null;
+  let inputField = null;
+  let typingElement = null;
+  
+  // Initialize widget
+  widget.addEventListener('click', toggleWidget);
+  
+  function toggleWidget() {
+    if (isExpanded) {
+      minimizeWidget();
+    } else {
+      expandWidget();
+    }
+  }
+  
+  function expandWidget() {
+    isExpanded = true;
+    widget.className = 'expanded';
+    
+    // Create chat interface
+    widget.innerHTML = `
+      <div class="chat-widget-header">
+        <div class="chat-widget-avatar">D1</div>
+        <div class="chat-widget-title">
+          <h3>Dubai One Assistant</h3>
+          <p>Ask about properties, developers, visas & more</p>
+        </div>
+        <button class="chat-widget-close" id="chatCloseBtn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="chat-widget-messages" id="chatMessages">
+        <div class="chat-message bot">
+          Hello! I'm your Dubai real estate expert 😊<br>Ask me about:
+          <div class="chat-suggestions">
+            <button class="chat-suggestion-btn" data-query="family communities with schools">Family areas</button>
+            <button class="chat-suggestion-btn" data-query="pet-friendly apartments">Pet-friendly</button>
+            <button class="chat-suggestion-btn" data-query="beachfront properties">Beachfront</button>
+            <button class="chat-suggestion-btn" data-query="top developers">Developers</button>
+          </div>
+        </div>
+      </div>
+      <div class="chat-widget-input">
+        <input type="text" id="chatInput" placeholder="Ask about Dubai real estate..." autocomplete="off">
+        <button id="sendChatBtn">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    `;
+    
+    // Setup event listeners
+    document.getElementById('chatCloseBtn').addEventListener('click', minimizeWidget);
+    document.getElementById('sendChatBtn').addEventListener('click', sendMessage);
+    document.getElementById('chatInput').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') sendMessage();
+    });
+    
+    // Setup suggestion buttons
+    document.querySelectorAll('.chat-suggestion-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const query = e.target.dataset.query;
+        addMessage(query, 'user');
+        processQuery(query);
+        document.getElementById('chatInput').value = '';
+      });
+    });
+    
+    // Cache elements
+    messagesContainer = document.getElementById('chatMessages');
+    inputField = document.getElementById('chatInput');
+    
+    // Auto-focus input
+    setTimeout(() => inputField.focus(), 100);
+    
+    // Hide badge when expanded
+    if (chatBadge) chatBadge.style.display = 'none';
+  }
+  
+  function minimizeWidget() {
+    isExpanded = false;
+    widget.className = 'minimized';
+    widget.innerHTML = `
+      <i class="fas fa-comments chat-icon"></i>
+      <span class="chat-badge">?</span>
+    `;
+    chatIcon = widget.querySelector('.chat-icon');
+    chatBadge = widget.querySelector('.chat-badge');
+    widget.addEventListener('click', toggleWidget);
+    
+    // Show badge again
+    if (chatBadge) chatBadge.style.display = 'flex';
+  }
+  
+  function addMessage(text, sender) {
+    if (!messagesContainer) return;
+    
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `chat-message ${sender}`;
+    messageDiv.innerHTML = text.replace(/\n/g, '<br>');
+    messagesContainer.appendChild(messageDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+  
+  function sendMessage() {
+    if (!inputField) return;
+    
+    const message = inputField.value.trim();
+    if (!message) return;
+    
+    addMessage(message, 'user');
+    inputField.value = '';
+    
+    showTypingIndicator();
+    
+    setTimeout(() => {
+      removeTypingIndicator();
+      processQuery(message.toLowerCase());
+    }, 700);
+  }
+  
+  function showTypingIndicator() {
+    if (typingElement || !messagesContainer) return;
+    
+    typingElement = document.createElement('div');
+    typingElement.className = 'chat-message bot';
+    typingElement.innerHTML = `
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #4a6cf7; animation: ping 1.5s infinite;"></span>
+        <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #4a6cf7; animation: ping 1.5s 0.2s infinite;"></span>
+        <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #4a6cf7; animation: ping 1.5s 0.4s infinite;"></span>
+      </div>
+      <style>
+        @keyframes ping {
+          0%, 100% { transform: scale(0.8); opacity: 0.7; }
+          50% { transform: scale(1.2); opacity: 1; }
+        }
+      </style>
+    `;
+    messagesContainer.appendChild(typingElement);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+  
+  function removeTypingIndicator() {
+    if (typingElement && messagesContainer) {
+      messagesContainer.removeChild(typingElement);
+      typingElement = null;
+    }
+  }
+  
+  function processQuery(query) {
+    let response = '';
+    
+    // Developer queries
+    if (query.includes('developer') || /emaar|nakheel|damac|meraas/.test(query)) {
+      response = handleDeveloperQuery(query);
+    } 
+    // Family communities with schools
+    else if (query.includes('family') && (query.includes('school') || query.includes('kid') || query.includes('child'))) {
+      response = handleFamilyCommunities();
+    }
+    // Pet-friendly properties
+    else if (query.includes('pet') || query.includes('dog') || query.includes('cat')) {
+      response = handlePetFriendly();
+    }
+    // Beachfront properties
+    else if (query.includes('beach') || query.includes('sea view') || query.includes('waterfront')) {
+      response = handleBeachfront();
+    }
+    // Visa queries
+    else if (query.includes('visa') || query.includes('residen') || query.includes('golden')) {
+      response = KB.visaInfo + getWhatsAppHandoff('I need help with Dubai property visa requirements');
+    }
+    // Dubai areas/communities
+    else if (query.includes('area') || query.includes('community') || query.includes('neighborhood')) {
+      response = handleAreasQuery(query);
+    }
+    // Greetings
+    else if (/^(hi|hello|hey)/.test(query)) {
+      response = `Hello! 👋 I'm your Dubai real estate assistant. Ask me about:<br>
+        • Top developers & their projects<br>
+        • Family-friendly communities with schools<br>
+        • Pet-friendly apartments<br>
+        • Beachfront properties<br>
+        • Visa/residency requirements`;
+    }
+    // Thank you/Goodbye
+    else if (query.includes('thank') || query.includes('bye') || query.includes('goodbye')) {
+      response = `You're welcome! 😊 Whenever you need help with Dubai real estate, just ask.` + 
+                 getWhatsAppHandoff('I have a property inquiry');
+    }
+    // Default response
+    else {
+      response = `I specialize in Dubai real estate! 😊 Try asking:<br>
+        • "Which communities are best for families with schools nearby?"<br>
+        • "Where can I find pet-friendly apartments with park access?"<br>
+        • "What are the best beachfront properties?"<br>
+        • "Tell me about Emaar's current projects"<br>
+        • "Dubai property visa requirements"<br><br>
+        Or tap below to chat with our human experts!`;
+    }
+    
+    // Add WhatsApp handoff to most responses if not already present
+    if (!response.includes('whatsapp-handoff') && !query.includes('visa')) {
+      response += getWhatsAppHandoff(`Chat about: ${query}`);
+    }
+    
+    addMessage(response, 'bot');
+  }
+  
+  function handleDeveloperQuery(query) {
+    if (query.includes('emaar')) return formatDeveloper(KB.developers.emaar);
+    if (query.includes('nakheel') || query.includes('palm')) return formatDeveloper(KB.developers.nakheel);
+    if (query.includes('damac') || query.includes('versace') || query.includes('paramount')) return formatDeveloper(KB.developers.damac);
+    if (query.includes('meraas') || query.includes('jbr') || query.includes('city walk') || query.includes('bluewaters')) return formatDeveloper(KB.developers.meraas);
+    
+    return `
+      <strong>Dubai's Top 4 Developers:</strong><br><br>
+      
+      <div class="developer-highlight">
+        <strong>🏢 Emaar Properties</strong><br>
+        Burj Khalifa creator • Downtown Dubai • Dubai Hills Estate
+      </div>
+      
+      <div class="developer-highlight">
+        <strong>🏝️ Nakheel</strong><br>
+        Palm Jumeirah • The World Islands • Deira Islands
+      </div>
+      
+      <div class="developer-highlight">
+        <strong>✨ DAMAC Properties</strong><br>
+        Versace Residences • DAMAC Hills • Luxury branded homes
+      </div>
+      
+      <div class="developer-highlight">
+        <strong>🏖️ Meraas</strong><br>
+        JBR • City Walk • Bluewaters Island • La Mer
+      </div>
+      
+      Which developer would you like to know more about?
+    `;
+  }
+  
+  function formatDeveloper(dev) {
+    return `
+      <strong>${dev.name}</strong><br>
+      ${dev.description}<br><br>
+      
+      <strong>✓ Completed Projects:</strong>
+      <ul class="project-list">
+        ${dev.completed.map(p => `<li>${p}</li>`).join('')}
+      </ul>
+      
+      <strong>🏗️ Current Projects:</strong>
+      <ul class="project-list">
+        ${dev.ongoing.map(p => `<li>${p}</li>`).join('')}
+      </ul>
+      
+      <strong>Specialties:</strong> ${dev.specialties}
+    `;
+  }
+  
+  function handleFamilyCommunities() {
+    return `
+      <strong>🏆 Best Family Communities with Top Schools:</strong><br><br>
+      
+      ${KB.communities.family.map(comm => `
+        <div class="developer-highlight">
+          <strong>${comm.name}</strong><br>
+          <strong>Schools:</strong> ${comm.schools.join(', ')}<br>
+          <strong>Family Perks:</strong> ${comm.highlights}
+        </div>
+      `).join('')}
+      
+      <p style="margin-top: 12px; font-size: 0.95rem; color: #a0a8b8;">
+        <i>All communities feature parks, pools, and family-oriented amenities. School admission is separate from property purchase.</i>
+      </p>
+    `;
+  }
+  
+  function handlePetFriendly() {
+    return `
+      <strong>🐾 Best Pet-Friendly Communities in Dubai:</strong><br><br>
+      
+      ${KB.communities.petFriendly.map(comm => `
+        <div class="developer-highlight">
+          <strong>${comm.name}</strong><br>
+          <strong>Parks:</strong> ${comm.parks}<br>
+          <strong>Notes:</strong> ${comm.notes}
+        </div>
+      `).join('')}
+      
+      <p style="margin-top: 12px; font-weight: 600; color: #ff6b6b; font-size: 0.95rem;">
+        ⚠️ Always verify pet policies with building management before purchasing/renting.
+      </p>
+    `;
+  }
+  
+  function handleBeachfront() {
+    return `
+      <strong>🌅 Premium Beachfront Communities:</strong><br><br>
+      
+      <ul class="project-list" style="margin-left: 10px; margin-bottom: 15px;">
+        ${KB.communities.beachfront.map(item => `<li>${item}</li>`).join('')}
+      </ul>
+      
+      <div class="developer-highlight" style="margin-top: 10px;">
+        <strong>💡 Pro Tip:</strong> Palm Jumeirah & Emaar Beachfront offer the most exclusive beach access, while JBR provides the best value with vibrant amenities.
+      </div>
+    `;
+  }
+  
+  function handleAreasQuery(query) {
+    return `
+      <strong>Dubai's Key Areas by Lifestyle:</strong><br><br>
+      
+      <div class="developer-highlight">
+        <strong>🏙️ Downtown/Core Areas</strong><br>
+        Downtown Dubai, DIFC, Business Bay – Luxury high-rises, city views
+      </div>
+      
+      <div class="developer-highlight">
+        <strong>🏖️ Beachfront</strong><br>
+        Palm Jumeirah, JBR, Dubai Marina – Sea views, vibrant lifestyle
+      </div>
+      
+      <div class="developer-highlight">
+        <strong>🏡 Family Communities</strong><br>
+        Dubai Hills, Arabian Ranches, JVC – Villas/townhouses, parks, schools
+      </div>
+      
+      <div class="developer-highlight">
+        <strong>💰 Value Areas</strong><br>
+        JVC, Sports City, Discovery Gardens – Affordable apartments, good ROI
+      </div>
+      
+      <p style="margin-top: 12px;">Which lifestyle are you looking for? I can give specific recommendations!</p>
+    `;
+  }
+  
+  function getWhatsAppHandoff(message) {
+    return `
+      <div class="whatsapp-handoff" onclick="window.open('https://wa.me/971543034025?text=${encodeURIComponent(message + ' - via Dubai One AI Assistant')}', '_blank')">
+        <i class="fab fa-whatsapp"></i>
+        <span>Chat with human expert on WhatsApp</span>
+      </div>
+    `;
+  }
+  
+  // Initialize badge animation
+  if (chatBadge) {
+    let isExpandedTemp = false;
+    setInterval(() => {
+      if (!isExpandedTemp && chatBadge) {
+        chatBadge.textContent = isExpandedTemp ? '!' : '?';
+        isExpandedTemp = !isExpandedTemp;
+      }
+    }, 2000);
+  }
+});
+// Header scroll transparency effect
+let lastScroll = 0;
+const header = document.querySelector('.header');
+
+window.addEventListener('scroll', () => {
+const currentScroll = window.pageYOffset;
+    
+// Add scrolled class when scrolling down more than 50px
+if (currentScroll > 50) {
+header.classList.add('scrolled');
+} else {
+header.classList.remove('scrolled');
+}
+    
+lastScroll = currentScroll;
+});
+
+// Initialize on load
+window.addEventListener('load', () => {
+if (window.pageYOffset > 50) {
+header.classList.add('scrolled');
+}
+});
+</script>
+</body>
+</html>
