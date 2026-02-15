@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAR FIXING CENTER | Professional Auto Repair & Diagnostics</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DTPGZ964FD"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-DTPGZ964FD');
+</script>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+:root {
+--primary-color: #e74c3c;
+--secondary-color: #3498db;
+--accent-color: #f39c12;
+--dark-color: #2c3e50;
+--light-color: #ecf0f1;
+--success-color: #27ae60;
+--shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+--shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.2);
+--transition: all 0.3s ease;
+--transition-fast: all 0.2s ease;
+--gradient-primary: linear-gradient(135deg, var(--primary-color), #c0392b);
+--gradient-secondary: linear-gradient(135deg, var(--secondary-color), #2980b9);
+--gradient-accent: linear-gradient(135deg, var(--accent-color), #e67e22);
+}
+body {
+font-family: 'Roboto', sans-serif;
+line-height: 1.6;
+color: #333;
+background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%);
+min-height: 100vh;
+}
+/* Header Styles */
+header {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+padding: 15px 5%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+z-index: 1000;
+box-shadow: var(--shadow);
+transition: var(--transition);
+}
+.logo {
+font-family: 'Poppins', sans-serif;
+font-size: 28px;
+font-weight: bold;
+color: white;
+text-decoration: none;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.logo i {
+font-size: 32px;
+animation: rotate 3s linear infinite;
+}
+@keyframes rotate {
+from { transform: rotate(0deg); }
+to { transform: rotate(360deg); }
+}
+.logo span {
+color: rgba(255, 255, 255, 0.9);
+font-size: 14px;
+display: block;
+letter-spacing: 1px;
+}
+nav ul {
+display: flex;
+list-style: none;
+gap: 30px;
+}
+nav a {
+color: white;
+text-decoration: none;
+font-weight: 500;
+font-size: 16px;
+transition: var(--transition);
+position: relative;
+padding: 5px 0;
+}
+nav a:hover {
+color: rgba(255, 255, 255, 0.9);
+}
+nav a::after {
+content: '';
+position: absolute;
+bottom: 0;
+left: 0;
+width: 0;
+height: 2px;
+background: rgba(255, 255, 255, 0.9);
+transition: var(--transition);
+}
+nav a:hover::after {
+width: 100%;
+}
+.contact-btn {
+background: var(--gradient-accent);
+color: white;
+padding: 12px 25px;
+border-radius: 50px;
+text-decoration: none;
+font-weight: bold;
+display: flex;
+align-items: center;
+gap: 10px;
+transition: var(--transition);
+box-shadow: 0 4px 15px rgba(243, 156, 18, 0.4);
+position: relative;
+overflow: hidden;
+border: none;
+cursor: pointer;
+}
+.contact-btn::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+transition: var(--transition);
+}
+.contact-btn:hover::before {
+left: 100%;
+}
+.contact-btn:hover {
+transform: translateY(-2px);
+box-shadow: 0 6px 20px rgba(243, 156, 18, 0.6);
+background: linear-gradient(135deg, #e67e22, var(--accent-color));
+}
+.hamburger {
+display: none;
+background: none;
+border: none;
+color: white;
+font-size: 24px;
+cursor: pointer;
+transition: var(--transition);
+}
+.hamburger:hover {
+transform: rotate(90deg);
+}
+/* Hero Section */
+.hero {
+min-height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 8rem 2rem 2rem;
+background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1600') center/cover;
+color: white;
+}
+.hero-content {
+max-width: 800px;
+text-align: center;
+animation: fadeInUp 1s ease;
+}
+@keyframes fadeInUp {
+from {
+opacity: 0;
+transform: translateY(30px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+.hero h1 {
+font-family: 'Poppins', sans-serif;
+font-size: 3.5rem;
+font-weight: 700;
+margin-bottom: 1rem;
+background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+-webkit-background-clip: text;
+background-clip: text;
+-webkit-text-fill-color: transparent;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+.hero p {
+font-size: 1.3rem;
+margin-bottom: 2rem;
+color: rgba(255, 255, 255, 0.9);
+}
+/* Info Card Section */
+.info-section {
+padding: 4rem 2rem;
+background: white;
+}
+.container {
+max-width: 1200px;
+margin: 0 auto;
+width: 90%;
+}
+.info-card {
+background: white;
+border-radius: 15px;
+padding: 3rem;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+max-width: 800px;
+margin: 0 auto;
+position: relative;
+overflow: hidden;
+transition: var(--transition);
+}
+.info-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 5px;
+background: linear-gradient(90deg, var(--primary-color), var(--accent-color), var(--secondary-color));
+}
+.info-card:hover {
+transform: translateY(-10px);
+box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+.info-card h2 {
+font-family: 'Poppins', sans-serif;
+font-size: 2.5rem;
+color: var(--dark-color);
+margin-bottom: 2rem;
+text-align: center;
+position: relative;
+display: inline-block;
+}
+.info-card h2::after {
+content: '';
+position: absolute;
+bottom: -10px;
+left: 50%;
+transform: translateX(-50%);
+width: 80px;
+height: 4px;
+background: var(--primary-color);
+border-radius: 2px;
+}
+.business-info {
+margin: 2rem 0;
+padding: 2rem;
+background: var(--light-color);
+border-radius: 10px;
+border-left: 4px solid var(--primary-color);
+}
+.business-info p {
+font-size: 1.2rem;
+margin: 1rem 0;
+color: var(--dark-color);
+font-weight: 500;
+}
+.business-info strong {
+color: var(--primary-color);
+font-weight: 700;
+}
+.whatsapp-buttons {
+display: flex;
+gap: 1.5rem;
+margin-top: 2rem;
+justify-content: center;
+flex-wrap: wrap;
+}
+.whatsapp-btn {
+display: inline-flex;
+align-items: center;
+gap: 10px;
+padding: 1rem 2rem;
+background: #25D366;
+color: white;
+text-decoration: none;
+border-radius: 50px;
+font-weight: 600;
+font-size: 1.1rem;
+transition: var(--transition);
+box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+border: none;
+cursor: pointer;
+}
+.whatsapp-btn:hover {
+transform: translateY(-3px);
+box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+background: #128C7E;
+}
+.whatsapp-btn i {
+font-size: 1.5rem;
+}
+.call-btn {
+background: var(--primary-color);
+box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+}
+.call-btn:hover {
+background: #c0392b;
+box-shadow: 0 6px 20px rgba(231, 76, 60, 0.6);
+}
+/* Services Section - COMPLETELY UPGRADED */
+.services-section {
+padding: 6rem 2rem;
+background: white;
+position: relative;
+overflow: hidden;
+}
+.services-section::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: radial-gradient(circle at 10% 20%, rgba(231, 76, 60, 0.05) 0%, rgba(231, 76, 60, 0) 25%),
+radial-gradient(circle at 90% 80%, rgba(52, 152, 219, 0.05) 0%, rgba(52, 152, 219, 0) 25%);
+z-index: 0;
+}
+.section-title {
+text-align: center;
+font-family: 'Poppins', sans-serif;
+font-size: 2.8rem;
+margin-bottom: 4rem;
+color: var(--dark-color);
+position: relative;
+z-index: 1;
+display: inline-block;
+left: 50%;
+transform: translateX(-50%);
+}
+.section-title::after {
+content: '';
+position: absolute;
+bottom: -15px;
+left: 50%;
+transform: translateX(-50%);
+width: 70px;
+height: 4px;
+background: var(--primary-color);
+border-radius: 2px;
+}
+.services-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 2.5rem;
+max-width: 1400px;
+margin: 0 auto;
+position: relative;
+z-index: 1;
+}
+.service-card {
+background: white;
+border-radius: 20px;
+overflow: hidden;
+box-shadow: var(--shadow-lg);
+transition: var(--transition);
+position: relative;
+display: flex;
+flex-direction: column;
+height: 100%;
+}
+.service-card:hover {
+transform: translateY(-15px) scale(1.03);
+box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+.service-image {
+height: 220px;
+overflow: hidden;
+position: relative;
+}
+.service-image img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: var(--transition);
+}
+.service-card:hover .service-image img {
+transform: scale(1.1);
+}
+.service-overlay {
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+background: rgba(0, 0, 0, 0.7);
+color: white;
+padding: 15px;
+text-align: center;
+transform: translateY(100%);
+transition: var(--transition);
+}
+.service-card:hover .service-overlay {
+transform: translateY(0);
+}
+.service-content {
+padding: 2rem;
+flex-grow: 1;
+display: flex;
+flex-direction: column;
+}
+.service-icon {
+font-size: 3.5rem;
+margin-bottom: 1.5rem;
+color: var(--primary-color);
+text-align: center;
+}
+.service-card.diesel .service-icon { color: var(--primary-color); }
+.service-card.petrol .service-icon { color: var(--secondary-color); }
+.service-card.diagnostic .service-icon { color: #f1c40f; }
+.service-card.rebuild .service-icon { color: #9b59b6; }
+.service-card h3 {
+font-family: 'Poppins', sans-serif;
+font-size: 1.8rem;
+margin-bottom: 1rem;
+color: var(--dark-color);
+text-align: center;
+}
+.service-card p {
+color: #555;
+margin-bottom: 1.5rem;
+flex-grow: 1;
+line-height: 1.7;
+}
+.service-whatsapp-btn {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+padding: 14px 25px;
+background: var(--gradient-accent);
+color: white;
+text-decoration: none;
+border-radius: 50px;
+font-weight: 600;
+font-size: 1.05rem;
+transition: var(--transition);
+box-shadow: 0 4px 15px rgba(243, 156, 18, 0.4);
+border: none;
+cursor: pointer;
+margin-top: auto;
+width: 100%;
+position: relative;
+overflow: hidden;
+}
+.service-whatsapp-btn::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+transition: var(--transition);
+}
+.service-whatsapp-btn:hover::before {
+left: 100%;
+}
+.service-whatsapp-btn:hover {
+transform: translateY(-3px);
+box-shadow: 0 6px 20px rgba(243, 156, 18, 0.6);
+background: linear-gradient(135deg, #e67e22, var(--accent-color));
+}
+.service-whatsapp-btn i {
+font-size: 1.4rem;
+min-width: 24px;
+}
+.service-card.diesel .service-image {
+background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover;
+}
+.service-card.petrol .service-image {
+background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+url('https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover;
+}
+.service-card.diagnostic .service-image {
+background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80') center/cover;
+}
+.service-card.rebuild .service-image {
+background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80') center/cover;
+}
+/* Service Badges */
+.service-badge {
+position: absolute;
+top: 15px;
+right: 15px;
+background: var(--gradient-primary);
+color: white;
+padding: 5px 12px;
+border-radius: 20px;
+font-weight: 600;
+font-size: 0.85rem;
+box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+z-index: 2;
+}
+.service-card.petrol .service-badge { background: var(--gradient-secondary); }
+.service-card.diagnostic .service-badge { background: linear-gradient(135deg, #f1c40f, #f39c12); }
+.service-card.rebuild .service-badge { background: linear-gradient(135deg, #9b59b6, #8e44ad); }
+/* About Section */
+.about-section {
+padding: 5rem 2rem;
+background: white;
+}
+.about-content {
+max-width: 800px;
+margin: 0 auto;
+text-align: center;
+}
+.about-content h2 {
+font-family: 'Poppins', sans-serif;
+font-size: 2.5rem;
+color: var(--dark-color);
+margin-bottom: 2rem;
+}
+.about-content p {
+font-size: 1.1rem;
+margin-bottom: 1.5rem;
+color: #555;
+}
+.experience-badge {
+display: inline-block;
+background: var(--primary-color);
+color: white;
+padding: 0.8rem 2rem;
+border-radius: 50px;
+font-weight: 700;
+font-size: 1.2rem;
+margin-top: 1rem;
+animation: pulse 2s infinite;
+}
+@keyframes pulse {
+0%, 100% {
+transform: scale(1);
+}
+50% {
+transform: scale(1.05);
+}
+}
+/* Footer */
+footer {
+background: var(--dark-color);
+color: white;
+padding: 3rem 2rem;
+text-align: center;
+}
+.footer-content {
+max-width: 800px;
+margin: 0 auto;
+}
+.footer-content p {
+margin: 1rem 0;
+color: rgba(255, 255, 255, 0.7);
+}
+.social-links {
+display: flex;
+justify-content: center;
+gap: 1.5rem;
+margin-top: 2rem;
+}
+.social-links a {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+width: 50px;
+height: 50px;
+background: rgba(255, 255, 255, 0.1);
+border-radius: 50%;
+color: white;
+font-size: 1.5rem;
+transition: var(--transition);
+text-decoration: none;
+}
+.social-links a:hover {
+background: var(--primary-color);
+transform: translateY(-5px);
+}
+.copyright {
+margin-top: 2rem;
+color: rgba(255, 255, 255, 0.5);
+font-size: 0.9rem;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+.hamburger {
+display: block;
+}
+nav ul {
+position: fixed;
+top: 80px;
+right: -100%;
+flex-direction: column;
+background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+width: 100%;
+padding: 30px;
+transition: var(--transition);
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+gap: 20px;
+align-items: center;
+}
+nav ul.active {
+right: 0;
+}
+.hero h1 {
+font-size: 2.5rem;
+}
+.hero p {
+font-size: 1.1rem;
+}
+.info-card {
+padding: 2rem;
+}
+.whatsapp-buttons {
+flex-direction: column;
+align-items: center;
+}
+.whatsapp-btn {
+width: 100%;
+justify-content: center;
+}
+.section-title {
+font-size: 2.2rem;
+width: 100%;
+left: 0;
+transform: none;
+}
+.services-grid {
+grid-template-columns: 1fr;
+}
+.service-card:hover {
+transform: translateY(-10px) scale(1.01);
+}
+}
+@media (max-width: 480px) {
+header {
+padding: 12px 5%;
+}
+.logo {
+font-size: 24px;
+}
+.logo i {
+font-size: 26px;
+}
+.hero h1 {
+font-size: 2rem;
+}
+.info-card h2 {
+font-size: 2rem;
+}
+.business-info p {
+font-size: 1rem;
+}
+.section-title {
+font-size: 2rem;
+}
+.service-icon {
+font-size: 2.8rem;
+}
+.service-card h3 {
+font-size: 1.6rem;
+}
+}
+/* Floating WhatsApp Button */
+.floating-whatsapp {
+position: fixed;
+bottom: 30px;
+right: 30px;
+z-index: 1000;
+display: flex;
+flex-direction: column;
+gap: 15px;
+}
+.floating-whatsapp-btn {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+width: 60px;
+height: 60px;
+background: #25D366;
+color: white;
+border-radius: 50%;
+font-size: 2rem;
+text-decoration: none;
+box-shadow: 0 4px 15px rgba(37, 211, 102, 0.6);
+transition: var(--transition);
+animation: bounce 2s infinite;
+}
+@keyframes bounce {
+0%, 100% {
+transform: translateY(0);
+}
+50% {
+transform: translateY(-10px);
+}
+}
+.floating-whatsapp-btn:hover {
+transform: scale(1.1);
+box-shadow: 0 6px 20px rgba(37, 211, 102, 0.8);
+}
+/* Contact Modal */
+.contact-modal {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.8);
+z-index: 2000;
+justify-content: center;
+align-items: center;
+}
+.modal-content {
+background: white;
+padding: 3rem;
+border-radius: 15px;
+max-width: 500px;
+width: 90%;
+box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+position: relative;
+animation: modalSlideIn 0.3s ease;
+}
+@keyframes modalSlideIn {
+from {
+opacity: 0;
+transform: translateY(-50px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+.close-modal {
+position: absolute;
+top: 1rem;
+right: 1rem;
+font-size: 2rem;
+cursor: pointer;
+color: #666;
+transition: var(--transition);
+}
+.close-modal:hover {
+color: var(--primary-color);
+}
+.modal-content h2 {
+font-family: 'Poppins', sans-serif;
+color: var(--dark-color);
+margin-bottom: 1.5rem;
+text-align: center;
+}
+.modal-content p {
+margin: 1rem 0;
+color: #555;
+font-size: 1.1rem;
+}
+.modal-buttons {
+display: flex;
+gap: 1rem;
+margin-top: 2rem;
+justify-content: center;
+}
+/* Service Section Animation */
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(30px); }
+to { opacity: 1; transform: translateY(0); }
+}
+.service-card {
+animation: fadeIn 0.6s ease forwards;
+opacity: 0;
+}
+.service-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.3s; }
+.service-card:nth-child(4) { animation-delay: 0.4s; }
+/* Service Stats */
+.service-stats {
+display: flex;
+justify-content: space-around;
+margin-top: 1.5rem;
+padding-top: 1.5rem;
+border-top: 1px solid #eee;
+}
+.stat-item {
+text-align: center;
+}
+.stat-number {
+font-family: 'Poppins', sans-serif;
+font-size: 1.8rem;
+font-weight: 700;
+color: var(--primary-color);
+}
+.stat-label {
+font-size: 0.9rem;
+color: #777;
+}
+</style>
+</head>
+<body>
+<!-- Header -->
+<header>
+<a href="#" class="logo">
+<i class="fas fa-car"></i>
+CAR FIXING CENTER
+<span>PROFESSIONAL AUTO REPAIR</span>
+</a>
+<nav>
+<button class="hamburger" id="hamburger">☰</button>
+<ul id="navLinks">
+<li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+<li><a href="#services"><i class="fas fa-tools"></i> Services</a></li>
+<li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+<li><a href="https://hivetimes.co.za/"><i class="fas fa-globe"></i> HIVETIMES</a></li>
+<li>
+<a href="https://wa.me/27745638562?text=Hello,%20I%20would%20like%20to%20inquire%20about%20your%20auto%20repair%20services."
+class="contact-btn" target="_blank">
+<i class="fab fa-whatsapp"></i> Get Free Quote
+</a>
+</li>
+</ul>
+</nav>
+</header>
+<!-- Hero Section -->
+<section class="hero" id="home">
+<div class="hero-content">
+<h1>Professional Auto Repair & Diagnostics</h1>
+<p>Expert diesel, petrol mechanics with 35 years experience in car diagnostics and engine rebuilds</p>
+</div>
+</section>
+<!-- Info Card Section with WhatsApp Buttons -->
+<section class="info-section" id="contact">
+<div class="container">
+<div class="info-card">
+<h2>Workshop Information</h2>
+<div class="business-info">
+<p><strong>Workshop Name:</strong> CAR FIXING CENTER</p>
+<p><strong>Specialization:</strong> Diesel & Petrol Mechanics</p>
+<p><strong>Experience:</strong> 35 YEARS WORKING EXPERIENCE</p>
+<p><strong>Services:</strong> Diagnostic Cars, Engine Rebuilds, Complete Auto Repairs</p>
+<p><strong>WhatsApp Number:</strong> 0745 638562</p>
+<p><strong>Call Number:</strong> 0745 638562</p>
+</div>
+<div class="whatsapp-buttons">
+<a href="https://wa.me/27745638562?text=Hello,%20I%20would%20like%20to%20inquire%20about%20your%20auto%20repair%20services."
+class="whatsapp-btn" target="_blank">
+<i class="fab fa-whatsapp"></i> WhatsApp Message
+</a>
+<a href="tel:+27745638562" class="whatsapp-btn call-btn">
+<i class="fas fa-phone"></i> Call Now
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Section - UPGRADED -->
+<section class="services-section" id="services">
+<div class="container">
+<h2 class="section-title">Our Professional Services</h2>
+<div class="services-grid">
+<!-- Diesel Service -->
+<div class="service-card diesel">
+<div class="service-badge">EXPERT SERVICE</div>
+<div class="service-image">
+<img src="images/diesel-repair.jpg" alt="Diesel Engine Repair">
+<div class="service-overlay">
+<h4>Diesel Engine Repair</h4>
+<p>Complete diesel engine diagnostics & repairs</p>
+</div>
+</div>
+<div class="service-content">
+<div class="service-icon">
+<i class="fas fa-truck"></i>
+</div>
+<h3>Diesel Mechanics</h3>
+<p>Specialized diesel engine repair and maintenance services with 35 years of expertise. We handle everything from routine servicing to major engine overhauls, ensuring your diesel vehicle runs smoothly and efficiently.</p>
+<a href="https://wa.me/27745638562?text=Hello,%20I'm%20interested%20in%20your%20Diesel%20Mechanics%20services.%20Please%20send%20me%20more%20information%20and%20pricing."
+class="service-whatsapp-btn" target="_blank">
+<i class="fab fa-whatsapp"></i> Get Diesel Quote
+</a>
+</div>
+</div>
+<!-- Petrol Service -->
+<div class="service-card petrol">
+<div class="service-image">
+<img src="images/petrol-repair.jpg" alt="Petrol Engine Repair">
+<div class="service-overlay">
+<h4>Petrol Engine Repair</h4>
+<p>Complete petrol engine diagnostics & repairs</p>
+</div>
+</div>
+<div class="service-content">
+<div class="service-icon">
+<i class="fas fa-gas-pump"></i>
+</div>
+<h3>Petrol Mechanics</h3>
+<p>Comprehensive petrol engine repair and maintenance with precision diagnostics. Our experienced mechanics provide reliable solutions for all petrol engine issues, from minor repairs to complete engine rebuilds.</p>
+<a href="https://wa.me/27745638562?text=Hello,%20I'm%20interested%20in%20your%20Petrol%20Mechanics%20services.%20Please%20send%20me%20more%20information%20and%20pricing."
+class="service-whatsapp-btn" target="_blank">
+<i class="fab fa-whatsapp"></i> Get Petrol Quote
+</a>
+</div>
+</div>
+<!-- Diagnostic Service -->
+<div class="service-card diagnostic">
+<div class="service-badge">35 YEARS EXPERIENCE</div>
+<div class="service-image">
+<img src="images/car-diagnostic.jpg" alt="Car Diagnostic Service">
+<div class="service-overlay">
+<h4>Advanced Diagnostics</h4>
+<p>Computer diagnostics & fault finding</p>
+</div>
+</div>
+<div class="service-content">
+<div class="service-icon">
+<i class="fas fa-microchip"></i>
+</div>
+<h3>Car Diagnostics</h3>
+<p>Advanced computer diagnostic services to identify and resolve vehicle issues quickly and accurately. Using state-of-the-art diagnostic equipment, we pinpoint problems and provide effective repair solutions.</p>
+<a href="https://wa.me/27745638562?text=Hello,%20I'm%20interested%20in%20your%20Car%20Diagnostics%20services.%20Please%20send%20me%20more%20information%20and%20pricing."
+class="service-whatsapp-btn" target="_blank">
+<i class="fab fa-whatsapp"></i> Get Diagnostic Quote
+</a>
+</div>
+</div>
+<!-- Rebuild Service -->
+<div class="service-card rebuild">
+<div class="service-image">
+<img src="images/engine-rebuild.jpg" alt="Engine Rebuild Service">
+<div class="service-overlay">
+<h4>Complete Engine Rebuild</h4>
+<p>Full engine restoration & rebuilding</p>
+</div>
+</div>
+<div class="service-content">
+<div class="service-icon">
+<i class="fas fa-cogs"></i>
+</div>
+<h3>Engine Rebuild</h3>
+<p>Complete engine rebuild and restoration services with quality parts and expert craftsmanship. We disassemble, inspect, repair, and rebuild engines to restore them to optimal performance and reliability.</p>
+<a href="https://wa.me/27745638562?text=Hello,%20I'm%20interested%20in%20your%20Engine%20Rebuild%20services.%20Please%20send%20me%20more%20information%20and%20pricing."
+class="service-whatsapp-btn" target="_blank">
+<i class="fab fa-whatsapp"></i> Get Rebuild Quote
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="about-section" id="about">
+<div class="container">
+<div class="about-content">
+<h2>About CAR FIXING CENTER</h2>
+<p>Welcome to CAR FIXING CENTER, your trusted partner for professional auto repair and maintenance services.</p>
+<p>With 35 years of extensive experience in diesel and petrol mechanics, we provide expert diagnostic services and complete engine rebuilds for all vehicle types.</p>
+<p>Our commitment to quality workmanship, advanced diagnostic technology, and customer satisfaction sets us apart. We take pride in delivering reliable, efficient, and affordable auto repair solutions.</p>
+<div class="experience-badge">
+<i class="fas fa-star"></i> 35 Years Experience <i class="fas fa-star"></i>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer>
+<div class="footer-content">
+<h3>CAR FIXING CENTER</h3>
+<p>Professional Diesel & Petrol Mechanics</p>
+<p>WhatsApp & Call: 0745 638562</p>
+<div class="social-links">
+<a href="https://wa.me/27745638562" target="_blank">
+<i class="fab fa-whatsapp"></i>
+</a>
+<a href="tel:+27745638562">
+<i class="fas fa-phone"></i>
+</a>
+</div>
+<p class="copyright">
+&copy; 2026 CAR FIXING CENTER. All Rights Reserved.
+</p>
+</div>
+</footer>
+<!-- Floating WhatsApp Button -->
+<div class="floating-whatsapp">
+<a href="https://wa.me/27745638562?text=Hello,%20I%20need%20auto%20repair%20services!"
+class="floating-whatsapp-btn" target="_blank">
+<i class="fab fa-whatsapp"></i>
+</a>
+</div>
+<!-- Contact Modal -->
+<div class="contact-modal" id="contactModal">
+<div class="modal-content">
+<span class="close-modal" onclick="closeModal()">&times;</span>
+<h2>Contact Information</h2>
+<p><strong>Workshop:</strong> CAR FIXING CENTER</p>
+<p><strong>Services:</strong> Diesel & Petrol Mechanics, Car Diagnostics, Engine Rebuilds</p>
+<p><strong>Experience:</strong> 35 Years Working Experience</p>
+<p><strong>Phone:</strong> 0745 638562</p>
+<div class="modal-buttons">
+<a href="https://wa.me/27745638562" class="whatsapp-btn" target="_blank">
+<i class="fab fa-whatsapp"></i> WhatsApp
+</a>
+<a href="tel:+27745638562" class="whatsapp-btn call-btn">
+<i class="fas fa-phone"></i> Call
+</a>
+</div>
+</div>
+</div>
+<script>
+// Mobile Navigation Toggle
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+navLinks.classList.toggle('active');
+hamburger.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+});
+// Close mobile menu when clicking a link
+document.querySelectorAll('#navLinks a').forEach(link => {
+link.addEventListener('click', () => {
+navLinks.classList.remove('active');
+hamburger.textContent = '☰';
+});
+});
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e) {
+e.preventDefault();
+const targetId = this.getAttribute('href');
+if (targetId === '#') return;
+const target = document.querySelector(targetId);
+if (target) {
+window.scrollTo({
+top: target.offsetTop - 80,
+behavior: 'smooth'
+});
+}
+});
+});
+// Header scroll effect
+window.addEventListener('scroll', function() {
+const header = document.querySelector('header');
+if (window.scrollY > 100) {
+header.style.background = 'linear-gradient(135deg, rgba(231, 76, 60, 0.98), rgba(52, 152, 219, 0.98))';
+header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.2)';
+header.style.padding = '10px 5%';
+} else {
+header.style.background = 'linear-gradient(135deg, var(--primary-color), var(--secondary-color))';
+header.style.boxShadow = 'var(--shadow)';
+header.style.padding = '15px 5%';
+}
+});
+// Modal functionality
+function openModal() {
+document.getElementById('contactModal').style.display = 'flex';
+}
+function closeModal() {
+document.getElementById('contactModal').style.display = 'none';
+}
+// Close modal when clicking outside
+window.addEventListener('click', function(event) {
+const modal = document.getElementById('contactModal');
+if (event.target === modal) {
+closeModal();
+}
+});
+// WhatsApp button click tracking
+document.querySelectorAll('.whatsapp-btn, .service-whatsapp-btn').forEach(button => {
+button.addEventListener('click', function() {
+console.log('WhatsApp button clicked for:', this.textContent.trim());
+});
+});
+// Auto-hide floating button on scroll
+let lastScrollTop = 0;
+window.addEventListener('scroll', function() {
+const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+const floatingBtn = document.querySelector('.floating-whatsapp');
+if (scrollTop > lastScrollTop && scrollTop > 200) {
+floatingBtn.style.opacity = '0';
+floatingBtn.style.transform = 'translateY(50px)';
+} else {
+floatingBtn.style.opacity = '1';
+floatingBtn.style.transform = 'translateY(0)';
+}
+lastScrollTop = scrollTop;
+});
+// Initialize service cards animation
+document.addEventListener('DOMContentLoaded', function() {
+const serviceCards = document.querySelectorAll('.service-card');
+serviceCards.forEach(card => {
+card.style.opacity = '1';
+});
+});
+</script>
+</body>
+</html>
