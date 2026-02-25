@@ -3,351 +3,552 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Hive Times</title>
+    <title>About Hive Times | Professional E-Commerce Solutions</title>
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons (FontAwesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        /* Color palette inspired by the logo */
+        /* --- CSS VARIABLES & RESET --- */
         :root {
-            --primary-color: #FF9900; /* Bright orange for accents */
-            --secondary-color: #E64A19;
+            --primary-orange: #FF9900;
+            --primary-hover: #FFB333;
             --brand-red: #8B1A1A;
-            --text-dark: #222;
-            --text-light: #444;
-            --bg-light: #f8f8f8;
-            --bg-white: #fff;
-            --border-color: #ddd;
+            --brand-red-dark: #600f0f;
+            --text-dark: #1a1a1a;
+            --text-grey: #555;
+            --bg-light: #f9f9f9;
+            --white: #ffffff;
+            --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
+            --shadow-lg: 0 10px 30px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            line-height: 1.7;
-            margin: 0;
-            padding: 0;
+            line-height: 1.8;
+            color: var(--text-grey);
             background-color: var(--bg-light);
-            color: var(--text-light);
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .header-hero {
-            text-align: center;
-            padding: 40px 20px;
-            background-color: var(--brand-red);
-            color: var(--bg-white);
-            border-bottom: 5px solid var(--primary-color);
-            border-radius: 0 0 10px 10px;
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        /* Home button in header */
-        .home-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: var(--primary-color);
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
             color: var(--text-dark);
+            line-height: 1.2;
+        }
+
+        a {
             text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 30px;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* --- NAVIGATION --- */
+        .navbar {
+            background-color: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo img {
+            height: 40px; /* Adjust based on your actual logo file */
+            width: auto;
+        }
+
+        .nav-links a {
             font-family: 'Montserrat', sans-serif;
             font-weight: 600;
-            font-size: 0.95em;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            color: var(--text-dark);
+            margin-left: 20px;
+            transition: var(--transition);
         }
 
-        .home-button:hover {
-            background-color: #FFB333;
+        .nav-links a:hover {
+            color: var(--primary-orange);
+        }
+
+        .btn-nav {
+            background-color: var(--brand-red);
+            color: var(--white) !important;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+
+        .btn-nav:hover {
+            background-color: var(--brand-red-dark);
             transform: translateY(-2px);
         }
 
-        .header-hero .logo {
-            max-width: 300px;
-            height: auto;
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(135deg, var(--brand-red) 0%, #4a0d0d 100%);
+            color: var(--white);
+            padding: 100px 0 80px;
+            text-align: center;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 80%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.03);
+            transform: rotate(25deg);
+            pointer-events: none;
+        }
+
+        .hero-logo {
+            max-width: 280px;
+            margin-bottom: 30px;
+            filter: brightness(0) invert(1); /* Makes logo white if it's black */
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: 2.8rem;
+            font-weight: 800;
             margin-bottom: 20px;
         }
 
-        .header-hero h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.8em;
-            color: var(--bg-white);
-            margin: 0 0 10px;
-        }
-
-        .header-hero p {
-            font-size: 1.05em;
+        .hero p {
+            font-size: 1.2rem;
             max-width: 600px;
             margin: 0 auto;
-        }
-        
-        section {
-            padding: 40px 20px;
-            background-color: var(--bg-white);
-            margin-top: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            opacity: 0.9;
         }
 
-        h2 {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--brand-red);
-            text-align: center;
-            margin-top: 0;
-            margin-bottom: 20px;
-            font-size: 2em;
-        }
-
-        .mission-text {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .what-we-do-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .card {
-            background-color: var(--bg-light);
-            padding: 25px;
-            border-radius: 8px;
-            flex: 1;
-            min-width: 280px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-left: 5px solid var(--primary-color);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-        }
-
-        .card h3 {
-            color: var(--brand-red);
-            margin-top: 0;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .card p {
-            margin-bottom: 0;
-        }
-
-        .divider {
-            text-align: center;
-            margin: 30px 0;
-            color: var(--primary-color);
-            font-size: 2.5em;
-            line-height: 0;
-        }
-
-        /* --- New Services Section --- */
-        .services-section {
-            text-align: center;
+        /* --- SERVICES / CTA SECTION --- */
+        .cta-section {
             background-color: var(--brand-red);
-            color: var(--bg-white);
-            padding: 50px 20px;
-            border-radius: 12px;
-            margin-top: 30px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+            color: var(--white);
+            border-radius: 20px;
+            padding: 60px 20px;
+            margin-top: -40px; /* Pull up into hero */
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            z-index: 10;
         }
 
-        .services-section h2 {
-            color: var(--bg-white);
-            margin-bottom: 15px;
-            font-size: 2em;
+        .cta-header {
+            text-align: center;
+            margin-bottom: 50px;
         }
 
-        .services-section p {
-            max-width: 700px;
-            margin: 0 auto 35px;
-            font-size: 1.1em;
-            opacity: 0.95;
+        .cta-header h2 {
+            color: var(--white);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .cta-header p {
+            opacity: 0.8;
+            font-size: 1.1rem;
         }
 
         .services-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 25px;
-            max-width: 900px;
-            margin: 0 auto 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
 
         .service-card {
-            background-color: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(6px);
-            padding: 30px 20px;
-            border-radius: 14px;
-            flex: 1;
-            min-width: 250px;
-            max-width: 280px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px 30px;
+            border-radius: 16px;
             text-align: center;
+            transition: var(--transition);
         }
 
         .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
 
-        .service-icon {
-            font-size: 2.2em;
-            margin-bottom: 18px;
+        .icon-box {
+            font-size: 2.5rem;
+            color: var(--primary-orange);
+            margin-bottom: 25px;
+            display: inline-block;
+            background: rgba(0,0,0,0.2);
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
         }
 
         .service-card h3 {
-            font-family: 'Montserrat', sans-serif;
-            color: white;
-            font-size: 1.35em;
-            margin: 0 0 15px;
+            color: var(--white);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
         }
 
         .service-card p {
-            color: var(--bg-white);
-            opacity: 0.9;
-            margin-bottom: 20px;
-            font-size: 1em;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 25px;
+            font-size: 0.95rem;
         }
 
-        .service-button {
+        .btn-cta {
             display: inline-block;
-            background-color: var(--primary-color);
+            background-color: var(--primary-orange);
             color: var(--text-dark);
-            padding: 12px 24px;
-            text-decoration: none;
+            padding: 12px 30px;
             border-radius: 50px;
-            font-weight: bold;
+            font-weight: 700;
             font-family: 'Montserrat', sans-serif;
-            font-size: 1em;
-            letter-spacing: 0.5px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            width: 100%;
         }
 
-        .service-button:hover {
-            background-color: #FFB333;
-            transform: scale(1.04);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        .btn-cta:hover {
+            background-color: var(--primary-hover);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 153, 0, 0.4);
         }
 
+        /* --- MISSION & STORY SECTION --- */
+        .story-section {
+            background-color: var(--white);
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .story-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            color: var(--brand-red);
+        }
+
+        .story-content p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .story-visual {
+            background-color: #eee;
+            height: 400px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-size: 1.2rem;
+            background-image: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Overlay for image */
+        .story-visual::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(139, 26, 26, 0.3); /* Red tint */
+        }
+
+        /* --- WHAT WE DO (GRID) --- */
+        .features-section {
+            background-color: var(--bg-light);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .section-title .divider {
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-orange);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            border-bottom: 4px solid transparent;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            border-bottom-color: var(--primary-orange);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--brand-red);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #111;
+            color: #888;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-orange);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            .what-we-do-grid {
-                flex-direction: column;
-            }
-            .header-hero h1 {
-                font-size: 1.5em;
-            }
-            h2 {
-                font-size: 1.7em;
-            }
-            .header-hero .logo {
-                max-width: 250px;
-            }
-            .home-button {
-                position: static;
-                display: inline-block;
-                margin-top: 15px;
-            }
-            .service-card {
-                min-width: 100%;
-                max-width: 100%;
-            }
+            .hero h1 { font-size: 2rem; }
+            .story-grid { grid-template-columns: 1fr; }
+            .story-visual { height: 250px; order: -1; } /* Image on top on mobile */
+            .nav-links { display: none; } /* Simplified for demo, ideally a hamburger menu */
+            .navbar { padding: 15px 0; }
+            .cta-section { margin-top: 0; border-radius: 0; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header class="header-hero">
-        <a href="/" class="home-button">Home</a>
-        <img src="images-logo/hive-times-logo.png" alt="Hive Times Logo" class="logo">
-        <h1>Building a new kind of e-commerce experience.</h1>
-        <p>Bridging the gap between social-first shopping and powerful professional tools.</p>
-    </header>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="nav-logo">
+                <!-- Replace with your actual logo path -->
+                <img src="images-logo/hive-times-logo.png" alt="Hive Times">
+            </a>
+            <div class="nav-links">
+                <a href="https://hivetimes.co.za">Home</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#contact" class="btn-nav">Contact Us</a>
+            </div>
+        </div>
+    </nav>
 
-    <section>
-        <h2>Our Mission</h2>
-        <p class="mission-text">The world of online shopping is fractured. We saw an opportunity to bridge that gap, providing a single, powerful solution that gives businesses the best of both worlds.</p>
+  
+
+    <!-- Main Content Container -->
+    <div class="container">
         
-        <div class="divider">&#x2B22;</div>
-        <h2>What We Do</h2>
-        <div class="what-we-do-grid">
-            <div class="card">
-                <h3>For Businesses</h3>
-                <p>We provide a user-friendly platform to build and manage your online store. Our tools are intuitive, so you can focus on creating great products. We also offer robust analytics and marketing tools to help you find and connect with new customers.</p>
-            </div>
-            <div class="card">
-                <h3>For Shoppers</h3>
-                <p>We make shopping an effortless and enjoyable experience. Our platform is designed for discovery, allowing you to browse, find, and purchase from unique businesses with just a few taps. We believe that shopping should be a part of your daily digital life, not a separate, clunky process.</p>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <h2>Our Story</h2>
-        <p>Hive Times was born from a simple observation: social media is great for discovery and impulse buys. Traditional e-commerce platforms offer control and data, but they can be complex and disconnected from where people spend their time online.</p>
-        <p>We are a team of passionate creators and entrepreneurs who understand the challenges of running a modern business. Our goal is to empower you with a beautiful, professional storefront that has the simple, social-first appeal that customers love.</p>
-    </section>
-
-    <!-- Upgraded Join the Hive Section with YOUR WhatsApp number -->
-    <div class="services-section">
-        <h2>Join the Hive — Choose Your Path</h2>
-        <p>Let us know what you need, and we’ll help you get started right away.</p>
-
-        <div class="services-grid">
-            <!-- Service 1: Website Creation -->
-            <div class="service-card">
-                <div class="service-icon">🌐</div>
-                <h3>We Create Websites for Your Business</h3>
-                <p>Launch a stunning, professional online store tailored to your brand — fast, secure, and mobile-ready.</p>
-                <a href="https://wa.me/27649220145?text=Hi%20Hive%20Times%2C%20I%27m%20interested%20in%20having%20a%20website%20created%20for%20my%20business!" 
-                   class="service-button" 
-                   target="_blank" 
-                   rel="noopener noreferrer">
-                    Get My Website
-                </a>
+        <!-- Services / CTA Section (Overlapping Hero) -->
+        <div class="cta-section" id="services">
+            <div class="cta-header">
+                <h2>Join the Hive — Choose Your Path</h2>
+                <p>Let us know what you need, and we'll help you get started right away.</p>
             </div>
 
-            <!-- Service 2: Business Marketing -->
-            <div class="service-card">
-                <div class="service-icon">📣</div>
-                <h3>We Market Your Business</h3>
-                <p>Get featured on our homepage to reach thousands of active shoppers and grow your customer base.</p>
-                <a href="https://wa.me/27649220145?text=Hi%20Hive%20Times%2C%20I%27m%20interested%20in%20marketing%20my%20business%20through%20your%20homepage%20advertising!" 
-                   class="service-button" 
-                   target="_blank" 
-                   rel="noopener noreferrer">
-                    Promote My Business
-                </a>
-            </div>
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Launch a stunning, professional online store tailored to your brand — fast, secure, and mobile-ready.</p>
+                    <a href="https://wa.me/27649220145?text=Hi%20Hive%20Times%2C%20I%27m%20interested%20in%20having%20a%20website%20created%20for%20my%20business!" 
+                       class="btn-cta" target="_blank">
+                       Get My Website
+                    </a>
+                </div>
 
-            <!-- Service 3: Service Advertising -->
-            <div class="service-card">
-                <div class="service-icon">✨</div>
-                <h3>We Advertise Your Service</h3>
-                <p>Showcase your unique service with dedicated banners and highlights on Hive Times’ homepage.</p>
-                <a href="https://wa.me/27649220145?text=Hi%20Hive%20Times%2C%20I%27m%20interested%20in%20advertising%20my%20service%20on%20your%20homepage!" 
-                   class="service-button" 
-                   target="_blank" 
-                   rel="noopener noreferrer">
-                    Advertise My Service
-                </a>
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </div>
+                    <h3>Business Marketing</h3>
+                    <p>Get featured on our homepage to reach thousands of active shoppers and grow your customer base.</p>
+                    <a href="https://wa.me/27649220145?text=Hi%20Hive%20Times%2C%20I%27m%20interested%20in%20marketing%20my%20business%20through%20your%20homepage%20advertising!" 
+                       class="btn-cta" target="_blank">
+                       Promote My Business
+                    </a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h3>Service Advertising</h3>
+                    <p>Showcase your unique service with dedicated banners and highlights on Hive Times' homepage.</p>
+                    <a href="https://wa.me/27649220145?text=Hi%20Hive%20Times%2C%20I%27m%20interested%20in%20advertising%20my%20service%20on%20your%20homepage!" 
+                       class="btn-cta" target="_blank">
+                       Advertise My Service
+                    </a>
+                </div>
             </div>
         </div>
+
     </div>
 
-</div>
+    <!-- Story Section -->
+    <section class="section-padding story-section" id="about">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-content">
+                    <h2>Our Story</h2>
+                    <p>Hive Times was born from a simple observation: social media is great for discovery and impulse buys, but traditional e-commerce platforms offer control and data.</p>
+                    <p>The problem? They are often complex and disconnected from where people spend their time online.</p>
+                    <p>We are a team of passionate creators and entrepreneurs who understand the challenges of running a modern business. Our goal is to empower you with a beautiful, professional storefront that has the simple, social-first appeal that customers love.</p>
+                </div>
+                <div class="story-visual">
+                    <!-- Image is set in CSS background -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Do Section -->
+    <section class="section-padding features-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>What We Do</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-store"></i></div>
+                    <h3>For Businesses</h3>
+                    <p>We provide a user-friendly platform to build and manage your online store. Our tools are intuitive, so you can focus on creating great products. We also offer robust analytics and marketing tools to help you find and connect with new customers.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+                    <h3>For Shoppers</h3>
+                    <p>We make shopping an effortless and enjoyable experience. Our platform is designed for discovery, allowing you to browse, find, and purchase from unique businesses with just a few taps. We believe that shopping should be a part of your daily digital life.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Hive Times</h4>
+                    <p>Empowering businesses with social-first e-commerce solutions.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="https://wa.me/27649220145">WhatsApp Us</a></li>
+                        <li><a href="mailto:info@hivetimes.com">Email Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Hive Times. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
