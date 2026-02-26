@@ -37,6 +37,487 @@ gtag('config', 'G-DTPGZ964FD');
 <link rel="stylesheet" href="css/slider.css">
 
 <style>
+   /* ==========================================
+           MODERN CSS RESET & VARIABLES
+           ========================================== */
+        :root {
+            --hive-yellow: #FFC107;
+            --hive-yellow-dark: #FFB300;
+            --hive-yellow-light: #FFD54F;
+            --dark-bg: #1a1a2e;
+            --card-bg: #ffffff;
+            --text-primary: #2d2d2d;
+            --text-secondary: #666666;
+            --border-color: #e0e0e0;
+            --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.15);
+            --shadow-heavy: 0 15px 50px rgba(0, 0, 0, 0.25);
+            --gradient-primary: linear-gradient(135deg, #FFC107 0%, #FFB300 100%);
+            --gradient-secondary: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ==========================================
+           MODAL OVERLAY WITH 3D EFFECT
+           ========================================== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 26, 46, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+        }
+
+        /* ==========================================
+           MODAL CONTENT WITH 3D TRANSFORM
+           ========================================== */
+        .modal-content {
+            background: var(--card-bg);
+            padding: 0;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 550px;
+            box-shadow: var(--shadow-heavy);
+            position: relative;
+            transform: rotateX(10deg) translateY(-50px);
+            opacity: 0;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+            overflow: hidden;
+            border: 1px solid rgba(255, 193, 7, 0.2);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: rotateX(0deg) translateY(0);
+            opacity: 1;
+        }
+
+        /* ==========================================
+           DECORATIVE HEADER WITH GRADIENT
+           ========================================== */
+        .modal-header {
+            background: var(--gradient-primary);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(10%, 10%); }
+        }
+
+        .modal-header h2 {
+            color: #1a1a2e;
+            font-size: 32px;
+            font-weight: 700;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .modal-header p {
+            color: #333;
+            margin: 10px 0 0 0;
+            font-size: 16px;
+            position: relative;
+            z-index: 1;
+            opacity: 0.9;
+        }
+
+        .hive-icon {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 10px;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* ==========================================
+           CLOSE BUTTON WITH HOVER EFFECT
+           ========================================== */
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #1a1a2e;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.3);
+            transition: var(--transition-smooth);
+            z-index: 2;
+            border: 2px solid transparent;
+        }
+
+        .close-btn:hover {
+            background: rgba(255,255,255,0.5);
+            transform: rotate(90deg) scale(1.1);
+            border-color: #1a1a2e;
+        }
+
+        /* ==========================================
+           MODAL BODY STYLING
+           ========================================== */
+        .modal-body {
+            padding: 35px;
+        }
+
+        .step-container {
+            transition: var(--transition-smooth);
+        }
+
+        .step-container.hidden {
+            display: none;
+        }
+
+        .step-container.fade-in {
+            animation: fadeInUp 0.5s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ==========================================
+           FORM ELEMENTS WITH 3D EFFECTS
+           ========================================== */
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input[type="text"],
+        input[type="url"],
+        textarea {
+            width: 100%;
+            padding: 15px 18px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: var(--transition-smooth);
+            background: #fafafa;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        input[type="text"]:focus,
+        input[type="url"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--hive-yellow);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(255, 193, 7, 0.15), inset 0 2px 4px rgba(0,0,0,0.05);
+            transform: translateY(-2px);
+        }
+
+        input[type="text"]:hover,
+        input[type="url"]:hover,
+        textarea:hover {
+            border-color: var(--hive-yellow-light);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 90px;
+            line-height: 1.5;
+        }
+
+        /* ==========================================
+           BUTTONS WITH 3D PRESS EFFECT
+           ========================================== */
+        .btn {
+            padding: 16px 24px;
+            width: 100%;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            font-family: inherit;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: #1a1a2e;
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+            transform: translateY(0);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.5);
+        }
+
+        .btn-primary:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 10px rgba(255, 193, 7, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--gradient-secondary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(26, 26, 46, 0.4);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(26, 26, 46, 0.5);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(1px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--hive-yellow);
+            color: var(--hive-yellow-dark);
+            background: rgba(255, 193, 7, 0.05);
+        }
+
+        /* ==========================================
+           DIVIDER WITH ICON
+           ========================================== */
+        .divider {
+            margin: 25px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+        }
+
+        .divider span {
+            background: var(--card-bg);
+            padding: 0 20px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* ==========================================
+           PROGRESS INDICATOR
+           ========================================== */
+        .progress-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--border-color);
+            transition: var(--transition-smooth);
+        }
+
+        .progress-dot.active {
+            background: var(--hive-yellow);
+            transform: scale(1.3);
+            box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+        }
+
+        /* ==========================================
+           SUCCESS MESSAGE
+           ========================================== */
+        .success-message {
+            text-align: center;
+            padding: 30px;
+            display: none;
+        }
+
+        .success-icon {
+            font-size: 60px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+            animation: successPop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes successPop {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* ==========================================
+           INPUT VALIDATION STYLES
+           ========================================== */
+        input.error, textarea.error {
+            border-color: #f44336;
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .error-message {
+            color: #f44336;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* ==========================================
+           RESPONSIVE DESIGN
+           ========================================== */
+        @media (max-width: 600px) {
+            .modal-content {
+                width: 95%;
+                margin: 20px;
+            }
+
+            .modal-header {
+                padding: 25px 20px;
+            }
+
+            .modal-header h2 {
+                font-size: 26px;
+            }
+
+            .modal-body {
+                padding: 25px 20px;
+            }
+
+            .btn {
+                padding: 14px 20px;
+                font-size: 15px;
+            }
+
+            .hive-icon {
+                font-size: 40px;
+            }
+        }
+
+        /* ==========================================
+           SCROLLBAR STYLING
+           ========================================== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--hive-yellow);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--hive-yellow-dark);
+        }
 /* === Hive Background === */
 body::before {
 content: "";
@@ -1710,6 +2191,97 @@ grid-template-columns: repeat(2, 1fr);
 </style>
 </head>
 <body>
+   <!-- ==========================================
+         MODAL STRUCTURE WITH ENHANCED UX
+         ========================================== -->
+    <div id="hiveModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()" title="Close">&times;</span>
+
+            <!-- HEADER -->
+            <div class="modal-header">
+                <span class="hive-icon">🐝</span>
+                <h2>Join the Hive</h2>
+                <p>Expand Your Digital Presence Today</p>
+            </div>
+
+            <!-- BODY -->
+            <div class="modal-body">
+                
+                <!-- PROGRESS INDICATOR -->
+                <div class="progress-indicator">
+                    <div class="progress-dot active" id="dot-1"></div>
+                    <div class="progress-dot" id="dot-2"></div>
+                </div>
+
+                <!-- STEP 1: Initial View -->
+                <div id="step-1" class="step-container fade-in">
+                    <div class="form-group">
+                        <label for="existingUrl">🌐 Already Have a Website?</label>
+                        <input type="url" id="existingUrl" placeholder="https://www.yourbusiness.com" autocomplete="url">
+                        <div class="error-message" id="url-error">Please enter a valid website URL</div>
+                    </div>
+                    
+                    <button class="btn btn-primary" onclick="submitExistingWebsite()">
+                        <span>📤</span> Submit Existing Website
+                    </button>
+
+                    <div class="divider"><span>- OR CREATE NEW -</span></div>
+
+                    <button class="btn btn-secondary" onclick="showStep2()">
+                        <span>✨</span> Create a New Website
+                    </button>
+                </div>
+
+                <!-- STEP 2: The Form View -->
+                <div id="step-2" class="step-container hidden">
+                    <form id="businessForm" onsubmit="submitNewWebsite(event)" novalidate>
+                        <div class="form-group">
+                            <label for="bizName">🏢 Business Name</label>
+                            <input type="text" id="bizName" required placeholder="e.g. Acme Corporation" autocomplete="organization">
+                            <div class="error-message" id="name-error">Business name is required</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bizAbout">📖 About Your Business</label>
+                            <textarea id="bizAbout" required placeholder="Tell us about your history, mission, and vision..." autocomplete="off"></textarea>
+                            <div class="error-message" id="about-error">Please describe your business</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bizServices">🛠️ Products / Services</label>
+                            <textarea id="bizServices" required placeholder="What do you sell or provide? e.g. Web design, Coffee, Consulting..." autocomplete="off"></textarea>
+                            <div class="error-message" id="services-error">Please list your products or services</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bizLocation">📍 Location</label>
+                            <input type="text" id="bizLocation" required placeholder="City, State/Province, Country" autocomplete="address-level2">
+                            <div class="error-message" id="location-error">Location is required</div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            <span>💬</span> Request Quote via WhatsApp
+                        </button>
+                        <button type="button" class="btn btn-outline" onclick="showStep1()" style="margin-top: 10px;">
+                            <span>←</span> Back
+                        </button>
+                    </form>
+                </div>
+
+                <!-- SUCCESS MESSAGE -->
+                <div id="success-message" class="success-message">
+                    <div class="success-icon">✓</div>
+                    <h3 style="color: #333; margin-bottom: 10px;">Message Sent!</h3>
+                    <p style="color: #666;">We'll get back to you shortly via WhatsApp.</p>
+                    <button class="btn btn-secondary" onclick="closeModal()" style="margin-top: 20px;">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+  
 <!-- AUTH MODAL -->
 <div id="authModal" class="popup">
 <div class="popup-content">
@@ -2036,6 +2608,115 @@ grid-template-columns: repeat(2, 1fr);
 <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
 </div>
 </div>
+</div>
+
+<!-- The Ahsan Store -->
+<div class="block" id="business-ahsan-store" data-category="business" data-type="clothing" data-location="johannesburg">
+    <a href="https://ahsan.co.za/">
+        <img src="images-logo/ahsan-store-logo.jpg" alt="The Ahsan Store">
+    </a>
+    <div class="info">
+        <h3>The Ahsan Store</h3>
+        <p>Islamic clothing, thobes, hijabs, prayer mats, and essential Islamic gifts.</p>
+        <div class="rating-section">
+            <div class="rating-stars" data-business="ahsan-store">
+                <i class="far fa-star star"></i>
+                <i class="far fa-star star"></i>
+                <i class="far fa-star star"></i>
+                <i class="far fa-star star"></i>
+                <i class="far fa-star star"></i>
+            </div>
+            <div class="rating-count">0 ratings</div>
+            <a href="#" class="view-comments-btn" data-target="ahsan-store-comments">
+                <i class="fas fa-comment"></i> View Comments
+            </a>
+        </div>
+        <div class="comments-section" id="ahsan-store-comments">
+            <div class="comment-form">
+                <textarea class="comment-input" placeholder="Share your experience..."></textarea>
+                <button class="submit-comment-btn">Post Comment</button>
+            </div>
+            <div class="comments-list"></div>
+        </div>
+        <div class="share-section">
+            <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- Laila Couture -->
+<div class="block" id="business-laila-couture" data-category="business" data-type="clothing" data-location="johannesburg">
+    <a href="https://lailacouture.co.za/">
+        <img src="images-logo/laila-couture-logo.jpg" alt="Laila Couture">
+    </a>
+    <div class="info">
+        <h3>Laila Couture</h3>
+        <p>Luxury modest wear, designer abayas, and elegant Islamic fashion collections.</p>
+        <div class="rating-section">
+            <div class="rating-stars" data-business="laila-couture">
+                <i class="far fa-star star"></i>
+                <i class="far fa-star star"></i>
+                <i class="far fa-star star"></i>
+                <i class="far fa-star star"></i>
+                <i class="far fa-star star"></i>
+            </div>
+            <div class="rating-count">0 ratings</div>
+            <a href="#" class="view-comments-btn" data-target="laila-couture-comments">
+                <i class="fas fa-comment"></i> View Comments
+            </a>
+        </div>
+        <div class="comments-section" id="laila-couture-comments">
+            <div class="comment-form">
+                <textarea class="comment-input" placeholder="Share your experience..."></textarea>
+                <button class="submit-comment-btn">Post Comment</button>
+            </div>
+            <div class="comments-list"></div>
+        </div>
+        <div class="share-section">
+            <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+        </div>
+    </div>
+</div>
+
+
+<!-- Islamic Design House -->
+<div class="block" id="business-islamic-design-house" data-category="business" data-type="lighting-electrical" data-location="johannesburg">
+    <a href="https://islamicdesignhouse.co.za">
+        <img src="images-logo/islamic-design-house-logo.jpg" alt="Islamic Design House">
+    </a>
+    <div class="info">
+        <h3>Islamic Design House</h3>
+        <p>Premium Islamic home decor, wall art, lighting, and spiritual furnishings.</p>
+        <div class="rating-section">
+            <div class="rating-stars" data-business="islamic-design-house">
+                <i class="far fa-star star"></i>
+                <i class="far fa-star star"></i>
+                <i class="far fa-star star"></i>
+                <i class="far fa-star star"></i>
+                <i class="far fa-star star"></i>
+            </div>
+            <div class="rating-count">0 ratings</div>
+            <a href="#" class="view-comments-btn" data-target="islamic-design-house-comments">
+                <i class="fas fa-comment"></i> View Comments
+            </a>
+        </div>
+        <div class="comments-section" id="islamic-design-house-comments">
+            <div class="comment-form">
+                <textarea class="comment-input" placeholder="Share your experience..."></textarea>
+                <button class="submit-comment-btn">Post Comment</button>
+            </div>
+            <div class="comments-list"></div>
+        </div>
+        <div class="share-section">
+            <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+        </div>
+    </div>
 </div>
 <!-- 1701 Nougat & Luxury Gift Boxes -->
 <div class="block" id="business-1701-nougat-luxury-gift-boxes" data-category="business" data-type="sweet-shop" data-location="johannesburg">
@@ -2903,6 +3584,136 @@ They also stock extensive departments for electronics, hardware, stationery, and
   </div>
 </div>
 </div>
+<!-- P E Electrical Johannesburg -->
+<div class="freelancer-card" id="service-pe-electrical" data-category="service" data-type="electrician" data-location="johannesburg">
+    <div class="card-background" style="background-image: url('image-services/electrical-background.jpg');"></div>
+    <div class="profile-container">
+        <img src="image-services/electrical-logo.jpg" alt="P E Electrical Johannesburg" class="profile-picture">
+    </div>
+    <div class="card-content">
+        <h3>P E Electrical Johannesburg</h3>
+        <p>Professional residential and commercial electrical solutions in Parktown with a consistent 5-star reputation.</p>
+        <div class="contact-buttons">
+            <a href="https://pandeelectricaljohannesburg.co.za/" class="contact-btn btn-call"><i class="fas fa-heart"></i> Visit Website</a>
+        </div>
+        <!-- Rating Section -->
+        <div class="rating-section">
+            <div class="rating-stars" data-service="pe-electrical">
+                <i class="far fa-star star"></i>
+                <i class="far fa-star star"></i>
+                <i class="far fa-star star"></i>
+                <i class="far fa-star star"></i>
+                <i class="far fa-star star"></i>
+            </div>
+            <div class="rating-count">0 ratings</div>
+            <a href="#" class="view-comments-btn" data-target="pe-electrical-comments">
+                <i class="fas fa-comment"></i> View Comments
+            </a>
+        </div>
+        <!-- Comments Section -->
+        <div class="comments-section" id="pe-electrical-comments">
+            <div class="comment-form">
+                <textarea class="comment-input" placeholder="Share your experience..."></textarea>
+                <button class="submit-comment-btn">Post Comment</button>
+            </div>
+            <div class="comments-list"></div>
+        </div>
+        <!-- Share Section -->
+        <div class="share-section">
+            <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- Staybright Trading Electrical -->
+<div class="freelancer-card" id="service-staybright-trading" data-category="service" data-type="electrician" data-location="johannesburg">
+    <div class="card-background" style="background-image: url('image-services/electrical-background.jpg');"></div>
+    <div class="profile-container">
+        <img src="image-services/electrical-logo.jpg" alt="Staybright Trading Electrical" class="profile-picture">
+    </div>
+    <div class="card-content">
+        <h3>Staybright Trading Electrical</h3>
+        <p>24/7 emergency electrical partner in Sophiatown, specializing in urgent repairs and general maintenance at any hour.</p>
+        <div class="contact-buttons">
+            <a href="#" class="contact-btn btn-call"><i class="fas fa-heart"></i> Visit Website</a>
+        </div>
+        <!-- Rating Section -->
+        <div class="rating-section">
+            <div class="rating-stars" data-service="staybright-trading">
+                <i class="far fa-star star"></i>
+                <i class="far fa-star star"></i>
+                <i class="far fa-star star"></i>
+                <i class="far fa-star star"></i>
+                <i class="far fa-star star"></i>
+            </div>
+            <div class="rating-count">0 ratings</div>
+            <a href="#" class="view-comments-btn" data-target="staybright-trading-comments">
+                <i class="fas fa-comment"></i> View Comments
+            </a>
+        </div>
+        <!-- Comments Section -->
+        <div class="comments-section" id="staybright-trading-comments">
+            <div class="comment-form">
+                <textarea class="comment-input" placeholder="Share your experience..."></textarea>
+                <button class="submit-comment-btn">Post Comment</button>
+            </div>
+            <div class="comments-list"></div>
+        </div>
+        <!-- Share Section -->
+        <div class="share-section">
+            <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- Electrician In Johannesburg -->
+<div class="freelancer-card" id="service-electrician-in-jhb" data-category="service" data-type="electrician" data-location="johannesburg">
+    <div class="card-background" style="background-image: url('image-services/electrical-background.jpg');"></div>
+    <div class="profile-container">
+        <img src="image-services/electrical-logo.jpg" alt="Electrician In Johannesburg" class="profile-picture">
+    </div>
+    <div class="card-content">
+        <h3>Electrician In Johannesburg</h3>
+        <p>Comprehensive electrical installations and fault finding with a perfect rating from local clients in the Bedford area.</p>
+        <div class="contact-buttons">
+            <a href="https://electricianinjohannesburg.co.za/" class="contact-btn btn-call"><i class="fas fa-heart"></i> Visit Website</a>
+        </div>
+        <!-- Rating Section -->
+        <div class="rating-section">
+            <div class="rating-stars" data-service="electrician-in-jhb">
+                <i class="far fa-star star"></i>
+                <i class="far fa-star star"></i>
+                <i class="far fa-star star"></i>
+                <i class="far fa-star star"></i>
+                <i class="far fa-star star"></i>
+            </div>
+            <div class="rating-count">0 ratings</div>
+            <a href="#" class="view-comments-btn" data-target="electrician-in-jhb-comments">
+                <i class="fas fa-comment"></i> View Comments
+            </a>
+        </div>
+        <!-- Comments Section -->
+        <div class="comments-section" id="electrician-in-jhb-comments">
+            <div class="comment-form">
+                <textarea class="comment-input" placeholder="Share your experience..."></textarea>
+                <button class="submit-comment-btn">Post Comment</button>
+            </div>
+            <div class="comments-list"></div>
+        </div>
+        <!-- Share Section -->
+        <div class="share-section">
+            <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+        </div>
+    </div>
+</div>
+
+
 <!-- BUTCHER BLOCK Service -->
 <div class="freelancer-card" id="service-butcher-block" data-category="service" data-type="catering" data-location="johannesburg">
 <div class="card-background" style="background-image: url('images-logo/butcherblock-long.jpg');"></div>
@@ -4360,6 +5171,197 @@ searchBtn.addEventListener('click', applyFilters);
 
   document.head.appendChild(swiperScript);
 })();
+ // ==========================================
+        // CONFIGURATION
+        // ==========================================
+        const myPhoneNumber = "27649220145"; // South Africa format
+        const whatsappBaseUrl = "https://wa.me/";
+
+        // ==========================================
+        // MODAL CONTROL FUNCTIONS
+        // ==========================================
+        function openModal() {
+            const modal = document.getElementById('hiveModal');
+            modal.style.display = 'flex';
+            // Trigger reflow for animation
+            void modal.offsetWidth;
+            modal.classList.add('active');
+            showStep1();
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('hiveModal');
+            modal.classList.remove('active');
+            setTimeout(() => {
+                modal.style.display = 'none';
+                resetForm();
+            }, 400);
+        }
+
+        function showStep2() {
+            document.getElementById('step-1').classList.add('hidden');
+            document.getElementById('step-2').classList.remove('hidden');
+            document.getElementById('step-2').classList.add('fade-in');
+            updateProgress(2);
+        }
+
+        function showStep1() {
+            document.getElementById('step-2').classList.add('hidden');
+            document.getElementById('step-1').classList.remove('hidden');
+            document.getElementById('step-1').classList.add('fade-in');
+            updateProgress(1);
+        }
+
+        function updateProgress(step) {
+            document.getElementById('dot-1').classList.toggle('active', step >= 1);
+            document.getElementById('dot-2').classList.toggle('active', step >= 2);
+        }
+
+        // ==========================================
+        // FORM VALIDATION
+        // ==========================================
+        function validateField(fieldId, errorId, condition) {
+            const field = document.getElementById(fieldId);
+            const error = document.getElementById(errorId);
+            
+            if (!condition) {
+                field.classList.add('error');
+                error.classList.add('show');
+                return false;
+            } else {
+                field.classList.remove('error');
+                error.classList.remove('show');
+                return true;
+            }
+        }
+
+        function validateURL(url) {
+            const pattern = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+            return pattern.test(url);
+        }
+
+        function clearErrors() {
+            document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+            document.querySelectorAll('.error-message').forEach(el => el.classList.remove('show'));
+        }
+
+        function resetForm() {
+            document.getElementById('businessForm').reset();
+            document.getElementById('existingUrl').value = '';
+            document.getElementById('success-message').style.display = 'none';
+            document.getElementById('step-1').style.display = 'block';
+            document.getElementById('step-2').classList.add('hidden');
+            clearErrors();
+            updateProgress(1);
+        }
+
+        // ==========================================
+        // SCENARIO 1: EXISTING WEBSITE
+        // ==========================================
+        function submitExistingWebsite() {
+            const urlInput = document.getElementById('existingUrl');
+            const urlValue = urlInput.value.trim();
+            
+            if (!validateField('existingUrl', 'url-error', urlValue && validateURL(urlValue))) {
+                urlInput.focus();
+                return;
+            }
+
+            const message = 
+                            `*Website URL:* ${urlValue}` +
+                            `I want to place my existing website on your platform. ` +
+                            `How much will it cost?`;
+            
+            sendToWhatsApp(message);
+        }
+
+        // ==========================================
+        // SCENARIO 2: NEW WEBSITE FORM
+        // ==========================================
+        function submitNewWebsite(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('bizName').value.trim();
+            const about = document.getElementById('bizAbout').value.trim();
+            const services = document.getElementById('bizServices').value.trim();
+            const location = document.getElementById('bizLocation').value.trim();
+
+            // Validate all fields
+            const validName = validateField('bizName', 'name-error', name.length >= 2);
+            const validAbout = validateField('bizAbout', 'about-error', about.length >= 10);
+            const validServices = validateField('bizServices', 'services-error', services.length >= 5);
+            const validLocation = validateField('bizLocation', 'location-error', location.length >= 3);
+
+            if (!validName || !validAbout || !validServices || !validLocation) {
+                // Focus on first invalid field
+                if (!validName) document.getElementById('bizName').focus();
+                else if (!validAbout) document.getElementById('bizAbout').focus();
+                else if (!validServices) document.getElementById('bizServices').focus();
+                else if (!validLocation) document.getElementById('bizLocation').focus();
+                return;
+            }
+
+            const message = 
+                            `*🏢 Business Name:* ${name}` +
+                            `*📖 About:* ${about}` +
+                            `*🛠️ Services:* ${services}` +
+                            `*📍 Location:* ${location}` +
+                            `Please provide a quote for creating my website.`;
+
+            sendToWhatsApp(message);
+        }
+
+        // ==========================================
+        // WHATSAPP INTEGRATION
+        // ==========================================
+        function sendToWhatsApp(text) {
+            const encodedText = encodeURIComponent(text);
+            const whatsappUrl = `${whatsappBaseUrl}${myPhoneNumber}?text=${encodedText}`;
+            
+            // Show success message
+            document.getElementById('step-1').style.display = 'none';
+            document.getElementById('step-2').style.display = 'none';
+            document.getElementById('success-message').style.display = 'block';
+            
+            // Open WhatsApp after short delay
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+            }, 800);
+        }
+
+        // ==========================================
+        // EVENT LISTENERS
+        // ==========================================
+        window.addEventListener('load', function() {
+            setTimeout(openModal, 500);
+        });
+
+        // Close if clicked outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('hiveModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Real-time validation on input
+        document.querySelectorAll('input, textarea').forEach(field => {
+            field.addEventListener('input', function() {
+                if (this.classList.contains('error')) {
+                    this.classList.remove('error');
+                    const errorId = this.id + '-error';
+                    const error = document.getElementById(errorId);
+                    if (error) error.classList.remove('show');
+                }
+            });
+        });
 </script>
 </body>
 </html>
