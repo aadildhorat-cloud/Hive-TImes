@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DTPGZ964FD"></script>
 <script>
@@ -27,12 +28,113 @@ gtag('config', 'G-DTPGZ964FD');
       <span></span>
       <span></span>
     </button>
+    
 
     <!-- Logo -->
     <div class="logo-container">
       <img src="images-logo/polar-ice-cream-logo.png" alt="Polar Ice Cream Logo" class="logo-img">
       <div class="logo">POLAR ICE CREAM</div>
     </div>
+    <!-- START HIVE TIMES BADGE (YELLOW EDITION) -->
+<style>
+  /* Badge Container */
+  .hive-badge-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFD700; /* Bright Honey Yellow */
+    border: 2px solid #E5C100; /* Slightly darker yellow border */
+    border-radius: 50px; /* Pill shape */
+    padding: 6px 14px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* The Honeycomb Icon (SVG) */
+  .hive-icon-svg {
+    width: 18px;
+    height: 18px;
+    fill: #000000; /* Black icon for contrast against yellow */
+    margin-right: 8px;
+    transition: transform 0.3s ease;
+  }
+
+  /* Text Container */
+  .hive-text-group {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  /* Main Text */
+  .hive-text {
+    color: #000000; /* Black text for readability */
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Sub Text */
+  .hive-subtext {
+    font-size: 9px;
+    font-weight: 600;
+    color: #333333;
+    text-transform: uppercase;
+  }
+
+  /* Hover Effects */
+  .hive-badge-link:hover {
+    background-color: #E5C100; /* Darker yellow on hover */
+    border-color: #C9A900;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  .hive-badge-link:hover .hive-icon-svg {
+    transform: scale(1.1); /* Icon grows slightly */
+  }
+
+  /* Mobile Adjustments */
+  @media (max-width: 480px) {
+    .hive-badge-link {
+      padding: 5px 10px;
+    }
+    .hive-icon-svg {
+      width: 16px;
+      height: 16px;
+      margin-right: 6px;
+    }
+    .hive-text {
+      font-size: 11px;
+    }
+    .hive-subtext {
+      font-size: 8px;
+      /* Keep subtext on mobile but ensure it fits */
+    }
+  }
+</style>
+
+<!-- The Link -->
+<a href="https://hivetimes.co.za" class="hive-badge-link" target="_blank" rel="noopener" title="Visit Hive Times">
+  
+  <!-- Honeycomb SVG Icon -->
+  <svg class="hive-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2L14.5 6.5L19 6.5L16.5 11L19 15.5L14.5 15.5L12 20L9.5 15.5L5 15.5L7.5 11L5 6.5L9.5 6.5L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
+    <path d="M12 7L13.5 9.5L16 9.5L14.5 12L16 14.5L13.5 14.5L12 17L10.5 14.5L8 14.5L9.5 12L8 9.5L10.5 9.5L12 7Z" fill="currentColor"/>
+  </svg>
+
+  <div class="hive-text-group">
+    <span class="hive-text">HIVE</span>
+    <span class="hive-subtext">Member</span>
+  </div>
+
+</a>
+<!-- END HIVE TIMES BADGE -->
 
     <!-- Cart -->
     <button class="cart-btn" onclick="showCartModal()">
