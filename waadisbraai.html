@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Wadee's Braai - Premium South African Braai Catering & Retail. Halaal Certified. On-site catering, drop-off service, and retail marinades."/>
+  <title>Wadee's Braai | Premium Braai Catering & Retail</title>
+  <style>
+    /* ===== GLOBAL RESET & VARIABLES ===== */
+    :root {
+      --primary: #c0392b;
+      --primary-dark: #a93226;
+      --secondary: #2c3e50;
+      --accent: #e67e22;
+      --light: #f9f9f9;
+      --dark: #1a1a1a;
+      --white: #ffffff;
+      --gray: #7f8c8d;
+      --success: #27ae60;
+      --shadow: 0 4px 20px rgba(0,0,0,0.15);
+      --shadow-hover: 0 8px 30px rgba(0,0,0,0.25);
+      --radius: 12px;
+      --radius-lg: 20px;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --font-main: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      --font-heading: 'Montserrat', var(--font-main);
+      --whatsapp: #25D366;
+      --whatsapp-dark: #128C7E;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-main);
+      line-height: 1.6;
+      color: var(--dark);
+      background: var(--light);
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-family: inherit;
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: var(--white);
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: var(--secondary);
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2.5rem;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60%;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin: 1.5rem 0 1rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: #444;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* ===== HEADER & NAVIGATION ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(255,255,255,0.95);
+      box-shadow: var(--shadow);
+      padding: 12px 0;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      height: 70px;
+    }
+
+    header.scrolled {
+      padding: 8px 0;
+      background: rgba(255,255,255,0.98);
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--primary);
+      z-index: 1001;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      z-index: 1001;
+      padding: 5px;
+    }
+
+    .nav-toggle span {
+      width: 25px;
+      height: 3px;
+      background: var(--secondary);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
+
+    nav a {
+      font-weight: 600;
+      font-size: 1.05rem;
+      padding: 8px 4px;
+      position: relative;
+      transition: var(--transition);
+      color: var(--secondary);
+    }
+
+    nav a:hover, nav a.active {
+      color: var(--primary);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+
+    nav a:hover::after, nav a.active::after {
+      width: 100%;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .ai-search-btn {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 15px rgba(192, 57, 43, 0.4);
+      transition: var(--transition);
+      font-size: 0.95rem;
+    }
+
+    .ai-search-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(192, 57, 43, 0.6);
+    }
+
+    .whatsapp-header {
+      background: var(--whatsapp);
+      color: white;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4);
+      transition: var(--transition);
+    }
+
+    .whatsapp-header:hover {
+      transform: scale(1.1);
+      background: var(--whatsapp-dark);
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      height: 100vh;
+      min-height: 600px;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      padding-top: 70px;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding: 20px;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero h1 {
+      margin-bottom: 1.5rem;
+      text-shadow: 0 3px 15px rgba(0,0,0,0.4);
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      color: rgba(255,255,255,0.95);
+      text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .btn-whatsapp {
+      background: var(--whatsapp);
+      color: white;
+    }
+
+    .btn-whatsapp:hover {
+      background: var(--whatsapp-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+    }
+
+    .btn-outline:hover {
+      background: white;
+      color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    /* ===== SERVICES SECTION ===== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 2rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .service-img {
+      height: 200px;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+      font-weight: bold;
+    }
+
+    .service-content {
+      padding: 25px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-content h3 {
+      margin-top: 0;
+      color: var(--secondary);
+    }
+
+    .service-content p {
+      color: #555;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .service-whatsapp {
+      background: var(--whatsapp);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: auto;
+      transition: var(--transition);
+      width: 100%;
+      text-align: center;
+    }
+
+    .service-whatsapp:hover {
+      background: var(--whatsapp-dark);
+      transform: translateY(-2px);
+    }
+
+    /* ===== MENU SECTION ===== */
+    .menu-categories {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .menu-tab {
+      padding: 10px 25px;
+      background: var(--white);
+      border: 2px solid var(--primary);
+      border-radius: 50px;
+      font-weight: 600;
+      color: var(--primary);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .menu-tab.active, .menu-tab:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .menu-item {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .menu-item h4 {
+      color: var(--primary);
+      margin-bottom: 8px;
+      font-size: 1.3rem;
+    }
+
+    .menu-item p {
+      color: #666;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+
+    .menu-price {
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 1.2rem;
+      margin-top: auto;
+    }
+
+    /* ===== RETAIL SECTION ===== */
+    .retail-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      align-items: center;
+    }
+
+    .retail-info h3 {
+      color: var(--secondary);
+    }
+
+    .stockist-list {
+      margin: 1.5rem 0;
+    }
+
+    .stockist-list li {
+      padding: 8px 0;
+      border-bottom: 1px dashed #eee;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .stockist-list li::before {
+      content: "📍";
+      font-size: 1.1rem;
+    }
+
+    .map-placeholder {
+      background: linear-gradient(135deg, #3498db, #2c3e50);
+      border-radius: var(--radius-lg);
+      height: 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 1.2rem;
+      text-align: center;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-placeholder::before {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+      animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* ===== CERTIFICATIONS ===== */
+    .certifications {
+      background: var(--white);
+      text-align: center;
+    }
+
+    .cert-grid {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .cert-card {
+      background: var(--light);
+      border-radius: var(--radius);
+      padding: 25px 30px;
+      min-width: 220px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .cert-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .cert-icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+
+    .cert-card h4 {
+      color: var(--secondary);
+      margin-bottom: 10px;
+    }
+
+    /* ===== CONTACT SECTION ===== */
+    .contact-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+
+    .contact-info h3 {
+      color: var(--secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+      align-items: flex-start;
+    }
+
+    .contact-icon {
+      min-width: 40px;
+      height: 40px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    .contact-text h4 {
+      margin-bottom: 4px;
+      color: var(--secondary);
+    }
+
+    .contact-text a, .contact-text p {
+      color: #555;
+      transition: var(--transition);
+    }
+
+    .contact-text a:hover {
+      color: var(--primary);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-link {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: var(--secondary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      transition: var(--transition);
+    }
+
+    .social-link:hover {
+      transform: translateY(-3px);
+      background: var(--primary);
+    }
+
+    .social-link.facebook:hover { background: #3b5998; }
+    .social-link.instagram:hover { background: #e1306c; }
+
+    /* ===== FLOATING WHATSAPP WIDGET ===== */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 15px;
+    }
+
+    .whatsapp-main {
+      background: var(--whatsapp);
+      color: white;
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 5px 25px rgba(37, 211, 102, 0.6);
+      transition: var(--transition);
+      animation: pulse 2s infinite;
+    }
+
+    .whatsapp-main:hover {
+      transform: scale(1.1);
+      animation: none;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    .whatsapp-tooltip {
+      background: var(--dark);
+      color: white;
+      padding: 8px 15px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateX(20px);
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+    }
+
+    .whatsapp-float:hover .whatsapp-tooltip {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ===== AI CHATBOT ===== */
+    .ai-chat-toggle {
+      position: fixed;
+      bottom: 25px;
+      left: 25px;
+      z-index: 999;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 5px 25px rgba(192, 57, 43, 0.5);
+      transition: var(--transition);
+      animation: pulse 2s infinite;
+    }
+
+    .ai-chat-toggle:hover {
+      transform: scale(1.1);
+      animation: none;
+    }
+
+    .ai-chat-modal {
+      position: fixed;
+      bottom: 90px;
+      left: 25px;
+      width: 380px;
+      max-width: 90vw;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-hover);
+      z-index: 1000;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      animation: slideUp 0.3s ease-out;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .ai-chat-header {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .ai-chat-close {
+      background: rgba(255,255,255,0.2);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      transition: var(--transition);
+    }
+
+    .ai-chat-close:hover {
+      background: rgba(255,255,255,0.35);
+      transform: rotate(90deg);
+    }
+
+    .ai-chat-body {
+      padding: 20px;
+      max-height: 400px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      background: #f8f9fa;
+    }
+
+    .ai-message {
+      background: var(--white);
+      padding: 14px 18px;
+      border-radius: 18px 18px 18px 4px;
+      max-width: 85%;
+      align-self: flex-start;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      line-height: 1.5;
+    }
+
+    .user-message {
+      background: var(--primary);
+      color: white;
+      border-radius: 18px 18px 4px 18px;
+      align-self: flex-end;
+    }
+
+    .ai-chat-input {
+      padding: 15px;
+      border-top: 1px solid #eee;
+      display: flex;
+      gap: 10px;
+      background: var(--white);
+    }
+
+    .ai-chat-input input {
+      flex: 1;
+      padding: 12px 18px;
+      border: 2px solid #e0e0e0;
+      border-radius: 50px;
+      font-size: 1rem;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .ai-chat-input input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.15);
+    }
+
+    .ai-chat-input button {
+      background: var(--primary);
+      color: white;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+
+    .ai-chat-input button:hover {
+      background: var(--primary-dark);
+      transform: scale(1.05);
+    }
+
+    .ai-chat-input button:active {
+      transform: scale(0.95);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--secondary);
+      color: rgba(255,255,255,0.85);
+      padding: 3rem 0 1.5rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-logo {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: white;
+      margin-bottom: 15px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-logo span {
+      color: var(--accent);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin: 25px 0;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.9);
+      font-weight: 500;
+      transition: var(--transition);
+      padding: 5px 0;
+      position: relative;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    .footer-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover::after {
+      width: 100%;
+    }
+
+    .copyright {
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .cert-badges {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .cert-badge {
+      background: rgba(255,255,255,0.15);
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== RESPONSIVE DESIGN ===== */
+    @media (max-width: 992px) {
+      :root {
+        --radius-lg: 16px;
+      }
+      
+      .hero h1 {
+        font-size: clamp(2.2rem, 6vw, 3.2rem);
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .section {
+        padding: 4rem 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: flex;
+      }
+      
+      nav ul {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 80%;
+        max-width: 320px;
+        height: calc(100vh - 70px);
+        background: var(--white);
+        flex-direction: column;
+        padding: 30px;
+        box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+        transition: var(--transition);
+        z-index: 999;
+        align-items: flex-start;
+        gap: 20px;
+      }
+      
+      nav ul.active {
+        right: 0;
+      }
+      
+      .nav-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      
+      .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .nav-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+      
+      .header-actions {
+        gap: 10px;
+      }
+      
+      .ai-search-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+      }
+      
+      .ai-chat-modal {
+        width: 90vw;
+        left: 5vw;
+        bottom: 85px;
+      }
+      
+      .whatsapp-float, .ai-chat-toggle {
+        bottom: 20px;
+      }
+      
+      .whatsapp-float {
+        right: 20px;
+      }
+      
+      .ai-chat-toggle {
+        left: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 1.9rem;
+      }
+      
+      .section {
+        padding: 3.5rem 0;
+      }
+      
+      .service-img {
+        height: 170px;
+      }
+      
+      .menu-tab {
+        padding: 8px 18px;
+        font-size: 0.95rem;
+      }
+      
+      .cert-grid {
+        gap: 20px;
+      }
+      
+      .cert-card {
+        min-width: 180px;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+  <header id="header">
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <div class="logo-icon">WB</div>
+        Wadee's Braai
+      </a>
+      
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <nav>
+        <ul id="navMenu">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#retail">Retail</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <div class="header-actions">
+        <button class="ai-search-btn" id="aiSearchBtn">
+          <span>✨</span> AI Assistant
+        </button>
+        <a href="https://wa.me/27723706786" class="whatsapp-header" aria-label="WhatsApp">
+          <span>💬</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Premium Braai Catering & Retail</h1>
+      <p>Experience South Africa's finest traditional braai with our secret marinades, premium cuts, and professional on-site service. No mess, no fuss – just unforgettable flavor.</p>
+      <div class="hero-buttons">
+        <a href="#services" class="btn btn-primary">Our Services</a>
+        <a href="https://wa.me/27723706786?text=Hi%20Wadee's%20Braai!%20I'd%20like%20to%20inquire%20about%20catering%20for%20an%20event." class="btn btn-whatsapp">
+          <span>💬</span> WhatsApp Us
+        </a>
+        <a href="#menu" class="btn btn-outline">View Menu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES SECTION ===== -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Services</h2>
+        <p>Professional braai catering tailored to your event needs</p>
+      </div>
+      
+      <div class="services-grid">
+        <!-- Service 1: On-Site Catering -->
+        <div class="service-card animate-on-scroll">
+          <div class="service-img">🔥</div>
+          <div class="service-content">
+            <h3>On-Site Catering</h3>
+            <p>Our expert team comes to your venue to prepare and serve fresh, hot braai meat. Perfect for weddings, corporate events, and large gatherings. We handle everything from setup to cleanup.</p>
+            <a href="https://wa.me/27723706786?text=Hi%20Wadee's%20Braai!%20I'm%20interested%20in%20your%20ON-SITE%20CATERING%20service%20for%20an%20event.%20Please%20share%20more%20details%20and%20pricing." class="service-whatsapp">
+              <span>💬</span> Book On-Site Catering
+            </a>
+          </div>
+        </div>
+        
+        <!-- Service 2: Drop-Off Service -->
+        <div class="service-card animate-on-scroll">
+          <div class="service-img">📦</div>
+          <div class="service-content">
+            <h3>Drop-Off Service</h3>
+            <p>We prepare your favorite braai items and deliver them hot to your location. Ideal for intimate gatherings, office lunches, or when you prefer to serve yourself.</p>
+            <a href="https://wa.me/27723706786?text=Hi%20Wadee's%20Braai!%20I'd%20like%20to%20order%20your%20DROP-OFF%20SERVICE%20for%20an%20event.%20What%20options%20are%20available?" class="service-whatsapp">
+              <span>💬</span> Order Drop-Off
+            </a>
+          </div>
+        </div>
+        
+        <!-- Service 3: Event Types -->
+        <div class="service-card animate-on-scroll">
+          <div class="service-img">🎉</div>
+          <div class="service-content">
+            <h3>Event Specialists</h3>
+            <p>From grand weddings (Waleemas, Mehndi nights) to corporate team buildings, birthdays, baby showers, and family reunions – we cater for all occasions with professionalism and flair.</p>
+            <a href="https://wa.me/27723706786?text=Hi%20Wadee's%20Braai!%20I'm%20planning%20a%20SPECIAL%20EVENT%20and%20would%20like%20to%20discuss%20catering%20options.%20Can%20you%20help?" class="service-whatsapp">
+              <span>💬</span> Plan My Event
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MENU SECTION ===== -->
+  <section class="section" id="menu" style="background: #f1f5f9;">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Menu</h2>
+        <p>Premium cuts, secret marinades, and delicious sides</p>
+      </div>
+      
+      <div class="menu-categories">
+        <button class="menu-tab active" data-category="all">All</button>
+        <button class="menu-tab" data-category="meats">Signature Meats</button>
+        <button class="menu-tab" data-category="sides">Sides & Salads</button>
+        <button class="menu-tab" data-category="extras">Breads & Desserts</button>
+      </div>
+      
+      <div class="menu-grid">
+        <!-- Meats -->
+        <div class="menu-item" data-category="meats">
+          <h4>Lamb Chops</h4>
+          <p>Tender, marinated lamb chops grilled to perfection with our signature spice blend.</p>
+          <div class="menu-price">From R185/pp</div>
+        </div>
+        <div class="menu-item" data-category="meats">
+          <h4>T-Bone Steaks</h4>
+          <p>Premium grain-fed beef, dry-aged and marinated for exceptional flavor and tenderness.</p>
+          <div class="menu-price">From R220/pp</div>
+        </div>
+        <div class="menu-item" data-category="meats">
+          <h4>Chicken Tikka</h4>
+          <p>Succulent chicken pieces marinated in yogurt and aromatic spices, grilled over open flame.</p>
+          <div class="menu-price">From R145/pp</div>
+        </div>
+        <div class="menu-item" data-category="meats">
+          <h4>Signature Beef Wors</h4>
+          <p>Our famous homemade beef sausage with secret spices – a Wadee's Braai exclusive!</p>
+          <div class="menu-price">From R95/pp</div>
+        </div>
+        
+        <!-- Sides -->
+        <div class="menu-item" data-category="sides">
+          <h4>Exotic Gourmet Potato Balls</h4>
+          <p>Crispy on the outside, fluffy inside – a crowd favorite at every event.</p>
+          <div class="menu-price">From R45/pp</div>
+        </div>
+        <div class="menu-item" data-category="sides">
+          <h4>Mexican Pasta Salad</h4>
+          <p>Fresh pasta with corn, beans, peppers, and a zesty lime dressing.</p>
+          <div class="menu-price">From R38/pp</div>
+        </div>
+        <div class="menu-item" data-category="sides">
+          <h4>Crunchy Coleslaw</h4>
+          <p>Classic creamy coleslaw with a hint of apple cider vinegar for balance.</p>
+          <div class="menu-price">From R32/pp</div>
+        </div>
+        
+        <!-- Extras -->
+        <div class="menu-item" data-category="extras">
+          <h4>Garlic Bread</h4>
+          <p>Freshly baked bread topped with herb butter and roasted garlic.</p>
+          <div class="menu-price">From R28/pp</div>
+        </div>
+        <div class="menu-item" data-category="extras">
+          <h4>Malva Pudding</h4>
+          <p>Traditional South African dessert with warm apricot jam sponge and custard.</p>
+          <div class="menu-price">From R42/pp</div>
+        </div>
+        <div class="menu-item" data-category="extras">
+          <h4>Malai Barfi</h4>
+          <p>Rich, creamy Indian sweet made with condensed milk and cardamom.</p>
+          <div class="menu-price">From R35/pp</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RETAIL SECTION ===== -->
+  <section class="section" id="retail">
+    <div class="container">
+      <div class="section-title">
+        <h2>Retail & Distribution</h2>
+        <p>Take our premium marinades home – available across Southern Africa</p>
+      </div>
+      
+      <div class="retail-container">
+        <div class="retail-info animate-on-scroll">
+          <h3>Find Us Near You</h3>
+          <p>Unlike many caterers, Wadee's Braai has a massive retail footprint. Buy our pre-marinated, premium-quality meats from stockists across Southern Africa.</p>
+          
+          <ul class="stockist-list">
+            <li><strong>Johannesburg:</strong> Azaadville, Emmarentia, Sandton, Houghton</li>
+            <li><strong>Pretoria:</strong> Laudium</li>
+            <li><strong>Other SA:</strong> Cape Town, Durban, Port Elizabeth, Bloemfontein, Polokwane, Witbank, Standerton</li>
+            <li><strong>International:</strong> Botswana & Mozambique (official stockists)</li>
+          </ul>
+          
+          <a href="https://wa.me/27723706786?text=Hi%20Wadee's%20Braai!%20Where%20can%20I%20buy%20your%20RETAIL%20products%20near%20me?" class="btn btn-whatsapp" style="margin-top: 20px; width: fit-content;">
+            <span>💬</span> Find a Stockist Near Me
+          </a>
+        </div>
+        
+        <div class="map-placeholder animate-on-scroll">
+          <div>
+            <div style="font-size: 3rem; margin-bottom: 15px;">🗺️</div>
+            <p>Interactive Stockist Map<br><small>Coming Soon – Check back for live locations!</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CERTIFICATIONS SECTION ===== -->
+  <section class="section certifications">
+    <div class="container">
+      <div class="section-title">
+        <h2>Trust & Quality</h2>
+        <p>Certified excellence you can rely on</p>
+      </div>
+      
+      <div class="cert-grid">
+        <div class="cert-card animate-on-scroll">
+          <div class="cert-icon">✅</div>
+          <h4>Halaal Certified</h4>
+          <p>SANHA-certified (South African National Halaal Authority). All products and processes meet strict Islamic dietary laws.</p>
+        </div>
+        
+        <div class="cert-card animate-on-scroll">
+          <div class="cert-icon">🇿🇦</div>
+          <h4>Proudly South African</h4>
+          <p>Member of the "Proudly South African" campaign, supporting local labor and quality standards.</p>
+        </div>
+        
+        <div class="cert-card animate-on-scroll">
+          <div class="cert-icon">⭐</div>
+          <h4>5-Star Reputation</h4>
+          <p>Over 100 Google reviews praising our efficiency, meat quality, and exceptional pop-up events.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT SECTION ===== -->
+  <section class="section" id="contact" style="background: #f8f9fa;">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact Us</h2>
+        <p>Ready to elevate your next event? Get in touch today.</p>
+      </div>
+      
+      <div class="contact-container">
+        <div class="contact-info animate-on-scroll">
+          <h3>Get in Touch</h3>
+          
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-text">
+              <h4>Headquarters</h4>
+              <p>40 Hill Road, Emmarentia, Johannesburg, South Africa</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">📱</div>
+            <div class="contact-text">
+              <h4>Phone / WhatsApp</h4>
+              <p><a href="tel:+27723706786">072 370 6786</a> / <a href="tel:+27728778689">072 877 8689</a></p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div class="contact-text">
+              <h4>Email</h4>
+              <p><a href="mailto:info@wadeesbraai.com">info@wadeesbraai.com</a><br><a href="mailto:wadeesbraai@gmail.com">wadeesbraai@gmail.com</a></p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">🕒</div>
+            <div class="contact-text">
+              <h4>Business Hours</h4>
+              <p>Monday - Saturday: 8:00 AM - 6:00 PM<br>Sunday: 9:00 AM - 4:00 PM (Events Only)</p>
+            </div>
+          </div>
+          
+          <div class="social-links">
+            <a href="https://facebook.com/wadeesbraai" class="social-link facebook" aria-label="Facebook">f</a>
+            <a href="https://instagram.com/wadeesbraai" class="social-link instagram" aria-label="Instagram">📸</a>
+          </div>
+        </div>
+        
+        <div class="contact-form animate-on-scroll">
+          <!-- Simple contact form placeholder - can be enhanced with backend -->
+          <div style="background: white; border-radius: var(--radius-lg); padding: 30px; box-shadow: var(--shadow);">
+            <h3 style="color: var(--secondary); margin-bottom: 20px;">Quick Inquiry</h3>
+            <form id="inquiryForm">
+              <div style="margin-bottom: 15px;">
+                <input type="text" placeholder="Your Name" required style="width: 100%; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem;">
+              </div>
+              <div style="margin-bottom: 15px;">
+                <input type="email" placeholder="Your Email" required style="width: 100%; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem;">
+              </div>
+              <div style="margin-bottom: 15px;">
+                <select style="width: 100%; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem; background: white;">
+                  <option>I'm interested in...</option>
+                  <option>On-Site Catering</option>
+                  <option>Drop-Off Service</option>
+                  <option>Retail Products</option>
+                  <option>General Inquiry</option>
+                </select>
+              </div>
+              <div style="margin-bottom: 20px;">
+                <textarea placeholder="Your Message" rows="4" required style="width: 100%; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem; resize: vertical;"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                Send Inquiry
+              </button>
+            </form>
+            <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: #666;">
+              Or <a href="https://wa.me/27723706786" style="color: var(--whatsapp); font-weight: 600;">WhatsApp us directly</a> for fastest response!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">Wadee's <span>Braai</span></div>
+      <p>Premium South African braai catering & retail since 2010. Halaal certified. Proudly local.</p>
+      
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#menu">Menu</a>
+        <a href="#retail">Retail</a>
+        <a href="#contact">Contact</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+      
+      <div class="cert-badges">
+        <div class="cert-badge">✅ SANHA Halaal</div>
+        <div class="cert-badge">🇿🇦 Proudly SA</div>
+        <div class="cert-badge">⭐ 5-Star Rated</div>
+      </div>
+      
+      <div class="copyright">
+        &copy; <span id="year"></span> Wadee's Braai. All rights reserved. | Designed with ❤️ for South Africa
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== FLOATING WHATSAPP WIDGET ===== -->
+  <div class="whatsapp-float">
+    <div class="whatsapp-tooltip">Chat with us on WhatsApp</div>
+    <a href="https://wa.me/27723706786?text=Hi%20Wadee's%20Braai!%20I%20have%20a%20question%20about%20your%20services." class="whatsapp-main" aria-label="WhatsApp Chat">
+      <span>💬</span>
+    </a>
+  </div>
+
+  <!-- ===== AI CHATBOT TOGGLE & MODAL ===== -->
+  <button class="ai-chat-toggle" id="aiChatToggle" aria-label="Open AI Assistant">
+    <span>🤖</span>
+  </button>
+  
+  <div class="ai-chat-modal" id="aiChatModal">
+    <div class="ai-chat-header">
+      <span>✨ Wadee's AI Assistant</span>
+      <button class="ai-chat-close" id="aiChatClose">&times;</button>
+    </div>
+    <div class="ai-chat-body" id="aiChatBody">
+      <div class="ai-message">
+        Hello! 👋 I'm Wadee's AI Assistant. How can I help you today? You can ask about:<br><br>
+        • Catering services & pricing<br>
+        • Menu items & dietary info<br>
+        • Retail stockist locations<br>
+        • Event planning tips<br><br>
+        Type your question below!
+      </div>
+    </div>
+    <div class="ai-chat-input">
+      <input type="text" id="aiChatInput" placeholder="Ask about catering, menu, locations..." aria-label="Type your message">
+      <button id="aiChatSend">➤</button>
+    </div>
+  </div>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    // ===== SET CURRENT YEAR =====
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ===== HEADER SCROLL EFFECT =====
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // ===== MOBILE NAVIGATION TOGGLE =====
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+    
+    // Close nav when clicking a link (mobile)
+    document.querySelectorAll('#navMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if(targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if(targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // ===== MENU TAB FILTERING =====
+    const menuTabs = document.querySelectorAll('.menu-tab');
+    const menuItems = document.querySelectorAll('.menu-item');
+    
+    menuTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Update active tab
+        menuTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        
+        const category = tab.dataset.category;
+        
+        // Filter items
+        menuItems.forEach(item => {
+          if(category === 'all' || item.dataset.category === category) {
+            item.style.display = 'flex';
+            // Add animation
+            setTimeout(() => {
+              item.style.opacity = '1';
+              item.style.transform = 'translateY(0)';
+            }, 100);
+          } else {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(10px)';
+            setTimeout(() => {
+              item.style.display = 'none';
+            }, 300);
+          }
+        });
+      });
+    });
+
+    // ===== ANIMATE ON SCROLL =====
+    const animateElements = document.querySelectorAll('.animate-on-scroll');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    animateElements.forEach(el => observer.observe(el));
+
+    // ===== AI CHATBOT FUNCTIONALITY =====
+    const aiChatToggle = document.getElementById('aiChatToggle');
+    const aiChatModal = document.getElementById('aiChatModal');
+    const aiChatClose = document.getElementById('aiChatClose');
+    const aiChatInput = document.getElementById('aiChatInput');
+    const aiChatSend = document.getElementById('aiChatSend');
+    const aiChatBody = document.getElementById('aiChatBody');
+    
+    // Toggle chat modal
+    aiChatToggle.addEventListener('click', () => {
+      aiChatModal.style.display = aiChatModal.style.display === 'flex' ? 'none' : 'flex';
+      if(aiChatModal.style.display === 'flex') {
+        aiChatInput.focus();
+      }
+    });
+    
+    aiChatClose.addEventListener('click', () => {
+      aiChatModal.style.display = 'none';
+    });
+    
+    // Close modal when clicking outside
+    document.addEventListener('click', (e) => {
+      if(aiChatModal.style.display === 'flex' && 
+         !aiChatModal.contains(e.target) && 
+         !aiChatToggle.contains(e.target)) {
+        aiChatModal.style.display = 'none';
+      }
+    });
+    
+    // Send message function
+    function sendAiMessage() {
+      const message = aiChatInput.value.trim();
+      if(!message) return;
+      
+      // Add user message
+      const userMsg = document.createElement('div');
+      userMsg.className = 'ai-message user-message';
+      userMsg.textContent = message;
+      aiChatBody.appendChild(userMsg);
+      
+      // Clear input
+      aiChatInput.value = '';
+      
+      // Auto-scroll to bottom
+      aiChatBody.scrollTop = aiChatBody.scrollHeight;
+      
+      // Simulate AI response after delay
+      setTimeout(() => {
+        const aiMsg = document.createElement('div');
+        aiMsg.className = 'ai-message';
+        
+        // Simple keyword-based responses (can be enhanced with API later)
+        const lowerMsg = message.toLowerCase();
+        if(lowerMsg.includes('cater') || lowerMsg.includes('event') || lowerMsg.includes('wedding')) {
+          aiMsg.innerHTML = "We'd love to cater your event! 🎉 For <strong>on-site catering</strong>, our team comes to your venue. For <strong>drop-off</strong>, we deliver hot food ready to serve. <br><br>👉 <a href='https://wa.me/27723706786?text=Hi!%20I%20want%20to%20book%20catering%20for%20an%20event.%20Date:%20[please%20add%20date],%20Guests:%20[please%20add%20number]' style='color:var(--whatsapp);font-weight:600;text-decoration:underline'>Click here to WhatsApp us</a> with your event details for a quick quote!";
+        } 
+        else if(lowerMsg.includes('menu') || lowerMsg.includes('food') || lowerMsg.includes('meat')) {
+          aiMsg.innerHTML = "Our menu features premium cuts with secret marinades! 🔥<br><br><strong>Signature Meats:</strong> Lamb chops, T-bone steaks, chicken tikka, spicy wings, spare ribs & our famous beef wors.<br><br><strong>Sides:</strong> Exotic potato balls, Mexican pasta salad, crunchy coleslaw & more.<br><br>👉 <a href='#menu' style='color:var(--primary);font-weight:600;text-decoration:underline'>View full menu above</a> or <a href='https://wa.me/27723706786?text=Hi!%20Can%20you%20send%20me%20the%20full%20menu%20with%20pricing?' style='color:var(--whatsapp);font-weight:600;text-decoration:underline'>WhatsApp for PDF menu</a>!";
+        }
+        else if(lowerMsg.includes('retail') || lowerMsg.includes('buy') || lowerMsg.includes('stockist') || lowerMsg.includes('location')) {
+          aiMsg.innerHTML = "Find our pre-marinated meats at stockists across Southern Africa! 🌍<br><br><strong>SA Locations:</strong> Johannesburg (Azaadville, Sandton, etc.), Pretoria, Cape Town, Durban & more.<br><br><strong>International:</strong> Botswana & Mozambique.<br><br>👉 <a href='https://wa.me/27723706786?text=Hi!%20Where%20can%20I%20buy%20Wadee%27s%20Braai%20products%20near%20me?' style='color:var(--whatsapp);font-weight:600;text-decoration:underline'>WhatsApp to find your nearest stockist</a>!";
+        }
+        else if(lowerMsg.includes('halaal') || lowerMsg.includes('certified') || lowerMsg.includes('dietary')) {
+          aiMsg.innerHTML = "✅ Yes! We are proudly <strong>SANHA Halaal Certified</strong>. All our products and preparation processes meet strict Islamic dietary laws. We also accommodate other dietary requirements where possible – just let us know when booking!";
+        }
+        else if(lowerMsg.includes('price') || lowerMsg.includes('cost') || lowerMsg.includes('quote')) {
+          aiMsg.innerHTML = "Pricing depends on guest count, menu selection, and service type. 🎯<br><br>For an accurate quote:<br>1️⃣ Share your event date & location<br>2️⃣ Estimated number of guests<br>3️⃣ Preferred menu items<br><br>👉 <a href='https://wa.me/27723706786?text=Hi!%20I%27d%20like%20a%20quote%20for%20catering.%20Event%20date:%20[add%20date],%20Guests:%20[add%20number],%20Location:%20[add%20location]' style='color:var(--whatsapp);font-weight:600;text-decoration:underline'>WhatsApp us now</a> for a personalized quote within 1 hour!";
+        }
+        else if(lowerMsg.includes('hello') || lowerMsg.includes('hi') || lowerMsg.includes('hey')) {
+          aiMsg.textContent = "Hello! 👋 How can I help you today? Ask about catering, menu items, retail locations, or event planning!";
+        }
+        else {
+          aiMsg.innerHTML = "Thanks for your question! 😊 For detailed assistance, our human team is ready to help.<br><br>👉 <a href='https://wa.me/27723706786?text=Hi%20Wadee's%20Braai!%20I%20have%20a%20question:%20" + encodeURIComponent(message) + "' style='color:var(--whatsapp);font-weight:600;text-decoration:underline'>Click here to WhatsApp us directly</a> with your question – we respond within minutes!";
+        }
+        
+        aiChatBody.appendChild(aiMsg);
+        aiChatBody.scrollTop = aiChatBody.scrollHeight;
+      }, 800);
+    }
+    
+    // Send on button click
+    aiChatSend.addEventListener('click', sendAiMessage);
+    
+    // Send on Enter key
+    aiChatInput.addEventListener('keypress', (e) => {
+      if(e.key === 'Enter') {
+        sendAiMessage();
+      }
+    });
+
+    // ===== FORM SUBMISSION (DEMO) =====
+    document.getElementById('inquiryForm')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thank you for your inquiry! 🎉\n\nFor fastest response, we recommend WhatsApping us directly at 072 370 6786.\n\nOur team will contact you within 1 business hour.');
+      e.target.reset();
+    });
+
+    // ===== INITIALIZE ANIMATIONS ON LOAD =====
+    window.addEventListener('load', () => {
+      // Trigger scroll animation check
+      setTimeout(() => {
+        animateElements.forEach(el => {
+          if(el.getBoundingClientRect().top < window.innerHeight * 0.9) {
+            el.classList.add('visible');
+          }
+        });
+      }, 300);
+    });
+  </script>
+</body>
+</html>
