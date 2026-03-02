@@ -1256,16 +1256,20 @@ visibility: visible;
 }
 /* Header */
 header {
-background: linear-gradient(135deg, #610d00 0%, #8b1a00 100%);
-color: #fff;
-padding: 0.8rem 30px;
-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-position: sticky;
-top: 0;
-z-index: 999;
-display: flex;
-flex-direction: column;
-gap: 10px;
+    background: linear-gradient(135deg, #610d00 0%, #8b1a00 100%);
+    color: #fff;
+    padding: 0.8rem 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    
+    /* CHANGED FROM sticky TO static */
+    position: static; 
+    
+    /* REMOVED top: 0; (not needed for static) */
+    /* REMOVED z-index: 999; (not needed for static) */
+    
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 .header-top-row {
 display: flex;
@@ -4325,16 +4329,7 @@ Like diesel paraffin lpg gas at wholesale price 	</p>
 <li><a href="vendor-seller-agreement.html"><i class="fas fa-file-contract"></i> Vendor/Seller Agreement</a></li>
 </ul>
 </div>
-<div class="footer-nav">
-<h4>Quick Links</h4>
-<ul>
-<li><a href="#home-businesses"><i class="fas fa-cookie-bite"></i> Home Businesses</a></li>
-<li><a href="#retail-shops"><i class="fas fa-utensils"></i> Retail Shops</a></li>
-<li><a href="#wholesale"><i class="fas fa-boxes"></i> Wholesale</a></li>
-<li><a href="#services"><i class="fas fa-paint-brush"></i> Services</a></li>
-<li><a href="#"><i class="fas fa-map-marker-alt"></i> Find Stores</a></li>
-</ul>
-</div>
+
 <div class="footer-nav">
 <h4>Contact</h4>
 <ul>
