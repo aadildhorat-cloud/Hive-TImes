@@ -1,599 +1,707 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>24/7 Care Electrical and Plumbing | Emergency Electricians & Plumbers Johannesburg</title>
-  <meta name="description" content="Get expert 24/7 electrical and plumbing services in Johannesburg. Licensed electricians & plumbers for residential, commercial & industrial emergencies. CoC certified.">
-  <meta name="keywords" content="24/7 Electricians, Electricians Johannesburg, Emergency Electricians, Plumbers near me, Electrical CoC, Solar Installation Johannesburg, Loadshedding Solutions">
-  <meta name="robots" content="index, follow">
-  <meta property="og:title" content="24/7 Care Electrical and Plumbing – Emergency Services Johannesburg">
-  <meta property="og:description" content="24/7 licensed electricians & plumbers in Johannesburg. Fast, reliable, CoC-certified emergency services for homes & businesses.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://247careelectricalandplumbing.co.za/">
-  <link rel="canonical" href="https://247careelectricalandplumbing.co.za/">
-  
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  
-  <style>
-    :root {
-      --primary: #0a1929;
-      --secondary: #1a3a5c;
-      --accent: #f59e0b; /* Electrical amber */
-      --accent-hover: #d97706;
-      --whatsapp: #25D366;
-      --whatsapp-hover: #1ebc57;
-      --text: #f8fafc;
-      --text-muted: #94a3b8;
-      --card-bg: rgba(26, 58, 92, 0.85);
-      --glass: rgba(10, 25, 41, 0.7);
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      --transition: all 0.3s ease;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: var(--primary);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* === ELECTRICAL ANIMATIONS === */
-    @keyframes lightning {
-      0%, 100% { opacity: 0; transform: scale(0.8); }
-      10%, 30%, 50% { opacity: 1; transform: scale(1); }
-      20%, 40% { opacity: 0.3; }
-    }
-    @keyframes pulse-glow {
-      0%, 100% { box-shadow: 0 0 5px var(--accent); }
-      50% { box-shadow: 0 0 25px var(--accent), 0 0 40px var(--accent); }
-    }
-    @keyframes spark {
-      0% { transform: translate(0,0) scale(0); opacity: 1; }
-      100% { transform: translate(var(--tx), var(--ty)) scale(1); opacity: 0; }
-    }
-
-    .electrical-bg {
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      background: radial-gradient(ellipse at bottom, #0f2a4a 0%, var(--primary) 70%);
-      overflow: hidden;
-    }
-    .lightning-bolt {
-      position: absolute;
-      width: 3px;
-      height: 60px;
-      background: linear-gradient(to bottom, transparent, var(--accent), transparent);
-      border-radius: 2px;
-      animation: lightning 3s infinite;
-      opacity: 0.6;
-      filter: blur(0.5px);
-    }
-    .spark {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background: var(--accent);
-      border-radius: 50%;
-      animation: spark 1.5s forwards;
-      opacity: 0;
-    }
-
-    /* === HEADER & NAV === */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: var(--glass);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(245, 158, 11, 0.2);
-      padding: 1rem 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--text);
-      text-decoration: none;
-    }
-    .logo i { color: var(--accent); animation: pulse-glow 2s infinite; }
-    .logo span { color: var(--accent); }
-
-    /* Hamburger Menu */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 5px;
-      z-index: 1001;
-    }
-    .hamburger span {
-      width: 28px;
-      height: 3px;
-      background: var(--text);
-      border-radius: 2px;
-      transition: var(--transition);
-    }
-    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
-    .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
-
-    nav ul {
-      display: flex;
-      gap: 1.5rem;
-      list-style: none;
-    }
-    nav a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 500;
-      padding: 0.5rem 0;
-      position: relative;
-      transition: var(--transition);
-    }
-    nav a:hover, nav a.active { color: var(--accent); }
-    nav a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      transition: var(--transition);
-    }
-    nav a:hover::after { width: 100%; }
-
-    /* AI Search Bar */
-    .ai-search {
-      position: relative;
-      width: 280px;
-    }
-    .ai-search input {
-      width: 100%;
-      padding: 0.7rem 1rem 0.7rem 2.5rem;
-      border-radius: 50px;
-      border: 2px solid var(--secondary);
-      background: var(--card-bg);
-      color: var(--text);
-      font-size: 0.95rem;
-      transition: var(--transition);
-    }
-    .ai-search input:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
-    }
-    .ai-search i {
-      position: absolute;
-      left: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--accent);
-    }
-    .ai-badge {
-      position: absolute;
-      right: 0.75rem;
-      top: 50%;
-      transform: translateY(-50%);
-      background: var(--accent);
-      color: var(--primary);
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 20px;
-    }
-
-    /* === HERO SECTION === */
-    .hero {
-      padding: 5rem 5% 3rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, var(--text), var(--accent));
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: pulse-glow 3s infinite;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      color: var(--text-muted);
-      max-width: 700px;
-      margin: 0 auto 2rem;
-    }
-    .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      background: var(--accent);
-      color: var(--primary);
-      padding: 1rem 2rem;
-      border-radius: 50px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: var(--transition);
-      box-shadow: 0 5px 20px rgba(245, 158, 11, 0.4);
-    }
-    .hero-cta:hover {
-      transform: translateY(-3px);
-      background: var(--accent-hover);
-      box-shadow: 0 8px 30px rgba(245, 158, 11, 0.6);
-    }
-
-    /* === SERVICES GRID === */
-    .services {
-      padding: 2rem 5% 4rem;
-    }
-    .section-title {
-      text-align: center;
-      font-size: 2.2rem;
-      margin-bottom: 3rem;
-      color: var(--accent);
-      position: relative;
-      display: inline-block;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60%;
-      height: 3px;
-      background: var(--accent);
-      border-radius: 2px;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .service-card {
-      background: var(--card-bg);
-      border-radius: 20px;
-      padding: 2rem;
-      border: 1px solid rgba(245, 158, 11, 0.15);
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(245,158,11,0.1) 0%, transparent 70%);
-      opacity: 0;
-      transition: var(--transition);
-      z-index: 0;
-    }
-    .service-card:hover {
-      transform: translateY(-8px);
-      border-color: var(--accent);
-      box-shadow: var(--shadow);
-    }
-    .service-card:hover::before { opacity: 1; }
-    .service-card > * { position: relative; z-index: 1; }
-
-    .service-icon {
-      font-size: 2.5rem;
-      color: var(--accent);
-      margin-bottom: 1rem;
-      display: inline-block;
-      animation: pulse-glow 2s infinite;
-    }
-    .service-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--text);
-    }
-    .service-card ul {
-      list-style: none;
-      margin: 1.5rem 0;
-    }
-    .service-card li {
-      padding: 0.4rem 0 0.4rem 1.8rem;
-      position: relative;
-      color: var(--text-muted);
-    }
-    .service-card li::before {
-      content: '⚡';
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-size: 0.9rem;
-    }
-
-    /* WhatsApp Button per Service */
-    .whatsapp-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      background: var(--whatsapp);
-      color: white;
-      text-decoration: none;
-      padding: 0.9rem 1.5rem;
-      border-radius: 12px;
-      font-weight: 600;
-      margin-top: 1rem;
-      transition: var(--transition);
-      width: 100%;
-      text-align: center;
-    }
-    .whatsapp-btn:hover {
-      background: var(--whatsapp-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
-    }
-    .whatsapp-btn i { font-size: 1.2rem; }
-
-    /* === WHY CHOOSE US === */
-    .features {
-      padding: 3rem 5%;
-      background: var(--secondary);
-      text-align: center;
-    }
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 2rem auto 0;
-    }
-    .feature-item {
-      padding: 1.5rem;
-    }
-    .feature-item i {
-      font-size: 2.5rem;
-      color: var(--accent);
-      margin-bottom: 1rem;
-      display: block;
-    }
-    .feature-item h4 { margin-bottom: 0.5rem; color: var(--text); }
-    .feature-item p { color: var(--text-muted); font-size: 0.95rem; }
-
-    /* === FOOTER === */
-    footer {
-      background: var(--primary);
-      padding: 3rem 5% 2rem;
-      text-align: center;
-      border-top: 1px solid rgba(245, 158, 11, 0.2);
-    }
-    footer p { color: var(--text-muted); margin: 0.5rem 0; }
-    footer a { color: var(--accent); text-decoration: none; }
-
-    /* === FLOATING WIDGETS === */
-    /* WhatsApp Float */
-    .float-wa {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      width: 60px;
-      height: 60px;
-      background: var(--whatsapp);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.8rem;
-      text-decoration: none;
-      box-shadow: 0 5px 20px rgba(37, 211, 102, 0.5);
-      z-index: 999;
-      transition: var(--transition);
-      animation: pulse-glow 2.5s infinite;
-    }
-    .float-wa:hover {
-      transform: scale(1.1) rotate(5deg);
-      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.8);
-    }
-
-    /* AI Chat Widget */
-    .chat-widget {
-      position: fixed;
-      bottom: 100px;
-      right: 25px;
-      z-index: 999;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-    }
-    .chat-toggle {
-      width: 60px;
-      height: 60px;
-      background: var(--secondary);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--accent);
-      font-size: 1.5rem;
-      cursor: pointer;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-      border: 2px solid var(--accent);
-    }
-    .chat-toggle:hover {
-      transform: scale(1.05) rotate(5deg);
-      background: var(--primary);
-    }
-    .chat-window {
-      width: 320px;
-      height: 420px;
-      background: var(--card-bg);
-      border-radius: 20px;
-      box-shadow: var(--shadow);
-      margin-bottom: 15px;
-      display: none;
-      flex-direction: column;
-      border: 1px solid rgba(245, 158, 11, 0.3);
-      overflow: hidden;
-    }
-    .chat-header {
-      background: var(--secondary);
-      padding: 1rem 1.25rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid rgba(245, 158, 11, 0.2);
-    }
-    .chat-header h4 { color: var(--accent); font-size: 1.1rem; }
-    .chat-close { 
-      background: none; 
-      border: none; 
-      color: var(--text-muted); 
-      font-size: 1.5rem; 
-      cursor: pointer;
-      transition: var(--transition);
-    }
-    .chat-close:hover { color: var(--accent); transform: rotate(90deg); }
-    
-    .chat-body {
-      flex: 1;
-      padding: 1rem;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-    .chat-msg {
-      max-width: 85%;
-      padding: 0.75rem 1rem;
-      border-radius: 16px;
-      font-size: 0.95rem;
-      line-height: 1.4;
-    }
-    .bot-msg {
-      background: rgba(26, 58, 92, 0.9);
-      align-self: flex-start;
-      border-bottom-left-radius: 4px;
-    }
-    .user-msg {
-      background: var(--accent);
-      color: var(--primary);
-      align-self: flex-end;
-      border-bottom-right-radius: 4px;
-      font-weight: 500;
-    }
-    .chat-input {
-      display: flex;
-      padding: 0.75rem;
-      border-top: 1px solid rgba(245, 158, 11, 0.2);
-      gap: 0.5rem;
-    }
-    .chat-input input {
-      flex: 1;
-      padding: 0.7rem 1rem;
-      border-radius: 25px;
-      border: 1px solid var(--secondary);
-      background: var(--primary);
-      color: var(--text);
-      font-size: 0.95rem;
-    }
-    .chat-input input:focus {
-      outline: none;
-      border-color: var(--accent);
-    }
-    .chat-input button {
-      background: var(--accent);
-      color: var(--primary);
-      border: none;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1.1rem;
-      transition: var(--transition);
-    }
-    .chat-input button:hover {
-      background: var(--accent-hover);
-      transform: scale(1.05);
-    }
-
-    /* === RESPONSIVE === */
-    @media (max-width: 900px) {
-      .ai-search { display: none; }
-      nav ul {
-        position: fixed;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background: var(--glass);
-        flex-direction: column;
-        padding: 2rem;
-        gap: 1rem;
-        transform: translateY(-150%);
-        transition: var(--transition);
-        z-index: 998;
-        border-bottom: 1px solid rgba(245, 158, 11, 0.2);
-      }
-      nav ul.active { transform: translateY(0); }
-      .hamburger { display: flex; }
-      .chat-window { width: 90vw; max-width: 350px; }
-    }
-    @media (max-width: 480px) {
-      .hero h1 { font-size: 2rem; }
-      .hero p { font-size: 1rem; }
-      .service-card { padding: 1.5rem; }
-      .float-wa, .chat-toggle { 
-        width: 55px; 
-        height: 55px; 
-        font-size: 1.6rem;
-        bottom: 20px;
-        right: 20px;
-      }
-      .chat-widget { bottom: 85px; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Electrical Background Animation -->
-  <div class="electrical-bg" id="electricalBg"></div>
-
-  <!-- Header -->
-  <header>
-    <a href="#" class="logo">
-      <i class="fas fa-bolt"></i>
-      24/7 Care <span>Electrical</span>
-    </a>
-    
-   <!-- START HIVE TIMES BADGE (YELLOW EDITION) -->
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>24/7 Care Electrical and Plumbing | Dual-Elemental Services</title>
+<meta name="description" content="Expert 24/7 electrical and plumbing services in Johannesburg. Licensed electricians & plumbers. CoC certified.">
+<meta name="keywords" content="24/7 Electricians, Electricians Johannesburg, Emergency Electricians, Plumbers near me, Electrical CoC, Solar Installation Johannesburg, Loadshedding Solutions">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="24/7 Care Electrical and Plumbing – Emergency Services Johannesburg">
+<meta property="og:description" content="24/7 licensed electricians & plumbers in Johannesburg. Fast, reliable, CoC-certified emergency services.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://247careelectricalandplumbing.co.za/">
+<link rel="canonical" href="https://247careelectricalandplumbing.co.za/">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <style>
-  /* Badge Container */
-  .hive-badge-link {
+/* === DUAL-ELEMENTAL THEME VARIABLES === */
+:root {
+    /* Global Base */
+    --base-dark: #050c14;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --card-bg: rgba(10, 25, 41, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    
+    /* Electrical Palette */
+    --elec-amber: #f59e0b;
+    --elec-blue: #3b82f6;
+    --elec-glow: rgba(245, 158, 11, 0.4);
+    
+    /* Plumbing Palette */
+    --plumb-azure: #0ea5e9;
+    --plumb-cyan: #22d3ee;
+    --plumb-glow: rgba(14, 165, 233, 0.4);
+    
+    /* WhatsApp */
+    --whatsapp: #25D366;
+    --whatsapp-hover: #1ebc57;
+    
+    /* Transitions & Performance */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --hw-accel: translateZ(0);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--base-dark);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background 0.5s ease;
+}
+
+/* === CONTEXTUAL BACKGROUNDS === */
+.bg-layer {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    pointer-events: none;
+    overflow: hidden;
+}
+body.mode-electrical .bg-electrical { opacity: 1; }
+body.mode-plumbing .bg-water { opacity: 1; }
+/* Default to electrical on load */
+body.mode-electrical .bg-electrical { opacity: 1; }
+
+/* Electrical Background Animations */
+.bg-electrical {
+    background: radial-gradient(ellipse at bottom, #0f2a4a 0%, var(--base-dark) 70%);
+}
+.lightning-bolt {
+    position: absolute;
+    width: 2px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, var(--elec-amber), transparent);
+    border-radius: 2px;
+    animation: lightning 3s infinite;
+    opacity: 0.6;
+    filter: blur(0.5px);
+    transform: translateZ(0);
+}
+@keyframes lightning {
+    0%, 100% { opacity: 0; transform: scale(0.8); }
+    10%, 30%, 50% { opacity: 1; transform: scale(1); }
+    20%, 40% { opacity: 0.3; }
+}
+.spark-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--elec-amber);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: spark-fly 1s forwards;
+    transform: translateZ(0);
+}
+@keyframes spark-fly {
+    0% { transform: translate(0,0) scale(1); opacity: 1; }
+    100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+}
+
+/* Water Background Animations */
+.bg-water {
+    background: radial-gradient(ellipse at top, #0c4a6e 0%, var(--base-dark) 80%);
+}
+.bubble {
+    position: absolute;
+    bottom: -50px;
+    background: radial-gradient(circle at 30% 30%, rgba(34, 211, 238, 0.8), rgba(14, 165, 233, 0.1));
+    border-radius: 50%;
+    animation: rise 10s infinite ease-in;
+    transform: translateZ(0);
+    opacity: 0;
+}
+@keyframes rise {
+    0% { bottom: -50px; transform: translateX(0) scale(0.5); opacity: 0; }
+    50% { opacity: 0.6; }
+    100% { bottom: 100%; transform: translateX(var(--drift)) scale(1.2); opacity: 0; }
+}
+.ripple {
+    position: absolute;
+    border: 1px solid rgba(34, 211, 238, 0.3);
+    border-radius: 50%;
+    animation: ripple-effect 4s infinite linear;
+    transform: translateZ(0);
+}
+@keyframes ripple-effect {
+    0% { width: 0; height: 0; opacity: 1; border-width: 2px; }
+    100% { width: 500px; height: 500px; opacity: 0; border-width: 0px; }
+}
+
+/* === HEADER & NAV === */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(5, 12, 20, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition);
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-main);
+    text-decoration: none;
+}
+.logo i { color: var(--elec-amber); animation: pulse-glow 2s infinite; }
+.logo span { color: var(--elec-amber); }
+@keyframes pulse-glow {
+    0%, 100% { text-shadow: 0 0 5px var(--elec-amber); }
+    50% { text-shadow: 0 0 15px var(--elec-amber); }
+}
+
+/* Hamburger */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+}
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: var(--text-main);
+    border-radius: 2px;
+    transition: var(--transition);
+}
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+
+nav ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+}
+nav a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: var(--transition);
+}
+nav a:hover, nav a.active { color: var(--elec-amber); }
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--elec-amber);
+    transition: var(--transition);
+}
+nav a:hover::after { width: 100%; }
+
+/* AI Search Bar */
+.ai-search {
+    position: relative;
+    width: 280px;
+}
+.ai-search input {
+    width: 100%;
+    padding: 0.7rem 1rem 0.7rem 2.5rem;
+    border-radius: 50px;
+    border: 2px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.05);
+    color: var(--text-main);
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+.ai-search input:focus {
+    outline: none;
+    border-color: var(--elec-amber);
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+}
+.ai-search i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--elec-amber);
+}
+
+/* === HERO SECTION === */
+.hero {
+    padding: 6rem 5% 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--text-main), var(--elec-amber));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: pulse-glow 3s infinite;
+}
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 0 auto 2rem;
+}
+.hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--elec-amber);
+    color: var(--base-dark);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: 0 5px 20px var(--elec-glow);
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(0);
+}
+.hero-cta:hover {
+    transform: translateY(-3px) translateZ(0);
+    background: #d97706;
+    box-shadow: 0 8px 30px rgba(245, 158, 11, 0.6);
+}
+
+/* === SERVICES GRID === */
+.services {
+    padding: 2rem 5% 4rem;
+}
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+    color: var(--elec-amber);
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 3px;
+    background: var(--elec-amber);
+    border-radius: 2px;
+}
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* === CARD STYLING (DUAL THEME) === */
+.service-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid var(--glass-border);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(0);
+}
+
+/* Electrical Cards */
+#residential, #commercial, #industrial, #solar {
+    border: 1px solid rgba(245, 158, 11, 0.2);
+}
+#residential:hover, #commercial:hover, #industrial:hover, #solar:hover {
+    transform: translateY(-8px) translateZ(0);
+    box-shadow: 0 0 20px var(--elec-glow);
+    border-color: var(--elec-amber);
+}
+#residential .service-icon, #commercial .service-icon, #industrial .service-icon, #solar .service-icon {
+    color: var(--elec-amber);
+    text-shadow: 0 0 10px var(--elec-glow);
+}
+
+/* Plumbing Cards */
+#plumbing {
+    background: rgba(14, 165, 233, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(34, 211, 238, 0.3);
+}
+#plumbing:hover {
+    transform: translateY(-8px) translateZ(0);
+    box-shadow: 0 0 20px var(--plumb-glow);
+    border-color: var(--plumb-cyan);
+    background: rgba(14, 165, 233, 0.1);
+}
+#plumbing .service-icon {
+    color: var(--plumb-cyan);
+    text-shadow: 0 0 10px var(--plumb-glow);
+}
+#plumbing .section-title {
+    color: var(--plumb-azure);
+}
+#plumbing .section-title::after {
+    background: var(--plumb-azure);
+}
+
+.service-card > * { position: relative; z-index: 1; }
+.service-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    transition: var(--transition);
+}
+.service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+}
+.service-card ul {
+    list-style: none;
+    margin: 1.5rem 0;
+}
+.service-card li {
+    padding: 0.4rem 0 0.4rem 1.8rem;
+    position: relative;
+    color: var(--text-muted);
+}
+.service-card li::before {
+    content: '⚡';
+    position: absolute;
+    left: 0;
+    color: var(--elec-amber);
+    font-size: 0.9rem;
+}
+#plumbing .service-card li::before {
+    content: '💧';
+    color: var(--plumb-cyan);
+}
+
+/* === BUTTON STYLING (DUAL THEME) === */
+.whatsapp-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    background: var(--whatsapp);
+    color: white;
+    text-decoration: none;
+    padding: 0.9rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: var(--transition);
+    width: 100%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(0);
+    border: none;
+    cursor: pointer;
+}
+.whatsapp-btn i { font-size: 1.2rem; z-index: 2; }
+.whatsapp-btn span { z-index: 2; }
+
+/* Electrical Button Strobe */
+#residential .whatsapp-btn, #commercial .whatsapp-btn, #industrial .whatsapp-btn, #solar .whatsapp-btn {
+    background: var(--elec-amber);
+    color: var(--base-dark);
+}
+#residential .whatsapp-btn:hover, #commercial .whatsapp-btn:hover, #industrial .whatsapp-btn:hover, #solar .whatsapp-btn:hover {
+    animation: strobe 0.3s infinite;
+    box-shadow: 0 0 15px var(--elec-amber);
+}
+@keyframes strobe {
+    0% { opacity: 1; }
+    50% { opacity: 0.8; }
+    100% { opacity: 1; }
+}
+
+/* Plumbing Button Wave Fill */
+#plumbing .whatsapp-btn {
+    background: var(--plumb-azure);
+}
+#plumbing .whatsapp-btn::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background: var(--plumb-cyan);
+    transition: height 0.4s ease;
+    z-index: 1;
+}
+#plumbing .whatsapp-btn:hover::before {
+    height: 100%;
+}
+#plumbing .whatsapp-btn:hover {
+    box-shadow: 0 0 15px var(--plumb-cyan);
+}
+
+/* === COMPLIANCE & LOCATION (Unified Styling) === */
+.compliance-section, .location-section {
+    padding: 4rem 5%;
+    background: linear-gradient(135deg, rgba(10, 25, 41, 0.8), var(--base-dark));
+    border-top: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--glass-border);
+}
+.coc-grid, .location-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.coc-card, .location-card, .map-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid var(--glass-border);
+    transition: var(--transition);
+    transform: translateZ(0);
+}
+.coc-card:hover, .location-card:hover {
+    transform: translateY(-5px) translateZ(0);
+    border-color: var(--elec-amber);
+}
+/* Plumbing Specific Compliance */
+#plumbing-coc .coc-card {
+    border-color: rgba(34, 211, 238, 0.3);
+}
+#plumbing-coc .coc-card:hover {
+    border-color: var(--plumb-cyan);
+    box-shadow: 0 0 15px var(--plumb-glow);
+}
+
+/* === FEATURES === */
+.features {
+    padding: 3rem 5%;
+    background: rgba(255,255,255,0.02);
+    text-align: center;
+}
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto 0;
+}
+.feature-item i {
+    font-size: 2.5rem;
+    color: var(--elec-amber);
+    margin-bottom: 1rem;
+    display: block;
+}
+.feature-item h4 { margin-bottom: 0.5rem; color: var(--text-main); }
+.feature-item p { color: var(--text-muted); font-size: 0.95rem; }
+
+/* === FOOTER === */
+footer {
+    background: var(--base-dark);
+    padding: 3rem 5% 2rem;
+    text-align: center;
+    border-top: 1px solid var(--glass-border);
+}
+footer p { color: var(--text-muted); margin: 0.5rem 0; }
+footer a { color: var(--elec-amber); text-decoration: none; }
+
+/* === FLOATING WIDGETS === */
+.float-wa {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    background: var(--whatsapp);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.8rem;
+    text-decoration: none;
+    box-shadow: 0 5px 20px rgba(37, 211, 102, 0.5);
+    z-index: 999;
+    transition: var(--transition);
+    animation: pulse-glow 2.5s infinite;
+    transform: translateZ(0);
+}
+.float-wa:hover {
+    transform: scale(1.1) translateZ(0);
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.8);
+}
+
+/* Chat Widget */
+.chat-widget {
+    position: fixed;
+    bottom: 100px;
+    right: 25px;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.chat-toggle {
+    width: 60px;
+    height: 60px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--elec-amber);
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: var(--transition);
+    border: 2px solid var(--elec-amber);
+    transform: translateZ(0);
+}
+.chat-toggle:hover {
+    transform: scale(1.05) translateZ(0);
+    background: var(--base-dark);
+}
+.chat-window {
+    width: 320px;
+    height: 420px;
+    background: rgba(10, 25, 41, 0.95);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    margin-bottom: 15px;
+    display: none;
+    flex-direction: column;
+    border: 1px solid var(--glass-border);
+    overflow: hidden;
+    transform: translateZ(0);
+}
+.chat-header {
+    background: rgba(255,255,255,0.05);
+    padding: 1rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--glass-border);
+}
+.chat-header h4 { color: var(--elec-amber); font-size: 1.1rem; }
+.chat-close {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+.chat-close:hover { color: var(--elec-amber); transform: rotate(90deg); }
+.chat-body {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.chat-msg {
+    max-width: 85%;
+    padding: 0.75rem 1rem;
+    border-radius: 16px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+.bot-msg {
+    background: rgba(255,255,255,0.1);
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+}
+.user-msg {
+    background: var(--elec-amber);
+    color: var(--base-dark);
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+    font-weight: 500;
+}
+.chat-input {
+    display: flex;
+    padding: 0.75rem;
+    border-top: 1px solid var(--glass-border);
+    gap: 0.5rem;
+}
+.chat-input input {
+    flex: 1;
+    padding: 0.7rem 1rem;
+    border-radius: 25px;
+    border: 1px solid var(--glass-border);
+    background: rgba(0,0,0,0.3);
+    color: var(--text-main);
+    font-size: 0.95rem;
+}
+.chat-input input:focus {
+    outline: none;
+    border-color: var(--elec-amber);
+}
+.chat-input button {
+    background: var(--elec-amber);
+    color: var(--base-dark);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: var(--transition);
+    transform: translateZ(0);
+}
+.chat-input button:hover {
+    background: #d97706;
+    transform: scale(1.05) translateZ(0);
+}
+
+/* Splash Particle for Plumbing */
+.splash-particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--plumb-cyan);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: splash-fly 1s forwards;
+    transform: translateZ(0);
+}
+@keyframes splash-fly {
+    0% { transform: translate(0,0) scale(1); opacity: 1; }
+    100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+}
+
+/* === HIVE BADGE (Preserved) === */
+.hive-badge-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: #FFD700; /* Bright Honey Yellow */
-    border: 2px solid #E5C100; /* Slightly darker yellow border */
-    border-radius: 50px; /* Pill shape */
+    background-color: #FFD700;
+    border: 2px solid #E5C100;
+    border-radius: 50px;
     padding: 6px 14px;
     text-decoration: none;
     transition: all 0.3s ease;
@@ -601,576 +709,533 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.15);
     position: relative;
     overflow: hidden;
-  }
-
-  /* The Honeycomb Icon (SVG) */
-  .hive-icon-svg {
+    margin-left: 1rem;
+    transform: translateZ(0);
+}
+.hive-icon-svg {
     width: 18px;
     height: 18px;
-    fill: #000000; /* Black icon for contrast against yellow */
+    fill: #000000;
     margin-right: 8px;
     transition: transform 0.3s ease;
-  }
-
-  /* Text Container */
-  .hive-text-group {
+}
+.hive-text-group {
     display: flex;
     flex-direction: column;
     line-height: 1.1;
-  }
-
-  /* Main Text */
-  .hive-text {
-    color: #000000; /* Black text for readability */
+}
+.hive-text {
+    color: #000000;
     font-size: 13px;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-  }
-  
-  /* Sub Text */
-  .hive-subtext {
+}
+.hive-subtext {
     font-size: 9px;
     font-weight: 600;
     color: #333333;
     text-transform: uppercase;
-  }
-
-  /* Hover Effects */
-  .hive-badge-link:hover {
-    background-color: #E5C100; /* Darker yellow on hover */
+}
+.hive-badge-link:hover {
+    background-color: #E5C100;
     border-color: #C9A900;
-    transform: translateY(-2px);
+    transform: translateY(-2px) translateZ(0);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  }
+}
+.hive-badge-link:hover .hive-icon-svg {
+    transform: scale(1.1);
+}
 
-  .hive-badge-link:hover .hive-icon-svg {
-    transform: scale(1.1); /* Icon grows slightly */
-  }
-
-  /* Mobile Adjustments */
-  @media (max-width: 480px) {
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+    .ai-search { display: none; }
+    nav ul {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: rgba(5, 12, 20, 0.95);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1rem;
+        transform: translateY(-150%);
+        transition: var(--transition);
+        z-index: 998;
+        border-bottom: 1px solid var(--glass-border);
+    }
+    nav ul.active { transform: translateY(0); }
+    .hamburger { display: flex; }
+    .chat-window { width: 90vw; max-width: 350px; }
+}
+@media (max-width: 480px) {
+    .hero h1 { font-size: 2rem; }
+    .hero p { font-size: 1rem; }
+    .service-card { padding: 1.5rem; }
+    .float-wa, .chat-toggle {
+        width: 55px;
+        height: 55px;
+        font-size: 1.6rem;
+        bottom: 20px;
+        right: 20px;
+    }
+    .chat-widget { bottom: 85px; }
     .hive-badge-link {
-      padding: 5px 10px;
+        padding: 5px 10px;
+        margin-left: 0;
+        margin-top: 10px;
     }
-    .hive-icon-svg {
-      width: 16px;
-      height: 16px;
-      margin-right: 6px;
-    }
-    .hive-text {
-      font-size: 11px;
-    }
-    .hive-subtext {
-      font-size: 8px;
-      /* Keep subtext on mobile but ensure it fits */
-    }
-  }
+    header { flex-wrap: wrap; }
+}
 </style>
+</head>
+<body class="mode-electrical">
+<!-- Background Layers -->
+<div class="bg-layer bg-electrical" id="bgElectrical"></div>
+<div class="bg-layer bg-water" id="bgWater"></div>
 
-<!-- The Link -->
-<a href="https://hivetimes.co.za" class="hive-badge-link" target="_blank" rel="noopener" title="Visit Hive Times">
-  
-  <!-- Honeycomb SVG Icon -->
-  <svg class="hive-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 2L14.5 6.5L19 6.5L16.5 11L19 15.5L14.5 15.5L12 20L9.5 15.5L5 15.5L7.5 11L5 6.5L9.5 6.5L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
-    <path d="M12 7L13.5 9.5L16 9.5L14.5 12L16 14.5L13.5 14.5L12 17L10.5 14.5L8 14.5L9.5 12L8 9.5L10.5 9.5L12 7Z" fill="currentColor"/>
-  </svg>
-
-  <div class="hive-text-group">
-    <span class="hive-text">HIVE</span>
-    <span class="hive-subtext">Member</span>
-  </div>
-
-</a>
-<!-- END HIVE TIMES BADGE -->
-
+<!-- Header -->
+<header>
+    <div style="display:flex; align-items:center; flex-wrap:wrap;">
+        <a href="#" class="logo">
+            <i class="fas fa-bolt"></i>
+            24/7 Care <span>Electrical</span>
+        </a>
+        <!-- HIVE TIMES BADGE -->
+        <a href="https://hivetimes.co.za" class="hive-badge-link" target="_blank" rel="noopener" title="Visit Hive Times">
+            <svg class="hive-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L14.5 6.5L19 6.5L16.5 11L19 15.5L14.5 15.5L12 20L9.5 15.5L5 15.5L7.5 11L5 6.5L9.5 6.5L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
+                <path d="M12 7L13.5 9.5L16 9.5L14.5 12L16 14.5L13.5 14.5L12 17L10.5 14.5L8 14.5L9.5 12L8 9.5L10.5 9.5L12 7Z" fill="currentColor"/>
+            </svg>
+            <div class="hive-text-group">
+                <span class="hive-text">HIVE</span>
+                <span class="hive-subtext">Member</span>
+            </div>
+        </a>
+    </div>
     <!-- Hamburger Menu -->
     <div class="hamburger" id="hamburger">
-      <span></span><span></span><span></span>
+        <span></span><span></span><span></span>
     </div>
-
     <!-- Navigation -->
     <nav>
-      <ul id="navMenu">
-        <li><a href="#home" class="active">Home</a></li>
-        <li><a href="#residential">Residential</a></li>
-        <li><a href="#commercial">Commercial</a></li>
-        <li><a href="#industrial">Industrial</a></li>
-        <li><a href="#plumbing">Plumbing</a></li>
-        <li><a href="#solar">Solar</a></li>
-        <li><a href="#compliance">Compliance Certificates</a></li>
-         <li><a href="#location">Location</a></li>
-        <li><a href="tel:+27712311207" style="color:var(--accent);"><i class="fas fa-phone"></i> Call Now</a></li>
-      </ul>
+        <ul id="navMenu">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#residential">Residential</a></li>
+            <li><a href="#commercial">Commercial</a></li>
+            <li><a href="#industrial">Industrial</a></li>
+            <li><a href="#plumbing">Plumbing</a></li>
+            <li><a href="#solar">Solar</a></li>
+            <li><a href="#compliance">Compliance</a></li>
+            <li><a href="#location">Location</a></li>
+            <li><a href="tel:+27712311207" style="color:var(--elec-amber);"><i class="fas fa-phone"></i> Call Now</a></li>
+        </ul>
     </nav>
-  </header>
+</header>
 
-  <!-- Hero -->
-  <section class="hero" id="home">
-    <h1>Expert Electrical & Plumbing Services in Johannesburg</h1>
-    <p>24/7 Emergency Response • Licensed Technicians • CoC Certified • 20+ Years Experience • Serving Gauteng</p>
-    <a href="https://wa.me/27712311207?text=EMERGENCY%3A%20I%20need%20immediate%20assistance%20with%20electrical%20or%20plumbing." class="hero-cta">
-      <i class="fab fa-whatsapp"></i> Emergency WhatsApp
+<!-- Hero -->
+<section class="hero" id="home" data-theme="electrical">
+    <h1>Expert Electrical & Plumbing Services</h1>
+    <p>24/7 Emergency Response • Licensed Technicians • CoC Certified • 20+ Years Experience</p>
+    <a href="https://wa.me/27712311207?text=EMERGENCY%3A%20I%20need%20immediate%20assistance." class="hero-cta particle-target-electrical">
+        <i class="fab fa-whatsapp"></i> Emergency WhatsApp
     </a>
-  </section>
+</section>
 
-  <!-- Services -->
-  <section class="services">
+<!-- Services -->
+<section class="services" id="services">
     <h2 class="section-title">Our Services</h2>
     <div class="services-grid">
-
-      <!-- Residential -->
-      <article class="service-card" id="residential">
-        <i class="fas fa-home service-icon"></i>
-        <h3>Residential Electricians</h3>
-        <ul>
-          <li>Fault detection & troubleshooting</li>
-          <li>Full home rewiring & installations</li>
-          <li>Circuit breakers, outlets & lighting</li>
-          <li>Appliance & communication device repairs</li>
-          <li>Garage door & AC installations</li>
-          <li>Residential CoC (Certificate of Compliance)</li>
-        </ul>
-        <a href="https://wa.me/27712311207?text=Hi%2C%20I%20need%20a%20Residential%20Electrician%20for%20my%20home%20in%20Johannesburg.%20Please%20advise%20availability." class="whatsapp-btn">
-          <i class="fab fa-whatsapp"></i> Book Residential Service
-        </a>
-      </article>
-
-      <!-- Commercial -->
-      <article class="service-card" id="commercial">
-        <i class="fas fa-building service-icon"></i>
-        <h3>Commercial Electricians</h3>
-        <ul>
-          <li>Electrical inspections & CoC certification</li>
-          <li>Office, shop & business maintenance</li>
-          <li>Data/network cabling & DB board repairs</li>
-          <li>Transformer repair & installation</li>
-          <li>Preventative maintenance contracts</li>
-          <li>20+ years commercial experience in Gauteng</li>
-        </ul>
-        <a href="https://wa.me/27712311207?text=Hi%2C%20I%20represent%20a%20business%20and%20need%20Commercial%20Electrical%20services%20in%20Johannesburg%2Fpretoria." class="whatsapp-btn">
-          <i class="fab fa-whatsapp"></i> Book Commercial Service
-        </a>
-      </article>
-
-      <!-- Industrial -->
-      <article class="service-card" id="industrial">
-        <i class="fas fa-industry service-icon"></i>
-        <h3>Industrial Electrical Engineering</h3>
-        <ul>
-          <li>Large-scale electrical repairs & installations</li>
-          <li>Industrial DB board services</li>
-          <li>High-capacity system maintenance</li>
-          <li>Factory wiring & compliance certification</li>
-          <li>Heavy machinery power solutions</li>
-          <li>CoC for all industrial work completed</li>
-        </ul>
-        <a href="https://wa.me/27712311207?text=Hi%2C%20we%20require%20Industrial%20Electrical%20Engineering%20support%20in%20Johannesburg%20or%20Pretoria." class="whatsapp-btn">
-          <i class="fab fa-whatsapp"></i> Book Industrial Service
-        </a>
-      </article>
-
-      <!-- Plumbing -->
-      <article class="service-card" id="plumbing">
-        <i class="fas fa-faucet service-icon"></i>
-        <h3>Plumbing Services</h3>
-        <ul>
-          <li>24/7 emergency repairs: burst pipes, leaks</li>
-          <li>Blocked drains & sewer line cleaning</li>
-          <li>Geyser replacement & maintenance</li>
-          <li>Geberit systems, urinal flush masters</li>
-          <li>Hydro boil & sump pump installations</li>
-          <li>Domestic, commercial & industrial plumbing</li>
-        </ul>
-        <a href="https://wa.me/27712311207?text=Hi%2C%20I%20have%20a%20Plumbing%20emergency%20(burst%20pipe%2Fleak%2Fblocked%20drain)%20in%20Johannesburg." class="whatsapp-btn">
-          <i class="fab fa-whatsapp"></i> Book Plumbing Service
-        </a>
-      </article>
-
-      <!-- Solar -->
-      <article class="service-card" id="solar">
-        <i class="fas fa-solar-panel service-icon"></i>
-        <h3>Solar Energy Solutions</h3>
-        <ul>
-          <li>✅ Beat Loadshedding with backup power</li>
-          <li>✅ Rooftop solar panel installations</li>
-          <li>✅ Inverters & battery systems</li>
-          <li>✅ Off-grid & "Go Green" products</li>
-          <li>✅ Save money on electricity bills</li>
-          <li>✅ Clean, renewable, reliable power</li>
-        </ul>
-        <a href="https://wa.me/27712311207?text=Hi%2C%20I%20am%20interested%20in%20Solar%20Energy%20solutions%20to%20beat%20loadshedding%20in%20Johannesburg." class="whatsapp-btn">
-          <i class="fab fa-whatsapp"></i> Get Solar Quote
-        </a>
-      </article>
-
+        <!-- Residential -->
+        <article class="service-card" id="residential" data-theme="electrical">
+            <i class="fas fa-home service-icon"></i>
+            <h3>Residential Electricians</h3>
+            <ul>
+                <li>Fault detection & troubleshooting</li>
+                <li>Full home rewiring & installations</li>
+                <li>Circuit breakers, outlets & lighting</li>
+                <li>Residential CoC (Certificate of Compliance)</li>
+            </ul>
+            <a href="https://wa.me/27712311207?text=Residential%20Electrician%20Needed" class="whatsapp-btn particle-target-electrical">
+                <i class="fab fa-whatsapp"></i> <span>Book Residential</span>
+            </a>
+        </article>
+        <!-- Commercial -->
+        <article class="service-card" id="commercial" data-theme="electrical">
+            <i class="fas fa-building service-icon"></i>
+            <h3>Commercial Electricians</h3>
+            <ul>
+                <li>Electrical inspections & CoC certification</li>
+                <li>Office, shop & business maintenance</li>
+                <li>Data/network cabling & DB board repairs</li>
+                <li>Preventative maintenance contracts</li>
+            </ul>
+            <a href="https://wa.me/27712311207?text=Commercial%20Electrical%20Services" class="whatsapp-btn particle-target-electrical">
+                <i class="fab fa-whatsapp"></i> <span>Book Commercial</span>
+            </a>
+        </article>
+        <!-- Industrial -->
+        <article class="service-card" id="industrial" data-theme="electrical">
+            <i class="fas fa-industry service-icon"></i>
+            <h3>Industrial Engineering</h3>
+            <ul>
+                <li>Large-scale electrical repairs</li>
+                <li>Industrial DB board services</li>
+                <li>High-capacity system maintenance</li>
+                <li>Factory wiring & compliance</li>
+            </ul>
+            <a href="https://wa.me/27712311207?text=Industrial%20Electrical%20Support" class="whatsapp-btn particle-target-electrical">
+                <i class="fab fa-whatsapp"></i> <span>Book Industrial</span>
+            </a>
+        </article>
+        <!-- Plumbing -->
+        <article class="service-card" id="plumbing" data-theme="plumbing">
+            <i class="fas fa-faucet service-icon"></i>
+            <h3>Plumbing Services</h3>
+            <ul>
+                <li>24/7 emergency repairs: burst pipes</li>
+                <li>Blocked drains & sewer line cleaning</li>
+                <li>Geyser replacement & maintenance</li>
+                <li>Domestic, commercial & industrial</li>
+            </ul>
+            <a href="https://wa.me/27712311207?text=Plumbing%20Emergency" class="whatsapp-btn particle-target-plumbing">
+                <i class="fab fa-whatsapp"></i> <span>Book Plumbing</span>
+            </a>
+        </article>
+        <!-- Solar -->
+        <article class="service-card" id="solar" data-theme="electrical">
+            <i class="fas fa-solar-panel service-icon"></i>
+            <h3>Solar Energy Solutions</h3>
+            <ul>
+                <li>Beat Loadshedding with backup power</li>
+                <li>Rooftop solar panel installations</li>
+                <li>Inverters & battery systems</li>
+                <li>Clean, renewable, reliable power</li>
+            </ul>
+            <a href="https://wa.me/27712311207?text=Solar%20Energy%20Quote" class="whatsapp-btn particle-target-electrical">
+                <i class="fab fa-whatsapp"></i> <span>Get Solar Quote</span>
+            </a>
+        </article>
     </div>
-  </section>
-  <!-- === COMPLIANCE CERTIFICATES SECTION === -->
-<section class="compliance-section" id="compliance" style="padding: 4rem 5%; background: linear-gradient(135deg, var(--secondary), var(--primary)); border-top: 2px solid var(--accent); border-bottom: 2px solid var(--accent);">
-  <div class="compliance-header" style="text-align: center; margin-bottom: 3rem;">
-    <h2 style="font-size: 2.2rem; color: var(--accent); margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.75rem;">
-      <i class="fas fa-certificate"></i> Compliance Certificates
-    </h2>
-    <p style="color: var(--text-muted); max-width: 800px; margin: 0 auto; font-size: 1.1rem;">
-      All our work is certified and compliant with South African safety standards. We issue official Certificates of Compliance (CoC) for every electrical and plumbing job completed.
-    </p>
-  </div>
-  
-  <div class="coc-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
-    
-    <!-- Electrical CoC Card -->
-    <div class="coc-card" style="background: var(--card-bg); border-radius: 20px; padding: 2rem; border: 2px solid #3b82f6; transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden;">
-      <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%); opacity: 0; transition: opacity 0.3s;"></div>
-      <div style="position: relative; z-index: 1;">
-        <i class="fas fa-bolt" style="font-size: 3rem; color: #3b82f6; margin-bottom: 1.5rem; display: inline-block;"></i>
-        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text);">Electrical Certificate of Compliance (ECoC)</h3>
-        <span style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(59,130,246,0.2); color: #3b82f6; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem;">
-          <i class="fas fa-shield-check"></i> SANS 10142-1 Compliant
-        </span>
-        <ul style="list-style: none; margin: 1.5rem 0; color: var(--text-muted);">
-          <li style="padding: 0.5rem 0 0.5rem 2rem; position: relative;">📋 Wiring & connections from supply to control point</li>
-          <li style="padding: 0.5rem 0 0.5rem 2rem; position: relative;">📋 Distribution boards, circuit breakers & earthing</li>
-          <li style="padding: 0.5rem 0 0.5rem 2rem; position: relative;">📋 Wiring to outlets, switches & lighting</li>
-          <li style="padding: 0.5rem 0 0.5rem 2rem; position: relative;">📋 Earth leakage testing & safety verification</li>
-          <li style="padding: 0.5rem 0 0.5rem 2rem; position: relative;">📋 Valid for 2 years • Required for property transfers</li>
-        </ul>
-       
-      </div>
-    </div>
-
-    <!-- Plumbing CoC Card -->
-    <div class="coc-card" style="background: var(--card-bg); border-radius: 20px; padding: 2rem; border: 2px solid #10b981; transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden;">
-      <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 70%); opacity: 0; transition: opacity 0.3s;"></div>
-      <div style="position: relative; z-index: 1;">
-        <i class="fas fa-faucet" style="font-size: 3rem; color: #10b981; margin-bottom: 1.5rem; display: inline-block;"></i>
-        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text);">Plumbing Certificate of Compliance (CoC)</h3>
-        <span style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(16,185,129,0.2); color: #10b981; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem;">
-          <i class="fas fa-tint"></i> SANS 10252 & 10254 Compliant
-        </span>
-        <ul style="list-style: none; margin: 1.5rem 0; color: var(--text-muted);">
-          <li style="padding: 0.5rem 0 0.5rem 2rem; position: relative;">📋 Proper geyser & hot water cylinder installation</li>
-          <li style="padding: 0.5rem 0 0.5rem 2rem; position: relative;">📋 Accurate water meter reading & stormwater management</li>
-          <li style="padding: 0.5rem 0 0.5rem 2rem; position: relative;">📋 No leaking pipes, taps or cross-connections</li>
-          <li style="padding: 0.5rem 0 0.5rem 2rem; position: relative;">📋 Correct fitting installation & isolating valve function</li>
-          <li style="padding: 0.5rem 0 0.5rem 2rem; position: relative;">📋 Issued by licensed plumber • Required for property sales</li>
-        </ul>
-       
-      </div>
-    </div>
-
-  </div>
-
-  <!-- CoC Info Box -->
-  <div style="max-width: 900px; margin: 3rem auto 0; background: rgba(59,130,246,0.1); border-radius: 16px; padding: 1.5rem; border-left: 4px solid #3b82f6;">
-    <h4 style="color: #3b82f6; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-      <i class="fas fa-info-circle"></i> Why Compliance Certificates Matter
-    </h4>
-    <ul style="list-style: none; color: var(--text-muted);">
-      <li style="margin-bottom: 0.5rem;">✅ <strong>Legal Requirement:</strong> Required by law for property transfers, insurance claims, and municipal approvals.</li>
-      <li style="margin-bottom: 0.5rem;">✅ <strong>Safety Assurance:</strong> Verifies installations meet national safety standards (SANS) to prevent fires, shocks, and water damage.</li>
-      <li style="margin-bottom: 0.5rem;">✅ <strong>Property Value:</strong> Valid CoCs protect your investment and are often required by banks and insurers.</li>
-      <li>✅ <strong>Peace of Mind:</strong> Our licensed technicians issue certificates with full accountability for work completed.</li>
-    </ul>
-  </div>
 </section>
 
-<!-- === LOCATION SECTION === -->
-<section class="location-section" id="location" style="padding: 4rem 5%; background: linear-gradient(135deg, var(--secondary), var(--primary));">
-  <div class="location-header" style="text-align: center; margin-bottom: 3rem;">
-    <h2 style="font-size: 2.2rem; color: var(--accent); margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.75rem;">
-      <i class="fas fa-map-marker-alt"></i> Our Service Location
-    </h2>
-    <p style="color: var(--text-muted); max-width: 700px; margin: 0 auto; font-size: 1.1rem;">
-      Serving Johannesburg, Pretoria & surrounding Gauteng areas with 24/7 electrical and plumbing expertise.
-    </p>
-  </div>
-
-  <div class="location-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
-    
-    <!-- Address Card -->
-    <div class="location-card" style="background: var(--card-bg); border-radius: 20px; padding: 2rem; border: 1px solid rgba(245, 158, 11, 0.15);">
-      <i class="fas fa-building" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem; display: block;"></i>
-      <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--text);">Our Office</h3>
-      <p style="color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6;">
-        📍 13 Gold Street, Melville<br>
-        Florida, Johannesburg 2092<br>
-        Gauteng, South Africa
-      </p>
-      <a href="https://wa.me/27712311207?text=Hi,%20I%20need%20service%20at%20my%20location%20in%20Johannesburg." class="whatsapp-btn" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; background: var(--whatsapp); color: white; text-decoration: none; padding: 0.9rem 1.5rem; border-radius: 12px; font-weight: 600; transition: var(--transition); width: 100%; text-align: center;">
-        <i class="fab fa-whatsapp"></i> WhatsApp for Directions
-      </a>
+<!-- Compliance -->
+<section class="compliance-section" id="compliance" data-theme="electrical">
+    <div class="compliance-header" style="text-align: center; margin-bottom: 3rem;">
+        <h2 style="font-size: 2.2rem; color: var(--elec-amber); margin-bottom: 1rem;">
+            <i class="fas fa-certificate"></i> Compliance Certificates
+        </h2>
+        <p style="color: var(--text-muted); max-width: 800px; margin: 0 auto; font-size: 1.1rem;">
+            All our work is certified and compliant with South African safety standards.
+        </p>
     </div>
-
-    <!-- Map Card -->
-    <div class="map-card" style="background: var(--card-bg); border-radius: 20px; padding: 1rem; border: 1px solid rgba(245, 158, 11, 0.15);">
-      <div style="width: 100%; height: 250px; border-radius: 12px; overflow: hidden; margin-bottom: 1rem;">
-        <iframe 
-          width="100%" 
-          height="100%" 
-          frameborder="0" 
-          style="border:0; border-radius: 12px;" 
-          loading="lazy" 
-          allowfullscreen
-          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAJJo3cBt8sDzidcu7-PiZ4sIXwAC6kfvk&q=-26.1783545,27.9783277&center=-26.1783545,27.9783277&zoom=14">
-        </iframe>
-      </div>
-      <a href="https://maps.google.com/?q=-26.1783545,27.9783277" target="_blank" style="display: block; text-align: center; color: var(--accent); text-decoration: none; font-weight: 500;">
-        <i class="fas fa-external-link-alt"></i> Open in Google Maps
-      </a>
+    <div class="coc-grid">
+        <!-- Electrical CoC -->
+        <div class="coc-card">
+            <i class="fas fa-bolt" style="font-size: 3rem; color: var(--elec-amber); margin-bottom: 1.5rem;"></i>
+            <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Electrical CoC</h3>
+            <ul style="list-style: none; color: var(--text-muted);">
+                <li style="padding: 0.5rem 0;">📋 Wiring & connections from supply</li>
+                <li style="padding: 0.5rem 0;">📋 Distribution boards & earthing</li>
+                <li style="padding: 0.5rem 0;">📋 Valid for 2 years</li>
+            </ul>
+        </div>
+        <!-- Plumbing CoC -->
+        <div class="coc-card" id="plumbing-coc">
+            <i class="fas fa-faucet" style="font-size: 3rem; color: var(--plumb-cyan); margin-bottom: 1.5rem;"></i>
+            <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Plumbing CoC</h3>
+            <ul style="list-style: none; color: var(--text-muted);">
+                <li style="padding: 0.5rem 0;">📋 Geyser & hot water installation</li>
+                <li style="padding: 0.5rem 0;">📋 Water meter & stormwater</li>
+                <li style="padding: 0.5rem 0;">📋 Required for property sales</li>
+            </ul>
+        </div>
     </div>
-
-  </div>
-
-  <!-- Service Areas -->
-  <div style="max-width: 900px; margin: 3rem auto 0; background: rgba(245, 158, 11, 0.1); border-radius: 16px; padding: 1.5rem; border-left: 4px solid var(--accent);">
-    <h4 style="color: var(--accent); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-      <i class="fas fa-city"></i> Areas We Serve
-    </h4>
-    <p style="color: var(--text-muted); margin-bottom: 1rem;">
-      <strong>Primary Service Areas:</strong> Johannesburg, Pretoria, Melville, Florida, Gauteng Province
-    </p>
-    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-      <span style="background: rgba(245, 158, 11, 0.2); color: var(--accent); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem;">Sandton</span>
-      <span style="background: rgba(245, 158, 11, 0.2); color: var(--accent); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem;">Randburg</span>
-      <span style="background: rgba(245, 158, 11, 0.2); color: var(--accent); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem;">Fourways</span>
-      <span style="background: rgba(245, 158, 11, 0.2); color: var(--accent); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem;">Bryanston</span>
-      <span style="background: rgba(245, 158, 11, 0.2); color: var(--accent); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem;">Roodepoort</span>
-      <span style="background: rgba(245, 158, 11, 0.2); color: var(--accent); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem;">Bedfordview</span>
-      <span style="background: rgba(245, 158, 11, 0.2); color: var(--accent); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem;">Edenvale</span>
-      <span style="background: rgba(245, 158, 11, 0.2); color: var(--accent); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem;">Germiston</span>
-      <span style="background: rgba(245, 158, 11, 0.2); color: var(--accent); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem;">Boksburg</span>
-      <span style="background: rgba(245, 158, 11, 0.2); color: var(--accent); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem;">Benoni</span>
-      <span style="background: rgba(245, 158, 11, 0.2); color: var(--accent); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem;">Alberton</span>
-      <span style="background: rgba(245, 158, 11, 0.2); color: var(--accent); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem;">Soweto</span>
-      <span style="background: rgba(245, 158, 11, 0.2); color: var(--accent); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem;">JHB CBD</span>
-    </div>
-    <p style="color: var(--text-muted); margin-top: 1rem; font-size: 0.95rem;">
-      🚐 <strong>Mobile Service:</strong> We come to you! Available 24/7 for emergencies across all listed areas.
-    </p>
-  </div>
-
-  <!-- Call to Action -->
-  <div style="text-align: center; margin-top: 2.5rem;">
-    <a href="tel:+27712311207" class="emergency-btn" style="display: inline-flex; align-items: center; gap: 0.75rem; background: var(--emergency); color: white; padding: 1rem 2.5rem; border-radius: 50px; font-weight: 700; text-decoration: none; transition: var(--transition); box-shadow: 0 5px 20px rgba(220, 38, 38, 0.4);">
-      <i class="fas fa-phone-alt"></i> Call Now: 071 231 1207
-    </a>
-    <p style="color: var(--text-muted); margin-top: 1rem; font-size: 0.95rem;">
-      🕐 Available 24 hours a day, 7 days a week for emergency call-outs
-    </p>
-  </div>
 </section>
 
-  <!-- Why Choose Us -->
-  <section class="features">
+<!-- Location -->
+<section class="location-section" id="location" data-theme="plumbing">
+    <div class="location-header" style="text-align: center; margin-bottom: 3rem;">
+        <h2 style="font-size: 2.2rem; color: var(--plumb-azure); margin-bottom: 1rem;">
+            <i class="fas fa-map-marker-alt"></i> Service Location
+        </h2>
+        <p style="color: var(--text-muted); max-width: 700px; margin: 0 auto; font-size: 1.1rem;">
+            Serving Johannesburg, Pretoria & surrounding Gauteng areas.
+        </p>
+    </div>
+    <div class="location-grid">
+        <div class="location-card">
+            <i class="fas fa-building" style="font-size: 2.5rem; color: var(--elec-amber); margin-bottom: 1rem;"></i>
+            <h3 style="font-size: 1.3rem; margin-bottom: 1rem;">Our Office</h3>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+                📍 13 Gold Street, Melville<br>Florida, Johannesburg 2092
+            </p>
+            <a href="https://wa.me/27712311207" class="whatsapp-btn particle-target-electrical">
+                <i class="fab fa-whatsapp"></i> <span>WhatsApp Directions</span>
+            </a>
+        </div>
+        <div class="map-card">
+            <div style="width: 100%; height: 250px; border-radius: 12px; overflow: hidden; margin-bottom: 1rem;">
+                <iframe width="100%" height="100%" frameborder="0" style="border:0; border-radius: 12px;" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAJJo3cBt8sDzidcu7-PiZ4sIXwAC6kfvk&q=-26.1783545,27.9783277&center=-26.1783545,27.9783277&zoom=14"></iframe>
+            </div>
+            <a href="https://maps.google.com/?q=-26.1783545,27.9783277" target="_blank" style="display: block; text-align: center; color: var(--elec-amber); text-decoration: none;">
+                <i class="fas fa-external-link-alt"></i> Open in Google Maps
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="features" data-theme="electrical">
     <h2 class="section-title">Why Choose 24/7 Care?</h2>
     <div class="features-grid">
-      <div class="feature-item">
-        <i class="fas fa-certificate"></i>
-        <h4>Fully Licensed</h4>
-        <p>All technicians certified. CoC issued for every job.</p>
-      </div>
-      <div class="feature-item">
-        <i class="fas fa-clock"></i>
-        <h4>24/7 Availability</h4>
-        <p>Emergencies don't wait. Neither do we. Call anytime.</p>
-      </div>
-      <div class="feature-item">
-        <i class="fas fa-shield-alt"></i>
-        <h4>Safety First</h4>
-        <p>Strict adherence to national health & safety standards.</p>
-      </div>
-      <div class="feature-item">
-        <i class="fas fa-medal"></i>
-        <h4>20+ Years Experience</h4>
-        <p>Trusted by homes & businesses across Gauteng since 2003.</p>
-      </div>
+        <div class="feature-item">
+            <i class="fas fa-certificate"></i>
+            <h4>Fully Licensed</h4>
+            <p>All technicians certified. CoC issued.</p>
+        </div>
+        <div class="feature-item">
+            <i class="fas fa-clock"></i>
+            <h4>24/7 Availability</h4>
+            <p>Emergencies don't wait. Neither do we.</p>
+        </div>
+        <div class="feature-item">
+            <i class="fas fa-shield-alt"></i>
+            <h4>Safety First</h4>
+            <p>Strict adherence to national standards.</p>
+        </div>
+        <div class="feature-item">
+            <i class="fas fa-medal"></i>
+            <h4>20+ Years Experience</h4>
+            <p>Trusted by homes & businesses since 2003.</p>
+        </div>
     </div>
-  </section>
+</section>
 
-  <!-- Footer -->
-  <footer>
+<!-- Footer -->
+<footer>
     <p><strong>24/7 Care Electrical and Plumbing</strong></p>
     <p>📍 Johannesburg • Pretoria • Melville • Gauteng</p>
     <p>📞 <a href="tel:+27712311207">+27 71 231 1207</a> | 💬 <a href="https://wa.me/27712311207">WhatsApp Us</a></p>
     <p>© <span id="year"></span> 24/7 Care. All Rights Reserved. | CoC Certified | Fully Insured</p>
-  </footer>
+</footer>
 
-  <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/27712311207?text=Hi%2C%20I%20need%20assistance%20with%20Electrical%20or%20Plumbing%20services%20in%20Johannesburg." class="float-wa" target="_blank" aria-label="WhatsApp Us">
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/27712311207" class="float-wa particle-target-electrical" target="_blank" aria-label="WhatsApp Us">
     <i class="fab fa-whatsapp"></i>
-  </a>
+</a>
 
-  <!-- AI Chat Widget -->
-  <div class="chat-widget">
+<!-- AI Chat Widget -->
+<div class="chat-widget">
     <div class="chat-window" id="chatWindow">
-      <div class="chat-header">
-        <h4><i class="fas fa-robot"></i> AI Assistant</h4>
-        <button class="chat-close" id="chatClose">&times;</button>
-      </div>
-      <div class="chat-body" id="chatBody">
-        <div class="chat-msg bot-msg">
-          👋 Hello! I'm the 24/7 Care AI assistant. How can I help you today?<br><br>
-          <small>Try asking: "burst pipe", "solar quote", "CoC certificate", "emergency electrician"</small>
+        <div class="chat-header">
+            <h4><i class="fas fa-robot"></i> AI Assistant</h4>
+            <button class="chat-close" id="chatClose">&times;</button>
         </div>
-      </div>
-      <div class="chat-input">
-        <input type="text" id="chatInput" placeholder="Type your question..." aria-label="Chat message">
-        <button id="chatSend" aria-label="Send message"><i class="fas fa-paper-plane"></i></button>
-      </div>
+        <div class="chat-body" id="chatBody">
+            <div class="chat-msg bot-msg">
+                👋 Hello! I'm the 24/7 Care AI assistant. How can I help you today?
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Type your question..." aria-label="Chat message">
+            <button id="chatSend" aria-label="Send message"><i class="fas fa-paper-plane"></i></button>
+        </div>
     </div>
     <div class="chat-toggle" id="chatToggle" aria-label="Open AI Chat">
-      <i class="fas fa-comments"></i>
+        <i class="fas fa-comments"></i>
     </div>
-  </div>
+</div>
 
-  <script>
-    // === ELECTRICAL ANIMATION GENERATOR ===
-    function initElectricalEffects() {
-      const bg = document.getElementById('electricalBg');
-      
-      // Create lightning bolts
-      for (let i = 0; i < 8; i++) {
+<script>
+// === DUAL-ELEMENTAL BACKGROUND SYSTEM ===
+const body = document.body;
+const bgElectrical = document.getElementById('bgElectrical');
+const bgWater = document.getElementById('bgWater');
+
+// Initialize Electrical Background
+function initElectricalBg() {
+    for (let i = 0; i < 8; i++) {
         const bolt = document.createElement('div');
         bolt.className = 'lightning-bolt';
         bolt.style.left = `${Math.random() * 100}%`;
         bolt.style.top = `${Math.random() * 100}%`;
         bolt.style.animationDelay = `${Math.random() * 3}s`;
         bolt.style.height = `${40 + Math.random() * 80}px`;
-        bg.appendChild(bolt);
-      }
-      
-      // Create sparks on click/tap
-      document.addEventListener('click', (e) => {
-        if (e.target.closest('.service-card') || e.target.closest('.whatsapp-btn')) {
-          for (let i = 0; i < 6; i++) {
-            const spark = document.createElement('div');
-            spark.className = 'spark';
-            spark.style.left = `${e.clientX}px`;
-            spark.style.top = `${e.clientY}px`;
-            spark.style.setProperty('--tx', `${(Math.random() - 0.5) * 100}px`);
-            spark.style.setProperty('--ty', `${(Math.random() - 0.5) * 100}px`);
-            spark.style.animationDelay = `${i * 0.1}s`;
-            bg.appendChild(spark);
-            setTimeout(() => spark.remove(), 1500);
-          }
-        }
-      });
+        bgElectrical.appendChild(bolt);
     }
+}
 
-    // === HAMBURGER MENU ===
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('navMenu');
-    
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navMenu.classList.toggle('active');
+// Initialize Water Background
+function initWaterBg() {
+    // Bubbles
+    for (let i = 0; i < 15; i++) {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        const size = 10 + Math.random() * 30;
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+        bubble.style.left = `${Math.random() * 100}%`;
+        bubble.style.animationDelay = `${Math.random() * 5}s`;
+        bubble.style.animationDuration = `${10 + Math.random() * 10}s`;
+        bubble.style.setProperty('--drift', `${(Math.random() - 0.5) * 100}px`);
+        bgWater.appendChild(bubble);
+    }
+    // Ripples
+    for (let i = 0; i < 3; i++) {
+        const ripple = document.createElement('div');
+        ripple.className = 'ripple';
+        ripple.style.left = `${Math.random() * 100}%`;
+        ripple.style.top = `${Math.random() * 100}%`;
+        ripple.style.animationDelay = `${i * 1.5}s`;
+        bgWater.appendChild(ripple);
+    }
+}
+
+// === INTERSECTION OBSERVER FOR THEME SWITCHING ===
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.5
+};
+
+const themeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const theme = entry.target.getAttribute('data-theme');
+            if (theme) {
+                if (theme === 'electrical') {
+                    body.classList.remove('mode-plumbing');
+                    body.classList.add('mode-electrical');
+                } else if (theme === 'plumbing') {
+                    body.classList.remove('mode-electrical');
+                    body.classList.add('mode-plumbing');
+                }
+            }
+        }
     });
+}, observerOptions);
+
+// Observe all sections with data-theme
+document.querySelectorAll('[data-theme]').forEach(section => {
+    themeObserver.observe(section);
+});
+
+// === PARTICLE SYSTEM (SPARKS & SPLASHES) ===
+function createParticle(x, y, type) {
+    const particle = document.createElement('div');
+    particle.style.left = `${x}px`;
+    particle.style.top = `${y}px`;
     
-    // Close menu when clicking a link
-    document.querySelectorAll('#navMenu a').forEach(link => {
-      link.addEventListener('click', () => {
+    if (type === 'electrical') {
+        particle.className = 'spark-particle';
+        particle.style.setProperty('--tx', `${(Math.random() - 0.5) * 100}px`);
+        particle.style.setProperty('--ty', `${(Math.random() - 0.5) * 100}px`);
+    } else {
+        particle.className = 'splash-particle';
+        particle.style.setProperty('--tx', `${(Math.random() - 0.5) * 80}px`);
+        particle.style.setProperty('--ty', `${(Math.random() * 100) + 50}px`); // Downward splash
+    }
+    
+    document.body.appendChild(particle);
+    setTimeout(() => particle.remove(), 1000);
+}
+
+// Attach Click Listeners
+document.querySelectorAll('.particle-target-electrical').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        for(let i=0; i<8; i++) {
+            createParticle(e.clientX, e.clientY, 'electrical');
+        }
+    });
+});
+
+document.querySelectorAll('.particle-target-plumbing').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        for(let i=0; i<8; i++) {
+            createParticle(e.clientX, e.clientY, 'plumbing');
+        }
+    });
+});
+
+// === HAMBURGER MENU ===
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
+document.querySelectorAll('#navMenu a').forEach(link => {
+    link.addEventListener('click', () => {
         hamburger.classList.remove('active');
         navMenu.classList.remove('active');
-      });
     });
+});
 
-    // === AI CHAT WIDGET ===
-    const chatToggle = document.getElementById('chatToggle');
-    const chatWindow = document.getElementById('chatWindow');
-    const chatClose = document.getElementById('chatClose');
-    const chatInput = document.getElementById('chatInput');
-    const chatSend = document.getElementById('chatSend');
-    const chatBody = document.getElementById('chatBody');
+// === AI CHAT WIDGET ===
+const chatToggle = document.getElementById('chatToggle');
+const chatWindow = document.getElementById('chatWindow');
+const chatClose = document.getElementById('chatClose');
+const chatInput = document.getElementById('chatInput');
+const chatSend = document.getElementById('chatSend');
+const chatBody = document.getElementById('chatBody');
 
-    function toggleChat() {
-      chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
-      if (chatWindow.style.display === 'flex') chatInput.focus();
-    }
+function toggleChat() {
+    chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
+    if (chatWindow.style.display === 'flex') chatInput.focus();
+}
+chatToggle.addEventListener('click', toggleChat);
+chatClose.addEventListener('click', toggleChat);
 
-    chatToggle.addEventListener('click', toggleChat);
-    chatClose.addEventListener('click', toggleChat);
+function addMessage(text, isUser = false) {
+    const msg = document.createElement('div');
+    msg.className = `chat-msg ${isUser ? 'user-msg' : 'bot-msg'}`;
+    msg.textContent = text;
+    chatBody.appendChild(msg);
+    chatBody.scrollTop = chatBody.scrollHeight;
+}
 
-    function addMessage(text, isUser = false) {
-      const msg = document.createElement('div');
-      msg.className = `chat-msg ${isUser ? 'user-msg' : 'bot-msg'}`;
-      msg.textContent = text;
-      chatBody.appendChild(msg);
-      chatBody.scrollTop = chatBody.scrollHeight;
-    }
+function getAIResponse(query) {
+    const q = query.toLowerCase();
+    if (q.includes('plumb') || q.includes('leak')) return "🔧 For plumbing emergencies, our team is available 24/7. Connect via WhatsApp?";
+    if (q.includes('electric') || q.includes('light')) return "⚡ Our licensed electricians handle all electrical work. What do you need?";
+    if (q.includes('solar')) return "☀️ Beat loadshedding with our solar solutions! I can arrange a free quote.";
+    return "🤔 For fastest help: WhatsApp wa.me/27712311207 or Call +27 71 231 1207";
+}
 
-    function getAIResponse(query) {
-      const q = query.toLowerCase();
-      if (q.includes('plumb') || q.includes('leak') || q.includes('geyser') || q.includes('burst')) {
-        return "🔧 For plumbing emergencies (burst pipes, leaks, blocked drains), our team is available 24/7 in Johannesburg. Would you like me to connect you via WhatsApp now?";
-      } else if (q.includes('electric') || q.includes('light') || q.includes('power') || q.includes('coc')) {
-        return "⚡ Our licensed electricians handle residential, commercial & industrial electrical work. All jobs include a Certificate of Compliance (CoC). What type of electrical service do you need?";
-      } else if (q.includes('solar') || q.includes('loadshed') || q.includes('inverter') || q.includes('battery')) {
-        return "☀️ Beat loadshedding with our solar solutions! We install panels, inverters & batteries for homes & businesses in Gauteng. I can arrange a free quote. Interested?";
-      } else if (q.includes('price') || q.includes('cost') || q.includes('quote')) {
-        return "💰 Pricing depends on the job scope. For an accurate quote, please describe your issue on WhatsApp or call us directly at +27 71 231 1207.";
-      } else if (q.includes('emergency') || q.includes('urgent') || q.includes('now')) {
-        return "🚨 For immediate assistance, please WhatsApp us now or call +27 71 231 1207. Our team responds within minutes for emergencies in Johannesburg & Pretoria.";
-      } else if (q.includes('hello') || q.includes('hi') || q === '') {
-        return "👋 Hello! I can help with:\n• Electrical emergencies\n• Plumbing repairs\n• Solar installations\n• CoC certificates\n\nWhat do you need today?";
-      }
-      return "🤔 I'm still learning! For fastest help:\n1️⃣ WhatsApp us: wa.me/27712311207\n2️⃣ Call: +27 71 231 1207\n3️⃣ Try keywords: 'plumbing', 'solar', 'CoC'";
-    }
-
-    function sendMessage() {
-      const text = chatInput.value.trim();
-      if (!text) return;
-      
-      addMessage(text, true);
-      chatInput.value = '';
-      
-      // Simulate AI thinking
-      setTimeout(() => {
+function sendMessage() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+    addMessage(text, true);
+    chatInput.value = '';
+    setTimeout(() => {
         addMessage(getAIResponse(text));
-      }, 600);
-    }
+    }, 600);
+}
+chatSend.addEventListener('click', sendMessage);
+chatInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') sendMessage();
+});
 
-    chatSend.addEventListener('click', sendMessage);
-    chatInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') sendMessage();
-    });
+// === FOOTER YEAR ===
+document.getElementById('year').textContent = new Date().getFullYear();
 
-    // === AI SEARCH BAR ===
-    const aiInput = document.getElementById('aiInput');
-    aiInput.addEventListener('input', (e) => {
-      const val = e.target.value.toLowerCase();
-      if (val.includes('plumb') || val.includes('leak')) {
-        window.location.href = '#plumbing';
-      } else if (val.includes('solar') || val.includes('loadshed')) {
-        window.location.href = '#solar';
-      } else if (val.includes('residential') || val.includes('home')) {
-        window.location.href = '#residential';
-      } else if (val.includes('commercial') || val.includes('business')) {
-        window.location.href = '#commercial';
-      } else if (val.includes('industrial')) {
-        window.location.href = '#industrial';
-      }
-    });
-
-    // === FOOTER YEAR ===
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // === INIT ===
-    document.addEventListener('DOMContentLoaded', () => {
-      initElectricalEffects();
-      
-      // Smooth scroll for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+// === INIT ===
+document.addEventListener('DOMContentLoaded', () => {
+    initElectricalBg();
+    initWaterBg();
+    
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            e.preventDefault();
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         });
-      });
     });
-  </script>
+});
+</script>
 </body>
 </html>
