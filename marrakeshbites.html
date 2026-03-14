@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marrakeshi Bites | Authentic Moroccan Delights</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+    <style>
+        /* === BRAND VARIABLES === */
+        :root {
+            --primary: #6A4C93;       /* Deep Purple */
+            --secondary: #D4AF37;     /* Gold */
+            --accent: #98FF98;        /* Mint Green */
+            --bg-light: #FFF8E7;      /* Cream */
+            --text-dark: #333333;     /* Charcoal */
+            --white: #ffffff;
+            --shadow: 0 4px 15px rgba(106, 76, 147, 0.15);
+        }
+
+        /* === GLOBAL RESET === */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 { font-weight: 700; }
+        .script-font { font-family: 'Great Vibes', cursive; }
+
+        /* === HEADER & NAVIGATION === */
+        header {
+            background: linear-gradient(135deg, var(--primary), #4a3b6e);
+            color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .header-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            color: var(--secondary);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Hamburger Button */
+        .hamburger-btn {
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            z-index: 2002;
+        }
+
+        .hamburger-btn span {
+            width: 25px;
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-btn.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+        .hamburger-btn.active span:nth-child(2) { opacity: 0; }
+        .hamburger-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+
+        /* Cart Button */
+        .cart-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--secondary);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .cart-btn:hover { background: var(--secondary); color: var(--primary); }
+        .cart-count { background: var(--accent); color: var(--text-dark); padding: 2px 6px; border-radius: 50%; font-size: 12px; font-weight: bold; }
+
+        /* AI Search Bar */
+        .ai-search-bar-container {
+            background: rgba(0,0,0,0.2);
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        #aiProductSearchInput {
+            width: 100%;
+            max-width: 600px;
+            padding: 10px 15px;
+            border-radius: 25px;
+            border: 2px solid var(--secondary);
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Side Menu Overlay */
+        .menu-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100vh;
+            background: rgba(0,0,0,0.6);
+            z-index: 1999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        .menu-overlay.active { opacity: 1; visibility: visible; }
+
+        .side-menu {
+            position: fixed;
+            top: 0; left: -300px;
+            width: 280px;
+            height: 100vh;
+            background: var(--white);
+            z-index: 2000;
+            transition: left 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 4px 0 20px rgba(0,0,0,0.2);
+        }
+        .side-menu.active { left: 0; }
+
+        .menu-header {
+            background: var(--primary);
+            color: var(--white);
+            padding: 20px;
+            text-align: center;
+        }
+        .menu-header h2 { color: var(--secondary); font-family: 'Great Vibes', cursive; font-size: 32px; }
+
+        .menu-items { flex: 1; overflow-y: auto; }
+        .menu-link {
+            display: block;
+            padding: 15px 20px;
+            color: var(--text-dark);
+            text-decoration: none;
+            border-bottom: 1px solid #eee;
+            transition: 0.3s;
+        }
+        .menu-link:hover { background: var(--bg-light); color: var(--primary); padding-left: 25px; }
+        .menu-link i { width: 25px; color: var(--secondary); }
+
+        /* === SLIDER SECTION === */
+        .slider-section {
+            padding: 20px 0;
+            background: var(--white);
+        }
+        .swiper {
+            width: 100%;
+            max-width: 1200px;
+            height: 400px;
+            margin: auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        .swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
+        .swiper-pagination-bullet-active { background: var(--primary) !important; }
+
+        /* === PRODUCT GRID SYSTEM === */
+        .content-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 30px;
+            font-family: 'Great Vibes', cursive;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary);
+            margin: 5px auto 0;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(106, 76, 147, 0.2);
+            border-color: var(--secondary);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: #f9f9f9;
+        }
+
+        .product-info {
+            padding: 15px;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .product-price {
+            font-size: 18px;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .add-to-cart-btn {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .add-to-cart-btn:hover {
+            background: var(--secondary);
+            color: var(--text-dark);
+        }
+
+        /* === MODALS (Business, Product, Cart) === */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: var(--white);
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 15px;
+            position: relative;
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        .close-modal {
+            position: absolute;
+            top: 15px; right: 15px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            width: 35px; height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            z-index: 10;
+        }
+
+        /* Business Modal Specifics */
+        .business-hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .business-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .info-box {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        /* Cart Modal Specifics */
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .cart-item img { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; margin-right: 15px; }
+        .cart-details { flex: 1; }
+        .qty-controls button {
+            background: #eee; border: none; width: 25px; height: 25px; cursor: pointer;
+        }
+        .checkout-btn {
+            background: #25d366; /* WhatsApp Green */
+            color: white;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* === FLOATING BUTTONS === */
+        .floating-contact {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1500;
+        }
+        .float-btn {
+            width: 55px; height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: transform 0.3s;
+            text-decoration: none;
+        }
+        .float-btn:hover { transform: scale(1.1); }
+        .wa-float { background: #25d366; }
+        .email-float { background: var(--primary); }
+
+        /* === AI CHAT WIDGET === */
+        .ai-chat-widget {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 60px; height: 60px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1500;
+            border: 2px solid var(--white);
+        }
+        .ai-chat-widget img { width: 35px; height: 35px; border-radius: 50%; }
+        
+        .ai-chat-panel {
+            display: none;
+            position: fixed;
+            bottom: 160px;
+            right: 20px;
+            width: 320px;
+            height: 450px;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 1500;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid var(--secondary);
+        }
+        .ai-header {
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .ai-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background: #f9f9f9;
+        }
+        .ai-message { margin-bottom: 10px; padding: 8px 12px; border-radius: 10px; font-size: 14px; max-width: 85%; }
+        .bot-msg { background: var(--bg-light); color: var(--text-dark); border-bottom-left-radius: 0; }
+        .user-msg { background: var(--primary); color: white; margin-left: auto; border-bottom-right-radius: 0; }
+        .ai-input-area {
+            padding: 10px;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 5px;
+        }
+        .ai-input-area input { flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 20px; outline: none; }
+        .ai-send-btn { background: var(--secondary); border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; color: var(--text-dark); }
+
+        /* === FOOTER === */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        .footer-logo { font-family: 'Great Vibes', cursive; font-size: 30px; color: var(--secondary); margin-bottom: 10px; }
+        .social-icons a { color: var(--white); margin: 0 10px; font-size: 20px; transition: 0.3s; }
+        .social-icons a:hover { color: var(--secondary); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo-text { font-size: 18px; }
+            .section-title { font-size: 28px; }
+            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .product-image { height: 150px; }
+            .swiper { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-top-row">
+            <button class="hamburger-btn" id="hamburgerBtn">
+                <span></span><span></span><span></span>
+            </button>
+            <!-- START HIVE TIMES BADGE (YELLOW EDITION) -->
+<style>
+  /* Badge Container */
+  .hive-badge-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFD700; /* Bright Honey Yellow */
+    border: 2px solid #E5C100; /* Slightly darker yellow border */
+    border-radius: 50px; /* Pill shape */
+    padding: 6px 14px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* The Honeycomb Icon (SVG) */
+  .hive-icon-svg {
+    width: 18px;
+    height: 18px;
+    fill: #000000; /* Black icon for contrast against yellow */
+    margin-right: 8px;
+    transition: transform 0.3s ease;
+  }
+
+  /* Text Container */
+  .hive-text-group {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  /* Main Text */
+  .hive-text {
+    color: #000000; /* Black text for readability */
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Sub Text */
+  .hive-subtext {
+    font-size: 9px;
+    font-weight: 600;
+    color: #333333;
+    text-transform: uppercase;
+  }
+
+  /* Hover Effects */
+  .hive-badge-link:hover {
+    background-color: #E5C100; /* Darker yellow on hover */
+    border-color: #C9A900;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  .hive-badge-link:hover .hive-icon-svg {
+    transform: scale(1.1); /* Icon grows slightly */
+  }
+
+  /* Mobile Adjustments */
+  @media (max-width: 480px) {
+    .hive-badge-link {
+      padding: 5px 10px;
+    }
+    .hive-icon-svg {
+      width: 16px;
+      height: 16px;
+      margin-right: 6px;
+    }
+    .hive-text {
+      font-size: 11px;
+    }
+    .hive-subtext {
+      font-size: 8px;
+      /* Keep subtext on mobile but ensure it fits */
+    }
+  }
+</style>
+
+<!-- The Link -->
+<a href="https://hivetimes.co.za" class="hive-badge-link" target="_blank" rel="noopener" title="Visit Hive Times">
+  
+  <!-- Honeycomb SVG Icon -->
+  <svg class="hive-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2L14.5 6.5L19 6.5L16.5 11L19 15.5L14.5 15.5L12 20L9.5 15.5L5 15.5L7.5 11L5 6.5L9.5 6.5L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
+    <path d="M12 7L13.5 9.5L16 9.5L14.5 12L16 14.5L13.5 14.5L12 17L10.5 14.5L8 14.5L9.5 12L8 9.5L10.5 9.5L12 7Z" fill="currentColor"/>
+  </svg>
+
+  <div class="hive-text-group">
+    <span class="hive-text">HIVE</span>
+    <span class="hive-subtext">Member</span>
+  </div>
+
+</a>
+<!-- END HIVE TIMES BADGE -->
+            
+            <div class="logo-container">
+                <!-- Placeholder for Logo Image -->
+                <i class="fas fa-cookie-bite" style="font-size: 30px; color: var(--secondary);"></i>
+                <div class="logo-text">Marrakeshi Bites</div>
+            </div>
+
+            <button class="cart-btn" onclick="openCart()">
+                <i class="fas fa-shopping-basket"></i> 
+                Cart <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </div>
+        
+        <!-- AI Search -->
+        <div class="ai-search-bar-container">
+            <input type="text" id="aiProductSearchInput" placeholder="Search biscuits, under R100, harcha...">
+        </div>
+    </header>
+
+    <!-- Side Menu -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <nav class="side-menu" id="sideMenu">
+        <div class="menu-header">
+            <h2>Marrakeshi Bites</h2>
+            <p>Authentic Homemade Delights</p>
+        </div>
+        <div class="menu-items">
+            <a href="#" class="menu-link" onclick="toggleMenu()"><i class="fas fa-home"></i> Home</a>
+            <a href="#biscuits" class="menu-link" onclick="toggleMenu()"><i class="fas fa-cookie"></i> Biscuits</a>
+            <a href="#harcha" class="menu-link" onclick="toggleMenu()"><i class="fas fa-circle"></i> Filled Harcha</a>
+            <a href="#flatbreads" class="menu-link" onclick="toggleMenu()"><i class="fas fa-layer-group"></i> Flatbreads</a>
+            <a href="#breakfast" class="menu-link" onclick="toggleMenu()"><i class="fas fa-coffee"></i> Breakfast Boxes</a>
+            <a href="#" class="menu-link" onclick="showBusinessModal(); toggleMenu()"><i class="fas fa-info-circle"></i> About Us</a>
+            <a href="mailto:orders@marrakeshibites.co.za" class="menu-link"><i class="fas fa-envelope"></i> Contact</a>
+        </div>
+    </nav>
+
+    <!-- Slider Section -->
+    <div class="slider-section">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <!-- Slide 1 -->
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1598155523122-38423bb4d6c1?q=80&w=1000&auto=format&fit=crop" alt="Moroccan Biscuits">
+                </div>
+                <!-- Slide 2 -->
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1628198756849-2e5342428643?q=80&w=1000&auto=format&fit=crop" alt="Msemen">
+                </div>
+                <!-- Slide 3 -->
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1589119908995-c6837fa14848?q=80&w=1000&auto=format&fit=crop" alt="Tea Time">
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- BISCUITS SECTION -->
+        <section id="biscuits" class="content-section">
+            <h2 class="section-title">Moroccan Homemade Biscuits</h2>
+            <div class="products-grid" id="grid-biscuits">
+                <!-- Products injected via JS -->
+            </div>
+        </section>
+
+        <!-- FILLED HARCHA SECTION -->
+        <section id="harcha" class="content-section">
+            <h2 class="section-title">Filled Harcha Collection</h2>
+            <div class="products-grid" id="grid-harcha"></div>
+        </section>
+
+        <!-- FLATBREADS SECTION -->
+        <section id="flatbreads" class="content-section">
+            <h2 class="section-title">Fresh Flatbreads</h2>
+            <div class="products-grid" id="grid-flatbreads"></div>
+        </section>
+
+         <!-- FILLED FLATBREADS SECTION -->
+         <section id="filled-flatbreads" class="content-section">
+            <h2 class="section-title">Filled Msemen Specials</h2>
+            <div class="products-grid" id="grid-filled-flatbreads"></div>
+        </section>
+
+    </main>
+
+    <!-- Floating Buttons -->
+    <div class="floating-contact">
+        <a href="https://wa.me/27123456789" class="float-btn wa-float"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:orders@marrakeshibites.co.za" class="float-btn email-float"><i class="fas fa-envelope"></i></a>
+    </div>
+
+    <!-- AI Chat Widget -->
+    <div class="ai-chat-widget" id="aiChatWidget">
+        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="AI Assistant">
+    </div>
+    <div class="ai-chat-panel" id="aiChatPanel">
+        <div class="ai-header">
+            <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" style="width:30px;height:30px;border-radius:50%;">
+            <span>Marrakeshi Assistant</span>
+            <button onclick="toggleChat()" style="margin-left:auto;background:none;border:none;color:white;font-size:20px;cursor:pointer;">&times;</button>
+        </div>
+        <div class="ai-messages" id="chatMessages">
+            <div class="ai-message bot-msg">Marhaba! 👋 How can I help you order today?</div>
+        </div>
+        <div class="ai-input-area">
+            <input type="text" id="chatInput" placeholder="Ask about prices or delivery...">
+            <button class="ai-send-btn" onclick="sendChat()"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    
+    <!-- Business Info Modal -->
+    <div class="modal-overlay" id="businessModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('businessModal')">&times;</button>
+            <div class="business-hero">
+                <h1 style="font-family:'Great Vibes'; font-size:40px;">Marrakeshi Bites</h1>
+                <p>Authentic Moroccan Homemade Delights in South Africa</p>
+            </div>
+            <div class="business-grid">
+                <div class="info-box">
+                    <h3><i class="fas fa-store"></i> About Us</h3>
+                    <p>We bring the taste of Marrakesh to your table. All our biscuits, harcha, and msemen are handmade daily using traditional family recipes and premium ingredients like pure butter, almonds, and honey.</p>
+                </div>
+                <div class="info-box">
+                    <h3><i class="fas fa-clock"></i> Opening Hours</h3>
+                    <ul>
+                        <li>Mon - Fri: 08:00 - 17:00</li>
+                        <li>Sat: 09:00 - 13:00</li>
+                        <li>Sun: Closed</li>
+                    </ul>
+                </div>
+                <div class="info-box">
+                    <h3><i class="fas fa-map-marker-alt"></i> Contact</h3>
+                    <p><strong>Phone:</strong> +27 123 456 789</p>
+                    <p><strong>Email:</strong> orders@marrakeshibites.co.za</p>
+                    <p><strong>Location:</strong> Johannesburg, Gauteng (Delivery Nationwide)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal-content" style="max-width: 600px;">
+            <button class="close-modal" onclick="closeModal('productModal')">&times;</button>
+            <div style="padding: 20px;">
+                <img id="modalImg" src="" style="width:100%; height:300px; object-fit:cover; border-radius:10px; margin-bottom:15px;">
+                <h2 id="modalTitle" style="color:var(--primary); font-family:'Great Vibes'; font-size:32px;"></h2>
+                <p id="modalPrice" style="font-size:24px; color:var(--secondary); font-weight:bold; margin:10px 0;"></p>
+                <p id="modalDesc" style="color:#666; margin-bottom:20px;"></p>
+                
+                <div style="display:flex; gap:10px; align-items:center; margin-bottom:20px;">
+                    <span>Quantity:</span>
+                    <button onclick="adjustModalQty(-1)" style="width:30px;height:30px;">-</button>
+                    <span id="modalQty" style="font-weight:bold; width:20px; text-align:center;">1</span>
+                    <button onclick="adjustModalQty(1)" style="width:30px;height:30px;">+</button>
+                </div>
+
+                <button class="add-to-cart-btn" onclick="addToCartFromModal()">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="modal-overlay" id="cartModal">
+        <div class="modal-content" style="max-width: 500px;">
+            <button class="close-modal" onclick="closeModal('cartModal')">&times;</button>
+            <div style="padding: 20px;">
+                <h2 style="text-align:center; color:var(--primary); margin-bottom:20px;">Your Basket</h2>
+                <div id="cartItemsContainer">
+                    <!-- Items go here -->
+                </div>
+                <div style="margin-top:20px; border-top:2px solid #eee; padding-top:10px; display:flex; justify-content:space-between; font-weight:bold; font-size:18px;">
+                    <span>Total:</span>
+                    <span id="cartTotal">R0.00</span>
+                </div>
+                <button class="checkout-btn" onclick="checkoutWhatsApp()">
+                    <i class="fab fa-whatsapp"></i> Send Order via WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">Marrakeshi Bites</div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+        <p style="margin-top:20px; font-size:14px; opacity:0.7;">&copy; 2023 Marrakeshi Bites. All rights reserved.</p>
+        <div style="margin-top:10px;">
+            <a href="https://hivetimes.co.za" style="color:var(--secondary); text-decoration:none; font-size:12px; border:1px solid var(--secondary); padding:2px 8px; border-radius:10px;">Hive Times Member</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // === DATA SOURCE ===
+        const products = [
+            // Biscuits
+            { id: 1, category: 'biscuits', name: 'Kaab Ghzal', price: 550, unit: 'kg', img: 'https://images.unsplash.com/photo-1598155523122-38423bb4d6c1?auto=format&fit=crop&w=500&q=60', desc: 'Almond paste & orange blossom.' },
+            { id: 2, category: 'biscuits', name: 'Ghriba Walnut', price: 500, unit: 'kg', img: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=500&q=60', desc: 'Rich walnut flavor, cracked top.' },
+            { id: 3, category: 'biscuits', name: 'Ghriba Lemon', price: 400, unit: 'kg', img: 'https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=500&q=60', desc: 'Light, soft biscuit with fresh lemon.' },
+            { id: 4, category: 'biscuits', name: 'Fakkas with Almond', price: 350, unit: 'kg', img: 'https://images.unsplash.com/photo-1621236378699-8597faf6a176?auto=format&fit=crop&w=500&q=60', desc: 'Crunchy Moroccan biscotti.' },
+            { id: 5, category: 'biscuits', name: 'Mixed Biscuits Box', price: 500, unit: 'kg', img: 'https://images.unsplash.com/photo-1557089706-68d02dbda277?auto=format&fit=crop&w=500&q=60', desc: '1kg mixed selection of favorites.' },
+            
+            // Filled Harcha
+            { id: 6, category: 'harcha', name: 'Almond Amlou Harcha', price: 300, unit: '10 pcs', img: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=60', desc: 'Golden mini harcha with almond amlou.' },
+            { id: 7, category: 'harcha', name: 'Dark Choc Orange', price: 340, unit: '10 pcs', img: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=500&q=60', desc: 'Luxurious dark chocolate filling.' },
+            { id: 8, category: 'harcha', name: 'Pistachio Amlou', price: 350, unit: '10 pcs', img: 'https://images.unsplash.com/photo-1599599810769-bcde5a160d32?auto=format&fit=crop&w=500&q=60', desc: 'Premium pistachio filling.' },
+            { id: 9, category: 'harcha', name: 'Truffle Mushrooms', price: 380, unit: '10 pcs', img: 'https://images.unsplash.com/photo-1631379578550-7038263db699?auto=format&fit=crop&w=500&q=60', desc: 'Savory truffle mushroom filling.' },
+            { id: 10, category: 'harcha', name: 'Thon Harissa', price: 350, unit: '10 pcs', img: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=500&q=60', desc: 'Spicy tuna and harissa blend.' },
+            { id: 11, category: 'harcha', name: 'Khlii', price: 380, unit: '10 pcs', img: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=60', desc: 'Traditional cured meat filling.' },
+
+            // Flatbreads
+            { id: 12, category: 'flatbreads', name: 'Msemen', price: 100, unit: '6 pcs', img: 'https://images.unsplash.com/photo-1628198756849-2e5342428643?auto=format&fit=crop&w=500&q=60', desc: 'Flaky Moroccan pan-fried flatbread.' },
+            { id: 13, category: 'flatbreads', name: 'Baghrir', price: 80, unit: '6 pcs', img: 'https://images.unsplash.com/photo-1589119908995-c6837fa14848?auto=format&fit=crop&w=500&q=60', desc: 'Soft thousand-hole pancakes.' },
+            { id: 14, category: 'flatbreads', name: 'Harcha Bread', price: 90, unit: '6 pcs', img: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=60', desc: 'Traditional semolina bread.' },
+            { id: 15, category: 'flatbreads', name: 'Breakfast Box', price: 270, unit: 'box', img: 'https://images.unsplash.com/photo-1533089862017-5614ec45e25a?auto=format&fit=crop&w=500&q=60', desc: '6 pcs of each variety.' },
+
+            // Filled Flatbreads
+            { id: 16, category: 'filled-flatbreads', name: 'Khlii Msemen', price: 180, unit: '6 pcs', img: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=60', desc: 'Msemen filled with savory Khlii.' },
+            { id: 17, category: 'filled-flatbreads', name: 'Mince Msemen', price: 170, unit: '6 pcs', img: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=500&q=60', desc: 'Filled with seasoned minced meat.' },
+            { id: 18, category: 'filled-flatbreads', name: 'Lamp Fat Msemen', price: 170, unit: '6 pcs', img: 'https://images.unsplash.com/photo-1598155523122-38423bb4d6c1?auto=format&fit=crop&w=500&q=60', desc: 'Rich lamb fat filling.' },
+            { id: 19, category: 'filled-flatbreads', name: 'Olives Thyme Msemen', price: 170, unit: '6 pcs', img: 'https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=500&q=60', desc: 'Vegetarian olive and thyme blend.' }
+        ];
+
+        // === RENDER PRODUCTS ===
+        function renderProducts() {
+            const categories = ['biscuits', 'harcha', 'flatbreads', 'filled-flatbreads'];
+            
+            categories.forEach(cat => {
+                const container = document.getElementById(`grid-${cat}`);
+                if(!container) return;
+                
+                const catProducts = products.filter(p => p.category === cat);
+                container.innerHTML = catProducts.map(p => `
+                    <div class="product-card" onclick="openProductModal(${p.id})">
+                        <img src="${p.img}" alt="${p.name}" class="product-image">
+                        <div class="product-info">
+                            <div class="product-name">${p.name}</div>
+                            <div class="product-price">R${p.price} <span style="font-size:12px; color:#666; font-weight:normal">/${p.unit}</span></div>
+                            <button class="add-to-cart-btn" onclick="event.stopPropagation(); quickAdd(${p.id})">Add to Cart</button>
+                        </div>
+                    </div>
+                `).join('');
+            });
+        }
+
+        // === CART LOGIC ===
+        let cart = JSON.parse(localStorage.getItem('marrakeshi_cart')) || [];
+
+        function updateCartDisplay() {
+            document.getElementById('cartCount').innerText = cart.reduce((acc, item) => acc + item.qty, 0);
+            localStorage.setItem('marrakeshi_cart', JSON.stringify(cart));
+        }
+
+        function quickAdd(id) {
+            const product = products.find(p => p.id === id);
+            const existing = cart.find(item => item.id === id);
+            if(existing) {
+                existing.qty++;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+            updateCartDisplay();
+            alert(`${product.name} added to basket!`);
+        }
+
+        function openCart() {
+            const container = document.getElementById('cartItemsContainer');
+            const totalEl = document.getElementById('cartTotal');
+            
+            if(cart.length === 0) {
+                container.innerHTML = '<p style="text-align:center; padding:20px;">Your basket is empty.</p>';
+                totalEl.innerText = 'R0.00';
+            } else {
+                container.innerHTML = cart.map((item, index) => `
+                    <div class="cart-item">
+                        <img src="${item.img}" alt="${item.name}">
+                        <div class="cart-details">
+                            <div style="font-weight:bold;">${item.name}</div>
+                            <div style="color:var(--primary);">R${item.price} / ${item.unit}</div>
+                            <div class="qty-controls">
+                                <button onclick="updateCartQty(${index}, -1)">-</button>
+                                <span style="margin:0 10px;">${item.qty}</span>
+                                <button onclick="updateCartQty(${index}, 1)">+</button>
+                            </div>
+                        </div>
+                        <div style="font-weight:bold;">R${(item.price * item.qty).toFixed(2)}</div>
+                    </div>
+                `).join('');
+                
+                const total = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+                totalEl.innerText = `R${total.toFixed(2)}`;
+            }
+            
+            document.getElementById('cartModal').style.display = 'flex';
+        }
+
+        function updateCartQty(index, change) {
+            cart[index].qty += change;
+            if(cart[index].qty <= 0) cart.splice(index, 1);
+            updateCartDisplay();
+            openCart(); // Re-render modal
+        }
+
+        function checkoutWhatsApp() {
+            if(cart.length === 0) return alert("Cart is empty!");
+            
+            let msg = "Hi Marrakeshi Bites! I'd like to place an order:%0A";
+            let total = 0;
+            
+            cart.forEach(item => {
+                msg += `• ${item.name} (${item.qty} x ${item.unit}) - R${item.price * item.qty}%0A`;
+                total += item.price * item.qty;
+            });
+            
+            msg += `%0A*Total: R${total.toFixed(2)}*`;
+            
+            window.open(`https://wa.me/27123456789?text=${msg}`, '_blank');
+        }
+
+        // === MODAL LOGIC ===
+        let currentModalProduct = null;
+
+        function openProductModal(id) {
+            const p = products.find(prod => prod.id === id);
+            currentModalProduct = p;
+            
+            document.getElementById('modalImg').src = p.img;
+            document.getElementById('modalTitle').innerText = p.name;
+            document.getElementById('modalPrice').innerText = `R${p.price} / ${p.unit}`;
+            document.getElementById('modalDesc').innerText = p.desc;
+            document.getElementById('modalQty').innerText = 1;
+            
+            document.getElementById('productModal').style.display = 'flex';
+        }
+
+        function adjustModalQty(change) {
+            const el = document.getElementById('modalQty');
+            let val = parseInt(el.innerText) + change;
+            if(val < 1) val = 1;
+            el.innerText = val;
+        }
+
+        function addToCartFromModal() {
+            if(!currentModalProduct) return;
+            const qty = parseInt(document.getElementById('modalQty').innerText);
+            
+            const existing = cart.find(item => item.id === currentModalProduct.id);
+            if(existing) {
+                existing.qty += qty;
+            } else {
+                cart.push({ ...currentModalProduct, qty: qty });
+            }
+            
+            updateCartDisplay();
+            closeModal('productModal');
+            alert("Added to cart!");
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        function showBusinessModal() {
+            document.getElementById('businessModal').style.display = 'flex';
+        }
+
+        // Close modals on outside click
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.style.display = "none";
+            }
+        }
+
+        // === MENU TOGGLE ===
+        function toggleMenu() {
+            const btn = document.getElementById('hamburgerBtn');
+            const menu = document.getElementById('sideMenu');
+            const overlay = document.getElementById('menuOverlay');
+            
+            btn.classList.toggle('active');
+            menu.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+        
+        document.getElementById('hamburgerBtn').addEventListener('click', toggleMenu);
+        document.getElementById('menuOverlay').addEventListener('click', toggleMenu);
+
+        // === AI SEARCH FILTER ===
+        document.getElementById('aiProductSearchInput').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.product-card');
+            
+            cards.forEach(card => {
+                const name = card.querySelector('.product-name').innerText.toLowerCase();
+                const priceText = card.querySelector('.product-price').innerText;
+                const price = parseFloat(priceText.replace(/[^0-9.]/g, ''));
+                
+                let match = false;
+                
+                if(query.includes('under')) {
+                    const limit = parseFloat(query.match(/\d+/)[0]);
+                    if(price <= limit) match = true;
+                } else if(name.includes(query)) {
+                    match = true;
+                } else if(query === '') {
+                    match = true;
+                }
+                
+                card.style.display = match ? 'flex' : 'none';
+            });
+        });
+
+        // === AI CHAT BOT ===
+        function toggleChat() {
+            const panel = document.getElementById('aiChatPanel');
+            panel.style.display = panel.style.display === 'flex' ? 'none' : 'flex';
+        }
+        
+        document.getElementById('aiChatWidget').addEventListener('click', toggleChat);
+
+        function sendChat() {
+            const input = document.getElementById('chatInput');
+            const msgArea = document.getElementById('chatMessages');
+            const userText = input.value.trim();
+            
+            if(!userText) return;
+            
+            // User Message
+            msgArea.innerHTML += `<div class="ai-message user-msg">${userText}</div>`;
+            input.value = '';
+            msgArea.scrollTop = msgArea.scrollHeight;
+            
+            // Bot Response Logic
+            setTimeout(() => {
+                let reply = "I can help with orders, prices, or delivery info. Try asking 'Do you deliver?'";
+                const lower = userText.toLowerCase();
+                
+                if(lower.includes('price') || lower.includes('cost')) reply = "Our biscuits start at R350/kg and Harcha boxes at R300. Check the menu for details!";
+                if(lower.includes('deliver') || lower.includes('shipping')) reply = "Yes! We deliver nationwide via WhatsApp order. Just add items to your cart.";
+                if(lower.includes('minimum') || lower.includes('order')) reply = "Minimum order is 500g per biscuit variety, or 1 box for Harcha/Msemen.";
+                if(lower.includes('hello') || lower.includes('hi')) reply = "Marhaba! Welcome to Marrakeshi Bites. What would you like to eat today?";
+                
+                msgArea.innerHTML += `<div class="ai-message bot-msg">${reply}</div>`;
+                msgArea.scrollTop = msgArea.scrollHeight;
+            }, 600);
+        }
+        
+        document.getElementById('chatInput').addEventListener('keypress', (e) => {
+            if(e.key === 'Enter') sendChat();
+        });
+
+        // === INITIALIZATION ===
+        window.onload = function() {
+            renderProducts();
+            updateCartDisplay();
+            
+            // Init Swiper
+            new Swiper(".mySwiper", {
+                loop: true,
+                autoplay: { delay: 3000 },
+                pagination: { el: ".swiper-pagination", clickable: true },
+                navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+            });
+        };
+
+    </script>
+</body>
+</html>

@@ -1270,6 +1270,7 @@ header {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin: 0;
 }
 .header-top-row {
 display: flex;
@@ -1277,6 +1278,7 @@ align-items: center;
 width: 100%;
 justify-content: space-between;
 gap: 15px;
+margin-bottom: 0;
 }
 .hamburger-menu {
 display: flex;
@@ -1494,8 +1496,7 @@ max-width: 1400px;
 margin: 0 auto;
 overflow: hidden;
 position: relative;
-border-radius: 16px;
-box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+
 }
 /* Main Content */
 main {
@@ -2500,6 +2501,42 @@ grid-template-columns: repeat(2, 1fr);
 </a>
 </div>
 <div class="comments-section" id="broadwaysweets-comments">
+<div class="comment-form">
+<textarea class="comment-input" placeholder="Share your experience..."></textarea>
+<button class="submit-comment-btn">Post Comment</button>
+</div>
+<div class="comments-list"></div>
+</div>
+<div class="share-section">
+<a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+<a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+</div>
+</div>
+</div>
+<!-- Marrakesh Bites -->
+<div class="block" id="business-marrakesh-bites" data-category="business" data-type="restaurant" data-location="marrakesh">
+<a href="marrakeshbites.html">
+<img src="images-logo/marrakesh-bites-logo.jpg" alt="Marrakesh Bites">
+</a>
+<div class="info">
+<h3>Marrakesh Bites</h3>
+<p>Authentic Moroccan cuisine in a vibrant setting</p>
+
+<div class="rating-section">
+<div class="rating-stars" data-business="marrakesh-bites">
+<i class="far fa-star star"></i>
+<i class="far fa-star star"></i>
+<i class="far fa-star star"></i>
+<i class="far fa-star star"></i>
+<i class="far fa-star star"></i>
+</div>
+<div class="rating-count">0 ratings</div>
+<a href="#" class="view-comments-btn" data-target="marrakesh-bites-comments">
+<i class="fas fa-comment"></i> View Comments
+</a>
+</div>
+<div class="comments-section" id="marrakesh-bites-comments">
 <div class="comment-form">
 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
 <button class="submit-comment-btn">Post Comment</button>
