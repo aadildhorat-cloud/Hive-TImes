@@ -1483,20 +1483,50 @@ cursor: pointer;
 #signupForm button {
 background: linear-gradient(135deg, #3498db, #2980b9);
 }
-/* Slider fallback */
+/* === UPDATED SLIDER CSS - NO GAPS === */
 .slider-section {
-padding: 2rem 0;
-background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
-text-align: center;
-width: 100%;
+    padding: 0 !important; /* Remove all padding */
+    margin: 0 !important;  /* Remove all margin */
+    background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden; /* Prevent horizontal scrollbars */
+    line-height: 0;   /* Eliminate gap caused by inline images/text */
 }
-.slider-container {
-width: 100%;
-max-width: 1400px;
-margin: 0 auto;
-overflow: hidden;
-position: relative;
 
+.slider-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    height: 100%; /* Ensure it takes full defined height */
+}
+
+/* Ensure Swiper slides take up full space */
+.swiper-slide {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: auto;
+    display: block; /* Removes default inline spacing gap */
+    object-fit: cover;
+}
+
+/* Mobile specific adjustments to guarantee edge-to-edge */
+@media (max-width: 768px) {
+    .slider-section {
+        padding: 0;
+        margin: 0;
+    }
 }
 /* Main Content */
 main {
@@ -2375,6 +2405,60 @@ grid-template-columns: repeat(2, 1fr);
   <a href="index.html">
     <img src="images-logo/hive-times-logo.png" alt="Hive Times Logo">
   </a>
+<!-- Text Search Bar -->
+<div class="text-search-bar" style="
+    width: 100%; 
+    display: flex; 
+    justify-content: center; 
+    margin-bottom: 15px;
+    padding: 0 10px; /* Adds breathing room on edges for mobile */
+">
+  <input
+    type="text"
+    id="filterSearch"
+    placeholder="Search businesses or services "
+    style="
+      width: 100%;
+      max-width: 600px; /* Limits width on large screens */
+      padding: 14px 20px; /* Balanced padding for text visibility */
+      border: 2px solid #eee;
+      border-radius: 50px;
+      font-size: 1rem; /* Base size */
+      font-family: 'Inter', sans-serif;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.04);
+      outline: none;
+      transition: all 0.3s ease;
+      background: #fff;
+      color: #333;
+    "
+  />
+</div>
+
+<!-- Mobile Specific Adjustments -->
+<style>
+  @media (max-width: 480px) {
+    .text-search-bar input {
+      font-size: 0.9rem; /* Slightly smaller text on very small phones */
+      padding: 12px 15px; /* Reduce padding to fit long placeholder */
+    }
+  }
+  
+  /* Ensure the header doesn't squash the search bar on mobile */
+  @media (max-width: 768px) {
+    header {
+      padding: 15px;
+    }
+    .logo {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .text-search-bar {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+</style>
 </div>
 </div>
 <!-- Inside .header-top-row -->
@@ -2397,30 +2481,12 @@ grid-template-columns: repeat(2, 1fr);
       </div>
       <div class="ai-text">
        <span id="aiPrompt">
-        Welcome to the Hive! 🐝 Are you looking to <strong>visit a shop</strong> or <strong>hire a professional service</strong>?
+        Welcome to the Hive! 🐝 Are you looking for a <strong>Business</strong> or <strong> Service</strong>?
     </span>
       </div>
     </div>
 
-    <!-- Text Search Bar -->
-    <div class="text-search-bar" style="margin-bottom: 20px;">
-      <input
-        type="text"
-        id="filterSearch"
-        placeholder="Search businesses or services by name or keyword…"
-        style="
-          width: 100%;
-          padding: 16px 24px;
-          border: 2px solid #eee;
-          border-radius: 50px;
-          font-size: 1.05rem;
-          font-family: 'Inter', sans-serif;
-          box-shadow: inset 0 2px 6px rgba(0,0,0,0.04);
-          outline: none;
-          transition: all 0.3s ease;
-        "
-      />
-    </div>
+   
 
     <!-- Options (dynamically updated) -->
     <div class="ai-options" id="aiOptions">
