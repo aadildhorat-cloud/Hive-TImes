@@ -24,18 +24,17 @@
 --font-body: 'Montserrat', sans-serif;
 --header-height: 80px;
 --nav-width: 300px;
-/* Chat Widget Variables */
---chat-width: 350px;
---chat-height: 500px;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
 body {
 background-color: var(--bg-dark);
 color: var(--text-main);
 font-family: var(--font-body);
-overflow-x: hidden;
+overflow-x: hidden; /* Ensures no horizontal scroll */
 line-height: 1.6;
 width: 100%;
+max-width: 100vw; /* Prevents overflow */
+position: relative;
 }
 
 /* --- BACKGROUND MESH --- */
@@ -405,171 +404,21 @@ width: 100%;
 }
 .contact-large { font-size: 1.3rem; color: var(--text-main); margin-top: 15px; font-weight: 700; font-family: var(--font-head); }
 
-/* --- PROFESSIONAL AI CHAT WIDGET (FIXED SIZE) --- */
-.ai-widget-container {
-position: fixed;
-bottom: 30px;
-left: 30px;
-z-index: 995;
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-}
-@media (max-width: 500px) {
-.ai-widget-container {
-left: 20px;
-bottom: 20px; 
-}
-}
-.ai-toggle-btn {
-width: 60px;
-height: 60px;
-border-radius: 50%;
-background: linear-gradient(135deg, var(--accent), #0088cc);
-border: none;
-color: white;
-font-size: 1.5rem;
-box-shadow: 0 0 20px var(--accent-glow);
-display: flex;
-align-items: center;
-justify-content: center;
+/* --- STICKY WHATSAPP --- */
+.sticky-wa {
+position: fixed; bottom: 30px; right: 30px;
+background: linear-gradient(135deg, #25D366, #128C7E); color: white;
+padding: 15px 25px; border-radius: 50px; text-decoration: none;
+font-weight: bold; font-size: 1rem; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+z-index: 990; display: flex; align-items: center; gap: 10px;
 transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-animation: pulse-glow 2s infinite;
-flex-shrink: 0;
+border: 2px solid rgba(255,255,255,0.2);
 }
-.ai-toggle-btn:hover { transform: scale(1.1); }
-.ai-toggle-btn i { transition: transform 0.3s; }
-.ai-toggle-btn.active i { transform: rotate(90deg); }
-@keyframes pulse-glow {
-0% { box-shadow: 0 0 20px var(--accent-glow); }
-50% { box-shadow: 0 0 40px var(--accent-glow); }
-100% { box-shadow: 0 0 20px var(--accent-glow); }
+.sticky-wa:hover { transform: scale(1.05) translateY(-3px); }
+@media (max-width: 480px) {
+.sticky-wa span { display: none; }
+.sticky-wa { padding: 15px; border-radius: 50%; bottom: 20px; right: 20px; }
 }
-.ai-chat-window {
-position: absolute;
-bottom: 80px;
-left: 0;
-/* FIXED SIZES FOR WIDGET LOOK */
-width: var(--chat-width);
-height: var(--chat-height);
-max-width: 90vw; /* Prevent overflow on tiny screens */
-max-height: 70vh;
-background: rgba(10, 15, 20, 0.98);
-backdrop-filter: blur(20px);
-border: 1px solid var(--glass-border);
-border-radius: 20px;
-box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-display: flex;
-flex-direction: column;
-overflow: hidden;
-opacity: 0;
-transform: translateY(20px) scale(0.95);
-pointer-events: none;
-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-transform-origin: bottom left;
-}
-.ai-chat-window.active {
-opacity: 1;
-transform: translateY(0) scale(1);
-pointer-events: all;
-}
-.ai-header {
-padding: 20px;
-background: rgba(0, 210, 255, 0.1);
-border-bottom: 1px solid var(--glass-border);
-display: flex;
-align-items: center;
-gap: 15px;
-flex-shrink: 0;
-}
-.ai-avatar {
-width: 40px;
-height: 40px;
-background: var(--accent);
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-color: #000;
-font-weight: bold;
-font-family: var(--font-head);
-flex-shrink: 0;
-}
-.ai-info { flex: 1; overflow: hidden; }
-.ai-info h4 { font-family: var(--font-head); font-size: 1.1rem; color: white; white-space: nowrap; }
-.ai-info p { font-size: 0.75rem; color: var(--accent); }
-.ai-close {
-color: var(--text-muted);
-transition: color 0.2s;
-flex-shrink: 0;
-}
-.ai-close:hover { color: white; }
-.ai-messages {
-flex: 1;
-padding: 20px;
-overflow-y: auto;
-display: flex;
-flex-direction: column;
-gap: 15px;
-scrollbar-width: thin;
-scrollbar-color: var(--accent) transparent;
-}
-.message {
-max-width: 85%;
-padding: 12px 16px;
-border-radius: 15px;
-font-size: 0.9rem;
-line-height: 1.4;
-animation: fade-in 0.3s ease;
-word-wrap: break-word;
-}
-@keyframes fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-.message.bot {
-background: rgba(255,255,255,0.05);
-color: var(--text-main);
-align-self: flex-start;
-border-bottom-left-radius: 2px;
-border: 1px solid var(--glass-border);
-}
-.message.user {
-background: var(--accent);
-color: #000;
-align-self: flex-end;
-border-bottom-right-radius: 2px;
-font-weight: 600;
-}
-.ai-options {
-padding: 15px;
-background: rgba(0,0,0,0.3);
-border-top: 1px solid var(--glass-border);
-display: flex;
-flex-direction: column;
-gap: 10px;
-flex-shrink: 0;
-max-height: 40%;
-overflow-y: auto;
-}
-.ai-option-btn {
-background: transparent;
-border: 1px solid var(--glass-border);
-color: var(--text-muted);
-padding: 10px 15px;
-border-radius: 8px;
-text-align: left;
-font-size: 0.85rem;
-transition: all 0.2s;
-font-family: var(--font-body);
-display: flex;
-align-items: center;
-gap: 10px;
-white-space: nowrap;
-}
-.ai-option-btn:hover {
-border-color: var(--accent);
-color: var(--accent);
-background: rgba(0, 210, 255, 0.05);
-}
-.ai-option-btn i { width: 20px; text-align: center; flex-shrink: 0; }
 </style>
 </head>
 <body>
@@ -725,41 +574,11 @@ Paint correction is basically <strong>polishing your car</strong> to remove the 
 </div>
 </footer>
 
-<!-- AI CHAT BOT WIDGET (Fixed Size) -->
-<div class="ai-widget-container">
-<button class="ai-toggle-btn" id="aiToggleBtn" onclick="toggleChat()">
-<i class="fas fa-robot"></i>
-</button>
-<div class="ai-chat-window" id="aiChatWindow">
-<div class="ai-header">
-<div class="ai-avatar">AI</div>
-<div class="ai-info">
-<h4>Sapphire Assistant</h4>
-<p>Online & Ready to Help</p>
-</div>
-<i class="fas fa-times ai-close" onclick="toggleChat()"></i>
-</div>
-<div class="ai-messages" id="aiMessages">
-<div class="message bot">
-Hello! I'm the Sapphire AI assistant. How can I help you today?
-</div>
-</div>
-<div class="ai-options">
-<button class="ai-option-btn" onclick="askAI('pricing')">
-<i class="fas fa-tags"></i> What are your prices?
-</button>
-<button class="ai-option-btn" onclick="askAI('services')">
-<i class="fas fa-list"></i> What services do you offer?
-</button>
-<button class="ai-option-btn" onclick="askAI('booking')">
-<i class="fas fa-calendar-check"></i> How do I book?
-</button>
-<button class="ai-option-btn" onclick="askAI('location')">
-<i class="fas fa-map-marker-alt"></i> Where do you operate?
-</button>
-</div>
-</div>
-</div>
+<!-- STICKY WHATSAPP -->
+<a href="#" class="sticky-wa" onclick="sendDirectWhatsApp('General Inquiry'); return false;">
+<i class="fab fa-whatsapp"></i>
+<span>Book Now</span>
+</a>
 
 <script>
 // --- 1. MENU LOGIC ---
@@ -837,59 +656,6 @@ Package: ${packageName}
 Please let me know your availability.`;
 const encodedMessage = encodeURIComponent(message);
 window.open(`https://wa.me/27813833936?text=${encodedMessage}`, '_blank');
-}
-
-// --- 6. AI CHAT BOT LOGIC ---
-const aiToggleBtn = document.getElementById('aiToggleBtn');
-const aiChatWindow = document.getElementById('aiChatWindow');
-const aiMessages = document.getElementById('aiMessages');
-let isChatOpen = false;
-function toggleChat() {
-isChatOpen = !isChatOpen;
-if (isChatOpen) {
-aiChatWindow.classList.add('active');
-aiToggleBtn.classList.add('active');
-aiToggleBtn.innerHTML = '<i class="fas fa-times"></i>';
-} else {
-aiChatWindow.classList.remove('active');
-aiToggleBtn.classList.remove('active');
-aiToggleBtn.innerHTML = '<i class="fas fa-robot"></i>';
-}
-}
-function askAI(topic) {
-let userText = "";
-let botText = "";
-switch(topic) {
-case 'pricing':
-userText = "What are your prices?";
-botText = "Our packages start from R650 (Emerald) up to R2500+ (Sapphire with Paint Correction). The Diamond package is our most popular at R1000-R1500. Would you like to book one?";
-break;
-case 'services':
-userText = "What services do you offer?";
-botText = "We specialize in Mobile Auto Detailing. This includes Exterior Hand Wash, Interior Deep Cleaning, Leather Conditioning, and Professional Paint Correction to remove swirls and scratches.";
-break;
-case 'booking':
-userText = "How do I book?";
-botText = "Booking is easy! You can click the 'Book Now' button on any package, or use the green WhatsApp button at the bottom right to message Mohammed directly.";
-break;
-case 'location':
-userText = "Where do you operate?";
-botText = "We are a Mobile Service, so we come to you! We primarily operate in the greater area. A small travel fee may apply for locations outside our main zone.";
-break;
-}
-// Add User Message
-addMessage(userText, 'user');
-// Simulate Bot Typing Delay
-setTimeout(() => {
-addMessage(botText, 'bot');
-}, 600);
-}
-function addMessage(text, sender) {
-const msgDiv = document.createElement('div');
-msgDiv.classList.add('message', sender);
-msgDiv.innerText = text;
-aiMessages.appendChild(msgDiv);
-aiMessages.scrollTop = aiMessages.scrollHeight;
 }
 </script>
 </body>
