@@ -537,7 +537,8 @@ p.subtitle {
         --ai-bottom: 20px;
     }
     
-    /* Position AI above WhatsApp on mobile */
+    /* Position AI BELOW WhatsApp on mobile */
+    /* Calculation: WhatsApp Height (60px) + WhatsApp Bottom Margin (20px) + Gap (20px) */
     .ai-widget-container {
         bottom: calc(var(--wa-size) + var(--wa-bottom) + 20px); 
         left: 20px;
@@ -856,8 +857,6 @@ sliderContainer.addEventListener('mousemove', (e) => { if (!isDragging) return; 
 
 sliderContainer.addEventListener('touchstart', (e) => { 
     isDragging = true; 
-    // Prevent default to stop page scrolling while dragging slider
-    // e.preventDefault(); 
 }, {passive: false});
 
 window.addEventListener('touchend', () => isDragging = false);
