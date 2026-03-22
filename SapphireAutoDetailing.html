@@ -24,11 +24,11 @@
             --glass-border: rgba(255, 255, 255, 0.08);
             --font-head: 'Rajdhani', sans-serif;
             --font-body: 'Montserrat', sans-serif;
-            --header-height: 90px;
-            --nav-width: 350px; /* Width of the side menu */
+            --header-height: 80px;
+            --nav-width: 320px;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; cursor: none; }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; cursor: none; -webkit-tap-highlight-color: transparent; }
 
         body {
             background-color: var(--bg-dark);
@@ -38,7 +38,7 @@
             line-height: 1.6;
         }
 
-        /* --- CUSTOM CURSOR --- */
+        /* --- CUSTOM CURSOR (Desktop Only) --- */
         .cursor-dot, .cursor-outline {
             position: fixed; top: 0; left: 0;
             transform: translate(-50%, -50%);
@@ -72,7 +72,7 @@
         /* --- UTILITIES --- */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .highlight { color: var(--accent); text-shadow: 0 0 20px var(--accent-glow); }
-        .reveal { opacity: 0; transform: translateY(50px); transition: all 1s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         /* --- HEADER & NAVIGATION --- */
@@ -85,7 +85,7 @@
             justify-content: space-between;
             padding: 0 5%;
             z-index: 1000;
-            background: var(--glass-bg);
+            background: rgba(5, 5, 5, 0.85);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--glass-border);
@@ -95,13 +95,13 @@
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
             z-index: 1002;
         }
 
         .brand-name {
             font-family: var(--font-head);
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: white;
             text-transform: uppercase;
@@ -110,8 +110,8 @@
 
         /* Hamburger Icon */
         .hamburger-btn {
-            width: 40px;
-            height: 30px;
+            width: 35px;
+            height: 25px;
             position: relative;
             cursor: none;
             z-index: 1002;
@@ -129,9 +129,8 @@
             transform-origin: center;
         }
 
-        /* Hamburger Animation State */
         .hamburger-btn.active .hamburger-line:nth-child(1) {
-            transform: translateY(13.5px) rotate(45deg);
+            transform: translateY(11px) rotate(45deg);
             background: var(--accent);
         }
         .hamburger-btn.active .hamburger-line:nth-child(2) {
@@ -139,17 +138,15 @@
             transform: scaleX(0);
         }
         .hamburger-btn.active .hamburger-line:nth-child(3) {
-            transform: translateY(-13.5px) rotate(-45deg);
+            transform: translateY(-11px) rotate(-45deg);
             background: var(--accent);
         }
 
-        /* --- PROFESSIONAL LEFT SLIDE MENU --- */
-        
-        /* Dark Overlay Background */
+        /* --- SIDE MENU --- */
         .nav-backdrop {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100vh;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(4px);
             z-index: 1000;
             opacity: 0;
@@ -161,39 +158,24 @@
             pointer-events: all;
         }
 
-        /* The Sliding Panel */
         .nav-panel {
             position: fixed;
             top: 0; left: 0;
             width: var(--nav-width);
             height: 100vh;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: #0a0f14;
             border-right: 1px solid var(--glass-border);
             z-index: 1001;
             transform: translateX(-100%);
             transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
             display: flex;
             flex-direction: column;
-            padding: 120px 40px 40px 40px;
+            padding: 100px 30px 40px 30px;
             box-shadow: 10px 0 40px rgba(0,0,0,0.5);
         }
 
         .nav-panel.active {
             transform: translateX(0);
-        }
-
-        /* Menu Content */
-        .nav-panel h4 {
-            font-family: var(--font-head);
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
-            border-bottom: 1px solid var(--glass-border);
-            padding-bottom: 15px;
         }
 
         .nav-links {
@@ -203,31 +185,26 @@
             gap: 25px;
         }
 
-        .nav-links li {
-            overflow: hidden; /* For animation reveal */
-        }
+        .nav-links li { overflow: hidden; }
 
         .nav-links a {
             display: block;
             font-family: var(--font-head);
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: white;
             text-decoration: none;
             text-transform: uppercase;
             font-weight: 700;
             position: relative;
-            transform: translateY(100%); /* Start hidden below */
+            transform: translateY(100%);
             transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s;
         }
 
-        /* Hover Underline Effect */
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: 5px;
-            left: 0;
-            width: 0;
-            height: 2px;
+            bottom: 5px; left: 0;
+            width: 0; height: 2px;
             background: var(--accent);
             transition: width 0.3s ease;
             box-shadow: 0 0 10px var(--accent-glow);
@@ -235,32 +212,22 @@
 
         .nav-links a:hover {
             color: var(--accent);
-            padding-left: 10px; /* Slight shift right */
+            padding-left: 10px;
         }
-        .nav-links a:hover::after {
-            width: 100%;
-        }
+        .nav-links a:hover::after { width: 100%; }
 
-        /* Staggered Entrance Animation for Links */
-        .nav-panel.active .nav-links a {
-            transform: translateY(0);
-        }
+        .nav-panel.active .nav-links a { transform: translateY(0); }
         .nav-panel.active .nav-links li:nth-child(1) a { transition-delay: 0.1s; }
         .nav-panel.active .nav-links li:nth-child(2) a { transition-delay: 0.2s; }
         .nav-panel.active .nav-links li:nth-child(3) a { transition-delay: 0.3s; }
         .nav-panel.active .nav-links li:nth-child(4) a { transition-delay: 0.4s; }
 
-        /* Contact Info in Menu */
         .nav-contact {
             margin-top: auto;
             padding-top: 30px;
             border-top: 1px solid var(--glass-border);
         }
-        .nav-contact p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-        }
+        .nav-contact p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 5px; }
         .nav-contact a {
             color: var(--accent);
             text-decoration: none;
@@ -271,7 +238,7 @@
             gap: 10px;
         }
 
-        /* --- HIVE BADGE STYLES --- */
+        /* --- HIVE BADGE --- */
         .hive-badge-link {
             display: inline-flex;
             align-items: center;
@@ -284,29 +251,15 @@
             transition: all 0.3s ease;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-            position: relative;
-            overflow: hidden;
             cursor: none;
         }
-        .hive-icon-svg {
-            width: 18px; height: 18px; fill: #000000; margin-right: 8px; transition: transform 0.3s ease;
-        }
+        .hive-icon-svg { width: 16px; height: 16px; fill: #000000; margin-right: 6px; }
         .hive-text-group { display: flex; flex-direction: column; line-height: 1.1; }
-        .hive-text { color: #000000; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
-        .hive-subtext { font-size: 9px; font-weight: 600; color: #333333; text-transform: uppercase; }
+        .hive-text { color: #000000; font-size: 11px; font-weight: 800; text-transform: uppercase; }
+        .hive-subtext { font-size: 8px; font-weight: 600; color: #333333; text-transform: uppercase; }
         .hive-badge-link:hover {
-            background-color: #E5C100; border-color: #C9A900;
-            transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-        .hive-badge-link:hover .hive-icon-svg { transform: scale(1.1); }
-        @media (max-width: 480px) {
-            .hive-badge-link { padding: 5px 10px; }
-            .hive-icon-svg { width: 16px; height: 16px; margin-right: 6px; }
-            .hive-text { font-size: 11px; }
-            .hive-subtext { font-size: 8px; }
-            .brand-name { font-size: 1.2rem; }
-            .nav-links a { font-size: 1.5rem; }
-            :root { --nav-width: 85%; }
+            background-color: #E5C100;
+            transform: translateY(-2px);
         }
 
         /* --- HERO SECTION --- */
@@ -326,50 +279,45 @@
             content: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
             filter: grayscale(100%) contrast(1.2);
             transform: scale(1.1);
-            transition: transform 0.2s linear;
         }
         .hero-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(to bottom, rgba(5,5,5,0.3), var(--bg-dark));
             z-index: 1;
         }
-        .car-model-container {
-            position: absolute; width: 100%; height: 100%; z-index: 2;
-            display: flex; justify-content: center; align-items: center; pointer-events: none;
-        }
-        .car-img {
-            max-width: 70%;
-            filter: drop-shadow(0 30px 40px rgba(0,0,0,0.8));
-            transition: transform 0.1s linear;
-            content: url('https://purepng.com/public/uploads/large/purepng.com-porsche-911-gt3-rscarvehicletransportporschecar-1421526648975xj0yq.png');
-        }
         .hero-content {
             position: relative; z-index: 3; text-align: center;
             mix-blend-mode: screen; padding: 0 20px;
+            max-width: 800px;
         }
         h1 {
             font-family: var(--font-head);
-            font-size: clamp(3rem, 10vw, 7rem);
+            font-size: clamp(2.5rem, 8vw, 6rem);
             text-transform: uppercase; letter-spacing: 5px; line-height: 0.9;
             margin-bottom: 20px;
             background: linear-gradient(to right, #fff, #aaa);
             background-clip: text; -webkit-text-fill-color: transparent;
         }
         p.subtitle {
-            font-size: 1.2rem; letter-spacing: 6px; color: var(--accent);
+            font-size: 1rem; letter-spacing: 4px; color: var(--accent);
             text-transform: uppercase; font-weight: 700; margin-bottom: 20px; display: block;
             text-shadow: 0 0 10px var(--accent-glow);
         }
+        .hero-desc {
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
 
-        /* --- SERVICES OVERVIEW --- */
-        .services-overview { padding: 120px 0; position: relative; }
+        /* --- SERVICES --- */
+        .services-overview { padding: 80px 0; position: relative; }
         .services-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px; margin-top: 60px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px; margin-top: 50px;
         }
         .service-item {
             background: var(--glass-bg); border: 1px solid var(--glass-border);
-            padding: 40px; border-radius: 15px; backdrop-filter: blur(10px);
+            padding: 30px; border-radius: 15px; backdrop-filter: blur(10px);
             transition: 0.3s;
         }
         .service-item:hover {
@@ -377,23 +325,24 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         .service-item i {
-            font-size: 3rem; color: var(--accent); margin-bottom: 25px;
+            font-size: 2.5rem; color: var(--accent); margin-bottom: 20px;
             text-shadow: 0 0 15px var(--accent-glow);
         }
-        .service-item h3 { font-family: var(--font-head); font-size: 1.8rem; margin-bottom: 15px; letter-spacing: 1px; }
+        .service-item h3 { font-family: var(--font-head); font-size: 1.5rem; margin-bottom: 10px; letter-spacing: 1px; }
+        .service-item p { font-size: 0.9rem; color: var(--text-muted); }
 
-        /* --- PAINT CORRECTION (BEFORE/AFTER) --- */
+        /* --- PAINT CORRECTION --- */
         .section-title {
-            text-align: center; font-family: var(--font-head); font-size: 3rem;
+            text-align: center; font-family: var(--font-head); font-size: 2.5rem;
             margin-bottom: 1rem; color: var(--text-main); text-transform: uppercase;
         }
         .section-subtitle {
             text-align: center; color: var(--text-muted); max-width: 800px;
-            margin: 0 auto 4rem auto; font-size: 1.2rem; line-height: 1.8;
+            margin: 0 auto 3rem auto; font-size: 1rem; line-height: 1.6;
         }
-        .comparison-section { padding: 100px 0; background: linear-gradient(to bottom, transparent, #020202); }
+        .comparison-section { padding: 80px 0; background: linear-gradient(to bottom, transparent, #020202); }
         .ba-slider {
-            position: relative; width: 100%; max-width: 1000px; height: 600px;
+            position: relative; width: 100%; max-width: 900px; height: 500px;
             margin: 0 auto; overflow: hidden; border-radius: 20px;
             box-shadow: 0 30px 60px rgba(0,0,0,0.6); border: 1px solid var(--glass-border);
         }
@@ -405,95 +354,286 @@
         .img-before {
             background-image: url('https://images.unsplash.com/photo-1600588653879-4c6078c40523?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');
             width: 50%; border-right: 2px solid var(--accent); z-index: 10;
-            box-shadow: 5px 0 20px rgba(0,0,0,0.5);
         }
         .slider-handle {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: 60px; height: 60px; background: var(--accent); border-radius: 50%;
+            width: 50px; height: 50px; background: var(--accent); border-radius: 50%;
             cursor: ew-resize; z-index: 20; display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 0 30px var(--accent-glow); color: #000; font-size: 1.5rem; transition: transform 0.2s;
+            box-shadow: 0 0 30px var(--accent-glow); color: #000; font-size: 1.2rem;
         }
-        .slider-handle:hover { transform: translate(-50%, -50%) scale(1.1); }
         .slider-label {
-            position: absolute; top: 30px; padding: 10px 25px; background: rgba(0,0,0,0.8);
+            position: absolute; top: 20px; padding: 8px 20px; background: rgba(0,0,0,0.8);
             border: 1px solid var(--glass-border); border-radius: 30px; font-weight: bold;
-            font-size: 1rem; pointer-events: none; text-transform: uppercase; letter-spacing: 2px;
+            font-size: 0.8rem; pointer-events: none; text-transform: uppercase; letter-spacing: 2px;
             backdrop-filter: blur(5px);
         }
-        .label-before { left: 30px; color: #ff4757; }
-        .label-after { right: 30px; color: #2ed573; }
+        .label-before { left: 20px; color: #ff4757; }
+        .label-after { right: 20px; color: #2ed573; }
 
-        /* --- PRICING PACKAGES (3D TILT) --- */
-        .pricing-section { padding: 120px 0; perspective: 1000px; }
+        /* --- PRICING --- */
+        .pricing-section { padding: 80px 0; perspective: 1000px; }
         .pricing-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px; align-items: center;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; align-items: center;
         }
         .price-card {
             background: var(--glass-bg); backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px); border: 1px solid var(--glass-border);
-            border-radius: 25px; padding: 50px 30px; text-align: center;
+            border: 1px solid var(--glass-border);
+            border-radius: 20px; padding: 40px 25px; text-align: center;
             position: relative; overflow: hidden; display: flex; flex-direction: column;
             transform-style: preserve-3d; transition: transform 0.1s;
             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
         .price-card::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.1), transparent 40%);
+            background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.05), transparent 40%);
             z-index: 0; opacity: 0; transition: opacity 0.3s; pointer-events: none;
         }
         .price-card:hover::before { opacity: 1; }
-        .card-content { position: relative; z-index: 1; transform: translateZ(20px); }
-        .card-header h3 { font-family: var(--font-head); font-size: 2.5rem; margin-bottom: 10px; letter-spacing: 3px; }
-        .emerald h3 { color: #2ecc71; text-shadow: 0 0 15px rgba(46, 204, 113, 0.4); }
-        .sapphire h3 { color: var(--accent); text-shadow: 0 0 15px var(--accent-glow); }
-        .diamond h3 { color: #bdc3c7; text-shadow: 0 0 15px rgba(189, 195, 199, 0.4); }
-        .price-tag { font-size: 1.8rem; font-weight: 700; margin: 25px 0; color: white; font-family: var(--font-head); }
-        .features-list { list-style: none; margin-bottom: 40px; flex-grow: 1; text-align: left; padding-left: 10px; }
+        .card-content { position: relative; z-index: 1; }
+        .card-header h3 { font-family: var(--font-head); font-size: 2rem; margin-bottom: 10px; letter-spacing: 3px; }
+        .emerald h3 { color: #2ecc71; }
+        .sapphire h3 { color: var(--accent); }
+        .diamond h3 { color: #bdc3c7; }
+        .price-tag { font-size: 1.5rem; font-weight: 700; margin: 20px 0; color: white; font-family: var(--font-head); }
+        .features-list { list-style: none; margin-bottom: 30px; flex-grow: 1; text-align: left; padding-left: 10px; }
         .features-list li {
-            margin-bottom: 15px; color: var(--text-muted); font-size: 0.95rem;
-            border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; display: flex; align-items: center;
+            margin-bottom: 12px; color: var(--text-muted); font-size: 0.9rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px; display: flex; align-items: center;
         }
-        .features-list li i { color: var(--accent); margin-right: 15px; width: 20px; text-align: center; }
-        .recommendation { font-size: 0.9rem; font-style: italic; color: var(--accent); margin-top: auto; padding-top: 20px; opacity: 0.8; }
+        .features-list li i { color: var(--accent); margin-right: 12px; width: 16px; text-align: center; }
+        .recommendation { font-size: 0.85rem; font-style: italic; color: var(--accent); margin-top: auto; padding-top: 15px; opacity: 0.8; }
         
         .book-btn-small {
-            margin-top: 25px; padding: 15px 30px; background: transparent;
+            margin-top: 20px; padding: 12px 25px; background: transparent;
             border: 1px solid var(--accent); color: var(--accent); border-radius: 50px;
             cursor: none; transition: 0.3s; font-weight: 700; text-transform: uppercase;
-            letter-spacing: 2px; font-size: 0.8rem; position: relative; overflow: hidden; z-index: 2;
+            letter-spacing: 1px; font-size: 0.75rem; position: relative; overflow: hidden; z-index: 2;
             text-decoration: none; display: inline-block;
         }
         .book-btn-small:hover { background: var(--accent); color: #000; box-shadow: 0 0 20px var(--accent-glow); }
 
         /* --- FOOTER --- */
         .info-section {
-            padding: 80px 0; text-align: center; color: var(--text-muted);
-            font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.05); background: #020202;
+            padding: 60px 0; text-align: center; color: var(--text-muted);
+            font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05); background: #020202;
         }
-        .contact-large { font-size: 1.5rem; color: var(--text-main); margin-top: 20px; font-weight: 700; font-family: var(--font-head); }
+        .contact-large { font-size: 1.3rem; color: var(--text-main); margin-top: 15px; font-weight: 700; font-family: var(--font-head); }
 
-        /* --- STICKY WHATSAPP BUTTON --- */
+        /* --- STICKY WHATSAPP --- */
         .sticky-wa {
-            position: fixed; bottom: 40px; right: 40px;
+            position: fixed; bottom: 30px; right: 30px;
             background: linear-gradient(135deg, #25D366, #128C7E); color: white;
-            padding: 18px 35px; border-radius: 60px; text-decoration: none;
-            font-weight: bold; font-size: 1.1rem; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
-            z-index: 1000; display: flex; align-items: center; gap: 12px;
+            padding: 15px 25px; border-radius: 50px; text-decoration: none;
+            font-weight: bold; font-size: 1rem; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+            z-index: 990; display: flex; align-items: center; gap: 10px;
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: 2px solid rgba(255,255,255,0.2); cursor: none;
         }
-        .sticky-wa:hover { transform: scale(1.1) translateY(-5px); box-shadow: 0 20px 40px rgba(37, 211, 102, 0.5); }
+        .sticky-wa:hover { transform: scale(1.05) translateY(-3px); }
 
+        /* --- AI CHAT BOT STYLES --- */
+        .ai-widget-container {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 995;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .ai-toggle-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), #0088cc);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: none;
+            box-shadow: 0 0 20px var(--accent-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: pulse-glow 2s infinite;
+        }
+
+        .ai-toggle-btn:hover { transform: scale(1.1); }
+        .ai-toggle-btn i { transition: transform 0.3s; }
+        .ai-toggle-btn.active i { transform: rotate(90deg); }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 20px var(--accent-glow); }
+            50% { box-shadow: 0 0 40px var(--accent-glow); }
+            100% { box-shadow: 0 0 20px var(--accent-glow); }
+        }
+
+        .ai-chat-window {
+            position: absolute;
+            bottom: 80px;
+            left: 0;
+            width: 350px;
+            height: 500px;
+            background: rgba(10, 15, 20, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-origin: bottom left;
+        }
+
+        .ai-chat-window.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: all;
+        }
+
+        .ai-header {
+            padding: 20px;
+            background: rgba(0, 210, 255, 0.1);
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .ai-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-weight: bold;
+            font-family: var(--font-head);
+        }
+
+        .ai-info h4 { font-family: var(--font-head); font-size: 1.1rem; color: white; }
+        .ai-info p { font-size: 0.75rem; color: var(--accent); }
+
+        .ai-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) transparent;
+        }
+
+        .message {
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            animation: fade-in 0.3s ease;
+        }
+
+        @keyframes fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .message.bot {
+            background: rgba(255,255,255,0.05);
+            color: var(--text-main);
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .message.user {
+            background: var(--accent);
+            color: #000;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+            font-weight: 600;
+        }
+
+        .ai-options {
+            padding: 15px;
+            background: rgba(0,0,0,0.3);
+            border-top: 1px solid var(--glass-border);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .ai-option-btn {
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            padding: 10px 15px;
+            border-radius: 8px;
+            text-align: left;
+            font-size: 0.85rem;
+            cursor: none;
+            transition: all 0.2s;
+            font-family: var(--font-body);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ai-option-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(0, 210, 255, 0.05);
+        }
+
+        .ai-option-btn i { width: 20px; text-align: center; }
+
+        /* --- MOBILE RESPONSIVENESS --- */
         @media(max-width: 768px) {
-            h1 { font-size: 3rem; }
-            .ba-slider { height: 300px; }
-            .sticky-wa span { display: none; } 
-            .sticky-wa { padding: 18px; border-radius: 50%; bottom: 20px; right: 20px; }
-            .section-title { font-size: 2.2rem; }
             .cursor-dot, .cursor-outline { display: none; }
             * { cursor: auto; }
+            
             .site-header { padding: 0 20px; }
+            .brand-name { font-size: 1.1rem; }
+            .hive-badge-link { display: none; } /* Hide badge on small mobile to save space */
+            
+            h1 { font-size: 2.5rem; }
+            .hero-desc { font-size: 0.95rem; }
+            
+            .ba-slider { height: 300px; }
+            
+            .sticky-wa span { display: none; } 
+            .sticky-wa { padding: 15px; border-radius: 50%; bottom: 20px; right: 20px; }
+            
+            .section-title { font-size: 2rem; }
+            
+            /* Mobile AI Chat Full Screen */
+            .ai-widget-container {
+                bottom: 20px;
+                left: 20px;
+            }
+            .ai-chat-window {
+                position: fixed;
+                top: 0; left: 0;
+                width: 100%; height: 100%;
+                bottom: 0; left: 0;
+                border-radius: 0;
+                transform: translateY(100%);
+                transform-origin: bottom;
+                z-index: 2000;
+            }
+            .ai-chat-window.active {
+                transform: translateY(0);
+            }
+            .ai-toggle-btn {
+                width: 55px; height: 55px;
+                font-size: 1.3rem;
+            }
         }
     </style>
 </head>
@@ -511,18 +651,15 @@
     <!-- HEADER -->
     <header class="site-header">
         <div class="logo-area">
-            <!-- Hamburger Button -->
             <div class="hamburger-btn" id="hamburgerBtn">
                 <div class="hamburger-line"></div>
                 <div class="hamburger-line"></div>
                 <div class="hamburger-line"></div>
             </div>
-            
             <div class="brand-name">Sapphire<span class="highlight">Detailing</span></div>
         </div>
 
-        <!-- Hive Times Badge -->
-        <a href="https://hivetimes.co.za" class="hive-badge-link" target="_blank" rel="noopener" title="Visit Hive Times">
+        <a href="https://hivetimes.co.za" class="hive-badge-link" target="_blank" rel="noopener">
             <svg class="hive-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 2L14.5 6.5L19 6.5L16.5 11L19 15.5L14.5 15.5L12 20L9.5 15.5L5 15.5L7.5 11L5 6.5L9.5 6.5L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
                 <path d="M12 7L13.5 9.5L16 9.5L14.5 12L16 14.5L13.5 14.5L12 17L10.5 14.5L8 14.5L9.5 12L8 9.5L10.5 9.5L12 7Z" fill="currentColor"/>
@@ -534,20 +671,15 @@
         </a>
     </header>
 
-    <!-- NEW PROFESSIONAL NAV STRUCTURE -->
-    <!-- Backdrop Overlay -->
+    <!-- NAV OVERLAY -->
     <div class="nav-backdrop" id="navBackdrop" onclick="toggleMenu()"></div>
-    
-    <!-- Sliding Panel -->
     <div class="nav-panel" id="navPanel">
-       
         <ul class="nav-links">
             <li><a href="#" onclick="toggleMenu()">Home</a></li>
             <li><a href="#services" onclick="toggleMenu()">Services</a></li>
             <li><a href="#paint-correction" onclick="toggleMenu()">Paint Correction</a></li>
             <li><a href="#pricing" onclick="toggleMenu()">Packages</a></li>
         </ul>
-
         <div class="nav-contact">
             <p>Ready to book?</p>
             <a href="#" onclick="sendDirectWhatsApp('General Inquiry'); toggleMenu(); return false;">
@@ -560,19 +692,14 @@
     <header class="hero">
         <img class="hero-video-bg" alt="Background">
         <div class="hero-overlay"></div>
-        
-        <div class="car-model-container">
-           
-        </div>
-
         <div class="hero-content">
             <p class="subtitle reveal">Sapphire Auto Detailing</p>
             <h1 class="reveal">Premium <span class="highlight">Mobile</span><br>Auto Detailing</h1>
-            <p class="reveal" style="color: #ccc; max-width: 600px; margin: 0 auto; font-size: 1.1rem;">We come to you. Complete interior and exterior detailing, plus professional paint correction to restore your car's showroom gloss.</p>
+            <p class="reveal hero-desc">We come to you. Complete interior and exterior detailing, plus professional paint correction to restore your car's showroom gloss.</p>
         </div>
     </header>
 
-    <!-- SERVICES OVERVIEW -->
+    <!-- SERVICES -->
     <section class="services-overview container" id="services">
         <h2 class="section-title reveal">Our Expertise</h2>
         <div class="services-grid">
@@ -594,28 +721,23 @@
         </div>
     </section>
 
-    <!-- PAINT CORRECTION SECTION -->
+    <!-- PAINT CORRECTION -->
     <section class="comparison-section container" id="paint-correction">
         <h2 class="section-title reveal">The Science of Gloss</h2>
         <p class="section-subtitle reveal">
-            Paint correction is basically <strong>polishing your car</strong> to remove the <strong>scratches</strong> and make your paint <strong>glossy again</strong>. 
-            We eliminate swirl marks and oxidation to reveal the true depth of your paintwork.
+            Paint correction is basically <strong>polishing your car</strong> to remove the <strong>scratches</strong> and make your paint <strong>glossy again</strong>.
         </p>
         
         <div class="ba-slider reveal" id="baSlider">
             <div class="ba-image img-after"></div>
             <div class="ba-image img-before" id="imgBefore"></div>
-            
-            <div class="slider-handle" id="sliderHandle">
-                <i class="fas fa-arrows-alt-h"></i>
-            </div>
-            
+            <div class="slider-handle" id="sliderHandle"><i class="fas fa-arrows-alt-h"></i></div>
             <span class="slider-label label-before">Scratches</span>
             <span class="slider-label label-after">High Gloss</span>
         </div>
     </section>
 
-    <!-- PRICING PACKAGES -->
+    <!-- PRICING -->
     <section class="pricing-section container" id="pricing">
         <h2 class="section-title reveal">Select Your Package</h2>
         <p class="section-subtitle reveal">Click "Book Now" to instantly message Mohammed via WhatsApp.</p>
@@ -630,7 +752,6 @@
                         <li><i class="fas fa-check"></i> Wheels & tyres cleaned/dressed</li>
                         <li><i class="fas fa-check"></i> Interior vacuum & wipe-down</li>
                         <li><i class="fas fa-check"></i> Windows cleaned (in/out)</li>
-                        <li><i class="fas fa-check"></i> Basic exterior protection</li>
                     </ul>
                     <div class="recommendation">Ideal for regularly maintained vehicles</div>
                     <a href="#" class="book-btn-small" onclick="sendDirectWhatsApp('Emerald'); return false;">Book Now</a>
@@ -643,13 +764,12 @@
                     <div class="card-header"><h3>SAPPHIRE</h3><div class="price-tag">R1500 - R2500+</div></div>
                     <ul class="features-list">
                         <li><i class="fas fa-star"></i> <strong>Includes Paint Correction</strong></li>
-                        <li><i class="fas fa-check"></i> Clay bar treatment (Decontamination)</li>
+                        <li><i class="fas fa-check"></i> Clay bar treatment</li>
                         <li><i class="fas fa-check"></i> Machine polish (1-2 stage)</li>
                         <li><i class="fas fa-check"></i> Remove micro-scratches & swirls</li>
                         <li><i class="fas fa-check"></i> High-quality sealant applied</li>
-                        <li><i class="fas fa-check"></i> Full interior & exterior detail</li>
                     </ul>
-                    <div class="recommendation">Recommended for neglected or high-value vehicles</div>
+                    <div class="recommendation">Recommended for neglected vehicles</div>
                     <a href="#" class="book-btn-small" onclick="sendDirectWhatsApp('Sapphire'); return false;">Book Now</a>
                 </div>
             </div>
@@ -659,65 +779,102 @@
                 <div class="card-content">
                     <div class="card-header"><h3>DIAMOND</h3><div class="price-tag">R1000 - R1500</div></div>
                     <ul class="features-list">
-                        <li><i class="fas fa-check"></i> Deep interior clean (seats/carpets)</li>
+                        <li><i class="fas fa-check"></i> Deep interior clean</li>
                         <li><i class="fas fa-check"></i> Exterior wash & decontamination</li>
-                        <li><i class="fas fa-check"></i> Light polish (Paint Enhancement)</li>
+                        <li><i class="fas fa-check"></i> Light polish (Enhancement)</li>
                         <li><i class="fas fa-check"></i> Wax protection applied</li>
                         <li><i class="fas fa-check"></i> Tyres dressed & windows cleaned</li>
                     </ul>
-                    <div class="recommendation">Most popular package for overall renewal</div>
+                    <div class="recommendation">Most popular package</div>
                     <a href="#" class="book-btn-small" onclick="sendDirectWhatsApp('Diamond'); return false;">Book Now</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER INFO -->
+    <!-- FOOTER -->
     <footer class="info-section">
         <div class="container">
-            <p>*** Prices vary based on vehicle size and condition. SUVs/bakkies incur additional charges.</p>
-            <p>Mobile service available — travel fee may apply outside local area.</p>
-            <div class="contact-large">Contact Mohammed Mangera<br><span class="highlight" style="font-size: 1.6rem;">081 383 3936</span></div>
+            <p>Prices vary based on vehicle size and condition.</p>
+            <div class="contact-large">Contact Mohammed Mangera<br><span class="highlight" style="font-size: 1.4rem;">081 383 3936</span></div>
         </div>
     </footer>
 
-    <!-- STICKY WHATSAPP BUTTON (General Inquiry) -->
+    <!-- STICKY WHATSAPP -->
     <a href="#" class="sticky-wa" onclick="sendDirectWhatsApp('General Inquiry'); return false;">
         <i class="fab fa-whatsapp"></i>
-        <span>Book Your Detail</span>
+        <span>Book Now</span>
     </a>
+
+    <!-- AI CHAT BOT WIDGET -->
+    <div class="ai-widget-container">
+        <button class="ai-toggle-btn" id="aiToggleBtn" onclick="toggleChat()">
+            <i class="fas fa-robot"></i>
+        </button>
+        
+        <div class="ai-chat-window" id="aiChatWindow">
+            <div class="ai-header">
+                <div class="ai-avatar">AI</div>
+                <div class="ai-info">
+                    <h4>Sapphire Assistant</h4>
+                    <p>Online & Ready to Help</p>
+                </div>
+                <i class="fas fa-times" style="margin-left: auto; color: var(--text-muted); cursor: none;" onclick="toggleChat()"></i>
+            </div>
+            
+            <div class="ai-messages" id="aiMessages">
+                <div class="message bot">
+                    Hello! I'm the Sapphire AI assistant. How can I help you today?
+                </div>
+            </div>
+            
+            <div class="ai-options">
+                <button class="ai-option-btn" onclick="askAI('pricing')">
+                    <i class="fas fa-tags"></i> What are your prices?
+                </button>
+                <button class="ai-option-btn" onclick="askAI('services')">
+                    <i class="fas fa-list"></i> What services do you offer?
+                </button>
+                <button class="ai-option-btn" onclick="askAI('booking')">
+                    <i class="fas fa-calendar-check"></i> How do I book?
+                </button>
+                <button class="ai-option-btn" onclick="askAI('location')">
+                    <i class="fas fa-map-marker-alt"></i> Where do you operate?
+                </button>
+            </div>
+        </div>
+    </div>
 
     <script>
         // --- 1. CUSTOM CURSOR ---
         const cursorDot = document.querySelector('.cursor-dot');
         const cursorOutline = document.querySelector('.cursor-outline');
-        window.addEventListener('mousemove', (e) => {
-            const posX = e.clientX; const posY = e.clientY;
-            cursorDot.style.left = `${posX}px`; cursorDot.style.top = `${posY}px`;
-            cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
-        });
-        const interactiveElements = document.querySelectorAll('a, button, .price-card, input, .hamburger-btn');
-        interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', () => cursorOutline.classList.add('hovered'));
-            el.addEventListener('mouseleave', () => cursorOutline.classList.remove('hovered'));
-        });
+        if(window.innerWidth > 768) {
+            window.addEventListener('mousemove', (e) => {
+                const posX = e.clientX; const posY = e.clientY;
+                cursorDot.style.left = `${posX}px`; cursorDot.style.top = `${posY}px`;
+                cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
+            });
+            const interactiveElements = document.querySelectorAll('a, button, .price-card, input, .hamburger-btn, .ai-option-btn');
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => cursorOutline.classList.add('hovered'));
+                el.addEventListener('mouseleave', () => cursorOutline.classList.remove('hovered'));
+            });
+        }
 
-        // --- 2. UPDATED HAMBURGER MENU LOGIC ---
+        // --- 2. MENU LOGIC ---
         const hamburgerBtn = document.getElementById('hamburgerBtn');
         const navPanel = document.getElementById('navPanel');
         const navBackdrop = document.getElementById('navBackdrop');
         
         function toggleMenu() {
             const isActive = navPanel.classList.contains('active');
-            
             if (isActive) {
-                // Close
                 hamburgerBtn.classList.remove('active');
                 navPanel.classList.remove('active');
                 navBackdrop.classList.remove('active');
                 document.body.style.overflow = 'auto';
             } else {
-                // Open
                 hamburgerBtn.classList.add('active');
                 navPanel.classList.add('active');
                 navBackdrop.classList.add('active');
@@ -726,15 +883,15 @@
         }
         hamburgerBtn.addEventListener('click', toggleMenu);
 
-        // --- 3. 3D TILT EFFECT FOR CARDS ---
+        // --- 3. 3D TILT EFFECT ---
         const cards = document.querySelectorAll('.price-card');
         cards.forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left; const y = e.clientY - rect.top;
                 const centerX = rect.width / 2; const centerY = rect.height / 2;
-                const rotateX = ((y - centerY) / centerY) * -10;
-                const rotateY = ((x - centerX) / centerX) * 10;
+                const rotateX = ((y - centerY) / centerY) * -5;
+                const rotateY = ((x - centerX) / centerX) * 5;
                 card.style.setProperty('--mouse-x', `${x}px`);
                 card.style.setProperty('--mouse-y', `${y}px`);
                 card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
@@ -744,35 +901,19 @@
             });
         });
 
-        // --- 4. PARALLAX HERO ---
-        const heroSection = document.querySelector('.hero');
-        const carImg = document.getElementById('heroCar');
-        const heroBg = document.querySelector('.hero-video-bg');
-        window.addEventListener('scroll', () => {
-            const scrollPosition = window.scrollY;
-            const windowHeight = window.innerHeight;
-            if (scrollPosition < windowHeight) {
-                const rotateVal = scrollPosition * 0.05; 
-                const moveX = scrollPosition * 0.1;
-                if(carImg) carImg.style.transform = `rotate(${rotateVal}deg) translateX(${moveX}px)`;
-                heroBg.style.transform = `scale(1.1) translateY(${scrollPosition * 0.5}px)`;
-            }
-        });
-
-        // --- 5. REVEAL ON SCROLL ---
+        // --- 4. REVEAL ON SCROLL ---
         const revealElements = document.querySelectorAll('.reveal');
         const revealOnScroll = () => {
             const windowHeight = window.innerHeight;
-            const elementVisible = 100;
             revealElements.forEach((reveal) => {
                 const elementTop = reveal.getBoundingClientRect().top;
-                if (elementTop < windowHeight - elementVisible) reveal.classList.add('active');
+                if (elementTop < windowHeight - 50) reveal.classList.add('active');
             });
         };
         window.addEventListener('scroll', revealOnScroll);
         revealOnScroll();
 
-        // --- 6. BEFORE/AFTER SLIDER ---
+        // --- 5. BEFORE/AFTER SLIDER ---
         const sliderContainer = document.getElementById('baSlider');
         const imgBefore = document.getElementById('imgBefore');
         const sliderHandle = document.getElementById('sliderHandle');
@@ -790,11 +931,70 @@
         window.addEventListener('touchend', () => isDragging = false);
         sliderContainer.addEventListener('touchmove', (e) => { if (!isDragging) return; updateSlider(e.touches[0].clientX); });
 
-        // --- 7. DIRECT WHATSAPP LOGIC ---
+        // --- 6. WHATSAPP LOGIC ---
         function sendDirectWhatsApp(packageName) {
-            const message = `Hi Mohammed! I'm interested in booking a detailing session.\n\nPackage: ${packageName}\n\nPlease let me know your availability and pricing for my vehicle.`;
+            const message = `Hi Mohammed! I'm interested in booking a detailing session.\n\nPackage: ${packageName}\n\nPlease let me know your availability.`;
             const encodedMessage = encodeURIComponent(message);
             window.open(`https://wa.me/27813833936?text=${encodedMessage}`, '_blank');
+        }
+
+        // --- 7. AI CHAT BOT LOGIC ---
+        const aiToggleBtn = document.getElementById('aiToggleBtn');
+        const aiChatWindow = document.getElementById('aiChatWindow');
+        const aiMessages = document.getElementById('aiMessages');
+        let isChatOpen = false;
+
+        function toggleChat() {
+            isChatOpen = !isChatOpen;
+            if (isChatOpen) {
+                aiChatWindow.classList.add('active');
+                aiToggleBtn.classList.add('active');
+                aiToggleBtn.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                aiChatWindow.classList.remove('active');
+                aiToggleBtn.classList.remove('active');
+                aiToggleBtn.innerHTML = '<i class="fas fa-robot"></i>';
+            }
+        }
+
+        function askAI(topic) {
+            let userText = "";
+            let botText = "";
+
+            switch(topic) {
+                case 'pricing':
+                    userText = "What are your prices?";
+                    botText = "Our packages start from R650 (Emerald) up to R2500+ (Sapphire with Paint Correction). The Diamond package is our most popular at R1000-R1500. Would you like to book one?";
+                    break;
+                case 'services':
+                    userText = "What services do you offer?";
+                    botText = "We specialize in Mobile Auto Detailing. This includes Exterior Hand Wash, Interior Deep Cleaning, Leather Conditioning, and Professional Paint Correction to remove swirls and scratches.";
+                    break;
+                case 'booking':
+                    userText = "How do I book?";
+                    botText = "Booking is easy! You can click the 'Book Now' button on any package, or use the green WhatsApp button at the bottom right to message Mohammed directly.";
+                    break;
+                case 'location':
+                    userText = "Where do you operate?";
+                    botText = "We are a Mobile Service, so we come to you! We primarily operate in the greater area. A small travel fee may apply for locations outside our main zone.";
+                    break;
+            }
+
+            // Add User Message
+            addMessage(userText, 'user');
+            
+            // Simulate Bot Typing Delay
+            setTimeout(() => {
+                addMessage(botText, 'bot');
+            }, 600);
+        }
+
+        function addMessage(text, sender) {
+            const msgDiv = document.createElement('div');
+            msgDiv.classList.add('message', sender);
+            msgDiv.innerText = text;
+            aiMessages.appendChild(msgDiv);
+            aiMessages.scrollTop = aiMessages.scrollHeight;
         }
     </script>
 </body>
