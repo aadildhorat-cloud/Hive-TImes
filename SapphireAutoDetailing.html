@@ -1,662 +1,903 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Sapphire Auto Detailing | Elite Mobile Care</title>
-<!-- Fonts & Icons -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-/* --- VARIABLES & RESET --- */
-:root {
---bg-dark: #050505;
---primary: #0f4c81;
---accent: #00d2ff;
---accent-glow: rgba(0, 210, 255, 0.4);
---text-main: #ffffff;
---text-muted: #a0a0a0;
---glass-bg: rgba(10, 15, 20, 0.95);
---glass-border: rgba(255, 255, 255, 0.08);
---font-head: 'Rajdhani', sans-serif;
---font-body: 'Montserrat', sans-serif;
---header-height: 80px;
---nav-width: 300px;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
-body {
-background-color: var(--bg-dark);
-color: var(--text-main);
-font-family: var(--font-body);
-overflow-x: hidden; /* Ensures no horizontal scroll */
-line-height: 1.6;
-width: 100%;
-max-width: 100vw; /* Prevents overflow */
-position: relative;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sapphire Auto Detailing | Elite Mobile Care</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-/* --- BACKGROUND MESH --- */
-.bg-mesh {
-position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-background: radial-gradient(circle at 50% 50%, #1a2a3a 0%, #050505 100%);
-z-index: -2;
-}
-.bg-orb {
-position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4;
-animation: float 10s infinite ease-in-out; z-index: -1;
-}
-.orb-1 { width: 400px; height: 400px; background: var(--primary); top: -10%; left: -10%; }
-.orb-2 { width: 300px; height: 300px; background: #2c3e50; bottom: 10%; right: -5%; animation-delay: -5s; }
-@keyframes float { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(30px, 50px); } }
+    <style>
+        /* --- VARIABLES & RESET --- */
+        :root {
+            --bg-dark: #050505;
+            --primary: #0f4c81;
+            --accent: #00d2ff;
+            --accent-glow: rgba(0, 210, 255, 0.4);
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --glass-bg: rgba(10, 15, 20, 0.95);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --font-head: 'Rajdhani', sans-serif;
+            --font-body: 'Montserrat', sans-serif;
+            --header-height: 80px;
+            --nav-width: 300px;
+        }
 
-/* --- UTILITIES --- */
-.container {
-width: 100%;
-max-width: 1200px;
-margin: 0 auto;
-padding: 0 20px;
-}
-.highlight { color: var(--accent); text-shadow: 0 0 20px var(--accent-glow); }
-.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
-.reveal.active { opacity: 1; transform: translateY(0); }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-/* --- HEADER & NAVIGATION --- */
-.site-header {
-position: fixed;
-top: 0; left: 0; width: 100%;
-height: var(--header-height);
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 0 5%;
-z-index: 1000;
-background: rgba(5, 5, 5, 0.85);
-backdrop-filter: blur(15px);
--webkit-backdrop-filter: blur(15px);
-border-bottom: 1px solid var(--glass-border);
-transition: all 0.3s ease;
-}
-.logo-area {
-display: flex;
-align-items: center;
-gap: 15px;
-z-index: 1002;
-}
-.brand-name {
-font-family: var(--font-head);
-font-size: clamp(1.2rem, 4vw, 1.5rem);
-font-weight: 700;
-color: white;
-text-transform: uppercase;
-letter-spacing: 2px;
-}
-/* Hamburger Icon */
-.hamburger-btn {
-width: 35px;
-height: 25px;
-position: relative;
-z-index: 1002;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-}
-.hamburger-line {
-width: 100%;
-height: 3px;
-background: white;
-border-radius: 2px;
-transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-transform-origin: center;
-}
-.hamburger-btn.active .hamburger-line:nth-child(1) {
-transform: translateY(11px) rotate(45deg);
-background: var(--accent);
-}
-.hamburger-btn.active .hamburger-line:nth-child(2) {
-opacity: 0;
-transform: scaleX(0);
-}
-.hamburger-btn.active .hamburger-line:nth-child(3) {
-transform: translateY(-11px) rotate(-45deg);
-background: var(--accent);
-}
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            line-height: 1.6;
+            width: 100%;
+            max-width: 100vw;
+            position: relative;
+        }
 
-/* --- SIDE MENU --- */
-.nav-backdrop {
-position: fixed;
-top: 0; left: 0; width: 100%; height: 100vh;
-background: rgba(0, 0, 0, 0.8);
-backdrop-filter: blur(4px);
-z-index: 1000;
-opacity: 0;
-pointer-events: none;
-transition: opacity 0.4s ease;
-}
-.nav-backdrop.active {
-opacity: 1;
-pointer-events: all;
-}
-.nav-panel {
-position: fixed;
-top: 0; left: 0;
-width: var(--nav-width);
-max-width: 85vw;
-height: 100vh;
-background: #0a0f14;
-border-right: 1px solid var(--glass-border);
-z-index: 1001;
-transform: translateX(-100%);
-transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-display: flex;
-flex-direction: column;
-padding: 100px 30px 40px 30px;
-box-shadow: 10px 0 40px rgba(0,0,0,0.5);
-}
-.nav-panel.active {
-transform: translateX(0);
-}
-.nav-links {
-list-style: none;
-display: flex;
-flex-direction: column;
-gap: 25px;
-}
-.nav-links li { overflow: hidden; }
-.nav-links a {
-display: block;
-font-family: var(--font-head);
-font-size: 1.8rem;
-color: white;
-text-decoration: none;
-text-transform: uppercase;
-font-weight: 700;
-position: relative;
-transform: translateY(100%);
-transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s;
-}
-.nav-links a::after {
-content: '';
-position: absolute;
-bottom: 5px; left: 0;
-width: 0; height: 2px;
-background: var(--accent);
-transition: width 0.3s ease;
-box-shadow: 0 0 10px var(--accent-glow);
-}
-.nav-links a:hover {
-color: var(--accent);
-padding-left: 10px;
-}
-.nav-links a:hover::after { width: 100%; }
-.nav-panel.active .nav-links a { transform: translateY(0); }
-.nav-panel.active .nav-links li:nth-child(1) a { transition-delay: 0.1s; }
-.nav-panel.active .nav-links li:nth-child(2) a { transition-delay: 0.2s; }
-.nav-panel.active .nav-links li:nth-child(3) a { transition-delay: 0.3s; }
-.nav-panel.active .nav-links li:nth-child(4) a { transition-delay: 0.4s; }
-.nav-contact {
-margin-top: auto;
-padding-top: 30px;
-border-top: 1px solid var(--glass-border);
-}
-.nav-contact p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 5px; }
-.nav-contact a {
-color: var(--accent);
-text-decoration: none;
-font-weight: 600;
-font-size: 1.1rem;
-display: inline-flex;
-align-items: center;
-gap: 10px;
-}
+        /* --- BACKGROUND MESH --- */
+        .bg-mesh {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: radial-gradient(circle at 50% 50%, #1a2a3a 0%, #050505 100%);
+            z-index: -2;
+        }
 
-/* --- HIVE BADGE --- */
-.hive-badge-link {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-background-color: #FFD700;
-border: 2px solid #E5C100;
-border-radius: 50px;
-padding: 6px 14px;
-text-decoration: none;
-transition: all 0.3s ease;
-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-}
-.hive-icon-svg { width: 16px; height: 16px; fill: #000000; margin-right: 6px; }
-.hive-text-group { display: flex; flex-direction: column; line-height: 1.1; }
-.hive-text { color: #000000; font-size: 11px; font-weight: 800; text-transform: uppercase; }
-.hive-subtext { font-size: 8px; font-weight: 600; color: #333333; text-transform: uppercase; }
-.hive-badge-link:hover {
-background-color: #E5C100;
-transform: translateY(-2px);
-}
-@media (max-width: 480px) {
-.hive-badge-link { display: none; }
-}
+        .bg-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 10s infinite ease-in-out;
+            z-index: -1;
+        }
 
-/* --- HERO SECTION --- */
-.hero {
-height: 100vh;
-min-height: 600px;
-position: relative;
-display: flex;
-align-items: center;
-justify-content: center;
-overflow: hidden;
-perspective: 1000px;
-padding-top: var(--header-height);
-width: 100%;
-}
-.hero-video-bg {
-position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-object-fit: cover; opacity: 0.4; z-index: 0;
-content: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
-filter: grayscale(100%) contrast(1.2);
-transform: scale(1.1);
-}
-.hero-overlay {
-position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-background: linear-gradient(to bottom, rgba(5,5,5,0.3), var(--bg-dark));
-z-index: 1;
-}
-.hero-content {
-position: relative; z-index: 3; text-align: center;
-mix-blend-mode: screen; padding: 0 20px;
-max-width: 800px;
-width: 100%;
-}
-h1 {
-font-family: var(--font-head);
-font-size: clamp(2.5rem, 8vw, 6rem);
-text-transform: uppercase; letter-spacing: 5px; line-height: 0.9;
-margin-bottom: 20px;
-background: linear-gradient(to right, #fff, #aaa);
-background-clip: text; -webkit-text-fill-color: transparent;
-}
-p.subtitle {
-font-size: clamp(0.8rem, 2vw, 1rem);
-letter-spacing: 4px; color: var(--accent);
-text-transform: uppercase; font-weight: 700; margin-bottom: 20px; display: block;
-text-shadow: 0 0 10px var(--accent-glow);
-}
-.hero-desc {
-color: #ccc;
-font-size: clamp(0.9rem, 2vw, 1.1rem);
-line-height: 1.6;
-}
+        .orb-1 { width: 400px; height: 400px; background: var(--primary); top: -10%; left: -10%; }
+        .orb-2 { width: 300px; height: 300px; background: #2c3e50; bottom: 10%; right: -5%; animation-delay: -5s; }
 
-/* --- SERVICES --- */
-.services-overview { padding: 80px 0; position: relative; width: 100%; }
-.services-grid {
-display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-gap: 30px; margin-top: 50px;
-width: 100%;
-}
-.service-item {
-background: var(--glass-bg); border: 1px solid var(--glass-border);
-padding: 30px; border-radius: 15px; backdrop-filter: blur(10px);
-transition: 0.3s;
-width: 100%;
-}
-.service-item:hover {
-border-color: var(--accent); transform: translateY(-5px);
-box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-.service-item i {
-font-size: 2.5rem; color: var(--accent); margin-bottom: 20px;
-text-shadow: 0 0 15px var(--accent-glow);
-}
-.service-item h3 { font-family: var(--font-head); font-size: 1.5rem; margin-bottom: 10px; letter-spacing: 1px; }
-.service-item p { font-size: 0.9rem; color: var(--text-muted); }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 50px); }
+        }
 
-/* --- PAINT CORRECTION --- */
-.section-title {
-text-align: center; font-family: var(--font-head); font-size: clamp(2rem, 5vw, 2.5rem);
-margin-bottom: 1rem; color: var(--text-main); text-transform: uppercase;
-}
-.section-subtitle {
-text-align: center; color: var(--text-muted); max-width: 800px;
-margin: 0 auto 3rem auto; font-size: 1rem; line-height: 1.6;
-padding: 0 10px;
-}
-.comparison-section { padding: 80px 0; background: linear-gradient(to bottom, transparent, #020202); width: 100%; }
-.ba-slider {
-position: relative; width: 100%; max-width: 900px; height: clamp(300px, 50vw, 500px);
-margin: 0 auto; overflow: hidden; border-radius: 20px;
-box-shadow: 0 30px 60px rgba(0,0,0,0.6); border: 1px solid var(--glass-border);
-}
-.ba-image {
-position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-background-size: cover; background-position: center;
-}
-.img-after { background-image: url('https://images.unsplash.com/photo-1601362840469-51e4d8d58785?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80'); }
-.img-before {
-background-image: url('https://images.unsplash.com/photo-1600588653879-4c6078c40523?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');
-width: 50%; border-right: 2px solid var(--accent); z-index: 10;
-}
-.slider-handle {
-position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-width: 50px; height: 50px; background: var(--accent); border-radius: 50%;
-cursor: ew-resize; z-index: 20; display: flex; align-items: center; justify-content: center;
-box-shadow: 0 0 30px var(--accent-glow); color: #000; font-size: 1.2rem;
-}
-.slider-label {
-position: absolute; top: 20px; padding: 8px 20px; background: rgba(0,0,0,0.8);
-border: 1px solid var(--glass-border); border-radius: 30px; font-weight: bold;
-font-size: 0.8rem; pointer-events: none; text-transform: uppercase; letter-spacing: 2px;
-backdrop-filter: blur(5px);
-}
-.label-before { left: 20px; color: #ff4757; }
-.label-after { right: 20px; color: #2ed573; }
+        /* --- UTILITIES --- */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-/* --- PRICING --- */
-.pricing-section { padding: 80px 0; perspective: 1000px; width: 100%; }
-.pricing-grid {
-display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-gap: 30px; align-items: center;
-width: 100%;
-}
-.price-card {
-background: var(--glass-bg); backdrop-filter: blur(20px);
-border: 1px solid var(--glass-border);
-border-radius: 20px; padding: 40px 25px; text-align: center;
-position: relative; overflow: hidden; display: flex; flex-direction: column;
-transform-style: preserve-3d; transition: transform 0.1s;
-box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-width: 100%;
-}
-.price-card::before {
-content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.05), transparent 40%);
-z-index: 0; opacity: 0; transition: opacity 0.3s; pointer-events: none;
-}
-.price-card:hover::before { opacity: 1; }
-.card-content { position: relative; z-index: 1; }
-.card-header h3 { font-family: var(--font-head); font-size: 2rem; margin-bottom: 10px; letter-spacing: 3px; }
-.emerald h3 { color: #2ecc71; }
-.sapphire h3 { color: var(--accent); }
-.diamond h3 { color: #bdc3c7; }
-.price-tag { font-size: 1.5rem; font-weight: 700; margin: 20px 0; color: white; font-family: var(--font-head); }
-.features-list { list-style: none; margin-bottom: 30px; flex-grow: 1; text-align: left; padding-left: 10px; }
-.features-list li {
-margin-bottom: 12px; color: var(--text-muted); font-size: 0.9rem;
-border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px; display: flex; align-items: center;
-}
-.features-list li i { color: var(--accent); margin-right: 12px; width: 16px; text-align: center; }
-.recommendation { font-size: 0.85rem; font-style: italic; color: var(--accent); margin-top: auto; padding-top: 15px; opacity: 0.8; }
-.book-btn-small {
-margin-top: 20px; padding: 12px 25px; background: transparent;
-border: 1px solid var(--accent); color: var(--accent); border-radius: 50px;
-transition: 0.3s; font-weight: 700; text-transform: uppercase;
-letter-spacing: 1px; font-size: 0.75rem; position: relative; overflow: hidden; z-index: 2;
-text-decoration: none; display: inline-block;
-}
-.book-btn-small:hover { background: var(--accent); color: #000; box-shadow: 0 0 20px var(--accent-glow); }
+        .highlight {
+            color: var(--accent);
+            text-shadow: 0 0 20px var(--accent-glow);
+        }
 
-/* --- FOOTER --- */
-.info-section {
-padding: 60px 0; text-align: center; color: var(--text-muted);
-font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05); background: #020202;
-width: 100%;
-}
-.contact-large { font-size: 1.3rem; color: var(--text-main); margin-top: 15px; font-weight: 700; font-family: var(--font-head); }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
 
-/* --- STICKY WHATSAPP --- */
-.sticky-wa {
-position: fixed; bottom: 30px; right: 30px;
-background: linear-gradient(135deg, #25D366, #128C7E); color: white;
-padding: 15px 25px; border-radius: 50px; text-decoration: none;
-font-weight: bold; font-size: 1rem; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
-z-index: 990; display: flex; align-items: center; gap: 10px;
-transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-border: 2px solid rgba(255,255,255,0.2);
-}
-.sticky-wa:hover { transform: scale(1.05) translateY(-3px); }
-@media (max-width: 480px) {
-.sticky-wa span { display: none; }
-.sticky-wa { padding: 15px; border-radius: 50%; bottom: 20px; right: 20px; }
-}
-</style>
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        .site-header {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            z-index: 1000;
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 1002;
+        }
+
+        .brand-name {
+            font-family: var(--font-head);
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Hamburger Icon */
+        .hamburger-btn {
+            width: 35px;
+            height: 25px;
+            position: relative;
+            z-index: 1002;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .hamburger-line {
+            width: 100%;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+            transform-origin: center;
+        }
+
+        .hamburger-btn.active .hamburger-line:nth-child(1) {
+            transform: translateY(11px) rotate(45deg);
+            background: var(--accent);
+        }
+
+        .hamburger-btn.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .hamburger-btn.active .hamburger-line:nth-child(3) {
+            transform: translateY(-11px) rotate(-45deg);
+            background: var(--accent);
+        }
+
+        /* --- SIDE MENU --- */
+        .nav-backdrop {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .nav-backdrop.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .nav-panel {
+            position: fixed;
+            top: 0; left: 0;
+            width: var(--nav-width);
+            max-width: 85vw;
+            height: 100vh;
+            background: #0a0f14;
+            border-right: 1px solid var(--glass-border);
+            z-index: 1001;
+            transform: translateX(-100%);
+            transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            display: flex;
+            flex-direction: column;
+            padding: 100px 30px 40px 30px;
+            box-shadow: 10px 0 40px rgba(0,0,0,0.5);
+        }
+
+        .nav-panel.active {
+            transform: translateX(0);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .nav-links li { overflow: hidden; }
+
+        .nav-links a {
+            display: block;
+            font-family: var(--font-head);
+            font-size: 1.8rem;
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 700;
+            position: relative;
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 5px; left: 0;
+            width: 0; height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+            padding-left: 10px;
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-panel.active .nav-links a { transform: translateY(0); }
+        .nav-panel.active .nav-links li:nth-child(1) a { transition-delay: 0.1s; }
+        .nav-panel.active .nav-links li:nth-child(2) a { transition-delay: 0.2s; }
+        .nav-panel.active .nav-links li:nth-child(3) a { transition-delay: 0.3s; }
+        .nav-panel.active .nav-links li:nth-child(4) a { transition-delay: 0.4s; }
+
+        .nav-contact {
+            margin-top: auto;
+            padding-top: 30px;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .nav-contact p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 5px; }
+
+        .nav-contact a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* --- HIVE BADGE --- */
+        .hive-badge-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #FFD700;
+            border: 2px solid #E5C100;
+            border-radius: 50px;
+            padding: 6px 14px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+
+        .hive-icon-svg { width: 16px; height: 16px; fill: #000000; margin-right: 6px; }
+        
+        .hive-text-group { display: flex; flex-direction: column; line-height: 1.1; }
+        .hive-text { color: #000000; font-size: 11px; font-weight: 800; text-transform: uppercase; }
+        .hive-subtext { font-size: 8px; font-weight: 600; color: #333333; text-transform: uppercase; }
+
+        .hive-badge-link:hover {
+            background-color: #E5C100;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 480px) {
+            .hive-badge-link { display: none; }
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            perspective: 1000px;
+            padding-top: var(--header-height);
+            width: 100%;
+        }
+
+        .hero-video-bg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
+            z-index: 0;
+            content: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            filter: grayscale(100%) contrast(1.2);
+            transform: scale(1.1);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(5,5,5,0.3), var(--bg-dark));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            mix-blend-mode: screen;
+            padding: 0 20px;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            font-family: var(--font-head);
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            line-height: 0.9;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #aaa);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            font-size: clamp(0.8rem, 2vw, 1rem);
+            letter-spacing: 4px;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: block;
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .hero-desc {
+            color: #ccc;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            line-height: 1.6;
+        }
+
+        /* --- SERVICES --- */
+        .services-overview { padding: 80px 0; position: relative; width: 100%; }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            width: 100%;
+        }
+
+        .service-item {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        .service-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .service-item i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .service-item h3 {
+            font-family: var(--font-head);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .service-item p { font-size: 0.9rem; color: var(--text-muted); }
+
+        /* --- PAINT CORRECTION --- */
+        .section-title {
+            text-align: center;
+            font-family: var(--font-head);
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            margin-bottom: 1rem;
+            color: var(--text-main);
+            text-transform: uppercase;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+            font-size: 1rem;
+            line-height: 1.6;
+            padding: 0 10px;
+        }
+
+        .comparison-section {
+            padding: 80px 0;
+            background: linear-gradient(to bottom, transparent, #020202);
+            width: 100%;
+        }
+
+        .ba-slider {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            height: clamp(300px, 50vw, 500px);
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            border: 1px solid var(--glass-border);
+            cursor: ew-resize;
+        }
+
+        .ba-image {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .img-after { background-image: url('https://images.unsplash.com/photo-1601362840469-51e4d8d58785?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80'); }
+        
+        .img-before {
+            background-image: url('https://images.unsplash.com/photo-1600588653879-4c6078c40523?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');
+            width: 50%;
+            border-right: 2px solid var(--accent);
+            z-index: 10;
+        }
+
+        .slider-handle {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px; height: 50px;
+            background: var(--accent);
+            border-radius: 50%;
+            cursor: ew-resize;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 30px var(--accent-glow);
+            color: #000;
+            font-size: 1.2rem;
+            pointer-events: none; /* Let clicks pass to container */
+        }
+
+        .slider-label {
+            position: absolute;
+            top: 20px;
+            padding: 8px 20px;
+            background: rgba(0,0,0,0.8);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            pointer-events: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            backdrop-filter: blur(5px);
+        }
+
+        .label-before { left: 20px; color: #ff4757; }
+        .label-after { right: 20px; color: #2ed573; }
+
+        /* --- PRICING --- */
+        .pricing-section { padding: 80px 0; perspective: 1000px; width: 100%; }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .price-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px 25px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transform-style: preserve-3d;
+            transition: transform 0.1s;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            width: 100%;
+        }
+
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.05), transparent 40%);
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .price-card:hover::before { opacity: 1; }
+
+        .card-content { position: relative; z-index: 1; }
+
+        .card-header h3 {
+            font-family: var(--font-head);
+            font-size: 2rem;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+        }
+
+        .emerald h3 { color: #2ecc71; }
+        .sapphire h3 { color: var(--accent); }
+        .diamond h3 { color: #bdc3c7; }
+
+        .price-tag {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 20px 0;
+            color: white;
+            font-family: var(--font-head);
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 30px;
+            flex-grow: 1;
+            text-align: left;
+            padding-left: 10px;
+        }
+
+        .features-list li {
+            margin-bottom: 12px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .features-list li i {
+            color: var(--accent);
+            margin-right: 12px;
+            width: 16px;
+            text-align: center;
+        }
+
+        .recommendation {
+            font-size: 0.85rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-top: auto;
+            padding-top: 15px;
+            opacity: 0.8;
+        }
+
+        .book-btn-small {
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            border-radius: 50px;
+            transition: 0.3s;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.75rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .book-btn-small:hover {
+            background: var(--accent);
+            color: #000;
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        /* --- FOOTER --- */
+        .info-section {
+            padding: 60px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            background: #020202;
+            width: 100%;
+        }
+
+        .contact-large {
+            font-size: 1.3rem;
+            color: var(--text-main);
+            margin-top: 15px;
+            font-weight: 700;
+            font-family: var(--font-head);
+        }
+    </style>
 </head>
 <body>
-<!-- Background Elements -->
-<div class="bg-mesh"></div>
-<div class="bg-orb orb-1"></div>
-<div class="bg-orb orb-2"></div>
+    <!-- Background Elements -->
+    <div class="bg-mesh"></div>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
 
-<!-- HEADER -->
-<header class="site-header">
-<div class="logo-area">
-<div class="hamburger-btn" id="hamburgerBtn">
-<div class="hamburger-line"></div>
-<div class="hamburger-line"></div>
-<div class="hamburger-line"></div>
-</div>
-<div class="brand-name">Sapphire<span class="highlight">Detailing</span></div>
-</div>
-<a href="https://hivetimes.co.za" class="hive-badge-link" target="_blank" rel="noopener">
-<svg class="hive-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 2L14.5 6.5L19 6.5L16.5 11L19 15.5L14.5 15.5L12 20L9.5 15.5L5 15.5L7.5 11L5 6.5L9.5 6.5L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
-<path d="M12 7L13.5 9.5L16 9.5L14.5 12L16 14.5L13.5 14.5L12 17L10.5 14.5L8 14.5L9.5 12L8 9.5L10.5 9.5L12 7Z" fill="currentColor"/>
-</svg>
-<div class="hive-text-group">
-<span class="hive-text">HIVE</span>
-<span class="hive-subtext">Member</span>
-</div>
-</a>
-</header>
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="logo-area">
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Navigation">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </button>
+            <div class="brand-name">Sapphire<span class="highlight">Detailing</span></div>
+        </div>
+        <a href="https://hivetimes.co.za" class="hive-badge-link" target="_blank" rel="noopener">
+            <svg class="hive-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L14.5 6.5L19 6.5L16.5 11L19 15.5L14.5 15.5L12 20L9.5 15.5L5 15.5L7.5 11L5 6.5L9.5 6.5L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
+                <path d="M12 7L13.5 9.5L16 9.5L14.5 12L16 14.5L13.5 14.5L12 17L10.5 14.5L8 14.5L9.5 12L8 9.5L10.5 9.5L12 7Z" fill="currentColor"/>
+            </svg>
+            <div class="hive-text-group">
+                <span class="hive-text">HIVE</span>
+                <span class="hive-subtext">Member</span>
+            </div>
+        </a>
+    </header>
 
-<!-- NAV OVERLAY -->
-<div class="nav-backdrop" id="navBackdrop" onclick="toggleMenu()"></div>
-<div class="nav-panel" id="navPanel">
-<ul class="nav-links">
-<li><a href="#" onclick="toggleMenu()">Home</a></li>
-<li><a href="#services" onclick="toggleMenu()">Services</a></li>
-<li><a href="#paint-correction" onclick="toggleMenu()">Paint Correction</a></li>
-<li><a href="#pricing" onclick="toggleMenu()">Packages</a></li>
-</ul>
-<div class="nav-contact">
-<p>Ready to book?</p>
-<a href="#" onclick="sendDirectWhatsApp('General Inquiry'); toggleMenu(); return false;">
-<i class="fab fa-whatsapp"></i> 081 383 3936
-</a>
-</div>
-</div>
+    <!-- NAV OVERLAY -->
+    <div class="nav-backdrop" id="navBackdrop" onclick="toggleMenu()"></div>
+    <div class="nav-panel" id="navPanel">
+        <ul class="nav-links">
+            <li><a href="#" onclick="toggleMenu()">Home</a></li>
+            <li><a href="#services" onclick="toggleMenu()">Services</a></li>
+            <li><a href="#paint-correction" onclick="toggleMenu()">Paint Correction</a></li>
+            <li><a href="#pricing" onclick="toggleMenu()">Packages</a></li>
+        </ul>
+        <div class="nav-contact">
+            <p>Ready to book?</p>
+            <a href="#" onclick="sendDirectWhatsApp('General Inquiry'); toggleMenu(); return false;">
+                <i class="fab fa-whatsapp"></i> 081 383 3936
+            </a>
+        </div>
+    </div>
 
-<!-- HERO SECTION -->
-<header class="hero">
-<img class="hero-video-bg" alt="Background">
-<div class="hero-overlay"></div>
-<div class="hero-content">
-<p class="subtitle reveal">Sapphire Auto Detailing</p>
-<h1 class="reveal">Premium <span class="highlight">Mobile</span><br>Auto Detailing</h1>
-<p class="reveal hero-desc">We come to you. Complete interior and exterior detailing, plus professional paint correction to restore your car's showroom gloss.</p>
-</div>
-</header>
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <img class="hero-video-bg" alt="Background">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="subtitle reveal">Sapphire Auto Detailing</p>
+            <h1 class="reveal">Premium <span class="highlight">Mobile</span><br>Auto Detailing</h1>
+            <p class="reveal hero-desc">We come to you. Complete interior and exterior detailing, plus professional paint correction to restore your car's showroom gloss.</p>
+        </div>
+    </header>
 
-<!-- SERVICES -->
-<section class="services-overview container" id="services">
-<h2 class="section-title reveal">Our Expertise</h2>
-<div class="services-grid">
-<div class="service-item reveal">
-<i class="fas fa-car-side"></i>
-<h3>Exterior Detail</h3>
-<p>Hand wash, decontamination, wheel cleaning, and tire dressing to make your car look brand new.</p>
-</div>
-<div class="service-item reveal">
-<i class="fas fa-couch"></i>
-<h3>Interior Detail</h3>
-<p>Deep vacuum, leather conditioning, carpet shampooing, and dashboard protection.</p>
-</div>
-<div class="service-item reveal">
-<i class="fas fa-magic"></i>
-<h3>Paint Correction</h3>
-<p>Advanced polishing to remove micro-scratches and swirl marks, restoring deep gloss and clarity.</p>
-</div>
-</div>
-</section>
+    <!-- SERVICES -->
+    <section class="services-overview container" id="services">
+        <h2 class="section-title reveal">Our Expertise</h2>
+        <div class="services-grid">
+            <div class="service-item reveal">
+                <i class="fas fa-car-side"></i>
+                <h3>Exterior Detail</h3>
+                <p>Hand wash, decontamination, wheel cleaning, and tire dressing to make your car look brand new.</p>
+            </div>
+            <div class="service-item reveal">
+                <i class="fas fa-couch"></i>
+                <h3>Interior Detail</h3>
+                <p>Deep vacuum, leather conditioning, carpet shampooing, and dashboard protection.</p>
+            </div>
+            <div class="service-item reveal">
+                <i class="fas fa-magic"></i>
+                <h3>Paint Correction</h3>
+                <p>Advanced polishing to remove micro-scratches and swirl marks, restoring deep gloss and clarity.</p>
+            </div>
+        </div>
+    </section>
 
-<!-- PAINT CORRECTION -->
-<section class="comparison-section container" id="paint-correction">
-<h2 class="section-title reveal">The Science of Gloss</h2>
-<p class="section-subtitle reveal">
-Paint correction is basically <strong>polishing your car</strong> to remove the <strong>scratches</strong> and make your paint <strong>glossy again</strong>.
-</p>
-<div class="ba-slider reveal" id="baSlider">
-<div class="ba-image img-after"></div>
-<div class="ba-image img-before" id="imgBefore"></div>
-<div class="slider-handle" id="sliderHandle"><i class="fas fa-arrows-alt-h"></i></div>
-<span class="slider-label label-before">Scratches</span>
-<span class="slider-label label-after">High Gloss</span>
-</div>
-</section>
+    <!-- PAINT CORRECTION -->
+    <section class="comparison-section container" id="paint-correction">
+        <h2 class="section-title reveal">The Science of Gloss</h2>
+        <p class="section-subtitle reveal">
+            Paint correction is basically <strong>polishing your car</strong> to remove the <strong>scratches</strong> and make your paint <strong>glossy again</strong>.
+        </p>
+        <div class="ba-slider reveal" id="baSlider">
+            <div class="ba-image img-after"></div>
+            <div class="ba-image img-before" id="imgBefore"></div>
+            <div class="slider-handle" id="sliderHandle"><i class="fas fa-arrows-alt-h"></i></div>
+            <span class="slider-label label-before">Scratches</span>
+            <span class="slider-label label-after">High Gloss</span>
+        </div>
+    </section>
 
-<!-- PRICING -->
-<section class="pricing-section container" id="pricing">
-<h2 class="section-title reveal">Select Your Package</h2>
-<p class="section-subtitle reveal">Click "Book Now" to instantly message Mohammed via WhatsApp.</p>
-<div class="pricing-grid">
-<!-- EMERALD -->
-<div class="price-card emerald reveal" data-tilt>
-<div class="card-content">
-<div class="card-header"><h3>EMERALD</h3><div class="price-tag">R650 - R750</div></div>
-<ul class="features-list">
-<li><i class="fas fa-check"></i> Exterior hand wash & dry</li>
-<li><i class="fas fa-check"></i> Wheels & tyres cleaned/dressed</li>
-<li><i class="fas fa-check"></i> Interior vacuum & wipe-down</li>
-<li><i class="fas fa-check"></i> Windows cleaned (in/out)</li>
-</ul>
-<div class="recommendation">Ideal for regularly maintained vehicles</div>
-<a href="#" class="book-btn-small" onclick="sendDirectWhatsApp('Emerald'); return false;">Book Now</a>
-</div>
-</div>
-<!-- SAPPHIRE -->
-<div class="price-card sapphire reveal" data-tilt>
-<div class="card-content">
-<div class="card-header"><h3>SAPPHIRE</h3><div class="price-tag">R1500 - R2500+</div></div>
-<ul class="features-list">
-<li><i class="fas fa-star"></i> <strong>Includes Paint Correction</strong></li>
-<li><i class="fas fa-check"></i> Clay bar treatment</li>
-<li><i class="fas fa-check"></i> Machine polish (1-2 stage)</li>
-<li><i class="fas fa-check"></i> Remove micro-scratches & swirls</li>
-<li><i class="fas fa-check"></i> High-quality sealant applied</li>
-</ul>
-<div class="recommendation">Recommended for neglected vehicles</div>
-<a href="#" class="book-btn-small" onclick="sendDirectWhatsApp('Sapphire'); return false;">Book Now</a>
-</div>
-</div>
-<!-- DIAMOND -->
-<div class="price-card diamond reveal" data-tilt>
-<div class="card-content">
-<div class="card-header"><h3>DIAMOND</h3><div class="price-tag">R1000 - R1500</div></div>
-<ul class="features-list">
-<li><i class="fas fa-check"></i> Deep interior clean</li>
-<li><i class="fas fa-check"></i> Exterior wash & decontamination</li>
-<li><i class="fas fa-check"></i> Light polish (Enhancement)</li>
-<li><i class="fas fa-check"></i> Wax protection applied</li>
-<li><i class="fas fa-check"></i> Tyres dressed & windows cleaned</li>
-</ul>
-<div class="recommendation">Most popular package</div>
-<a href="#" class="book-btn-small" onclick="sendDirectWhatsApp('Diamond'); return false;">Book Now</a>
-</div>
-</div>
-</div>
-</section>
+    <!-- PRICING -->
+    <section class="pricing-section container" id="pricing">
+        <h2 class="section-title reveal">Select Your Package</h2>
+        <p class="section-subtitle reveal">Click "Book Now" to instantly message Mohammed via WhatsApp.</p>
+        <div class="pricing-grid">
+            <!-- EMERALD -->
+            <div class="price-card emerald reveal" data-tilt>
+                <div class="card-content">
+                    <div class="card-header"><h3>EMERALD</h3><div class="price-tag">R650 - R750</div></div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Exterior hand wash & dry</li>
+                        <li><i class="fas fa-check"></i> Wheels & tyres cleaned/dressed</li>
+                        <li><i class="fas fa-check"></i> Interior vacuum & wipe-down</li>
+                        <li><i class="fas fa-check"></i> Windows cleaned (in/out)</li>
+                    </ul>
+                    <div class="recommendation">Ideal for regularly maintained vehicles</div>
+                    <a href="#" class="book-btn-small" onclick="sendDirectWhatsApp('Emerald'); return false;">Book Now</a>
+                </div>
+            </div>
+            <!-- SAPPHIRE -->
+            <div class="price-card sapphire reveal" data-tilt>
+                <div class="card-content">
+                    <div class="card-header"><h3>SAPPHIRE</h3><div class="price-tag">R1500 - R2500+</div></div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-star"></i> <strong>Includes Paint Correction</strong></li>
+                        <li><i class="fas fa-check"></i> Clay bar treatment</li>
+                        <li><i class="fas fa-check"></i> Machine polish (1-2 stage)</li>
+                        <li><i class="fas fa-check"></i> Remove micro-scratches & swirls</li>
+                        <li><i class="fas fa-check"></i> High-quality sealant applied</li>
+                    </ul>
+                    <div class="recommendation">Recommended for neglected vehicles</div>
+                    <a href="#" class="book-btn-small" onclick="sendDirectWhatsApp('Sapphire'); return false;">Book Now</a>
+                </div>
+            </div>
+            <!-- DIAMOND -->
+            <div class="price-card diamond reveal" data-tilt>
+                <div class="card-content">
+                    <div class="card-header"><h3>DIAMOND</h3><div class="price-tag">R1000 - R1500</div></div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Deep interior clean</li>
+                        <li><i class="fas fa-check"></i> Exterior wash & decontamination</li>
+                        <li><i class="fas fa-check"></i> Light polish (Enhancement)</li>
+                        <li><i class="fas fa-check"></i> Wax protection applied</li>
+                        <li><i class="fas fa-check"></i> Tyres dressed & windows cleaned</li>
+                    </ul>
+                    <div class="recommendation">Most popular package</div>
+                    <a href="#" class="book-btn-small" onclick="sendDirectWhatsApp('Diamond'); return false;">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- FOOTER -->
-<footer class="info-section">
-<div class="container">
-<p>Prices vary based on vehicle size and condition.</p>
-<div class="contact-large">Contact Mohammed Mangera<br><span class="highlight" style="font-size: 1.4rem;">081 383 3936</span></div>
-</div>
-</footer>
+    <!-- FOOTER -->
+    <footer class="info-section">
+        <div class="container">
+            <p>Prices vary based on vehicle size and condition.</p>
+            <div class="contact-large">Contact Mohammed Mangera<br><span class="highlight" style="font-size: 1.4rem;">081 383 3936</span></div>
+        </div>
+    </footer>
 
-<!-- STICKY WHATSAPP -->
-<a href="#" class="sticky-wa" onclick="sendDirectWhatsApp('General Inquiry'); return false;">
-<i class="fab fa-whatsapp"></i>
-<span>Book Now</span>
-</a>
+    <script>
+        // --- 1. MENU LOGIC ---
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const navPanel = document.getElementById('navPanel');
+        const navBackdrop = document.getElementById('navBackdrop');
 
-<script>
-// --- 1. MENU LOGIC ---
-const hamburgerBtn = document.getElementById('hamburgerBtn');
-const navPanel = document.getElementById('navPanel');
-const navBackdrop = document.getElementById('navBackdrop');
-function toggleMenu() {
-const isActive = navPanel.classList.contains('active');
-if (isActive) {
-hamburgerBtn.classList.remove('active');
-navPanel.classList.remove('active');
-navBackdrop.classList.remove('active');
-document.body.style.overflow = 'auto';
-} else {
-hamburgerBtn.classList.add('active');
-navPanel.classList.add('active');
-navBackdrop.classList.add('active');
-document.body.style.overflow = 'hidden';
-}
-}
-hamburgerBtn.addEventListener('click', toggleMenu);
+        function toggleMenu() {
+            const isActive = navPanel.classList.contains('active');
+            if (isActive) {
+                hamburgerBtn.classList.remove('active');
+                navPanel.classList.remove('active');
+                navBackdrop.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            } else {
+                hamburgerBtn.classList.add('active');
+                navPanel.classList.add('active');
+                navBackdrop.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
 
-// --- 2. 3D TILT EFFECT ---
-const cards = document.querySelectorAll('.price-card');
-cards.forEach(card => {
-card.addEventListener('mousemove', (e) => {
-const rect = card.getBoundingClientRect();
-const x = e.clientX - rect.left; const y = e.clientY - rect.top;
-const centerX = rect.width / 2; const centerY = rect.height / 2;
-const rotateX = ((y - centerY) / centerY) * -5;
-const rotateY = ((x - centerX) / centerX) * 5;
-card.style.setProperty('--mouse-x', `${x}px`);
-card.style.setProperty('--mouse-y', `${y}px`);
-card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-});
-card.addEventListener('mouseleave', () => {
-card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-});
-});
+        hamburgerBtn.addEventListener('click', toggleMenu);
 
-// --- 3. REVEAL ON SCROLL ---
-const revealElements = document.querySelectorAll('.reveal');
-const revealOnScroll = () => {
-const windowHeight = window.innerHeight;
-revealElements.forEach((reveal) => {
-const elementTop = reveal.getBoundingClientRect().top;
-if (elementTop < windowHeight - 50) reveal.classList.add('active');
-});
-};
-window.addEventListener('scroll', revealOnScroll);
-revealOnScroll();
+        // --- 2. 3D TILT EFFECT ---
+        const cards = document.querySelectorAll('.price-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -5;
+                const rotateY = ((x - centerX) / centerX) * 5;
+                
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
 
-// --- 4. BEFORE/AFTER SLIDER ---
-const sliderContainer = document.getElementById('baSlider');
-const imgBefore = document.getElementById('imgBefore');
-const sliderHandle = document.getElementById('sliderHandle');
-let isDragging = false;
-const updateSlider = (x) => {
-const rect = sliderContainer.getBoundingClientRect();
-let position = ((x - rect.left) / rect.width) * 100;
-if (position < 0) position = 0; if (position > 100) position = 100;
-imgBefore.style.width = `${position}%`; sliderHandle.style.left = `${position}%`;
-};
-sliderContainer.addEventListener('mousedown', () => isDragging = true);
-window.addEventListener('mouseup', () => isDragging = false);
-sliderContainer.addEventListener('mousemove', (e) => { if (!isDragging) return; updateSlider(e.clientX); });
-sliderContainer.addEventListener('touchstart', () => isDragging = true);
-window.addEventListener('touchend', () => isDragging = false);
-sliderContainer.addEventListener('touchmove', (e) => { if (!isDragging) return; updateSlider(e.touches[0].clientX); });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+            });
+        });
 
-// --- 5. WHATSAPP LOGIC ---
-function sendDirectWhatsApp(packageName) {
-const message = `Hi Mohammed! I'm interested in booking a detailing session.
-Package: ${packageName}
-Please let me know your availability.`;
-const encodedMessage = encodeURIComponent(message);
-window.open(`https://wa.me/27813833936?text=${encodedMessage}`, '_blank');
-}
-</script>
+        // --- 3. REVEAL ON SCROLL ---
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 50) reveal.classList.add('active');
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        // --- 4. BEFORE/AFTER SLIDER ---
+        const sliderContainer = document.getElementById('baSlider');
+        const imgBefore = document.getElementById('imgBefore');
+        const sliderHandle = document.getElementById('sliderHandle');
+        let isDragging = false;
+
+        const updateSlider = (x) => {
+            const rect = sliderContainer.getBoundingClientRect();
+            let position = ((x - rect.left) / rect.width) * 100;
+            if (position < 0) position = 0;
+            if (position > 100) position = 100;
+            imgBefore.style.width = `${position}%`;
+            sliderHandle.style.left = `${position}%`;
+        };
+
+        sliderContainer.addEventListener('mousedown', () => isDragging = true);
+        window.addEventListener('mouseup', () => isDragging = false);
+        sliderContainer.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            updateSlider(e.clientX);
+        });
+
+        sliderContainer.addEventListener('touchstart', () => isDragging = true);
+        window.addEventListener('touchend', () => isDragging = false);
+        sliderContainer.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            updateSlider(e.touches[0].clientX);
+        });
+
+        // --- 5. WHATSAPP LOGIC ---
+        function sendDirectWhatsApp(packageName) {
+            const message = `Hi Mohammed! I'm interested in booking a detailing session.\nPackage: ${packageName}\nPlease let me know your availability.`;
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/27813833936?text=${encodedMessage}`, '_blank');
+        }
+    </script>
 </body>
 </html>
