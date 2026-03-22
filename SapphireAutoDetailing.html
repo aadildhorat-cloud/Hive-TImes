@@ -828,51 +828,7 @@
         </div>
     </footer>
 
-    <!-- STICKY WHATSAPP -->
-    <a href="#" class="sticky-wa" onclick="sendDirectWhatsApp('General Inquiry'); return false;">
-        <i class="fab fa-whatsapp"></i>
-        <span>Book Now</span>
-    </a>
-
-    <!-- AI CHAT BOT WIDGET (Fixed Size) -->
-    <div class="ai-widget-container">
-        <button class="ai-toggle-btn" id="aiToggleBtn" onclick="toggleChat()">
-            <i class="fas fa-robot"></i>
-        </button>
-        
-        <div class="ai-chat-window" id="aiChatWindow">
-            <div class="ai-header">
-                <div class="ai-avatar">AI</div>
-                <div class="ai-info">
-                    <h4>Sapphire Assistant</h4>
-                    <p>Online & Ready to Help</p>
-                </div>
-                <i class="fas fa-times ai-close" onclick="toggleChat()"></i>
-            </div>
-            
-            <div class="ai-messages" id="aiMessages">
-                <div class="message bot">
-                    Hello! I'm the Sapphire AI assistant. How can I help you today?
-                </div>
-            </div>
-            
-            <div class="ai-options">
-                <button class="ai-option-btn" onclick="askAI('pricing')">
-                    <i class="fas fa-tags"></i> What are your prices?
-                </button>
-                <button class="ai-option-btn" onclick="askAI('services')">
-                    <i class="fas fa-list"></i> What services do you offer?
-                </button>
-                <button class="ai-option-btn" onclick="askAI('booking')">
-                    <i class="fas fa-calendar-check"></i> How do I book?
-                </button>
-                <button class="ai-option-btn" onclick="askAI('location')">
-                    <i class="fas fa-map-marker-alt"></i> Where do you operate?
-                </button>
-            </div>
-        </div>
-    </div>
-
+   
     <script>
         // --- 1. CUSTOM CURSOR ---
         const cursorDot = document.querySelector('.cursor-dot');
