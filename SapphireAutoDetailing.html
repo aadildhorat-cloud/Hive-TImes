@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sapphire Auto Detailing | Elite Mobile Care</title>
     
     <!-- Fonts & Icons -->
@@ -25,7 +25,11 @@
             --font-head: 'Rajdhani', sans-serif;
             --font-body: 'Montserrat', sans-serif;
             --header-height: 80px;
-            --nav-width: 320px;
+            --nav-width: 300px;
+            
+            /* Chat Widget Variables */
+            --chat-width: 350px;
+            --chat-height: 500px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; cursor: none; -webkit-tap-highlight-color: transparent; }
@@ -36,6 +40,7 @@
             font-family: var(--font-body);
             overflow-x: hidden;
             line-height: 1.6;
+            width: 100%;
         }
 
         /* --- CUSTOM CURSOR (Desktop Only) --- */
@@ -43,6 +48,10 @@
             position: fixed; top: 0; left: 0;
             transform: translate(-50%, -50%);
             border-radius: 50%; z-index: 9999; pointer-events: none;
+            display: none; /* Hidden by default, enabled via JS for desktop */
+        }
+        @media (hover: hover) and (pointer: fine) {
+            .cursor-dot, .cursor-outline { display: block; }
         }
         .cursor-dot { width: 8px; height: 8px; background-color: var(--accent); }
         .cursor-outline { 
@@ -70,7 +79,12 @@
         @keyframes float { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(30px, 50px); } }
 
         /* --- UTILITIES --- */
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .container { 
+            width: 100%; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+        }
         .highlight { color: var(--accent); text-shadow: 0 0 20px var(--accent-glow); }
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
@@ -101,7 +115,7 @@
 
         .brand-name {
             font-family: var(--font-head);
-            font-size: 1.4rem;
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
             font-weight: 700;
             color: white;
             text-transform: uppercase;
@@ -162,6 +176,7 @@
             position: fixed;
             top: 0; left: 0;
             width: var(--nav-width);
+            max-width: 85vw;
             height: 100vh;
             background: #0a0f14;
             border-right: 1px solid var(--glass-border);
@@ -261,10 +276,14 @@
             background-color: #E5C100;
             transform: translateY(-2px);
         }
+        @media (max-width: 480px) {
+            .hive-badge-link { display: none; }
+        }
 
         /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
+            min-height: 600px;
             position: relative;
             display: flex;
             align-items: center;
@@ -272,6 +291,7 @@
             overflow: hidden;
             perspective: 1000px;
             padding-top: var(--header-height);
+            width: 100%;
         }
         .hero-video-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -289,6 +309,7 @@
             position: relative; z-index: 3; text-align: center;
             mix-blend-mode: screen; padding: 0 20px;
             max-width: 800px;
+            width: 100%;
         }
         h1 {
             font-family: var(--font-head);
@@ -299,26 +320,29 @@
             background-clip: text; -webkit-text-fill-color: transparent;
         }
         p.subtitle {
-            font-size: 1rem; letter-spacing: 4px; color: var(--accent);
+            font-size: clamp(0.8rem, 2vw, 1rem); 
+            letter-spacing: 4px; color: var(--accent);
             text-transform: uppercase; font-weight: 700; margin-bottom: 20px; display: block;
             text-shadow: 0 0 10px var(--accent-glow);
         }
         .hero-desc {
             color: #ccc;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
             line-height: 1.6;
         }
 
         /* --- SERVICES --- */
-        .services-overview { padding: 80px 0; position: relative; }
+        .services-overview { padding: 80px 0; position: relative; width: 100%; }
         .services-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px; margin-top: 50px;
+            width: 100%;
         }
         .service-item {
             background: var(--glass-bg); border: 1px solid var(--glass-border);
             padding: 30px; border-radius: 15px; backdrop-filter: blur(10px);
             transition: 0.3s;
+            width: 100%;
         }
         .service-item:hover {
             border-color: var(--accent); transform: translateY(-5px);
@@ -333,16 +357,17 @@
 
         /* --- PAINT CORRECTION --- */
         .section-title {
-            text-align: center; font-family: var(--font-head); font-size: 2.5rem;
+            text-align: center; font-family: var(--font-head); font-size: clamp(2rem, 5vw, 2.5rem);
             margin-bottom: 1rem; color: var(--text-main); text-transform: uppercase;
         }
         .section-subtitle {
             text-align: center; color: var(--text-muted); max-width: 800px;
             margin: 0 auto 3rem auto; font-size: 1rem; line-height: 1.6;
+            padding: 0 10px;
         }
-        .comparison-section { padding: 80px 0; background: linear-gradient(to bottom, transparent, #020202); }
+        .comparison-section { padding: 80px 0; background: linear-gradient(to bottom, transparent, #020202); width: 100%; }
         .ba-slider {
-            position: relative; width: 100%; max-width: 900px; height: 500px;
+            position: relative; width: 100%; max-width: 900px; height: clamp(300px, 50vw, 500px);
             margin: 0 auto; overflow: hidden; border-radius: 20px;
             box-shadow: 0 30px 60px rgba(0,0,0,0.6); border: 1px solid var(--glass-border);
         }
@@ -371,10 +396,11 @@
         .label-after { right: 20px; color: #2ed573; }
 
         /* --- PRICING --- */
-        .pricing-section { padding: 80px 0; perspective: 1000px; }
+        .pricing-section { padding: 80px 0; perspective: 1000px; width: 100%; }
         .pricing-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px; align-items: center;
+            width: 100%;
         }
         .price-card {
             background: var(--glass-bg); backdrop-filter: blur(20px);
@@ -383,6 +409,7 @@
             position: relative; overflow: hidden; display: flex; flex-direction: column;
             transform-style: preserve-3d; transition: transform 0.1s;
             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            width: 100%;
         }
         .price-card::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -417,6 +444,7 @@
         .info-section {
             padding: 60px 0; text-align: center; color: var(--text-muted);
             font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05); background: #020202;
+            width: 100%;
         }
         .contact-large { font-size: 1.3rem; color: var(--text-main); margin-top: 15px; font-weight: 700; font-family: var(--font-head); }
 
@@ -431,8 +459,12 @@
             border: 2px solid rgba(255,255,255,0.2); cursor: none;
         }
         .sticky-wa:hover { transform: scale(1.05) translateY(-3px); }
+        @media (max-width: 480px) {
+            .sticky-wa span { display: none; } 
+            .sticky-wa { padding: 15px; border-radius: 50%; bottom: 20px; right: 20px; }
+        }
 
-        /* --- AI CHAT BOT STYLES --- */
+        /* --- PROFESSIONAL AI CHAT WIDGET (FIXED SIZE) --- */
         .ai-widget-container {
             position: fixed;
             bottom: 30px;
@@ -441,6 +473,14 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            /* Ensure it doesn't overlap WhatsApp on very small screens */
+        }
+        
+        @media (max-width: 500px) {
+            .ai-widget-container {
+                left: 20px;
+                bottom: 85px; /* Move up slightly above WhatsApp circle if needed, or keep separate */
+            }
         }
 
         .ai-toggle-btn {
@@ -458,6 +498,7 @@
             justify-content: center;
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             animation: pulse-glow 2s infinite;
+            flex-shrink: 0;
         }
 
         .ai-toggle-btn:hover { transform: scale(1.1); }
@@ -474,9 +515,13 @@
             position: absolute;
             bottom: 80px;
             left: 0;
-            width: 350px;
-            height: 500px;
-            background: rgba(10, 15, 20, 0.95);
+            /* FIXED SIZES FOR WIDGET LOOK */
+            width: var(--chat-width);
+            height: var(--chat-height);
+            max-width: 90vw; /* Prevent overflow on tiny screens */
+            max-height: 70vh;
+            
+            background: rgba(10, 15, 20, 0.98);
             backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
             border-radius: 20px;
@@ -504,6 +549,7 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            flex-shrink: 0;
         }
 
         .ai-avatar {
@@ -517,10 +563,20 @@
             color: #000;
             font-weight: bold;
             font-family: var(--font-head);
+            flex-shrink: 0;
         }
 
-        .ai-info h4 { font-family: var(--font-head); font-size: 1.1rem; color: white; }
+        .ai-info { flex: 1; overflow: hidden; }
+        .ai-info h4 { font-family: var(--font-head); font-size: 1.1rem; color: white; white-space: nowrap; }
         .ai-info p { font-size: 0.75rem; color: var(--accent); }
+        
+        .ai-close {
+            color: var(--text-muted);
+            cursor: none;
+            transition: color 0.2s;
+            flex-shrink: 0;
+        }
+        .ai-close:hover { color: white; }
 
         .ai-messages {
             flex: 1;
@@ -540,6 +596,7 @@
             font-size: 0.9rem;
             line-height: 1.4;
             animation: fade-in 0.3s ease;
+            word-wrap: break-word;
         }
 
         @keyframes fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -567,6 +624,9 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
+            flex-shrink: 0;
+            max-height: 40%;
+            overflow-y: auto;
         }
 
         .ai-option-btn {
@@ -583,6 +643,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            white-space: nowrap;
         }
 
         .ai-option-btn:hover {
@@ -591,50 +652,8 @@
             background: rgba(0, 210, 255, 0.05);
         }
 
-        .ai-option-btn i { width: 20px; text-align: center; }
+        .ai-option-btn i { width: 20px; text-align: center; flex-shrink: 0; }
 
-        /* --- MOBILE RESPONSIVENESS --- */
-        @media(max-width: 768px) {
-            .cursor-dot, .cursor-outline { display: none; }
-            * { cursor: auto; }
-            
-            .site-header { padding: 0 20px; }
-            .brand-name { font-size: 1.1rem; }
-            .hive-badge-link { display: none; } /* Hide badge on small mobile to save space */
-            
-            h1 { font-size: 2.5rem; }
-            .hero-desc { font-size: 0.95rem; }
-            
-            .ba-slider { height: 300px; }
-            
-            .sticky-wa span { display: none; } 
-            .sticky-wa { padding: 15px; border-radius: 50%; bottom: 20px; right: 20px; }
-            
-            .section-title { font-size: 2rem; }
-            
-            /* Mobile AI Chat Full Screen */
-            .ai-widget-container {
-                bottom: 20px;
-                left: 20px;
-            }
-            .ai-chat-window {
-                position: fixed;
-                top: 0; left: 0;
-                width: 100%; height: 100%;
-                bottom: 0; left: 0;
-                border-radius: 0;
-                transform: translateY(100%);
-                transform-origin: bottom;
-                z-index: 2000;
-            }
-            .ai-chat-window.active {
-                transform: translateY(0);
-            }
-            .ai-toggle-btn {
-                width: 55px; height: 55px;
-                font-size: 1.3rem;
-            }
-        }
     </style>
 </head>
 <body>
@@ -806,7 +825,7 @@
         <span>Book Now</span>
     </a>
 
-    <!-- AI CHAT BOT WIDGET -->
+    <!-- AI CHAT BOT WIDGET (Fixed Size) -->
     <div class="ai-widget-container">
         <button class="ai-toggle-btn" id="aiToggleBtn" onclick="toggleChat()">
             <i class="fas fa-robot"></i>
@@ -819,7 +838,7 @@
                     <h4>Sapphire Assistant</h4>
                     <p>Online & Ready to Help</p>
                 </div>
-                <i class="fas fa-times" style="margin-left: auto; color: var(--text-muted); cursor: none;" onclick="toggleChat()"></i>
+                <i class="fas fa-times ai-close" onclick="toggleChat()"></i>
             </div>
             
             <div class="ai-messages" id="aiMessages">
@@ -849,7 +868,8 @@
         // --- 1. CUSTOM CURSOR ---
         const cursorDot = document.querySelector('.cursor-dot');
         const cursorOutline = document.querySelector('.cursor-outline');
-        if(window.innerWidth > 768) {
+        // Only enable custom cursor on devices that support hover (desktop/tablet)
+        if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
             window.addEventListener('mousemove', (e) => {
                 const posX = e.clientX; const posY = e.clientY;
                 cursorDot.style.left = `${posX}px`; cursorDot.style.top = `${posY}px`;
