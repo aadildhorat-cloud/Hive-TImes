@@ -1262,8 +1262,9 @@ header {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     
     /* CHANGED FROM sticky TO static */
-    position: static; 
-    
+    position: sticky; 
+    top: 0;
+    z-index: 999;
     /* REMOVED top: 0; (not needed for static) */
     /* REMOVED z-index: 999; (not needed for static) */
     
@@ -2265,6 +2266,67 @@ grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
 grid-template-columns: repeat(2, 1fr);
 }
 }
+/* ==========================================
+UPDATED MOBILE HEADER CSS (Matches Desktop)
+========================================== */
+@media (max-width: 768px) {
+    /* Force Header to be a Row instead of Column */
+    header {
+        flex-direction: row !important; 
+        padding: 10px 15px !important;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    /* Flatten the top row structure like desktop */
+    .header-top-row {
+        display: contents !important;
+    }
+
+    /* Force Logo container to be a Row (Img + Search) */
+    .logo {
+        flex-direction: row !important;
+        align-items: center;
+        gap: 10px;
+        justify-content: flex-start;
+    }
+
+    /* Adjust Logo Image size for mobile */
+    .logo img {
+        height: 40px !important; /* Smaller than desktop 60px */
+        margin-right: 10px !important;
+        width: auto;
+    }
+
+    /* Adjust Search Bar to fit in the row */
+    .text-search-bar {
+        width: auto !important;
+        flex-grow: 1; /* Takes available space */
+        margin-bottom: 0 !important;
+        padding: 0 !important;
+        justify-content: flex-start !important;
+    }
+
+    .text-search-bar input {
+        font-size: 0.85rem !important;
+        padding: 8px 12px !important;
+        height: 35px;
+    }
+
+    /* Adjust Join Button for mobile */
+    .join-hive-btn {
+        font-size: 0.75rem !important;
+        padding: 6px 12px !important;
+        height: auto;
+        white-space: nowrap;
+    }
+    
+    /* Hide hamburger menu if you want pure desktop look */
+    .hamburger-menu {
+        display: none !important;
+    }
+}
 </style>
 </head>
 <body>
@@ -2406,59 +2468,16 @@ grid-template-columns: repeat(2, 1fr);
     <img src="images-logo/hive-times-logo.png" alt="Hive Times Logo">
   </a>
 <!-- Text Search Bar -->
-<div class="text-search-bar" style="
-    width: 100%; 
-    display: flex; 
-    justify-content: center; 
-    margin-bottom: 15px;
-    padding: 0 10px; /* Adds breathing room on edges for mobile */
-">
+<div class="text-search-bar" >
   <input
     type="text"
     id="filterSearch"
     placeholder="Search businesses or services "
-    style="
-      width: 100%;
-      max-width: 600px; /* Limits width on large screens */
-      padding: 14px 20px; /* Balanced padding for text visibility */
-      border: 2px solid #eee;
-      border-radius: 50px;
-      font-size: 1rem; /* Base size */
-      font-family: 'Inter', sans-serif;
-      box-shadow: inset 0 2px 6px rgba(0,0,0,0.04);
-      outline: none;
-      transition: all 0.3s ease;
-      background: #fff;
-      color: #333;
-    "
+   
   />
 </div>
 
-<!-- Mobile Specific Adjustments -->
-<style>
-  @media (max-width: 480px) {
-    .text-search-bar input {
-      font-size: 0.9rem; /* Slightly smaller text on very small phones */
-      padding: 12px 15px; /* Reduce padding to fit long placeholder */
-    }
-  }
-  
-  /* Ensure the header doesn't squash the search bar on mobile */
-  @media (max-width: 768px) {
-    header {
-      padding: 15px;
-    }
-    .logo {
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
-    .text-search-bar {
-      width: 100%;
-      margin-bottom: 10px;
-    }
-  }
-</style>
+
 </div>
 </div>
 <!-- Inside .header-top-row -->
@@ -2481,7 +2500,7 @@ grid-template-columns: repeat(2, 1fr);
       </div>
       <div class="ai-text">
        <span id="aiPrompt">
-        Welcome to the Hive! 🐝 Are you looking for a <strong>Business</strong> or <strong> Service</strong>?
+        Welcome to the Hive! What are you looking for ?
     </span>
       </div>
     </div>
@@ -2490,8 +2509,8 @@ grid-template-columns: repeat(2, 1fr);
 
     <!-- Options (dynamically updated) -->
     <div class="ai-options" id="aiOptions">
-      <button class="ai-option-btn" data-value="business">Business</button>
-      <button class="ai-option-btn" data-value="service">Service</button>
+      <button class="ai-option-btn" data-value="business">Businesses</button>
+      <button class="ai-option-btn" data-value="service">Services</button>
     </div>
 
     <!-- Back Button -->
