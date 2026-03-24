@@ -1,1587 +1,1520 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <meta name="description" content="Sapphire Auto Detailing — Premium mobile auto detailing services by Mohammed Mangera. Interior, exterior, and paint correction. We come to you.">
-  <meta name="theme-color" content="#050505">
-  <title>Sapphire Auto Detailing | Elite Mobile Care</title>
-  
-  <!-- Fonts & Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Structured Data for SEO -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "AutoRepair",
-    "name": "Sapphire Auto Detailing",
-    "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80",
-    "telephone": "+27813833936",
-    "priceRange": "R650-R2500",
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "ZA"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "addressCountry": "ZA"
-    },
-    "url": "https://hivetimes.co.za",
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      "opens": "08:00",
-      "closes": "18:00"
-    },
-    "makesOffer": [
-      {
-        "@type": "Offer",
-        "name": "Emerald Package",
-        "priceSpecification": { "@type": "PriceSpecification", "price": "650", "priceCurrency": "ZAR" }
-      },
-      {
-        "@type": "Offer",
-        "name": "Sapphire Package",
-        "priceSpecification": { "@type": "PriceSpecification", "price": "1500", "priceCurrency": "ZAR" }
-      },
-      {
-        "@type": "Offer",
-        "name": "Diamond Package",
-        "priceSpecification": { "@type": "PriceSpecification", "price": "1000", "priceCurrency": "ZAR" }
-      }
-    ]
-  }
-  </script>
-  
-  <style>
-    /* ========================================
-       DESIGN SYSTEM & VARIABLES
-       ======================================== */
-    :root {
-      /* Colors */
-      --bg-dark: #050505;
-      --bg-card: rgba(10, 15, 20, 0.95);
-      --primary: #0f4c81;
-      --accent: #00d2ff;
-      --accent-glow: rgba(0, 210, 255, 0.4);
-      --text-main: #ffffff;
-      --text-muted: #a0a0a0;
-      --glass-border: rgba(255, 255, 255, 0.08);
-      --success: #2ecc71;
-      --warning: #f1c40f;
-      
-      /* Typography */
-      --font-head: 'Rajdhani', sans-serif;
-      --font-body: 'Montserrat', sans-serif;
-      
-      /* Layout */
-      --header-height: 80px;
-      --nav-width: 300px;
-      --container-padding: 20px;
-      --border-radius: 15px;
-      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      --transition-slow: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="Sapphire Auto Detailing — Premium mobile auto detailing services by Mohammed Mangera. Interior, exterior, and paint correction. We come to you.">
+    <meta name="theme-color" content="#050505">
+    <title>Sapphire Auto Detailing | Elite Mobile Care</title>
 
-    /* ========================================
-       GLOBAL RESET & BASE STYLES
-       ======================================== */
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: var(--header-height);
-    }
-    
-    body {
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      font-family: var(--font-body);
-      font-weight: 400;
-      line-height: 1.6;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    
-    /* Skip link for accessibility */
-    .skip-link {
-      position: absolute;
-      top: -40px;
-      left: 0;
-      background: var(--accent);
-      color: #000;
-      padding: 8px 16px;
-      z-index: 10000;
-      transition: top 0.3s;
-      font-weight: 600;
-    }
-    .skip-link:focus {
-      top: 0;
-    }
-    
-    /* ========================================
-       CUSTOM CURSOR (Desktop Only)
-       ======================================== */
-    .cursor-dot,
-    .cursor-outline {
-      position: fixed;
-      top: 0;
-      left: 0;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      z-index: 9999;
-      pointer-events: none;
-      display: none;
-    }
-    
-    @media (hover: hover) and (pointer: fine) {
-      .cursor-dot,
-      .cursor-outline {
-        display: block;
-      }
-    }
-    
-    .cursor-dot {
-      width: 8px;
-      height: 8px;
-      background-color: var(--accent);
-    }
-    
-    .cursor-outline {
-      width: 40px;
-      height: 40px;
-      border: 1px solid var(--accent);
-      transition: width 0.2s, height 0.2s, background-color 0.2s;
-    }
-    
-    body:hover .cursor-outline.hovered {
-      width: 60px;
-      height: 60px;
-      background-color: rgba(0, 210, 255, 0.1);
-      border-color: transparent;
-    }
-    
-    /* ========================================
-       ANIMATED BACKGROUND
-       ======================================== */
-    .bg-mesh {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: radial-gradient(circle at 50% 50%, #1a2a3a 0%, var(--bg-dark) 100%);
-      z-index: -2;
-    }
-    
-    .bg-orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.4;
-      animation: float 10s infinite ease-in-out;
-      z-index: -1;
-    }
-    
-    .orb-1 {
-      width: 400px;
-      height: 400px;
-      background: var(--primary);
-      top: -10%;
-      left: -10%;
-    }
-    
-    .orb-2 {
-      width: 300px;
-      height: 300px;
-      background: #2c3e50;
-      bottom: 10%;
-      right: -5%;
-      animation-delay: -5s;
-    }
-    
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0); }
-      50% { transform: translate(30px, 50px); }
-    }
-    
-    /* ========================================
-       UTILITIES
-       ======================================== */
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 var(--container-padding);
-    }
-    
-    .highlight {
-      color: var(--accent);
-      text-shadow: 0 0 20px var(--accent-glow);
-    }
-    
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s var(--transition-slow), transform 0.8s var(--transition-slow);
-    }
-    
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    .section-title {
-      text-align: center;
-      font-family: var(--font-head);
-      font-size: clamp(2rem, 5vw, 2.5rem);
-      margin-bottom: 1rem;
-      color: var(--text-main);
-      text-transform: uppercase;
-      letter-spacing: 3px;
-    }
-    
-    .section-subtitle {
-      text-align: center;
-      color: var(--text-muted);
-      max-width: 800px;
-      margin: 0 auto 3rem auto;
-      font-size: clamp(0.9rem, 2vw, 1rem);
-      line-height: 1.6;
-      padding: 0 10px;
-    }
-    
-    /* ========================================
-       HEADER & NAVIGATION
-       ======================================== */
-    .site-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: var(--header-height);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 5%;
-      z-index: 1000;
-      background: rgba(5, 5, 5, 0.85);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      border-bottom: 1px solid var(--glass-border);
-      transition: all var(--transition);
-    }
-    
-    .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      z-index: 1002;
-    }
-    
-    .brand-name {
-      font-family: var(--font-head);
-      font-size: clamp(1.2rem, 4vw, 1.5rem);
-      font-weight: 700;
-      color: white;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-    
-    /* Hamburger Icon */
-    .hamburger-btn {
-      width: 35px;
-      height: 25px;
-      position: relative;
-      cursor: pointer;
-      z-index: 1002;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background: none;
-      border: none;
-      padding: 0;
-    }
-    
-    .hamburger-line {
-      width: 100%;
-      height: 3px;
-      background: white;
-      border-radius: 2px;
-      transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-      transform-origin: center;
-    }
-    
-    .hamburger-btn.active .hamburger-line:nth-child(1) {
-      transform: translateY(11px) rotate(45deg);
-      background: var(--accent);
-    }
-    
-    .hamburger-btn.active .hamburger-line:nth-child(2) {
-      opacity: 0;
-      transform: scaleX(0);
-    }
-    
-    .hamburger-btn.active .hamburger-line:nth-child(3) {
-      transform: translateY(-11px) rotate(-45deg);
-      background: var(--accent);
-    }
-    
-    /* Side Menu */
-    .nav-backdrop {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(4px);
-      z-index: 1000;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.4s ease;
-    }
-    
-    .nav-backdrop.active {
-      opacity: 1;
-      pointer-events: all;
-    }
-    
-    .nav-panel {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: var(--nav-width);
-      max-width: 85vw;
-      height: 100vh;
-      background: #0a0f14;
-      border-right: 1px solid var(--glass-border);
-      z-index: 1001;
-      transform: translateX(-100%);
-      transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-      display: flex;
-      flex-direction: column;
-      padding: 100px 30px 40px 30px;
-      box-shadow: 10px 0 40px rgba(0,0,0,0.5);
-    }
-    
-    .nav-panel.active {
-      transform: translateX(0);
-    }
-    
-    .nav-links {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
-    }
-    
-    .nav-links li {
-      overflow: hidden;
-    }
-    
-    .nav-links a {
-      display: block;
-      font-family: var(--font-head);
-      font-size: 1.8rem;
-      color: white;
-      text-decoration: none;
-      text-transform: uppercase;
-      font-weight: 700;
-      position: relative;
-      transform: translateY(100%);
-      transition: transform 0.5s var(--transition-slow), color 0.3s;
-      padding: 5px 0;
-    }
-    
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: 5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      transition: width 0.3s ease;
-      box-shadow: 0 0 10px var(--accent-glow);
-    }
-    
-    .nav-links a:hover {
-      color: var(--accent);
-      padding-left: 10px;
-    }
-    
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-    
-    .nav-panel.active .nav-links a {
-      transform: translateY(0);
-    }
-    
-    .nav-panel.active .nav-links li:nth-child(1) a { transition-delay: 0.1s; }
-    .nav-panel.active .nav-links li:nth-child(2) a { transition-delay: 0.2s; }
-    .nav-panel.active .nav-links li:nth-child(3) a { transition-delay: 0.3s; }
-    .nav-panel.active .nav-links li:nth-child(4) a { transition-delay: 0.4s; }
-    
-    .nav-contact {
-      margin-top: auto;
-      padding-top: 30px;
-      border-top: 1px solid var(--glass-border);
-    }
-    
-    .nav-contact p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-bottom: 5px;
-    }
-    
-    .nav-contact a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      transition: color 0.3s;
-    }
-    
-    .nav-contact a:hover {
-      color: var(--text-main);
-    }
-    
-    /* HIVE Badge */
-    .hive-badge-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #FFD700;
-      border: 2px solid #E5C100;
-      border-radius: 50px;
-      padding: 6px 14px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-      cursor: pointer;
-    }
-    
-    .hive-icon-svg {
-      width: 16px;
-      height: 16px;
-      fill: #000000;
-      margin-right: 6px;
-    }
-    
-    .hive-text-group {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.1;
-    }
-    
-    .hive-text {
-      color: #000000;
-      font-size: 11px;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-    
-    .hive-subtext {
-      font-size: 8px;
-      font-weight: 600;
-      color: #333333;
-      text-transform: uppercase;
-    }
-    
-    .hive-badge-link:hover {
-      background-color: #E5C100;
-      transform: translateY(-2px);
-    }
-    
-    @media (max-width: 480px) {
-      .hive-badge-link {
-        display: none;
-      }
-    }
-    
-    /* ========================================
-       HERO SECTION
-       ======================================== */
-    .hero {
-      height: 100vh;
-      min-height: 600px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      perspective: 1000px;
-      padding-top: var(--header-height);
-      width: 100%;
-    }
-    
-    .hero-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.4;
-      z-index: 0;
-      filter: grayscale(100%) contrast(1.2);
-      transform: scale(1.1);
-      transition: transform 0.3s ease;
-    }
-    
-    .hero:hover .hero-bg {
-      transform: scale(1.15);
-    }
-    
-    .hero-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, rgba(5,5,5,0.3), var(--bg-dark));
-      z-index: 1;
-    }
-    
-    .hero-content {
-      position: relative;
-      z-index: 3;
-      text-align: center;
-      mix-blend-mode: screen;
-      padding: 0 20px;
-      max-width: 800px;
-      width: 100%;
-    }
-    
-    h1 {
-      font-family: var(--font-head);
-      font-size: clamp(2.5rem, 8vw, 6rem);
-      text-transform: uppercase;
-      letter-spacing: 5px;
-      line-height: 0.9;
-      margin-bottom: 20px;
-      background: linear-gradient(to right, #fff, #aaa);
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      -webkit-background-clip: text;
-    }
-    
-    p.subtitle {
-      font-size: clamp(0.8rem, 2vw, 1rem);
-      letter-spacing: 4px;
-      color: var(--accent);
-      text-transform: uppercase;
-      font-weight: 700;
-      margin-bottom: 20px;
-      display: block;
-      text-shadow: 0 0 10px var(--accent-glow);
-    }
-    
-    .hero-desc {
-      color: #ccc;
-      font-size: clamp(0.9rem, 2vw, 1.1rem);
-      line-height: 1.6;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    
-    /* ========================================
-       SERVICES SECTION
-       ======================================== */
-    .services-overview {
-      padding: 80px 0;
-      position: relative;
-      width: 100%;
-    }
-    
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      margin-top: 50px;
-      width: 100%;
-    }
-    
-    .service-item {
-      background: var(--bg-card);
-      border: 1px solid var(--glass-border);
-      padding: 30px;
-      border-radius: var(--border-radius);
-      backdrop-filter: blur(10px);
-      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-      width: 100%;
-      text-align: center;
-    }
-    
-    .service-item:hover {
-      border-color: var(--accent);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-    
-    .service-item i {
-      font-size: 2.5rem;
-      color: var(--accent);
-      margin-bottom: 20px;
-      text-shadow: 0 0 15px var(--accent-glow);
-      display: block;
-    }
-    
-    .service-item h3 {
-      font-family: var(--font-head);
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-    
-    .service-item p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-    
-    /* ========================================
-       PAINT CORRECTION SLIDER
-       ======================================== */
-    .comparison-section {
-      padding: 80px 0;
-      background: linear-gradient(to bottom, transparent, #020202);
-      width: 100%;
-    }
-    
-    .ba-slider {
-      position: relative;
-      width: 100%;
-      max-width: 900px;
-      height: clamp(300px, 50vw, 500px);
-      margin: 0 auto;
-      overflow: hidden;
-      border-radius: 20px;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-      border: 1px solid var(--glass-border);
-      cursor: ew-resize;
-      user-select: none;
-      -webkit-user-select: none;
-    }
-    
-    .ba-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      pointer-events: none;
-    }
-    
-    .img-after {
-      background-image: url('https://images.unsplash.com/photo-1601362840469-51e4d8d58785?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');
-      z-index: 1;
-    }
-    
-    .img-before {
-      background-image: url('https://images.unsplash.com/photo-1600588653879-4c6078c40523?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');
-      width: 50%;
-      border-right: 2px solid var(--accent);
-      z-index: 10;
-      background-position: center;
-    }
-    
-    .slider-handle {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 50px;
-      height: 50px;
-      background: var(--accent);
-      border-radius: 50%;
-      cursor: ew-resize;
-      z-index: 20;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 30px var(--accent-glow);
-      color: #000;
-      font-size: 1.2rem;
-      pointer-events: none;
-      transition: transform 0.2s ease;
-    }
-    
-    .ba-slider:active .slider-handle {
-      transform: translate(-50%, -50%) scale(1.1);
-    }
-    
-    .slider-label {
-      position: absolute;
-      top: 20px;
-      padding: 8px 20px;
-      background: rgba(0,0,0,0.8);
-      border: 1px solid var(--glass-border);
-      border-radius: 30px;
-      font-weight: bold;
-      font-size: 0.8rem;
-      pointer-events: none;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      backdrop-filter: blur(5px);
-      z-index: 15;
-    }
-    
-    .label-before {
-      left: 20px;
-      color: #ff4757;
-    }
-    
-    .label-after {
-      right: 20px;
-      color: #2ed573;
-    }
-    
-    /* ========================================
-       PRICING SECTION
-       ======================================== */
-    .pricing-section {
-      padding: 80px 0;
-      perspective: 1000px;
-      width: 100%;
-    }
-    
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      align-items: start;
-      width: 100%;
-    }
-    
-    .price-card {
-      background: var(--bg-card);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      padding: 40px 25px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transform-style: preserve-3d;
-      transition: transform 0.1s ease, border-color 0.3s ease;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-      width: 100%;
-    }
-    
-    .price-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.05), transparent 40%);
-      z-index: 0;
-      opacity: 0;
-      transition: opacity 0.3s;
-      pointer-events: none;
-    }
-    
-    .price-card:hover::before {
-      opacity: 1;
-    }
-    
-    .price-card:hover {
-      border-color: var(--accent);
-    }
-    
-    .card-content {
-      position: relative;
-      z-index: 1;
-    }
-    
-    .card-header h3 {
-      font-family: var(--font-head);
-      font-size: 2rem;
-      margin-bottom: 10px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-    
-    .emerald h3 { color: var(--success); }
-    .sapphire h3 { color: var(--accent); }
-    .diamond h3 { color: #bdc3c7; }
-    
-    .price-tag {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin: 20px 0;
-      color: white;
-      font-family: var(--font-head);
-    }
-    
-    .features-list {
-      list-style: none;
-      margin-bottom: 30px;
-      flex-grow: 1;
-      text-align: left;
-      padding-left: 10px;
-    }
-    
-    .features-list li {
-      margin-bottom: 12px;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      padding-bottom: 8px;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-    }
-    
-    .features-list li i {
-      color: var(--accent);
-      margin-top: 4px;
-      width: 16px;
-      text-align: center;
-      flex-shrink: 0;
-    }
-    
-    .recommendation {
-      font-size: 0.85rem;
-      font-style: italic;
-      color: var(--accent);
-      margin-top: auto;
-      padding-top: 15px;
-      opacity: 0.8;
-    }
-    
-    .book-btn-small {
-      margin-top: 20px;
-      padding: 12px 25px;
-      background: transparent;
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 0.75rem;
-      position: relative;
-      overflow: hidden;
-      z-index: 2;
-      text-decoration: none;
-      display: inline-block;
-      font-family: var(--font-body);
-    }
-    
-    .book-btn-small:hover {
-      background: var(--accent);
-      color: #000;
-      box-shadow: 0 0 20px var(--accent-glow);
-      transform: translateY(-2px);
-    }
-    
-    .book-btn-small:active {
-      transform: translateY(0);
-    }
-    
-    /* Featured card enhancement */
-    .price-card.sapphire {
-      border: 2px solid var(--accent);
-      box-shadow: 0 0 40px rgba(0, 210, 255, 0.2);
-    }
-    
-    .price-card.sapphire::after {
-      content: 'MOST POPULAR';
-      position: absolute;
-      top: 15px;
-      right: -35px;
-      background: var(--accent);
-      color: #000;
-      padding: 5px 40px;
-      font-size: 0.7rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      transform: rotate(45deg);
-      letter-spacing: 1px;
-      z-index: 2;
-    }
-    
-    /* ========================================
-       FOOTER
-       ======================================== */
-    .info-section {
-      padding: 60px 0;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      background: #020202;
-      width: 100%;
-    }
-    
-    .contact-large {
-      font-size: clamp(1rem, 3vw, 1.3rem);
-      color: var(--text-main);
-      margin-top: 15px;
-      font-weight: 700;
-      font-family: var(--font-head);
-      line-height: 1.4;
-    }
-    
-    .contact-large .highlight {
-      font-size: clamp(1.2rem, 4vw, 1.4rem);
-      display: block;
-      margin-top: 5px;
-    }
-    
-    /* ========================================
-       STICKY WHATSAPP CTA
-       ======================================== */
-    .sticky-wa {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: linear-gradient(135deg, #25D366, #128C7E);
-      color: white;
-      padding: 15px 25px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1rem;
-      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
-      z-index: 990;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      transition: transform 0.3s var(--transition-slow), box-shadow 0.3s ease;
-      border: 2px solid rgba(255,255,255,0.2);
-      cursor: pointer;
-      font-family: var(--font-body);
-    }
-    
-    .sticky-wa:hover {
-      transform: scale(1.05) translateY(-3px);
-      box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5);
-    }
-    
-    .sticky-wa:active {
-      transform: scale(1);
-    }
-    
-    @media (max-width: 480px) {
-      .sticky-wa span {
-        display: none;
-      }
-      .sticky-wa {
-        padding: 15px;
-        border-radius: 50%;
-        bottom: 20px;
-        right: 20px;
-      }
-    }
-    
-    /* ========================================
-       ACCESSIBILITY & REDUCED MOTION
-       ======================================== */
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-      
-      .cursor-dot,
-      .cursor-outline {
-        display: none !important;
-      }
-      
-      .price-card {
-        transform: none !important;
-      }
-    }
-    
-    /* Focus styles for keyboard navigation */
-    a:focus,
-    button:focus,
-    .book-btn-small:focus,
-    .hamburger-btn:focus {
-      outline: 2px solid var(--accent);
-      outline-offset: 2px;
-    }
-    
-    /* Hide focus outline on mouse users */
-    a:focus:not(:focus-visible),
-    button:focus:not(:focus-visible) {
-      outline: none;
-    }
-  </style>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AutoRepair",
+        "name": "Sapphire Auto Detailing",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80",
+        "telephone": "+27813833936",
+        "priceRange": "R650-R2500",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "ZA"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "addressCountry": "ZA"
+        },
+        "url": "https://hivetimes.co.za",
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            "opens": "08:00",
+            "closes": "18:00"
+        },
+        "makesOffer": [
+            {
+                "@type": "Offer",
+                "name": "Emerald Package",
+                "priceSpecification": { "@type": "PriceSpecification", "price": "650", "priceCurrency": "ZAR" }
+            },
+            {
+                "@type": "Offer",
+                "name": "Sapphire Package",
+                "priceSpecification": { "@type": "PriceSpecification", "price": "1500", "priceCurrency": "ZAR" }
+            },
+            {
+                "@type": "Offer",
+                "name": "Diamond Package",
+                "priceSpecification": { "@type": "PriceSpecification", "price": "1000", "priceCurrency": "ZAR" }
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        /* ========================================
+           DESIGN SYSTEM & VARIABLES
+           ======================================== */
+        :root {
+            /* Colors */
+            --bg-dark: #050505;
+            --bg-card: rgba(10, 15, 20, 0.95);
+            --primary: #0f4c81;
+            --accent: #00d2ff;
+            --accent-glow: rgba(0, 210, 255, 0.4);
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --success: #2ecc71;
+            --warning: #f1c40f;
+
+            /* Typography */
+            --font-head: 'Rajdhani', sans-serif;
+            --font-body: 'Montserrat', sans-serif;
+
+            /* Layout */
+            --header-height: 80px;
+            --nav-width: 300px;
+            --container-padding: 20px;
+            --border-radius: 15px;
+
+            /* Transitions */
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* ========================================
+           GLOBAL RESET & BASE STYLES
+           ======================================== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--header-height);
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Accessibility Skip Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--accent);
+            color: #000;
+            padding: 8px 16px;
+            z-index: 10000;
+            transition: top 0.3s;
+            font-weight: 600;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* ========================================
+           CUSTOM CURSOR (Desktop Only)
+           ======================================== */
+        .cursor-dot,
+        .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+            display: none;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .cursor-dot,
+            .cursor-outline {
+                display: block;
+            }
+        }
+
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+        }
+
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--accent);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+
+        body:hover .cursor-outline.hovered {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(0, 210, 255, 0.1);
+            border-color: transparent;
+        }
+
+        /* ========================================
+           ANIMATED BACKGROUND
+           ======================================== */
+        .bg-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at 50% 50%, #1a2a3a 0%, var(--bg-dark) 100%);
+            z-index: -2;
+        }
+
+        .bg-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 10s infinite ease-in-out;
+            z-index: -1;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--primary);
+            top: -10%;
+            left: -10%;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: #2c3e50;
+            bottom: 10%;
+            right: -5%;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 50px); }
+        }
+
+        /* ========================================
+           UTILITIES
+           ======================================== */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+        }
+
+        .highlight {
+            color: var(--accent);
+            text-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s var(--transition-slow), transform 0.8s var(--transition-slow);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: var(--font-head);
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            margin-bottom: 1rem;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            line-height: 1.6;
+            padding: 0 10px;
+        }
+
+        /* ========================================
+           HEADER & NAVIGATION
+           ======================================== */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            z-index: 1000;
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            transition: all var(--transition);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 1002;
+        }
+
+        .brand-name {
+            font-family: var(--font-head);
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Hamburger Icon */
+        .hamburger-btn {
+            width: 35px;
+            height: 25px;
+            position: relative;
+            cursor: pointer;
+            z-index: 1002;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .hamburger-line {
+            width: 100%;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+            transform-origin: center;
+        }
+
+        .hamburger-btn.active .hamburger-line:nth-child(1) {
+            transform: translateY(11px) rotate(45deg);
+            background: var(--accent);
+        }
+
+        .hamburger-btn.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .hamburger-btn.active .hamburger-line:nth-child(3) {
+            transform: translateY(-11px) rotate(-45deg);
+            background: var(--accent);
+        }
+
+        /* Side Menu */
+        .nav-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .nav-backdrop.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .nav-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: var(--nav-width);
+            max-width: 85vw;
+            height: 100vh;
+            background: #0a0f14;
+            border-right: 1px solid var(--glass-border);
+            z-index: 1001;
+            transform: translateX(-100%);
+            transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            display: flex;
+            flex-direction: column;
+            padding: 100px 30px 40px 30px;
+            box-shadow: 10px 0 40px rgba(0,0,0,0.5);
+        }
+
+        .nav-panel.active {
+            transform: translateX(0);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .nav-links li {
+            overflow: hidden;
+        }
+
+        .nav-links a {
+            display: block;
+            font-family: var(--font-head);
+            font-size: 1.8rem;
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 700;
+            position: relative;
+            transform: translateY(100%);
+            transition: transform 0.5s var(--transition-slow), color 0.3s;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+            padding-left: 10px;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-panel.active .nav-links a {
+            transform: translateY(0);
+        }
+
+        .nav-panel.active .nav-links li:nth-child(1) a { transition-delay: 0.1s; }
+        .nav-panel.active .nav-links li:nth-child(2) a { transition-delay: 0.2s; }
+        .nav-panel.active .nav-links li:nth-child(3) a { transition-delay: 0.3s; }
+        .nav-panel.active .nav-links li:nth-child(4) a { transition-delay: 0.4s; }
+
+        .nav-contact {
+            margin-top: auto;
+            padding-top: 30px;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .nav-contact p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .nav-contact a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.3s;
+        }
+
+        .nav-contact a:hover {
+            color: var(--text-main);
+        }
+
+        /* HIVE Badge */
+        .hive-badge-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #FFD700;
+            border: 2px solid #E5C100;
+            border-radius: 50px;
+            padding: 6px 14px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            cursor: pointer;
+        }
+
+        .hive-icon-svg {
+            width: 16px;
+            height: 16px;
+            fill: #000000;
+            margin-right: 6px;
+        }
+
+        .hive-text-group {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .hive-text {
+            color: #000000;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .hive-subtext {
+            font-size: 8px;
+            font-weight: 600;
+            color: #333333;
+            text-transform: uppercase;
+        }
+
+        .hive-badge-link:hover {
+            background-color: #E5C100;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 480px) {
+            .hive-badge-link {
+                display: none;
+            }
+        }
+
+        /* ========================================
+           HERO SECTION
+           ======================================== */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            perspective: 1000px;
+            padding-top: var(--header-height);
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
+            z-index: 0;
+            filter: grayscale(100%) contrast(1.2);
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+
+        .hero:hover .hero-bg {
+            transform: scale(1.15);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(5,5,5,0.3), var(--bg-dark));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            mix-blend-mode: screen;
+            padding: 0 20px;
+            max-width: 800px;
+        }
+
+        h1 {
+            font-family: var(--font-head);
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            line-height: 0.9;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #aaa);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+        }
+
+        p.subtitle {
+            font-size: clamp(0.8rem, 2vw, 1rem);
+            letter-spacing: 4px;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: block;
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .hero-desc {
+            color: #ccc;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ========================================
+           SERVICES SECTION
+           ======================================== */
+        .services-overview {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-item {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .service-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .service-item i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px var(--accent-glow);
+            display: block;
+        }
+
+        .service-item h3 {
+            font-family: var(--font-head);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .service-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* ========================================
+           PAINT CORRECTION SLIDER
+           ======================================== */
+        .comparison-section {
+            padding: 80px 0;
+            background: linear-gradient(to bottom, transparent, #020202);
+        }
+
+        .ba-slider {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            height: clamp(300px, 50vw, 500px);
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            border: 1px solid var(--glass-border);
+            cursor: ew-resize;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .ba-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            pointer-events: none;
+        }
+
+        .img-after {
+            background-image: url('https://images.unsplash.com/photo-1601362840469-51e4d8d58785?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');
+            z-index: 1;
+        }
+
+        .img-before {
+            background-image: url('https://images.unsplash.com/photo-1600588653879-4c6078c40523?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');
+            width: 50%;
+            border-right: 2px solid var(--accent);
+            z-index: 10;
+            background-position: center;
+        }
+
+        .slider-handle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 50%;
+            cursor: ew-resize;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 30px var(--accent-glow);
+            color: #000;
+            font-size: 1.2rem;
+            pointer-events: none;
+            transition: transform 0.2s ease;
+        }
+
+        .ba-slider:active .slider-handle {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .slider-label {
+            position: absolute;
+            top: 20px;
+            padding: 8px 20px;
+            background: rgba(0,0,0,0.8);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            pointer-events: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            backdrop-filter: blur(5px);
+            z-index: 15;
+        }
+
+        .label-before {
+            left: 20px;
+            color: #ff4757;
+        }
+
+        .label-after {
+            right: 20px;
+            color: #2ed573;
+        }
+
+        /* ========================================
+           PRICING SECTION
+           ======================================== */
+        .pricing-section {
+            padding: 80px 0;
+            perspective: 1000px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            align-items: start;
+        }
+
+        .price-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px 25px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease, border-color 0.3s ease;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.05), transparent 40%);
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .price-card:hover::before {
+            opacity: 1;
+        }
+
+        .price-card:hover {
+            border-color: var(--accent);
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-header h3 {
+            font-family: var(--font-head);
+            font-size: 2rem;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .emerald h3 { color: var(--success); }
+        .sapphire h3 { color: var(--accent); }
+        .diamond h3 { color: #bdc3c7; }
+
+        .price-tag {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 20px 0;
+            color: white;
+            font-family: var(--font-head);
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 30px;
+            flex-grow: 1;
+            text-align: left;
+            padding-left: 10px;
+        }
+
+        .features-list li {
+            margin-bottom: 12px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .features-list li i {
+            color: var(--accent);
+            margin-top: 4px;
+            width: 16px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .recommendation {
+            font-size: 0.85rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-top: auto;
+            padding-top: 15px;
+            opacity: 0.8;
+        }
+
+        .book-btn-small {
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.75rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+            text-decoration: none;
+            display: inline-block;
+            font-family: var(--font-body);
+        }
+
+        .book-btn-small:hover {
+            background: var(--accent);
+            color: #000;
+            box-shadow: 0 0 20px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        .book-btn-small:active {
+            transform: translateY(0);
+        }
+
+        /* Featured card enhancement */
+        .price-card.sapphire {
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 40px rgba(0, 210, 255, 0.2);
+        }
+
+        .price-card.sapphire::after {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: 15px;
+            right: -35px;
+            background: var(--accent);
+            color: #000;
+            padding: 5px 40px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            transform: rotate(45deg);
+            letter-spacing: 1px;
+            z-index: 2;
+        }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
+        .info-section {
+            padding: 60px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            background: #020202;
+        }
+
+        .contact-large {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            color: var(--text-main);
+            margin-top: 15px;
+            font-weight: 700;
+            font-family: var(--font-head);
+            line-height: 1.4;
+        }
+
+        .contact-large .highlight {
+            font-size: clamp(1.2rem, 4vw, 1.4rem);
+            display: block;
+            margin-top: 5px;
+        }
+
+        /* ========================================
+           STICKY WHATSAPP CTA
+           ======================================== */
+        .sticky-wa {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+            z-index: 990;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s var(--transition-slow), box-shadow 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.2);
+            cursor: pointer;
+            font-family: var(--font-body);
+        }
+
+        .sticky-wa:hover {
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5);
+        }
+
+        .sticky-wa:active {
+            transform: scale(1);
+        }
+
+        @media (max-width: 480px) {
+            .sticky-wa span {
+                display: none;
+            }
+            .sticky-wa {
+                padding: 15px;
+                border-radius: 50%;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        /* ========================================
+           ACCESSIBILITY & REDUCED MOTION
+           ======================================== */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .cursor-dot, .cursor-outline {
+                display: none !important;
+            }
+            .price-card {
+                transform: none !important;
+            }
+        }
+
+        /* Focus styles for keyboard navigation */
+        a:focus, button:focus, .book-btn-small:focus, .hamburger-btn:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* Hide focus outline on mouse users */
+        a:focus:not(:focus-visible), button:focus:not(:focus-visible) {
+            outline: none;
+        }
+    </style>
 </head>
 <body>
-  <!-- Accessibility Skip Link -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-  
-  <!-- Custom Cursor (Desktop) -->
-  <div class="cursor-dot"></div>
-  <div class="cursor-outline"></div>
-  
-  <!-- Animated Background -->
-  <div class="bg-mesh"></div>
-  <div class="bg-orb orb-1"></div>
-  <div class="bg-orb orb-2"></div>
-  
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="logo-area">
-      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </button>
-      <div class="brand-name">Sapphire<span class="highlight">Detailing</span></div>
-    </div>
-    <a href="https://hivetimes.co.za" class="hive-badge-link" target="_blank" rel="noopener" aria-label="Visit Hive Times directory">
-      <svg class="hive-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M12 2L14.5 6.5L19 6.5L16.5 11L19 15.5L14.5 15.5L12 20L9.5 15.5L5 15.5L7.5 11L5 6.5L9.5 6.5L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
-        <path d="M12 7L13.5 9.5L16 9.5L14.5 12L16 14.5L13.5 14.5L12 17L10.5 14.5L8 14.5L9.5 12L8 9.5L10.5 9.5L12 7Z" fill="currentColor"/>
-      </svg>
-      <div class="hive-text-group">
-        <span class="hive-text">HIVE</span>
-        <span class="hive-subtext">Member</span>
-      </div>
-    </a>
-  </header>
-  
-  <!-- NAV OVERLAY -->
-  <div class="nav-backdrop" id="navBackdrop" role="presentation"></div>
-  <nav class="nav-panel" id="navPanel" aria-label="Main navigation">
-    <ul class="nav-links">
-      <li><a href="#" onclick="toggleMenu(); return false;" aria-label="Go to home">Home</a></li>
-      <li><a href="#services" onclick="toggleMenu(); return false;" aria-label="View our services">Services</a></li>
-      <li><a href="#paint-correction" onclick="toggleMenu(); return false;" aria-label="Learn about paint correction">Paint Correction</a></li>
-      <li><a href="#pricing" onclick="toggleMenu(); return false;" aria-label="View pricing packages">Packages</a></li>
-    </ul>
-    <div class="nav-contact">
-      <p>Ready to book your detail?</p>
-      <a href="#" onclick="sendWhatsApp('General Inquiry'); toggleMenu(); return false;" aria-label="Contact Mohammed on WhatsApp">
-        <i class="fab fa-whatsapp" aria-hidden="true"></i> 081 383 3936
-      </a>
-    </div>
-  </nav>
-  
-  <!-- MAIN CONTENT -->
-  <main id="main-content">
-    <!-- HERO SECTION -->
-    <section class="hero" aria-labelledby="hero-title">
-      <img class="hero-bg" src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" alt="Luxury car being detailed" loading="eager">
-      <div class="hero-overlay" aria-hidden="true"></div>
-      <div class="hero-content">
-        <p class="subtitle reveal">Sapphire Auto Detailing</p>
-        <h1 class="reveal" id="hero-title">Premium <span class="highlight">Mobile</span><br>Auto Detailing</h1>
-        <p class="reveal hero-desc">We come to you. Complete interior and exterior detailing, plus professional paint correction to restore your car's showroom gloss.</p>
-      </div>
-    </section>
-    
-    <!-- SERVICES SECTION -->
-    <section class="services-overview container" id="services" aria-labelledby="services-title">
-      <h2 class="section-title reveal" id="services-title">Our Expertise</h2>
-      <p class="section-subtitle reveal">Professional mobile detailing services tailored to your vehicle's needs</p>
-      <div class="services-grid">
-        <article class="service-item reveal">
-          <i class="fas fa-car-side" aria-hidden="true"></i>
-          <h3>Exterior Detail</h3>
-          <p>Hand wash, decontamination, wheel cleaning, and tire dressing to make your car look brand new.</p>
-        </article>
-        <article class="service-item reveal">
-          <i class="fas fa-couch" aria-hidden="true"></i>
-          <h3>Interior Detail</h3>
-          <p>Deep vacuum, leather conditioning, carpet shampooing, and dashboard protection.</p>
-        </article>
-        <article class="service-item reveal">
-          <i class="fas fa-magic" aria-hidden="true"></i>
-          <h3>Paint Correction</h3>
-          <p>Advanced polishing to remove micro-scratches and swirl marks, restoring deep gloss and clarity.</p>
-        </article>
-      </div>
-    </section>
-    
-    <!-- PAINT CORRECTION SHOWCASE -->
-    <section class="comparison-section container" id="paint-correction" aria-labelledby="correction-title">
-      <h2 class="section-title reveal" id="correction-title">The Science of Gloss</h2>
-      <p class="section-subtitle reveal">
-        Paint correction is professional <strong>polishing</strong> that removes <strong>scratches</strong> and <strong>swirl marks</strong> to restore your paint's <strong>deep, mirror-like gloss</strong>.
-      </p>
-      <div class="ba-slider reveal" id="baSlider" role="slider" aria-label="Before and after paint correction comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
-        <div class="ba-image img-after" aria-hidden="true"></div>
-        <div class="ba-image img-before" id="imgBefore" aria-hidden="true"></div>
-        <div class="slider-handle" id="sliderHandle" aria-hidden="true">
-          <i class="fas fa-arrows-alt-h"></i>
+    <!-- Accessibility Skip Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Custom Cursor (Desktop) -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Animated Background -->
+    <div class="bg-mesh"></div>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="logo-area">
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <div class="brand-name">Sapphire<span class="highlight">Detailing</span></div>
         </div>
-        <span class="slider-label label-before">Before</span>
-        <span class="slider-label label-after">After</span>
-      </div>
-    </section>
-    
-    <!-- PRICING SECTION -->
-    <section class="pricing-section container" id="pricing" aria-labelledby="pricing-title">
-      <h2 class="section-title reveal" id="pricing-title">Select Your Package</h2>
-      <p class="section-subtitle reveal">Click "Book Now" to instantly message Mohammed via WhatsApp with your package selection</p>
-      <div class="pricing-grid">
-        <!-- EMERALD PACKAGE -->
-        <article class="price-card emerald reveal" data-tilt aria-labelledby="emerald-title">
-          <div class="card-content">
-            <div class="card-header">
-              <h3 id="emerald-title">EMERALD</h3>
-              <div class="price-tag">R650 - R750</div>
+        <a href="https://hivetimes.co.za" class="hive-badge-link" target="_blank" rel="noopener" aria-label="Visit Hive Times directory">
+            <svg class="hive-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M12 2L14.5 6.5L19 6.5L16.5 11L19 15.5L14.5 15.5L12 20L9.5 15.5L5 15.5L7.5 11L5 6.5L9.5 6.5L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
+                <path d="M12 7L13.5 9.5L16 9.5L14.5 12L16 14.5L13.5 14.5L12 17L10.5 14.5L8 14.5L9.5 12L8 9.5L10.5 9.5L12 7Z" fill="currentColor"/>
+            </svg>
+            <div class="hive-text-group">
+                <span class="hive-text">HIVE</span>
+                <span class="hive-subtext">Member</span>
             </div>
-            <ul class="features-list" aria-label="Emerald package features">
-              <li><i class="fas fa-check" aria-hidden="true"></i> Exterior hand wash & dry</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> Wheels & tyres cleaned/dressed</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> Interior vacuum & wipe-down</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> Windows cleaned (inside & out)</li>
-            </ul>
-            <p class="recommendation">Ideal for regularly maintained vehicles</p>
-            <button class="book-btn-small" onclick="sendWhatsApp('Emerald Package'); return false;" aria-label="Book Emerald package via WhatsApp">
-              Book Now
-            </button>
-          </div>
-        </article>
-        
-        <!-- SAPPHIRE PACKAGE (Featured) -->
-        <article class="price-card sapphire reveal" data-tilt aria-labelledby="sapphire-title">
-          <div class="card-content">
-            <div class="card-header">
-              <h3 id="sapphire-title">SAPPHIRE</h3>
-              <div class="price-tag">R1500 - R2500+</div>
-            </div>
-            <ul class="features-list" aria-label="Sapphire package features">
-              <li><i class="fas fa-star" aria-hidden="true"></i> <strong>Includes Paint Correction</strong></li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> Clay bar decontamination</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> Machine polish (1-2 stage)</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> Remove micro-scratches & swirls</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> High-quality sealant applied</li>
-            </ul>
-            <p class="recommendation">Recommended for neglected or show-quality vehicles</p>
-            <button class="book-btn-small" onclick="sendWhatsApp('Sapphire Package'); return false;" aria-label="Book Sapphire package via WhatsApp">
-              Book Now
-            </button>
-          </div>
-        </article>
-        
-        <!-- DIAMOND PACKAGE -->
-        <article class="price-card diamond reveal" data-tilt aria-labelledby="diamond-title">
-          <div class="card-content">
-            <div class="card-header">
-              <h3 id="diamond-title">DIAMOND</h3>
-              <div class="price-tag">R1000 - R1500</div>
-            </div>
-            <ul class="features-list" aria-label="Diamond package features">
-              <li><i class="fas fa-check" aria-hidden="true"></i> Deep interior clean & sanitization</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> Exterior wash & decontamination</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> Light polish (Enhancement)</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> Premium wax protection applied</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> Tyres dressed & windows cleaned</li>
-            </ul>
-            <p class="recommendation">Most popular package — best value</p>
-            <button class="book-btn-small" onclick="sendWhatsApp('Diamond Package'); return false;" aria-label="Book Diamond package via WhatsApp">
-              Book Now
-            </button>
-          </div>
-        </article>
-      </div>
-    </section>
-  </main>
-  
-  <!-- FOOTER -->
-  <footer class="info-section" role="contentinfo">
-    <div class="container">
-      <p>💡 Prices vary based on vehicle size, condition, and location. Contact us for a personalized quote.</p>
-      <div class="contact-large">
-        Contact Mohammed Mangera
-        <span class="highlight">📱 081 383 3936</span>
-      </div>
-      <p style="margin-top: 20px; opacity: 0.6; font-size: 0.8rem;">
-        &copy; <span id="year"></span> Sapphire Auto Detailing. All rights reserved.
-      </p>
-    </div>
-  </footer>
-  
-  <!-- STICKY WHATSAPP CTA -->
-  <a href="#" class="sticky-wa" onclick="sendWhatsApp('General Inquiry'); return false;" aria-label="Book a detailing session via WhatsApp">
-    <i class="fab fa-whatsapp" aria-hidden="true"></i>
-    <span>Book Now</span>
-  </a>
+        </a>
+    </header>
 
-  <!-- JAVASCRIPT -->
-  <script>
-    // ========================================
-    // CONFIGURATION & BUSINESS DATA
-    // ========================================
-    const BUSINESS = {
-      name: "Sapphire Auto Detailing",
-      owner: "Mohammed Mangera",
-      phone: "27813833936",
-      whatsappBase: "https://wa.me/27813833936",
-      currency: "ZAR"
-    };
-    
-    // ========================================
-    // 1. CUSTOM CURSOR (Desktop Only)
-    // ========================================
-    const cursorDot = document.querySelector('.cursor-dot');
-    const cursorOutline = document.querySelector('.cursor-outline');
-    
-    // Only enable on devices with fine pointer & hover support
-    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-      window.addEventListener('mousemove', (e) => {
-        const posX = e.clientX;
-        const posY = e.clientY;
-        
-        // Instant dot follow
-        cursorDot.style.left = `${posX}px`;
-        cursorDot.style.top = `${posY}px`;
-        
-        // Smooth outline follow with animation API
-        cursorOutline.animate({
-          left: `${posX}px`,
-          top: `${posY}px`
-        }, { duration: 500, fill: "forwards" });
-      });
-      
-      // Hover effects for interactive elements
-      const interactiveElements = document.querySelectorAll('a, button, .price-card, .service-item, .hamburger-btn');
-      interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', () => cursorOutline.classList.add('hovered'));
-        el.addEventListener('mouseleave', () => cursorOutline.classList.remove('hovered'));
-      });
-    }
-    
-    // ========================================
-    // 2. MOBILE MENU TOGGLE
-    // ========================================
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const navPanel = document.getElementById('navPanel');
-    const navBackdrop = document.getElementById('navBackdrop');
-    
-    function toggleMenu() {
-      const isActive = navPanel.classList.contains('active');
-      
-      if (isActive) {
-        // Close menu
-        hamburgerBtn.classList.remove('active');
-        hamburgerBtn.setAttribute('aria-expanded', 'false');
-        navPanel.classList.remove('active');
-        navBackdrop.classList.remove('active');
-        document.body.style.overflow = 'auto';
-      } else {
-        // Open menu
-        hamburgerBtn.classList.add('active');
-        hamburgerBtn.setAttribute('aria-expanded', 'true');
-        navPanel.classList.add('active');
-        navBackdrop.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent background scroll
-      }
-    }
-    
-    hamburgerBtn.addEventListener('click', toggleMenu);
-    navBackdrop.addEventListener('click', toggleMenu);
-    
-    // Close menu on escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && navPanel.classList.contains('active')) {
-        toggleMenu();
-        hamburgerBtn.focus();
-      }
-    });
-    
-    // ========================================
-    // 3. 3D TILT EFFECT FOR PRICING CARDS
-    // ========================================
-    const cards = document.querySelectorAll('.price-card[data-tilt]');
-    
-    // Only enable tilt on devices that support hover (desktop)
-    if (window.matchMedia("(hover: hover)").matches && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          const centerX = rect.width / 2;
-          const centerY = rect.height / 2;
-          
-          // Calculate rotation (max 5 degrees)
-          const rotateX = ((y - centerY) / centerY) * -5;
-          const rotateY = ((x - centerX) / centerX) * 5;
-          
-          // Update CSS variables for glow effect
-          card.style.setProperty('--mouse-x', `${x}px`);
-          card.style.setProperty('--mouse-y', `${y}px`);
-          
-          // Apply 3D transform
-          card.style.transform = `
-            perspective(1000px) 
-            rotateX(${rotateX}deg) 
-            rotateY(${rotateY}deg) 
-            scale3d(1.02, 1.02, 1.02)
-          `;
-        });
-        
-        card.addEventListener('mouseleave', () => {
-          // Reset transform smoothly
-          card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-        });
-      });
-    }
-    
-    // ========================================
-    // 4. SCROLL REVEAL ANIMATIONS
-    // ========================================
-    const revealElements = document.querySelectorAll('.reveal');
-    
-    function revealOnScroll() {
-      const windowHeight = window.innerHeight;
-      const revealPoint = windowHeight * 0.85; // Trigger when 85% of element is visible
-      
-      revealElements.forEach((element) => {
-        const elementTop = element.getBoundingClientRect().top;
-        
-        if (elementTop < revealPoint) {
-          element.classList.add('active');
-        }
-      });
-    }
-    
-    // Initial check + scroll listener
-    window.addEventListener('scroll', revealOnScroll, { passive: true });
-    window.addEventListener('load', revealOnScroll);
-    // Also check on resize
-    window.addEventListener('resize', () => {
-      clearTimeout(window.revealTimeout);
-      window.revealTimeout = setTimeout(revealOnScroll, 100);
-    });
-    
-    // ========================================
-    // 5. BEFORE/AFTER SLIDER (Paint Correction)
-    // ========================================
-    const sliderContainer = document.getElementById('baSlider');
-    const imgBefore = document.getElementById('imgBefore');
-    const sliderHandle = document.getElementById('sliderHandle');
-    
-    let isDragging = false;
-    let startPos = 0;
-    
-    function updateSlider(clientX) {
-      if (!sliderContainer) return;
-      
-      const rect = sliderContainer.getBoundingClientRect();
-      let position = ((clientX - rect.left) / rect.width) * 100;
-      
-      // Clamp value between 0-100
-      position = Math.max(0, Math.min(100, position));
-      
-      // Update UI
-      imgBefore.style.width = `${position}%`;
-      sliderHandle.style.left = `${position}%`;
-      
-      // Update ARIA value
-      sliderContainer.setAttribute('aria-valuenow', Math.round(position));
-    }
-    
-    // Mouse events
-    sliderContainer?.addEventListener('mousedown', (e) => {
-      isDragging = true;
-      startPos = e.clientX;
-      e.preventDefault();
-    });
-    
-    window.addEventListener('mouseup', () => {
-      isDragging = false;
-    });
-    
-    window.addEventListener('mousemove', (e) => {
-      if (!isDragging) return;
-      updateSlider(e.clientX);
-    });
-    
-    // Touch events
-    sliderContainer?.addEventListener('touchstart', (e) => {
-      isDragging = true;
-      startPos = e.touches[0].clientX;
-      e.preventDefault();
-    }, { passive: false });
-    
-    window.addEventListener('touchend', () => {
-      isDragging = false;
-    });
-    
-    window.addEventListener('touchmove', (e) => {
-      if (!isDragging || !e.touches[0]) return;
-      updateSlider(e.touches[0].clientX);
-      e.preventDefault();
-    }, { passive: false });
-    
-    // Keyboard navigation for accessibility
-    sliderContainer?.addEventListener('keydown', (e) => {
-      const currentValue = parseInt(sliderContainer.getAttribute('aria-valuenow')) || 50;
-      let newValue = currentValue;
-      
-      if (e.key === 'ArrowLeft') {
-        newValue = Math.max(0, currentValue - 5);
-        e.preventDefault();
-      } else if (e.key === 'ArrowRight') {
-        newValue = Math.min(100, currentValue + 5);
-        e.preventDefault();
-      } else {
-        return;
-      }
-      
-      updateSlider(
-        sliderContainer.getBoundingClientRect().left + 
-        (newValue / 100) * sliderContainer.getBoundingClientRect().width
-      );
-    });
-    
-    // ========================================
-    // 6. WHATSAPP BOOKING INTEGRATION
-    // ========================================
-    function sendWhatsApp(packageName) {
-      const message = `Hi ${BUSINESS.owner}! 👋
+    <!-- NAV OVERLAY -->
+    <div class="nav-backdrop" id="navBackdrop" role="presentation"></div>
+    <nav class="nav-panel" id="navPanel" aria-label="Main navigation">
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#services" class="nav-link">Services</a></li>
+            <li><a href="#paint-correction" class="nav-link">Paint Correction</a></li>
+            <li><a href="#pricing" class="nav-link">Packages</a></li>
+        </ul>
+        <div class="nav-contact">
+            <p>Ready to book your detail?</p>
+            <a href="#" class="nav-whatsapp-link" aria-label="Contact Mohammed on WhatsApp">
+                <i class="fab fa-whatsapp" aria-hidden="true"></i> 081 383 3936
+            </a>
+        </div>
+    </nav>
 
+    <!-- MAIN CONTENT -->
+    <main id="main-content">
+        <!-- HERO SECTION -->
+        <section class="hero" id="home" aria-labelledby="hero-title">
+            <img class="hero-bg" src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" alt="Luxury car being detailed" loading="eager">
+            <div class="hero-overlay" aria-hidden="true"></div>
+            <div class="hero-content">
+                <p class="subtitle reveal">Sapphire Auto Detailing</p>
+                <h1 class="reveal" id="hero-title">Premium <span class="highlight">Mobile</span><br>Auto Detailing</h1>
+                <p class="reveal hero-desc">We come to you. Complete interior and exterior detailing, plus professional paint correction to restore your car's showroom gloss.</p>
+            </div>
+        </section>
+
+        <!-- SERVICES SECTION -->
+        <section class="services-overview container" id="services" aria-labelledby="services-title">
+            <h2 class="section-title reveal" id="services-title">Our Expertise</h2>
+            <p class="section-subtitle reveal">Professional mobile detailing services tailored to your vehicle's needs</p>
+            <div class="services-grid">
+                <article class="service-item reveal">
+                    <i class="fas fa-car-side" aria-hidden="true"></i>
+                    <h3>Exterior Detail</h3>
+                    <p>Hand wash, decontamination, wheel cleaning, and tire dressing to make your car look brand new.</p>
+                </article>
+                <article class="service-item reveal">
+                    <i class="fas fa-couch" aria-hidden="true"></i>
+                    <h3>Interior Detail</h3>
+                    <p>Deep vacuum, leather conditioning, carpet shampooing, and dashboard protection.</p>
+                </article>
+                <article class="service-item reveal">
+                    <i class="fas fa-magic" aria-hidden="true"></i>
+                    <h3>Paint Correction</h3>
+                    <p>Advanced polishing to remove micro-scratches and swirl marks, restoring deep gloss and clarity.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- PAINT CORRECTION SHOWCASE -->
+        <section class="comparison-section container" id="paint-correction" aria-labelledby="correction-title">
+            <h2 class="section-title reveal" id="correction-title">The Science of Gloss</h2>
+            <p class="section-subtitle reveal">
+                Paint correction is professional <strong>polishing</strong> that removes <strong>scratches</strong> and <strong>swirl marks</strong> to restore your paint's <strong>deep, mirror-like gloss</strong>.
+            </p>
+            <div class="ba-slider reveal" id="baSlider" role="slider" aria-label="Before and after paint correction comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+                <div class="ba-image img-after" aria-hidden="true"></div>
+                <div class="ba-image img-before" id="imgBefore" aria-hidden="true"></div>
+                <div class="slider-handle" id="sliderHandle" aria-hidden="true">
+                    <i class="fas fa-arrows-alt-h"></i>
+                </div>
+                <span class="slider-label label-before">Before</span>
+                <span class="slider-label label-after">After</span>
+            </div>
+        </section>
+
+        <!-- PRICING SECTION -->
+        <section class="pricing-section container" id="pricing" aria-labelledby="pricing-title">
+            <h2 class="section-title reveal" id="pricing-title">Select Your Package</h2>
+            <p class="section-subtitle reveal">Click "Book Now" to instantly message Mohammed via WhatsApp with your package selection</p>
+            <div class="pricing-grid">
+                <!-- EMERALD PACKAGE -->
+                <article class="price-card emerald reveal" data-tilt aria-labelledby="emerald-title">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3 id="emerald-title">EMERALD</h3>
+                            <div class="price-tag">R650 - R750</div>
+                        </div>
+                        <ul class="features-list" aria-label="Emerald package features">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Exterior hand wash & dry</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Wheels & tyres cleaned/dressed</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Interior vacuum & wipe-down</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Windows cleaned (inside & out)</li>
+                        </ul>
+                        <p class="recommendation">Ideal for regularly maintained vehicles</p>
+                        <button class="book-btn-small" data-package="Emerald Package" aria-label="Book Emerald package via WhatsApp">
+                            Book Now
+                        </button>
+                    </div>
+                </article>
+
+                <!-- SAPPHIRE PACKAGE (Featured) -->
+                <article class="price-card sapphire reveal" data-tilt aria-labelledby="sapphire-title">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3 id="sapphire-title">SAPPHIRE</h3>
+                            <div class="price-tag">R1500 - R2500+</div>
+                        </div>
+                        <ul class="features-list" aria-label="Sapphire package features">
+                            <li><i class="fas fa-star" aria-hidden="true"></i> <strong>Includes Paint Correction</strong></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Clay bar decontamination</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Machine polish (1-2 stage)</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Remove micro-scratches & swirls</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> High-quality sealant applied</li>
+                        </ul>
+                        <p class="recommendation">Recommended for neglected or show-quality vehicles</p>
+                        <button class="book-btn-small" data-package="Sapphire Package" aria-label="Book Sapphire package via WhatsApp">
+                            Book Now
+                        </button>
+                    </div>
+                </article>
+
+                <!-- DIAMOND PACKAGE -->
+                <article class="price-card diamond reveal" data-tilt aria-labelledby="diamond-title">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3 id="diamond-title">DIAMOND</h3>
+                            <div class="price-tag">R1000 - R1500</div>
+                        </div>
+                        <ul class="features-list" aria-label="Diamond package features">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Deep interior clean & sanitization</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Exterior wash & decontamination</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Light polish (Enhancement)</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Premium wax protection applied</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Tyres dressed & windows cleaned</li>
+                        </ul>
+                        <p class="recommendation">Most popular package — best value</p>
+                        <button class="book-btn-small" data-package="Diamond Package" aria-label="Book Diamond package via WhatsApp">
+                            Book Now
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="info-section" role="contentinfo">
+        <div class="container">
+            <p>💡 Prices vary based on vehicle size, condition, and location. Contact us for a personalized quote.</p>
+            <div class="contact-large">
+                Contact Mohammed Mangera
+                <span class="highlight">📱 081 383 3936</span>
+            </div>
+            <p style="margin-top: 20px; opacity: 0.6; font-size: 0.8rem;">
+                &copy; <span id="year"></span> Sapphire Auto Detailing. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- STICKY WHATSAPP CTA -->
+    <a href="#" class="sticky-wa" data-package="General Inquiry" aria-label="Book a detailing session via WhatsApp">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+        <span>Book Now</span>
+    </a>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // ========================================
+        // CONFIGURATION & BUSINESS DATA
+        // ========================================
+        const BUSINESS = {
+            name: "Sapphire Auto Detailing",
+            owner: "Mohammed Mangera",
+            phone: "27813833936",
+            whatsappBase: "https://wa.me/27813833936",
+            currency: "ZAR"
+        };
+
+        // ========================================
+        // 1. CUSTOM CURSOR (Desktop Only)
+        // ========================================
+        const initCursor = () => {
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorOutline = document.querySelector('.cursor-outline');
+
+            if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+
+            window.addEventListener('mousemove', (e) => {
+                const { clientX: posX, clientY: posY } = e;
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+                
+                cursorOutline.animate({
+                    left: `${posX}px`,
+                    top: `${posY}px`
+                }, { duration: 500, fill: "forwards" });
+            });
+
+            const interactiveElements = document.querySelectorAll('a, button, .price-card, .service-item, .hamburger-btn');
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => cursorOutline.classList.add('hovered'));
+                el.addEventListener('mouseleave', () => cursorOutline.classList.remove('hovered'));
+            });
+        };
+
+        // ========================================
+        // 2. MOBILE MENU TOGGLE
+        // ========================================
+        const initMenu = () => {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const navPanel = document.getElementById('navPanel');
+            const navBackdrop = document.getElementById('navBackdrop');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            const toggleMenu = (forceState = null) => {
+                const isActive = navPanel.classList.contains('active');
+                const shouldOpen = forceState !== null ? forceState : !isActive;
+
+                if (shouldOpen) {
+                    hamburgerBtn.classList.add('active');
+                    hamburgerBtn.setAttribute('aria-expanded', 'true');
+                    navPanel.classList.add('active');
+                    navBackdrop.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    
+                    // Focus management
+                    setTimeout(() => {
+                        const firstLink = navPanel.querySelector('.nav-links a');
+                        if (firstLink) firstLink.focus();
+                    }, 300);
+                } else {
+                    hamburgerBtn.classList.remove('active');
+                    hamburgerBtn.setAttribute('aria-expanded', 'false');
+                    navPanel.classList.remove('active');
+                    navBackdrop.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    hamburgerBtn.focus();
+                }
+            };
+
+            hamburgerBtn.addEventListener('click', () => toggleMenu());
+            navBackdrop.addEventListener('click', () => toggleMenu(false));
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && navPanel.classList.contains('active')) {
+                    toggleMenu(false);
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navPanel.classList.contains('active')) {
+                        setTimeout(() => toggleMenu(false), 300);
+                    }
+                });
+            });
+        };
+
+        // ========================================
+        // 3. 3D TILT EFFECT FOR PRICING CARDS
+        // ========================================
+        const initTilt = () => {
+            const cards = document.querySelectorAll('.price-card[data-tilt]');
+            if (!window.matchMedia("(hover: hover)").matches || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+
+                    const rotateX = ((y - centerY) / centerY) * -5;
+                    const rotateY = ((x - centerX) / centerX) * 5;
+
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+                });
+            });
+        };
+
+        // ========================================
+        // 4. SCROLL REVEAL ANIMATIONS
+        // ========================================
+        const initScrollReveal = () => {
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealPoint = window.innerHeight * 0.85;
+
+            const checkReveal = () => {
+                revealElements.forEach((element) => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    if (elementTop < revealPoint) {
+                        element.classList.add('active');
+                    }
+                });
+            };
+
+            // Debounced scroll listener
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(checkReveal, 50);
+            }, { passive: true });
+
+            // Initial check
+            window.addEventListener('load', checkReveal);
+            window.addEventListener('resize', () => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(checkReveal, 100);
+            });
+            
+            checkReveal(); // Run once on init
+        };
+
+        // ========================================
+        // 5. BEFORE/AFTER SLIDER (Paint Correction)
+        // ========================================
+        const initSlider = () => {
+            const sliderContainer = document.getElementById('baSlider');
+            const imgBefore = document.getElementById('imgBefore');
+            const sliderHandle = document.getElementById('sliderHandle');
+            
+            if (!sliderContainer) return;
+
+            let isDragging = false;
+
+            const updateSlider = (clientX) => {
+                const rect = sliderContainer.getBoundingClientRect();
+                let position = ((clientX - rect.left) / rect.width) * 100;
+                position = Math.max(0, Math.min(100, position));
+
+                imgBefore.style.width = `${position}%`;
+                sliderHandle.style.left = `${position}%`;
+                sliderContainer.setAttribute('aria-valuenow', Math.round(position));
+            };
+
+            const startDrag = (e) => {
+                isDragging = true;
+                if(e.type === 'touchstart') e.preventDefault();
+            };
+
+            const stopDrag = () => { isDragging = false; };
+
+            const moveDrag = (e) => {
+                if (!isDragging) return;
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                updateSlider(clientX);
+                if(e.type === 'touchmove') e.preventDefault();
+            };
+
+            sliderContainer.addEventListener('mousedown', startDrag);
+            sliderContainer.addEventListener('touchstart', startDrag, { passive: false });
+            
+            window.addEventListener('mouseup', stopDrag);
+            window.addEventListener('touchend', stopDrag);
+            
+            window.addEventListener('mousemove', moveDrag);
+            window.addEventListener('touchmove', moveDrag, { passive: false });
+
+            // Keyboard navigation
+            sliderContainer.addEventListener('keydown', (e) => {
+                const currentValue = parseInt(sliderContainer.getAttribute('aria-valuenow')) || 50;
+                let newValue = currentValue;
+
+                if (e.key === 'ArrowLeft') newValue = Math.max(0, currentValue - 5);
+                else if (e.key === 'ArrowRight') newValue = Math.min(100, currentValue + 5);
+                else return;
+
+                e.preventDefault();
+                const rect = sliderContainer.getBoundingClientRect();
+                updateSlider(rect.left + (newValue / 100) * rect.width);
+            });
+        };
+
+        // ========================================
+        // 6. WHATSAPP BOOKING INTEGRATION
+        // ========================================
+        const sendWhatsApp = (packageName) => {
+            const message = `Hi ${BUSINESS.owner}! 👋
 I'm interested in booking a detailing session with ${BUSINESS.name}.
-
 📦 Package: ${packageName}
 🚗 Vehicle: [Please describe year/make/model]
 📍 Location: [Please provide your area]
 📅 Preferred date: [Optional]
-
 Please let me know availability and next steps. Thank you!`;
-      
-      const encodedMessage = encodeURIComponent(message);
-      const whatsappUrl = `${BUSINESS.whatsappBase}?text=${encodedMessage}`;
-      
-      // Open in new tab
-      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-      
-      // Optional: Track conversion (commented out by default)
-      // console.log(`WhatsApp booking initiated: ${packageName}`);
-    }
-    
-    // ========================================
-    // 7. UTILITIES & ENHANCEMENTS
-    // ========================================
-    
-    // Auto-update copyright year
-    document.getElementById('year').textContent = new Date().getFullYear();
-    
-    // Smooth scroll for anchor links (enhanced)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if (href === '#') return;
-        
-        const target = document.querySelector(href);
-        if (target) {
-          e.preventDefault();
-          const headerOffset = document.querySelector('.site-header').offsetHeight;
-          const elementPosition = target.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-          
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-    
-    // Close menu when clicking a nav link (already handled via onclick, but extra safety)
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (navPanel.classList.contains('active')) {
-          setTimeout(toggleMenu, 300); // Delay for animation
-        }
-      });
-    });
-    
-    // Lazy load hero image fallback (if needed)
-    window.addEventListener('load', () => {
-      const heroBg = document.querySelector('.hero-bg');
-      if (heroBg && !heroBg.complete) {
-        heroBg.style.opacity = '0';
-        heroBg.onload = () => {
-          heroBg.style.transition = 'opacity 0.5s ease';
-          heroBg.style.opacity = '0.4';
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `${BUSINESS.whatsappBase}?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
         };
-      }
-    });
-    
-    // Performance: Debounce scroll events for reveal
-    let scrollTimeout;
-    window.addEventListener('scroll', () => {
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(revealOnScroll, 50);
-    }, { passive: true });
-    
-    // Initialize: trigger reveal on load
-    document.addEventListener('DOMContentLoaded', () => {
-      revealOnScroll();
-      
-      // Focus management for menu
-      hamburgerBtn.addEventListener('click', () => {
-        if (navPanel.classList.contains('active')) {
-          // Focus first nav link when menu opens
-          setTimeout(() => {
-            const firstLink = navPanel.querySelector('.nav-links a');
-            if (firstLink) firstLink.focus();
-          }, 300);
-        }
-      });
-    });
-    
-    // ========================================
-    // 8. GOOGLE SHEETS DATA SYNC (Future-Proof)
-    // ========================================
-    // To enable dynamic data from Google Sheets:
-    // 1. Export your sheet as JSON
-    // 2. Fetch and merge with BUSINESS object
-    // Example:
-    /*
-    async function loadBusinessData() {
-      try {
-        const response = await fetch('business-data.json');
-        const data = await response.json();
-        Object.assign(BUSINESS, data.business);
-        // Re-render dynamic content here
-      } catch (error) {
-        console.log('Using default business data');
-      }
-    }
-    // loadBusinessData();
-    */
-  </script>
-  
-  <!-- BUILD INFO (for cache-busting reference) -->
-  <!-- BUILD: 2026-03-23 | Sapphire Auto Detailing v1.0 -->
+
+        const initBooking = () => {
+            // Delegate event listener for all booking buttons
+            document.body.addEventListener('click', (e) => {
+                const btn = e.target.closest('.book-btn-small, .sticky-wa, .nav-whatsapp-link');
+                if (!btn) return;
+
+                e.preventDefault();
+                const packageName = btn.getAttribute('data-package') || 'General Inquiry';
+                sendWhatsApp(packageName);
+            });
+        };
+
+        // ========================================
+        // 7. UTILITIES & ENHANCEMENTS
+        // ========================================
+        const initUtils = () => {
+            // Auto-update copyright year
+            const yearEl = document.getElementById('year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#') return;
+                    
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        const headerOffset = document.querySelector('.site-header').offsetHeight;
+                        const elementPosition = target.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Hero image load fade-in
+            window.addEventListener('load', () => {
+                const heroBg = document.querySelector('.hero-bg');
+                if (heroBg && !heroBg.complete) {
+                    heroBg.style.opacity = '0';
+                    heroBg.onload = () => {
+                        heroBg.style.transition = 'opacity 0.5s ease';
+                        heroBg.style.opacity = '0.4';
+                    };
+                }
+            });
+        };
+
+        // ========================================
+        // INITIALIZATION
+        // ========================================
+        document.addEventListener('DOMContentLoaded', () => {
+            initCursor();
+            initMenu();
+            initTilt();
+            initScrollReveal();
+            initSlider();
+            initBooking();
+            initUtils();
+        });
+    </script>
 </body>
 </html>
