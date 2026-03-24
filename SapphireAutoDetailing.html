@@ -1,1520 +1,1815 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta name="description" content="Sapphire Auto Detailing — Premium mobile auto detailing services by Mohammed Mangera. Interior, exterior, and paint correction. We come to you.">
-    <meta name="theme-color" content="#050505">
-    <title>Sapphire Auto Detailing | Elite Mobile Care</title>
-
-    <!-- Fonts & Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "AutoRepair",
-        "name": "Sapphire Auto Detailing",
-        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80",
-        "telephone": "+27813833936",
-        "priceRange": "R650-R2500",
-        "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "ZA"
-        },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "addressCountry": "ZA"
-        },
-        "url": "https://hivetimes.co.za",
-        "openingHoursSpecification": {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            "opens": "08:00",
-            "closes": "18:00"
-        },
-        "makesOffer": [
-            {
-                "@type": "Offer",
-                "name": "Emerald Package",
-                "priceSpecification": { "@type": "PriceSpecification", "price": "650", "priceCurrency": "ZAR" }
-            },
-            {
-                "@type": "Offer",
-                "name": "Sapphire Package",
-                "priceSpecification": { "@type": "PriceSpecification", "price": "1500", "priceCurrency": "ZAR" }
-            },
-            {
-                "@type": "Offer",
-                "name": "Diamond Package",
-                "priceSpecification": { "@type": "PriceSpecification", "price": "1000", "priceCurrency": "ZAR" }
-            }
-        ]
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sapphire Auto Detailing | Premium Mobile Service</title>
+  <meta name="description" content="The Showroom Shine, Delivered to Your Doorstep. Premium mobile auto detailing in Gauteng."/>
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.min.js"></script>
+  
+  <style>
+    /* ===== CSS VARIABLES & THEME ===== */
+    :root {
+      /* Colors - Deep Obsidian Theme */
+      --bg-primary: #0a0e17;
+      --bg-secondary: #111827;
+      --bg-tertiary: #1f2937;
+      
+      /* Accents */
+      --sapphire-blue: #4A90E2;
+      --sapphire-glow: rgba(74, 144, 226, 0.4);
+      --diamond-white: #f8f9fa;
+      --diamond-glow: rgba(248, 249, 250, 0.15);
+      
+      /* Package Tiers */
+      --emerald: #2ecc71;
+      --diamond: #f1c40f;
+      --sapphire: #4A90E2;
+      
+      /* Glassmorphism */
+      --glass-bg: rgba(30, 41, 59, 0.65);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      
+      /* Typography */
+      --font-primary: 'Inter', system-ui, -apple-system, sans-serif;
+      --text-primary: var(--diamond-white);
+      --text-secondary: rgba(248, 249, 250, 0.75);
+      
+      /* Spacing & Layout */
+      --container-max: 1280px;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+      
+      /* Transitions */
+      --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-bounce: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
-    </script>
-
-    <style>
-        /* ========================================
-           DESIGN SYSTEM & VARIABLES
-           ======================================== */
-        :root {
-            /* Colors */
-            --bg-dark: #050505;
-            --bg-card: rgba(10, 15, 20, 0.95);
-            --primary: #0f4c81;
-            --accent: #00d2ff;
-            --accent-glow: rgba(0, 210, 255, 0.4);
-            --text-main: #ffffff;
-            --text-muted: #a0a0a0;
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --success: #2ecc71;
-            --warning: #f1c40f;
-
-            /* Typography */
-            --font-head: 'Rajdhani', sans-serif;
-            --font-body: 'Montserrat', sans-serif;
-
-            /* Layout */
-            --header-height: 80px;
-            --nav-width: 300px;
-            --container-padding: 20px;
-            --border-radius: 15px;
-
-            /* Transitions */
-            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-slow: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        /* ========================================
-           GLOBAL RESET & BASE STYLES
-           ======================================== */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: var(--header-height);
-        }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: var(--font-body);
-            font-weight: 400;
-            line-height: 1.6;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* Accessibility Skip Link */
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            background: var(--accent);
-            color: #000;
-            padding: 8px 16px;
-            z-index: 10000;
-            transition: top 0.3s;
-            font-weight: 600;
-        }
-
-        .skip-link:focus {
-            top: 0;
-        }
-
-        /* ========================================
-           CUSTOM CURSOR (Desktop Only)
-           ======================================== */
-        .cursor-dot,
-        .cursor-outline {
-            position: fixed;
-            top: 0;
-            left: 0;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            z-index: 9999;
-            pointer-events: none;
-            display: none;
-        }
-
-        @media (hover: hover) and (pointer: fine) {
-            .cursor-dot,
-            .cursor-outline {
-                display: block;
-            }
-        }
-
-        .cursor-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--accent);
-        }
-
-        .cursor-outline {
-            width: 40px;
-            height: 40px;
-            border: 1px solid var(--accent);
-            transition: width 0.2s, height 0.2s, background-color 0.2s;
-        }
-
-        body:hover .cursor-outline.hovered {
-            width: 60px;
-            height: 60px;
-            background-color: rgba(0, 210, 255, 0.1);
-            border-color: transparent;
-        }
-
-        /* ========================================
-           ANIMATED BACKGROUND
-           ======================================== */
-        .bg-mesh {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: radial-gradient(circle at 50% 50%, #1a2a3a 0%, var(--bg-dark) 100%);
-            z-index: -2;
-        }
-
-        .bg-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
-            animation: float 10s infinite ease-in-out;
-            z-index: -1;
-        }
-
-        .orb-1 {
-            width: 400px;
-            height: 400px;
-            background: var(--primary);
-            top: -10%;
-            left: -10%;
-        }
-
-        .orb-2 {
-            width: 300px;
-            height: 300px;
-            background: #2c3e50;
-            bottom: 10%;
-            right: -5%;
-            animation-delay: -5s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(30px, 50px); }
-        }
-
-        /* ========================================
-           UTILITIES
-           ======================================== */
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--container-padding);
-        }
-
-        .highlight {
-            color: var(--accent);
-            text-shadow: 0 0 20px var(--accent-glow);
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s var(--transition-slow), transform 0.8s var(--transition-slow);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .section-title {
-            text-align: center;
-            font-family: var(--font-head);
-            font-size: clamp(2rem, 5vw, 2.5rem);
-            margin-bottom: 1rem;
-            color: var(--text-main);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-muted);
-            max-width: 800px;
-            margin: 0 auto 3rem auto;
-            font-size: clamp(0.9rem, 2vw, 1rem);
-            line-height: 1.6;
-            padding: 0 10px;
-        }
-
-        /* ========================================
-           HEADER & NAVIGATION
-           ======================================== */
-        .site-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: var(--header-height);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 5%;
-            z-index: 1000;
-            background: rgba(5, 5, 5, 0.85);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--glass-border);
-            transition: all var(--transition);
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            z-index: 1002;
-        }
-
-        .brand-name {
-            font-family: var(--font-head);
-            font-size: clamp(1.2rem, 4vw, 1.5rem);
-            font-weight: 700;
-            color: white;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* Hamburger Icon */
-        .hamburger-btn {
-            width: 35px;
-            height: 25px;
-            position: relative;
-            cursor: pointer;
-            z-index: 1002;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            background: none;
-            border: none;
-            padding: 0;
-        }
-
-        .hamburger-line {
-            width: 100%;
-            height: 3px;
-            background: white;
-            border-radius: 2px;
-            transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-            transform-origin: center;
-        }
-
-        .hamburger-btn.active .hamburger-line:nth-child(1) {
-            transform: translateY(11px) rotate(45deg);
-            background: var(--accent);
-        }
-
-        .hamburger-btn.active .hamburger-line:nth-child(2) {
-            opacity: 0;
-            transform: scaleX(0);
-        }
-
-        .hamburger-btn.active .hamburger-line:nth-child(3) {
-            transform: translateY(-11px) rotate(-45deg);
-            background: var(--accent);
-        }
-
-        /* Side Menu */
-        .nav-backdrop {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(4px);
-            z-index: 1000;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.4s ease;
-        }
-
-        .nav-backdrop.active {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .nav-panel {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: var(--nav-width);
-            max-width: 85vw;
-            height: 100vh;
-            background: #0a0f14;
-            border-right: 1px solid var(--glass-border);
-            z-index: 1001;
-            transform: translateX(-100%);
-            transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-            display: flex;
-            flex-direction: column;
-            padding: 100px 30px 40px 30px;
-            box-shadow: 10px 0 40px rgba(0,0,0,0.5);
-        }
-
-        .nav-panel.active {
-            transform: translateX(0);
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .nav-links li {
-            overflow: hidden;
-        }
-
-        .nav-links a {
-            display: block;
-            font-family: var(--font-head);
-            font-size: 1.8rem;
-            color: white;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-weight: 700;
-            position: relative;
-            transform: translateY(100%);
-            transition: transform 0.5s var(--transition-slow), color 0.3s;
-            padding: 5px 0;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-            box-shadow: 0 0 10px var(--accent-glow);
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-            padding-left: 10px;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-panel.active .nav-links a {
-            transform: translateY(0);
-        }
-
-        .nav-panel.active .nav-links li:nth-child(1) a { transition-delay: 0.1s; }
-        .nav-panel.active .nav-links li:nth-child(2) a { transition-delay: 0.2s; }
-        .nav-panel.active .nav-links li:nth-child(3) a { transition-delay: 0.3s; }
-        .nav-panel.active .nav-links li:nth-child(4) a { transition-delay: 0.4s; }
-
-        .nav-contact {
-            margin-top: auto;
-            padding-top: 30px;
-            border-top: 1px solid var(--glass-border);
-        }
-
-        .nav-contact p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-        }
-
-        .nav-contact a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: color 0.3s;
-        }
-
-        .nav-contact a:hover {
-            color: var(--text-main);
-        }
-
-        /* HIVE Badge */
-        .hive-badge-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #FFD700;
-            border: 2px solid #E5C100;
-            border-radius: 50px;
-            padding: 6px 14px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-            cursor: pointer;
-        }
-
-        .hive-icon-svg {
-            width: 16px;
-            height: 16px;
-            fill: #000000;
-            margin-right: 6px;
-        }
-
-        .hive-text-group {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.1;
-        }
-
-        .hive-text {
-            color: #000000;
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-        }
-
-        .hive-subtext {
-            font-size: 8px;
-            font-weight: 600;
-            color: #333333;
-            text-transform: uppercase;
-        }
-
-        .hive-badge-link:hover {
-            background-color: #E5C100;
-            transform: translateY(-2px);
-        }
-
-        @media (max-width: 480px) {
-            .hive-badge-link {
-                display: none;
-            }
-        }
-
-        /* ========================================
-           HERO SECTION
-           ======================================== */
-        .hero {
-            height: 100vh;
-            min-height: 600px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            perspective: 1000px;
-            padding-top: var(--header-height);
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.4;
-            z-index: 0;
-            filter: grayscale(100%) contrast(1.2);
-            transform: scale(1.1);
-            transition: transform 0.3s ease;
-        }
-
-        .hero:hover .hero-bg {
-            transform: scale(1.15);
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(5,5,5,0.3), var(--bg-dark));
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 3;
-            text-align: center;
-            mix-blend-mode: screen;
-            padding: 0 20px;
-            max-width: 800px;
-        }
-
-        h1 {
-            font-family: var(--font-head);
-            font-size: clamp(2.5rem, 8vw, 6rem);
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            line-height: 0.9;
-            margin-bottom: 20px;
-            background: linear-gradient(to right, #fff, #aaa);
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            -webkit-background-clip: text;
-        }
-
-        p.subtitle {
-            font-size: clamp(0.8rem, 2vw, 1rem);
-            letter-spacing: 4px;
-            color: var(--accent);
-            text-transform: uppercase;
-            font-weight: 700;
-            margin-bottom: 20px;
-            display: block;
-            text-shadow: 0 0 10px var(--accent-glow);
-        }
-
-        .hero-desc {
-            color: #ccc;
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
-            line-height: 1.6;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* ========================================
-           SERVICES SECTION
-           ======================================== */
-        .services-overview {
-            padding: 80px 0;
-            position: relative;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .service-item {
-            background: var(--bg-card);
-            border: 1px solid var(--glass-border);
-            padding: 30px;
-            border-radius: var(--border-radius);
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-            text-align: center;
-        }
-
-        .service-item:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .service-item i {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 20px;
-            text-shadow: 0 0 15px var(--accent-glow);
-            display: block;
-        }
-
-        .service-item h3 {
-            font-family: var(--font-head);
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .service-item p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        /* ========================================
-           PAINT CORRECTION SLIDER
-           ======================================== */
-        .comparison-section {
-            padding: 80px 0;
-            background: linear-gradient(to bottom, transparent, #020202);
-        }
-
-        .ba-slider {
-            position: relative;
-            width: 100%;
-            max-width: 900px;
-            height: clamp(300px, 50vw, 500px);
-            margin: 0 auto;
-            overflow: hidden;
-            border-radius: 20px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-            border: 1px solid var(--glass-border);
-            cursor: ew-resize;
-            user-select: none;
-            -webkit-user-select: none;
-        }
-
-        .ba-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            pointer-events: none;
-        }
-
-        .img-after {
-            background-image: url('https://images.unsplash.com/photo-1601362840469-51e4d8d58785?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');
-            z-index: 1;
-        }
-
-        .img-before {
-            background-image: url('https://images.unsplash.com/photo-1600588653879-4c6078c40523?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');
-            width: 50%;
-            border-right: 2px solid var(--accent);
-            z-index: 10;
-            background-position: center;
-        }
-
-        .slider-handle {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 50px;
-            height: 50px;
-            background: var(--accent);
-            border-radius: 50%;
-            cursor: ew-resize;
-            z-index: 20;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 30px var(--accent-glow);
-            color: #000;
-            font-size: 1.2rem;
-            pointer-events: none;
-            transition: transform 0.2s ease;
-        }
-
-        .ba-slider:active .slider-handle {
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-
-        .slider-label {
-            position: absolute;
-            top: 20px;
-            padding: 8px 20px;
-            background: rgba(0,0,0,0.8);
-            border: 1px solid var(--glass-border);
-            border-radius: 30px;
-            font-weight: bold;
-            font-size: 0.8rem;
-            pointer-events: none;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            backdrop-filter: blur(5px);
-            z-index: 15;
-        }
-
-        .label-before {
-            left: 20px;
-            color: #ff4757;
-        }
-
-        .label-after {
-            right: 20px;
-            color: #2ed573;
-        }
-
-        /* ========================================
-           PRICING SECTION
-           ======================================== */
-        .pricing-section {
-            padding: 80px 0;
-            perspective: 1000px;
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            align-items: start;
-        }
-
-        .price-card {
-            background: var(--bg-card);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 40px 25px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            transform-style: preserve-3d;
-            transition: transform 0.1s ease, border-color 0.3s ease;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-        }
-
-        .price-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.05), transparent 40%);
-            z-index: 0;
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
-        }
-
-        .price-card:hover::before {
-            opacity: 1;
-        }
-
-        .price-card:hover {
-            border-color: var(--accent);
-        }
-
-        .card-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .card-header h3 {
-            font-family: var(--font-head);
-            font-size: 2rem;
-            margin-bottom: 10px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-
-        .emerald h3 { color: var(--success); }
-        .sapphire h3 { color: var(--accent); }
-        .diamond h3 { color: #bdc3c7; }
-
-        .price-tag {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 20px 0;
-            color: white;
-            font-family: var(--font-head);
-        }
-
-        .features-list {
-            list-style: none;
-            margin-bottom: 30px;
-            flex-grow: 1;
-            text-align: left;
-            padding-left: 10px;
-        }
-
-        .features-list li {
-            margin-bottom: 12px;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            padding-bottom: 8px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-
-        .features-list li i {
-            color: var(--accent);
-            margin-top: 4px;
-            width: 16px;
-            text-align: center;
-            flex-shrink: 0;
-        }
-
-        .recommendation {
-            font-size: 0.85rem;
-            font-style: italic;
-            color: var(--accent);
-            margin-top: auto;
-            padding-top: 15px;
-            opacity: 0.8;
-        }
-
-        .book-btn-small {
-            margin-top: 20px;
-            padding: 12px 25px;
-            background: transparent;
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.75rem;
-            position: relative;
-            overflow: hidden;
-            z-index: 2;
-            text-decoration: none;
-            display: inline-block;
-            font-family: var(--font-body);
-        }
-
-        .book-btn-small:hover {
-            background: var(--accent);
-            color: #000;
-            box-shadow: 0 0 20px var(--accent-glow);
-            transform: translateY(-2px);
-        }
-
-        .book-btn-small:active {
-            transform: translateY(0);
-        }
-
-        /* Featured card enhancement */
-        .price-card.sapphire {
-            border: 2px solid var(--accent);
-            box-shadow: 0 0 40px rgba(0, 210, 255, 0.2);
-        }
-
-        .price-card.sapphire::after {
-            content: 'MOST POPULAR';
-            position: absolute;
-            top: 15px;
-            right: -35px;
-            background: var(--accent);
-            color: #000;
-            padding: 5px 40px;
-            font-size: 0.7rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            transform: rotate(45deg);
-            letter-spacing: 1px;
-            z-index: 2;
-        }
-
-        /* ========================================
-           FOOTER
-           ======================================== */
-        .info-section {
-            padding: 60px 0;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            background: #020202;
-        }
-
-        .contact-large {
-            font-size: clamp(1rem, 3vw, 1.3rem);
-            color: var(--text-main);
-            margin-top: 15px;
-            font-weight: 700;
-            font-family: var(--font-head);
-            line-height: 1.4;
-        }
-
-        .contact-large .highlight {
-            font-size: clamp(1.2rem, 4vw, 1.4rem);
-            display: block;
-            margin-top: 5px;
-        }
-
-        /* ========================================
-           STICKY WHATSAPP CTA
-           ======================================== */
-        .sticky-wa {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1rem;
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
-            z-index: 990;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: transform 0.3s var(--transition-slow), box-shadow 0.3s ease;
-            border: 2px solid rgba(255,255,255,0.2);
-            cursor: pointer;
-            font-family: var(--font-body);
-        }
-
-        .sticky-wa:hover {
-            transform: scale(1.05) translateY(-3px);
-            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5);
-        }
-
-        .sticky-wa:active {
-            transform: scale(1);
-        }
-
-        @media (max-width: 480px) {
-            .sticky-wa span {
-                display: none;
-            }
-            .sticky-wa {
-                padding: 15px;
-                border-radius: 50%;
-                bottom: 20px;
-                right: 20px;
-            }
-        }
-
-        /* ========================================
-           ACCESSIBILITY & REDUCED MOTION
-           ======================================== */
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
-            .cursor-dot, .cursor-outline {
-                display: none !important;
-            }
-            .price-card {
-                transform: none !important;
-            }
-        }
-
-        /* Focus styles for keyboard navigation */
-        a:focus, button:focus, .book-btn-small:focus, .hamburger-btn:focus {
-            outline: 2px solid var(--accent);
-            outline-offset: 2px;
-        }
-
-        /* Hide focus outline on mouse users */
-        a:focus:not(:focus-visible), button:focus:not(:focus-visible) {
-            outline: none;
-        }
-    </style>
+
+    /* ===== BASE RESET & TYPOGRAPHY ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: var(--font-primary);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== GLASSMORPHISM UTILITIES ===== */
+    .glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--glass-shadow);
+    }
+
+    /* ===== STICKY WHATSAPP CTA ===== */
+    .sticky-cta {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+      transition: var(--transition-bounce);
+      animation: pulse 2s infinite;
+    }
+
+    .sticky-cta:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
+    }
+
+    .sticky-cta i {
+      font-size: 1.4rem;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); }
+      50% { box-shadow: 0 8px 35px rgba(37, 211, 102, 0.7); }
+    }
+
+    /* ===== HEADER ===== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      padding: 16px 24px;
+      transition: var(--transition-smooth);
+    }
+
+    .site-header.scrolled {
+      padding: 12px 24px;
+      background: rgba(10, 14, 23, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .header-inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.4rem;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-icon {
+      font-size: 1.6rem;
+    }
+
+    .logo-text .accent {
+      color: var(--sapphire-blue);
+    }
+
+    .desktop-nav {
+      display: none;
+      gap: 32px;
+    }
+
+    .desktop-nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .desktop-nav a:hover,
+    .desktop-nav a.active {
+      color: var(--sapphire-blue);
+    }
+
+    .desktop-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--sapphire-blue);
+      transition: var(--transition-smooth);
+    }
+
+    .desktop-nav a:hover::after {
+      width: 100%;
+    }
+
+    .hamburger {
+      display: block;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .hamburger-line {
+      width: 24px;
+      height: 2px;
+      background: var(--diamond-white);
+      border-radius: 2px;
+      transition: var(--transition-smooth);
+    }
+
+    .mobile-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      margin: 16px 24px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: var(--transition-smooth);
+    }
+
+    .mobile-menu.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .menu-item {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      transition: var(--transition-smooth);
+    }
+
+    .menu-item:hover {
+      background: var(--sapphire-glow);
+      color: var(--sapphire-blue);
+      transform: translateX(4px);
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero-section {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 650px;
+      z-index: 2;
+      padding-right: 20px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      letter-spacing: -1px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--sapphire-blue), var(--diamond-white));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+      max-width: 500px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition-bounce);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--sapphire-blue), #357abd);
+      color: white;
+      box-shadow: 0 4px 20px var(--sapphire-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px var(--sapphire-glow);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--diamond-white);
+      border: 2px solid var(--glass-border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--sapphire-blue);
+      background: var(--sapphire-glow);
+    }
+
+    .btn-package {
+      width: 100%;
+      margin-top: 20px;
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      border: 1px solid var(--glass-border);
+    }
+
+    .btn-package:hover {
+      background: var(--sapphire-glow);
+      border-color: var(--sapphire-blue);
+      transform: translateY(-2px);
+    }
+
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: white;
+      width: 100%;
+      margin-top: 24px;
+      justify-content: center;
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+    }
+
+    /* ===== 3D CAR SCENE ===== */
+    .car-scene {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 55%;
+      height: 100%;
+      z-index: 1;
+      opacity: 0.95;
+    }
+
+    /* ===== SECTIONS ===== */
+    section {
+      padding: 100px 24px;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 60px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .section-header .accent {
+      color: var(--sapphire-blue);
+    }
+
+    .section-header p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+    }
+
+    /* ===== BEFORE/AFTER SLIDER ===== */
+    .before-after-wrapper {
+      max-width: 900px;
+      margin: 0 auto 80px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    }
+
+    .before-after-slider {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      cursor: ew-resize;
+      user-select: none;
+    }
+
+    .ba-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .ba-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .ba-before {
+      z-index: 1;
+    }
+
+    .ba-after {
+      width: 50%;
+      border-right: 3px solid var(--sapphire-blue);
+      z-index: 2;
+    }
+
+    .ba-label {
+      position: absolute;
+      top: 20px;
+      padding: 6px 16px;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      backdrop-filter: blur(4px);
+    }
+
+    .ba-before .ba-label {
+      right: 20px;
+    }
+
+    .ba-after .ba-label {
+      left: 20px;
+    }
+
+    .ba-handle {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 40px;
+      height: 100%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: ew-resize;
+    }
+
+    .ba-handle-inner {
+      width: 40px;
+      height: 40px;
+      background: var(--sapphire-blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      box-shadow: 0 4px 20px var(--sapphire-glow);
+      transition: var(--transition-smooth);
+    }
+
+    .ba-handle:hover .ba-handle-inner,
+    .ba-handle:focus .ba-handle-inner {
+      transform: scale(1.1);
+    }
+
+    .ba-handle:focus {
+      outline: 2px solid var(--diamond-white);
+      outline-offset: 4px;
+    }
+
+    /* ===== SERVICES GRID ===== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: var(--container-max);
+      margin: 0 auto;
+    }
+
+    .service-card {
+      padding: 32px;
+      text-align: center;
+      transition: var(--transition-smooth);
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--sapphire-blue);
+      box-shadow: 0 12px 40px rgba(74, 144, 226, 0.25);
+    }
+
+    .service-icon {
+      font-size: 2.5rem;
+      color: var(--sapphire-blue);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .service-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    /* ===== PACKAGES GRID ===== */
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    .package-card {
+      padding: 32px;
+      position: relative;
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .package-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--sapphire-blue);
+    }
+
+    .package-card.featured {
+      border: 2px solid var(--sapphire-blue);
+      background: linear-gradient(135deg, rgba(74, 144, 226, 0.1), rgba(30, 41, 59, 0.7));
+    }
+
+    .package-badge {
+      position: absolute;
+      top: -12px;
+      right: 24px;
+      background: var(--sapphire-blue);
+      color: white;
+      padding: 4px 16px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      box-shadow: 0 4px 15px var(--sapphire-glow);
+    }
+
+    .package-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .package-tier {
+      font-weight: 700;
+      font-size: 1.3rem;
+      padding: 4px 12px;
+      border-radius: 8px;
+    }
+
+    .package-tier.emerald { color: var(--emerald); background: rgba(46, 204, 113, 0.15); }
+    .package-tier.diamond { color: var(--diamond); background: rgba(241, 196, 15, 0.15); }
+    .package-tier.sapphire { color: var(--sapphire); background: rgba(74, 144, 226, 0.15); }
+
+    .package-price {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--diamond-white);
+    }
+
+    .package-features {
+      list-style: none;
+      flex: 1;
+    }
+
+    .package-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 0;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .package-features i {
+      color: var(--emerald);
+      margin-top: 4px;
+      font-size: 0.9rem;
+    }
+
+    /* ===== CONTACT SECTION ===== */
+    .contact-section {
+      padding-bottom: 40px;
+    }
+
+    .contact-content {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 48px;
+      text-align: center;
+    }
+
+    .contact-content h2 {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .contact-content p {
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 32px 0;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--text-secondary);
+    }
+
+    .contact-item i {
+      color: var(--sapphire-blue);
+      font-size: 1.2rem;
+    }
+
+    .contact-item a {
+      color: var(--diamond-white);
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+
+    .contact-item a:hover {
+      color: var(--sapphire-blue);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .social-links a {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--bg-tertiary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--diamond-white);
+      text-decoration: none;
+      transition: var(--transition-bounce);
+      border: 1px solid var(--glass-border);
+    }
+
+    .social-links a:hover {
+      background: var(--sapphire-blue);
+      transform: translateY(-4px);
+      border-color: var(--sapphire-blue);
+    }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      text-align: center;
+      padding: 32px 24px;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-top: 40px;
+    }
+
+    .footer-note {
+      margin-top: 8px;
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    /* ===== MODAL ===== */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition-smooth);
+      padding: 20px;
+    }
+
+    .modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      width: 100%;
+      max-width: 500px;
+      padding: 32px;
+      position: relative;
+      animation: modalSlideIn 0.3s ease-out;
+    }
+
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+
+    .modal-close:hover {
+      background: var(--bg-tertiary);
+      color: var(--diamond-white);
+    }
+
+    .modal h3 {
+      margin-bottom: 8px;
+      font-size: 1.5rem;
+    }
+
+    .modal > p {
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+
+    #whatsapp-form label {
+      display: block;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    #whatsapp-form label span {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    #whatsapp-form input,
+    #whatsapp-form select {
+      width: 100%;
+      padding: 14px 16px;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-size: 1rem;
+      transition: var(--transition-smooth);
+    }
+
+    #whatsapp-form input:focus,
+    #whatsapp-form select:focus {
+      outline: none;
+      border-color: var(--sapphire-blue);
+      box-shadow: 0 0 0 3px var(--sapphire-glow);
+    }
+
+    /* ===== REVEAL ON SCROLL ANIMATION ===== */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: var(--transition-smooth);
+    }
+
+    .reveal-on-scroll.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== SCROLL INDICATOR ===== */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      animation: bounce 2s infinite;
+      z-index: 2;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-10px); }
+      60% { transform: translateX(-50%) translateY(-5px); }
+    }
+
+    .scroll-indicator i {
+      font-size: 1.2rem;
+    }
+
+    /* ===== RESPONSIVE DESIGN ===== */
+    @media (min-width: 768px) {
+      .desktop-nav {
+        display: flex;
+      }
+      
+      .hamburger {
+        display: none;
+      }
+      
+      .hero-section {
+        grid-template-columns: 1fr 1fr;
+        padding: 140px 48px 100px;
+      }
+      
+      .hero-content {
+        padding-right: 40px;
+      }
+      
+      .car-scene {
+        width: 50%;
+        right: 5%;
+      }
+      
+      .before-after-slider {
+        height: 600px;
+      }
+      
+      .contact-content {
+        padding: 56px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      :root {
+        --radius-lg: 32px;
+      }
+      
+      .hero-title {
+        font-size: clamp(3rem, 6vw, 4.5rem);
+      }
+      
+      .packages-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .package-card.featured {
+        transform: scale(1.05);
+        z-index: 2;
+      }
+      
+      .package-card.featured:hover {
+        transform: scale(1.08) translateY(-8px);
+      }
+    }
+
+    /* ===== ACCESSIBILITY ===== */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--sapphire-blue);
+      outline-offset: 4px;
+    }
+
+    /* Skip link for accessibility */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--sapphire-blue);
+      color: white;
+      padding: 8px 16px;
+      z-index: 3000;
+      transition: top 0.3s;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+  </style>
 </head>
 <body>
-    <!-- Accessibility Skip Link -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+  <!-- Skip Link for Accessibility -->
+  <a href="#hero" class="skip-link">Skip to content</a>
 
-    <!-- Custom Cursor (Desktop) -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
+  <!-- Sticky WhatsApp CTA -->
+  <a href="#" id="whatsapp-cta" class="sticky-cta" aria-label="Book Your Detail via WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span>Book Your Detail</span>
+  </a>
 
-    <!-- Animated Background -->
-    <div class="bg-mesh"></div>
-    <div class="bg-orb orb-1"></div>
-    <div class="bg-orb orb-2"></div>
+  <!-- Header / Navigation -->
+  <header class="site-header glass">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">💎</span>
+        <span class="logo-text">SAPPHIRE<span class="accent">AUTO</span></span>
+      </div>
 
-    <!-- HEADER -->
-    <header class="site-header">
-        <div class="logo-area">
-            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-            <div class="brand-name">Sapphire<span class="highlight">Detailing</span></div>
+      <!-- START HIVE TIMES BADGE (YELLOW EDITION) -->
+<style>
+  /* Badge Container */
+  .hive-badge-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFD700; /* Bright Honey Yellow */
+    border: 2px solid #E5C100; /* Slightly darker yellow border */
+    border-radius: 50px; /* Pill shape */
+    padding: 6px 14px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* The Honeycomb Icon (SVG) */
+  .hive-icon-svg {
+    width: 18px;
+    height: 18px;
+    fill: #000000; /* Black icon for contrast against yellow */
+    margin-right: 8px;
+    transition: transform 0.3s ease;
+  }
+
+  /* Text Container */
+  .hive-text-group {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  /* Main Text */
+  .hive-text {
+    color: #000000; /* Black text for readability */
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Sub Text */
+  .hive-subtext {
+    font-size: 9px;
+    font-weight: 600;
+    color: #333333;
+    text-transform: uppercase;
+  }
+
+  /* Hover Effects */
+  .hive-badge-link:hover {
+    background-color: #E5C100; /* Darker yellow on hover */
+    border-color: #C9A900;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  .hive-badge-link:hover .hive-icon-svg {
+    transform: scale(1.1); /* Icon grows slightly */
+  }
+
+  /* Mobile Adjustments */
+  @media (max-width: 480px) {
+    .hive-badge-link {
+      padding: 5px 10px;
+    }
+    .hive-icon-svg {
+      width: 16px;
+      height: 16px;
+      margin-right: 6px;
+    }
+    .hive-text {
+      font-size: 11px;
+    }
+    .hive-subtext {
+      font-size: 8px;
+      /* Keep subtext on mobile but ensure it fits */
+    }
+  }
+</style>
+
+<!-- The Link -->
+<a href="https://hivetimes.co.za" class="hive-badge-link" target="_blank" rel="noopener" title="Visit Hive Times">
+  
+  <!-- Honeycomb SVG Icon -->
+  <svg class="hive-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2L14.5 6.5L19 6.5L16.5 11L19 15.5L14.5 15.5L12 20L9.5 15.5L5 15.5L7.5 11L5 6.5L9.5 6.5L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
+    <path d="M12 7L13.5 9.5L16 9.5L14.5 12L16 14.5L13.5 14.5L12 17L10.5 14.5L8 14.5L9.5 12L8 9.5L10.5 9.5L12 7Z" fill="currentColor"/>
+  </svg>
+
+  <div class="hive-text-group">
+    <span class="hive-text">HIVE</span>
+    <span class="hive-subtext">Member</span>
+  </div>
+
+</a>
+<!-- END HIVE TIMES BADGE -->
+      
+      <nav class="desktop-nav">
+        <a href="#hero">Home</a>
+        <a href="#services">Services</a>
+        <a href="#packages">Packages</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+    
+    <!-- Mobile Menu (3D Animated) -->
+    <div class="mobile-menu glass">
+      <a href="#hero" class="menu-item">🏠 Home</a>
+      <a href="#services" class="menu-item">✨ Services</a>
+      <a href="#packages" class="menu-item">💎 Packages</a>
+      <a href="#contact" class="menu-item">📍 Contact</a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION with 3D Car -->
+  <section id="hero" class="hero-section">
+    <div class="hero-content reveal-on-scroll">
+      <h1 class="hero-title">
+        The Showroom Shine,<br/>
+        <span class="gradient-text">Delivered to Your Doorstep.</span>
+      </h1>
+      <p class="hero-subtitle">
+        Premium mobile auto detailing in Gauteng. Paint correction, decontamination & ceramic protection — where you are.
+      </p>
+      <div class="hero-actions">
+        <a href="#packages" class="btn btn-primary">View Packages</a>
+        <a href="#services" class="btn btn-secondary">Our Services</a>
+      </div>
+    </div>
+    
+    <!-- 3D Car Container -->
+    <div id="car-scene" class="car-scene" aria-hidden="true">
+      <!-- Three.js canvas injected here -->
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+      <span>Scroll to Explore</span>
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section id="services" class="services-section">
+    <div class="section-header reveal-on-scroll">
+      <h2>Expert <span class="accent">Paint Correction</span> & Decontamination</h2>
+      <p>See the transformation. Drag the slider to compare.</p>
+    </div>
+    
+    <!-- Before/After Interactive Slider -->
+    <div class="before-after-wrapper reveal-on-scroll">
+      <div class="before-after-slider" id="ba-slider">
+        <div class="ba-image ba-before">
+          <!-- Placeholder: Replace with actual before image -->
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600' viewBox='0 0 800 600'%3E%3Crect fill='%231f2937' width='800' height='600'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%236b7280' font-family='Inter' font-size='24'%3EBefore%3C/text%3E%3C/svg%3E" alt="Before paint correction" loading="lazy">
+          <span class="ba-label">Before</span>
         </div>
-        <a href="https://hivetimes.co.za" class="hive-badge-link" target="_blank" rel="noopener" aria-label="Visit Hive Times directory">
-            <svg class="hive-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M12 2L14.5 6.5L19 6.5L16.5 11L19 15.5L14.5 15.5L12 20L9.5 15.5L5 15.5L7.5 11L5 6.5L9.5 6.5L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
-                <path d="M12 7L13.5 9.5L16 9.5L14.5 12L16 14.5L13.5 14.5L12 17L10.5 14.5L8 14.5L9.5 12L8 9.5L10.5 9.5L12 7Z" fill="currentColor"/>
-            </svg>
-            <div class="hive-text-group">
-                <span class="hive-text">HIVE</span>
-                <span class="hive-subtext">Member</span>
-            </div>
-        </a>
-    </header>
+        <div class="ba-image ba-after">
+          <!-- Placeholder: Replace with actual after image -->
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600' viewBox='0 0 800 600'%3E%3Crect fill='%234A90E2' width='800' height='600'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Inter' font-size='24'%3EAfter ✨%3C/text%3E%3C/svg%3E" alt="After paint correction" loading="lazy">
+          <span class="ba-label">After</span>
+        </div>
+        <div class="ba-handle" role="slider" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" tabindex="0">
+          <div class="ba-handle-inner">
+            <i class="fas fa-arrows-left-right"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Service Highlights -->
+    <div class="services-grid">
+      <div class="service-card glass reveal-on-scroll">
+        <i class="fas fa-sparkles service-icon"></i>
+        <h3>Paint Correction</h3>
+        <p>Multi-stage polishing to remove swirls, scratches & oxidation. Restore factory-depth gloss.</p>
+      </div>
+      <div class="service-card glass reveal-on-scroll">
+        <i class="fas fa-shield-alt service-icon"></i>
+        <h3>Ceramic Protection</h3>
+        <p>Long-lasting hydrophobic coating that repels water, dirt & UV damage for up to 3 years.</p>
+      </div>
+      <div class="service-card glass reveal-on-scroll">
+        <i class="fas fa-car-side service-icon"></i>
+        <h3>Full Interior Detail</h3>
+        <p>Deep steam cleaning, leather conditioning & odor elimination for a like-new cabin.</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- NAV OVERLAY -->
-    <div class="nav-backdrop" id="navBackdrop" role="presentation"></div>
-    <nav class="nav-panel" id="navPanel" aria-label="Main navigation">
-        <ul class="nav-links">
-            <li><a href="#home" class="nav-link">Home</a></li>
-            <li><a href="#services" class="nav-link">Services</a></li>
-            <li><a href="#paint-correction" class="nav-link">Paint Correction</a></li>
-            <li><a href="#pricing" class="nav-link">Packages</a></li>
+  <!-- PACKAGES SECTION (Glassmorphism Cards) -->
+  <section id="packages" class="packages-section">
+    <div class="section-header reveal-on-scroll">
+      <h2>Choose Your <span class="accent">Detailing Package</span></h2>
+      <p>Transparent pricing. No hidden fees. Mobile service across Gauteng.</p>
+    </div>
+    
+    <div class="packages-grid">
+      <!-- Emerald Package -->
+      <div class="package-card glass reveal-on-scroll" data-package="Emerald">
+        <div class="package-header">
+          <span class="package-tier emerald">Emerald</span>
+          <span class="package-price">R899</span>
+        </div>
+        <ul class="package-features">
+          <li><i class="fas fa-check"></i> Exterior wash & dry</li>
+          <li><i class="fas fa-check"></i> Wheel & tire detail</li>
+          <li><i class="fas fa-check"></i> Interior vacuum & wipe</li>
+          <li><i class="fas fa-check"></i> Glass cleaning</li>
+          <li><i class="fas fa-check"></i> Spray wax protection</li>
         </ul>
-        <div class="nav-contact">
-            <p>Ready to book your detail?</p>
-            <a href="#" class="nav-whatsapp-link" aria-label="Contact Mohammed on WhatsApp">
-                <i class="fab fa-whatsapp" aria-hidden="true"></i> 081 383 3936
-            </a>
+        <button class="btn btn-package" data-package="Emerald">Select Emerald</button>
+      </div>
+      
+      <!-- Diamond Package (Featured) -->
+      <div class="package-card glass featured reveal-on-scroll" data-package="Diamond">
+        <div class="package-badge">Most Popular</div>
+        <div class="package-header">
+          <span class="package-tier diamond">Diamond</span>
+          <span class="package-price">R1,899</span>
         </div>
-    </nav>
-
-    <!-- MAIN CONTENT -->
-    <main id="main-content">
-        <!-- HERO SECTION -->
-        <section class="hero" id="home" aria-labelledby="hero-title">
-            <img class="hero-bg" src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" alt="Luxury car being detailed" loading="eager">
-            <div class="hero-overlay" aria-hidden="true"></div>
-            <div class="hero-content">
-                <p class="subtitle reveal">Sapphire Auto Detailing</p>
-                <h1 class="reveal" id="hero-title">Premium <span class="highlight">Mobile</span><br>Auto Detailing</h1>
-                <p class="reveal hero-desc">We come to you. Complete interior and exterior detailing, plus professional paint correction to restore your car's showroom gloss.</p>
-            </div>
-        </section>
-
-        <!-- SERVICES SECTION -->
-        <section class="services-overview container" id="services" aria-labelledby="services-title">
-            <h2 class="section-title reveal" id="services-title">Our Expertise</h2>
-            <p class="section-subtitle reveal">Professional mobile detailing services tailored to your vehicle's needs</p>
-            <div class="services-grid">
-                <article class="service-item reveal">
-                    <i class="fas fa-car-side" aria-hidden="true"></i>
-                    <h3>Exterior Detail</h3>
-                    <p>Hand wash, decontamination, wheel cleaning, and tire dressing to make your car look brand new.</p>
-                </article>
-                <article class="service-item reveal">
-                    <i class="fas fa-couch" aria-hidden="true"></i>
-                    <h3>Interior Detail</h3>
-                    <p>Deep vacuum, leather conditioning, carpet shampooing, and dashboard protection.</p>
-                </article>
-                <article class="service-item reveal">
-                    <i class="fas fa-magic" aria-hidden="true"></i>
-                    <h3>Paint Correction</h3>
-                    <p>Advanced polishing to remove micro-scratches and swirl marks, restoring deep gloss and clarity.</p>
-                </article>
-            </div>
-        </section>
-
-        <!-- PAINT CORRECTION SHOWCASE -->
-        <section class="comparison-section container" id="paint-correction" aria-labelledby="correction-title">
-            <h2 class="section-title reveal" id="correction-title">The Science of Gloss</h2>
-            <p class="section-subtitle reveal">
-                Paint correction is professional <strong>polishing</strong> that removes <strong>scratches</strong> and <strong>swirl marks</strong> to restore your paint's <strong>deep, mirror-like gloss</strong>.
-            </p>
-            <div class="ba-slider reveal" id="baSlider" role="slider" aria-label="Before and after paint correction comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
-                <div class="ba-image img-after" aria-hidden="true"></div>
-                <div class="ba-image img-before" id="imgBefore" aria-hidden="true"></div>
-                <div class="slider-handle" id="sliderHandle" aria-hidden="true">
-                    <i class="fas fa-arrows-alt-h"></i>
-                </div>
-                <span class="slider-label label-before">Before</span>
-                <span class="slider-label label-after">After</span>
-            </div>
-        </section>
-
-        <!-- PRICING SECTION -->
-        <section class="pricing-section container" id="pricing" aria-labelledby="pricing-title">
-            <h2 class="section-title reveal" id="pricing-title">Select Your Package</h2>
-            <p class="section-subtitle reveal">Click "Book Now" to instantly message Mohammed via WhatsApp with your package selection</p>
-            <div class="pricing-grid">
-                <!-- EMERALD PACKAGE -->
-                <article class="price-card emerald reveal" data-tilt aria-labelledby="emerald-title">
-                    <div class="card-content">
-                        <div class="card-header">
-                            <h3 id="emerald-title">EMERALD</h3>
-                            <div class="price-tag">R650 - R750</div>
-                        </div>
-                        <ul class="features-list" aria-label="Emerald package features">
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Exterior hand wash & dry</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Wheels & tyres cleaned/dressed</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Interior vacuum & wipe-down</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Windows cleaned (inside & out)</li>
-                        </ul>
-                        <p class="recommendation">Ideal for regularly maintained vehicles</p>
-                        <button class="book-btn-small" data-package="Emerald Package" aria-label="Book Emerald package via WhatsApp">
-                            Book Now
-                        </button>
-                    </div>
-                </article>
-
-                <!-- SAPPHIRE PACKAGE (Featured) -->
-                <article class="price-card sapphire reveal" data-tilt aria-labelledby="sapphire-title">
-                    <div class="card-content">
-                        <div class="card-header">
-                            <h3 id="sapphire-title">SAPPHIRE</h3>
-                            <div class="price-tag">R1500 - R2500+</div>
-                        </div>
-                        <ul class="features-list" aria-label="Sapphire package features">
-                            <li><i class="fas fa-star" aria-hidden="true"></i> <strong>Includes Paint Correction</strong></li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Clay bar decontamination</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Machine polish (1-2 stage)</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Remove micro-scratches & swirls</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> High-quality sealant applied</li>
-                        </ul>
-                        <p class="recommendation">Recommended for neglected or show-quality vehicles</p>
-                        <button class="book-btn-small" data-package="Sapphire Package" aria-label="Book Sapphire package via WhatsApp">
-                            Book Now
-                        </button>
-                    </div>
-                </article>
-
-                <!-- DIAMOND PACKAGE -->
-                <article class="price-card diamond reveal" data-tilt aria-labelledby="diamond-title">
-                    <div class="card-content">
-                        <div class="card-header">
-                            <h3 id="diamond-title">DIAMOND</h3>
-                            <div class="price-tag">R1000 - R1500</div>
-                        </div>
-                        <ul class="features-list" aria-label="Diamond package features">
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Deep interior clean & sanitization</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Exterior wash & decontamination</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Light polish (Enhancement)</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Premium wax protection applied</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Tyres dressed & windows cleaned</li>
-                        </ul>
-                        <p class="recommendation">Most popular package — best value</p>
-                        <button class="book-btn-small" data-package="Diamond Package" aria-label="Book Diamond package via WhatsApp">
-                            Book Now
-                        </button>
-                    </div>
-                </article>
-            </div>
-        </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="info-section" role="contentinfo">
-        <div class="container">
-            <p>💡 Prices vary based on vehicle size, condition, and location. Contact us for a personalized quote.</p>
-            <div class="contact-large">
-                Contact Mohammed Mangera
-                <span class="highlight">📱 081 383 3936</span>
-            </div>
-            <p style="margin-top: 20px; opacity: 0.6; font-size: 0.8rem;">
-                &copy; <span id="year"></span> Sapphire Auto Detailing. All rights reserved.
-            </p>
+        <ul class="package-features">
+          <li><i class="fas fa-check"></i> <strong>Everything in Emerald</strong></li>
+          <li><i class="fas fa-check"></i> Clay bar decontamination</li>
+          <li><i class="fas fa-check"></i> Light paint correction</li>
+          <li><i class="fas fa-check"></i> Leather conditioning</li>
+          <li><i class="fas fa-check"></i> 6-month sealant protection</li>
+        </ul>
+        <button class="btn btn-package btn-primary" data-package="Diamond">Select Diamond</button>
+      </div>
+      
+      <!-- Sapphire Package -->
+      <div class="package-card glass reveal-on-scroll" data-package="Sapphire">
+        <div class="package-header">
+          <span class="package-tier sapphire">Sapphire</span>
+          <span class="package-price">R3,499</span>
         </div>
+        <ul class="package-features">
+          <li><i class="fas fa-check"></i> <strong>Everything in Diamond</strong></li>
+          <li><i class="fas fa-check"></i> Multi-stage paint correction</li>
+          <li><i class="fas fa-check"></i> Engine bay detail</li>
+          <li><i class="fas fa-check"></i> Ceramic coating (1-year)</li>
+          <li><i class="fas fa-check"></i> Complimentary maintenance wash</li>
+        </ul>
+        <button class="btn btn-package" data-package="Sapphire">Select Sapphire</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / FOOTER -->
+  <section id="contact" class="contact-section">
+    <div class="contact-content glass reveal-on-scroll">
+      <h2>Ready for a <span class="accent">Showroom Shine?</span></h2>
+      <p>Mobile service across Pretoria, Centurion, Midrand, Sandton & surrounding Gauteng areas.</p>
+      
+      <div class="contact-details">
+        <div class="contact-item">
+          <i class="fab fa-whatsapp"></i>
+          <a href="https://wa.me/27813833936" target="_blank">+27 81 383 3936</a>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Gauteng, South Africa</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-clock"></i>
+          <span>Mon–Sat: 8AM–6PM</span>
+        </div>
+      </div>
+      
+      <div class="social-links">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+    
+    <footer class="site-footer">
+      <p>&copy; <span id="year"></span> Sapphire Auto Detailing. All rights reserved.</p>
+      <p class="footer-note">Premium mobile auto detailing services. We don't sell products — just exceptional results.</p>
     </footer>
+  </section>
 
-    <!-- STICKY WHATSAPP CTA -->
-    <a href="#" class="sticky-wa" data-package="General Inquiry" aria-label="Book a detailing session via WhatsApp">
-        <i class="fab fa-whatsapp" aria-hidden="true"></i>
-        <span>Book Now</span>
-    </a>
+  <!-- WhatsApp Modal (Hidden by default) -->
+  <div id="whatsapp-modal" class="modal" aria-hidden="true">
+    <div class="modal-content glass">
+      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <h3>📱 Complete Your Booking</h3>
+      <p>Message will open in WhatsApp with your details pre-filled.</p>
+      
+      <form id="whatsapp-form">
+        <label>
+          <span>Package</span>
+          <select id="modal-package" required>
+            <option value="">Select a package</option>
+            <option value="Emerald">💚 Emerald — R899</option>
+            <option value="Diamond">💎 Diamond — R1,899</option>
+            <option value="Sapphire">💙 Sapphire — R3,499</option>
+          </select>
+        </label>
+        
+        <label>
+          <span>Vehicle Model</span>
+          <input type="text" id="modal-vehicle" placeholder="e.g., BMW 3 Series, VW Polo" required>
+        </label>
+        
+        <label>
+          <span>Location</span>
+          <input type="text" id="modal-location" placeholder="e.g., Centurion, Sandton" required>
+        </label>
+        
+        <label>
+          <span>Preferred Date</span>
+          <input type="date" id="modal-date" required>
+        </label>
+        
+        <button type="submit" class="btn btn-whatsapp">
+          <i class="fab fa-whatsapp"></i> Send via WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
 
-    <!-- JAVASCRIPT -->
-    <script>
-        // ========================================
-        // CONFIGURATION & BUSINESS DATA
-        // ========================================
-        const BUSINESS = {
-            name: "Sapphire Auto Detailing",
-            owner: "Mohammed Mangera",
-            phone: "27813833936",
-            whatsappBase: "https://wa.me/27813833936",
-            currency: "ZAR"
-        };
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    /**
+     * Sapphire Auto Detailing - Complete JavaScript
+     * Handles: scroll animations, mobile menu, WhatsApp modal, form submission, 3D scene, slider
+     */
 
-        // ========================================
-        // 1. CUSTOM CURSOR (Desktop Only)
-        // ========================================
-        const initCursor = () => {
-            const cursorDot = document.querySelector('.cursor-dot');
-            const cursorOutline = document.querySelector('.cursor-outline');
+    document.addEventListener('DOMContentLoaded', () => {
+      // ===== Update Footer Year =====
+      document.getElementById('year').textContent = new Date().getFullYear();
 
-            if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+      // ===== Sticky Header on Scroll =====
+      const header = document.querySelector('.site-header');
+      const onScroll = () => {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
 
-            window.addEventListener('mousemove', (e) => {
-                const { clientX: posX, clientY: posY } = e;
-                cursorDot.style.left = `${posX}px`;
-                cursorDot.style.top = `${posY}px`;
-                
-                cursorOutline.animate({
-                    left: `${posX}px`,
-                    top: `${posY}px`
-                }, { duration: 500, fill: "forwards" });
-            });
+      // ===== Mobile Menu Toggle =====
+      const hamburger = document.querySelector('.hamburger');
+      const mobileMenu = document.querySelector('.mobile-menu');
+      
+      hamburger?.addEventListener('click', () => {
+        const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+        hamburger.setAttribute('aria-expanded', !isExpanded);
+        mobileMenu.classList.toggle('active');
+        
+        // Animate hamburger lines
+        const lines = hamburger.querySelectorAll('.hamburger-line');
+        if (!isExpanded) {
+          lines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+          lines[1].style.opacity = '0';
+          lines[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+        } else {
+          lines[0].style.transform = 'none';
+          lines[1].style.opacity = '1';
+          lines[2].style.transform = 'none';
+        }
+      });
 
-            const interactiveElements = document.querySelectorAll('a, button, .price-card, .service-item, .hamburger-btn');
-            interactiveElements.forEach(el => {
-                el.addEventListener('mouseenter', () => cursorOutline.classList.add('hovered'));
-                el.addEventListener('mouseleave', () => cursorOutline.classList.remove('hovered'));
-            });
-        };
-
-        // ========================================
-        // 2. MOBILE MENU TOGGLE
-        // ========================================
-        const initMenu = () => {
-            const hamburgerBtn = document.getElementById('hamburgerBtn');
-            const navPanel = document.getElementById('navPanel');
-            const navBackdrop = document.getElementById('navBackdrop');
-            const navLinks = document.querySelectorAll('.nav-link');
-
-            const toggleMenu = (forceState = null) => {
-                const isActive = navPanel.classList.contains('active');
-                const shouldOpen = forceState !== null ? forceState : !isActive;
-
-                if (shouldOpen) {
-                    hamburgerBtn.classList.add('active');
-                    hamburgerBtn.setAttribute('aria-expanded', 'true');
-                    navPanel.classList.add('active');
-                    navBackdrop.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                    
-                    // Focus management
-                    setTimeout(() => {
-                        const firstLink = navPanel.querySelector('.nav-links a');
-                        if (firstLink) firstLink.focus();
-                    }, 300);
-                } else {
-                    hamburgerBtn.classList.remove('active');
-                    hamburgerBtn.setAttribute('aria-expanded', 'false');
-                    navPanel.classList.remove('active');
-                    navBackdrop.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                    hamburgerBtn.focus();
-                }
-            };
-
-            hamburgerBtn.addEventListener('click', () => toggleMenu());
-            navBackdrop.addEventListener('click', () => toggleMenu(false));
-
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && navPanel.classList.contains('active')) {
-                    toggleMenu(false);
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (navPanel.classList.contains('active')) {
-                        setTimeout(() => toggleMenu(false), 300);
-                    }
-                });
-            });
-        };
-
-        // ========================================
-        // 3. 3D TILT EFFECT FOR PRICING CARDS
-        // ========================================
-        const initTilt = () => {
-            const cards = document.querySelectorAll('.price-card[data-tilt]');
-            if (!window.matchMedia("(hover: hover)").matches || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-            cards.forEach(card => {
-                card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-
-                    const rotateX = ((y - centerY) / centerY) * -5;
-                    const rotateY = ((x - centerX) / centerX) * 5;
-
-                    card.style.setProperty('--mouse-x', `${x}px`);
-                    card.style.setProperty('--mouse-y', `${y}px`);
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-                });
-
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-                });
-            });
-        };
-
-        // ========================================
-        // 4. SCROLL REVEAL ANIMATIONS
-        // ========================================
-        const initScrollReveal = () => {
-            const revealElements = document.querySelectorAll('.reveal');
-            const revealPoint = window.innerHeight * 0.85;
-
-            const checkReveal = () => {
-                revealElements.forEach((element) => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    if (elementTop < revealPoint) {
-                        element.classList.add('active');
-                    }
-                });
-            };
-
-            // Debounced scroll listener
-            let scrollTimeout;
-            window.addEventListener('scroll', () => {
-                clearTimeout(scrollTimeout);
-                scrollTimeout = setTimeout(checkReveal, 50);
-            }, { passive: true });
-
-            // Initial check
-            window.addEventListener('load', checkReveal);
-            window.addEventListener('resize', () => {
-                clearTimeout(scrollTimeout);
-                scrollTimeout = setTimeout(checkReveal, 100);
-            });
-            
-            checkReveal(); // Run once on init
-        };
-
-        // ========================================
-        // 5. BEFORE/AFTER SLIDER (Paint Correction)
-        // ========================================
-        const initSlider = () => {
-            const sliderContainer = document.getElementById('baSlider');
-            const imgBefore = document.getElementById('imgBefore');
-            const sliderHandle = document.getElementById('sliderHandle');
-            
-            if (!sliderContainer) return;
-
-            let isDragging = false;
-
-            const updateSlider = (clientX) => {
-                const rect = sliderContainer.getBoundingClientRect();
-                let position = ((clientX - rect.left) / rect.width) * 100;
-                position = Math.max(0, Math.min(100, position));
-
-                imgBefore.style.width = `${position}%`;
-                sliderHandle.style.left = `${position}%`;
-                sliderContainer.setAttribute('aria-valuenow', Math.round(position));
-            };
-
-            const startDrag = (e) => {
-                isDragging = true;
-                if(e.type === 'touchstart') e.preventDefault();
-            };
-
-            const stopDrag = () => { isDragging = false; };
-
-            const moveDrag = (e) => {
-                if (!isDragging) return;
-                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-                updateSlider(clientX);
-                if(e.type === 'touchmove') e.preventDefault();
-            };
-
-            sliderContainer.addEventListener('mousedown', startDrag);
-            sliderContainer.addEventListener('touchstart', startDrag, { passive: false });
-            
-            window.addEventListener('mouseup', stopDrag);
-            window.addEventListener('touchend', stopDrag);
-            
-            window.addEventListener('mousemove', moveDrag);
-            window.addEventListener('touchmove', moveDrag, { passive: false });
-
-            // Keyboard navigation
-            sliderContainer.addEventListener('keydown', (e) => {
-                const currentValue = parseInt(sliderContainer.getAttribute('aria-valuenow')) || 50;
-                let newValue = currentValue;
-
-                if (e.key === 'ArrowLeft') newValue = Math.max(0, currentValue - 5);
-                else if (e.key === 'ArrowRight') newValue = Math.min(100, currentValue + 5);
-                else return;
-
-                e.preventDefault();
-                const rect = sliderContainer.getBoundingClientRect();
-                updateSlider(rect.left + (newValue / 100) * rect.width);
-            });
-        };
-
-        // ========================================
-        // 6. WHATSAPP BOOKING INTEGRATION
-        // ========================================
-        const sendWhatsApp = (packageName) => {
-            const message = `Hi ${BUSINESS.owner}! 👋
-I'm interested in booking a detailing session with ${BUSINESS.name}.
-📦 Package: ${packageName}
-🚗 Vehicle: [Please describe year/make/model]
-📍 Location: [Please provide your area]
-📅 Preferred date: [Optional]
-Please let me know availability and next steps. Thank you!`;
-
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `${BUSINESS.whatsappBase}?text=${encodedMessage}`;
-            window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-        };
-
-        const initBooking = () => {
-            // Delegate event listener for all booking buttons
-            document.body.addEventListener('click', (e) => {
-                const btn = e.target.closest('.book-btn-small, .sticky-wa, .nav-whatsapp-link');
-                if (!btn) return;
-
-                e.preventDefault();
-                const packageName = btn.getAttribute('data-package') || 'General Inquiry';
-                sendWhatsApp(packageName);
-            });
-        };
-
-        // ========================================
-        // 7. UTILITIES & ENHANCEMENTS
-        // ========================================
-        const initUtils = () => {
-            // Auto-update copyright year
-            const yearEl = document.getElementById('year');
-            if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-            // Smooth scroll for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if (href === '#') return;
-                    
-                    const target = document.querySelector(href);
-                    if (target) {
-                        e.preventDefault();
-                        const headerOffset = document.querySelector('.site-header').offsetHeight;
-                        const elementPosition = target.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                        
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            // Hero image load fade-in
-            window.addEventListener('load', () => {
-                const heroBg = document.querySelector('.hero-bg');
-                if (heroBg && !heroBg.complete) {
-                    heroBg.style.opacity = '0';
-                    heroBg.onload = () => {
-                        heroBg.style.transition = 'opacity 0.5s ease';
-                        heroBg.style.opacity = '0.4';
-                    };
-                }
-            });
-        };
-
-        // ========================================
-        // INITIALIZATION
-        // ========================================
-        document.addEventListener('DOMContentLoaded', () => {
-            initCursor();
-            initMenu();
-            initTilt();
-            initScrollReveal();
-            initSlider();
-            initBooking();
-            initUtils();
+      // Close mobile menu when clicking a link
+      document.querySelectorAll('.menu-item').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('active');
+          hamburger.setAttribute('aria-expanded', 'false');
+          const lines = hamburger.querySelectorAll('.hamburger-line');
+          lines[0].style.transform = 'none';
+          lines[1].style.opacity = '1';
+          lines[2].style.transform = 'none';
         });
-    </script>
+      });
+
+      // ===== Reveal on Scroll Animation =====
+      const revealElements = document.querySelectorAll('.reveal-on-scroll');
+      
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+      });
+      
+      revealElements.forEach(el => revealObserver.observe(el));
+
+      // ===== WhatsApp Modal Logic =====
+      const whatsappCTA = document.getElementById('whatsapp-cta');
+      const modal = document.getElementById('whatsapp-modal');
+      const modalClose = document.querySelector('.modal-close');
+      const packageButtons = document.querySelectorAll('.btn-package');
+      const modalPackageSelect = document.getElementById('modal-package');
+      const whatsappForm = document.getElementById('whatsapp-form');
+
+      // Open modal from sticky CTA or package buttons
+      const openModal = (selectedPackage = '') => {
+        if (selectedPackage) {
+          modalPackageSelect.value = selectedPackage;
+        }
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        
+        // Focus first input for accessibility
+        setTimeout(() => {
+          modalPackageSelect.focus();
+        }, 300);
+      };
+
+      const closeModal = () => {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      };
+
+      whatsappCTA?.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal();
+      });
+
+      packageButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const pkg = btn.dataset.package;
+          openModal(pkg);
+        });
+      });
+
+      modalClose?.addEventListener('click', closeModal);
+      
+      // Close modal when clicking outside content
+      modal?.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      // Close on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+          closeModal();
+        }
+      });
+
+      // ===== WhatsApp Form Submission =====
+      whatsappForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const pkg = document.getElementById('modal-package').value;
+        const vehicle = document.getElementById('modal-vehicle').value.trim();
+        const location = document.getElementById('modal-location').value.trim();
+        const date = document.getElementById('modal-date').value;
+        
+        if (!pkg || !vehicle || !location || !date) {
+          alert('Please fill in all fields to proceed.');
+          return;
+        }
+        
+        // Craft the pre-filled WhatsApp message
+        const message = `Hi Mohammed! I'm interested in booking a detailing session for my vehicle.
+
+Package: ${pkg}
+Vehicle Model: ${vehicle}
+Location: ${location}
+Preferred Date: ${date}
+
+Please let me know your availability!`;
+        
+        // URL encode the message
+        const encodedMessage = encodeURIComponent(message);
+        
+        // WhatsApp API link (South Africa format)
+        const whatsappURL = `https://wa.me/27813833936?text=${encodedMessage}`;
+        
+        // Open WhatsApp in new tab
+        window.open(whatsappURL, '_blank', 'noopener,noreferrer');
+        
+        // Close modal and reset form
+        closeModal();
+        whatsappForm.reset();
+      });
+
+      // ===== Smooth Scroll for Anchor Links =====
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href === '#') return;
+          
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            const headerOffset = 80;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // ===== Set min date for date picker to today =====
+      const dateInput = document.getElementById('modal-date');
+      if (dateInput) {
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+      }
+
+      // ===== Before/After Slider =====
+      initBeforeAfterSlider();
+
+      // ===== Three.js Car Scene (with fallback) =====
+      initCarScene();
+    });
+
+    /**
+     * Before/After Image Slider Function
+     */
+    function initBeforeAfterSlider() {
+      const slider = document.getElementById('ba-slider');
+      if (!slider) return;
+
+      const afterImage = slider.querySelector('.ba-after');
+      const handle = slider.querySelector('.ba-handle');
+      let isDragging = false;
+      let startX = 0;
+      let currentPercent = 50;
+
+      const updateSlider = (percent) => {
+        currentPercent = Math.max(0, Math.min(100, percent));
+        afterImage.style.width = `${currentPercent}%`;
+        handle.style.left = `${currentPercent}%`;
+        handle.setAttribute('aria-valuenow', Math.round(currentPercent));
+      };
+
+      const onMouseDown = (e) => {
+        isDragging = true;
+        startX = e.clientX;
+        slider.setPointerCapture?.(e.pointerId || 1);
+        document.body.style.cursor = 'ew-resize';
+        e.preventDefault();
+      };
+
+      const onMouseMove = (e) => {
+        if (!isDragging) return;
+        const rect = slider.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const percent = (x / rect.width) * 100;
+        updateSlider(percent);
+      };
+
+      const onMouseUp = () => {
+        if (isDragging) {
+          isDragging = false;
+          document.body.style.cursor = '';
+          slider.releasePointerCapture?.(1);
+        }
+      };
+
+      const onTouchStart = (e) => {
+        isDragging = true;
+        startX = e.touches[0].clientX;
+        e.preventDefault();
+      };
+
+      const onTouchMove = (e) => {
+        if (!isDragging) return;
+        const rect = slider.getBoundingClientRect();
+        const x = e.touches[0].clientX - rect.left;
+        const percent = (x / rect.width) * 100;
+        updateSlider(percent);
+      };
+
+      const onTouchEnd = () => { isDragging = false; };
+
+      const onKeydown = (e) => {
+        if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          updateSlider(currentPercent - 2);
+        } else if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          updateSlider(currentPercent + 2);
+        }
+      };
+
+      handle.addEventListener('mousedown', onMouseDown);
+      handle.addEventListener('touchstart', onTouchStart, { passive: false });
+      handle.addEventListener('keydown', onKeydown);
+      
+      document.addEventListener('mousemove', onMouseMove);
+      document.addEventListener('mouseup', onMouseUp);
+      document.addEventListener('touchmove', onTouchMove, { passive: false });
+      document.addEventListener('touchend', onTouchEnd);
+      
+      slider.querySelectorAll('img').forEach(img => {
+        img.addEventListener('dragstart', (e) => e.preventDefault());
+      });
+
+      updateSlider(50);
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting && isDragging) {
+            isDragging = false;
+            document.body.style.cursor = '';
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      observer.observe(slider);
+    }
+
+    /**
+     * Three.js Car Scene with Scroll Rotation & Fallback
+     */
+    function initCarScene() {
+      const container = document.getElementById('car-scene');
+      if (!container || typeof THREE === 'undefined') {
+        // Fallback: Show elegant placeholder if Three.js fails to load
+        if (container) {
+          container.innerHTML = `
+            <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative">
+              <div style="text-align:center;color:var(--text-secondary);padding:40px;max-width:400px">
+                <i class="fas fa-car-side" style="font-size:4rem;color:var(--sapphire-blue);margin-bottom:20px;opacity:0.8"></i>
+                <h3 style="font-size:1.4rem;margin-bottom:12px">Premium 3D Preview</h3>
+                <p style="font-size:0.95rem;line-height:1.5">Scroll to see our craftsmanship in action. Full 3D experience loads with connection.</p>
+                <div style="margin-top:24px;display:flex;gap:8px;justify-content:center">
+                  <span style="width:8px;height:8px;border-radius:50%;background:var(--sapphire-blue);animation:pulseDot 1.5s infinite"></span>
+                  <span style="width:8px;height:8px;border-radius:50%;background:var(--sapphire-blue);animation:pulseDot 1.5s infinite 0.2s"></span>
+                  <span style="width:8px;height:8px;border-radius:50%;background:var(--sapphire-blue);animation:pulseDot 1.5s infinite 0.4s"></span>
+                </div>
+              </div>
+            </div>
+            <style>@keyframes pulseDot{0%,100%{opacity:0.4}50%{opacity:1}}</style>
+          `;
+        }
+        return;
+      }
+
+      // ===== Scene Setup =====
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ 
+        alpha: true, 
+        antialias: true,
+        powerPreference: "high-performance"
+      });
+      
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.outputEncoding = THREE.sRGBEncoding;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.2;
+      container.appendChild(renderer.domElement);
+
+      // ===== Lighting - Premium Automotive Setup =====
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+      scene.add(ambientLight);
+
+      const keyLight = new THREE.DirectionalLight(0xffffff, 1.2);
+      keyLight.position.set(5, 8, 5);
+      keyLight.castShadow = true;
+      keyLight.shadow.mapSize.set(1024, 1024);
+      scene.add(keyLight);
+
+      const fillLight = new THREE.DirectionalLight(0x4A90E2, 0.6);
+      fillLight.position.set(-5, 2, -3);
+      scene.add(fillLight);
+
+      const rimLight = new THREE.SpotLight(0xffffff, 0.8);
+      rimLight.position.set(0, 3, -8);
+      rimLight.penumbra = 0.5;
+      scene.add(rimLight);
+
+      // ===== Ground Reflection =====
+      const groundGeometry = new THREE.PlaneGeometry(20, 20);
+      const groundMaterial = new THREE.MeshStandardMaterial({ 
+        color: 0x0a0e17,
+        metalness: 0.9,
+        roughness: 0.1,
+        side: THREE.DoubleSide
+      });
+      const ground = new THREE.Mesh(groundGeometry, groundMaterial);
+      ground.rotation.x = -Math.PI / 2;
+      ground.position.y = -2.5;
+      ground.receiveShadow = true;
+      scene.add(ground);
+
+      // ===== Camera Position =====
+      camera.position.set(0, 1.5, 7);
+      camera.lookAt(0, 0, 0);
+
+      // ===== Load 3D Car Model =====
+      let carModel = null;
+      const loader = new THREE.GLTFLoader();
+      
+      // Try to load model - with graceful fallback
+      loader.load(
+        'assets/models/car.glb', // ⚠️ REPLACE WITH YOUR MODEL PATH
+        (gltf) => {
+          carModel = gltf.scene;
+          carModel.position.set(0, -1.2, 0);
+          carModel.scale.set(1.8, 1.8, 1.8);
+          carModel.rotation.y = Math.PI * 0.15;
+          
+          carModel.traverse((node) => {
+            if (node.isMesh) {
+              node.castShadow = true;
+              node.receiveShadow = true;
+              if (node.material) {
+                node.material.metalness = 0.85;
+                node.material.roughness = 0.15;
+                node.material.envMapIntensity = 1.5;
+              }
+            }
+          });
+          
+          scene.add(carModel);
+        },
+        (xhr) => {
+          console.log(`Car model loaded: ${(xhr.loaded / xhr.total * 100).toFixed(0)}%`);
+        },
+        (error) => {
+          console.warn('Car model not found - using elegant fallback');
+          // Create simple glossy sphere as placeholder
+          const placeholderGeo = new THREE.SphereGeometry(2, 32, 32);
+          const placeholderMat = new THREE.MeshStandardMaterial({
+            color: 0x4A90E2,
+            metalness: 0.9,
+            roughness: 0.1,
+            emissive: 0x1a3a5c,
+            emissiveIntensity: 0.3
+          });
+          carModel = new THREE.Mesh(placeholderGeo, placeholderMat);
+          carModel.position.set(0, -0.5, 0);
+          scene.add(carModel);
+          
+          // Add subtle animated rings
+          for(let i=0; i<3; i++) {
+            const ringGeo = new THREE.TorusGeometry(2.5 + i*0.4, 0.03, 16, 100);
+            const ringMat = new THREE.MeshBasicMaterial({ 
+              color: 0x4A90E2, 
+              transparent: true, 
+              opacity: 0.3 - i*0.08 
+            });
+            const ring = new THREE.Mesh(ringGeo, ringMat);
+            ring.rotation.x = Math.PI/2;
+            ring.position.y = -1.8;
+            scene.add(ring);
+          }
+        }
+      );
+
+      // ===== Scroll-Triggered Rotation =====
+      let targetRotationY = 0;
+      let currentRotationY = 0;
+      
+      const onScroll = () => {
+        const scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+        targetRotationY = THREE.MathUtils.lerp(-0.3, 0.3, scrollPercent);
+      };
+      
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      // ===== Animation Loop =====
+      const clock = new THREE.Clock();
+      
+      const animate = () => {
+        requestAnimationFrame(animate);
+        
+        const delta = clock.getDelta();
+        
+        if (carModel) {
+          currentRotationY = THREE.MathUtils.damp(currentRotationY, targetRotationY, 4, delta);
+          carModel.rotation.y = currentRotationY;
+          carModel.position.y = -1.2 + Math.sin(Date.now() * 0.001) * 0.03;
+        }
+        
+        if (!carModel) {
+          scene.rotation.y += 0.002;
+        }
+        
+        renderer.render(scene, camera);
+      };
+      
+      animate();
+
+      // ===== Responsive Resize =====
+      const onResize = () => {
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      };
+      
+      window.addEventListener('resize', onResize);
+      onResize();
+
+      // ===== Cleanup =====
+      window.addEventListener('beforeunload', () => {
+        renderer.dispose();
+        if (carModel) {
+          carModel.traverse((node) => {
+            if (node.geometry) node.geometry.dispose();
+            if (node.material) {
+              if (Array.isArray(node.material)) {
+                node.material.forEach(mat => mat.dispose());
+              } else {
+                node.material.dispose();
+              }
+            }
+          });
+        }
+      });
+    }
+  </script>
 </body>
 </html>
