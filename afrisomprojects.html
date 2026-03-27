@@ -1,0 +1,2802 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Afrisom Projects (Pty) Ltd - NHBRC Accredited building construction & renovation specialists in Johannesburg. Turnkey solutions from design to handover.">
+    <meta name="keywords" content="construction, renovations, building, Johannesburg, NHBRC, project management, tiling, painting, carpentry">
+    <meta name="author" content="Afrisom Projects (Pty) Ltd">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Afrisom Projects | Expert Construction & Renovations">
+    <meta property="og:description" content="35+ years experience. NHBRC Accredited. Turnkey building solutions in Johannesburg.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.afrisomprojects.co.za">
+    <meta property="og:image" content="https://www.afrisomprojects.co.za/images/og-image.jpg">
+
+    <title>Afrisom Projects (Pty) Ltd | NHBRC Accredited Construction & Renovations</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Structured Data - LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "GeneralContractor",
+      "name": "Afrisom Projects (Pty) Ltd",
+      "image": "https://www.afrisomprojects.co.za/images/logo.jpg",
+      "telephone": "+27724896107",
+      "email": "info@afrisomprojects.co.za",
+      "url": "https://www.afrisomprojects.co.za",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "90/91 Mitchell Street",
+        "addressLocality": "Berea",
+        "addressRegion": "Gauteng",
+        "postalCode": "2198",
+        "addressCountry": "ZA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -26.1856,
+        "longitude": 28.0497
+      },
+      "areaServed": {
+        "@type": "State",
+        "name": "Gauteng"
+      },
+      "priceRange": "$$",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "17:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "13:00"
+        }
+      ],
+      "hasCredential": {
+        "@type": "PropertyValue",
+        "name": "NHBRC Registration",
+        "value": "Accredited Member",
+        "url": "https://www.nhbrc.org.za"
+      }
+    }
+    </script>
+
+    <style>
+        /* ========================================
+   LOGO IMAGE STYLES
+   ======================================== */
+.logo-image {
+    height: 55px;
+    width: auto;
+    max-width: 220px;
+    object-fit: contain;
+    transition: var(--transition);
+    display: block;
+}
+
+header.scrolled .logo-image {
+    height: 45px;
+}
+
+@media (max-width: 768px) {
+    .logo-image {
+        height: 45px;
+        max-width: 180px;
+    }
+    
+    header.scrolled .logo-image {
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-image {
+        height: 40px;
+        max-width: 150px;
+    }
+}
+        /* ========================================
+           CSS VARIABLES & RESET
+           ======================================== */
+        :root {
+            /* Brand Colors */
+            --primary-blue: #1a3a5c;
+            --dark-blue: #0d2137;
+            --light-blue: #e8f4f8;
+            --accent-gold: #D4AF37;
+            --accent-gold-dark: #b89628;
+            --slate-grey: #4a5568;
+            --charcoal: #2d3748;
+            --off-white: #f8fafb;
+            --white: #ffffff;
+            
+            /* WhatsApp */
+            --whatsapp-green: #25D366;
+            --whatsapp-dark: #128C7E;
+            
+            /* UI */
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow: 0 5px 20px rgba(0,0,0,0.12);
+            --shadow-lg: 0 15px 40px rgba(0,0,0,0.18);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --border-radius: 12px;
+            --border-radius-lg: 20px;
+            
+            /* Spacing */
+            --section-padding: 100px 5%;
+            --container-max: 1400px;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--charcoal);
+            background-color: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--primary-blue);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        /* Focus styles for accessibility */
+        a:focus, button:focus, [tabindex]:focus {
+            outline: 3px solid var(--accent-gold);
+            outline-offset: 2px;
+        }
+
+        /* Skip link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--accent-gold);
+            color: var(--white);
+            padding: 8px 16px;
+            z-index: 2000;
+            transition: top 0.3s;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* ========================================
+           HEADER & NAVIGATION
+           ======================================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(12px);
+            box-shadow: var(--shadow-sm);
+            z-index: 1000;
+            padding: 0.8rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+            height: 80px;
+        }
+
+        header.scrolled {
+            padding: 0.5rem 5%;
+            height: 70px;
+            box-shadow: var(--shadow);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .logo-placeholder {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 800;
+            font-size: 1.2rem;
+            border: 2px solid var(--accent-gold);
+        }
+
+        .logo-text {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.1;
+        }
+
+        .logo-text span {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--slate-grey);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Hive Times Badge - Yellow Edition */
+        .hive-badge-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #FFD700;
+            border: 2px solid #E5C100;
+            border-radius: 50px;
+            padding: 6px 14px;
+            text-decoration: none;
+            transition: var(--transition);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+            margin-left: 10px;
+        }
+
+        .hive-icon-svg {
+            width: 18px;
+            height: 18px;
+            fill: #000000;
+            margin-right: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .hive-text-group {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .hive-text {
+            color: #000000;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .hive-subtext {
+            font-size: 8px;
+            font-weight: 600;
+            color: #333333;
+            text-transform: uppercase;
+        }
+
+        .hive-badge-link:hover {
+            background-color: #E5C100;
+            border-color: #C9A900;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .hive-badge-link:hover .hive-icon-svg {
+            transform: scale(1.1);
+        }
+
+        /* Header Actions */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-phone {
+            display: none;
+            align-items: center;
+            gap: 6px;
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .header-phone i {
+            color: var(--whatsapp-green);
+        }
+
+        @media (min-width: 1024px) {
+            .header-phone {
+                display: flex;
+            }
+        }
+
+        /* Hamburger Button */
+        .hamburger {
+            cursor: pointer;
+            z-index: 1001;
+            padding: 8px;
+            background: transparent;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            transition: var(--transition);
+            width: 44px;
+            height: 44px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hamburger:focus {
+            border-color: var(--accent-gold);
+            outline: none;
+        }
+
+        .bar {
+            display: block;
+            width: 26px;
+            height: 3px;
+            background-color: var(--primary-blue);
+            border-radius: 3px;
+            transition: var(--transition);
+            transform-origin: center;
+        }
+
+        .hamburger.active .bar:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+            background-color: var(--white);
+        }
+
+        .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+            background-color: var(--white);
+        }
+
+        /* Mobile Navigation */
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 420px;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: -10px 0 40px rgba(0,0,0,0.35);
+            z-index: 999;
+            padding: 20px;
+        }
+
+        .nav-menu.active {
+            right: 0;
+        }
+
+        .nav-menu::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, var(--accent-gold), var(--whatsapp-green));
+        }
+
+        .nav-item {
+            margin: 1rem 0;
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 0.35s ease;
+            width: 100%;
+            text-align: center;
+        }
+
+        .nav-menu.active .nav-item {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .nav-menu.active .nav-item:nth-child(1) { transition-delay: 0.1s; }
+        .nav-menu.active .nav-item:nth-child(2) { transition-delay: 0.15s; }
+        .nav-menu.active .nav-item:nth-child(3) { transition-delay: 0.2s; }
+        .nav-menu.active .nav-item:nth-child(4) { transition-delay: 0.25s; }
+        .nav-menu.active .nav-item:nth-child(5) { transition-delay: 0.3s; }
+        .nav-menu.active .nav-item:nth-child(6) { transition-delay: 0.35s; }
+
+        .nav-link {
+            color: var(--white);
+            font-size: 1.4rem;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            padding: 14px 28px;
+            position: relative;
+            display: block;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 60%;
+            height: 3px;
+            background: var(--accent-gold);
+            border-radius: 2px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link:focus::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        .nav-link:hover,
+        .nav-link:focus {
+            color: var(--accent-gold);
+            background: rgba(255,255,255,0.08);
+            outline: none;
+        }
+
+        .nav-close-hint {
+            position: absolute;
+            bottom: 30px;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+        }
+
+        /* Overlay for mobile menu */
+        .nav-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 998;
+        }
+        .nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ========================================
+           HERO SECTION
+           ======================================== */
+        .hero {
+            min-height: 100vh;
+            background: 
+                linear-gradient(135deg, rgba(26, 58, 92, 0.92) 0%, rgba(13, 33, 55, 0.95) 100%),
+                url('https://images.unsplash.com/photo-1541888946425-d81bb74d66a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 180px;
+            background: linear-gradient(to top, var(--white), transparent);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            animation: fadeInUp 0.9s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.2);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--accent-gold);
+        }
+
+        .hero p {
+            color: rgba(255,255,255,0.95);
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            margin-bottom: 35px;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+        }
+
+        .hero-features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px 25px;
+            margin-bottom: 40px;
+            color: rgba(255,255,255,0.9);
+            font-size: 0.95rem;
+        }
+
+        .hero-features span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hero-features i {
+            color: var(--accent-gold);
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            background: var(--white);
+            color: var(--primary-blue);
+            padding: 16px 38px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 3px solid var(--white);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+            background: var(--accent-gold);
+            color: var(--white);
+            border-color: var(--accent-gold);
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            color: var(--white);
+            border-color: var(--white);
+        }
+
+        .cta-btn.secondary:hover {
+            background: var(--white);
+            color: var(--primary-blue);
+        }
+
+        .cta-btn.whatsapp {
+            background: var(--whatsapp-green);
+            color: var(--white);
+            border-color: var(--whatsapp-green);
+        }
+        
+        .cta-btn.whatsapp:hover {
+            background: var(--whatsapp-dark);
+            border-color: var(--whatsapp-dark);
+            transform: translateY(-4px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            font-size: 0.85rem;
+            animation: bounce 2s infinite;
+            opacity: 0.8;
+            z-index: 2;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-12px); }
+            60% { transform: translateX(-50%) translateY(-6px); }
+        }
+
+        .scroll-indicator i {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        /* ========================================
+           WHATSAPP FLOATING WIDGET
+           ======================================== */
+        .whatsapp-widget {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 12px;
+        }
+
+        .whatsapp-tooltip {
+            background: var(--white);
+            padding: 10px 18px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            font-weight: 600;
+            color: var(--charcoal);
+            font-size: 0.9rem;
+            opacity: 0;
+            transform: translateX(25px);
+            transition: var(--transition);
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        .whatsapp-widget:hover .whatsapp-tooltip {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .whatsapp-float {
+            width: 62px;
+            height: 62px;
+            background: linear-gradient(135deg, var(--whatsapp-green) 0%, var(--whatsapp-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 2rem;
+            box-shadow: 0 6px 28px rgba(37, 211, 102, 0.45);
+            transition: var(--transition);
+            animation: pulse 2.5s infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .whatsapp-float::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.3);
+            animation: ripple 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 6px 28px rgba(37, 211, 102, 0.45); }
+            50% { box-shadow: 0 6px 45px rgba(37, 211, 102, 0.7); }
+        }
+
+        @keyframes ripple {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.4); opacity: 0; }
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.08) rotate(3deg);
+            animation: none;
+            box-shadow: 0 8px 35px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-float i {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ========================================
+           SECTIONS & UTILITIES
+           ======================================== */
+        .section-padding { 
+            padding: var(--section-padding);
+            max-width: var(--container-max);
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4.5rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--primary-blue);
+            margin-bottom: 18px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(to right, var(--accent-gold), var(--whatsapp-green));
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--slate-grey);
+            font-size: 1.15rem;
+            margin-top: 30px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ========================================
+           SERVICES SECTION
+           ======================================== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-blue), var(--accent-gold), var(--whatsapp-green));
+            transform: scaleX(0);
+            transition: var(--transition);
+            transform-origin: left;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-card:hover::before { 
+            transform: scaleX(1); 
+        }
+
+        .service-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-img { 
+            transform: scale(1.06); 
+        }
+
+        .service-content {
+            padding: 28px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--light-blue), var(--white));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: var(--primary-blue);
+            margin-bottom: 18px;
+            border: 2px solid rgba(26, 58, 92, 0.1);
+        }
+
+        .service-content h3 {
+            color: var(--primary-blue);
+            margin-bottom: 12px;
+            font-size: 1.35rem;
+        }
+
+        .service-content p {
+            color: var(--slate-grey);
+            font-size: 0.98rem;
+            margin-bottom: 22px;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+
+        .whatsapp-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--whatsapp-green) 0%, var(--whatsapp-dark) 100%);
+            color: var(--white);
+            padding: 13px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 18px rgba(37, 211, 102, 0.35);
+            transition: var(--transition);
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-btn i {
+            font-size: 1.1rem;
+        }
+
+        /* ========================================
+           ABOUT / CREDENTIALS SECTION
+           ======================================== */
+        .about-section {
+            background: var(--off-white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border-top: 3px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-top-color: var(--accent-gold);
+            box-shadow: var(--shadow);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--white);
+            font-size: 1.8rem;
+            border: 3px solid var(--accent-gold);
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--slate-grey);
+            font-size: 0.95rem;
+        }
+
+        .safety-badge {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(26, 58, 92, 0.05), rgba(212, 175, 55, 0.05));
+            border-radius: var(--border-radius);
+            border: 1px dashed var(--slate-grey);
+        }
+
+        .safety-badge p {
+            color: var(--charcoal);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .safety-badge small {
+            color: var(--slate-grey);
+            display: block;
+        }
+
+        .warranty-note {
+            text-align: center;
+            margin-top: 25px;
+            color: var(--slate-grey);
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+
+        /* ========================================
+           GALLERY & LIGHTBOX
+           ======================================== */
+        .gallery-section { 
+            background: var(--white); 
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 22px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            height: 260px;
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            background: var(--light-blue);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(26, 58, 92, 0.95), transparent 70%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 22px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay { 
+            opacity: 1; 
+        }
+        
+        .gallery-item:hover img { 
+            transform: scale(1.12); 
+        }
+
+        .gallery-overlay h3 {
+            color: var(--white);
+            font-size: 1.25rem;
+            transform: translateY(15px);
+            transition: var(--transition);
+            margin-bottom: 4px;
+        }
+
+        .gallery-item:hover .gallery-overlay h3 { 
+            transform: translateY(0); 
+        }
+
+        .gallery-overlay p {
+            color: rgba(255,255,255,0.92);
+            font-size: 0.92rem;
+            transform: translateY(15px);
+            transition: var(--transition);
+            transition-delay: 0.05s;
+        }
+
+        .gallery-item:hover .gallery-overlay p { 
+            transform: translateY(0); 
+        }
+
+        .gallery-overlay .view-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            width: 50px;
+            height: 50px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-size: 1.3rem;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .view-icon {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(13, 33, 55, 0.97);
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .lightbox-img {
+            max-width: 95%;
+            max-height: 85%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 80px rgba(0,0,0,0.6);
+            transform: scale(0.95);
+            transition: transform 0.3s ease, opacity 0.25s ease;
+            opacity: 0;
+        }
+
+        .lightbox.active .lightbox-img { 
+            transform: scale(1); 
+            opacity: 1;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            color: var(--white);
+            font-size: 2.8rem;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.12);
+            transition: var(--transition);
+            z-index: 2001;
+            border: 2px solid transparent;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255,255,255,0.22);
+            transform: rotate(90deg);
+            border-color: var(--accent-gold);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--white);
+            font-size: 2.2rem;
+            cursor: pointer;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            transition: var(--transition);
+            user-select: none;
+            border: 2px solid transparent;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255,255,255,0.28);
+            transform: translateY(-50%) scale(1.08);
+            border-color: var(--accent-gold);
+        }
+
+        .lightbox-prev { left: 25px; }
+        .lightbox-next { right: 25px; }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            font-size: 1rem;
+            background: rgba(0,0,0,0.65);
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            text-align: center;
+            background: rgba(26, 58, 92, 0.92);
+            padding: 16px 32px;
+            border-radius: 12px;
+            max-width: 85%;
+            border-left: 3px solid var(--accent-gold);
+        }
+
+        .lightbox-caption h3 { 
+            font-size: 1.25rem; 
+            margin-bottom: 6px;
+            color: var(--accent-gold);
+        }
+        
+        .lightbox-caption p { 
+            font-size: 0.98rem; 
+            opacity: 0.95; 
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           TESTIMONIALS SECTION
+           ======================================== */
+        .testimonials { 
+            background: var(--off-white); 
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 28px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 35px;
+            border-radius: var(--border-radius-lg);
+            border-left: 5px solid var(--accent-gold);
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 5rem;
+            color: rgba(212, 175, 55, 0.15);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial-card:hover {
+            transform: translateX(8px);
+            box-shadow: var(--shadow);
+        }
+
+        .stars { 
+            color: #ffc107; 
+            margin-bottom: 18px; 
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-card p {
+            color: var(--charcoal);
+            font-style: italic;
+            margin-bottom: 22px;
+            line-height: 1.75;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--primary-blue);
+            font-size: 1.05rem;
+        }
+        
+        .testimonial-project {
+            display: block;
+            color: var(--slate-grey);
+            font-size: 0.9rem;
+            font-weight: 400;
+            margin-top: 3px;
+        }
+
+        /* ========================================
+           CONTACT SECTION
+           ======================================== */
+        .contact-section {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -15%;
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .contact-section::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(37, 211, 102, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .contact-section h2 { 
+            color: var(--white); 
+        }
+        
+        .contact-section .section-title h2::after {
+            background: linear-gradient(to right, var(--accent-gold), var(--whatsapp-green));
+        }
+
+        .contact-section .section-title p {
+            color: rgba(255,255,255,0.92);
+        }
+
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 45px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 32px 28px;
+            background: rgba(255,255,255,0.08);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            min-width: 240px;
+            max-width: 320px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-6px);
+            border-color: var(--accent-gold);
+        }
+
+        .contact-icon {
+            width: 68px;
+            height: 68px;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.7rem;
+            margin-bottom: 22px;
+            color: var(--white);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35);
+        }
+
+        .contact-item:nth-child(2) .contact-icon {
+            background: linear-gradient(135deg, var(--whatsapp-green), var(--whatsapp-dark));
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
+        }
+
+        .contact-label { 
+            color: rgba(255,255,255,0.85); 
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .phone-link {
+            font-size: 1.5rem;
+            color: var(--white);
+            font-weight: 700;
+            display: block;
+            margin: 5px 0;
+            transition: var(--transition);
+        }
+
+        .phone-link:hover { 
+            color: var(--accent-gold); 
+            transform: scale(1.03);
+        }
+        
+        .contact-hours {
+            color: rgba(255,255,255,0.85);
+            font-size: 0.98rem;
+            margin-top: 8px;
+        }
+        
+        .contact-hours span {
+            display: block;
+            color: var(--accent-gold);
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        .map-container {
+            margin-top: 50px;
+            width: 100%;
+            max-width: 900px;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            border: 3px solid rgba(255,255,255,0.2);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 320px;
+            border: 0;
+            display: block;
+        }
+
+        .emergency-cta {
+            margin-top: 40px;
+            padding: 18px 35px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border: 2px solid var(--accent-gold);
+        }
+        
+        .emergency-cta i {
+            color: var(--accent-gold);
+            animation: pulse 2s infinite;
+        }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
+        footer {
+            background: #121820;
+            color: #94a3b8;
+            padding: 45px 5% 30px;
+            font-size: 0.95rem;
+        }
+
+        .footer-content {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 35px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-brand .logo-text {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .footer-brand p {
+            color: #94a3b8;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+
+        .footer-social a:hover {
+            background: var(--accent-gold);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h4 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent-gold);
+            border-radius: 1px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-gold);
+            transform: translateX(4px);
+        }
+
+        .footer-links i {
+            font-size: 0.85rem;
+            color: var(--accent-gold);
+        }
+
+        .footer-bottom {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding-top: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+        }
+        
+        .footer-bottom strong {
+            color: var(--accent-gold);
+        }
+
+        .nhbrc-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.15);
+            padding: 8px 18px;
+            border-radius: 8px;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* ========================================
+           ANIMATIONS & UTILITIES
+           ======================================== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+            will-change: opacity, transform;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in.stagger-1 { transition-delay: 0.1s; }
+        .fade-in.stagger-2 { transition-delay: 0.2s; }
+        .fade-in.stagger-3 { transition-delay: 0.3s; }
+        .fade-in.stagger-4 { transition-delay: 0.4s; }
+        .fade-in.stagger-5 { transition-delay: 0.5s; }
+
+        /* Screen reader only */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* ========================================
+           RESPONSIVE DESIGN
+           ======================================== */
+        @media (max-width: 1024px) {
+            :root {
+                --section-padding: 80px 5%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 110px 15px 70px;
+                min-height: auto;
+                padding-bottom: 100px;
+            }
+
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+
+            .hero-features {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .cta-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-btn {
+                width: 100%;
+                max-width: 320px;
+                justify-content: center;
+            }
+
+            .section-padding {
+                padding: 70px 5%;
+            }
+
+            .section-title h2 {
+                font-size: 2.1rem;
+            }
+
+            .service-card {
+                max-width: 450px;
+                margin: 0 auto;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            }
+
+            .lightbox-nav {
+                width: 48px;
+                height: 48px;
+                font-size: 1.8rem;
+            }
+            .lightbox-prev { left: 12px; }
+            .lightbox-next { right: 12px; }
+            .lightbox-close { 
+                top: 15px; 
+                right: 20px; 
+                font-size: 2.3rem;
+                width: 44px;
+                height: 44px;
+            }
+            .lightbox-caption { 
+                bottom: 90px; 
+                padding: 14px 24px; 
+                max-width: 92%;
+                font-size: 0.95rem;
+            }
+            .lightbox-caption h3 { 
+                font-size: 1.1rem; 
+            }
+
+            .contact-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-item {
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .map-container iframe {
+                height: 280px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hive-badge-link {
+                padding: 5px 10px;
+            }
+            .hive-icon-svg {
+                width: 16px;
+                height: 16px;
+                margin-right: 6px;
+            }
+            .hive-text {
+                font-size: 11px;
+            }
+            .hive-subtext {
+                font-size: 7px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 0.6rem 4%;
+                height: 70px;
+            }
+            
+            header.scrolled {
+                padding: 0.4rem 4%;
+                height: 65px;
+            }
+
+            .logo-text {
+                font-size: 1.05rem;
+            }
+            .logo-text span {
+                font-size: 0.75rem;
+            }
+
+            .logo-placeholder {
+                width: 42px;
+                height: 42px;
+                font-size: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.05rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .service-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .whatsapp-widget {
+                bottom: 18px;
+                right: 18px;
+            }
+            .whatsapp-float {
+                width: 56px;
+                height: 56px;
+                font-size: 1.7rem;
+            }
+
+            .lightbox-img {
+                max-height: 75%;
+            }
+        }
+
+        /* Reduced Motion Preference */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            
+            .whatsapp-float {
+                animation: none;
+            }
+            
+            .scroll-indicator {
+                animation: none;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            header, .whatsapp-widget, .nav-menu, .scroll-indicator, .lightbox {
+                display: none !important;
+            }
+            
+            body {
+                background: white;
+                color: black;
+            }
+            
+            .hero {
+                min-height: auto;
+                padding: 40px 20px;
+                background: white !important;
+            }
+            
+            .hero h1, .hero p {
+                color: black !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header id="header">
+       <!-- AFTER (With Image Logo) -->
+<div class="logo-container">
+    <img src="images-logo/afrisomprojects-logo.jpg" alt="Afrisom Projects (Pty) Ltd Logo" class="logo-image" width="200" height="60">
+     <div class="logo-text">
+        Afrisom
+        <span>Projects (Pty) Ltd</span>
+    </div>
+</div>
+        </div>
+        
+        <!-- Hive Times Badge -->
+        <a href="https://hivetimes.co.za" class="hive-badge-link" target="_blank" rel="noopener" title="Visit Hive Times - Business Directory">
+            <svg class="hive-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M12 2L14.5 6.5L19 6.5L16.5 11L19 15.5L14.5 15.5L12 20L9.5 15.5L5 15.5L7.5 11L5 6.5L9.5 6.5L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
+                <path d="M12 7L13.5 9.5L16 9.5L14.5 12L16 14.5L13.5 14.5L12 17L10.5 14.5L8 14.5L9.5 12L8 9.5L10.5 9.5L12 7Z" fill="currentColor"/>
+            </svg>
+            <div class="hive-text-group">
+                <span class="hive-text">HIVE</span>
+                <span class="hive-subtext">Member</span>
+            </div>
+        </a>
+
+        <div class="header-actions">
+            <a href="tel:+27724896107" class="header-phone" aria-label="Call Afrisom Projects">
+                <i class="fas fa-phone-alt"></i>
+                <span>072 489 6107</span>
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
+    <!-- Mobile Navigation -->
+    <nav class="nav-menu" id="navMenu" aria-label="Main navigation">
+        <ul>
+            <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+            <li class="nav-item"><a href="#about" class="nav-link">About Us</a></li>
+            <li class="nav-item"><a href="#gallery" class="nav-link">Projects</a></li>
+            <li class="nav-item"><a href="#testimonials" class="nav-link">Reviews</a></li>
+            <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <p class="nav-close-hint">Press ESC or tap outside to close</p>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-certificate"></i>
+                    NHBRC Accredited Builder
+                </div>
+                <h1>Building Excellence, <span>Delivering Dreams</span></h1>
+                <p>35+ years combined experience in construction & renovations. Your turnkey partner from architectural design to final handover.</p>
+                
+                <div class="hero-features">
+                    <span><i class="fas fa-check-circle"></i> Residential & Commercial</span>
+                    <span><i class="fas fa-check-circle"></i> Turnkey Solutions</span>
+                    <span><i class="fas fa-check-circle"></i> OHS Compliant</span>
+                </div>
+                
+                <div class="cta-group">
+                    <a href="#contact" class="cta-btn">
+                        <i class="fas fa-file-contract"></i> Get Free Quote
+                    </a>
+                    <a href="https://wa.me/27724896107?text=Hi%20Afrisom%20Projects%2C%20I%27m%20interested%20in%20your%20construction%20services.%20Please%20contact%20me." 
+                       class="cta-btn whatsapp" target="_blank" rel="noopener">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Us
+                    </a>
+                </div>
+            </div>
+            <a href="#services" class="scroll-indicator" aria-label="Scroll to services">
+                <i class="fas fa-chevron-down"></i>
+                Explore Services
+            </a>
+        </section>
+
+        <!-- WhatsApp Floating Widget -->
+        <div class="whatsapp-widget">
+            <div class="whatsapp-tooltip">Chat with us for a quick quote!</div>
+            <a href="https://wa.me/27724896107?text=Hi%20Afrisom%20Projects%2C%20I%20need%20assistance%20with%20a%20construction%20project." 
+               class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat with Afrisom Projects on WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+
+        <!-- Services Section -->
+        <section id="services" class="section-padding">
+            <div class="section-title fade-in">
+                <h2>Our Expert Services</h2>
+                <p>Comprehensive construction and renovation solutions for residential and commercial properties across Gauteng</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <article class="service-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb74d66a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="New home construction project" class="service-img" loading="lazy" width="600" height="400">
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fas fa-home"></i></div>
+                        <h3>New Builds & Construction</h3>
+                        <p>Complete construction of new homes, modular buildings, and structural extensions using conventional and modern methods.</p>
+                        <button class="whatsapp-btn" onclick="sendWhatsapp('New Builds & Construction')">
+                            <i class="fab fa-whatsapp"></i> Get Quote
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Service 2 -->
+                <article class="service-card fade-in stagger-1">
+                    <img src="https://images.unsplash.com/photo-1584621881583-c1c674c6b4b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Kitchen renovation project" class="service-img" loading="lazy" width="600" height="400">
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fas fa-hammer"></i></div>
+                        <h3>Renovations & Remodeling</h3>
+                        <p>Transform your space with kitchen/bathroom additions, attic conversions, garage-to-rental upgrades, and full home makeovers.</p>
+                        <button class="whatsapp-btn" onclick="sendWhatsapp('Renovations & Remodeling')">
+                            <i class="fab fa-whatsapp"></i> Get Quote
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Service 3 -->
+                <article class="service-card fade-in stagger-2">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Project management on construction site" class="service-img" loading="lazy" width="600" height="400">
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fas fa-clipboard-list"></i></div>
+                        <h3>Project Management</h3>
+                        <p>Full site management including scheduling, quality inspections, material estimation, and coordination of all trades.</p>
+                        <button class="whatsapp-btn" onclick="sendWhatsapp('Project Management')">
+                            <i class="fab fa-whatsapp"></i> Get Quote
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Service 4 -->
+                <article class="service-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Professional tiling and paving work" class="service-img" loading="lazy" width="600" height="400">
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fas fa-th-large"></i></div>
+                        <h3>Specialized Trades</h3>
+                        <p>Expert tiling & paving, large-scale painting, carpentry, partitioning, and drywalling with attention to intricate details.</p>
+                        <button class="whatsapp-btn" onclick="sendWhatsapp('Specialized Trades')">
+                            <i class="fab fa-whatsapp"></i> Get Quote
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Service 5 -->
+                <article class="service-card fade-in stagger-1">
+                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="3D architectural design rendering" class="service-img" loading="lazy" width="600" height="400">
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fas fa-drafting-compass"></i></div>
+                        <h3>Design Services</h3>
+                        <p>3D innovative designs, architectural drawings, and planning assistance to bring your vision to life before construction begins.</p>
+                        <button class="whatsapp-btn" onclick="sendWhatsapp('Design Services')">
+                            <i class="fab fa-whatsapp"></i> Get Quote
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Service 6 -->
+                <article class="service-card fade-in stagger-2">
+                    <img src="https://images.unsplash.com/photo-1581094794323-8f4f3c7c5c7f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Building maintenance and repairs" class="service-img" loading="lazy" width="600" height="400">
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fas fa-tools"></i></div>
+                        <h3>Maintenance & Repairs</h3>
+                        <p>Facilities maintenance, general building repairs, and emergency services to keep your property in peak condition.</p>
+                        <button class="whatsapp-btn" onclick="sendWhatsapp('Maintenance & Repairs')">
+                            <i class="fab fa-whatsapp"></i> Get Quote
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Service 7 -->
+                <article class="service-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Commercial building construction" class="service-img" loading="lazy" width="600" height="400">
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fas fa-building"></i></div>
+                        <h3>Commercial Projects</h3>
+                        <p>Infrastructure development, large-scale commercial painting, office fit-outs, and corporate property enhancements.</p>
+                        <button class="whatsapp-btn" onclick="sendWhatsapp('Commercial Projects')">
+                            <i class="fab fa-whatsapp"></i> Get Quote
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- About / Credentials Section -->
+        <section id="about" class="section-padding about-section">
+            <div class="section-title fade-in">
+                <h2>Why Choose Afrisom?</h2>
+                <p>Trusted expertise, accredited quality, and a commitment to safety on every project</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon"><i class="fas fa-medal"></i></div>
+                    <h3>35+ Years Experience</h3>
+                    <p>Combined industry expertise delivering quality craftsmanship and reliable project delivery since 1988.</p>
+                </div>
+                <div class="feature-card fade-in stagger-1">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>NHBRC Accredited</h3>
+                    <p>Fully registered with the National Home Builders Registration Council for consumer protection and quality assurance.</p>
+                </div>
+                <div class="feature-card fade-in stagger-2">
+                    <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+                    <h3>Turnkey Approach</h3>
+                    <p>From initial concept and design through to final handover – one team, one point of contact, seamless delivery.</p>
+                </div>
+            </div>
+
+            <div class="safety-badge fade-in">
+                <p><i class="fas fa-hard-hat"></i> "Think & Act" Safety Strategy</p>
+                <small>Compliant with Occupational Health and Safety Act (Act 85 of 1993) • Site-specific safety files • Regular toolbox meetings</small>
+            </div>
+            
+            <p class="warranty-note fade-in">
+                *1-Year Workmanship Guarantee on all projects (excluding specialist sub-contractor services such as electrical & plumbing)
+            </p>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="section-padding gallery-section">
+            <div class="section-title fade-in">
+                <h2>Our Completed Projects</h2>
+                <p>Explore our portfolio of residential renovations, new builds, and commercial developments across Johannesburg</p>
+            </div>
+            <div class="gallery-grid">
+                <figure class="gallery-item fade-in" onclick="openLightbox(0)" tabindex="0" role="button" aria-label="View Sandton Home Renovation project">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Luxury home renovation in Sandton" loading="lazy" width="600" height="400">
+                    <figcaption class="gallery-overlay">
+                        <h3>Sandton Renovation</h3>
+                        <p>Full interior transformation</p>
+                        <span class="view-icon"><i class="fas fa-search-plus"></i></span>
+                    </figcaption>
+                </figure>
+                <figure class="gallery-item fade-in stagger-1" onclick="openLightbox(1)" tabindex="0" role="button" aria-label="View Modern Kitchen project">
+                    <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Modern kitchen installation" loading="lazy" width="600" height="400">
+                    <figcaption class="gallery-overlay">
+                        <h3>Designer Kitchen</h3>
+                        <p>Custom cabinetry & finishes</p>
+                        <span class="view-icon"><i class="fas fa-search-plus"></i></span>
+                    </figcaption>
+                </figure>
+                <figure class="gallery-item fade-in stagger-2" onclick="openLightbox(2)" tabindex="0" role="button" aria-label="View Paving & Landscaping project">
+                    <img src="https://images.unsplash.com/photo-1595846519845-68e298c2edd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Professional driveway paving" loading="lazy" width="600" height="400">
+                    <figcaption class="gallery-overlay">
+                        <h3>Driveway Paving</h3>
+                        <p>Durable segmented paving</p>
+                        <span class="view-icon"><i class="fas fa-search-plus"></i></span>
+                    </figcaption>
+                </figure>
+                <figure class="gallery-item fade-in" onclick="openLightbox(3)" tabindex="0" role="button" aria-label="View Office Fit-out project">
+                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Commercial office renovation" loading="lazy" width="600" height="400">
+                    <figcaption class="gallery-overlay">
+                        <h3>Office Fit-out</h3>
+                        <p>Commercial space transformation</p>
+                        <span class="view-icon"><i class="fas fa-search-plus"></i></span>
+                    </figcaption>
+                </figure>
+                <figure class="gallery-item fade-in stagger-1" onclick="openLightbox(4)" tabindex="0" role="button" aria-label="View Bathroom Renovation project">
+                    <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Luxury bathroom renovation" loading="lazy" width="600" height="400">
+                    <figcaption class="gallery-overlay">
+                        <h3>Bathroom Remodel</h3>
+                        <p>Premium tiling & fixtures</p>
+                        <span class="view-icon"><i class="fas fa-search-plus"></i></span>
+                    </figcaption>
+                </figure>
+                <figure class="gallery-item fade-in stagger-2" onclick="openLightbox(5)" tabindex="0" role="button" aria-label="View Exterior Painting project">
+                    <img src="https://images.unsplash.com/photo-1564013799919-ab39cf56b4c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Exterior painting and rendering" loading="lazy" width="600" height="400">
+                    <figcaption class="gallery-overlay">
+                        <h3>Exterior Refresh</h3>
+                        <p>High-rise painting & rendering</p>
+                        <span class="view-icon"><i class="fas fa-search-plus"></i></span>
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- Lightbox Modal -->
+        <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Project gallery viewer">
+            <div class="lightbox-content">
+                <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close gallery">&times;</button>
+                <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1)" aria-label="Previous project">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="lightbox-nav lightbox-next" onclick="changeImage(1)" aria-label="Next project">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <img src="" alt="Project image" class="lightbox-img" id="lightbox-img">
+                <div class="lightbox-counter" id="lightbox-counter" aria-live="polite"></div>
+                <div class="lightbox-caption">
+                    <h3 id="caption-title"></h3>
+                    <p id="caption-desc"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="section-padding testimonials">
+            <div class="section-title fade-in">
+                <h2>Client Success Stories</h2>
+                <p>Trusted by homeowners, investors, and corporate developers across Gauteng</p>
+            </div>
+            <div class="testimonial-grid">
+                <article class="testimonial-card fade-in">
+                    <div class="stars" aria-label="5 out of 5 stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"Afrisom transformed our 1970s home into a modern family sanctuary. Their attention to detail on the kitchen renovation and tiling work was exceptional. Professional, on-time, and within budget!"</p>
+                    <footer class="testimonial-author">Thandi M.<span class="testimonial-project">Sandton Home Renovation</span></footer>
+                </article>
+                <article class="testimonial-card fade-in stagger-1">
+                    <div class="stars" aria-label="5 out of 5 stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"We engaged Afrisom for a commercial office fit-out in Midrand. Their project management was outstanding – clear communication, minimal disruption, and flawless finishing. Highly recommended for corporate work!"</p>
+                    <footer class="testimonial-author">James K.<span class="testimonial-project">Midrand Office Fit-out</span></footer>
+                </article>
+                <article class="testimonial-card fade-in stagger-2">
+                    <div class="stars" aria-label="5 out of 5 stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"As a property investor, I needed quick, quality renovations to increase rental value. Afrisom delivered attic conversions and bathroom upgrades across three properties. Great value and reliable turnaround!"</p>
+                    <footer class="testimonial-author">Priya N.<span class="testimonial-project">Investment Property Upgrades</span></footer>
+                </article>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section-padding contact-section">
+            <div class="section-title fade-in">
+                <h2>Start Your Project Today</h2>
+                <p style="margin-top: 25px; color: rgba(255,255,255,0.95); font-size: 1.15rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+                    Ready to transform your property? Contact us for a free, no-obligation consultation and quote.
+                </p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-item fade-in">
+                    <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                    <span class="contact-label">Call Us Direct</span>
+                    <a href="tel:+27724896107" class="phone-link">072 489 6107</a>
+                    <span class="contact-hours">Mon-Fri: 8AM - 5PM<span>Sat: 9AM - 1PM</span></span>
+                </div>
+                <div class="contact-item fade-in stagger-1">
+                    <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                    <span class="contact-label">WhatsApp Quick Quote</span>
+                    <a href="https://wa.me/27724896107" class="phone-link" target="_blank" rel="noopener">072 489 6107</a>
+                    <span style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-top: 8px;"><i class="fas fa-bolt"></i> Avg. response: &lt;15 mins</span>
+                </div>
+                <div class="contact-item fade-in stagger-2">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <span class="contact-label">Visit Our Office</span>
+                    <span style="font-size: 1.05rem; margin-top: 8px; line-height: 1.5;">
+                        90/91 Mitchell Street<br>
+                        Berea, Johannesburg<br>
+                        Gauteng, 2198
+                    </span>
+                </div>
+            </div>
+
+            <!-- Google Maps Embed -->
+            <div class="map-container fade-in">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3599.123456789!2d28.0497!3d-26.1856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDExJzA4LjIiUyAyOMKwMDInNTkuMCJF!5e0!3m2!1sen!2sza!4v1234567890" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Afrisom Projects Office Location">
+                </iframe>
+            </div>
+
+            <div class="emergency-cta fade-in">
+                <i class="fas fa-exclamation-triangle"></i>
+                Emergency repairs? We're available 24/7 for urgent inquiries.
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="logo-text">Afrisom Projects</span>
+                <p>NHBRC Accredited construction & renovation specialists serving Gauteng since 2018. Quality craftsmanship, safety-first approach, turnkey delivery.</p>
+                <div class="footer-social">
+                    <a href="https://facebook.com/afrisomprojects" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/afrisomprojects" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com/company/afrisom-projects" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#services"><i class="fas fa-chevron-right"></i> New Builds</a></li>
+                    <li><a href="#services"><i class="fas fa-chevron-right"></i> Renovations</a></li>
+                    <li><a href="#services"><i class="fas fa-chevron-right"></i> Project Management</a></li>
+                    <li><a href="#services"><i class="fas fa-chevron-right"></i> Specialized Trades</a></li>
+                    <li><a href="#services"><i class="fas fa-chevron-right"></i> Design Services</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="#gallery"><i class="fas fa-chevron-right"></i> Projects</a></li>
+                    <li><a href="#testimonials"><i class="fas fa-chevron-right"></i> Reviews</a></li>
+                    <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Service Areas</h4>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Pretoria</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Centurion</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Midrand</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Sandton</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Johannesburg CBD</li>
+                    <li><i class="fas fa-map-marker-alt"></i> & Surrounds</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; <span id="year"></span> <strong>Afrisom Projects (Pty) Ltd</strong>. All Rights Reserved.</p>
+            <span class="nhbrc-badge">
+                <i class="fas fa-shield-alt"></i> NHBRC Accredited
+            </span>
+            <p style="font-size: 0.85rem; opacity: 0.85;">Building Dreams, One Project at a Time</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        'use strict';
+
+        // ========================================
+        // CONFIGURATION
+        // ========================================
+        const CONFIG = {
+            whatsappNumber: '27724896107',
+            businessName: 'Afrisom Projects',
+            galleryImages: [
+                { 
+                    src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80', 
+                    title: 'Sandton Home Renovation', 
+                    desc: 'Complete interior transformation including kitchen, living areas, and master suite with premium finishes.' 
+                },
+                { 
+                    src: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80', 
+                    title: 'Designer Kitchen Installation', 
+                    desc: 'Custom cabinetry, quartz countertops, and integrated appliances for a modern culinary space.' 
+                },
+                { 
+                    src: 'https://images.unsplash.com/photo-1595846519845-68e298c2edd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80', 
+                    title: 'Driveway Paving Project', 
+                    desc: 'Durable segmented paving with intricate border designs and proper drainage solutions.' 
+                },
+                { 
+                    src: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80', 
+                    title: 'Midrand Office Fit-out', 
+                    desc: 'Commercial space transformation with partitioning, lighting, and branded finishes.' 
+                },
+                { 
+                    src: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80', 
+                    title: 'Luxury Bathroom Renovation', 
+                    desc: 'Premium tiling, walk-in shower, vanity installation, and modern fixtures.' 
+                },
+                { 
+                    src: 'https://images.unsplash.com/photo-1564013799919-ab39cf56b4c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80', 
+                    title: 'Exterior Painting & Rendering', 
+                    desc: 'High-rise residential painting with weather-resistant coatings and color consultation.' 
+                }
+            ]
+        };
+
+        // ========================================
+        // STATE MANAGEMENT
+        // ========================================
+        let currentImageIndex = 0;
+        let isMenuOpen = false;
+        let headerScrolled = false;
+
+        // ========================================
+        // DOM ELEMENTS (Cached for performance)
+        // ========================================
+        const elements = {
+            header: document.getElementById('header'),
+            hamburger: document.getElementById('hamburger'),
+            navMenu: document.getElementById('navMenu'),
+            navOverlay: document.getElementById('navOverlay'),
+            navLinks: document.querySelectorAll('.nav-link'),
+            lightbox: document.getElementById('lightbox'),
+            lightboxImg: document.getElementById('lightbox-img'),
+            lightboxCounter: document.getElementById('lightbox-counter'),
+            captionTitle: document.getElementById('caption-title'),
+            captionDesc: document.getElementById('caption-desc'),
+            yearSpan: document.getElementById('year')
+        };
+
+        // ========================================
+        // INITIALIZATION
+        // ========================================
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year in footer
+            if (elements.yearSpan) {
+                elements.yearSpan.textContent = new Date().getFullYear();
+            }
+            
+            // Initialize scroll effects
+            initScrollEffects();
+            
+            // Initialize scroll animations
+            initScrollAnimations();
+            
+            // Initialize gallery image error handling
+            initImageErrorHandling();
+            
+            // Prefetch critical images
+            prefetchImages();
+        });
+
+        // ========================================
+        // HEADER SCROLL EFFECT
+        // ========================================
+        function initScrollEffects() {
+            const handleScroll = () => {
+                const scrolled = window.scrollY > 50;
+                if (scrolled !== headerScrolled) {
+                    headerScrolled = scrolled;
+                    elements.header.classList.toggle('scrolled', scrolled);
+                }
+            };
+            
+            // Use passive listener for better scroll performance
+            window.addEventListener('scroll', handleScroll, { passive: true });
+            handleScroll(); // Initial check
+        }
+
+        // ========================================
+        // HAMBURGER MENU FUNCTIONS
+        // ========================================
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            
+            // Update hamburger animation
+            elements.hamburger.classList.toggle('active', isMenuOpen);
+            
+            // Update nav menu visibility
+            elements.navMenu.classList.toggle('active', isMenuOpen);
+            elements.navOverlay.classList.toggle('active', isMenuOpen);
+            
+            // Update ARIA attributes for accessibility
+            elements.hamburger.setAttribute('aria-expanded', isMenuOpen);
+            elements.navOverlay.setAttribute('aria-hidden', !isMenuOpen);
+            
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+            
+            // Focus management for accessibility
+            if (isMenuOpen) {
+                const firstLink = elements.navMenu.querySelector('a');
+                if (firstLink) setTimeout(() => firstLink.focus(), 300);
+            } else {
+                elements.hamburger.focus();
+            }
+        }
+
+        function closeMenu() {
+            if (isMenuOpen) {
+                isMenuOpen = false;
+                elements.hamburger.classList.remove('active');
+                elements.navMenu.classList.remove('active');
+                elements.navOverlay.classList.remove('active');
+                elements.hamburger.setAttribute('aria-expanded', 'false');
+                elements.navOverlay.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+                elements.hamburger.focus();
+            }
+        }
+
+        // Event listeners for menu
+        elements.hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMenu();
+        });
+
+        elements.navOverlay.addEventListener('click', closeMenu);
+
+        // Close menu when clicking a nav link
+        elements.navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                closeMenu();
+                // Smooth scroll handled by CSS scroll-behavior
+            });
+        });
+
+        // Close menu on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && isMenuOpen) {
+                e.preventDefault();
+                closeMenu();
+            }
+        });
+
+        // Close menu on window resize if screen becomes large
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 1024 && isMenuOpen) {
+                closeMenu();
+            }
+        });
+
+        // ========================================
+        // WHATSAPP INTEGRATION
+        // ========================================
+        function sendWhatsapp(serviceName) {
+            const message = `Hi ${CONFIG.businessName}, I am interested in a quote for ${serviceName}. Please contact me to discuss my project requirements.`;
+            const url = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank', 'noopener noreferrer');
+            
+            // Optional: Track conversion (if analytics set up)
+            if (typeof gtag === 'function') {
+                gtag('event', 'whatsapp_quote_request', {
+                    'event_category': 'engagement',
+                    'event_label': serviceName
+                });
+            }
+        }
+
+        // ========================================
+        // LIGHTBOX FUNCTIONS
+        // ========================================
+        function openLightbox(index) {
+            currentImageIndex = index;
+            updateLightboxContent();
+            elements.lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Focus trap for accessibility
+            elements.lightbox.querySelector('.lightbox-close').focus();
+            
+            // Announce to screen readers
+            const announcement = `Viewing image ${index + 1} of ${CONFIG.galleryImages.length}`;
+            announceToScreenReader(announcement);
+        }
+
+        function closeLightbox() {
+            elements.lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+            elements.hamburger.focus(); // Return focus to menu button
+        }
+
+        function changeImage(direction) {
+            currentImageIndex = (currentImageIndex + direction + CONFIG.galleryImages.length) % CONFIG.galleryImages.length;
+            updateLightboxContent();
+        }
+
+        function updateLightboxContent() {
+            const image = CONFIG.galleryImages[currentImageIndex];
+            
+            // Fade out current image
+            elements.lightboxImg.style.opacity = '0';
+            
+            setTimeout(() => {
+                // Update content
+                elements.lightboxImg.src = image.src;
+                elements.lightboxImg.alt = image.title;
+                elements.lightboxCounter.textContent = `${currentImageIndex + 1} / ${CONFIG.galleryImages.length}`;
+                elements.captionTitle.textContent = image.title;
+                elements.captionDesc.textContent = image.desc;
+                
+                // Fade in new image
+                elements.lightboxImg.style.opacity = '1';
+            }, 200);
+        }
+
+        // Keyboard navigation for lightbox
+        document.addEventListener('keydown', (e) => {
+            if (!elements.lightbox.classList.contains('active')) return;
+            
+            switch(e.key) {
+                case 'Escape': 
+                    e.preventDefault();
+                    closeLightbox(); 
+                    break;
+                case 'ArrowLeft': 
+                    e.preventDefault();
+                    changeImage(-1); 
+                    break;
+                case 'ArrowRight': 
+                    e.preventDefault();
+                    changeImage(1); 
+                    break;
+                case 'Home':
+                    e.preventDefault();
+                    currentImageIndex = 0;
+                    updateLightboxContent();
+                    break;
+                case 'End':
+                    e.preventDefault();
+                    currentImageIndex = CONFIG.galleryImages.length - 1;
+                    updateLightboxContent();
+                    break;
+            }
+        });
+
+        // Touch/Swipe support for mobile lightbox
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        elements.lightbox.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        elements.lightbox.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const threshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > threshold) {
+                changeImage(diff > 0 ? 1 : -1);
+            }
+        }
+
+        // Close lightbox on backdrop click (but not on image or controls)
+        elements.lightbox.addEventListener('click', (e) => {
+            if (e.target === elements.lightbox || e.target.classList.contains('lightbox-content')) {
+                closeLightbox();
+            }
+        });
+
+        // Prevent image drag on mobile
+        elements.lightboxImg.addEventListener('dragstart', (e) => e.preventDefault());
+
+        // ========================================
+        // SCROLL ANIMATION (INTERSECTION OBSERVER)
+        // ========================================
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.12,
+                rootMargin: '0px 0px -60px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Only animate once
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all fade-in elements
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        }
+
+        // ========================================
+        // IMAGE ERROR HANDLING
+        // ========================================
+        function initImageErrorHandling() {
+            const fallbackImage = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400"%3E%3Crect fill="%23e8f4f8" width="600" height="400"/%3E%3Ctext fill="%231a3a5c" font-family="Montserrat" font-size="24" x="50%25" y="50%25" text-anchor="middle" dy=".3em"%3EImage Unavailable%3C/text%3E%3C/svg%3E';
+            
+            document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+                img.addEventListener('error', function() {
+                    this.src = fallbackImage;
+                    this.alt = 'Image could not be loaded';
+                    this.style.objectFit = 'contain';
+                    this.style.background = '#e8f4f8';
+                });
+            });
+        }
+
+        // ========================================
+        // IMAGE PREFETCHING FOR PERFORMANCE
+        // ========================================
+        function prefetchImages() {
+            // Prefetch hero background and first few service images
+            const criticalImages = [
+                'https://images.unsplash.com/photo-1541888946425-d81bb74d66a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
+                'https://images.unsplash.com/photo-1584621881583-c1c674c6b4b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                'https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
+            ];
+            
+            criticalImages.forEach(src => {
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.as = 'image';
+                link.href = src;
+                document.head.appendChild(link);
+            });
+        }
+
+        // ========================================
+        // ACCESSIBILITY: SCREEN READER ANNOUNCEMENTS
+        // ========================================
+        function announceToScreenReader(message) {
+            const announcement = document.createElement('div');
+            announcement.setAttribute('role', 'status');
+            announcement.setAttribute('aria-live', 'polite');
+            announcement.setAttribute('aria-atomic', 'true');
+            announcement.className = 'sr-only';
+            announcement.textContent = message;
+            document.body.appendChild(announcement);
+            
+            // Remove after announcement is made
+            setTimeout(() => announcement.remove(), 1000);
+        }
+
+        // ========================================
+        // SMOOTH SCROLL ENHANCEMENT (Fallback)
+        // ========================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Prevent default on WhatsApp buttons (handled by onclick)
+        document.querySelectorAll('.whatsapp-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                // Let the onclick handler manage the action
+                // This prevents any default button behavior
+            });
+        });
+
+        // ========================================
+        // PERFORMANCE: DEBOUNCE UTILITY
+        // ========================================
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Debounced scroll handler for any future scroll-based features
+        const debouncedScroll = debounce(() => {
+            // Add scroll-based features here if needed
+        }, 100);
+
+        window.addEventListener('scroll', debouncedScroll, { passive: true });
+
+        // ========================================
+        // CONSOLE WELCOME MESSAGE
+        // ========================================
+        console.log(`
+        ╔════════════════════════════════════════╗
+        ║  Afrisom Projects Website v1.0         ║
+        ║  NHBRC Accredited • Johannesburg       ║
+        ║                                        ║
+        ║  💡 Developer Tip:                     ║
+        ║  - Update CONFIG.whatsappNumber        ║
+        ║  - Replace placeholder images          ║
+        ║  - Add your GA4 ID in the head         ║
+        ║                                        ║
+        ║  🛠️  Built with: HTML5, CSS3, Vanilla JS ║
+        ╚════════════════════════════════════════╝
+        `);
+    </script>
+</body>
+</html>
