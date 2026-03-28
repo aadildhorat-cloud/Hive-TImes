@@ -2643,7 +2643,7 @@ UPDATED MOBILE HEADER CSS (Matches Desktop)
 </a>
 <div class="info">
 <h3>Delectable Dippers</h3>
-<p>Snack Shop, Chips, Crackers, Nuts</p>
+<p>Cakes, Cupcakes, Milktarts, Biscuits</p>
 
 <div class="rating-section">
 <div class="rating-stars" data-business="delectable-dippers">
@@ -4715,12 +4715,30 @@ Like diesel paraffin lpg gas at wholesale price 	</p>
     <h4>Ask Beelal</h4>
     <button class="ai-close-btn" id="aiCloseBtn">×</button>
   </div>
-  <div class="ai-chat-messages" id="aiChatMessages">
-    <div class="ai-message bot">
-      Hello! 👋 I'm Beelal, your Hive Times assistant.<br>
-      Ask me about businesses, services, or how Hive Times can help your business grow!
+ 
+  
+  <!-- ✅ NEW: Quick Questions Section -->
+  <div class="ai-quick-questions">
+    
+    <div class="ai-quick-grid">
+      <button class="ai-quick-btn" data-key="join">
+        <i class="fas fa-sign-in-alt"></i> How to join the Hive?
+      </button>
+      <button class="ai-quick-btn" data-key="pros">
+        <i class="fas fa-thumbs-up"></i> Pros of joining the Hive
+      </button>
+      <button class="ai-quick-btn" data-key="grow">
+        <i class="fas fa-chart-line"></i> How will it help my business grow?
+      </button>
+      <button class="ai-quick-btn" data-key="find">
+        <i class="fas fa-search"></i> How to find businesses & services?
+      </button>
     </div>
   </div>
+  
+  <!-- Answer Card Container (dynamically populated) -->
+  <div id="aiAnswerContainer"></div>
+  
   <div class="ai-chat-input">
     <input type="text" id="aiUserInput" placeholder="Type your question…">
     <button id="aiSendBtn"><i class="fas fa-paper-plane"></i></button>
@@ -4907,9 +4925,204 @@ Like diesel paraffin lpg gas at wholesale price 	</p>
     max-height: 180px;
   }
 }
+/* === QUICK QUESTIONS SECTION === */
+.ai-quick-questions {
+  padding: 16px 14px 8px;
+  border-top: 1px solid #eee;
+  background: #fafafa;
+}
+
+.ai-quick-questions h5 {
+  margin: 0 0 12px 0;
+  font-size: 0.85rem;
+  color: #666;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ai-quick-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.ai-quick-btn {
+  padding: 12px 14px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  text-align: left;
+  line-height: 1.3;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ai-quick-btn i {
+  color: #FF8F00;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.ai-quick-btn:hover {
+  border-color: #FF8F00;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 143, 0, 0.15);
+  color: #E64A19;
+}
+
+.ai-quick-btn.active {
+  background: linear-gradient(135deg, #FF8F00 0%, #E64A19 100%);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 15px rgba(230, 74, 25, 0.3);
+}
+
+.ai-quick-btn.active i {
+  color: white;
+}
+
+/* === ANSWER CARD === */
+.ai-answer-card {
+  margin: 16px 14px 12px;
+  background: white;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  border-left: 4px solid #FF8F00;
+  animation: fadeInUp 0.3s ease;
+  position: relative;
+}
+
+.ai-answer-card .close-answer {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  color: #999;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 50%;
+  transition: var(--transition-smooth);
+  line-height: 1;
+}
+
+.ai-answer-card .close-answer:hover {
+  color: #E64A19;
+  background: rgba(230, 74, 25, 0.1);
+}
+
+.ai-answer-card h6 {
+  margin: 0 0 10px 0;
+  color: #222;
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-right: 20px;
+}
+
+.ai-answer-card h6 i {
+  color: #FF8F00;
+}
+
+.ai-answer-card p {
+  margin: 0;
+  color: #444;
+  line-height: 1.65;
+  font-size: 0.9rem;
+  white-space: pre-line;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+  .ai-quick-grid {
+    grid-template-columns: 1fr;
+  }
+  .ai-quick-btn {
+    padding: 14px 16px;
+    font-size: 0.85rem;
+  }
+  .ai-answer-card {
+    margin: 14px 12px 10px;
+    padding: 14px;
+  }
+  .ai-answer-card p {
+    font-size: 0.88rem;
+  }
+}
 </style>
 
 <script>
+  // ==========================================
+// ✅ QUICK QUESTIONS LOGIC
+// ==========================================
+const quickAnswers = {
+  join: "Joining is simple! 🚀<br><br>1️⃣ Click the <strong>'JOIN THE HIVE'</strong> button in the header<br>2️⃣ Fill in your business details<br>3️⃣ Our team will contact you via WhatsApp<br>4️⃣ Get your listing live!<br><br>✅ It's <strong>free to start</strong>, and we help you every step of the way.",
+  
+  pros: "✅ <strong>Free business listing</strong> with premium visibility<br>✅ <strong>Trusted review system</strong> to build customer confidence<br>✅ <strong>Direct WhatsApp integration</strong> for instant inquiries<br>✅ <strong>Mobile-optimized profile</strong> that works everywhere<br>✅ <strong>Community-driven platform</strong> focused on local growth<br>✅ <strong>No hidden fees</strong> — just real results 🐝",
+  
+  grow: "Hive Times connects you directly with <strong>local customers</strong> actively searching for your services. 📈<br><br>✨ <strong>SEO-friendly profiles</strong> improve discoverability<br>✨ <strong>Social sharing tools</strong> expand your reach<br>✨ <strong>Verified reviews</strong> build trust & credibility<br>✨ <strong>AI assistant</strong> guides visitors straight to you<br><br>Grow your business with a platform built for <strong>your success</strong>!",
+  
+  find: "Finding businesses & services is easy! 🔍<br><br>🔹 Use the <strong>AI search bar</strong> at the top of the page<br>🔹 Click the <strong>🐝 bee icon</strong> to chat with Beelal!<br>🔹 Filter by <strong>category</strong> (e.g., 'Sweet Shop', 'Electrician')<br>🔹 Filter by <strong>location</strong> to find nearby options<br>🔹 Browse our organized <strong>Business</strong> and <strong>Services</strong> sections<br><br>All designed for <strong>fast, intuitive discovery</strong>!"
+};
+
+function showQuickAnswer(key, button) {
+  // Remove any existing answer card
+  const existingCard = document.getElementById('aiAnswerContainer').querySelector('.ai-answer-card');
+  if (existingCard) existingCard.remove();
+  
+  // Update button states
+  document.querySelectorAll('.ai-quick-btn').forEach(btn => btn.classList.remove('active'));
+  button.classList.add('active');
+  
+  // Create answer card
+  const answerCard = document.createElement('div');
+  answerCard.className = 'ai-answer-card';
+  answerCard.innerHTML = `
+    <button class="close-answer" aria-label="Close answer">&times;</button>
+    <h6><i class="fas fa-bee"></i> ${button.textContent.replace(/<[^>]*>?/gm, '').trim()}</h6>
+    <p>${quickAnswers[key]}</p>
+  `;
+  
+  // Insert into container
+  document.getElementById('aiAnswerContainer').appendChild(answerCard);
+  
+  // Auto-scroll to show answer
+  const chatMessages = document.getElementById('aiChatMessages');
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+  
+  // Close button handler
+  answerCard.querySelector('.close-answer').addEventListener('click', () => {
+    answerCard.remove();
+    document.querySelectorAll('.ai-quick-btn').forEach(btn => btn.classList.remove('active'));
+  });
+}
+
+// Attach event listeners to quick question buttons
+document.querySelectorAll('.ai-quick-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    const key = e.currentTarget.dataset.key;
+    showQuickAnswer(key, e.currentTarget);
+  });
+});
 // AI CHAT WIDGET LOGIC
 document.addEventListener('DOMContentLoaded', () => {
   const widget = document.getElementById('aiChatWidget');
