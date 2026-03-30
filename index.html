@@ -1504,51 +1504,7 @@ cursor: pointer;
 #signupForm button {
 background: linear-gradient(135deg, #3498db, #2980b9);
 }
-/* === UPDATED SLIDER CSS - NO GAPS === */
-.slider-section {
-    padding: 0 !important; /* Remove all padding */
-    margin: 0 !important;  /* Remove all margin */
-    background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
-    text-align: center;
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden; /* Prevent horizontal scrollbars */
-    line-height: 0;   /* Eliminate gap caused by inline images/text */
-}
 
-.slider-container {
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    position: relative;
-    height: 100%; /* Ensure it takes full defined height */
-}
-
-/* Ensure Swiper slides take up full space */
-.swiper-slide {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.swiper-slide img {
-    width: 100%;
-    height: auto;
-    display: block; /* Removes default inline spacing gap */
-    object-fit: cover;
-}
-
-/* Mobile specific adjustments to guarantee edge-to-edge */
-@media (max-width: 768px) {
-    .slider-section {
-        padding: 0;
-        margin: 0;
-    }
-}
 /* Main Content */
 main {
 flex-grow: 1;
