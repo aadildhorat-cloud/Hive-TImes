@@ -1,0 +1,2093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DTPGZ964FD"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-DTPGZ964FD');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Cupcake Plantation | Artisanal Eggless Cakes & Desserts</title>
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+<style>
+    /* === HIVE BADGE (Preserved) === */
+.hive-badge-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFD700;
+    border: 2px solid #E5C100;
+    border-radius: 50px;
+    padding: 6px 14px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    position: relative;
+    overflow: hidden;
+    margin-left: 1rem;
+    transform: translateZ(0);
+}
+.hive-icon-svg {
+    width: 18px;
+    height: 18px;
+    fill: #000000;
+    margin-right: 8px;
+    transition: transform 0.3s ease;
+}
+.hive-text-group {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+.hive-text {
+    color: #000000;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.hive-subtext {
+    font-size: 9px;
+    font-weight: 600;
+    color: #333333;
+    text-transform: uppercase;
+}
+.hive-badge-link:hover {
+    background-color: #E5C100;
+    border-color: #C9A900;
+    transform: translateY(-2px) translateZ(0);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.hive-badge-link:hover .hive-icon-svg {
+    transform: scale(1.1);
+}
+
+/* === GLOBAL RESET & MODERN STYLING === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #FFF5F7;
+}
+
+/* === COLOR VARIABLES === */
+:root {
+    --primary-color: #D4A5A5;
+    --secondary-color: #C9B1FF;
+    --accent-color: #98D8C8;
+    --text-color: #5A4A4A;
+    --background-color: #FFF5F7;
+    --card-background: #FFFFFF;
+    --border-color: #F0E6E6;
+    --soft-pink: #FFE5EC;
+    --lavender: #E6E6FA;
+    --sage: #E8F5E9;
+}
+
+/* === RESTRUCTURED HEADER === */
+header {
+    background: linear-gradient(135deg, #F8E1E7, #F5E6F0);
+    color: var(--text-color);
+    padding: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    gap: 15px;
+    flex-wrap: nowrap;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: center;
+    flex: 1;
+    min-width: 0;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--text-color);
+    white-space: nowrap;
+}
+
+.logo-img {
+    height: 80px;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 3px solid white;
+}
+
+.hamburger-btn {
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    padding: 0;
+    cursor: pointer;
+    margin-right: auto;
+    transition: opacity 0.2s;
+}
+
+.hamburger-btn span {
+    width: 25px;
+    height: 3px;
+    background: var(--text-color);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger-btn:hover {
+    opacity: 0.9;
+}
+
+.hamburger-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+.hamburger-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.cart-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+    min-width: 120px;
+    justify-content: center;
+    margin-left: auto;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.ai-search-bar-container {
+    padding: 0 15px 12px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+#aiProductSearchInput {
+    width: 100%;
+    padding: 10px 16px;
+    border-radius: 30px;
+    border: 2px solid var(--primary-color);
+    background: white;
+    color: var(--text-color);
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+#aiProductSearchInput:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(212, 165, 165, 0.2);
+}
+
+/* === MENU OVERLAY & SIDE MENU === */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1999;
+    transition: left 0.4s ease;
+    backdrop-filter: blur(5px);
+}
+.menu-overlay.active {
+    left: 0;
+}
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -350px;
+    width: 350px;
+    height: 100vh;
+    background: white;
+    z-index: 2001;
+    overflow-y: auto;
+    transition: left 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
+}
+.side-menu.active {
+    left: 0;
+}
+.menu-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 25px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.menu-header img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+.menu-header h2 {
+    font-size: 22px;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+}
+.menu-items {
+    padding: 20px 0;
+}
+.menu-item {
+    border-bottom: 1px solid var(--border-color);
+}
+.menu-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.menu-link:hover {
+    background: var(--soft-pink);
+    color: var(--primary-color);
+    padding-left: 25px;
+}
+.menu-link i {
+    font-size: 18px;
+    margin-right: 15px;
+    width: 25px;
+    text-align: center;
+    color: var(--primary-color);
+}
+.menu-footer {
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+    background: var(--soft-pink);
+}
+.contact-info p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: var(--text-color);
+}
+.contact-info i {
+    color: var(--primary-color);
+    width: 20px;
+}
+.social-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+.social-links a {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.social-links a:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px);
+}
+
+/* === CONTENT SECTIONS === */
+.content-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+.section-title {
+    text-align: center;
+    font-size: 32px;
+    color: var(--text-color);
+    margin-bottom: 15px;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    position: relative;
+    padding-bottom: 15px;
+}
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+}
+.section-subtitle {
+    text-align: center;
+    color: #888;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+/* === PRODUCT GRID & CARDS === */
+.products-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin: 30px 0;
+}
+.product-card {
+    background-color: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    margin: 10px;
+    max-width: 280px;
+    width: 100%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+    border-color: var(--primary-color);
+}
+.product-image {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+    background-color: var(--soft-pink);
+}
+.product-card:hover .product-image {
+    transform: scale(1.05);
+}
+.product-info {
+    padding: 20px;
+    text-align: center;
+}
+.product-name {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-color);
+    min-height: 50px;
+    font-family: 'Playfair Display', serif;
+}
+.product-description {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 12px;
+    min-height: 40px;
+}
+.product-price {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+}
+.house-favorite-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.add-to-cart-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.add-to-cart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* === BUSINESS MODAL === */
+.business-modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 2000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(8px);
+}
+.business-modal {
+    width: 90%;
+    max-width: 900px;
+    max-height: 90vh;
+    background: linear-gradient(135deg, #FFF5F7, #F5E6F0);
+    border-radius: 20px;
+    overflow-y: auto;
+    position: relative;
+    transform: scale(0.8) rotateY(30deg);
+    opacity: 0;
+    transition: transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1), opacity 0.5s ease;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.business-modal.active {
+    transform: scale(1) rotateY(0deg);
+    opacity: 1;
+}
+.close-business-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: white;
+    color: var(--text-color);
+    border: none;
+    font-size: 20px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.close-business-modal:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: scale(1.1);
+}
+.business-modal-content {
+    padding: 30px;
+}
+.business-hero {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 30px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+.business-hero-logo {
+    height: 120px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+    border: 4px solid var(--primary-color);
+}
+.business-hero-title {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+}
+.business-hero-tagline {
+    color: #888;
+    font-size: 16px;
+    margin-top: 10px;
+    font-style: italic;
+}
+.business-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+.business-section {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+.business-section:hover {
+    transform: translateY(-5px);
+}
+.business-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    font-family: 'Playfair Display', serif;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.business-section ul {
+    padding-left: 20px;
+}
+.business-section li {
+    margin-bottom: 8px;
+    color: var(--text-color);
+}
+.business-map-section iframe {
+    margin-top: 10px;
+    border-radius: 12px;
+    border: 2px solid var(--border-color);
+}
+.preorder-notice {
+    background: linear-gradient(135deg, var(--sage), var(--lavender));
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+/* === PRODUCT DETAIL MODAL === */
+.product-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    padding: 20px;
+}
+.product-modal {
+    background-color: white;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 900px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all 0.3s ease;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+.product-modal.active {
+    transform: scale(1);
+    opacity: 1;
+}
+.close-product-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--text-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    border: none;
+    z-index: 10;
+    transition: all 0.3s;
+}
+.close-product-modal:hover {
+    background: var(--primary-color);
+    color: white;
+}
+.product-modal-content {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px;
+    gap: 30px;
+}
+.product-modal-images {
+    flex: 1;
+    min-width: 300px;
+}
+.main-product-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    background-color: var(--soft-pink);
+}
+.product-modal-details {
+    flex: 1;
+    min-width: 300px;
+}
+.product-modal-title {
+    font-size: 28px;
+    color: var(--text-color);
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+}
+.product-modal-price {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+.product-modal-description {
+    margin-bottom: 25px;
+    line-height: 1.8;
+    font-size: 16px;
+    color: #666;
+}
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+.quantity-btn {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    background-color: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    color: var(--primary-color);
+}
+.quantity-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+.quantity-display {
+    font-size: 18px;
+    font-weight: 600;
+    min-width: 40px;
+    text-align: center;
+}
+.add-to-cart-modal-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.add-to-cart-modal-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* === SHOPPING CART MODAL === */
+.cart-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1500;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+.cart-modal {
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 700px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all 0.3s ease;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+.cart-modal.active {
+    transform: scale(1);
+    opacity: 1;
+}
+.cart-modal-title {
+    font-size: 28px;
+    color: var(--text-color);
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--border-color);
+}
+.cart-items {
+    margin-bottom: 30px;
+}
+.cart-item {
+    display: flex;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+    align-items: center;
+}
+.cart-item-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 15px;
+}
+.cart-item-details {
+    flex: 1;
+}
+.cart-item-name {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+.cart-item-price {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+.cart-quantity-btn {
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--primary-color);
+    border-radius: 6px;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    color: var(--primary-color);
+}
+.cart-quantity-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+.cart-quantity-display {
+    font-size: 16px;
+    font-weight: 600;
+    min-width: 30px;
+    text-align: center;
+}
+.remove-item-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.3s ease;
+}
+.remove-item-btn:hover {
+    background-color: #c0392b;
+}
+.cart-total {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-align: right;
+    margin-bottom: 25px;
+    padding: 15px;
+    background-color: var(--soft-pink);
+    border-radius: 12px;
+    border: 2px solid var(--primary-color);
+}
+.checkout-btn {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+.checkout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+}
+.close-cart-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    width: 100%;
+}
+.close-cart-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* === FLOATING CONTACT BUTTONS === */
+.floating-contact {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.float-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    color: white;
+    font-size: 28px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+.float-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
+}
+.whatsapp-float {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+}
+
+/* === FOOTER === */
+footer {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 40px 0 20px;
+    margin-top: 60px;
+}
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+.footer-info h3, .footer-links h3 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    font-family: 'Playfair Display', serif;
+}
+.social-media {
+    display: flex;
+    gap: 15px;
+}
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+.social-link:hover {
+    background-color: white;
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+.footer-nav ul {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+.footer-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+.footer-nav a:hover {
+    color: var(--soft-pink);
+    text-decoration: underline;
+}
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* === AI CHAT WIDGET === */
+.ai-chat-widget {
+    position: fixed;
+    bottom: 110px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.3s ease;
+    border: 3px solid var(--primary-color);
+}
+.ai-chat-widget:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+.ai-chat-widget img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: contain;
+}
+.ai-chat-panel {
+    position: fixed;
+    bottom: 180px;
+    right: 25px;
+    width: 350px;
+    background-color: white;
+    border: 2px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+    display: none;
+    flex-direction: column;
+    z-index: 100;
+    overflow: hidden;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+.ai-chat-panel.active {
+    display: flex;
+    transform: translateY(0);
+    opacity: 1;
+}
+.ai-chat-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.ai-avatar-square {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+    border: 2px solid white;
+}
+.ai-avatar-square img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.ai-chat-header h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+.ai-close-btn {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+.ai-close-btn:hover {
+    background: rgba(255,255,255,0.3);
+}
+.ai-chat-messages {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    max-height: 300px;
+    background-color: #faf9f7;
+}
+.ai-message {
+    margin-bottom: 15px;
+    padding: 12px 15px;
+    border-radius: 18px;
+    max-width: 85%;
+    line-height: 1.5;
+    position: relative;
+    animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.ai-message.bot {
+    background-color: var(--soft-pink);
+    border-left: 3px solid var(--primary-color);
+    align-self: flex-start;
+    border-bottom-left-radius: 5px;
+}
+.ai-message.user {
+    background-color: #E3F2FD;
+    border-right: 3px solid #2196F3;
+    margin-left: auto;
+    align-self: flex-end;
+    border-bottom-right-radius: 5px;
+}
+.ai-chat-input {
+    padding: 15px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    gap: 10px;
+}
+#aiUserInput {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 20px;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+#aiUserInput:focus {
+    border-color: var(--primary-color);
+}
+#aiSendBtn {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+#aiSendBtn:hover {
+    transform: scale(1.05);
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 768px) {
+    .header-top-row {
+        padding: 8px 12px;
+    }
+    .logo {
+        font-size: 18px;
+    }
+    .logo-img {
+        height: 60px;
+    }
+    .cart-btn {
+        font-size: 12px;
+        padding: 6px 12px;
+        min-width: auto;
+    }
+    .side-menu {
+        width: 280px;
+        left: -280px;
+    }
+    .business-hero-title { font-size: 2rem; }
+    .product-card {
+        max-width: 250px;
+    }
+    .product-modal-content {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 576px) {
+    .logo-container {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .logo {
+        font-size: 16px;
+        text-align: center;
+    }
+    .logo-img {
+        height: 60px;
+    }
+    .side-menu {
+        width: 75%;
+        left: -75%;
+    }
+    .section-title {
+        font-size: 24px;
+    }
+    .products-grid {
+        justify-content: space-between;
+        gap: 15px;
+    }
+    .product-card {
+        flex: 1 1 calc(50% - 10px);
+        max-width: calc(50% - 10px);
+        margin: 0;
+    }
+    .main-product-image {
+        height: 300px;
+    }
+    .floating-contact {
+        bottom: 20px;
+        right: 20px;
+        gap: 10px;
+    }
+    .float-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+    .ai-chat-widget { bottom: 90px; right: 20px; width: 50px; height: 50px; }
+    .ai-chat-panel { bottom: 150px; right: 20px; width: calc(100% - 40px); }
+    .business-info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+<body>
+<!-- HEADER -->
+<header>
+    <div class="header-top-row">
+        <button class="hamburger-btn" id="hamburgerBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="logo-container">
+            <img src="images-logo/cupcakeplantation-logo.jpg" alt="The Cupcake Plantation Logo" class="logo-img">
+            <div class="logo">THE CUPCAKE PLANTATION</div>
+        </div>
+
+         <!-- START HIVE TIMES BADGE -->
+            <a href="https://hivetimes.co.za" class="hive-badge-link" target="_blank" rel="noopener" title="Visit Hive Times">
+                <svg class="hive-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L14.5 6.5L19 6.5L16.5 11L19 15.5L14.5 15.5L12 20L9.5 15.5L5 15.5L7.5 11L5 6.5L9.5 6.5L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
+                    <path d="M12 7L13.5 9.5L16 9.5L14.5 12L16 14.5L13.5 14.5L12 17L10.5 14.5L8 14.5L9.5 12L8 9.5L10.5 9.5L12 7Z" fill="currentColor"/>
+                </svg>
+                <div class="hive-text-group">
+                    <span class="hive-text">HIVE</span>
+                    <span class="hive-subtext">Member</span>
+                </div>
+            </a>
+            <!-- END HIVE TIMES BADGE -->
+
+        <button class="cart-btn" onclick="showCartModal()">
+            <i class="fas fa-shopping-cart"></i> Cart (<span id="cartCount">0</span>)
+        </button>
+    </div>
+
+    <div class="ai-search-bar-container">
+        <input type="text" id="aiProductSearchInput" placeholder="e.g., chocolate cake under R600, vanilla cupcakes...">
+    </div>
+</header>
+
+<!-- Menu Overlay -->
+<div class="menu-overlay" id="menuOverlay"></div>
+<!-- Side Menu -->
+<nav class="side-menu" id="sideMenu">
+    <div class="menu-header">
+        <img src="https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/269f68395-726e-47c9-8901-6c23502b7bb06565.png" alt="The Cupcake Plantation Logo">
+        <h2>The Cupcake Plantation</h2>
+    </div>
+    <div class="menu-items">
+        <div class="menu-item">
+            <a href="https://hivetimes.co.za/" class="menu-link" onclick="toggleMenu()">
+                <span><i class="fas fa-home"></i> HIVE TIMES</span>
+            </a>
+        </div>
+            <a href="javascript:void(0)" class="menu-link" onclick="showBusinessModal(); toggleMenu()">
+                <span><i class="fas fa-info-circle"></i> About Business</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="#signature-collection" class="menu-link" onclick="scrollToSection('signature-collection')">
+                <span><i class="fas fa-star"></i> Signature Collection</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="#spiced-citrus" class="menu-link" onclick="scrollToSection('spiced-citrus')">
+                <span><i class="fas fa-lemon"></i> Spiced and Citrus</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="#heritage-favorites" class="menu-link" onclick="scrollToSection('heritage-favorites')">
+                <span><i class="fas fa-heart"></i> Heritage Favorites</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="#luxury-specialties" class="menu-link" onclick="scrollToSection('luxury-specialties')">
+                <span><i class="fas fa-gem"></i> Luxury Specialties</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="#cheesecakes" class="menu-link" onclick="scrollToSection('cheesecakes')">
+                <span><i class="fas fa-cheese"></i> Cheesecakes</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="#brownies" class="menu-link" onclick="scrollToSection('brownies')">
+                <span><i class="fas fa-square"></i> Brownies</span>
+            </a>
+        </div>
+    </div>
+    <div class="menu-footer">
+        <div class="contact-info">
+            <p><i class="fas fa-phone"></i> 082 465 9800</p>
+            <p><i class="fas fa-envelope"></i> thecupcakeplantation@gmail.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> Parkwood, Johannesburg</p>
+        </div>
+        <div class="social-links">
+            <a href="https://wa.me/27824659800" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        </div>
+    </div>
+</nav>
+
+<!-- SLIDER CONTAINER -->
+<div id="slider-container" class="slider-section"></div>
+
+<!-- BUSINESS MODAL -->
+<div class="business-modal-overlay" id="businessModalOverlay">
+    <div class="business-modal" id="businessModal">
+        <button class="close-business-modal" id="closeBusinessModal">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="business-modal-content">
+            <div class="business-hero">
+                <img src="https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/269f68395-726e-47c9-8901-6c23502b7bb06565.png" alt="The Cupcake Plantation Logo" class="business-hero-logo">
+                <h1 class="business-hero-title">The Cupcake Plantation</h1>
+                <p class="business-hero-tagline">Artisanal Eggless Cakes & Desserts - Inspired by nature, crafted with care</p>
+            </div>
+            <div class="business-info-grid">
+                <section class="business-section">
+                    <h2><i class="fas fa-info-circle"></i> About Us</h2>
+                    <p>Welcome to The Cupcake Plantation, where we specialize in creating exquisite eggless cakes and desserts. Each creation is inspired by nature and crafted with the finest ingredients and love. We believe in making every celebration sweeter with our artisanal baked goods.</p>
+                </section>
+                <section class="business-section">
+                    <h2><i class="fas fa-clock"></i> Opening Hours</h2>
+                    <ul>
+                        <li>Monday – Friday: 08:00 – 18:00</li>
+                        <li>Saturday: 08:00 – 16:00</li>
+                        <li>Sunday: 09:00 – 14:00</li>
+                    </ul>
+                    <h3 style="margin-top: 20px; color: var(--primary-color);"><i class="fas fa-phone"></i> Contact</h3>
+                    <p><i class="fas fa-phone-alt"></i> Dini: 082 465 9800</p>
+                    <p><i class="fas fa-envelope"></i> thecupcakeplantation@gmail.com</p>
+                </section>
+                <section class="business-section business-map-section">
+                    <h2><i class="fas fa-map-marker-alt"></i> Find Us</h2>
+                    <p style="margin-bottom: 10px;"><strong>Collection in Parkwood</strong><br>Delivery available via Uber</p>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28646.123456789012!2d28.0334!3d-26.1467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDA4JzQ4LjEiUyAyOMKwMDInMDAuMiJF!5e0!3m2!1sen!2sza!4v1234567890123!5m2!1sen!2sza" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </section>
+            </div>
+            <div class="preorder-notice">
+                <i class="fas fa-bell"></i> Pre-orders recommended to ensure availability<br>
+                <small>Cake sizes can be customized from 15cm – 30cm</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PRODUCT SECTIONS -->
+<div class="content-section" id="signature-collection">
+    <h2 class="section-title">SIGNATURE COLLECTION</h2>
+    <p class="section-subtitle">Our most loved creations</p>
+    
+    <h3 style="color: var(--text-color); margin: 30px 0 20px; font-family: 'Playfair Display', serif; font-size: 1.5rem;">Chocolate</h3>
+    <div class="products-grid">
+        <div class="product-card" data-id="choc-fresh-cream" data-category="signature" data-price="550" data-cupcake-price="420">
+            <img src="https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/769f68395-726e-47c9-8901-6c23502b7bb07010.png" alt="Chocolate Fresh Cream Cake" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Fresh Cream</div>
+                <div class="product-price">R550 (Cake) | R420 (Dozen)</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'choc-fresh-cream', name: 'Chocolate Fresh Cream Cake', price: 550, quantity: 1, image: 'https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/769f68395-726e-47c9-8901-6c23502b7bb07010.png', businessName: 'The Cupcake Plantation' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="choc-regular-ganache" data-category="signature" data-price="630" data-cupcake-price="480">
+            <img src="https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/269f68395-726e-47c9-8901-6c23502b7bb03726.png" alt="Regular Ganache Cake" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Regular Ganache <span class="house-favorite-badge"><i class="fas fa-bee"></i> House Favorite</span></div>
+                <div class="product-price">R630 (Cake) | R480 (Dozen)</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'choc-regular-ganache', name: 'Chocolate Regular Ganache Cake', price: 630, quantity: 1, image: 'https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/269f68395-726e-47c9-8901-6c23502b7bb03726.png', businessName: 'The Cupcake Plantation' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="choc-lindt-ganache" data-category="signature" data-price="720" data-cupcake-price="550">
+            <img src="https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/769f68395-726e-47c9-8901-6c23502b7bb07010.png" alt="Lindt Ganache Cake" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Lindt Ganache <span class="house-favorite-badge"><i class="fas fa-bee"></i> House Favorite</span></div>
+                <div class="product-price">R720 (Cake) | R550 (Dozen)</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'choc-lindt-ganache', name: 'Chocolate Lindt Ganache Cake', price: 720, quantity: 1, image: 'https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/769f68395-726e-47c9-8901-6c23502b7bb07010.png', businessName: 'The Cupcake Plantation' })">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <h3 style="color: var(--text-color); margin: 40px 0 20px; font-family: 'Playfair Display', serif; font-size: 1.5rem;">Vanilla</h3>
+    <div class="products-grid">
+        <div class="product-card" data-id="van-fresh-cream" data-category="signature" data-price="575" data-cupcake-price="440">
+            <img src="https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/469f68395-726e-47c9-8901-6c23502b7bb06904.png" alt="Vanilla Fresh Cream Cake" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Fresh Cream</div>
+                <div class="product-price">R575 (Cake) | R440 (Dozen)</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'van-fresh-cream', name: 'Vanilla Fresh Cream Cake', price: 575, quantity: 1, image: 'https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/469f68395-726e-47c9-8901-6c23502b7bb06904.png', businessName: 'The Cupcake Plantation' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="van-mixed-berries" data-category="signature" data-price="750" data-cupcake-price="560">
+            <img src="https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/069f68395-726e-47c9-8901-6c23502b7bb02337.png" alt="Vanilla Mixed Berries Cake" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Fresh Cream & Mixed Berries</div>
+                <div class="product-price">R750 (Cake) | R560 (Dozen)</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'van-mixed-berries', name: 'Vanilla Fresh Cream & Mixed Berries Cake', price: 750, quantity: 1, image: 'https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/069f68395-726e-47c9-8901-6c23502b7bb02337.png', businessName: 'The Cupcake Plantation' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="van-buttercream" data-category="signature" data-price="610" data-cupcake-price="470">
+            <img src="https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/469f68395-726e-47c9-8901-6c23502b7bb06904.png" alt="Vanilla Buttercream Cake" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Buttercream <span class="house-favorite-badge"><i class="fas fa-bee"></i> House Favorite</span></div>
+                <div class="product-price">R610 (Cake) | R470 (Dozen)</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'van-buttercream', name: 'Vanilla Buttercream Cake', price: 610, quantity: 1, image: 'https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/469f68395-726e-47c9-8901-6c23502b7bb06904.png', businessName: 'The Cupcake Plantation' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="van-cream-cheese" data-category="signature" data-price="690" data-cupcake-price="530">
+            <img src="https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/469f68395-726e-47c9-8901-6c23502b7bb06904.png" alt="Vanilla Cream Cheese Cake" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Cream Cheese</div>
+                <div class="product-price">R690 (Cake) | R530 (Dozen)</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'van-cream-cheese', name: 'Vanilla Cream Cheese Cake', price: 690, quantity: 1, image: 'https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/469f68395-726e-47c9-8901-6c23502b7bb06904.png', businessName: 'The Cupcake Plantation' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="van-biscoff" data-category="signature" data-price="720" data-cupcake-price="550">
+            <img src="https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/269f68395-726e-47c9-8901-6c23502b7bb03726.png" alt="Biscoff Ganache Cake" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Biscoff Ganache</div>
+                <div class="product-price">R720 (Cake) | R550 (Dozen)</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'van-biscoff', name: 'Vanilla Biscoff Ganache Cake', price: 720, quantity: 1, image: 'https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/269f68395-726e-47c9-8901-6c23502b7bb03726.png', businessName: 'The Cupcake Plantation' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="van-white-lindt" data-category="signature" data-price="750" data-cupcake-price="560">
+            <img src="https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/469f68395-726e-47c9-8901-6c23502b7bb06904.png" alt="White Lindt Ganache Cake" class="product-image">
+            <div class="product-info">
+                <div class="product-name">White Lindt Ganache <span class="house-favorite-badge"><i class="fas fa-bee"></i> House Favorite</span></div>
+                <div class="product-price">R750 (Cake) | R560 (Dozen)</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'van-white-lindt', name: 'Vanilla White Lindt Ganache Cake', price: 750, quantity: 1, image: 'https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/469f68395-726e-47c9-8901-6c23502b7bb06904.png', businessName: 'The Cupcake Plantation' })">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-section" id="spiced-citrus">
+    <h2 class="section-title">SPICED AND CITRUS</h2>
+    <p class="section-subtitle">Warm spices and refreshing citrus</p>
+    <div class="products-grid">
+        <div class="product-card" data-id="vanilla-chai" data-category="spiced" data-price="700" data-cupcake-price="530">
+            <img src="https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/469f68395-726e-47c9-8901-6c23502b7bb06904.png" alt="Vanilla-Chai Buttercream Cake" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Vanilla-Chai Buttercream</div>
+                <div class="product-price">R700 (Cake) | R530 (Dozen)</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'vanilla-chai', name: 'Vanilla-Chai Buttercream Cake', price: 700, quantity: 1, image: 'https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/469f68395-726e-47c9-8901-6c23502b7bb06904.png', businessName: 'The Cupcake Plantation' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="lemon-cream-cheese" data-category="spiced" data-price="710" data-cupcake-price="540">
+            <img src="https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/169f68395-726e-47c9-8901-6c23502b7bb02519.png" alt="Lemon Cream Cheese Cake" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Lemon Cream Cheese</div>
+                <div class="product-price">R710 (Cake) | R540 (Dozen)</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'lemon-cream-cheese', name: 'Lemon Cream Cheese Cake', price: 710, quantity: 1, image: 'https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/169f68395-726e-47c9-8901-6c23502b7bb02519.png', businessName: 'The Cupcake Plantation' })">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-section" id="heritage-favorites">
+    <h2 class="section-title">HERITAGE FAVORITES</h2>
+    <p class="section-subtitle">Classic flavors that never go out of style</p>
+    <div class="products-grid">
+        <div class="product-card" data-id="carrot-cream-cheese" data-category="heritage" data-price="800" data-cupcake-price="615">
+            <img src="https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/469f68395-726e-47c9-8901-6c23502b7bb06904.png" alt="Carrot Cream Cheese Cake" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Carrot Cream Cheese</div>
+                <div class="product-price">R800 (Cake) | R615 (Dozen)</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'carrot-cream-cheese', name: 'Carrot Cream Cheese Cake', price: 800, quantity: 1, image: 'https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/469f68395-726e-47c9-8901-6c23502b7bb06904.png', businessName: 'The Cupcake Plantation' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="red-velvet" data-category="heritage" data-price="650" data-cupcake-price="520">
+            <img src="https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/769f68395-726e-47c9-8901-6c23502b7bb07010.png" alt="Red Velvet Cake" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Red Velvet Cream Cheese <span class="house-favorite-badge"><i class="fas fa-bee"></i> House Favorite</span></div>
+                <div class="product-price">R650 (Cake) | R520 (Dozen)</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'red-velvet', name: 'Red Velvet Cream Cheese Cake', price: 650, quantity: 1, image: 'https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/769f68395-726e-47c9-8901-6c23502b7bb07010.png', businessName: 'The Cupcake Plantation' })">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-section" id="luxury-specialties">
+    <h2 class="section-title">LUXURY SPECIALTIES</h2>
+    <p class="section-subtitle">Indulgent creations for special occasions</p>
+    <div class="products-grid">
+        <div class="product-card" data-id="coconut-raffaello" data-category="luxury" data-price="880" data-cupcake-price="650">
+            <img src="https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/469f68395-726e-47c9-8901-6c23502b7bb06904.png" alt="Coconut Raffaello Cake" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Coconut - White Lindt Ganache with Raffaello's <span class="house-favorite-badge"><i class="fas fa-bee"></i> House Favorite</span></div>
+                <div class="product-price">R880 (Cake) | R650 (Dozen)</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'coconut-raffaello', name: 'Coconut White Lindt Ganache with Raffaello', price: 880, quantity: 1, image: 'https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/469f68395-726e-47c9-8901-6c23502b7bb06904.png', businessName: 'The Cupcake Plantation' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="ferrero-nutella" data-category="luxury" data-price="850" data-cupcake-price="640">
+            <img src="https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/269f68395-726e-47c9-8901-6c23502b7bb03726.png" alt="Ferrero Nutella Cake" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Ferrero - Nutella Ganache with Ferrero's</div>
+                <div class="product-price">R850 (Cake) | R640 (Dozen)</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'ferrero-nutella', name: 'Ferrero Nutella Ganache with Ferrero', price: 850, quantity: 1, image: 'https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/269f68395-726e-47c9-8901-6c23502b7bb03726.png', businessName: 'The Cupcake Plantation' })">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-section" id="cheesecakes">
+    <h2 class="section-title">CHEESECAKES</h2>
+    <p class="section-subtitle">Serve 15-18 people</p>
+    <div class="products-grid">
+        <div class="product-card" data-id="cheese-lindt" data-category="cheesecake" data-price="750">
+            <img src="https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/269f68395-726e-47c9-8901-6c23502b7bb03726.png" alt="Lindt Cheesecake" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Lindt Cheesecake <span class="house-favorite-badge"><i class="fas fa-bee"></i> House Favorite</span></div>
+                <div class="product-price">R750</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'cheese-lindt', name: 'Lindt Cheesecake', price: 750, quantity: 1, image: 'https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/269f68395-726e-47c9-8901-6c23502b7bb03726.png', businessName: 'The Cupcake Plantation' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="cheese-mixed-berry" data-category="cheesecake" data-price="700">
+            <img src="https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/069f68395-726e-47c9-8901-6c23502b7bb02337.png" alt="Mixed Berry Cheesecake" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Mixed Berry Cheesecake</div>
+                <div class="product-price">R700</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'cheese-mixed-berry', name: 'Mixed Berry Cheesecake', price: 700, quantity: 1, image: 'https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/069f68395-726e-47c9-8901-6c23502b7bb02337.png', businessName: 'The Cupcake Plantation' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="cheese-zesty-lime" data-category="cheesecake" data-price="780">
+            <img src="https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/169f68395-726e-47c9-8901-6c23502b7bb02519.png" alt="Zesty Lime Cheesecake" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Zesty Lime Cheesecake</div>
+                <div class="product-price">R780</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'cheese-zesty-lime', name: 'Zesty Lime Cheesecake', price: 780, quantity: 1, image: 'https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/169f68395-726e-47c9-8901-6c23502b7bb02519.png', businessName: 'The Cupcake Plantation' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="cheese-classic" data-category="cheesecake" data-price="700">
+            <img src="https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/469f68395-726e-47c9-8901-6c23502b7bb06904.png" alt="Classic Baked Cheesecake" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Classic Baked Cheesecake</div>
+                <div class="product-price">R700</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'cheese-classic', name: 'Classic Baked Cheesecake', price: 700, quantity: 1, image: 'https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/469f68395-726e-47c9-8901-6c23502b7bb06904.png', businessName: 'The Cupcake Plantation' })">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card" data-id="cheese-granadilla" data-category="cheesecake" data-price="720">
+            <img src="https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/169f68395-726e-47c9-8901-6c23502b7bb02519.png" alt="Granadilla Cheesecake" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Granadilla Cheesecake</div>
+                <div class="product-price">R720</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'cheese-granadilla', name: 'Granadilla Cheesecake', price: 720, quantity: 1, image: 'https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/169f68395-726e-47c9-8901-6c23502b7bb02519.png', businessName: 'The Cupcake Plantation' })">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-section" id="brownies">
+    <h2 class="section-title">BROWNIES</h2>
+    <p class="section-subtitle">Priced per dozen</p>
+    <div class="products-grid">
+        <div class="product-card" data-id="brownie-nutella" data-category="brownies" data-price="500">
+            <img src="https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/269f68395-726e-47c9-8901-6c23502b7bb03726.png" alt="Chocolate Brownies with Nutella" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Chocolate Brownies with Nutella <span class="house-favorite-badge"><i class="fas fa-bee"></i> House Favorite</span></div>
+                <div class="product-price">R500 per dozen</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'brownie-nutella', name: 'Chocolate Brownies with Nutella', price: 500, quantity: 1, image: 'https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/269f68395-726e-47c9-8901-6c23502b7bb03726.png', businessName: 'The Cupcake Plantation' })">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PRODUCT MODAL -->
+<div class="product-modal-overlay">
+    <div class="product-modal">
+        <button class="close-product-modal" onclick="closeProductModal()"><i class="fas fa-times"></i></button>
+        <div class="product-modal-content">
+            <div class="product-modal-images">
+                <img src="" alt="Main Product Image" class="main-product-image" id="modalMainImage">
+            </div>
+            <div class="product-modal-details">
+                <h3 class="product-modal-title" id="modalProductName">Product Name</h3>
+                <div class="product-modal-price" id="modalProductPrice">R0.00</div>
+                <p class="product-modal-description" id="modalProductDescription">Description</p>
+                <div class="quantity-selector">
+                    <button class="quantity-btn" id="decreaseQuantity">-</button>
+                    <span class="quantity-display" id="modalQuantity">1</span>
+                    <button class="quantity-btn" id="increaseQuantity">+</button>
+                </div>
+                <button class="add-to-cart-modal-btn" id="modalAddToCartBtn">
+                    <i class="fas fa-cart-plus"></i> Add to Cart
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CART MODAL -->
+<div class="cart-modal-overlay">
+    <div class="cart-modal">
+        <h3 class="cart-modal-title"><i class="fas fa-shopping-cart"></i> Your Shopping Cart</h3>
+        <div class="cart-items">
+            <p style="text-align: center; color: #888;">Your cart is empty.</p>
+        </div>
+        <div class="cart-total" id="cartTotal">Total: R0.00</div>
+        <button class="checkout-btn" onclick="sendCartToWhatsApp()"><i class="fab fa-whatsapp"></i> Send Order via WhatsApp</button>
+        <button class="close-cart-btn" onclick="closeCartModal()">Continue Shopping</button>
+    </div>
+</div>
+
+<!-- FLOATING CONTACT BUTTONS -->
+<div class="floating-contact">
+    <button class="float-btn whatsapp-float" onclick="window.open('https://wa.me/27824659800', '_blank')" title="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </button>
+</div>
+
+<!-- AI CHAT WIDGET -->
+<div class="ai-chat-widget" id="aiChatWidget">
+    <img src="https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/269f68395-726e-47c9-8901-6c23502b7bb06565.png" alt="Ask AI Assistant">
+</div>
+<div class="ai-chat-panel" id="aiChatPanel">
+    <div class="ai-chat-header">
+        <div class="ai-avatar-square">
+            <img src="https://image.qwenlm.ai/public_source/41f599c1-df19-484f-9a4d-d763c8b7a468/269f68395-726e-47c9-8901-6c23502b7bb06565.png" alt="AI Assistant">
+        </div>
+        <h4>Ask Our Assistant</h4>
+        <button class="ai-close-btn" id="aiCloseBtn">×</button>
+    </div>
+    <div class="ai-chat-messages" id="aiChatMessages">
+        <div class="ai-message bot">
+            Hello! 👋 I'm your <strong>The Cupcake Plantation</strong> assistant.<br>
+            You can ask me things like:<br>
+            • "What are your opening hours?"<br>
+            • "Where are you located?"<br>
+            • "What cakes do you offer?"
+        </div>
+    </div>
+    <div class="ai-chat-input">
+        <input type="text" id="aiUserInput" placeholder="Type your question...">
+        <button id="aiSendBtn"><i class="fas fa-paper-plane"></i></button>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>The Cupcake Plantation</h3>
+                <p>Artisanal Eggless Cakes & Desserts<br>Inspired by nature, crafted with care</p>
+                <div class="social-media">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <nav class="footer-nav">
+                    <ul>
+                        <li><a href="#" onclick="showBusinessModal()">About Us</a></li>
+                        <li><a href="#signature-collection">Shop</a></li>
+                        <li><a href="mailto:thecupcakeplantation@gmail.com">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 The Cupcake Plantation. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+// === CART SYSTEM ===
+const cart = {
+    items: [],
+    STORAGE_KEY: 'cupcake_plantation_cart_v1',
+    init() {
+        const stored = localStorage.getItem(this.STORAGE_KEY);
+        if (stored) {
+            try { this.items = JSON.parse(stored); } catch (e) { this.items = []; }
+        }
+        this.updateCartDisplay();
+    },
+    saveCart() {
+        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.items));
+        this.updateCartDisplay();
+    },
+    addToCart(product) {
+        const existing = this.items.find(item => item.id === product.id);
+        if (existing) {
+            existing.quantity += product.quantity;
+        } else {
+            this.items.push(product);
+        }
+        this.saveCart();
+        showCartModal();
+    },
+    updateQuantity(id, delta) {
+        const item = this.items.find(i => i.id === id);
+        if (item) {
+            item.quantity += delta;
+            if (item.quantity <= 0) {
+                this.removeItem(id);
+            } else {
+                this.saveCart();
+            }
+        }
+    },
+    removeItem(id) {
+        this.items = this.items.filter(item => item.id !== id);
+        this.saveCart();
+    },
+    calculateTotal() {
+        return this.items.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
+    },
+    updateCartDisplay() {
+        const countEl = document.getElementById('cartCount');
+        const itemsEl = document.querySelector('.cart-items');
+        const totalEl = document.getElementById('cartTotal');
+        const totalItems = this.items.reduce((sum, item) => sum + item.quantity, 0);
+        if (countEl) countEl.textContent = totalItems;
+        if (itemsEl) {
+            if (this.items.length === 0) {
+                itemsEl.innerHTML = '<p style="text-align: center; color: #888;">Your cart is empty.</p>';
+            } else {
+                itemsEl.innerHTML = '';
+                this.items.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'cart-item';
+                    div.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                        <div class="cart-item-details">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">R${(item.price * item.quantity).toFixed(2)} (R${item.price.toFixed(2)} each)</div>
+                            <div class="cart-item-quantity">
+                                <button class="cart-quantity-btn" onclick="cart.updateQuantity('${item.id}', -1)">-</button>
+                                <span class="cart-quantity-display">${item.quantity}</span>
+                                <button class="cart-quantity-btn" onclick="cart.updateQuantity('${item.id}', 1)">+</button>
+                            </div>
+                        </div>
+                        <button class="remove-item-btn" onclick="cart.removeItem('${item.id}')"><i class="fas fa-trash"></i></button>
+                    `;
+                    itemsEl.appendChild(div);
+                });
+            }
+        }
+        if (totalEl) totalEl.textContent = `Total: R${this.calculateTotal()}`;
+    }
+};
+
+// === AI SEARCH ===
+const aiProductSearch = {
+    init() {
+        document.getElementById('aiProductSearchInput').addEventListener('input', (e) => {
+            const query = e.target.value.trim().toLowerCase();
+            document.querySelectorAll('.content-section').forEach(section => {
+                let hasVisible = false;
+                const cards = section.querySelectorAll('.product-card');
+                cards.forEach(card => {
+                    const name = card.querySelector('.product-name').textContent.toLowerCase();
+                    const price = parseFloat(card.getAttribute('data-price'));
+                    let show = true;
+                    if (query) {
+                        if (query.includes('under') || query.includes('<')) {
+                            const match = query.match(/\d+(\.\d+)?/);
+                            if (match) {
+                                const max = parseFloat(match[0]);
+                                show = price <= max;
+                            } else {
+                                show = false;
+                            }
+                        } else {
+                            show = name.includes(query);
+                        }
+                    }
+                    card.style.display = show ? 'block' : 'none';
+                    if (show) hasVisible = true;
+                });
+                section.style.display = hasVisible ? 'block' : 'none';
+            });
+        });
+    }
+};
+
+// === BUSINESS MODAL ===
+function showBusinessModal() {
+    const overlay = document.getElementById('businessModalOverlay');
+    const modal = document.getElementById('businessModal');
+    overlay.style.display = 'flex';
+    setTimeout(() => {
+        modal.classList.add('active');
+    }, 10);
+}
+function hideBusinessModal() {
+    const modal = document.getElementById('businessModal');
+    const overlay = document.getElementById('businessModalOverlay');
+    modal.classList.remove('active');
+    setTimeout(() => {
+        overlay.style.display = 'none';
+    }, 600);
+}
+document.getElementById('closeBusinessModal').addEventListener('click', hideBusinessModal);
+document.getElementById('businessModalOverlay').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) hideBusinessModal();
+});
+
+// === HAMBURGER MENU ===
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const menuOverlay = document.getElementById('menuOverlay');
+const sideMenu = document.getElementById('sideMenu');
+function toggleMenu() {
+    hamburgerBtn.classList.toggle('active');
+    menuOverlay.classList.toggle('active');
+    sideMenu.classList.toggle('active');
+    document.body.style.overflow = sideMenu.classList.contains('active') ? 'hidden' : '';
+}
+hamburgerBtn.addEventListener('click', toggleMenu);
+menuOverlay.addEventListener('click', toggleMenu);
+
+function scrollToSection(id) {
+    toggleMenu();
+    setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 300);
+}
+
+// === PRODUCT MODAL ===
+function showProductModal(productId) {
+    const card = document.querySelector(`[data-id="${productId}"]`);
+    if (!card) return;
+    
+    const name = card.querySelector('.product-name').textContent.replace(/<[^>]*>/g, '');
+    const price = card.getAttribute('data-price');
+    const image = card.querySelector('.product-image').src;
+    const description = "Artisanal eggless cake crafted with premium ingredients. Serves approximately 15 people. Cupcakes priced per dozen.";
+    
+    document.getElementById('modalProductName').textContent = name;
+    document.getElementById('modalProductPrice').textContent = `R${parseFloat(price).toFixed(2)}`;
+    document.getElementById('modalProductDescription').textContent = description;
+    document.getElementById('modalMainImage').src = image;
+    document.getElementById('modalQuantity').textContent = 1;
+    
+    document.getElementById('modalAddToCartBtn').onclick = () => {
+        const qty = parseInt(document.getElementById('modalQuantity').textContent);
+        cart.addToCart({
+            id: productId,
+            name: name,
+            price: parseFloat(price),
+            quantity: qty,
+            image: image,
+            businessName: 'The Cupcake Plantation'
+        });
+        closeProductModal();
+    };
+    
+    document.getElementById('increaseQuantity').onclick = () => {
+        let q = parseInt(document.getElementById('modalQuantity').textContent);
+        document.getElementById('modalQuantity').textContent = q + 1;
+    };
+    document.getElementById('decreaseQuantity').onclick = () => {
+        let q = parseInt(document.getElementById('modalQuantity').textContent);
+        if (q > 1) document.getElementById('modalQuantity').textContent = q - 1;
+    };
+    
+    document.querySelector('.product-modal-overlay').style.display = 'flex';
+    setTimeout(() => document.querySelector('.product-modal').classList.add('active'), 10);
+}
+
+function closeProductModal() {
+    document.querySelector('.product-modal').classList.remove('active');
+    setTimeout(() => document.querySelector('.product-modal-overlay').style.display = 'none', 300);
+}
+
+document.addEventListener('click', (e) => {
+    const card = e.target.closest('.product-card');
+    if (card && !e.target.closest('.add-to-cart-btn')) {
+        const id = card.getAttribute('data-id');
+        showProductModal(id);
+    }
+});
+
+// === CART MODAL ===
+function showCartModal() {
+    document.querySelector('.cart-modal-overlay').style.display = 'flex';
+    setTimeout(() => {
+        document.querySelector('.cart-modal').classList.add('active');
+        cart.updateCartDisplay();
+    }, 10);
+}
+function closeCartModal() {
+    document.querySelector('.cart-modal').classList.remove('active');
+    setTimeout(() => document.querySelector('.cart-modal-overlay').style.display = 'none', 300);
+}
+
+// === WHATSAPP ORDER ===
+function sendCartToWhatsApp() {
+    if (cart.items.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
+    let msg = "Hi The Cupcake Plantation! I'd like to place an order:\n\n";
+    cart.items.forEach(item => {
+        msg += `• ${item.name} x${item.quantity} — R${(item.price * item.quantity).toFixed(2)}\n`;
+    });
+    msg += `\n*Total: R${cart.calculateTotal()}*\n\nThank you!`;
+    const url = `https://wa.me/27824659800?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+}
+
+// === AI CHAT WIDGET ===
+document.addEventListener('DOMContentLoaded', () => {
+    const widget = document.getElementById('aiChatWidget');
+    const panel = document.getElementById('aiChatPanel');
+    const closeBtn = document.getElementById('aiCloseBtn');
+    const chatMessages = document.getElementById('aiChatMessages');
+    const userInput = document.getElementById('aiUserInput');
+    const sendBtn = document.getElementById('aiSendBtn');
+    
+    widget.addEventListener('click', () => {
+        panel.classList.toggle('active');
+    });
+    closeBtn.addEventListener('click', () => {
+        panel.classList.remove('active');
+    });
+    
+    function scrollToBottom() {
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    function addMessage(text, isUser = false) {
+        const msgDiv = document.createElement('div');
+        msgDiv.classList.add('ai-message', isUser ? 'user' : 'bot');
+        msgDiv.innerHTML = text.replace(/\n/g, '<br>');
+        chatMessages.appendChild(msgDiv);
+        setTimeout(scrollToBottom, 10);
+    }
+    function getResponse(query) {
+        const lower = query.toLowerCase().trim();
+        if (/(where|located|address|find.*you|directions|parkwood)/.test(lower)) {
+            return "📍 We're located in <strong>Parkwood, Johannesburg</strong>.<br>Collection available in Parkwood. Delivery available via Uber.";
+        }
+        if (/(contact|phone|call|number|reach|whatsapp|dini)/.test(lower)) {
+            return "📞 Call or WhatsApp us at <strong>082 465 9800</strong> (Dini)<br>Email: thecupcakeplantation@gmail.com";
+        }
+        if (/(email|gmail|message|write.*you)/.test(lower)) {
+            return "📧 Email us anytime: <strong>thecupcakeplantation@gmail.com</strong>";
+        }
+        if (/(open|close|hours|time|when.*open|operating)/.test(lower)) {
+            return "🕒 Our opening hours:<br>" +
+            "<strong>Mon–Fri:</strong> 8:00 AM – 6:00 PM<br>" +
+            "<strong>Sat:</strong> 8:00 AM – 4:00 PM<br>" +
+            "<strong>Sun:</strong> 9:00 AM – 2:00 PM";
+        }
+        if (/(deliver|delivery|ship|send|courier|uber)/.test(lower)) {
+            return "🚚 Yes! We offer delivery via Uber.<br>Collection is available in Parkwood.<br>Add items to your cart and send your order via WhatsApp!";
+        }
+        if (/(size|custom|customize|15cm|30cm)/.test(lower)) {
+            return "📏 Cake sizes can be customized from <strong>15cm to 30cm</strong>.<br>Please mention your preferred size when placing your order via WhatsApp!";
+        }
+        if (/(eggless|vegan|egg.*free)/.test(lower)) {
+            return "🌱 All our cakes are <strong>100% eggless</strong>! We specialize in artisanal eggless cakes and desserts crafted with premium ingredients.";
+        }
+        if (/(pre.*order|order.*ahead|book.*ahead|advance)/.test(lower)) {
+            return "⏰ <strong>Pre-orders are recommended</strong> to ensure availability, especially for weekends and special occasions.<br>Please order at least 2-3 days in advance!";
+        }
+        if (/(chocolate|vanilla|flavor|flavour|what.*have|options|varieties|cake.*type)/.test(lower)) {
+            return " We offer a variety of delicious options:<br>" +
+            "<strong>Chocolate:</strong> Fresh Cream, Regular Ganache, Lindt Ganache<br>" +
+            "<strong>Vanilla:</strong> Fresh Cream, Mixed Berries, Buttercream, Cream Cheese, Biscoff, White Lindt<br>" +
+            "<strong>Specialty:</strong> Vanilla-Chai, Lemon, Carrot, Red Velvet, Coconut Raffaello, Ferrero<br>" +
+            "<strong>Cheesecakes:</strong> Lindt, Mixed Berry, Zesty Lime, Classic, Granadilla<br>" +
+            "<strong>Brownies:</strong> Chocolate with Nutella";
+        }
+        if (/(how.*order|place.*order|buy|purchase|checkout)/.test(lower)) {
+            return "🛒 Ordering is easy!<br>" +
+            "1. Browse our products and click <strong>'Add to Cart'</strong><br>" +
+            "2. Click the <strong>Cart</strong> button (top right)<br>" +
+            "3. Press <strong>'Send Order via WhatsApp'</strong><br>" +
+            "We'll confirm your order and delivery details!";
+        }
+        if (/(price|cost|how.*much|expensive)/.test(lower)) {
+            return "💰 Our cakes serve approx. 15 people:<br>" +
+            "Cakes range from <strong>R550 - R880</strong><br>" +
+            "Cupcakes priced per dozen: <strong>R420 - R650</strong><br>" +
+            "Cheesecakes (serve 15-18): <strong>R700 - R780</strong><br>" +
+            "Brownies per dozen: <strong>R500</strong>";
+        }
+        return "I can help you with store info, ordering, or product details!<br>Try asking:<br>" +
+        "• \"What are your opening hours?\"<br>" +
+        "• \"Where are you located?\"<br>" +
+        "• \"What cakes do you offer?\"<br>" +
+        "• \"How do I place an order?\"";
+    }
+    function handleSend() {
+        const query = userInput.value.trim();
+        if (!query) return;
+        addMessage(query, true);
+        userInput.value = '';
+        const response = getResponse(query);
+        setTimeout(() => addMessage(response), 400);
+    }
+    sendBtn.addEventListener('click', handleSend);
+    userInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') handleSend();
+    });
+});
+
+// === INIT ===
+document.addEventListener('DOMContentLoaded', () => {
+    cart.init();
+    aiProductSearch.init();
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && sideMenu.classList.contains('active')) {
+            toggleMenu();
+        }
+    });
+});
+// === SLIDER ===
+fetch('slider.html')
+.then(res => res.ok ? res.text() : Promise.reject('slider.html not found'))
+.then(html => {
+    document.getElementById('slider-container').innerHTML = html;
+    new Swiper('.mySwiper', {
+        spaceBetween: 0,
+        centeredSlides: true,
+        autoplay: { delay: 3000, disableOnInteraction: false },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+        loop: true,
+        effect: 'fade',
+        fadeEffect: { crossFade: true }
+    });
+})
+.catch(err => {
+    console.error('Slider error:', err);
+    document.getElementById('slider-container').innerHTML = `<div style="text-align:center;padding:40px;color:#8B4513;">⚠️ Slider unavailable</div>`;
+});
+
+</script>
+</body>
+</html>
