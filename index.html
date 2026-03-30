@@ -577,6 +577,26 @@ background-position: 0 0, 40px 40px;
 z-index: -1;
 pointer-events: none;
 }
+.text-search-bar {
+width: 100%;
+max-width: 500px;  /* ← Increased width for laptop/desktop */
+flex-grow: 1;
+}
+
+.text-search-bar input {
+width: 100%;
+padding: 12px 20px;
+font-size: 1rem;
+border-radius: 30px;
+border: none;
+background: rgb(252, 252, 252);
+color: #000000;
+outline: none;
+}
+
+.text-search-bar input::placeholder {
+color: rgba(0, 0, 0, 0.85);
+}
 /* === AI SEARCH BAR STYLES === */
 @media (max-width: 768px) {
 .text-search-bar {
@@ -619,7 +639,7 @@ aspect-ratio: 1 / 1;
 background: white;
 padding: 10px 2px;
 border-radius: 1px;
-font-size: 0.55rem;
+font-size: 1.25rem;
 color: #2c3e50;
 box-shadow: 0 3px 1px rgba(0,0,0,0.08);
 font-weight: 500;
@@ -2481,7 +2501,7 @@ UPDATED MOBILE HEADER CSS (Matches Desktop)
 </div>
 </div>
 <!-- Inside .header-top-row -->
-<a href="about page home.html" class="join-hive-btn">JOIN THE HIVE</a>
+<a href="about page home.html" class="join-hive-btn">JOIN</a>
 
 </div>
 </div>
@@ -2637,7 +2657,7 @@ UPDATED MOBILE HEADER CSS (Matches Desktop)
 </div>
 
 <!-- DELECTABLE DIPPERS -->
-<div class="block" id="business-delectable-dippers" data-category="business" data-type="bakking" data-location="johannesburg">
+<div class="block" id="business-delectable-dippers" data-category="business" data-type="baking" data-location="trichardt">
 <a href="http://delectabledippers.hivetimes.co.za/">
 <img src="images-logo/delectabledippers-logo.jpg" alt="Delectable Dippers">
 </a>
@@ -2696,6 +2716,42 @@ UPDATED MOBILE HEADER CSS (Matches Desktop)
 </a>
 </div>
 <div class="comments-section" id="polar-ice-cream-comments">
+<div class="comment-form">
+<textarea class="comment-input" placeholder="Share your experience..."></textarea>
+<button class="submit-comment-btn">Post Comment</button>
+</div>
+<div class="comments-list"></div>
+</div>
+<div class="share-section">
+<a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+<a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+</div>
+</div>
+</div>
+<!-- Marrakesh Bites -->
+<div class="block" id="business-marrakesh-bites" data-category="business" data-type="restaurant" data-location="marrakesh">
+<a href="marrakeshbites.html">
+<img src="images-logo/marrakeshbites-logo.jpg" alt="Marrakesh Bites">
+</a>
+<div class="info">
+<h3>Marrakesh Bites</h3>
+<p>Authentic Moroccan cuisine in a vibrant setting</p>
+
+<div class="rating-section">
+<div class="rating-stars" data-business="marrakesh-bites">
+<i class="far fa-star star"></i>
+<i class="far fa-star star"></i>
+<i class="far fa-star star"></i>
+<i class="far fa-star star"></i>
+<i class="far fa-star star"></i>
+</div>
+<div class="rating-count">0 ratings</div>
+<a href="#" class="view-comments-btn" data-target="marrakesh-bites-comments">
+<i class="fas fa-comment"></i> View Comments
+</a>
+</div>
+<div class="comments-section" id="marrakesh-bites-comments">
 <div class="comment-form">
 <textarea class="comment-input" placeholder="Share your experience..."></textarea>
 <button class="submit-comment-btn">Post Comment</button>
@@ -2817,46 +2873,11 @@ UPDATED MOBILE HEADER CSS (Matches Desktop)
 </div>
 </div>
 </div>
-<!-- Marrakesh Bites -->
-<div class="block" id="business-marrakesh-bites" data-category="business" data-type="restaurant" data-location="marrakesh">
-<a href="marrakeshbites.html">
-<img src="images-logo/marrakesh-bites-logo.jpg" alt="Marrakesh Bites">
-</a>
-<div class="info">
-<h3>Marrakesh Bites</h3>
-<p>Authentic Moroccan cuisine in a vibrant setting</p>
 
-<div class="rating-section">
-<div class="rating-stars" data-business="marrakesh-bites">
-<i class="far fa-star star"></i>
-<i class="far fa-star star"></i>
-<i class="far fa-star star"></i>
-<i class="far fa-star star"></i>
-<i class="far fa-star star"></i>
-</div>
-<div class="rating-count">0 ratings</div>
-<a href="#" class="view-comments-btn" data-target="marrakesh-bites-comments">
-<i class="fas fa-comment"></i> View Comments
-</a>
-</div>
-<div class="comments-section" id="marrakesh-bites-comments">
-<div class="comment-form">
-<textarea class="comment-input" placeholder="Share your experience..."></textarea>
-<button class="submit-comment-btn">Post Comment</button>
-</div>
-<div class="comments-list"></div>
-</div>
-<div class="share-section">
-<a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
-<a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-<a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
-</div>
-</div>
-</div>
 <!-- The Ahsan Store -->
 <div class="block" id="business-ahsan-store" data-category="business" data-type="clothing" data-location="johannesburg">
     <a href="https://ahsan.co.za/">
-        <img src="images-logo/ahsan-store-logo.jpg" alt="The Ahsan Store">
+        <img src="images-logo/ahsanstore-logo.jpg" alt="The Ahsan Store">
     </a>
     <div class="info">
         <h3>The Ahsan Store</h3>
@@ -2892,7 +2913,7 @@ UPDATED MOBILE HEADER CSS (Matches Desktop)
 <!-- Laila Couture -->
 <div class="block" id="business-laila-couture" data-category="business" data-type="clothing" data-location="johannesburg">
     <a href="https://lailacouture.co.za/">
-        <img src="images-logo/laila-couture-logo.jpg" alt="Laila Couture">
+        <img src="images-logo/lailacouture-logo.jpg" alt="Laila Couture">
     </a>
     <div class="info">
         <h3>Laila Couture</h3>
@@ -4715,10 +4736,7 @@ Like diesel paraffin lpg gas at wholesale price 	</p>
     <h4>Ask Beelal</h4>
     <button class="ai-close-btn" id="aiCloseBtn">×</button>
   </div>
-   <div class="ai-chat-messages" id="aiChatMessages">
-    <div class="ai-message bot">
-      Hello! 👋 I'm Beelal, your Hive Times assistant.<br>
-    </div>
+  
  
   
   <!-- ✅ NEW: Quick Questions Section -->
@@ -5693,6 +5711,7 @@ const aiSearch = {
   selectedLocation: '',
   categories: {
     business: [
+      { value: 'baking', label: 'Baking' },
       { value: 'sweet-shop', label: 'Sweet Shop' },
       { value: 'ice-cream', label: 'Ice Cream' },
       { value: 'butcher', label: 'Butcher' },
