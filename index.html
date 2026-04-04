@@ -79,6 +79,326 @@ gtag('config', 'G-DTPGZ964FD');
 <link rel="stylesheet" href="css/slider.css">
 
 <style>
+    /* ==========================================
+AI CHATBOT WIDGET STYLES
+========================================== */
+.ai-chat-widget {
+    position: fixed;
+    bottom: 100px; /* Positioned above back-to-top */
+    right: 30px;
+    z-index: 9999;
+    font-family: 'Poppins', 'Inter', sans-serif;
+}
+
+/* Chat Toggle Button */
+.ai-chat-toggle {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FFC107 0%, #FFB300 100%);
+    border: none;
+    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.ai-chat-toggle:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 8px 25px rgba(255, 193, 7, 0.6);
+}
+
+.ai-chat-toggle img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.ai-chat-toggle .close-icon {
+    display: none;
+    font-size: 28px;
+    color: #1a1a2e;
+    font-weight: bold;
+}
+
+.ai-chat-toggle.active .bee-icon {
+    display: none;
+}
+
+.ai-chat-toggle.active .close-icon {
+    display: block;
+}
+
+/* Chat Window */
+.ai-chat-window {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 380px;
+    height: 550px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.ai-chat-window.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+}
+
+/* Chat Header */
+.ai-chat-header {
+    background: linear-gradient(135deg, #FFC107 0%, #FFB300 100%);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.ai-chat-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: white;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ai-chat-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.ai-chat-info h4 {
+    margin: 0;
+    color: #1a1a2e;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.ai-chat-info p {
+    margin: 0;
+    color: #333;
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #4CAF50;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+    box-shadow: 0 0 5px #4CAF50;
+}
+
+/* Chat Body */
+.ai-chat-body {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #f9fafb;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.ai-chat-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ai-chat-body::-webkit-scrollbar-thumb {
+    background: #FFC107;
+    border-radius: 3px;
+}
+
+/* Messages */
+.ai-message {
+    display: flex;
+    gap: 10px;
+    max-width: 85%;
+    animation: fadeInUp 0.3s ease;
+}
+
+.ai-message.bot {
+    align-self: flex-start;
+}
+
+.ai-message.user {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.ai-message .msg-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.ai-message .msg-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ai-message .msg-content {
+    padding: 12px 16px;
+    border-radius: 15px;
+    font-size: 14px;
+    line-height: 1.5;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.ai-message.bot .msg-content {
+    background: white;
+    color: #333;
+    border-bottom-left-radius: 5px;
+}
+
+.ai-message.user .msg-content {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+    border-bottom-right-radius: 5px;
+}
+
+/* Quick Replies */
+.ai-quick-replies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.ai-quick-btn {
+    background: white;
+    border: 1px solid #FFC107;
+    color: #e64a19;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.ai-quick-btn:hover {
+    background: #FFC107;
+    color: #1a1a2e;
+    transform: translateY(-2px);
+}
+
+/* Chat Input */
+.ai-chat-input-area {
+    padding: 15px;
+    background: white;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.ai-chat-input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 25px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.ai-chat-input:focus {
+    border-color: #FFC107;
+    box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.1);
+}
+
+.ai-send-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.ai-send-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3);
+}
+
+/* Typing Indicator */
+.typing-indicator {
+    display: none;
+    gap: 5px;
+    padding: 10px 15px;
+    background: white;
+    border-radius: 15px;
+    width: fit-content;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.typing-indicator.active {
+    display: flex;
+}
+
+.typing-dot {
+    width: 6px;
+    height: 6px;
+    background: #ccc;
+    border-radius: 50%;
+    animation: typing 1.4s infinite ease-in-out both;
+}
+
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes typing {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+    .ai-chat-widget {
+        right: 20px;
+        bottom: 90px;
+    }
+    .ai-chat-window {
+        width: calc(100vw - 40px);
+        height: 70vh;
+        right: 0;
+        bottom: 80px;
+    }
+}
    /* ==========================================
            MODERN CSS RESET & VARIABLES
            ========================================== */
@@ -4752,807 +5072,201 @@ Like diesel paraffin lpg gas at wholesale price 	</p>
 </div>
 </div>
 <!-- ==========================================
-AI CHAT WIDGET - HIVE TIMES (BEE IMAGE ONLY)
+AI CHATBOT WIDGET
 ========================================== -->
-<div id="hive-chat-widget" class="minimized">
-    <img src="images-logo/bee.jpg" alt="Ask Beelal" class="chat-bee-avatar">
-</div>
-
-<style>
-/* ===== HIVE CHAT WIDGET STYLES ===== */
-#hive-chat-widget {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    z-index: 2147483647;
-    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
-    box-shadow: 0 4px 20px rgba(230, 74, 25, 0.3);
-}
-
-#hive-chat-widget.minimized {
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #FF8F00 0%, #E64A19 100%);
-    box-shadow: 0 6px 25px rgba(230, 74, 25, 0.5);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid rgba(255, 255, 255, 0.15);
-    overflow: hidden;
-}
-
-#hive-chat-widget.minimized:hover {
-    transform: scale(1.08) rotate(5deg);
-    box-shadow: 0 8px 35px rgba(230, 74, 25, 0.7);
-}
-
-#hive-chat-widget.minimized .chat-bee-avatar {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    transition: transform 0.3s ease;
-}
-
-#hive-chat-widget.minimized:hover .chat-bee-avatar {
-    transform: scale(1.05) rotate(5deg);
-}
-
-#hive-chat-widget.expanded {
-    width: 380px;
-    max-height: 85vh;
-    border-radius: 24px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    box-shadow: 0 15px 50px rgba(230, 74, 25, 0.35);
-}
-
-.chat-widget-header {
-    padding: 18px 22px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    border-bottom: 1px solid rgba(230, 74, 25, 0.25);
-    position: relative;
-    background: linear-gradient(135deg, #FF8F00 0%, #E64A19 100%);
-}
-
-.chat-widget-avatar {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-    font-size: 1.6rem;
-    flex-shrink: 0;
-    box-shadow: 0 4px 15px rgba(230, 74, 25, 0.4);
-    border: 2px solid rgba(255, 255, 255, 0.15);
-    overflow: hidden;
-}
-
-.chat-widget-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.chat-widget-title h3 {
-    font-size: 1.45rem;
-    font-weight: 700;
-    margin-bottom: 2px;
-    background: linear-gradient(to right, #ffffff, #FFD54F);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.chat-widget-title p {
-    font-size: 0.95rem;
-    opacity: 0.85;
-    margin: 0;
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.chat-widget-close {
-    position: absolute;
-    right: 18px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 1.6rem;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-}
-
-.chat-widget-close:hover {
-    background: rgba(255, 255, 255, 0.3);
-    color: white;
-    transform: translateY(-50%) scale(1.1);
-}
-
-.chat-widget-messages {
-    padding: 20px;
-    flex: 1;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    max-height: 65vh;
-    background: rgba(253, 253, 253, 0.95);
-}
-
-.chat-message {
-    max-width: 88%;
-    padding: 16px 20px;
-    border-radius: 20px;
-    line-height: 1.55;
-    font-size: 0.98rem;
-    animation: fadeIn 0.35s ease;
-    position: relative;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.chat-message.user {
-    align-self: flex-end;
-    background: linear-gradient(45deg, #FF8F00, #E64A19);
-    color: white;
-    border-bottom-right-radius: 8px;
-    box-shadow: 0 4px 15px rgba(230, 74, 25, 0.3);
-}
-
-.chat-message.bot {
-    align-self: flex-start;
-    background: white;
-    color: #2d2d2d;
-    border: 1px solid rgba(230, 74, 25, 0.15);
-    border-bottom-left-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-.chat-message.bot strong {
-    color: #E64A19;
-}
-
-/* Quick Questions Grid */
-.chat-quick-questions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 12px;
-}
-
-.chat-quick-btn {
-    background: rgba(230, 74, 25, 0.12);
-    color: #E64A19;
-    border: none;
-    border-radius: 16px;
-    padding: 10px 12px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.chat-quick-btn i {
-    color: #FF8F00;
-    font-size: 1rem;
-    flex-shrink: 0;
-}
-
-.chat-quick-btn:hover {
-    background: rgba(230, 74, 25, 0.22);
-    transform: translateY(-2px);
-    box-shadow: 0 2px 8px rgba(230, 74, 25, 0.2);
-}
-
-.chat-quick-btn.active {
-    background: linear-gradient(135deg, #FF8F00 0%, #E64A19 100%);
-    color: white;
-}
-
-.chat-quick-btn.active i {
-    color: white;
-}
-
-.chat-widget-input {
-    padding: 18px;
-    background: white;
-    border-top: 1px solid rgba(230, 74, 25, 0.15);
-    display: flex;
-    gap: 12px;
-}
-
-.chat-widget-input input {
-    flex: 1;
-    padding: 15px 20px;
-    border: 2px solid rgba(230, 74, 25, 0.15);
-    border-radius: 28px;
-    font-size: 1.05rem;
-    background: #f8f9fa;
-    color: #2d2d2d;
-    outline: none;
-    transition: border-color 0.3s ease;
-    font-family: 'Inter', sans-serif;
-}
-
-.chat-widget-input input:focus {
-    border-color: #FF8F00;
-    box-shadow: 0 0 0 3px rgba(230, 74, 25, 0.2);
-}
-
-.chat-widget-input input::placeholder {
-    color: rgba(0, 0, 0, 0.5);
-}
-
-.chat-widget-input button {
-    background: linear-gradient(45deg, #FF8F00, #E64A19);
-    color: white;
-    border: none;
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.35rem;
-    transition: all 0.35s ease;
-    flex-shrink: 0;
-    box-shadow: 0 4px 15px rgba(230, 74, 25, 0.4);
-}
-
-.chat-widget-input button:hover {
-    transform: scale(1.1) rotate(5deg);
-    box-shadow: 0 6px 25px rgba(230, 74, 25, 0.6);
-}
-
-/* Answer Card */
-.chat-answer-card {
-    background: white;
-    border-radius: 14px;
-    padding: 16px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    border-left: 4px solid #FF8F00;
-    animation: fadeInUp 0.3s ease;
-    position: relative;
-    margin: 8px 0;
-}
-
-.chat-answer-card .close-answer {
-    position: absolute;
-    top: 10px;
-    right: 12px;
-    background: none;
-    border: none;
-    font-size: 1.3rem;
-    color: #999;
-    cursor: pointer;
-    padding: 4px 8px;
-    border-radius: 50%;
-    transition: var(--transition-smooth);
-    line-height: 1;
-}
-
-.chat-answer-card .close-answer:hover {
-    color: #E64A19;
-    background: rgba(230, 74, 25, 0.1);
-}
-
-.chat-answer-card h6 {
-    margin: 0 0 10px 0;
-    color: #222;
-    font-size: 0.95rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding-right: 20px;
-}
-
-.chat-answer-card h6 i {
-    color: #FF8F00;
-}
-
-.chat-answer-card p {
-    margin: 0;
-    color: #444;
-    line-height: 1.65;
-    font-size: 0.9rem;
-    white-space: pre-line;
-}
-
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Highlight Box */
-.business-highlight {
-    background: rgba(230, 74, 25, 0.09);
-    border-radius: 16px;
-    padding: 16px;
-    margin: 12px 0;
-    border-left: 3px solid #FF8F00;
-    transition: all 0.3s ease;
-}
-
-.business-highlight:hover {
-    background: rgba(230, 74, 25, 0.12);
-    transform: translateX(3px);
-}
-
-/* WhatsApp Handoff */
-.whatsapp-handoff {
-    background: rgba(230, 74, 25, 0.12);
-    border-left: 4px solid #FF8F00;
-    padding: 16px;
-    border-radius: 0 16px 16px 0;
-    margin: 12px 0;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.whatsapp-handoff:hover {
-    background: rgba(230, 74, 25, 0.2);
-    transform: translateX(4px);
-    box-shadow: 0 4px 12px rgba(230, 74, 25, 0.3);
-}
-
-.whatsapp-handoff i {
-    color: #FF8F00;
-    font-size: 1.4rem;
-    min-width: 24px;
-}
-
-/* Typing Indicator */
-.typing-indicator {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 12px;
-}
-
-.typing-dot {
-    width: 8px;
-    height: 8px;
-    background: #FF8F00;
-    border-radius: 50%;
-    animation: typing 1.4s infinite ease-in-out;
-}
-
-.typing-dot:nth-child(2) { animation-delay: 0.2s; }
-.typing-dot:nth-child(3) { animation-delay: 0.4s; }
-
-@keyframes typing {
-    0%, 100% { transform: scale(0.7); opacity: 0.5; }
-    50% { transform: scale(1.2); opacity: 1; }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    #hive-chat-widget.expanded {
-        width: calc(100% - 50px);
-        right: 25px;
-        bottom: 100px;
-    }
-    .chat-quick-questions {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 480px) {
-    #hive-chat-widget.minimized {
-        width: 60px;
-        height: 60px;
-    }
-}
-</style>
-
-<script>
-// ===== HIVE CHAT WIDGET FUNCTIONALITY =====
-function initHiveChatWidget() {
-    const widget = document.getElementById('hive-chat-widget');
-    let isExpanded = false;
-    let messagesContainer = null;
-    let inputField = null;
-    let typingElement = null;
-
-    // Quick Answers for the 4 buttons
-    const quickAnswers = {
-        join: `
-            <strong>🐝 How to Join the Hive:</strong><br><br>
-            <div class="business-highlight">
-                <strong>1️⃣ Click 'JOIN THE HIVE'</strong><br>
-                Button located in the header navigation
+<div class="ai-chat-widget" id="aiChatWidget">
+    <!-- Chat Window -->
+    <div class="ai-chat-window" id="aiChatWindow">
+        <!-- Header -->
+        <div class="ai-chat-header">
+            <div class="ai-chat-avatar">
+                <img src="images-logo/bee.jpg" alt="Hive Assistant">
             </div>
-            <div class="business-highlight">
-                <strong>2️⃣ Fill Business Details</strong><br>
-                Name, services, location, and contact info
+            <div class="ai-chat-info">
+                <h4>Hive Assistant 🐝</h4>
+                <p><span class="status-dot"></span>Online</p>
             </div>
-            <div class="business-highlight">
-                <strong>3️⃣ WhatsApp Verification</strong><br>
-                Our team will contact you within 24 hours
-            </div>
-            <div class="business-highlight">
-                <strong>4️⃣ Go Live!</strong><br>
-                Your listing appears on Hive Times platform
-            </div>
-            <p style="margin-top: 12px; font-size: 0.95rem; color: #666;">
-                <i>✅ Free to start • No hidden fees • Full support provided</i>
-            </p>
-        `,
-        pros: `
-            <strong>✨ Benefits of Hive Times Membership:</strong><br><br>
-            <div class="business-highlight">
-                <strong>📈 Increased Visibility</strong><br>
-                Get discovered by thousands of local customers
-            </div>
-            <div class="business-highlight">
-                <strong>⭐ Review System</strong><br>
-                Build trust with verified customer reviews
-            </div>
-            <div class="business-highlight">
-                <strong>💬 Direct WhatsApp</strong><br>
-                Instant customer inquiries and orders
-            </div>
-            <div class="business-highlight">
-                <strong>📱 Mobile Optimized</strong><br>
-                Perfect display on all devices
-            </div>
-            <div class="business-highlight">
-                <strong>🤝 Community Support</strong><br>
-                Join a network of local businesses
-            </div>
-            <p style="margin-top: 12px; font-size: 0.95rem; color: #666;">
-                <i>Free listing • Premium visibility • Real results</i>
-            </p>
-        `,
-        grow: `
-            <strong>📈 How Hive Times Helps Your Business Grow:</strong><br><br>
-            <div class="business-highlight">
-                <strong>🔍 SEO-Friendly Profiles</strong><br>
-                Rank higher in local searches and get found easier
-            </div>
-            <div class="business-highlight">
-                <strong>📱 Social Sharing Tools</strong><br>
-                One-click sharing to Facebook, WhatsApp & more
-            </div>
-            <div class="business-highlight">
-                <strong>⭐ Verified Reviews</strong><br>
-                Build credibility with authentic customer feedback
-            </div>
-            <div class="business-highlight">
-                <strong>🤖 AI Assistant</strong><br>
-                Beelal guides visitors directly to your services
-            </div>
-            <p style="margin-top: 12px; font-size: 0.95rem; color: #666;">
-                <i>Grow your business with a platform built for YOUR success 🐝</i>
-            </p>
-        `,
-        find: `
-            <strong>🔍 Finding Businesses & Services:</strong><br><br>
-            <div class="business-highlight">
-                <strong>1️⃣ Use AI Search Bar</strong><br>
-                Type what you're looking for at the top of the page
-            </div>
-            <div class="business-highlight">
-                <strong>2️⃣ Filter by Category</strong><br>
-                Select Business or Service, then choose specific type
-            </div>
-            <div class="business-highlight">
-                <strong>3️⃣ Filter by Location</strong><br>
-                Choose your area to find nearby options
-            </div>
-            <div class="business-highlight">
-                <strong>4️⃣ Chat with Me!</strong><br>
-                Ask me directly for recommendations
-            </div>
-            <p style="margin-top: 12px; font-size: 0.95rem; color: #666;">
-                <i>All listings include direct WhatsApp contact for instant inquiries</i>
-            </p>
-        `
-    };
-
-    // Business Info
-    const KB = {
-        whatsapp: '27649220145',
-        phone: '+27 64 922 0145',
-        email: 'hivetimes.co.za@gmail.com'
-    };
-
-    widget.addEventListener('click', (e) => {
-        if (e.target.closest('.chat-widget-close')) {
-            minimizeWidget();
-            return;
-        }
-        if (isExpanded) {
-            minimizeWidget();
-        } else {
-            expandWidget();
-        }
-    });
-
-    function expandWidget() {
-        isExpanded = true;
-        widget.className = 'expanded';
-        widget.innerHTML = `
-            <div class="chat-widget-header">
-                <div class="chat-widget-avatar">
-                    <img src="images-logo/bee.jpg" alt="Hive Times Bee">
+        </div>
+        
+        <!-- Body -->
+        <div class="ai-chat-body" id="aiChatBody">
+            <!-- Welcome Message -->
+            <div class="ai-message bot">
+                <div class="msg-avatar">
+                    <img src="images-logo/bee.jpg" alt="Bot">
                 </div>
-                <div class="chat-widget-title">
-                    <h3>Ask Beelal</h3>
-                    <p>Your Hive Times assistant</p>
-                </div>
-                <button class="chat-widget-close" id="chatCloseBtn">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="chat-widget-messages" id="chatMessages">
-                <div class="chat-message bot">
-                    Hello! 👋 I'm <strong>Beelal</strong>, your Hive Times assistant!<br><br>
-                    How can I help you today?
-                    <div class="chat-quick-questions">
-                        <button class="chat-quick-btn" data-key="join">
-                            <i class="fas fa-sign-in-alt"></i> How to join the Hive?
-                        </button>
-                        <button class="chat-quick-btn" data-key="pros">
-                            <i class="fas fa-thumbs-up"></i> Pros of joining the Hive
-                        </button>
-                        <button class="chat-quick-btn" data-key="grow">
-                            <i class="fas fa-chart-line"></i> How will it help my business grow?
-                        </button>
-                        <button class="chat-quick-btn" data-key="find">
-                            <i class="fas fa-search"></i> How to find businesses & services?
-                        </button>
+                <div class="msg-content">
+                    👋 Hi! I'm Beelal, the Hive Assistant. <br>
+                    How may i Bee of service?
+                    <div class="ai-quick-replies">
+                        <button class="ai-quick-btn" onclick="sendQuickQuestion('What is Hive Times?')">What is Hive Times?</button>
+                        <button class="ai-quick-btn" onclick="sendQuickQuestion('How to join the Hive?')">How to join?</button>
+                        <button class="ai-quick-btn" onclick="sendQuickQuestion('What are the benefits?')">Benefits?</button>
+                        <button class="ai-quick-btn" onclick="sendQuickQuestion('How will it help my business?')">Business Growth?</button>
                     </div>
                 </div>
             </div>
-            <div class="chat-widget-input">
-                <input type="text" id="chatInput" placeholder="Type your question…" autocomplete="off">
-                <button id="sendChatBtn">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
+            <!-- Typing Indicator -->
+            <div class="typing-indicator" id="typingIndicator">
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
             </div>
-        `;
+        </div>
+        
+        <!-- Input -->
+        <div class="ai-chat-input-area">
+            <input type="text" class="ai-chat-input" id="aiChatInput" placeholder="Type your question...">
+            <button class="ai-send-btn" onclick="sendMessage()">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Toggle Button -->
+    <button class="ai-chat-toggle" id="aiChatToggle" onclick="toggleChat()">
+        <img src="images-logo/bee.jpg" alt="Bee" class="bee-icon">
+        <span class="close-icon">&times;</span>
+    </button>
+</div>
 
-        // Setup event listeners
-        document.getElementById('chatCloseBtn').addEventListener('click', (e) => {
-            e.stopPropagation();
-            minimizeWidget();
-        });
-
-        document.getElementById('sendChatBtn').addEventListener('click', sendMessage);
-        document.getElementById('chatInput').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') sendMessage();
-        });
-
-        // Setup quick question buttons
-        setTimeout(() => {
-            document.querySelectorAll('.chat-quick-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const key = e.currentTarget.dataset.key;
-                    showQuickAnswer(key, e.currentTarget);
-                    if (inputField) inputField.value = '';
-                });
-            });
-        }, 100);
-
-        // Cache elements
-        messagesContainer = document.getElementById('chatMessages');
-        inputField = document.getElementById('chatInput');
-
-        // Auto-focus input
-        setTimeout(() => {
-            if (inputField) inputField.focus();
-        }, 100);
-    }
-
-    function minimizeWidget() {
-        isExpanded = false;
-        widget.className = 'minimized';
-        widget.innerHTML = `
-            <img src="images-logo/bee.jpg" alt="Ask Beelal" class="chat-bee-avatar">
-        `;
-    }
-
-    function addMessage(text, sender) {
-        if (!messagesContainer) return;
-        const messageDiv = document.createElement('div');
-        messageDiv.className = `chat-message ${sender}`;
-        messageDiv.innerHTML = text.replace(/\n/g, '<br>');
-        messagesContainer.appendChild(messageDiv);
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    }
-
-    function showQuickAnswer(key, button) {
-        // Remove any existing answer card
-        const existingCard = messagesContainer?.querySelector('.chat-answer-card');
-        if (existingCard) existingCard.remove();
-
-        // Update button states
-        document.querySelectorAll('.chat-quick-btn').forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-
-        // Create answer card
-        const answerCard = document.createElement('div');
-        answerCard.className = 'chat-answer-card';
-        answerCard.innerHTML = `
-            <button class="close-answer" aria-label="Close answer">&times;</button>
-            <h6><i class="fas fa-bee"></i> ${button.textContent.replace(/<[^>]*>?/gm, '').trim()}</h6>
-            <p>${quickAnswers[key]}</p>
-        `;
-
-        // Insert into messages container
-        messagesContainer.appendChild(answerCard);
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-        // Close button handler
-        answerCard.querySelector('.close-answer').addEventListener('click', () => {
-            answerCard.remove();
-            document.querySelectorAll('.chat-quick-btn').forEach(btn => btn.classList.remove('active'));
-        });
-
-        // Add WhatsApp handoff
-        const handoff = document.createElement('div');
-        handoff.className = 'whatsapp-handoff';
-        handoff.innerHTML = `
-            <i class="fab fa-whatsapp"></i>
-            <span>Chat with human expert on WhatsApp</span>
-        `;
-        handoff.onclick = () => window.open(`https://wa.me/${KB.whatsapp}?text=${encodeURIComponent(`Question about: ${key} - via Hive Times AI`)}`, '_blank');
-        messagesContainer.appendChild(handoff);
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    }
-
-    function sendMessage() {
-        if (!inputField) return;
-        const message = inputField.value.trim();
-        if (!message) return;
-        addMessage(message, 'user');
-        inputField.value = '';
-        showTypingIndicator();
-        setTimeout(() => {
-            removeTypingIndicator();
-            processQuery(message.toLowerCase());
-        }, 800);
-    }
-
-    function showTypingIndicator() {
-        if (typingElement || !messagesContainer) return;
-        typingElement = document.createElement('div');
-        typingElement.className = 'chat-message bot';
-        typingElement.innerHTML = `
-            <div class="typing-indicator">
-                <span class="typing-dot"></span>
-                <span class="typing-dot"></span>
-                <span class="typing-dot"></span>
-            </div>
-        `;
-        messagesContainer.appendChild(typingElement);
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    }
-
-    function removeTypingIndicator() {
-        if (typingElement && messagesContainer) {
-            messagesContainer.removeChild(typingElement);
-            typingElement = null;
-        }
-    }
-
-    function processQuery(query) {
-        let response = '';
-
-        // Join queries
-        if (query.includes('join') || query.includes('register') || query.includes('add my business') || query.includes('list my business')) {
-            response = quickAnswers.join;
-        }
-        // Benefits/Pros
-        else if (query.includes('benefit') || query.includes('pros') || query.includes('why join') || query.includes('advantage')) {
-            response = quickAnswers.pros;
-        }
-        // Growth
-        else if (query.includes('grow') || query.includes('growth') || query.includes('help my business')) {
-            response = quickAnswers.grow;
-        }
-        // Finding businesses
-        else if (query.includes('find') || query.includes('search') || query.includes('look for') || query.includes('browse')) {
-            response = quickAnswers.find;
-        }
-        // Contact
-        else if (query.includes('contact') || query.includes('phone') || query.includes('email') || query.includes('reach') || query.includes('support')) {
-            response = `
-                <strong>📞 Contact Hive Times:</strong><br><br>
-                <div class="business-highlight">
-                    <strong>📱 WhatsApp:</strong> <a href="https://wa.me/${KB.whatsapp}" style="color: #FF8F00;">${KB.phone}</a>
-                </div>
-                <div class="business-highlight">
-                    <strong>📧 Email:</strong> ${KB.email}
-                </div>
-                <div class="business-highlight">
-                    <strong>🕐 Hours:</strong> Monday - Friday: 9:00 AM - 5:00 PM
-                </div>
-                <p style="margin-top: 12px; font-size: 0.95rem; color: #666;">
-                    <i>Average response time: Under 2 hours during business hours</i>
-                </p>
-            `;
-        }
-        // Greetings
-        else if (/^(hi|hello|hey|good morning|good afternoon|good evening)/.test(query)) {
-            response = `Hello! 👋 Welcome to <strong>Hive Times</strong>!<br><br>
-                I'm your assistant. I can help you with:<br>
-                • Joining the Hive as a business<br>
-                • Finding businesses & services<br>
-                • Understanding benefits & pricing<br>
-                • Contact information & support<br><br>
-                What would you like to know?`;
-        }
-        // Thank you/Goodbye
-        else if (query.includes('thank') || query.includes('bye') || query.includes('goodbye') || query.includes('thanks')) {
-            response = `You're welcome! 😊 Whenever you need help with Hive Times, we're here for you.`;
-        }
-        // Default response
-        else {
-            response = `I specialize in Hive Times platform assistance! 😊 Try asking:<br><br>
-                • "How do I join the Hive?"<br>
-                • "What are the benefits of joining?"<br>
-                • "How will it help my business grow?"<br>
-                • "How do I find businesses & services?"<br><br>
-                Or tap one of the quick question buttons above!`;
-        }
-
-        // Add WhatsApp handoff if not already present
-        if (!response.includes('whatsapp-handoff') && !response.includes('Contact Hive Times')) {
-            response += `
-                <div class="whatsapp-handoff" onclick="window.open('https://wa.me/${KB.whatsapp}?text=${encodeURIComponent(`Chat about: ${query} - via Hive Times AI Assistant`)}', '_blank')">
-                    <i class="fab fa-whatsapp"></i>
-                    <span>Chat with human expert on WhatsApp</span>
-                </div>
-            `;
-        }
-
-        addMessage(response, 'bot');
-    }
-}
-
-// Initialize chat widget on page load
-document.addEventListener('DOMContentLoaded', initHiveChatWidget);
-</script>
-<!-- Back to Top -->
-<button class="back-to-top" id="backToTopBtn" aria-label="Back to top" style="display: none;"><i class="fas fa-chevron-up"></i></button>
 
 <!-- Unified JavaScript -->
 <script>
+    // ==========================================
+// AI CHATBOT LOGIC
+// ==========================================
+const chatBot = {
+    isOpen: false,
+    knowledgeBase: {
+        "what is hive times": "Hive Times is South Africa's premier local business directory platform connecting customers with trusted local businesses and services. We help businesses increase visibility, attract more customers, and grow their digital presence online.",
+        "how to join": "Joining is simple! 1️⃣ Click the 'JOIN' button in the header. 2️⃣ Submit your existing website URL OR create a new listing. 3️⃣ Fill in your business details. 4️⃣ Submit via WhatsApp for quick approval. You'll be listed within 24-48 hours!",
+        "benefits": "🐝 Hive Times Benefits:\n✅ Increased Visibility (Local Search)\n✅ Build Trust (Ratings & Reviews)\n✅ Direct WhatsApp Integration\n✅ Cost-Effective Listings\n✅ Targeted Local Audience",
+        "business growth": "📈 We help you grow by:\n1️⃣ Professional Online Listing\n2️⃣ Customer Reviews build credibility\n3️⃣ Direct Messaging (WhatsApp)\n4️⃣ Social Media Sharing\n5️⃣ SEO Optimization\nBusinesses see avg. 40% increase in inquiries!",
+        "pricing": "💵 We offer flexible packages:\n🆓 Basic Listing - FREE\n⭐ Premium - R299/mo (Priority placement, Photos)\n🏆 Featured - R599/mo (Homepage spotlight, Unlimited photos)\n📞 Contact us for custom packages!",
+        "contact": "📞 You can reach us at:\n📱 +27 64 922 0145\n📧 hivetimes.co.za@gmail.com\n⏰ Mon-Fri: 9am-5pm"
+    },
+    
+    init() {
+        // Enter key to send
+        document.getElementById('aiChatInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+    },
+
+    toggle() {
+        this.isOpen = !this.isOpen;
+        const window = document.getElementById('aiChatWindow');
+        const toggle = document.getElementById('aiChatToggle');
+        
+        if (this.isOpen) {
+            window.classList.add('active');
+            toggle.classList.add('active');
+            // Focus input
+            setTimeout(() => document.getElementById('aiChatInput').focus(), 300);
+        } else {
+            window.classList.remove('active');
+            toggle.classList.remove('active');
+        }
+    },
+
+    addMessage(text, isUser = false) {
+        const body = document.getElementById('aiChatBody');
+        const indicator = document.getElementById('typingIndicator');
+        
+        // Create message element
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `ai-message ${isUser ? 'user' : 'bot'}`;
+        
+        const avatarSrc = isUser ? 'https://ui-avatars.com/api/?name=User&background=e74c3c&color=fff' : 'images-logo/bee.jpg';
+        
+        msgDiv.innerHTML = `
+            <div class="msg-avatar">
+                <img src="${avatarSrc}" alt="${isUser ? 'User' : 'Bot'}">
+            </div>
+            <div class="msg-content">${text}</div>
+        `;
+        
+        // Insert before typing indicator
+        body.insertBefore(msgDiv, indicator);
+        body.scrollTop = body.scrollHeight;
+    },
+
+    showTyping(show) {
+        const indicator = document.getElementById('typingIndicator');
+        const body = document.getElementById('aiChatBody');
+        if (show) {
+            indicator.classList.add('active');
+            body.scrollTop = body.scrollHeight;
+        } else {
+            indicator.classList.remove('active');
+        }
+    },
+
+    getResponse(input) {
+        const lowerInput = input.toLowerCase();
+        
+        // Keyword matching
+        if (lowerInput.includes('join') || lowerInput.includes('sign up') || lowerInput.includes('register')) {
+            return this.knowledgeBase["how to join"];
+        }
+        if (lowerInput.includes('benefit') || lowerInput.includes('why join')) {
+            return this.knowledgeBase["benefits"];
+        }
+        if (lowerInput.includes('grow') || lowerInput.includes('growth') || lowerInput.includes('help my business')) {
+            return this.knowledgeBase["business growth"];
+        }
+        if (lowerInput.includes('what is') || lowerInput.includes('about hive')) {
+            return this.knowledgeBase["what is hive times"];
+        }
+        if (lowerInput.includes('price') || lowerInput.includes('cost') || lowerInput.includes('much')) {
+            return this.knowledgeBase["pricing"];
+        }
+        if (lowerInput.includes('contact') || lowerInput.includes('phone') || lowerInput.includes('email')) {
+            return this.knowledgeBase["contact"];
+        }
+        
+        // Fallback
+        return "I'm not sure I understood that correctly. 🤔 <br><br> You can ask me about:<br>• Joining Hive Times<br>• Benefits for your business<br>• Pricing and packages<br><br>Or type 'agent' to chat with our human team!";
+    }
+};
+
+// Global Functions for HTML onclick events
+function toggleChat() {
+    chatBot.toggle();
+}
+
+function sendMessage() {
+    const input = document.getElementById('aiChatInput');
+    const text = input.value.trim();
+    
+    if (!text) return;
+    
+    // Add user message
+    chatBot.addMessage(text, true);
+    input.value = '';
+    
+    // Show typing indicator
+    chatBot.showTyping(true);
+    
+    // Simulate AI delay
+    setTimeout(() => {
+        chatBot.showTyping(false);
+        const response = chatBot.getResponse(text);
+        chatBot.addMessage(response);
+    }, 1000);
+}
+
+function sendQuickQuestion(question) {
+    const input = document.getElementById('aiChatInput');
+    input.value = question;
+    sendMessage();
+}
+
+// Initialize Chatbot
+document.addEventListener('DOMContentLoaded', () => {
+    chatBot.init();
+});
 // ==========================
 // POPUP INFO
 // ==========================
