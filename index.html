@@ -1272,7 +1272,7 @@ padding: 16px;
 }
 .filter-bar.fixed {
 top: 70px;
-width: 100px;
+width: calc(100% - 20px);
 max-width: none;
 left: 10px;
 transform: none;
@@ -4027,6 +4027,52 @@ They also stock extensive departments for electronics, hardware, stationery, and
   </div>
 </div>
 </div>
+<!-- M Technologies -->
+<div class="freelancer-card" id="service-mechanic" data-category="service" data-type="mechanic" data-location="durban">
+  <div class="card-background" style="background-image: url('images-logo/mtechnologies.jpg');"></div>
+  <div class="profile-container">
+    <img src="images-logo/mtechnologies.jpg" alt="M Technologies" class="profile-picture">
+  </div>
+ <div class="card-content">
+  <h3>M Technologies</h3>
+  <p>Professional automotive repair and maintenance services for all makes and models.</p>
+  <div class="contact-buttons">
+    <a href="carfixingcenter.html" class="contact-btn btn-call"><i class="fas fa-heart"></i> Visit Website</a>
+  </div>
+
+  <!-- Rating Section -->
+  <div class="rating-section">
+    <div class="rating-stars" data-service="mechanic">
+      <i class="far fa-star star"></i>
+      <i class="far fa-star star"></i>
+      <i class="far fa-star star"></i>
+      <i class="far fa-star star"></i>
+      <i class="far fa-star star"></i>
+    </div>
+    <div class="rating-count">0 ratings</div>
+    <a href="#" class="view-comments-btn" data-target="mechanic-comments">
+      <i class="fas fa-comment"></i> View Comments
+    </a>
+  </div>
+
+  <!-- Comments Section -->
+  <div class="comments-section" id="mechanic-comments">
+    <div class="comment-form">
+      <textarea class="comment-input" placeholder="Share your experience..."></textarea>
+      <button class="submit-comment-btn">Post Comment</button>
+    </div>
+    <div class="comments-list"></div>
+  </div>
+
+  <!-- Share Section -->
+  <div class="share-section">
+    <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+  </div>
+</div>
+</div>
+
 <!--Robert Construction Company -->
 <div class="freelancer-card" id="service-floors" data-category="service" data-type="floors, construction, painting, ceiling, building, tar, renovations" data-location="johannesburg">
   <div class="card-background" style="background-image: url('image-services/melody-background.jpg');"></div>
@@ -5756,7 +5802,7 @@ const aiSearch = {
     { value: 'crown-mines', label: 'Crown Mines' },
     { value: 'leslie', label: 'Leslie' },
     { value: 'trichardt', label: 'Trichardt' },
-    { value: 'Durban', label: 'Durban' }
+    { value: 'durban', label: 'Durban' }
   ],
   init() {
     const optionsContainer = document.getElementById('aiOptions');
