@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "HiveTimes Product",
+  "type": "object",
+  "required": ["id", "name", "price", "currency", "description", "image", "imageAlt", "subsite", "subsiteUrl", "updatedAt"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "area": { "type": "string" },
+    "category": { "type": "string" },
+    "name": { "type": "string", "minLength": 3 },
+    "price": { "type": "number", "minimum": 0 },
+    "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+    "description": { "type": "string", "minLength": 20 },
+    "image": { "type": "string", "format": "uri" },
+    "imageAlt": { "type": "string", "minLength": 5 },
+    "subsite": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "subsiteUrl": { "type": "string", "format": "uri" },
+    "inStock": { "type": "boolean", "default": true },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "version": { "type": "integer", "default": 1 }
+  }
+}
