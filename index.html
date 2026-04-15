@@ -761,6 +761,62 @@ header { flex-direction: row !important; padding: 10px 15px !important; align-it
 .join-hive-btn { font-size: 0.75rem !important; padding: 6px 12px !important; height: auto; white-space: nowrap; }
 .hamburger-menu { display: none !important; }
 }
+/* ==========================================
+📱 RESPONSIVE LOGOS & IMAGES
+========================================== */
+/* 1. Global responsive base for all images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 2. Header & Footer Logos */
+.logo img, .footer-logo img {
+  width: auto !important;
+  max-width: 150px;
+  height: auto !important;
+  object-fit: contain;
+}
+
+/* 3. Business Card Images */
+.block img {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* 4. Service/Professional Profile Avatars */
+.profile-picture {
+  width: 80px !important;
+  height: 80px !important;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+/* 5. AI Chat & Modal Avatars */
+.ai-chat-avatar img, .msg-avatar img, .ai-avatar img {
+  width: 100% !important;
+  max-width: 45px;
+  height: auto !important;
+  object-fit: contain;
+}
+
+/* 6. Mobile & Tablet Adjustments */
+@media (max-width: 768px) {
+  .logo img { max-width: 40px !important; }
+  .footer-logo img { max-width: 90px !important; }
+  .profile-picture { width: 70px !important; height: 70px !important; }
+  .ai-chat-avatar img, .msg-avatar img { max-width: 35px !important; }
+}
+
+@media (max-width: 480px) {
+  .logo img { max-width: 35px !important; }
+  .footer-logo img { max-width: 75px !important; }
+  .profile-picture { width: 60px !important; height: 60px !important; }
+  .block img { aspect-ratio: 16 / 9; } /* Wider crop for very small screens */
+}
 </style>
 </head>
 
