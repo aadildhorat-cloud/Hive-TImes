@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dainty Delicacies</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Delectable Dippers</title>
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- Swiper CSS -->
@@ -23,6 +23,7 @@ body {
     color: #5D4E37;
     line-height: 1.6;
     background-color: #FAF7F2;
+    -webkit-text-size-adjust: 100%;
 }
 
 /* === COLOR VARIABLES === */
@@ -214,6 +215,7 @@ header {
     font-weight: 500;
     transition: all 0.3s ease;
     cursor: pointer;
+    min-height: 44px;
 }
 .menu-link:hover {
     background: #F8E8E8;
@@ -366,6 +368,10 @@ header {
     transition: all 0.3s ease;
     width: 100%;
     box-shadow: 0 4px 10px rgba(201, 176, 55, 0.3);
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .add-to-cart-btn:hover {
     transform: translateY(-2px);
@@ -531,6 +537,7 @@ header {
     font-size: 20px;
     border: none;
     z-index: 10;
+    min-height: 44px;
 }
 .product-modal-content {
     display: flex;
@@ -594,6 +601,7 @@ header {
     justify-content: center;
     transition: all 0.3s ease;
     color: #C9B037;
+    min-height: 44px;
 }
 .quantity-btn:hover {
     background-color: #C9B037;
@@ -618,6 +626,7 @@ header {
     width: 100%;
     margin-top: 10px;
     box-shadow: 0 4px 15px rgba(201, 176, 55, 0.4);
+    min-height: 44px;
 }
 .add-to-cart-modal-btn:hover {
     transform: translateY(-2px);
@@ -717,6 +726,7 @@ header {
     justify-content: center;
     transition: all 0.3s ease;
     color: #C9B037;
+    min-height: 44px;
 }
 .cart-quantity-btn:hover {
     background-color: #C9B037;
@@ -737,6 +747,7 @@ header {
     cursor: pointer;
     font-size: 14px;
     transition: all 0.3s ease;
+    min-height: 44px;
 }
 .remove-item-btn:hover {
     background-color: #c0392b;
@@ -765,6 +776,7 @@ header {
     width: 100%;
     margin-top: 10px;
     box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    min-height: 44px;
 }
 .checkout-btn:hover {
     transform: translateY(-2px);
@@ -782,6 +794,7 @@ header {
     transition: all 0.3s ease;
     margin-top: 20px;
     width: 100%;
+    min-height: 44px;
 }
 .close-cart-btn:hover {
     background-color: #D4AF37;
@@ -811,6 +824,7 @@ header {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     border: none;
+    min-height: 44px;
 }
 .float-btn:hover {
     transform: scale(1.1);
@@ -864,6 +878,7 @@ footer {
     transition: all 0.3s ease;
     text-decoration: none;
     border: 2px solid #C9B037;
+    min-height: 44px;
 }
 .social-link:hover {
     background-color: #C9B037;
@@ -909,6 +924,7 @@ footer {
     z-index: 100;
     transition: all 0.3s ease;
     border: 3px solid #C9B037;
+    min-height: 44px;
 }
 .ai-chat-widget:hover {
     transform: scale(1.1);
@@ -982,6 +998,7 @@ footer {
     justify-content: center;
     border-radius: 50%;
     transition: background 0.3s;
+    min-height: 44px;
 }
 #aiCloseBtn:hover {
     background: rgba(255,255,255,0.2);
@@ -1033,6 +1050,7 @@ footer {
     outline: none;
     font-family: 'Poppins', sans-serif;
     font-size: 1rem;
+    min-height: 44px;
 }
 #aiSendBtn {
     background: linear-gradient(135deg, #C9B037, #D4AF37);
@@ -1046,12 +1064,13 @@ footer {
     align-items: center;
     justify-content: center;
     transition: all 0.3s;
+    min-height: 44px;
 }
 #aiSendBtn:hover {
     transform: scale(1.05);
 }
 
-/* === RESPONSIVE DESIGN === */
+/* === RESPONSIVE DESIGN - MOBILE 2-PRODUCT GRID === */
 @media (max-width: 768px) {
     .header-top-row {
         padding: 8px 12px;
@@ -1072,23 +1091,163 @@ footer {
         left: -280px;
     }
     .business-hero-title { font-size: 2.5rem; }
+    
+    /* === MOBILE 2-COLUMN PRODUCT GRID === */
+@media (max-width: 768px) {
+    .products-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+        padding: 0 10px !important;
+        justify-content: center !important;
+    }
+    
+    .product-card {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        min-width: 0 !important;
+        border-radius: 12px !important;
+    }
+    
+    .product-image {
+        height: 130px !important;
+        object-fit: cover !important;
+        width: 100% !important;
+    }
+    
+    .product-info {
+        padding: 10px 8px !important;
+    }
+    
+   
+.product-name {
+    font-size: 13px !important;
+    min-height: 36px !important;
+    line-height: 1.2 !important;
+    margin-bottom: 5px !important;
+    display: -webkit-box !important;
+    line-clamp: 2 !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
 }
 
+.product-description {
+    font-size: 10px !important;
+    min-height: 28px !important;
+    margin-bottom: 6px !important;
+    display: -webkit-box !important;
+    line-clamp: 2 !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    color: #666 !important;
+}
+
+    
+    .product-price {
+        font-size: 16px !important;
+        margin-bottom: 8px !important;
+        font-weight: 700 !important;
+    }
+    
+    .add-to-cart-btn {
+        padding: 8px 10px !important;
+        font-size: 11px !important;
+        border-radius: 18px !important;
+        min-height: 36px !important;
+    }
+}
+
+/* === EXTRA SMALL SCREENS (under 360px) === */
+@media (max-width: 360px) {
+    .products-grid {
+        gap: 8px !important;
+        padding: 0 8px !important;
+    }
+    
+    .product-image {
+        height: 110px !important;
+    }
+    
+    .product-name {
+        font-size: 12px !important;
+        min-height: 32px !important;
+    }
+    
+    .product-description {
+        font-size: 9px !important;
+        min-height: 24px !important;
+    }
+    
+    .product-price {
+        font-size: 15px !important;
+    }
+    
+    .add-to-cart-btn {
+        padding: 6px 8px !important;
+        font-size: 10px !important;
+    }
+}
+
+/* === REMOVE CONFLICTING FLEX STYLES ON MOBILE === */
+@media (max-width: 768px) {
+    .products-grid {
+        flex-wrap: unset !important;
+        justify-content: unset !important;
+    }
+    
+    .product-card {
+        flex: unset !important;
+        max-width: unset !important;
+    }
+}
+
+/* === MOBILE HEADER REFLOW === */
 @media (max-width: 576px) {
+    .header-top-row {
+        padding: 8px 12px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
     .logo-container {
-        flex-direction: column;
-        gap: 4px;
+        order: 2;
+        width: 100%;
+        justify-content: center;
+        margin: 8px 0;
     }
+    
     .logo {
-        font-size: 20px;
+        font-size: 22px;
     }
+    
     .logo-img {
-        height: 60px;
+        height: 55px;
     }
-    .side-menu {
-        width: 75%;
-        left: -75%;
+    
+    .hamburger-btn {
+        order: 1;
+        margin-right: 0;
     }
+    
+    .cart-btn {
+        order: 3;
+        margin-left: 0;
+        font-size: 13px;
+        padding: 8px 14px;
+        min-width: auto;
+    }
+    
+    /* Hive Badge Mobile Adjustments */
+    .hive-badge-link {
+        order: 4;
+        width: 100%;
+        justify-content: center;
+        margin-top: 5px;
+    }
+    
     .business-info-grid {
         grid-template-columns: 1fr;
     }
@@ -1098,22 +1257,6 @@ footer {
     .products-grid {
         justify-content: space-between;
         gap: 15px;
-    }
-    .product-card {
-        flex: 1 1 calc(50% - 6px);
-        max-width: calc(50% - 6px);
-        margin: 0;
-        min-width: 0;
-    }
-    .product-info {
-        padding: 15px;
-    }
-    .product-name {
-        font-size: 16px;
-        min-height: auto;
-    }
-    .product-price {
-        font-size: 20px;
     }
     .main-product-image {
         height: 300px;
@@ -1144,20 +1287,19 @@ footer {
         </button>
 
         <div class="logo-container">
-            <img src="images-logo/daintydelicacies-logo.jpg" alt="Dainty Delicacies Logo" class="logo-img">
-            <div class="logo">Dainty Delicacies</div>
+            <img src="images-logo/daintydelicacies-logo.jpg" alt="Delectable Dippers Logo" class="logo-img">
+            <div class="logo">Delectable Dippers</div>
         </div>
         
         <!-- START HIVE TIMES BADGE (YELLOW EDITION) -->
 <style>
-  /* Badge Container */
   .hive-badge-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: #FFD700; /* Bright Honey Yellow */
-    border: 2px solid #E5C100; /* Slightly darker yellow border */
-    border-radius: 50px; /* Pill shape */
+    background-color: #FFD700;
+    border: 2px solid #E5C100;
+    border-radius: 50px;
     padding: 6px 14px;
     text-decoration: none;
     transition: all 0.3s ease;
@@ -1167,32 +1309,28 @@ footer {
     overflow: hidden;
   }
 
-  /* The Honeycomb Icon (SVG) */
   .hive-icon-svg {
     width: 18px;
     height: 18px;
-    fill: #000000; /* Black icon for contrast against yellow */
+    fill: #000000;
     margin-right: 8px;
     transition: transform 0.3s ease;
   }
 
-  /* Text Container */
   .hive-text-group {
     display: flex;
     flex-direction: column;
     line-height: 1.1;
   }
 
-  /* Main Text */
   .hive-text {
-    color: #000000; /* Black text for readability */
+    color: #000000;
     font-size: 13px;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
   
-  /* Sub Text */
   .hive-subtext {
     font-size: 9px;
     font-weight: 600;
@@ -1200,19 +1338,17 @@ footer {
     text-transform: uppercase;
   }
 
-  /* Hover Effects */
   .hive-badge-link:hover {
-    background-color: #E5C100; /* Darker yellow on hover */
+    background-color: #E5C100;
     border-color: #C9A900;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   }
 
   .hive-badge-link:hover .hive-icon-svg {
-    transform: scale(1.1); /* Icon grows slightly */
+    transform: scale(1.1);
   }
 
-  /* Mobile Adjustments */
   @media (max-width: 480px) {
     .hive-badge-link {
       padding: 5px 10px;
@@ -1227,25 +1363,19 @@ footer {
     }
     .hive-subtext {
       font-size: 8px;
-      /* Keep subtext on mobile but ensure it fits */
     }
   }
 </style>
 
-<!-- The Link -->
 <a href="https://hivetimes.co.za" class="hive-badge-link" target="_blank" rel="noopener" title="Visit Hive Times">
-  
-  <!-- Honeycomb SVG Icon -->
   <svg class="hive-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     <path d="M12 2L14.5 6.5L19 6.5L16.5 11L19 15.5L14.5 15.5L12 20L9.5 15.5L5 15.5L7.5 11L5 6.5L9.5 6.5L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
     <path d="M12 7L13.5 9.5L16 9.5L14.5 12L16 14.5L13.5 14.5L12 17L10.5 14.5L8 14.5L9.5 12L8 9.5L10.5 9.5L12 7Z" fill="currentColor"/>
   </svg>
-
   <div class="hive-text-group">
     <span class="hive-text">HIVE</span>
     <span class="hive-subtext">Member</span>
   </div>
-
 </a>
 <!-- END HIVE TIMES BADGE -->
 
@@ -1260,8 +1390,8 @@ footer {
 <!-- Side Menu -->
 <nav class="side-menu" id="sideMenu">
     <div class="menu-header">
-        <img src="images-logo/daintydelicacies-logo.jpg" alt="Dainty Delicacies Logo">
-        <h2>Dainty Delicacies</h2>
+        <img src="images-logo/daintydelicacies-logo.jpg" alt="Delectable Dippers Logo">
+        <h2>Delectable Dippers</h2>
     </div>
     <div class="menu-items">
         <div class="menu-item">
@@ -1270,34 +1400,34 @@ footer {
             </a>
         </div>
         <div class="menu-item">
-            <a href="#mini-cakes" class="menu-link" onclick="scrollToSection('mini-cakes')">
-                <span><i class="fas fa-cake-candles"></i> Mini Cakes</span>
+            <a href="#biscuits" class="menu-link" onclick="scrollToSection('biscuits')">
+                <span><i class="fas fa-cookie"></i> Biscuits</span>
             </a>
         </div>
         <div class="menu-item">
-            <a href="#mini-bundts" class="menu-link" onclick="scrollToSection('mini-bundts')">
-                <span><i class="fas fa-cookie-bite"></i> Mini Bundts</span>
+            <a href="#milktarts" class="menu-link" onclick="scrollToSection('milktarts')">
+                <span><i class="fas fa-cheese"></i> Milktarts</span>
             </a>
         </div>
         <div class="menu-item">
-            <a href="#mini-logs" class="menu-link" onclick="scrollToSection('mini-logs')">
-                <span><i class="fas fa-candy-cane"></i> Mini Logs</span>
+            <a href="#specialty" class="menu-link" onclick="scrollToSection('specialty')">
+                <span><i class="fas fa-star"></i> Specialty Items</span>
             </a>
         </div>
         <div class="menu-item">
-            <a href="#promo-boxes" class="menu-link" onclick="scrollToSection('promo-boxes')">
-                <span><i class="fas fa-box-open"></i> Promo Boxes</span>
+            <a href="#cupcakes" class="menu-link" onclick="scrollToSection('cupcakes')">
+                <span><i class="fas fa-cake-candles"></i> Cupcakes</span>
             </a>
         </div>
     </div>
     <div class="menu-footer">
         <div class="contact-info">
-            <p><i class="fas fa-phone"></i> 084 096 7930</p>
-            <p><i class="fab fa-instagram"></i> @daintydelicacies</p>
+            <p><i class="fas fa-phone"></i> 072 298 1189</p>
+            <p><i class="fas fa-map-marker-alt"></i> Trichardt, South Africa</p>
         </div>
         <div class="social-links">
-            <a href="https://wa.me/27840967930" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://instagram.com/daintydelicacies" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/27722981189" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://instagram.com/delectabledippers" title="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
     </div>
 </nav>
@@ -1310,27 +1440,29 @@ footer {
         </button>
         <div class="business-modal-content">
             <div class="business-hero">
-                <img src="images-logo/daintydelicacies-logo.jpg" alt="Dainty Delicacies Logo" class="business-hero-logo">
-                <h1 class="business-hero-title">Dainty Delicacies</h1>
+                <img src="images-logo/daintydelicacies-logo.jpg" alt="Delectable Dippers Logo" class="business-hero-logo">
+                <h1 class="business-hero-title">Delectable Dippers</h1>
             </div>
             <div class="business-info-grid">
                 <section class="business-section">
                     <h2><i class="fas fa-info-circle"></i> About Us</h2>
-                    <p>Welcome to Dainty Delicacies, where we craft exquisite mini cakes, bundts, and logs with love and precision. Each treat is made with premium ingredients to bring sweetness to your special moments.</p>
+                    <p>Welcome to Delectable Dippers, your home for freshly baked biscuits, milktarts, cupcakes, and specialty treats. Based in Trichardt, we take pride in creating delicious, homemade baked goods for all your occasions. Special requests welcome!</p>
+                    <p style="margin-top:10px;font-weight:600;color:#C9B037;">⚠️ Please place orders 2 days in advance</p>
                 </section>
                 <section class="business-section">
                     <h2><i class="fas fa-clock"></i> Opening Hours</h2>
                     <ul>
-                        <li>Monday – Friday: 08:00 – 18:00</li>
-                        <li>Saturday: 08:00 – 16:00</li>
-                        <li>Sunday: 09:00 – 14:00</li>
+                        <li>Monday – Friday: 08:00 – 17:00</li>
+                        <li>Saturday: 08:00 – 14:00</li>
+                        <li>Sunday: Closed</li>
                     </ul>
-                    <h3 style="margin-top: 15px;"><i class="fas fa-phone"></i> 084 096 7930</h3>
-                    <p><i class="fab fa-instagram"></i> @daintydelicacies</p>
+                    <h3 style="margin-top: 15px;"><i class="fas fa-user"></i> Contact Naazneen</h3>
+                    <p><i class="fas fa-phone"></i> 072 298 1189</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Trichardt, South Africa</p>
                 </section>
                 <section class="business-section">
-                    <h2><i class="fas fa-truck"></i> Delivery</h2>
-                    <p>We offer delivery services for all orders. Contact us via WhatsApp to arrange delivery or collection. Bulk orders and special requests are welcome!</p>
+                    <h2><i class="fas fa-truck"></i> Find Us</h2>
+                    <p>We're located in Trichardt, South Africa. Contact us via WhatsApp for delivery arrangements or collection details. We're happy to help with bulk orders and special occasions!</p>
                 </section>
             </div>
         </div>
@@ -1339,150 +1471,182 @@ footer {
 
 <!-- PRODUCT SECTIONS -->
 <div class="content-section">
-    <h2 id="mini-cakes" class="section-title">Mini Cakes</h2>
+    <h2 id="biscuits" class="section-title">Freshly Baked Biscuits</h2>
+    <p style="text-align:center;color:#888;margin-bottom:20px;font-size:14px;">All biscuits: R90 per tub</p>
     <div class="products-grid">
-        <div class="product-card" data-id="choc-vanilla-mini-1" data-category="mini-cakes" data-price="19.00">
-            <img src="images/chocolate-vanilla-mini.jpg" alt="Chocolate & Vanilla Mini Cakes" class="product-image">
+        <div class="product-card" data-id="choc-chip-1" data-category="biscuits" data-price="90.00">
+            <img src="images/choc-chip.jpg" alt="Choc Chip Cookies" class="product-image">
             <div class="product-info">
-                <div class="product-name">Chocolate & Vanilla Mini Cakes</div>
-                <div class="product-description">Delicious combination of chocolate and vanilla flavors</div>
-                <div class="product-price">R19.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'choc-vanilla-mini-1', name: 'Chocolate & Vanilla Mini Cakes', price: 19.00, quantity: 1, image: 'images/chocolate-vanilla-mini.jpg', businessName: 'Dainty Delicacies', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
+                <div class="product-name">Choc Chip Cookies</div>
+                <div class="product-description">Classic chocolate chip cookies</div>
+                <div class="product-price">R90.00</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'choc-chip-1', name: 'Choc Chip Cookies', price: 90.00, quantity: 1, image: 'images/choc-chip.jpg', businessName: 'Delectable Dippers', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
             </div>
         </div>
 
-        <div class="product-card" data-id="mini-carrot-1" data-category="mini-cakes" data-price="17.00">
-            <img src="images/mini-carrot-cakes.jpg" alt="Mini Carrot Cakes" class="product-image">
+        <div class="product-card" data-id="ginger-1" data-category="biscuits" data-price="90.00">
+            <img src="images/ginger.jpg" alt="Ginger Biscuits" class="product-image">
             <div class="product-info">
-                <div class="product-name">Mini Carrot Cakes</div>
-                <div class="product-description">Moist carrot cake with cream cheese frosting</div>
-                <div class="product-price">R17.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'mini-carrot-1', name: 'Mini Carrot Cakes', price: 17.00, quantity: 1, image: 'images/mini-carrot-cakes.jpg', businessName: 'Dainty Delicacies', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
+                <div class="product-name">Ginger Biscuits</div>
+                <div class="product-description">Spicy ginger flavored biscuits</div>
+                <div class="product-price">R90.00</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'ginger-1', name: 'Ginger Biscuits', price: 90.00, quantity: 1, image: 'images/ginger.jpg', businessName: 'Delectable Dippers', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
             </div>
         </div>
 
-        <div class="product-card" data-id="sweetie-pie-1" data-category="mini-cakes" data-price="18.00">
-            <img src="images/sweetie-pie-cupcakes.jpg" alt="Sweetie Pie Cupcakes" class="product-image">
+        <div class="product-card" data-id="royal-creams-1" data-category="biscuits" data-price="90.00">
+            <img src="images/royal-creams.jpg" alt="Royal Creams" class="product-image">
             <div class="product-info">
-                <div class="product-name">Sweetie Pie Cupcakes</div>
-                <div class="product-description">Adorable cupcakes topped with sweet decorations</div>
-                <div class="product-price">R18.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'sweetie-pie-1', name: 'Sweetie Pie Cupcakes', price: 18.00, quantity: 1, image: 'images/sweetie-pie-cupcakes.jpg', businessName: 'Dainty Delicacies', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
+                <div class="product-name">Royal Creams</div>
+                <div class="product-description">Buttery sandwich cookies</div>
+                <div class="product-price">R90.00</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'royal-creams-1', name: 'Royal Creams', price: 90.00, quantity: 1, image: 'images/royal-creams.jpg', businessName: 'Delectable Dippers', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
             </div>
         </div>
 
-        <div class="product-card" data-id="choc-vanilla-drips-1" data-category="mini-cakes" data-price="17.00">
-            <img src="images/chocolate-vanilla-drips.jpg" alt="Chocolate & Vanilla Drips" class="product-image">
+        <div class="product-card" data-id="romany-1" data-category="biscuits" data-price="90.00">
+            <img src="images/romany.jpg" alt="Romany Creams" class="product-image">
             <div class="product-info">
-                <div class="product-name">Chocolate & Vanilla Drips</div>
-                <div class="product-description">Beautiful drip cakes in chocolate and vanilla</div>
-                <div class="product-price">R17.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'choc-vanilla-drips-1', name: 'Chocolate & Vanilla Drips', price: 17.00, quantity: 1, image: 'images/chocolate-vanilla-drips.jpg', businessName: 'Dainty Delicacies', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
+                <div class="product-name">Romany Creams</div>
+                <div class="product-description">Chocolate dipped butter biscuits</div>
+                <div class="product-price">R90.00</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'romany-1', name: 'Romany Creams', price: 90.00, quantity: 1, image: 'images/romany.jpg', businessName: 'Delectable Dippers', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
             </div>
         </div>
 
-        <div class="product-card" data-id="choc-peanut-drips-1" data-category="mini-cakes" data-price="17.00">
-            <img src="images/chocolate-peanut-drips.jpg" alt="Chocolate Peanut Drips" class="product-image">
+        <div class="product-card" data-id="muska-1" data-category="biscuits" data-price="90.00">
+            <img src="images/muska.jpg" alt="Muska Biscuits" class="product-image">
             <div class="product-info">
-                <div class="product-name">Chocolate Peanut Drips</div>
-                <div class="product-description">Rich chocolate with peanut butter drip topping</div>
-                <div class="product-price">R17.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'choc-peanut-drips-1', name: 'Chocolate Peanut Drips', price: 17.00, quantity: 1, image: 'images/chocolate-peanut-drips.jpg', businessName: 'Dainty Delicacies', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
+                <div class="product-name">Muska Biscuits</div>
+                <div class="product-description">Traditional spiced biscuits</div>
+                <div class="product-price">R90.00</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'muska-1', name: 'Muska Biscuits', price: 90.00, quantity: 1, image: 'images/muska.jpg', businessName: 'Delectable Dippers', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-id="custard-choc-1" data-category="biscuits" data-price="90.00">
+            <img src="images/custard-choc.jpg" alt="Custard Biscuits with Chocolate" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Custard Biscuits with Chocolate</div>
+                <div class="product-description">Custard creams with chocolate dip</div>
+                <div class="product-price">R90.00</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'custard-choc-1', name: 'Custard Biscuits with Chocolate', price: 90.00, quantity: 1, image: 'images/custard-choc.jpg', businessName: 'Delectable Dippers', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-id="custard-sprinkles-1" data-category="biscuits" data-price="90.00">
+            <img src="images/custard-sprinkles.jpg" alt="Custard Biscuits with Sprinkles" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Custard Biscuits with Sprinkles</div>
+                <div class="product-description">Fun custard biscuits with colorful sprinkles</div>
+                <div class="product-price">R90.00</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'custard-sprinkles-1', name: 'Custard Biscuits with Sprinkles', price: 90.00, quantity: 1, image: 'images/custard-sprinkles.jpg', businessName: 'Delectable Dippers', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-id="melting-1" data-category="biscuits" data-price="90.00">
+            <img src="images/melting.jpg" alt="Melting Moments" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Melting Moments</div>
+                <div class="product-description">Delicate buttery melt-in-mouth biscuits</div>
+                <div class="product-price">R90.00</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'melting-1', name: 'Melting Moments', price: 90.00, quantity: 1, image: 'images/melting.jpg', businessName: 'Delectable Dippers', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-id="peppermint-1" data-category="biscuits" data-price="90.00">
+            <img src="images/peppermint.jpg" alt="Peppermint Squares" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Peppermint Squares</div>
+                <div class="product-description">Refreshing mint flavored squares</div>
+                <div class="product-price">R90.00</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'peppermint-1', name: 'Peppermint Squares', price: 90.00, quantity: 1, image: 'images/peppermint.jpg', businessName: 'Delectable Dippers', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-id="coffee-1" data-category="biscuits" data-price="90.00">
+            <img src="images/coffee.jpg" alt="Coffee Biscuits" class="product-image">
+            <div class="product-info">
+                <div class="product-name">Coffee Biscuits</div>
+                <div class="product-description">Rich coffee flavored biscuits</div>
+                <div class="product-price">R90.00</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'coffee-1', name: 'Coffee Biscuits', price: 90.00, quantity: 1, image: 'images/coffee.jpg', businessName: 'Delectable Dippers', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
             </div>
         </div>
     </div>
 </div>
 
 <div class="content-section">
-    <h2 id="mini-bundts" class="section-title">Mini Bundts</h2>
+    <h2 id="milktarts" class="section-title">Milktarts</h2>
     <div class="products-grid">
-        <div class="product-card" data-id="choc-vanilla-bundt-nocream-1" data-category="mini-bundts" data-price="16.00">
-            <img src="images/chocolate-vanilla-bundt.jpg" alt="Chocolate & Vanilla Bundts (No Cream)" class="product-image">
+        <div class="product-card" data-id="large-milktart-1" data-category="milktarts" data-price="60.00">
+            <img src="images/large-milktart.jpg" alt="Large Milktart" class="product-image">
             <div class="product-info">
-                <div class="product-name">Chocolate & Vanilla Bundts (No Cream)</div>
-                <div class="product-description">Classic bundt cakes without cream topping</div>
-                <div class="product-price">R16.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'choc-vanilla-bundt-nocream-1', name: 'Chocolate & Vanilla Bundts (No Cream)', price: 16.00, quantity: 1, image: 'images/chocolate-vanilla-bundt.jpg', businessName: 'Dainty Delicacies', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
+                <div class="product-name">Large Milktart</div>
+                <div class="product-description">Traditional homemade milktart</div>
+                <div class="product-price">R60.00</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'large-milktart-1', name: 'Large Milktart', price: 60.00, quantity: 1, image: 'images/large-milktart.jpg', businessName: 'Delectable Dippers', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
             </div>
         </div>
 
-        <div class="product-card" data-id="choc-vanilla-bundt-cream-1" data-category="mini-bundts" data-price="17.00">
-            <img src="images/chocolate-vanilla-bundt-cream.jpg" alt="Chocolate & Vanilla Bundts with Cream" class="product-image">
+        <div class="product-card" data-id="mini-milktart-1" data-category="milktarts" data-price="10.00">
+            <img src="images/mini-milktart.jpg" alt="Mini Milktart" class="product-image">
             <div class="product-info">
-                <div class="product-name">Chocolate & Vanilla Bundts with Cream</div>
-                <div class="product-description">Delicious bundts topped with smooth cream</div>
-                <div class="product-price">R17.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'choc-vanilla-bundt-cream-1', name: 'Chocolate & Vanilla Bundts with Cream', price: 17.00, quantity: 1, image: 'images/chocolate-vanilla-bundt-cream.jpg', businessName: 'Dainty Delicacies', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
-            </div>
-        </div>
-
-        <div class="product-card" data-id="orange-bundt-1" data-category="mini-bundts" data-price="16.00">
-            <img src="images/orange-bundt.jpg" alt="Orange Bundt with Cream Cheese" class="product-image">
-            <div class="product-info">
-                <div class="product-name">Orange Bundt with Cream Cheese</div>
-                <div class="product-description">Zesty orange bundt with cream cheese frosting and pistachio topping</div>
-                <div class="product-price">R16.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'orange-bundt-1', name: 'Orange Bundt with Cream Cheese', price: 16.00, quantity: 1, image: 'images/orange-bundt.jpg', businessName: 'Dainty Delicacies', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
+                <div class="product-name">Mini Milktart</div>
+                <div class="product-description">Individual portion</div>
+                <div class="product-price">R10.00</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'mini-milktart-1', name: 'Mini Milktart', price: 10.00, quantity: 1, image: 'images/mini-milktart.jpg', businessName: 'Delectable Dippers', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
             </div>
         </div>
     </div>
 </div>
 
 <div class="content-section">
-    <h2 id="mini-logs" class="section-title">Mini Logs</h2>
+    <h2 id="specialty" class="section-title">Specialty Items</h2>
     <div class="products-grid">
-        <div class="product-card" data-id="choc-vanilla-logs-simple-1" data-category="mini-logs" data-price="18.00">
-            <img src="images/chocolate-vanilla-logs-simple.jpg" alt="Chocolate & Vanilla Logs - Simple" class="product-image">
+        <div class="product-card" data-id="chevro-1" data-category="specialty" data-price="90.00">
+            <img src="images/chevro.jpg" alt="Chevro Deluxe" class="product-image">
             <div class="product-info">
-                <div class="product-name">Chocolate & Vanilla Logs - Simple</div>
-                <div class="product-description">Only ganache & a strawberry</div>
-                <div class="product-price">R18.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'choc-vanilla-logs-simple-1', name: 'Chocolate & Vanilla Logs - Simple', price: 18.00, quantity: 1, image: 'images/chocolate-vanilla-logs-simple.jpg', businessName: 'Dainty Delicacies', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
+                <div class="product-name">Chevro Deluxe</div>
+                <div class="product-description">With cashews and almonds</div>
+                <div class="product-price">R90.00</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'chevro-1', name: 'Chevro Deluxe', price: 90.00, quantity: 1, image: 'images/chevro.jpg', businessName: 'Delectable Dippers', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
             </div>
         </div>
 
-        <div class="product-card" data-id="choc-vanilla-logs-full-1" data-category="mini-logs" data-price="20.00">
-            <img src="images/chocolate-vanilla-logs-full.jpg" alt="Chocolate & Vanilla Logs - Full" class="product-image">
+        <div class="product-card" data-id="swiss-roll-1" data-category="specialty" data-price="15.00">
+            <img src="images/swiss-roll.jpg" alt="Mini Chocolate Swiss Roll" class="product-image">
             <div class="product-info">
-                <div class="product-name">Chocolate & Vanilla Logs - Full</div>
-                <div class="product-description">With ganache, cream & toppings</div>
-                <div class="product-price">R20.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'choc-vanilla-logs-full-1', name: 'Chocolate & Vanilla Logs - Full', price: 20.00, quantity: 1, image: 'images/chocolate-vanilla-logs-full.jpg', businessName: 'Dainty Delicacies', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
+                <div class="product-name">Mini Chocolate Swiss Roll</div>
+                <div class="product-description">Filled with whipped fresh cream & topped with chocolate ganache</div>
+                <div class="product-price">R15.00</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'swiss-roll-1', name: 'Mini Chocolate Swiss Roll', price: 15.00, quantity: 1, image: 'images/swiss-roll.jpg', businessName: 'Delectable Dippers', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
             </div>
         </div>
     </div>
 </div>
 
 <div class="content-section">
-    <h2 id="promo-boxes" class="section-title">Promo Boxes</h2>
+    <h2 id="cupcakes" class="section-title">Cupcakes</h2>
+    <p style="text-align:center;color:#888;margin-bottom:20px;font-size:14px;">All cupcakes: R200 for 12</p>
     <div class="products-grid">
-        <div class="product-card" data-id="box-6-carrot-1" data-category="promo-boxes" data-price="100.00">
-            <img src="images/box-6-carrot.jpg" alt="Box of 6 Mini Carrot Cakes" class="product-image">
+        <div class="product-card" data-id="choc-cupcakes-1" data-category="cupcakes" data-price="200.00">
+            <img src="images/choc-cupcakes.jpg" alt="Chocolate Cupcakes" class="product-image">
             <div class="product-info">
-                <div class="product-name">Box of 6 Mini Carrot Cakes</div>
-                <div class="product-description">Perfect for small gatherings</div>
-                <div class="product-price">R100.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'box-6-carrot-1', name: 'Box of 6 Mini Carrot Cakes', price: 100.00, quantity: 1, image: 'images/box-6-carrot.jpg', businessName: 'Dainty Delicacies', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
+                <div class="product-name">Chocolate Cupcakes</div>
+                <div class="product-description">With chocolate ganache (12 pack)</div>
+                <div class="product-price">R200.00</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'choc-cupcakes-1', name: 'Chocolate Cupcakes', price: 200.00, quantity: 1, image: 'images/choc-cupcakes.jpg', businessName: 'Delectable Dippers', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
             </div>
         </div>
 
-        <div class="product-card" data-id="box-32-mixed-1" data-category="promo-boxes" data-price="570.00">
-            <img src="images/box-32-mixed.jpg" alt="Box of 32 Mixed Cakes" class="product-image">
+        <div class="product-card" data-id="vanilla-cupcakes-1" data-category="cupcakes" data-price="200.00">
+            <img src="images/vanilla-cupcakes.jpg" alt="Vanilla Cupcakes" class="product-image">
             <div class="product-info">
-                <div class="product-name">Box of 32 Cakes - Mixed</div>
-                <div class="product-description">8 mini cakes, 8 mini bundts, 8 mini logs, 8 mini drips</div>
-                <div class="product-price">R570.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'box-32-mixed-1', name: 'Box of 32 Cakes - Mixed', price: 570.00, quantity: 1, image: 'images/box-32-mixed.jpg', businessName: 'Dainty Delicacies', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
-            </div>
-        </div>
-
-        <div class="product-card" data-id="box-24-mixed-1" data-category="promo-boxes" data-price="420.00">
-            <img src="images/box-24-mixed.jpg" alt="Box of 24 Mixed Cakes" class="product-image">
-            <div class="product-info">
-                <div class="product-name">Box of 24 Cakes - Mixed</div>
-                <div class="product-description">12 mini cakes & 12 mini bundts</div>
-                <div class="product-price">R420.00</div>
-                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'box-24-mixed-1', name: 'Box of 24 Cakes - Mixed', price: 420.00, quantity: 1, image: 'images/box-24-mixed.jpg', businessName: 'Dainty Delicacies', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
+                <div class="product-name">Vanilla Cupcakes</div>
+                <div class="product-description">With vanilla buttercream (12 pack)</div>
+                <div class="product-price">R200.00</div>
+                <button class="add-to-cart-btn" onclick="cart.addToCart({ id: 'vanilla-cupcakes-1', name: 'Vanilla Cupcakes', price: 200.00, quantity: 1, image: 'images/vanilla-cupcakes.jpg', businessName: 'Delectable Dippers', businessLogo: 'images/logo.jpg' })">Add to Cart</button>
             </div>
         </div>
     </div>
@@ -1528,27 +1692,26 @@ footer {
 
 <!-- FLOATING CONTACT BUTTONS -->
 <div class="floating-contact">
-    <button class="float-btn whatsapp-float" onclick="window.open('https://wa.me/27840967930', '_blank')" title="WhatsApp">
+    <button class="float-btn whatsapp-float" onclick="window.open('https://wa.me/27722981189', '_blank')" title="WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </button>
-   
 </div>
 
 <!-- AI CHAT WIDGET -->
 <div class="ai-chat-widget" id="aiChatWidget">
-    <img src="images-logo/bee.jpg" alt="Ask Dainty Delicacies AI">
+    <img src="images-logo/bee.jpg" alt="Ask Delectable Dippers AI">
 </div>
 <div class="ai-chat-panel" id="aiChatPanel">
     <div class="ai-chat-header">
         <div class="ai-avatar-square">
-            <img src="images-logo/bee.jpg" alt="Dainty Delicacies AI">
+            <img src="images-logo/bee.jpg" alt="Delectable Dippers AI">
         </div>
         <h4>Ask Us</h4>
         <button id="aiCloseBtn">×</button>
     </div>
     <div class="ai-chat-messages" id="aiChatMessages">
         <div class="ai-message bot">
-            Hello! 👋 I'm your <strong>Dainty Delicacies</strong> assistant.<br>
+            Hello! 👋 I'm your <strong>Delectable Dippers</strong> assistant.<br>
             You can ask me things like:<br>
             • "What are your opening hours?"<br>
             • "Where are you located?"<br>
@@ -1556,7 +1719,7 @@ footer {
         </div>
     </div>
     <div class="ai-chat-input">
-        <input type="text" id="aiUserInput" placeholder="e.g. tell me about Dainty Delicacies">
+        <input type="text" id="aiUserInput" placeholder="e.g. tell me about Delectable Dippers">
         <button id="aiSendBtn"><i class="fas fa-paper-plane"></i></button>
     </div>
 </div>
@@ -1566,27 +1729,27 @@ footer {
     <div class="footer-container">
         <div class="footer-content">
             <div class="footer-info">
-                <h3>Dainty Delicacies</h3>
-                <p>Exquisite mini cakes and treats made with love</p>
+                <h3>Delectable Dippers</h3>
+                <p>Freshly baked biscuits & delectable treats</p>
                 <div class="social-media">
-                    <a href="https://wa.me/27840967930" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://instagram.com/daintydelicacies" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/27722981189" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://instagram.com/delectabledippers" class="social-link"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div class="footer-links">
                 <h3>Quick Links</h3>
                 <nav class="footer-nav">
                     <ul>
-                        <li><a href="#mini-cakes">Mini Cakes</a></li>
-                        <li><a href="#mini-bundts">Mini Bundts</a></li>
-                        <li><a href="#mini-logs">Mini Logs</a></li>
-                        <li><a href="#promo-boxes">Promo Boxes</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#biscuits">Shop</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="tel:0722981189">Contact</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
         <div class="footer-bottom">
-            &copy; Dainty Delicacies. All rights reserved.
+            &copy; Delectable Dippers. All rights reserved. | Based in Trichardt
         </div>
     </div>
 </footer>
@@ -1597,7 +1760,7 @@ footer {
 // === CART SYSTEM ===
 const cart = {
     items: [],
-    STORAGE_KEY: 'dainty_delicacies_cart_v1',
+    STORAGE_KEY: 'delectable_dippers_cart_v1',
     init() {
         const stored = localStorage.getItem(this.STORAGE_KEY);
         if (stored) {
@@ -1720,7 +1883,7 @@ const allProducts = Array.from(document.querySelectorAll('.product-card')).map(c
     name: card.querySelector('.product-name').textContent,
     price: parseFloat(card.getAttribute('data-price')),
     image: card.querySelector('.product-image').src,
-    description: card.querySelector('.product-description')?.textContent || 'Delicious treat from Dainty Delicacies.',
+    description: card.querySelector('.product-description')?.textContent || 'Delicious treat from Delectable Dippers.',
 }));
 
 function showProductModal(productId) {
@@ -1740,7 +1903,7 @@ function showProductModal(productId) {
             price: product.price,
             quantity: qty,
             image: product.image,
-            businessName: 'Dainty Delicacies',
+            businessName: 'Delectable Dippers',
             businessLogo: 'images/logo.jpg'
         });
         closeProductModal();
@@ -1787,12 +1950,12 @@ function sendCartToWhatsApp() {
         alert("Your cart is empty!");
         return;
     }
-    let msg = "Hi Dainty Delicacies! I'd like to place an order:\n";
+    let msg = "Hi Delectable Dippers! I'd like to place an order:\n";
     cart.items.forEach(item => {
         msg += `• ${item.name} x${item.quantity} — R${(item.price * item.quantity).toFixed(2)}\n`;
     });
     msg += `\nTotal: R${cart.calculateTotal()}\nThank you!`;
-    const url = `https://wa.me/27840967930?text=${encodeURIComponent(msg)}`;
+    const url = `https://wa.me/27722981189?text=${encodeURIComponent(msg)}`;
     window.open(url, '_blank');
 }
 
@@ -1824,20 +1987,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     function getResponse(query) {
         const lower = query.toLowerCase().trim();
-        if (/(where|located|address|find.*you|directions)/.test(lower)) {
-            return "📍 We're located in South Africa. Contact us via WhatsApp for delivery arrangements!";
+        if (/(where|located|address|find.*you|directions|trichardt)/.test(lower)) {
+            return "📍 We're located in <strong>Trichardt, South Africa</strong>. Contact us via WhatsApp for delivery arrangements!";
         }
-        if (/(contact|phone|call|number|reach|whatsapp)/.test(lower)) {
-            return "📞 Call or WhatsApp us at <strong>084 096 7930</strong>!<br>We're happy to help with orders and questions.";
+        if (/(contact|phone|call|number|reach|whatsapp|naazneen)/.test(lower)) {
+            return "📞 Call or WhatsApp <strong>Naazneen</strong> at <strong>072 298 1189</strong>!<br>We're happy to help with orders and questions.";
         }
         if (/(email|gmail|message|write.*you)/.test(lower)) {
-            return "📧 You can reach us via WhatsApp or Instagram @daintydelicacies";
+            return "📧 You can reach us via WhatsApp or Instagram @delectabledippers";
         }
         if (/(open|close|hours|time|when.*open|operating)/.test(lower)) {
             return "🕒 Our opening hours:<br>" +
-            "<strong>Mon–Fri:</strong> 8:00 AM – 6:00 PM<br>" +
-            "<strong>Sat:</strong> 8:00 AM – 4:00 PM<br>" +
-            "<strong>Sun:</strong> 9:00 AM – 2:00 PM";
+            "<strong>Mon–Fri:</strong> 8:00 AM – 5:00 PM<br>" +
+            "<strong>Sat:</strong> 8:00 AM – 2:00 PM<br>" +
+            "<strong>Sun:</strong> Closed";
         }
         if (/(deliver|delivery|ship|nationwide|send|courier)/.test(lower)) {
             return "🚚 Yes! We offer delivery services.<br>Just add items to your cart and click <strong>'Send Order via WhatsApp'</strong> to arrange delivery!";
@@ -1845,25 +2008,26 @@ document.addEventListener('DOMContentLoaded', () => {
         if (/(bulk|wholesale|event|party|wedding|school|discount|large.*order)/.test(lower)) {
             return "🎉 Perfect! We offer special pricing for bulk orders and events.<br>Please contact us via WhatsApp with your quantity needs!";
         }
-        if (/(flavor|flavour|what.*have|options|varieties|menu)/.test(lower)) {
-            return "🍰 We have a variety of delicious treats:<br>" +
-            "• <strong>Mini Cakes:</strong> Chocolate & Vanilla, Carrot, Sweetie Pie, Drips<br>" +
-            "• <strong>Mini Bundts:</strong> Chocolate & Vanilla, Orange with cream cheese<br>" +
-            "• <strong>Mini Logs:</strong> Chocolate & Vanilla with various toppings<br>" +
-            "• <strong>Promo Boxes:</strong> Great value mixed boxes!";
+        if (/(flavor|flavour|what.*have|options|varieties|menu|products)/.test(lower)) {
+            return "🍪 We have a variety of delicious treats:<br>" +
+            "• <strong>Biscuits:</strong> Choc Chip, Ginger, Royal Creams, Romany, Muska, Custard, Melting Moments, Peppermint, Coffee (R90/tub)<br>" +
+            "• <strong>Milktarts:</strong> Large (R60) or Mini (R10)<br>" +
+            "• <strong>Specialty:</strong> Chevro Deluxe, Mini Swiss Rolls<br>" +
+            "• <strong>Cupcakes:</strong> Chocolate or Vanilla (R200/12 pack)";
         }
         if (/(how.*order|place.*order|buy|purchase|checkout)/.test(lower)) {
             return "🛒 Ordering is easy!<br>" +
             "1. Browse products and click <strong>'Add to Cart'</strong><br>" +
             "2. Click the <strong>Cart</strong> button (top right)<br>" +
             "3. Press <strong>'Send Order via WhatsApp'</strong><br>" +
-            "We'll confirm your order right away!";
+            "⚠️ Please place orders 2 days in advance!";
         }
         if (/(price|cost|how much|expensive)/.test(lower)) {
-            return "💰 Our prices range from R16-R20 for individual items.<br>Promo boxes offer great value:<br>" +
-            "• Box of 6: R100<br>" +
-            "• Box of 24: R420<br>" +
-            "• Box of 32: R570";
+            return "💰 Our prices:<br>" +
+            "• Biscuits: R90 per tub<br>" +
+            "• Large Milktart: R60 | Mini: R10<br>" +
+            "• Chevro Deluxe: R90 | Swiss Roll: R15<br>" +
+            "• Cupcakes: R200 for 12 pack";
         }
         return "I can help you with store info, ordering, or product details!<br>Try asking:<br>" +
         "• \"What are your opening hours?\"<br>" +
