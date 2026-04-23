@@ -1,0 +1,3328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Da One Living - Premium Real Estate in Medinah, the City of Peace. Find your dream home near the Haram.">
+    <meta name="keywords" content="Medinah real estate, properties near Haram, Saudi Arabia homes, Islamic properties">
+    <title>Da One Living - Premium Real Estate in Medinah, City of Peace</title>
+    
+    <!-- Preconnect & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           1. CORE VARIABLES & THEME - WHITE & GREEN
+           ========================================= */
+        :root {
+            /* Colors - White & Green Theme */
+            --primary-white: #ffffff;
+            --secondary-white: #f8faf8;
+            --tertiary-white: #e8f5e9;
+            --primary-green: #2E7D32;
+            --light-green: #66BB6A;
+            --deep-green: #388E3C;
+            --accent-green: #4CAF50;
+            --text-dark: #1a1a2e;
+            --text-medium: #2d3748;
+            --text-light: #4a5568;
+            --text-gray: #718096;
+            
+            /* Shadows */
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.15);
+            --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.2);
+            --shadow-glow: 0 0 20px rgba(46, 125, 50, 0.3);
+            
+            /* Glassmorphism */
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(46, 125, 50, 0.2);
+            --glass-hover: rgba(46, 125, 50, 0.08);
+            
+            /* Transitions */
+            --transition-fast: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-normal: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* Spacing & Layout */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 3rem;
+            --spacing-xl: 4rem;
+            --spacing-xxl: 6rem;
+            --container-lg: 1600px;
+            
+            /* Borders */
+            --border-radius-sm: 8px;
+            --border-radius-md: 16px;
+            --border-radius-lg: 24px;
+            --border-radius-xl: 32px;
+            --border-radius-full: 50%;
+        }
+
+        /* =========================================
+           2. RESET & BASE STYLES
+           ========================================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--primary-white), var(--secondary-white));
+            background-attachment: fixed;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* =========================================
+           3. ANIMATIONS
+           ========================================= */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideInRight { from { opacity: 0; transform: translateX(60px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        @keyframes shine { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+        @keyframes kenBurns { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+        @keyframes modalSlideIn { from { opacity: 0; transform: translateY(-60px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes typingDot { 0%, 100% { opacity: 0.4; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.2); } }
+        @keyframes pulseBadge { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+
+        /* =========================================
+           4. HEADER & NAVIGATION
+           ========================================= */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: var(--spacing-sm);
+            transition: var(--transition-normal);
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: var(--container-lg);
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 var(--spacing-md);
+        }
+
+        .header.scrolled {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-md);
+        }
+
+        .header-logo {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            transition: var(--transition-fast);
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+        }
+
+        .header-logo:hover {
+            transform: scale(1.08);
+            filter: drop-shadow(0 6px 20px rgba(46, 125, 50, 0.4));
+        }
+
+        /* Hamburger Menu */
+        .hamburger-menu {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            width: 40px;
+            height: 35px;
+            justify-content: space-between;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .hamburger-menu span {
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(45deg, var(--primary-green), var(--light-green));
+            border-radius: 2px;
+            transition: var(--transition-fast);
+            box-shadow: 0 2px 8px rgba(46, 125, 50, 0.3);
+        }
+
+        .hamburger-menu.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
+        .hamburger-menu.active span:nth-child(2) { opacity: 0; width: 0; }
+        .hamburger-menu.active span:nth-child(3) { transform: rotate(-45deg) translate(8px, -8px); }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 248, 0.98));
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-normal);
+        }
+
+        .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            max-width: 400px;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-white), var(--secondary-white));
+            padding: var(--spacing-lg) var(--spacing-md);
+            z-index: 1000;
+            transform: translateX(100%);
+            transition: var(--transition-normal);
+            box-shadow: -8px 0 40px rgba(0, 0, 0, 0.15);
+            overflow-y: auto;
+            border-left: 1px solid var(--glass-border);
+        }
+
+        .mobile-menu.active { transform: translateX(0); }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-xl);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            color: var(--text-dark);
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: var(--transition-fast);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu-close:hover {
+            color: var(--primary-green);
+            transform: rotate(90deg);
+            background: var(--tertiary-white);
+        }
+
+        .mobile-menu .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            letter-spacing: 1px;
+        }
+
+        .mobile-menu .logo span {
+            color: var(--primary-green);
+            background: linear-gradient(45deg, var(--primary-green), var(--light-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .mobile-nav-menu { list-style: none; margin-top: var(--spacing-lg); }
+
+        .mobile-nav-menu li {
+            margin-bottom: var(--spacing-md);
+            opacity: 0;
+            transform: translateX(40px);
+            animation: slideInRight 0.5s ease forwards;
+        }
+
+        .mobile-nav-menu li:nth-child(1) { animation-delay: 0.1s; }
+        .mobile-nav-menu li:nth-child(2) { animation-delay: 0.2s; }
+        .mobile-nav-menu li:nth-child(3) { animation-delay: 0.3s; }
+        .mobile-nav-menu li:nth-child(4) { animation-delay: 0.4s; }
+
+        .mobile-nav-menu a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm) 0;
+            transition: var(--transition-fast);
+            position: relative;
+        }
+
+        .mobile-nav-menu a:hover {
+            color: var(--primary-green);
+            transform: translateX(8px);
+        }
+
+        .mobile-nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, var(--primary-green), var(--light-green));
+            transition: var(--transition-fast);
+        }
+
+        .mobile-nav-menu a:hover::after { width: 40px; }
+
+        .mobile-nav-menu a i {
+            color: var(--primary-green);
+            width: 25px;
+        }
+
+        .mobile-cta-button {
+            display: block;
+            width: 100%;
+            background: linear-gradient(45deg, var(--primary-green), var(--light-green));
+            color: white;
+            padding: 1.2rem;
+            border: none;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: var(--spacing-lg);
+            text-align: center;
+            transition: var(--transition-fast);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .mobile-cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(46, 125, 50, 0.6);
+            background: linear-gradient(45deg, var(--light-green), #2E7D32);
+        }
+
+        .mobile-menu-social {
+            margin-top: var(--spacing-xl);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .mobile-menu-social h4 {
+            font-size: 1rem;
+            color: var(--text-gray);
+            margin-bottom: var(--spacing-sm);
+            font-weight: 500;
+        }
+
+        .mobile-social-icons { display: flex; gap: var(--spacing-sm); }
+
+        .mobile-social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: var(--tertiary-white);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius-full);
+            color: var(--primary-green);
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+
+        .mobile-social-icons a:hover {
+            background: linear-gradient(45deg, var(--primary-green), var(--light-green));
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: var(--shadow-glow);
+            color: white;
+        }
+
+        /* =========================================
+           5. HERO SECTION
+           ========================================= */
+        .hero-slider {
+            height: 100vh;
+            min-height: 700px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: kenBurns 12s ease-in-out infinite;
+        }
+
+        .slide:nth-child(2) { animation-delay: 4s; }
+        .slide:nth-child(3) { animation-delay: 8s; }
+        .slide.active { opacity: 1; z-index: 10; }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(46, 125, 50, 0.2));
+        }
+
+        .slide-content {
+            position: relative;
+            text-align: center;
+            color: var(--primary-white);
+            max-width: 900px;
+            padding: var(--spacing-xl);
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+        }
+
+        .slide-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: var(--spacing-md);
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            line-height: 1.2;
+            background: linear-gradient(45deg, var(--primary-white), var(--light-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .slide-content p {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            margin-bottom: var(--spacing-lg);
+            opacity: 0.95;
+            font-weight: 300;
+            line-height: 1.6;
+            color: var(--primary-white);
+        }
+
+        .slide-buttons { display: flex; gap: var(--spacing-sm); justify-content: center; flex-wrap: wrap; }
+
+        /* =========================================
+           6. AI SEARCH & FILTERS
+           ========================================= */
+        .filter-bar {
+            padding: var(--spacing-xl) var(--spacing-md);
+            background: linear-gradient(135deg, var(--tertiary-white), var(--secondary-white));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-bar::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(46, 125, 50, 0.08) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .ai-search-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius-xl);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+            position: relative;
+            z-index: 2;
+        }
+
+        .ai-message {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .ai-avatar {
+            width: 100px;
+            height: 100px;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .ai-avatar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-green), var(--light-green));
+            border-radius: var(--border-radius-full);
+            animation: pulse 2s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        .ai-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--border-radius-full);
+            border: 3px solid var(--primary-white);
+            box-shadow: var(--shadow-md);
+            aspect-ratio: 1 / 1;
+        }
+
+        .ai-text {
+            background: linear-gradient(135deg, var(--tertiary-white), var(--secondary-white));
+            color: var(--text-dark);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-lg);
+            font-size: 1.1rem;
+            box-shadow: var(--shadow-sm);
+            font-weight: 500;
+            line-height: 1.6;
+            border-left: 4px solid var(--primary-green);
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-text::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(46, 125, 50, 0.08), transparent);
+            transform: translateX(-100%);
+            animation: shine 3s ease-in-out infinite;
+        }
+
+        .ai-text strong { color: var(--primary-green); font-weight: 700; }
+
+        .text-search-bar input {
+            width: 100%;
+            padding: 16px 24px;
+            border: 2px solid var(--glass-border);
+            border-radius: 50px;
+            font-size: 1.05rem;
+            font-family: 'Montserrat', sans-serif;
+            background: var(--primary-white);
+            color: var(--text-dark);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-fast);
+        }
+
+        .text-search-bar input::placeholder { color: var(--text-gray); }
+
+        .text-search-bar input:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .ai-options { display: flex; flex-wrap: wrap; gap: var(--spacing-sm); margin-top: var(--spacing-sm); }
+
+        .ai-option-btn {
+            flex: 1;
+            min-width: 140px;
+            padding: 16px 20px;
+            border: 2px solid var(--glass-border);
+            border-radius: var(--border-radius-md);
+            background: var(--primary-white);
+            color: var(--text-dark);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-option-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(46, 125, 50, 0.08), rgba(46, 125, 50, 0.15));
+            transition: var(--transition-fast);
+            z-index: -1;
+        }
+
+        .ai-option-btn:hover::before { width: 100%; }
+
+        .ai-option-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            background: var(--tertiary-white);
+            border-color: var(--primary-green);
+        }
+
+        .ai-option-btn.selected {
+            background: linear-gradient(135deg, var(--primary-green), var(--light-green));
+            color: var(--primary-white);
+            border-color: var(--primary-green);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .ai-back-btn {
+            background: var(--tertiary-white);
+            color: var(--primary-green);
+            border: 2px solid var(--glass-border);
+            border-radius: var(--border-radius-md);
+            padding: 10px 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: none;
+            align-self: flex-start;
+            transition: var(--transition-fast);
+            box-shadow: var(--shadow-sm);
+            margin-top: var(--spacing-sm);
+        }
+
+        .ai-back-btn:hover {
+            background: linear-gradient(135deg, var(--primary-green), var(--light-green));
+            border-color: var(--primary-green);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+            color: var(--primary-white);
+        }
+
+        .ai-back-btn i { margin-right: 8px; }
+
+        /* =========================================
+           7. PROPERTY GRID
+           ========================================= */
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: var(--spacing-lg);
+            max-width: var(--container-lg);
+            margin: var(--spacing-xxl) auto;
+            padding: 0 var(--spacing-md);
+            grid-auto-rows: 1fr;
+        }
+
+        .property-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-normal);
+            cursor: pointer;
+            position: relative;
+            border: 1px solid var(--glass-border);
+            min-height: 480px;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .property-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent, rgba(46, 125, 50, 0.05));
+            opacity: 0;
+            transition: var(--transition-normal);
+            z-index: 1;
+        }
+
+        .property-card:hover::before { opacity: 1; }
+
+        .property-card:nth-child(1) { --delay: 1; }
+        .property-card:nth-child(2) { --delay: 2; }
+        .property-card:nth-child(3) { --delay: 3; }
+        .property-card:nth-child(4) { --delay: 4; }
+
+        .property-card:hover {
+            transform: translateY(-15px) perspective(1000px) rotateX(5deg);
+            box-shadow: var(--shadow-xl), var(--shadow-glow);
+            border-color: var(--primary-green);
+            z-index: 10;
+        }
+
+        .property-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: var(--transition-normal);
+            flex-shrink: 0;
+        }
+
+        .property-card:hover img {
+            transform: scale(1.1) rotate(2deg);
+            filter: brightness(1.05);
+        }
+
+        .property-badge {
+            position: absolute;
+            top: var(--spacing-sm);
+            right: var(--spacing-sm);
+            background: linear-gradient(45deg, var(--primary-green), var(--light-green));
+            color: var(--primary-white);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            z-index: 2;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: var(--shadow-sm);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .badge-featured { background: linear-gradient(45deg, var(--primary-green), var(--light-green)); }
+        .badge-new { background: linear-gradient(45deg, var(--deep-green), var(--primary-green)); }
+        .badge-hot { background: linear-gradient(45deg, #e74c3c, #c0392b); }
+        .badge-premium { background: linear-gradient(45deg, var(--primary-green), var(--light-green)); }
+
+        .property-info {
+            padding: var(--spacing-md);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .property-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-dark);
+            line-height: 1.3;
+            font-weight: 700;
+        }
+
+        .property-card p {
+            color: var(--text-gray);
+            margin-bottom: var(--spacing-md);
+            line-height: 1.7;
+            font-size: 0.95rem;
+            flex-grow: 1;
+            font-weight: 300;
+        }
+
+        .price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary-green), var(--light-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: var(--spacing-sm) 0;
+            text-align: center;
+            display: block;
+        }
+
+        .property-whatsapp {
+            background: linear-gradient(45deg, var(--primary-green), var(--light-green));
+            color: var(--primary-white);
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            width: 100%;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: var(--transition-fast);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: auto;
+            box-shadow: var(--shadow-glow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .property-whatsapp::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(45deg, var(--light-green), #2E7D32);
+            transition: var(--transition-fast);
+            z-index: -1;
+        }
+
+        .property-whatsapp:hover::before { width: 100%; }
+
+        .property-whatsapp:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(46, 125, 50, 0.6);
+            background: linear-gradient(45deg, var(--light-green), #2E7D32);
+        }
+
+        .property-whatsapp i { font-size: 1.2rem; }
+
+        /* No Results Message */
+        .no-results-message {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--glass-bg);
+            border-radius: var(--border-radius-lg);
+            border: 2px dashed var(--glass-border);
+        }
+
+        /* =========================================
+           8. DEVELOPERS SECTION
+           ========================================= */
+        .developers-section {
+            background: linear-gradient(135deg, var(--secondary-white), var(--tertiary-white), var(--primary-white));
+            color: var(--text-dark);
+            padding: var(--spacing-xxl) var(--spacing-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .developers-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(46, 125, 50, 0.08) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .developers-container {
+            max-width: var(--container-lg);
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .developers-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xxl);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .developers-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            margin-bottom: var(--spacing-md);
+            background: linear-gradient(45deg, var(--primary-green), var(--deep-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .developers-header p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .developers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .developer-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: var(--border-radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition-normal);
+            border: 1px solid var(--glass-border);
+            text-align: center;
+            padding: var(--spacing-lg) var(--spacing-md);
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .developer-card:nth-child(1) { --delay: 1; }
+        .developer-card:nth-child(2) { --delay: 2; }
+        .developer-card:nth-child(3) { --delay: 3; }
+        .developer-card:nth-child(4) { --delay: 4; }
+        .developer-card:nth-child(5) { --delay: 5; }
+
+        .developer-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-xl), var(--shadow-glow);
+            border-color: var(--primary-green);
+        }
+
+        .developer-logo-container {
+            width: 180px;
+            height: 120px;
+            margin: 0 auto var(--spacing-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--tertiary-white);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-sm);
+            border: 2px solid var(--glass-border);
+            transition: var(--transition-fast);
+        }
+
+        .developer-card:hover .developer-logo-container {
+            background: rgba(46, 125, 50, 0.1);
+            border-color: var(--primary-green);
+            transform: scale(1.08) rotate(3deg);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .developer-logo {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+            transition: var(--transition-fast);
+        }
+
+        .developer-card:hover .developer-logo {
+            filter: drop-shadow(0 6px 15px rgba(46, 125, 50, 0.3));
+        }
+
+        .developer-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        .about-developer-btn {
+            background: linear-gradient(45deg, var(--primary-green), var(--light-green));
+            color: var(--primary-white);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius-md);
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            box-shadow: var(--shadow-glow);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-developer-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(45deg, var(--light-green), #2E7D32);
+            transition: var(--transition-fast);
+            z-index: -1;
+        }
+
+        .about-developer-btn:hover::before { width: 100%; }
+
+        .about-developer-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(46, 125, 50, 0.6);
+            background: linear-gradient(45deg, var(--light-green), #2E7D32);
+        }
+
+        /* =========================================
+           9. MODALS - WHITE & GREEN THEME
+           ========================================= */
+        .modal, .developer-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content, .developer-modal-content {
+            background: linear-gradient(135deg, var(--primary-white), var(--secondary-white));
+            margin: 0;
+            padding: var(--spacing-xl);
+            border-radius: 0;
+            width: 100%;
+            max-width: 100%;
+            height: 100vh;
+            max-height: 100vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalSlideIn 0.4s ease;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--glass-border);
+            box-sizing: border-box;
+        }
+
+        .developer-modal-content {
+            background: linear-gradient(135deg, var(--primary-white), var(--secondary-white), var(--tertiary-white));
+            color: var(--text-dark);
+            border: 1px solid var(--glass-border);
+        }
+
+        .close, .developer-modal-close {
+            position: fixed;
+            right: var(--spacing-md);
+            top: var(--spacing-md);
+            font-size: 2.5rem;
+            cursor: pointer;
+            color: var(--text-gray);
+            transition: var(--transition-fast);
+            z-index: 2001;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .close:hover, .developer-modal-close:hover {
+            color: var(--primary-green);
+            transform: rotate(90deg);
+        }
+
+        .enhanced-modal {
+            max-width: 100%;
+            width: 100%;
+            margin: 0;
+            padding: var(--spacing-md);
+            height: 100vh;
+            max-height: 100vh;
+            border-radius: 0;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+
+        .image-block, .map-block, .compact-description, .property-details-modal {
+            background: var(--tertiary-white);
+            backdrop-filter: blur(15px);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid var(--glass-border);
+        }
+
+        .block-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+        }
+
+        .block-title i { color: var(--primary-green); }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .image-grid img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            border: 2px solid var(--glass-border);
+        }
+
+        .image-grid img:hover {
+            transform: scale(1.05);
+            border-color: var(--primary-green);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .image-hint {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        .image-hint i { margin-right: 0.3rem; color: var(--primary-green); }
+
+        .map-container {
+            width: 100%;
+            height: 300px;
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            border: 2px solid var(--glass-border);
+        }
+
+        .map-container iframe { width: 100%; height: 100%; border: none; }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .compact-grid {
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 0.8rem;
+        }
+
+        .detail-item-modal {
+            background: var(--primary-white);
+            padding: 0.8rem;
+            border-radius: var(--border-radius-md);
+            border: 1px solid var(--glass-border);
+            text-align: center;
+            transition: var(--transition-fast);
+            font-size: 0.9rem;
+        }
+
+        .detail-item-modal:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-green);
+            background: var(--tertiary-white);
+        }
+
+        .detail-item-modal strong {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            color: var(--text-dark);
+            font-size: 0.85rem;
+            margin-bottom: var(--spacing-xs);
+            font-weight: 700;
+        }
+
+        .detail-item-modal strong i { color: var(--primary-green); font-size: 1.1rem; }
+
+        .detail-item-modal span {
+            font-weight: 800;
+            color: var(--primary-green);
+            font-size: 1.1rem;
+            display: block;
+            margin-top: 0.3rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .modal-whatsapp {
+            background: linear-gradient(45deg, var(--primary-green), var(--primary-green));
+            color: var(--primary-white);
+            padding: 1.3rem 2.5rem;
+            border: none;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            font-size: 1.3rem;
+            font-weight: 700;
+            transition: var(--transition-fast);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            margin: var(--spacing-xl) 0;
+            width: 100%;
+            box-shadow: var(--shadow-glow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-whatsapp::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(45deg, var(--light-green), #2E7D32);
+            transition: var(--transition-fast);
+            z-index: -1;
+        }
+
+        .modal-whatsapp:hover::before { width: 100%; }
+
+        .modal-whatsapp:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(46, 125, 50, 0.7);
+        }
+
+        .amenities-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+
+        .amenity-tag {
+            background: var(--tertiary-white);
+            color: var(--primary-green);
+            padding: 0.4rem 0.9rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid var(--glass-border);
+        }
+
+        /* Modal Text Visibility */
+        #modal-description, #modal-description h3, #modal-description p {
+            color: var(--text-dark) !important;
+            font-weight: 300;
+        }
+
+        #modal-description strong { color: var(--primary-green) !important; font-weight: 600; }
+
+        .modal-content h2, .modal-content h3 { color: var(--text-dark) !important; }
+
+        /* Developer Modal Specifics */
+        .modal-developer-logo-section {
+            text-align: center;
+            margin-bottom: 2.8rem;
+            padding-bottom: 1.8rem;
+            border-bottom: 2px solid var(--glass-border);
+        }
+
+        .modal-developer-logo-container {
+            width: 220px;
+            height: 130px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--tertiary-white);
+            border-radius: 20px;
+            border: 2px solid var(--glass-border);
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s ease;
+        }
+
+        .modal-developer-logo-container:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: var(--shadow-glow);
+            border-color: var(--primary-green);
+        }
+
+        .modal-developer-logo {
+            max-width: 90%;
+            max-height: 85%;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+            transition: filter 0.3s ease;
+        }
+
+        .modal-developer-logo-container:hover .modal-developer-logo {
+            filter: drop-shadow(0 6px 18px rgba(46, 125, 50, 0.3));
+        }
+
+        .modal-developer-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary-green), var(--deep-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-top: 0.8rem;
+            letter-spacing: -0.5px;
+        }
+
+        .modal-developer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (min-width: 768px) { .modal-developer-grid { grid-template-columns: 1fr 1fr; } }
+        @media (min-width: 1024px) { .modal-developer-grid { grid-template-columns: repeat(3, 1fr); } }
+
+        .modal-section {
+            background: var(--tertiary-white);
+            border-radius: 22px;
+            padding: 1.8rem;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-md);
+            transition: all 0.35s ease;
+        }
+
+        .modal-section:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg), 0 0 20px rgba(46, 125, 50, 0.15);
+            border-color: var(--primary-green);
+        }
+
+        .modal-section h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.65rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .modal-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 55px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-green), var(--light-green));
+            border-radius: 2px;
+        }
+
+        .about-content { color: var(--text-gray); line-height: 1.75; font-weight: 300; font-size: 1.05rem; }
+
+        .projects-grid { display: flex; flex-direction: column; gap: 14px; }
+
+        .project-item {
+            background: var(--primary-white);
+            border-radius: 18px;
+            padding: 1.3rem;
+            border-left: 3px solid var(--primary-green);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(46, 125, 50, 0.05) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .project-item:hover {
+            transform: translateX(5px);
+            border-left-color: var(--light-green);
+            box-shadow: var(--shadow-md);
+        }
+
+        .project-item:hover::before { opacity: 1; }
+
+        .project-item h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            font-weight: 600;
+        }
+
+        .project-item p { color: var(--text-gray); font-size: 0.98rem; line-height: 1.6; margin: 0; font-weight: 300; }
+
+        .project-status {
+            font-size: 0.82rem;
+            padding: 3px 10px;
+            border-radius: 14px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+            display: inline-block;
+        }
+
+        .status-completed { background: rgba(46, 125, 50, 0.15); color: var(--primary-green); border: 1px solid rgba(46, 125, 50, 0.3); }
+        .status-ongoing { background: rgba(255, 193, 7, 0.15); color: #ff9800; border: 1px solid rgba(255, 152, 0, 0.3); }
+        .status-planned { background: rgba(33, 150, 243, 0.15); color: #2196f3; border: 1px solid rgba(33, 150, 243, 0.3); }
+
+       /* ===== MEDINAH CHAT WIDGET ===== */
+#medinah-chat-widget {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 2147483647;
+    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+#medinah-chat-widget.minimized {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1a472a, #2d5a3f);
+    box-shadow: 0 6px 25px rgba(45, 168, 110, 0.5);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+#medinah-chat-widget.minimized:hover {
+    transform: scale(1.08) rotate(5deg);
+    box-shadow: 0 8px 35px rgba(45, 168, 110, 0.7);
+}
+
+#medinah-chat-widget.minimized .chat-icon {
+    font-size: 2.1rem;
+    background: linear-gradient(45deg, #2da86e, #4ade80);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#medinah-chat-widget.minimized .chat-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 22px;
+    height: 22px;
+    background: #2da86e;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: white;
+    border: 2px solid white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    animation: pulseBadge 2s infinite;
+}
+
+@keyframes pulseBadge {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+#medinah-chat-widget.expanded {
+    width: 380px;
+    max-height: 85vh;
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #1a472a, #2d5a3f);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+}
+
+.chat-widget-header {
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-bottom: 1px solid rgba(45, 168, 110, 0.25);
+    position: relative;
+    background: rgba(26, 71, 42, 0.95);
+}
+
+.chat-widget-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #2da86e, #4ade80);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 15px rgba(45, 168, 110, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+.chat-widget-title h3 {
+    font-size: 1.45rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+    background: linear-gradient(to right, #ffffff, #e0f0e8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.chat-widget-title p {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    margin: 0;
+    color: #b8d4c8;
+}
+
+.chat-widget-close {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.6rem;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.chat-widget-close:hover {
+    background: rgba(45, 168, 110, 0.2);
+    color: #2da86e;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.chat-widget-messages {
+    padding: 20px;
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    max-height: 65vh;
+    background: rgba(30, 80, 55, 0.9);
+}
+
+.chat-message {
+    max-width: 88%;
+    padding: 16px 20px;
+    border-radius: 20px;
+    line-height: 1.55;
+    font-size: 0.98rem;
+    animation: fadeIn 0.35s ease;
+    position: relative;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.chat-message.user {
+    align-self: flex-end;
+    background: linear-gradient(45deg, #2da86e, #4ade80);
+    color: white;
+    border-bottom-right-radius: 8px;
+    box-shadow: 0 4px 15px rgba(45, 168, 110, 0.3);
+}
+
+.chat-message.bot {
+    align-self: flex-start;
+    background: rgba(40, 90, 65, 0.85);
+    color: #e6f0eb;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom-left-radius: 8px;
+}
+
+.chat-message.bot strong {
+    color: #4ade80;
+}
+
+.chat-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.chat-suggestion-btn {
+    background: rgba(45, 168, 110, 0.12);
+    color: #4ade80;
+    border: none;
+    border-radius: 16px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+}
+
+.chat-suggestion-btn:hover {
+    background: rgba(45, 168, 110, 0.22);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(45, 168, 110, 0.2);
+}
+
+.chat-widget-input {
+    padding: 18px;
+    background: rgba(26, 71, 42, 0.95);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    gap: 12px;
+}
+
+.chat-widget-input input {
+    flex: 1;
+    padding: 15px 20px;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 28px;
+    font-size: 1.05rem;
+    background: rgba(20, 50, 35, 0.8);
+    color: white;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.chat-widget-input input:focus {
+    border-color: #2da86e;
+    box-shadow: 0 0 0 3px rgba(45, 168, 110, 0.2);
+}
+
+.chat-widget-input input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.chat-widget-input button {
+    background: linear-gradient(45deg, #2da86e, #4ade80);
+    color: white;
+    border: none;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    transition: all 0.35s ease;
+    flex-shrink: 0;
+    box-shadow: 0 4px 15px rgba(45, 168, 110, 0.4);
+}
+
+.chat-widget-input button:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 6px 25px rgba(45, 168, 110, 0.6);
+}
+
+.whatsapp-handoff {
+    background: rgba(45, 168, 110, 0.12);
+    border-left: 4px solid #2da86e;
+    padding: 16px;
+    border-radius: 0 16px 16px 0;
+    margin: 12px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.whatsapp-handoff:hover {
+    background: rgba(45, 168, 110, 0.2);
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(45, 168, 110, 0.3);
+}
+
+.whatsapp-handoff i {
+    color: #2da86e;
+    font-size: 1.4rem;
+    min-width: 24px;
+}
+
+.medinah-highlight {
+    background: rgba(45, 168, 110, 0.09);
+    border-radius: 16px;
+    padding: 16px;
+    margin: 12px 0;
+    border-left: 3px solid #2da86e;
+    transition: all 0.3s ease;
+}
+
+.medinah-highlight:hover {
+    background: rgba(45, 168, 110, 0.12);
+    transform: translateX(3px);
+}
+
+.project-list {
+    margin: 10px 0 5px 15px;
+    padding-left: 10px;
+    border-left: 2px dashed rgba(45, 168, 110, 0.3);
+}
+
+.project-list li {
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+    color: #b8d4c8;
+}
+
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px;
+}
+
+.typing-dot {
+    width: 8px;
+    height: 8px;
+    background: #2da86e;
+    border-radius: 50%;
+    animation: typing 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typing {
+    0%, 100% { transform: scale(0.7); opacity: 0.5; }
+    50% { transform: scale(1.2); opacity: 1; }
+}
+
+/* Scrollbar Styling */
+.chat-widget-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-widget-messages::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.chat-widget-messages::-webkit-scrollbar-thumb {
+    background: #2da86e;
+    border-radius: 10px;
+}
+
+.chat-widget-messages::-webkit-scrollbar-thumb:hover {
+    background: #4ade80;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    #medinah-chat-widget.expanded {
+        width: calc(100% - 50px);
+        right: 25px;
+        bottom: 20px;
+    }
+}
+        /* =========================================
+           11. FOOTER
+           ========================================= */
+        .footer {
+            background: linear-gradient(135deg, var(--primary-green), var(--deep-green));
+            color: var(--primary-white);
+            padding: var(--spacing-xxl) var(--spacing-md) var(--spacing-lg);
+            margin-top: var(--spacing-xxl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .footer-content {
+            max-width: var(--container-lg);
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--spacing-xl);
+        }
+
+        .footer-column h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: var(--spacing-md);
+            position: relative;
+            padding-bottom: var(--spacing-xs);
+            font-weight: 700;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(45deg, var(--primary-white), var(--light-green));
+            border-radius: 2px;
+        }
+
+        .footer-column p { margin-bottom: var(--spacing-md); color: rgba(255, 255, 255, 0.85); line-height: 1.8; font-weight: 300; }
+
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 0.8rem; }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            transition: var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 400;
+        }
+
+        .footer-links a:hover { color: var(--primary-white); transform: translateX(5px); }
+        .footer-links a i { font-size: 0.9rem; color: var(--light-green); }
+
+        .contact-info { list-style: none; }
+        .contact-info li {
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 300;
+        }
+
+        .contact-info i { color: var(--light-green); font-size: 1.2rem; margin-top: 0.2rem; min-width: 20px; }
+
+        .social-icons { display: flex; gap: var(--spacing-sm); margin-top: var(--spacing-md); }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--border-radius-full);
+            color: var(--primary-white);
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+
+        .social-icons a:hover {
+            background: var(--primary-white);
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: var(--shadow-glow);
+            color: var(--primary-green);
+        }
+
+        .newsletter-form { display: flex; margin-top: var(--spacing-md); }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.9rem 1.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--border-radius-md) 0 0 var(--border-radius-md);
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--primary-white);
+        }
+
+        .newsletter-form input::placeholder { color: rgba(255, 255, 255, 0.7); }
+
+        .newsletter-form button {
+            background: var(--primary-white);
+            color: var(--primary-green);
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition-fast);
+        }
+
+        .newsletter-form button:hover {
+            background: var(--light-green);
+            color: var(--primary-white);
+            transform: translateX(3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        .footer-bottom a { color: var(--light-green); text-decoration: none; font-weight: 500; }
+        .footer-bottom a:hover { text-decoration: underline; }
+
+        /* =========================================
+           12. UTILITIES & RESPONSIVE
+           ========================================= */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 95px;
+            right: 2rem;
+            background: linear-gradient(135deg, var(--primary-green), var(--light-green));
+            color: var(--primary-white);
+            width: 50px;
+            height: 50px;
+            border-radius: var(--border-radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 999;
+            opacity: 0;
+            transition: var(--transition-fast);
+            border: 2px solid var(--primary-white);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .scroll-to-top.show { opacity: 1; transform: translateY(0); }
+
+        .scroll-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 30px rgba(46, 125, 50, 0.5);
+        }
+
+        /* Scrollbar Styling */
+        .enhanced-modal::-webkit-scrollbar { width: 8px; }
+        .enhanced-modal::-webkit-scrollbar-track { background: var(--secondary-white); border-radius: 10px; }
+        .enhanced-modal::-webkit-scrollbar-thumb { background: var(--primary-green); border-radius: 10px; }
+        .enhanced-modal::-webkit-scrollbar-thumb:hover { background: var(--light-green); }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .developers-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .hero-slider { height: 80vh; min-height: 600px; }
+            .slide-content h2 { font-size: clamp(2rem, 6vw, 2.8rem); }
+            .slide-content p { font-size: clamp(1rem, 3vw, 1.2rem); }
+            .properties-grid { grid-template-columns: 1fr; padding: var(--spacing-lg) var(--spacing-sm); gap: var(--spacing-md); }
+            .property-card { min-height: 450px; }
+            .property-card img { height: 220px; }
+            .property-info { padding: var(--spacing-md); }
+            .property-card h3 { font-size: 1.4rem; }
+            .price { font-size: 1.5rem; }
+            .developers-header h2 { font-size: 2.2rem; }
+            .developers-grid { grid-template-columns: 1fr; gap: var(--spacing-md); }
+            .developer-logo-container { width: 150px; height: 100px; }
+            .developer-name { font-size: 1.5rem; }
+            .modal-developer-grid { grid-template-columns: 1fr; }
+            .scroll-to-top { bottom: 80px; right: 1.5rem; width: 45px; height: 45px; }
+            .footer-content { grid-template-columns: 1fr; gap: var(--spacing-lg); }
+            .footer { padding: var(--spacing-xl) var(--spacing-sm) var(--spacing-md); }
+            .newsletter-form { flex-direction: column; gap: var(--spacing-xs); }
+            .newsletter-form input, .newsletter-form button { width: 100%; border-radius: var(--border-radius-md); }
+            .detail-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 480px) {
+            .header-logo { height: 50px; }
+            .hamburger-menu { width: 35px; height: 30px; }
+            .mobile-menu { max-width: 100%; width: 100%; }
+            .slide-content { padding: var(--spacing-lg); }
+            .slide-content h2 { font-size: clamp(1.8rem, 7vw, 2.4rem); }
+            .ai-search-container { padding: var(--spacing-md); }
+            .ai-avatar { width: 80px; height: 80px; }
+            .ai-text { padding: var(--spacing-sm); font-size: 1rem; }
+            .ai-option-btn { min-width: 120px; padding: 12px 16px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <div class="header-logo-container">
+                <img src="images/daonelogo.png" alt="Da One Living Logo" class="header-logo">
+            </div>
+            <div class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle Menu">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <div class="logo">Da One<span>Living</span></div>
+            <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close Menu"><i class="fas fa-times"></i></button>
+        </div>
+        <ul class="mobile-nav-menu">
+            <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#developers"><i class="fas fa-city"></i> Developers</a></li>
+            <li><a href="#properties"><i class="fas fa-building"></i> Properties</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+        <button class="mobile-cta-button" onclick="openWhatsApp(); closeMobileMenu();"><i class="fab fa-whatsapp"></i> Enquire Now</button>
+        <div class="mobile-menu-social">
+            <h4>Follow Us</h4>
+            <div class="mobile-social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Slider -->
+    <section class="hero-slider" id="home">
+        <div class="slide active" style="background-image: url('images/masjid-nabawi.jpg');">
+            <div class="slide-content">
+                <h2>Al Masjid Al Nabawi</h2>
+                <p>Experience spiritual living in the heart of Medinah, the City of Peace</p>
+                <div class="slide-buttons">
+                    <button class="mobile-cta-button" onclick="openWhatsApp()"><i class="fab fa-whatsapp"></i> Enquire Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('images/modern1.jpg');">
+            <div class="slide-content">
+                <h2>Medinah Modern Living</h2>
+                <p>Experience the blend of heritage and modern luxury in the City of the Prophet</p>
+                <div class="slide-buttons">
+                    <button class="mobile-cta-button" onclick="openWhatsApp()"><i class="fab fa-whatsapp"></i> Enquire Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('images/modern.jpg');">
+            <div class="slide-content">
+                <h2>Prime Residential Communities</h2>
+                <p>Smart cities, family hubs, and luxury investments near the Haram</p>
+                <div class="slide-buttons">
+                    <button class="mobile-cta-button" onclick="openWhatsApp()"><i class="fab fa-whatsapp"></i> Enquire Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Search -->
+    <div class="filter-bar" id="properties">
+        <div class="ai-search-container">
+            <div class="ai-message">
+                <div class="ai-avatar">
+                    <img src="images/daonelogo.png" alt="Da One Living Logo">
+                </div>
+                <div class="ai-text">
+                    <span id="aiPrompt">Hi! What type of property are you looking for in Medinah?</span>
+                </div>
+            </div>
+            <div class="text-search-bar">
+                <input type="text" id="filterSearch" placeholder="Search properties by name, location, or keyword…" aria-label="Search Properties">
+            </div>
+            <div class="ai-options" id="aiOptions">
+                <button class="ai-option-btn" data-value="">Any Property Type</button>
+                <button class="ai-option-btn" data-value="villa">Villa</button>
+                <button class="ai-option-btn" data-value="apartment">Apartment</button>
+                <button class="ai-option-btn" data-value="studio">Studio</button>
+                <button class="ai-option-btn" data-value="commercial">Commercial</button>
+            </div>
+            <button class="ai-back-btn" id="aiBackBtn" aria-label="Go Back"><i class="fas fa-arrow-left"></i> Back</button>
+            <input type="hidden" id="filterPropertyType" value="">
+            <input type="hidden" id="filterLocation" value="">
+            <input type="hidden" id="filterBedrooms" value="">
+        </div>
+    </div>
+
+    <!-- Property Grid -->
+    <div class="properties-grid" id="propertiesGrid">
+        <!-- Property 1 -->
+        <div class="property-card" data-property-type="apartment" data-location="central-area" data-bedrooms="2" data-developer="Rua Al Madinah" data-status="ongoing" data-price="1200000" onclick="openModal(this)">
+            <img src="medinah-images/rua al madinah.jpg" alt="Rua Al Madinah">
+            <div class="property-badge badge-premium">🏗️ Ongoing</div>
+            <div class="property-info">
+                <h3>Rua Al Madinah Mega-Project</h3>
+                <p>Part of the 1.5 million m² development east of the Prophet's Mosque. Modern living near the Haram.</p>
+                
+                <button class="property-whatsapp" onclick="openWhatsApp(); event.stopPropagation();"><i class="fab fa-whatsapp"></i> Enquire Now</button>
+            </div>
+        </div>
+        <!-- Property 2 -->
+        <div class="property-card" data-property-type="apartment" data-location="knowledge-city" data-bedrooms="1" data-developer="KEC" data-status="ongoing" data-price="850000" onclick="openModal(this)">
+            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="KEC Hub">
+            <div class="property-badge badge-featured">⭐ Featured</div>
+            <div class="property-info">
+                <h3>KEC Hub Residences</h3>
+                <p>Smart city living near the Haramain High-Speed Railway station. Part of Wasat Al Madinah.</p>
+                
+                <button class="property-whatsapp" onclick="openWhatsApp(); event.stopPropagation();"><i class="fab fa-whatsapp"></i> Enquire Now</button>
+            </div>
+        </div>
+        <!-- Property 3 -->
+        <div class="property-card" data-property-type="villa" data-location="al-dar" data-bedrooms="4" data-developer="NHC" data-status="completed" data-price="2500000" onclick="openModal(this)">
+            <img src="https://images.unsplash.com/photo-1600596542815-27b88e39e1d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="NHC Villa">
+            <div class="property-badge badge-new">✅ Completed</div>
+            <div class="property-info">
+                <h3>Al-Dar Destination Villa</h3>
+                <p>Family-friendly suburb 7km from the Prophet's Mosque. Part of Rehab Al Dar project.</p>
+        
+                <button class="property-whatsapp" onclick="openWhatsApp(); event.stopPropagation();"><i class="fab fa-whatsapp"></i> Enquire Now</button>
+            </div>
+        </div>
+        <!-- Property 4 -->
+        <div class="property-card" data-property-type="commercial" data-location="central-area" data-bedrooms="0" data-developer="Taiba" data-status="ongoing" data-price="5000000" onclick="openModal(this)">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Taiba Tower">
+            <div class="property-badge badge-hot">🔥 Hot Deal</div>
+            <div class="property-info">
+                <h3>Novotel Madina Project</h3>
+                <p>18-story luxury hotel project nearing completion in the northern central area.</p>
+                
+                <button class="property-whatsapp" onclick="openWhatsApp(); event.stopPropagation();"><i class="fab fa-whatsapp"></i> Enquire Now</button>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Developers Section -->
+    <section class="developers-section" id="developers">
+        <div class="developers-container">
+            <div class="developers-header">
+                <h2><i class="fas fa-building"></i> Our Premier Developers</h2>
+                <p>Da One Living partners with the most prestigious and trusted real estate developers in Medinah, ensuring exceptional quality, innovative design, and world-class amenities in every project.</p>
+            </div>
+            <div class="developers-grid">
+                <!-- Developer 1 -->
+                <div class="developer-card">
+                    <div class="developer-logo-container">
+                        <img src="medinah-images/rua-al-madinah/logo.jpg" alt="Rua Al Madinah Logo" class="developer-logo">
+                    </div>
+                    <h3 class="developer-name">Rua Al Madinah</h3>
+                    <button class="about-developer-btn" onclick="openDeveloperModal('rua')"><i class="fas fa-info-circle"></i> About Developer</button>
+                </div>
+                <!-- Developer 2 -->
+                <div class="developer-card">
+                    <div class="developer-logo-container">
+                        <img src="medinah-images/Knowledge-economic-city/logo.jpg" alt="KEC Logo" class="developer-logo">
+                    </div>
+                    <h3 class="developer-name">Knowledge Economic City</h3>
+                    <button class="about-developer-btn" onclick="openDeveloperModal('kec')"><i class="fas fa-info-circle"></i> About Developer</button>
+                </div>
+                <!-- Developer 3 -->
+                <div class="developer-card">
+                    <div class="developer-logo-container">
+                        <img src="medinah-images/national-housing-company/logo.jpg" alt="NHC Logo" class="developer-logo">
+                    </div>
+                    <h3 class="developer-name">National Housing Co.</h3>
+                    <button class="about-developer-btn" onclick="openDeveloperModal('nhc')"><i class="fas fa-info-circle"></i> About Developer</button>
+                </div>
+                <!-- Developer 4 -->
+                <div class="developer-card">
+                    <div class="developer-logo-container">
+                        <img src="medinah-images/taiba-investments/logo.jpg" alt="Taiba Logo" class="developer-logo">
+                    </div>
+                    <h3 class="developer-name">Taiba Investments</h3>
+                    <button class="about-developer-btn" onclick="openDeveloperModal('taiba')"><i class="fas fa-info-circle"></i> About Developer</button>
+                </div>
+                <!-- Developer 5 -->
+                <div class="developer-card">
+                    <div class="developer-logo-container">
+                        <img src="medinah-images/key-private-developers/logo.jpg" alt="Other Developers Logo" class="developer-logo">
+                    </div>
+                    <h3 class="developer-name">Key Private Developers</h3>
+                    <button class="about-developer-btn" onclick="openDeveloperModal('others')"><i class="fas fa-info-circle"></i> About Developer</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Modal -->
+    <div id="propertyModal" class="modal">
+        <div class="modal-content enhanced-modal">
+            <span class="close" onclick="closeModal()" aria-label="Close Modal">&times;</span>
+            <div class="image-block">
+                <h3 class="block-title"><i class="fas fa-home"></i> Unit Images</h3>
+                <div class="image-grid" id="unitImageGrid"></div>
+                <p class="image-hint"><i class="fas fa-expand"></i> Click any image to view full gallery</p>
+            </div>
+            <div class="image-block">
+                <h3 class="block-title"><i class="fas fa-city"></i> Development Images</h3>
+                <div class="image-grid" id="developmentImageGrid"></div>
+            </div>
+            <div class="map-block">
+                <h3 class="block-title"><i class="fas fa-map-marker-alt"></i> Location</h3>
+                <div class="map-container" id="propertyMap"></div>
+            </div>
+            <div class="property-details-modal compact-details">
+                <h4>Property Details</h4>
+                <div class="detail-grid compact-grid" id="modal-property-details"></div>
+            </div>
+            <div id="modal-description" class="compact-description">
+                <h3 id="modal-title">Property Title</h3>
+                <p id="modal-desc-text">Property description will appear here.</p>
+                <div class="amenities-list" id="modal-amenities"></div>
+            </div>
+            <button class="modal-whatsapp" onclick="openWhatsApp()"><i class="fab fa-whatsapp"></i> Speak to an Agent</button>
+        </div>
+    </div>
+
+    <!-- Developer Modal -->
+    <div id="developerModal" class="developer-modal">
+        <div class="developer-modal-content">
+            <button class="developer-modal-close" onclick="closeDeveloperModal()" aria-label="Close Modal">&times;</button>
+            <div class="modal-developer-logo-section">
+                <div class="modal-developer-logo-container">
+                    <img src="" alt="Developer Logo" id="modalDeveloperLogo" class="modal-developer-logo">
+                </div>
+                <h2 class="modal-developer-name" id="modalDeveloperName">Developer Name</h2>
+            </div>
+            <div class="modal-developer-grid">
+                <div class="modal-section">
+                    <h3><i class="fas fa-info-circle"></i> Who We Are</h3>
+                    <p id="modalWhoWeAre" class="about-content"></p>
+                </div>
+                <div class="modal-section">
+                    <h3><i class="fas fa-star"></i> Why Choose Us</h3>
+                    <p id="modalWhyChooseUs" class="about-content"></p>
+                </div>
+            </div>
+            <div class="modal-developer-grid">
+                <div class="modal-section">
+                    <h3><i class="fas fa-check-circle"></i> Projects We Done</h3>
+                    <div class="projects-grid" id="modalCompletedProjects"></div>
+                </div>
+                <div class="modal-section">
+                    <h3><i class="fas fa-hard-hat"></i> Projects We Busy With</h3>
+                    <div class="projects-grid" id="modalOngoingProjects"></div>
+                </div>
+                <div class="modal-section">
+                    <h3><i class="fas fa-lightbulb"></i> Projects We Planning</h3>
+                    <div class="projects-grid" id="modalPlannedProjects"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <!-- Medinah AI Chat Widget -->
+<div id="medinah-chat-widget" class="minimized">
+    <i class="fas fa-comments chat-icon"></i>
+    <span class="chat-badge">?</span>
+</div>
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Da One Living</h3>
+                <p>Da One Living is the premier real estate agency in Medinah, the City of Peace, offering exclusive access to the city's most prestigious properties. We connect discerning clients with their dream homes and investment opportunities near the Haram.</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#developers"><i class="fas fa-chevron-right"></i> Developers</a></li>
+                    <li><a href="#properties"><i class="fas fa-chevron-right"></i> Properties</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Investment Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Information</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-map-marker-alt"></i><span>Medinah, Kingdom of Saudi Arabia</span></li>
+                    <li><i class="fas fa-phone"></i><span>+966 50 000 0000</span></li>
+                    <li><i class="fas fa-envelope"></i><span>info@daoneliving.com</span></li>
+                    <li><i class="fas fa-clock"></i><span>Monday - Saturday: 9:00 AM - 8:00 PM</span></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive the latest property listings and market updates.</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Your email address" required aria-label="Email Address">
+                    <button type="submit" aria-label="Subscribe"><i class="fas fa-paper-plane"></i></button>
+                </form>
+                <p style="font-size: 0.85rem; margin-top: 1rem; color: rgba(255, 255, 255, 0.7);">We respect your privacy. Unsubscribe at any time.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Da One Living. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // ===== CORE INITIALIZATION =====
+        document.addEventListener('DOMContentLoaded', () => {
+            initHeaderScroll();
+            initPropertyAnimations();
+            initMobileMenu();
+            initSmoothScroll();
+            aiSearch.init();
+            aiSearch.renderInitialStep();
+            initTypingAnimation();
+            initChatWidget();
+            initNewsletter();
+        });
+
+        // ===== HEADER & SCROLL =====
+        function initHeaderScroll() {
+            const header = document.getElementById('header');
+            const scrollTopBtn = document.querySelector('.scroll-to-top');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+
+                if (scrollTopBtn) {
+                    scrollTopBtn.classList.toggle('show', window.pageYOffset > 300);
+                }
+            });
+
+            if (scrollTopBtn) {
+                scrollTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            } else {
+                const btn = document.createElement('div');
+                btn.className = 'scroll-to-top';
+                btn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+                btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+                document.body.appendChild(btn);
+            }
+        }
+
+        function initPropertyAnimations() {
+            document.querySelectorAll('.property-card').forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.15}s`;
+            });
+        }
+
+        // ===== MOBILE MENU =====
+        function initMobileMenu() {
+            const hamburger = document.getElementById('hamburgerMenu');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+            const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+            const toggleMenu = () => {
+                const isActive = mobileMenu.classList.toggle('active');
+                mobileMenuOverlay?.classList.toggle('active', isActive);
+                hamburger?.classList.toggle('active', isActive);
+                document.body.style.overflow = isActive ? 'hidden' : 'auto';
+            };
+
+            hamburger?.addEventListener('click', toggleMenu);
+            mobileMenuClose?.addEventListener('click', closeMobileMenu);
+            mobileMenuOverlay?.addEventListener('click', closeMobileMenu);
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+            const hamburger = document.getElementById('hamburgerMenu');
+            
+            mobileMenu?.classList.remove('active');
+            mobileMenuOverlay?.classList.remove('active');
+            hamburger?.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        closeMobileMenu();
+                        setTimeout(() => {
+                            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }, 100);
+                    }
+                });
+            });
+        }
+
+        // ===== TYPOGRAPHY ANIMATION =====
+        function initTypingAnimation() {
+            const aiPrompt = document.getElementById('aiPrompt');
+            if (!aiPrompt) return;
+            const originalText = aiPrompt.textContent;
+            aiPrompt.innerHTML = `<span class="typing-animation">${originalText}</span>`;
+            setTimeout(() => { aiPrompt.innerHTML = originalText; }, 3000);
+        }
+
+        // ===== SLIDER =====
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        let slideInterval;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function startSlider() { slideInterval = setInterval(nextSlide, 6000); }
+        function stopSlider() { clearInterval(slideInterval); }
+
+        const slider = document.querySelector('.hero-slider');
+        slider?.addEventListener('mouseenter', stopSlider);
+        slider?.addEventListener('mouseleave', startSlider);
+        startSlider();
+
+        // ===== WHATSAPP =====
+        function openWhatsApp() {
+            const messages = [
+                "Hello! I'm interested in property information from Da One Living.",
+                "Hi! I'd like to learn more about Medinah properties.",
+                "Hello! I found a property on your site and would like more details."
+            ];
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            const phoneNumber = "966500000000";
+            window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(randomMessage)}`, '_blank');
+        }
+
+        // ===== MODALS =====
+        function openModal(propertyCard) {
+            if (!propertyCard) return;
+            
+            const title = propertyCard.querySelector('h3')?.textContent || 'Property';
+            const description = propertyCard.querySelector('p')?.textContent || '';
+            const mainImage = propertyCard.querySelector('img')?.src || '';
+            const propertyType = propertyCard.dataset.propertyType;
+            const location = propertyCard.dataset.location;
+            const bedrooms = propertyCard.dataset.bedrooms;
+            const developer = propertyCard.dataset.developer;
+
+            const modal = document.getElementById('propertyModal');
+            if (!modal) return;
+
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-desc-text').textContent = description;
+
+            const unitImages = [mainImage, ...Array(5).fill('https://images.unsplash.com/photo-1582267098481-3340e96e7d4f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80')];
+            const developmentImages = Array(4).fill('https://images.unsplash.com/photo-1590486803833-1c5dc8ce84ac?auto=format&fit=crop&w=400&q=80');
+
+            const renderImages = (gridId, images, prefix) => {
+                const grid = document.getElementById(gridId);
+                if (grid) {
+                    grid.innerHTML = images.map((img, index) => 
+                        `<img src="${img}" alt="${prefix} - Image ${index + 1}">`
+                    ).join('');
+                }
+            };
+
+            renderImages('unitImageGrid', unitImages, 'Unit');
+            renderImages('developmentImageGrid', developmentImages, 'Development');
+
+            const modalDetails = document.getElementById('modal-property-details');
+            if (modalDetails) {
+                modalDetails.innerHTML = `
+                    <div class="detail-item-modal"><strong><i class="fas fa-map-marker-alt"></i> Location</strong><span>${formatLocation(location)}</span></div>
+                    <div class="detail-item-modal"><strong><i class="fas fa-home"></i> Type</strong><span>${capitalizeFirstLetter(propertyType)}</span></div>
+                    <div class="detail-item-modal"><strong><i class="fas fa-bed"></i> Bedrooms</strong><span>${formatBedrooms(bedrooms)}</span></div>
+                    <div class="detail-item-modal"><strong><i class="fas fa-building"></i> Developer</strong><span>${developer}</span></div>
+                `;
+            }
+
+            const amenitiesList = document.getElementById('modal-amenities');
+            if (amenitiesList) {
+                amenitiesList.innerHTML = ['24/7 Security', 'Swimming Pool', 'Gym', 'Parking', 'Concierge', 'Garden']
+                    .map(amenity => `<span class="amenity-tag">${amenity}</span>`).join('');
+            }
+
+            const mapContainer = document.getElementById('propertyMap');
+            if (mapContainer) {
+                mapContainer.innerHTML = `<iframe src="https://www.google.com/maps/embed?pb=${getMapLocation(location)}" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            }
+
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('propertyModal');
+            if (modal) modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function openDeveloperModal(developerId) {
+            const modal = document.getElementById('developerModal');
+            if (!modal) return;
+
+            const developers = {
+                rua: {
+                    logo: 'medinah-images/rua-al-madinah/logo.jpg', name: 'Rua Al Madinah Holding',
+                    whoWeAre: 'The primary developer for the "Central Area" adjacent to the Prophet\'s Mosque. A PIF Owned company focused on infrastructure revitalization of the central district.',
+                    whyChooseUs: 'Rua Al Madinah is shaping the future of pilgrim accommodation with massive scale developments designed to host millions comfortably near the Haram.',
+                    completed: [{ name: 'Infrastructure Revitalization', desc: 'Central district infrastructure upgrades' }],
+                    ongoing: [{ name: 'Rua Al Madinah Mega-Project', desc: '1.5 million m² development east of the Prophet\'s Mosque' }, { name: 'Dar Al Hijrah', desc: 'Mixed-use landmark with massive hotel and commercial towers' }],
+                    planned: [{ name: 'Islamic Civilization Village', desc: 'Cultural destination featuring 8 distinct world heritage zones' }]
+                },
+                kec: {
+                    logo: 'medinah-images/Knowledge-economic-city/logo.jpg', name: 'Knowledge Economic City (KEC)',
+                    whoWeAre: 'A publicly listed company developing a "Smart City" hub near the Haramain High-Speed Railway station.',
+                    whyChooseUs: 'KEC blends modern technology with residential comfort, creating a hub for knowledge and living near the transport nexus.',
+                    completed: [{ name: 'Dar Al-Jewar', desc: 'Luxury gated community' }],
+                    ongoing: [{ name: 'KEC Hub (Wasat Al Madinah)', desc: 'Massive mall, Hilton hotel, and luxury residential tower' }, { name: 'Al-Alya Project', desc: 'Mixed-use gated community under construction' }, { name: 'Multaka Residences', desc: 'Modern units blending Hijazi architecture with smart technology' }],
+                    planned: [{ name: 'Islamic World District', desc: 'Expansion of specialized knowledge and tech zones' }]
+                },
+                nhc: {
+                    logo: 'medinah-images/national-housing-company/logo.jpg', name: 'National Housing Company (NHC)',
+                    whoWeAre: 'The investment arm of the Ministry of Housing, focusing on affordable and high-quality residential suburbs.',
+                    whyChooseUs: 'NHC ensures quality family living with large-scale suburban developments designed for community and comfort.',
+                    completed: [{ name: 'Durrat Al-Madina 1 & 2', desc: 'Completed residential complexes' }],
+                    ongoing: [{ name: 'Al-Dar Destination', desc: 'Massive suburb 7km from the Prophet\'s Mosque' }, { name: 'Goroub Community', desc: 'Off-plan residential project on the western side' }],
+                    planned: [{ name: 'Al-Mukiman Destination', desc: 'Mega-community designed to house over 38,000 residents' }]
+                },
+                taiba: {
+                    logo: 'medinah-images/taiba-investments/logo.jpg', name: 'Taiba Investments',
+                    whoWeAre: 'A major private player with deep roots in Medinah\'s hospitality and real estate sectors.',
+                    whyChooseUs: 'Taiba specializes in high-end hospitality and commercial real estate, ensuring premium service and location.',
+                    completed: [{ name: 'Taiba Residential Center', desc: 'Iconic mixed-use development' }, { name: 'Al Majeedi Commercial Center', desc: 'Prime commercial location' }],
+                    ongoing: [{ name: 'Sheraton Taiba Hotel', desc: 'Two towers under construction (expected 2025/2026)' }, { name: 'Novotel Madina', desc: '18-story luxury hotel project nearing completion' }, { name: 'Makarem Burj Almadina', desc: '5-star hotel in the northern central area' }],
+                    planned: [{ name: 'Smart Residences', desc: 'Diversification into high-end smart homes' }, { name: 'stc Square Expansion', desc: 'Further expansion into commercial concepts' }]
+                },
+                others: {
+                    logo: 'medinah-images/key-private-developers/logo.jpg', name: 'Key Private Developers',
+                    whoWeAre: 'Includes Dar Al Arkan, Dar Wa Emaar, and Manazel Modern Homes. Involved in large-scale residential and mixed-use developments.',
+                    whyChooseUs: 'These partners bring diverse expertise in large-scale housing and perimeter developments.',
+                    completed: [{ name: 'Durrat Al-Madina', desc: 'Large-scale housing partnership with NHC' }],
+                    ongoing: [{ name: 'Saraya Al-Bader', desc: 'Residential project by Dar Wa Emaar' }, { name: 'Perimeter Developments', desc: 'Large-scale residential by Dar Al Arkan' }],
+                    planned: [{ name: 'Future Housing Projects', desc: 'Continued partnership for large-scale housing' }]
+                }
+            };
+
+            const dev = developers[developerId];
+            if (!dev) return;
+
+            document.getElementById('modalDeveloperLogo').src = dev.logo;
+            document.getElementById('modalDeveloperName').textContent = dev.name;
+            document.getElementById('modalWhoWeAre').textContent = dev.whoWeAre;
+            document.getElementById('modalWhyChooseUs').textContent = dev.whyChooseUs;
+
+            const renderProjects = (id, projects, statusClass, statusText) => {
+                const container = document.getElementById(id);
+                if (container) {
+                    container.innerHTML = projects.map(project => `
+                        <div class="project-item">
+                            <h4>${project.name} <span class="project-status ${statusClass}">${statusText}</span></h4>
+                            <p>${project.desc}</p>
+                        </div>
+                    `).join('');
+                }
+            };
+
+            renderProjects('modalCompletedProjects', dev.completed, 'status-completed', 'Completed');
+            renderProjects('modalOngoingProjects', dev.ongoing, 'status-ongoing', 'Ongoing');
+            renderProjects('modalPlannedProjects', dev.planned, 'status-planned', 'Planned');
+
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDeveloperModal() {
+            const modal = document.getElementById('developerModal');
+            if (modal) modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        window.addEventListener('click', (event) => {
+            if (event.target === document.getElementById('propertyModal')) closeModal();
+            if (event.target === document.getElementById('developerModal')) closeDeveloperModal();
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeModal();
+                closeDeveloperModal();
+            }
+        });
+
+        // ===== HELPERS =====
+        function formatLocation(location) {
+            return location.replace(/-/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
+        }
+
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+
+        function formatBedrooms(bedrooms) {
+            if (bedrooms === 'studio') return 'Studio';
+            if (bedrooms === '0') return 'Commercial';
+            return `${bedrooms} Bedroom${bedrooms > 1 ? 's' : ''}`;
+        }
+
+        function getMapLocation(location) {
+            const locations = {
+                'central-area': '!1m18!1m12!1m3!1d36600!2d39.6100!3d24.4700!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sAl+Masjid+Al+Nabawi!5e0!3m2!1sen!2sae!4v1234567890123!5m2!1sen!2sae',
+                'knowledge-city': '!1m18!1m12!1m3!1d36600!2d39.6200!3d24.4800!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sKnowledge+Economic+City!5e0!3m2!1sen!2sae!4v1234567890123!5m2!1sen!2sae',
+                'al-dar': '!1m18!1m12!1m3!1d36600!2d39.6000!3d24.4600!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sAl+Dar+Destination!5e0!3m2!1sen!2sae!4v1234567890123!5m2!1sen!2sae',
+                'western-side': '!1m18!1m12!1m3!1d36600!2d39.5900!3d24.4700!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sWestern+Medinah!5e0!3m2!1sen!2sae!4v1234567890123!5m2!1sen!2sae'
+            };
+            return locations[location] || locations['central-area'];
+        }
+
+        function initNewsletter() {
+            const form = document.getElementById('newsletterForm');
+            form?.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                alert(`Thank you for subscribing with ${email}! You'll receive our next newsletter soon.`);
+                this.reset();
+            });
+        }
+
+        // ===== AI SEARCH LOGIC =====
+        const aiSearch = {
+            step: 0,
+            selectedPropertyType: '',
+            selectedLocation: '',
+            selectedBedrooms: '',
+            propertyTypes: [
+                { value: '', label: 'Any Property Type' },
+                { value: 'villa', label: 'Villa' },
+                { value: 'apartment', label: 'Apartment' },
+                { value: 'studio', label: 'Studio' },
+                { value: 'commercial', label: 'Commercial' }
+            ],
+            locations: [
+                { value: '', label: 'Any Location' },
+                { value: 'central-area', label: 'Central Area (Haram)' },
+                { value: 'knowledge-city', label: 'Knowledge Economic City' },
+                { value: 'al-dar', label: 'Al-Dar Destination' },
+                { value: 'western-side', label: 'Western Side' }
+            ],
+            bedrooms: [
+                { value: '', label: 'Any Bedrooms' },
+                { value: '1', label: '1 Bedroom' },
+                { value: '2', label: '2 Bedrooms' },
+                { value: '3', label: '3 Bedrooms' },
+                { value: '4', label: '4+ Bedrooms' }
+            ],
+            init() {
+                const optionsContainer = document.getElementById('aiOptions');
+                const backBtn = document.getElementById('aiBackBtn');
+                const filterInput = document.getElementById('filterSearch');
+
+                optionsContainer?.addEventListener('click', (e) => {
+                    const btn = e.target.closest('.ai-option-btn');
+                    if (!btn) return;
+                    const val = btn.dataset.value;
+                    
+                    if (this.step === 0) {
+                        this.selectedPropertyType = val;
+                        this.step = 1;
+                        this.renderLocationStep();
+                    } else if (this.step === 1) {
+                        this.selectedLocation = val;
+                        this.step = 2;
+                        this.renderBedroomsStep();
+                    } else if (this.step === 2) {
+                        this.selectedBedrooms = val;
+                        this.applyFinalFilters();
+                    } else if (this.step === 3 && val === 'reset') {
+                        this.reset();
+                    }
+                });
+
+                backBtn?.addEventListener('click', () => {
+                    if (this.step === 1) this.resetToStep(0);
+                    else if (this.step === 2) this.resetToStep(1);
+                });
+
+                if (filterInput) {
+                    filterInput.addEventListener('input', applyFilters);
+                    filterInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') applyFilters(); });
+                }
+            },
+            resetToStep(step) {
+                this.step = step;
+                if (step === 0) this.renderInitialStep();
+                else if (step === 1) this.renderLocationStep();
+                else if (step === 2) this.renderBedroomsStep();
+            },
+            renderInitialStep() {
+                const prompt = document.getElementById('aiPrompt');
+                const options = document.getElementById('aiOptions');
+                const backBtn = document.getElementById('aiBackBtn');
+                if(prompt) prompt.innerHTML = 'Hi! What type of property are you looking for in Medinah?';
+                if(options) options.innerHTML = this.propertyTypes.map(type => `<button class="ai-option-btn" data-value="${type.value}">${type.label}</button>`).join('');
+                if(backBtn) backBtn.style.display = 'none';
+            },
+            renderLocationStep() {
+                const prompt = document.getElementById('aiPrompt');
+                const options = document.getElementById('aiOptions');
+                const backBtn = document.getElementById('aiBackBtn');
+                const typeLabel = this.propertyTypes.find(t => t.value === this.selectedPropertyType)?.label || 'property';
+                if(prompt) prompt.innerHTML = `Great! Which <strong>Medinah location</strong> would you like to find a ${typeLabel} in?`;
+                if(options) options.innerHTML = this.locations.map(loc => `<button class="ai-option-btn" data-value="${loc.value}">${loc.label}</button>`).join('');
+                if(backBtn) backBtn.style.display = 'flex';
+            },
+            renderBedroomsStep() {
+                const prompt = document.getElementById('aiPrompt');
+                const options = document.getElementById('aiOptions');
+                const typeLabel = this.propertyTypes.find(t => t.value === this.selectedPropertyType)?.label || 'property';
+                if(prompt) prompt.innerHTML = `Excellent! How many <strong>bedrooms</strong> for your ${typeLabel}?`;
+                if(options) options.innerHTML = this.bedrooms.map(bed => `<button class="ai-option-btn" data-value="${bed.value}">${bed.label}</button>`).join('');
+            },
+            applyFinalFilters() {
+                const filterSearch = document.getElementById('filterSearch');
+                const filterPropertyType = document.getElementById('filterPropertyType');
+                const filterLocation = document.getElementById('filterLocation');
+                const filterBedrooms = document.getElementById('filterBedrooms');
+                const prompt = document.getElementById('aiPrompt');
+                const options = document.getElementById('aiOptions');
+                const backBtn = document.getElementById('aiBackBtn');
+
+                if(filterSearch) filterSearch.value = '';
+                if(filterPropertyType) filterPropertyType.value = this.selectedPropertyType;
+                if(filterLocation) filterLocation.value = this.selectedLocation;
+                if(filterBedrooms) filterBedrooms.value = this.selectedBedrooms;
+                
+                applyFilters();
+                
+                const typeLabel = this.propertyTypes.find(t => t.value === this.selectedPropertyType)?.label || 'any property';
+                const locLabel = this.locations.find(l => l.value === this.selectedLocation)?.label || 'any location';
+                const bedLabel = this.bedrooms.find(b => b.value === this.selectedBedrooms)?.label || 'any bedrooms';
+                
+                if(prompt) prompt.innerHTML = `✅ Showing <strong>${typeLabel}</strong> with <strong>${bedLabel}</strong> in <strong>${locLabel}</strong>.`;
+                if(options) options.innerHTML = `<button class="ai-option-btn" data-value="reset">Start Over</button>`;
+                if(backBtn) backBtn.style.display = 'none';
+                this.step = 3;
+            },
+            reset() {
+                this.step = 0;
+                this.selectedPropertyType = '';
+                this.selectedLocation = '';
+                this.selectedBedrooms = '';
+                const filterPropertyType = document.getElementById('filterPropertyType');
+                const filterLocation = document.getElementById('filterLocation');
+                const filterBedrooms = document.getElementById('filterBedrooms');
+                const filterSearch = document.getElementById('filterSearch');
+                
+                if(filterPropertyType) filterPropertyType.value = '';
+                if(filterLocation) filterLocation.value = '';
+                if(filterBedrooms) filterBedrooms.value = '';
+                if(filterSearch) filterSearch.value = '';
+                
+                applyFilters();
+                this.renderInitialStep();
+            }
+        };
+
+        function applyFilters() {
+            const propertyType = document.getElementById('filterPropertyType')?.value;
+            const location = document.getElementById('filterLocation')?.value;
+            const bedrooms = document.getElementById('filterBedrooms')?.value;
+            const searchTerm = (document.getElementById('filterSearch')?.value || '').toLowerCase().trim();
+            
+            let visibleCount = 0;
+            const grid = document.getElementById('propertiesGrid');
+            if (!grid) return;
+
+            document.querySelectorAll('.properties-grid .property-card').forEach(card => {
+                const name = card.querySelector('h3')?.textContent.toLowerCase() || '';
+                const desc = card.querySelector('p')?.textContent.toLowerCase() || '';
+                const matchesText = !searchTerm || name.includes(searchTerm) || desc.includes(searchTerm);
+                const matchesType = !propertyType || card.dataset.propertyType === propertyType;
+                const matchesLoc = !location || card.dataset.location === location;
+                const matchesBeds = !bedrooms || card.dataset.bedrooms === bedrooms;
+                const isVisible = matchesText && matchesType && matchesLoc && matchesBeds;
+                
+                card.style.display = isVisible ? 'block' : 'none';
+                if (isVisible) visibleCount++;
+            });
+            showNoResultsMessage(visibleCount);
+        }
+
+        function showNoResultsMessage(count) {
+            const grid = document.getElementById('propertiesGrid');
+            if (!grid) return;
+            
+            let noResultsMsg = document.getElementById('noResultsMessage');
+            if (count === 0) {
+                if (!noResultsMsg) {
+                    noResultsMsg = document.createElement('div');
+                    noResultsMsg.id = 'noResultsMessage';
+                    noResultsMsg.className = 'no-results-message';
+                    noResultsMsg.innerHTML = `
+                        <i class="fas fa-search" style="font-size: 3rem; color: var(--primary-green); margin-bottom: 1rem;"></i>
+                        <h3 style="font-family: 'Playfair Display', serif; color: var(--text-dark); margin-bottom: 1rem;">No Properties Found</h3>
+                        <p style="color: var(--text-gray); max-width: 600px; margin: 0 auto;">Try adjusting your filters or search terms. We have a wide range of properties available!</p>
+                        <button onclick="resetAllFilters()" style="margin-top: 1.5rem; background: linear-gradient(45deg, var(--primary-green), var(--light-green)); color: white; padding: 0.8rem 2rem; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">Reset Filters</button>
+                    `;
+                    grid.appendChild(noResultsMsg);
+                }
+            } else if (noResultsMsg) {
+                noResultsMsg.remove();
+            }
+        }
+
+        function resetAllFilters() {
+            const filterPropertyType = document.getElementById('filterPropertyType');
+            const filterLocation = document.getElementById('filterLocation');
+            const filterBedrooms = document.getElementById('filterBedrooms');
+            const filterSearch = document.getElementById('filterSearch');
+            
+            if(filterPropertyType) filterPropertyType.value = '';
+            if(filterLocation) filterLocation.value = '';
+            if(filterBedrooms) filterBedrooms.value = '';
+            if(filterSearch) filterSearch.value = '';
+            
+            aiSearch.reset();
+            applyFilters();
+        }
+// ===== MEDINAH CHAT WIDGET =====
+function initMedinahChatWidget() {
+    const widget = document.getElementById('medinah-chat-widget');
+    let isExpanded = false;
+    let messagesContainer = null;
+    let inputField = null;
+    let typingElement = null;
+
+    // Medinah Knowledge Base
+    const KB = {
+        business: {
+            name: 'Medinah',
+            phone: '+966 50 000 0000',
+            email: 'info@medinah.com',
+            whatsapp: '966500000000',
+            location: 'Medina, Saudi Arabia'
+        },
+        properties: {
+            residential: [
+                {
+                    name: 'Al Noor Residences',
+                    type: 'Apartments',
+                    bedrooms: '1-3 BR',
+                    price: 'From SAR 850,000',
+                    features: 'City views, modern amenities, close to Haram'
+                },
+                {
+                    name: 'Quba Gardens',
+                    type: 'Villas',
+                    bedrooms: '3-5 BR',
+                    price: 'From SAR 2,500,000',
+                    features: 'Private gardens, mosque nearby, family community'
+                },
+                {
+                    name: 'Masjid Al Nabawi View',
+                    type: 'Luxury Apartments',
+                    bedrooms: '2-4 BR',
+                    price: 'From SAR 1,800,000',
+                    features: 'Direct Haram views, premium finishes, concierge'
+                }
+            ],
+            commercial: [
+                {
+                    name: 'Medinah Business Center',
+                    type: 'Office Spaces',
+                    size: '50-500 sqm',
+                    price: 'From SAR 150/sqm/year',
+                    features: 'Central location, parking, modern facilities'
+                },
+                {
+                    name: 'Al Haram Commercial Plaza',
+                    type: 'Retail Units',
+                    size: '30-200 sqm',
+                    price: 'From SAR 200/sqm/year',
+                    features: 'High foot traffic, tourist area, flexible layouts'
+                }
+            ]
+        },
+        visaInfo: `
+            <strong>🛂 Saudi Arabia Visa Options:</strong><br><br>
+            <div class="medinah-highlight">
+                <strong>🕌 Umrah Visa</strong><br>
+                Valid for 30 days, multiple entries allowed during season
+            </div>
+            <div class="medinah-highlight">
+                <strong>💼 Business Visa</strong><br>
+                Valid for 1 year, multiple entries, 90 days per visit
+            </div>
+            <div class="medinah-highlight">
+                <strong>🏠 Property Investor Visa</strong><br>
+                Residency permit for property investors (SAR 4M+ investment)
+            </div>
+            <div class="medinah-highlight">
+                <strong>🌟 Premium Residency</strong><br>
+                Long-term residency with full ownership rights
+            </div>
+            <p style="margin-top: 12px; font-size: 0.95rem; color: #b8d4c8;">
+                <i>Processing time: 3-7 days for most visas. All documents must be attested.</i>
+            </p>
+        `,
+        areas: {
+            nearHaram: [
+                {
+                    name: 'Central Medina',
+                    distance: '0-500m from Haram',
+                    price: 'Premium (SAR 1.5M+)',
+                    highlights: 'Walking distance to Masjid Al Nabawi, hotels, restaurants'
+                },
+                {
+                    name: 'Al Aziziyah',
+                    distance: '500m-1km from Haram',
+                    price: 'High (SAR 1M-1.5M)',
+                    highlights: 'Quiet residential, good access, family-friendly'
+                },
+                {
+                    name: 'Al Ula',
+                    distance: '1-2km from Haram',
+                    price: 'Moderate (SAR 700K-1M)',
+                    highlights: 'Affordable, growing area, good investment potential'
+                }
+            ],
+            family: [
+                {
+                    name: 'Quba District',
+                    schools: ['International Schools', 'Islamic Centers'],
+                    highlights: 'Historic area, Quba Mosque, family communities, parks'
+                },
+                {
+                    name: 'Al Hamra',
+                    schools: ['Public Schools', 'Private Academies'],
+                    highlights: 'Modern infrastructure, shopping centers, hospitals'
+                },
+                {
+                    name: 'Al Rawdah',
+                    schools: ['Educational Complex', 'Quran Centers'],
+                    highlights: 'Peaceful environment, villas, community centers'
+                }
+            ]
+        },
+        investment: `
+            <strong>💰 Medinah Real Estate Investment Guide:</strong><br><br>
+            <div class="medinah-highlight">
+                <strong>📈 ROI Potential:</strong> 6-10% annual rental yield (Haram proximity)
+            </div>
+            <div class="medinah-highlight">
+                <strong>🏦 Mortgage Options:</strong> Up to 70% financing for Saudis, 50% for expats
+            </div>
+            <div class="medinah-highlight">
+                <strong>💰 Down Payment:</strong> 25-30% for ready properties, 20% for off-plan
+            </div>
+            <div class="medinah-highlight">
+                <strong>📋 Registration Fees:</strong> 5% of property value + administrative fees
+            </div>
+            <div class="medinah-highlight">
+                <strong>⚖️ Ownership:</strong> Foreigners can own property in designated areas
+            </div>
+            <p style="margin-top: 12px; font-size: 0.95rem; color: #b8d4c8;">
+                <i>Medinah properties show strong appreciation due to constant pilgrim demand.</i>
+            </p>
+        `,
+        services: [
+            {
+                name: 'Property Management',
+                description: 'Full-service management for rental properties',
+                price: '5-8% of annual rent'
+            },
+            {
+                name: 'Legal Consultation',
+                description: 'Property law, contracts, and dispute resolution',
+                price: 'From SAR 2,000'
+            },
+            {
+                name: 'Valuation Services',
+                description: 'Professional property valuation reports',
+                price: 'From SAR 1,500'
+            },
+            {
+                name: 'Investment Advisory',
+                description: 'Portfolio planning and ROI analysis',
+                price: 'Custom packages'
+            }
+        ]
+    };
+
+    widget.addEventListener('click', () => {
+        if (isExpanded) {
+            minimizeWidget();
+        } else {
+            expandWidget();
+        }
+    });
+
+    function expandWidget() {
+        isExpanded = true;
+        widget.className = 'expanded';
+        widget.innerHTML = `
+            <div class="chat-widget-header">
+                <div class="chat-widget-avatar">M</div>
+                <div class="chat-widget-title">
+                    <h3>Medinah Assistant</h3>
+                    <p>Your Medina real estate expert</p>
+                </div>
+                <button class="chat-widget-close" id="chatCloseBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-widget-messages" id="chatMessages">
+                <div class="chat-message bot">
+                    Assalamu Alaikum! 👋 I'm your <strong>Medinah</strong> assistant!<br><br>
+                    How can I help you today?
+                    <div class="chat-suggestions">
+                        <button class="chat-suggestion-btn" data-query="properties near haram"><i class="fas fa-mosque"></i> Near Haram</button>
+                        <button class="chat-suggestion-btn" data-query="family areas"><i class="fas fa-home"></i> Family Areas</button>
+                        <button class="chat-suggestion-btn" data-query="investment guide"><i class="fas fa-chart-line"></i> Investment</button>
+                        <button class="chat-suggestion-btn" data-query="visa requirements"><i class="fas fa-passport"></i> Visas</button>
+                        <button class="chat-suggestion-btn" data-query="property types"><i class="fas fa-building"></i> Properties</button>
+                        <button class="chat-suggestion-btn" data-query="contact info"><i class="fas fa-phone"></i> Contact</button>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-widget-input">
+                <input type="text" id="chatInput" placeholder="Ask about Medinah real estate..." autocomplete="off">
+                <button id="sendChatBtn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        `;
+
+        // Setup event listeners
+        document.getElementById('chatCloseBtn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            minimizeWidget();
+        });
+        document.getElementById('sendChatBtn').addEventListener('click', sendMessage);
+        document.getElementById('chatInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        // Setup suggestion buttons
+        setTimeout(() => {
+            document.querySelectorAll('.chat-suggestion-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const query = e.target.dataset.query || e.target.closest('button').dataset.query;
+                    addMessage(query, 'user');
+                    processQuery(query);
+                    if (inputField) inputField.value = '';
+                });
+            });
+        }, 100);
+
+        // Cache elements
+        messagesContainer = document.getElementById('chatMessages');
+        inputField = document.getElementById('chatInput');
+
+        // Auto-focus input
+        setTimeout(() => {
+            if (inputField) inputField.focus();
+        }, 100);
+
+        // Hide badge when expanded
+        const badge = widget.querySelector('.chat-badge');
+        if (badge) badge.style.display = 'none';
+    }
+
+    function minimizeWidget() {
+        isExpanded = false;
+        widget.className = 'minimized';
+        widget.innerHTML = `
+            <i class="fas fa-comments chat-icon"></i>
+            <span class="chat-badge">?</span>
+        `;
+        widget.addEventListener('click', () => {
+            if (!isExpanded) expandWidget();
+        });
+        // Show badge again
+        const badge = widget.querySelector('.chat-badge');
+        if (badge) badge.style.display = 'flex';
+    }
+
+    function addMessage(text, sender) {
+        if (!messagesContainer) return;
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `chat-message ${sender}`;
+        messageDiv.innerHTML = text.replace(/\n/g, '<br>');
+        messagesContainer.appendChild(messageDiv);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    function sendMessage() {
+        if (!inputField) return;
+        const message = inputField.value.trim();
+        if (!message) return;
+        addMessage(message, 'user');
+        inputField.value = '';
+        showTypingIndicator();
+        setTimeout(() => {
+            removeTypingIndicator();
+            processQuery(message.toLowerCase());
+        }, 800);
+    }
+
+    function showTypingIndicator() {
+        if (typingElement || !messagesContainer) return;
+        typingElement = document.createElement('div');
+        typingElement.className = 'chat-message bot';
+        typingElement.innerHTML = `
+            <div class="typing-indicator">
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+            </div>
+        `;
+        messagesContainer.appendChild(typingElement);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    function removeTypingIndicator() {
+        if (typingElement && messagesContainer) {
+            messagesContainer.removeChild(typingElement);
+            typingElement = null;
+        }
+    }
+
+    function processQuery(query) {
+        let response = '';
+        
+        // Properties near Haram
+        if (query.includes('haram') || query.includes('masjid') || query.includes('mosque') || query.includes('near prophet')) {
+            response = `
+                <strong>🕌 Properties Near Masjid Al Nabawi:</strong><br><br>
+                ${KB.areas.nearHaram.map(area => `
+                <div class="medinah-highlight">
+                    <strong>${area.name}</strong><br>
+                    <strong>📍 Distance:</strong> ${area.distance}<br>
+                    <strong>💰 Price Range:</strong> ${area.price}<br>
+                    <strong>🎯 Highlights:</strong> ${area.highlights}
+                </div>
+                `).join('')}
+                <p style="margin-top: 12px; font-size: 0.95rem; color: #b8d4c8;">
+                    <i>Properties closer to Haram have higher rental yields during pilgrimage seasons.</i>
+                </p>
+            `;
+        }
+        // Family areas
+        else if (query.includes('family') || query.includes('kid') || query.includes('child') || query.includes('school')) {
+            response = `
+                <strong>🏆 Best Family Areas in Medinah:</strong><br><br>
+                ${KB.areas.family.map(area => `
+                <div class="medinah-highlight">
+                    <strong>${area.name}</strong><br>
+                    <strong>🏫 Schools:</strong> ${area.schools.join(', ')}<br>
+                    <strong>🎯 Family Perks:</strong> ${area.highlights}
+                </div>
+                `).join('')}
+                <p style="margin-top: 12px; font-size: 0.95rem; color: #b8d4c8;">
+                    <i>All areas offer peaceful environments suitable for families.</i>
+                </p>
+            `;
+        }
+        // Visa queries
+        else if (query.includes('visa') || query.includes('residen') || query.includes('umrah') || query.includes('business visa')) {
+            response = KB.visaInfo;
+        }
+        // Investment queries
+        else if (query.includes('invest') || query.includes('roi') || query.includes('yield') || query.includes('mortgage') || query.includes('financ')) {
+            response = KB.investment;
+        }
+        // Property types
+        else if (query.includes('property') || query.includes('apartment') || query.includes('villa') || query.includes('commercial') || query.includes('type')) {
+            response = `
+                <strong>🏢 Property Types in Medinah:</strong><br><br>
+                <div class="medinah-highlight">
+                    <strong>🏙️ Residential Apartments</strong><br>
+                    1-4 BR units, ideal for pilgrims and families
+                </div>
+                <div class="medinah-highlight">
+                    <strong>🏡 Villas</strong><br>
+                    3-5 BR standalone homes with private gardens
+                </div>
+                <div class="medinah-highlight">
+                    <strong>🏢 Commercial Units</strong><br>
+                    Retail and office spaces in high-traffic areas
+                </div>
+                <div class="medinah-highlight">
+                    <strong>🏨 Hotel Apartments</strong><br>
+                    Serviced units for short-term pilgrim stays
+                </div>
+                <p style="margin-top: 12px; font-size: 0.95rem; color: #b8d4c8;">
+                    <i>Foreign ownership allowed in designated investment zones.</i>
+                </p>
+            `;
+        }
+        // Residential properties
+        else if (query.includes('residential') || query.includes('home') || query.includes('live')) {
+            response = `
+                <strong>🏠 Residential Properties Available:</strong><br><br>
+                ${KB.properties.residential.map(prop => `
+                <div class="medinah-highlight">
+                    <strong>${prop.name}</strong><br>
+                    <strong>📐 Type:</strong> ${prop.type} | <strong>🛏️</strong> ${prop.bedrooms}<br>
+                    <strong>💰 Price:</strong> ${prop.price}<br>
+                    <strong>✨ Features:</strong> ${prop.features}
+                </div>
+                `).join('')}
+            `;
+        }
+        // Commercial properties
+        else if (query.includes('commercial') || query.includes('business') || query.includes('office') || query.includes('retail') || query.includes('shop')) {
+            response = `
+                <strong>🏢 Commercial Properties Available:</strong><br><br>
+                ${KB.properties.commercial.map(prop => `
+                <div class="medinah-highlight">
+                    <strong>${prop.name}</strong><br>
+                    <strong>📐 Type:</strong> ${prop.type} | <strong>📏</strong> ${prop.size}<br>
+                    <strong>💰 Price:</strong> ${prop.price}<br>
+                    <strong>✨ Features:</strong> ${prop.features}
+                </div>
+                `).join('')}
+            `;
+        }
+        // Services
+        else if (query.includes('service') || query.includes('management') || query.includes('legal') || query.includes('valuation')) {
+            response = `
+                <strong>🛠️ Medinah Services:</strong><br><br>
+                ${KB.services.map(service => `
+                <div class="medinah-highlight">
+                    <strong>${service.name}</strong><br>
+                    ${service.description}<br>
+                    <strong>💰 Price:</strong> ${service.price}
+                </div>
+                `).join('')}
+            `;
+        }
+        // Contact info
+        else if (query.includes('contact') || query.includes('phone') || query.includes('email') || query.includes('reach') || query.includes('call') || query.includes('office')) {
+            response = `
+                <strong>📞 Contact Medinah:</strong><br><br>
+                <div class="medinah-highlight">
+                    <strong>📱 WhatsApp:</strong> <a href="https://wa.me/${KB.business.whatsapp}" style="color: #2da86e; text-decoration: none;">+${KB.business.phone}</a>
+                </div>
+                <div class="medinah-highlight">
+                    <strong>📧 Email:</strong> ${KB.business.email}
+                </div>
+                <div class="medinah-highlight">
+                    <strong>🏢 Office:</strong> ${KB.business.location}
+                </div>
+                <p style="margin-top: 12px;">We're available 24/7 to assist with your real estate needs!</p>
+            `;
+        }
+        // Greetings
+        else if (/^(hi|hello|hey|assalam|salam|good morning|good afternoon|good evening)/.test(query)) {
+            response = `Wa Alaikum Assalam! 👋 Welcome to <strong>Medinah</strong>!<br><br>
+            I'm your real estate assistant. I can help you with:<br>
+            • Properties near Masjid Al Nabawi<br>
+            • Family-friendly areas with schools<br>
+            • Investment opportunities & ROI<br>
+            • Visa & residency requirements<br>
+            • Commercial & residential properties<br><br>
+            What would you like to know?`;
+        }
+        // Thank you/Goodbye
+        else if (query.includes('thank') || query.includes('bye') || query.includes('goodbye') || query.includes('thanks') || query.includes('shukran')) {
+            response = `You're welcome! 😊 May Allah bless your investment. Whenever you need help with Medinah real estate, we're here for you.`;
+        }
+        // Default response
+        else {
+            response = `I specialize in Medinah real estate! 😊 Try asking:<br><br>
+            • "Properties near Haram"<br>
+            • "Best family areas in Medinah"<br>
+            • "Investment guide for Medinah"<br>
+            • "Visa requirements for property buyers"<br>
+            • "Commercial properties available"<br>
+            • "Contact information"<br><br>
+            Or tap below to chat with our human experts!`;
+        }
+        
+        // Add WhatsApp handoff if not already present
+        if (!response.includes('whatsapp-handoff') && !response.includes('Contact Medinah')) {
+            response += getWhatsAppHandoff(`Chat about: ${query}`);
+        }
+        
+        addMessage(response, 'bot');
+    }
+
+    function getWhatsAppHandoff(message) {
+        return `
+            <div class="whatsapp-handoff" onclick="window.open('https://wa.me/${KB.business.whatsapp}?text=${encodeURIComponent(message + ' - via Medinah AI Assistant')}', '_blank')">
+                <i class="fab fa-whatsapp"></i>
+                <span>Chat with human expert on WhatsApp</span>
+            </div>
+        `;
+    }
+
+    // Initialize badge animation
+    const badge = widget.querySelector('.chat-badge');
+    if (badge) {
+        setInterval(() => {
+            if (!isExpanded && badge) {
+                badge.textContent = badge.textContent === '?' ? '!' : '?';
+            }
+        }, 2000);
+    }
+}
+
+// Initialize Medinah chat widget
+initMedinahChatWidget();
+    </script>
+</body>
+</html>
