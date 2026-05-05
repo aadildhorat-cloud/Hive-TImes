@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DTPGZ964FD"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-DTPGZ964FD');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Butcher Block - Premium Meat Supplier</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    
+    <style>
+        /* === GLOBAL RESET === */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #fffaf0;
+        }
+
+        /* === COLOR VARIABLES === */
+        :root {
+            --primary: #8B0000;
+            --primary-dark: #660000;
+            --secondary: #D2691E;
+            --accent: #A0522D;
+            --light: #FFF8F0;
+            --white: #FFFFFF;
+            --shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        /* === HEADER === */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+        .header-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            justify-content: center;
+            flex: 1;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+        }
+        .logo-img {
+            height: 80px;
+            border-radius: 8px;
+            border: 3px solid rgba(255,255,255,0.3);
+        }
+        .hamburger-btn {
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            margin-right: auto;
+        }
+        .hamburger-btn span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+        .hamburger-btn.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+        .hamburger-btn.active span:nth-child(2) { opacity: 0; }
+        .hamburger-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+        .cart-btn {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 8px 16px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            margin-left: auto;
+            transition: all 0.2s;
+        }
+        .cart-btn:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
+        .ai-search-bar-container {
+            padding: 0 15px 12px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        #aiProductSearchInput {
+            width: 100%;
+            padding: 10px 16px;
+            border-radius: 30px;
+            border: 2px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.95);
+            font-size: 15px;
+            font-family: 'Poppins', sans-serif;
+        }
+        #aiProductSearchInput:focus {
+            outline: none;
+            border-color: white;
+            box-shadow: 0 0 0 3px rgba(255,255,255,0.3);
+        }
+
+        /* === SIDE MENU === */
+        .menu-overlay {
+            position: fixed;
+            top: 0; left: -100%;
+            width: 100%; height: 100vh;
+            background: rgba(0,0,0,0.7);
+            z-index: 1999;
+            transition: left 0.4s;
+            backdrop-filter: blur(5px);
+        }
+        .menu-overlay.active { left: 0; }
+        .side-menu {
+            position: fixed;
+            top: 0; left: -320px;
+            width: 320px;
+            height: 100vh;
+            background: white;
+            z-index: 2001;
+            overflow-y: auto;
+            transition: left 0.4s cubic-bezier(0.68,-0.55,0.265,1.55);
+            box-shadow: 4px 0 20px rgba(0,0,0,0.3);
+        }
+        .side-menu.active { left: 0; }
+        .menu-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 25px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .menu-header img {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            border: 2px solid white;
+        }
+        .menu-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+        }
+        .menu-items { padding: 20px 0; }
+        .menu-item { border-bottom: 1px solid #f0f0f0; }
+        .menu-link {
+            display: flex;
+            align-items: center;
+            padding: 18px 20px;
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .menu-link:hover {
+            background: #f8f9fa;
+            color: var(--primary);
+            padding-left: 25px;
+        }
+        .menu-link i {
+            font-size: 18px;
+            margin-right: 15px;
+            width: 25px;
+            text-align: center;
+            color: var(--primary);
+        }
+        .menu-footer {
+            padding: 20px;
+            border-top: 1px solid #f0f0f0;
+            background: #f8f9fa;
+        }
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 8px 0;
+            font-size: 14px;
+            color: #666;
+        }
+        .contact-info i { color: var(--primary); width: 20px; }
+        .social-links { display: flex; gap: 10px; margin-top: 15px; }
+        .social-links a {
+            width: 40px; height: 40px;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .social-links a:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        /* === CONTENT === */
+        .content-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 40px;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 80px; height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* === PRODUCT GRID === */
+        .products-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            max-width: 240px;
+            width: 100%;
+            transition: all 0.3s;
+            cursor: default;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+        .product-image {
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
+            background: #f8f9fa;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .product-image:hover { transform: scale(1.05); }
+        .product-info { padding: 15px; text-align: center; }
+        .product-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+            min-height: 44px;
+        }
+        .product-description {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 10px;
+            min-height: 36px;
+        }
+        .product-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        .add-to-cart-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+        }
+        .add-to-cart-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        .badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--secondary);
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        /* === MODALS === */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+            padding: 20px;
+        }
+        .modal {
+            background: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.9);
+            opacity: 0;
+            transition: all 0.3s;
+        }
+        .modal.active { transform: scale(1); opacity: 1; }
+        .close-modal {
+            position: absolute;
+            top: 15px; right: 15px;
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 30px;
+            gap: 30px;
+        }
+        .modal-images { flex: 1; min-width: 300px; }
+        .main-image {
+            width: 100%;
+            height: 350px;
+            object-fit: contain;
+            border-radius: 10px;
+            background: #f8f9fa;
+            margin-bottom: 15px;
+        }
+        .modal-details { flex: 1; min-width: 300px; }
+        .modal-title {
+            font-size: 26px;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+        .modal-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .modal-description {
+            margin-bottom: 25px;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .qty-btn {
+            width: 40px; height: 40px;
+            border: 2px solid var(--secondary);
+            border-radius: 8px;
+            background: white;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .qty-btn:hover {
+            background: #f8f9fa;
+            border-color: var(--primary);
+        }
+        .qty-display {
+            font-size: 18px;
+            font-weight: 600;
+            min-width: 40px;
+            text-align: center;
+        }
+        .add-to-cart-modal-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+        }
+        .add-to-cart-modal-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* === CART MODAL === */
+        .cart-modal-title {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .cart-items { margin-bottom: 25px; }
+        .cart-item {
+            display: flex;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+        }
+        .cart-item-image {
+            width: 70px; height: 70px;
+            object-fit: contain;
+            border-radius: 8px;
+            margin-right: 15px;
+            background: #f8f9fa;
+        }
+        .cart-item-details { flex: 1; }
+        .cart-item-name { font-weight: 600; margin-bottom: 5px; }
+        .cart-item-price { color: var(--primary); font-weight: 600; }
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .cart-qty-btn {
+            width: 28px; height: 28px;
+            border: 1px solid var(--secondary);
+            border-radius: 4px;
+            background: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .cart-qty-display {
+            font-size: 15px;
+            font-weight: 600;
+            min-width: 30px;
+            text-align: center;
+        }
+        .remove-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        .remove-btn:hover { background: #c0392b; }
+        .cart-total {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            text-align: right;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .checkout-btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 17px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+        }
+        .checkout-btn:hover {
+            background: #229954;
+            transform: translateY(-2px);
+        }
+        .close-cart-btn {
+            background: var(--primary);
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            margin-top: 15px;
+            width: 100%;
+        }
+        .close-cart-btn:hover { background: var(--primary-dark); }
+
+        /* === FLOATING BUTTONS === */
+        .floating-contact {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .float-btn {
+            width: 56px; height: 56px;
+            border-radius: 50%;
+            color: white;
+            font-size: 26px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+        }
+        .float-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+        }
+        .whatsapp-float { background: #25D366; }
+
+        /* === AI CHAT === */
+        .ai-chat-widget {
+            position: fixed;
+            bottom: 95px;
+            right: 25px;
+            width: 56px; height: 56px;
+            border-radius: 50%;
+            background: white;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            border: 2px solid var(--primary);
+            transition: all 0.3s;
+        }
+        .ai-chat-widget:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        .ai-chat-widget img {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            object-fit: contain;
+        }
+        .ai-chat-panel {
+            position: fixed;
+            bottom: 160px;
+            right: 25px;
+            width: 340px;
+            background: white;
+            border: 1px solid var(--secondary);
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+            display: none;
+            flex-direction: column;
+            z-index: 100;
+            overflow: hidden;
+        }
+        .ai-chat-panel.active { display: flex; }
+        .ai-chat-header {
+            background: var(--primary);
+            color: white;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .ai-avatar {
+            width: 36px; height: 36px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-right: 10px;
+            border: 2px solid white;
+        }
+        .ai-avatar img { width: 100%; height: 100%; object-fit: contain; }
+        .ai-chat-header h4 {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .ai-close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.6rem;
+            cursor: pointer;
+            width: 28px; height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        .ai-close-btn:hover { background: rgba(255,255,255,0.2); }
+        .ai-chat-messages {
+            flex-grow: 1;
+            padding: 14px;
+            overflow-y: auto;
+            max-height: 280px;
+            background: #faf9f7;
+        }
+        .ai-message {
+            margin-bottom: 12px;
+            padding: 10px 14px;
+            border-radius: 16px;
+            max-width: 85%;
+            line-height: 1.4;
+            font-size: 14px;
+        }
+        .ai-message.bot {
+            background: #f0e6d2;
+            border-left: 3px solid var(--primary);
+            align-self: flex-start;
+        }
+        .ai-message.user {
+            background: #e6f7ff;
+            border-right: 3px solid #4da6ff;
+            margin-left: auto;
+        }
+        .ai-chat-input {
+            padding: 12px;
+            border-top: 1px solid var(--secondary);
+            display: flex;
+            gap: 8px;
+        }
+        #aiUserInput {
+            flex-grow: 1;
+            padding: 9px 14px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+        }
+        #aiSendBtn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 38px; height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        #aiSendBtn:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        /* === FOOTER === */
+        footer {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .footer-info h3, .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 18px;
+            font-family: 'Playfair Display', serif;
+        }
+        .social-media { display: flex; gap: 12px; }
+        .social-link {
+            width: 42px; height: 42px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .social-link:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        .footer-nav ul {
+            display: flex;
+            gap: 22px;
+            list-style: none;
+        }
+        .footer-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+        .footer-nav a:hover {
+            color: #f8f9fa;
+            text-decoration: underline;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 14px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* === HIVE BADGE === */
+        .hive-badge-link {
+            display: inline-flex;
+            align-items: center;
+            background: #FFD700;
+            border: 2px solid #E5C100;
+            border-radius: 50px;
+            padding: 5px 12px;
+            text-decoration: none;
+            margin-left: 12px;
+            transition: all 0.3s;
+        }
+        .hive-badge-link:hover {
+            background: #E5C100;
+            transform: translateY(-2px);
+        }
+        .hive-icon-svg {
+            width: 16px; height: 16px;
+            fill: #000;
+            margin-right: 6px;
+        }
+        .hive-text-group { display: flex; flex-direction: column; line-height: 1.1; }
+        .hive-text {
+            color: #000;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+        .hive-subtext {
+            font-size: 8px;
+            font-weight: 600;
+            color: #333;
+            text-transform: uppercase;
+        }
+
+        /* === TOAST === */
+        @keyframes slideIn { from { transform: translateX(100px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+        .toast {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            padding: 12px 22px;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(39,174,96,0.4);
+            z-index: 3000;
+            font-weight: 500;
+            font-size: 14px;
+            animation: slideIn 0.3s ease, fadeOut 0.3s ease 2.2s forwards;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            max-width: 280px;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            .header-top-row { padding: 8px 12px; }
+            .logo { font-size: 16px; }
+            .logo-img { height: 50px; }
+            .cart-btn { font-size: 12px; padding: 6px 10px; }
+            .side-menu { width: 280px; left: -280px; }
+            .section-title { font-size: 26px; }
+            .product-card { max-width: 180px; }
+            .product-image { height: 180px; }
+            .modal-content { flex-direction: column; }
+            .main-image { height: 280px; }
+            .ai-chat-panel { width: calc(100% - 40px); right: 20px; bottom: 140px; }
+        }
+        @media (max-width: 480px) {
+            .logo-container { flex-direction: column; gap: 4px; }
+            .logo { font-size: 14px; text-align: center; }
+            .products-grid { gap: 12px; }
+            .product-card { flex: 1 1 calc(50% - 6px); max-width: calc(50% - 6px); }
+            .product-name { font-size: 14px; min-height: auto; }
+            .product-price { font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="header-top-row">
+        <button class="hamburger-btn" id="hamburgerBtn">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="logo-container">
+            <img src="images/butcherblock-logo.jpg" alt="Butcher Block" class="logo-img">
+            <div class="logo">BUTCHER BLOCK</div>
+            <a href="https://hivetimes.co.za" class="hive-badge-link" target="_blank" rel="noopener">
+                <svg class="hive-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L14.5 6.5L19 6.5L16.5 11L19 15.5L14.5 15.5L12 20L9.5 15.5L5 15.5L7.5 11L5 6.5L9.5 6.5L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
+                    <path d="M12 7L13.5 9.5L16 9.5L14.5 12L16 14.5L13.5 14.5L12 17L10.5 14.5L8 14.5L9.5 12L8 9.5L10.5 9.5L12 7Z" fill="currentColor"/>
+                </svg>
+                <div class="hive-text-group">
+                    <span class="hive-text">HIVE</span>
+                    <span class="hive-subtext">Member</span>
+                </div>
+            </a>
+        </div>
+        <button class="cart-btn" onclick="showCartModal()">
+            <i class="fas fa-shopping-cart"></i> Cart (<span id="cartCount">0</span>)
+        </button>
+    </div>
+    <div class="ai-search-bar-container">
+        <input type="text" id="aiProductSearchInput" placeholder="e.g. steaks under R250, lamb chops...">
+    </div>
+</header>
+
+<!-- MENU OVERLAY & SIDE MENU -->
+<div class="menu-overlay" id="menuOverlay"></div>
+<nav class="side-menu" id="sideMenu">
+    <div class="menu-header">
+        <img src="images/butcherblock-logo.jpg" alt="Butcher Block">
+        <h2>BUTCHER BLOCK</h2>
+    </div>
+    <div class="menu-items">
+        <div class="menu-item">
+            <a href="https://hivetimes.co.za/" class="menu-link" onclick="toggleMenu()">
+                <span><i class="fas fa-home"></i> HIVE TIMES</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="javascript:void(0)" class="menu-link" onclick="showBusinessModal(); toggleMenu()">
+                <span><i class="fas fa-info-circle"></i> About Business</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="#bulk-sales" class="menu-link" onclick="scrollToSection('bulk-sales')">
+                <span><i class="fas fa-box-open"></i> Bulk Sales</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="#beef-cuts" class="menu-link" onclick="scrollToSection('beef-cuts')">
+                <span><i class="fas fa-drumstick-bite"></i> Beef Cuts</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="#premium-steaks" class="menu-link" onclick="scrollToSection('premium-steaks')">
+                <span><i class="fas fa-bacon"></i> Premium Steaks</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="#lamb-cuts" class="menu-link" onclick="scrollToSection('lamb-cuts')">
+                <span><i class="fas fa-leaf"></i> Lamb Cuts</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="#chicken" class="menu-link" onclick="scrollToSection('chicken')">
+                <span><i class="fas fa-dove"></i> Chicken</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="#processed-meat" class="menu-link" onclick="scrollToSection('processed-meat')">
+                <span><i class="fas fa-hotdog"></i> Processed Meat</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="#meat-hampers" class="menu-link" onclick="scrollToSection('meat-hampers')">
+                <span><i class="fas fa-gift"></i> Meat Hampers</span>
+            </a>
+        </div>
+    </div>
+    <div class="menu-footer">
+        <div class="contact-info">
+            <p><i class="fas fa-phone"></i> +27 61 502 3930</p>
+            <p><i class="fas fa-envelope"></i> info@butcherblock.co.za</p>
+        </div>
+        <div class="social-links">
+            <a href="https://wa.me/27615023930" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </div>
+</nav>
+
+<!-- SLIDER CONTAINER -->
+<div id="slider-container" class="slider-section"></div>
+
+<!-- BUSINESS MODAL -->
+<div class="modal-overlay" id="businessModalOverlay">
+    <div class="modal" id="businessModal">
+        <button class="close-modal" id="closeBusinessModal"><i class="fas fa-times"></i></button>
+        <div style="padding:30px;text-align:center;background:linear-gradient(135deg,var(--primary),var(--secondary));color:white;border-radius:12px 12px 0 0;">
+            <img src="images-logo/butcherblock-logo.jpg" alt="Butcher Block" style="height:90px;border-radius:10px;border:3px solid white;margin-bottom:15px;">
+            <h1 style="font-family:'Playfair Display',serif;font-size:2.2rem;margin:0;">BUTCHER BLOCK</h1>
+            <p style="margin:5px 0 0;opacity:0.9;">Premium Meat Supplier</p>
+        </div>
+        <div style="padding:25px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;">
+            <div>
+                <h3 style="color:var(--primary);margin-bottom:12px;display:flex;align-items:center;gap:8px;">
+                    <i class="fas fa-info-circle"></i> About Us
+                </h3>
+                <p style="color:#555;line-height:1.7;">Established in 2018, Butcher Block is a family business supplying premium meat across South Africa. We're relentless about quality, uncompromising about food safety, and passionate about service.</p>
+            </div>
+            <div>
+                <h3 style="color:var(--primary);margin-bottom:12px;display:flex;align-items:center;gap:8px;">
+                    <i class="fas fa-clock"></i> Opening Hours
+                </h3>
+                <ul style="color:#555;line-height:2;">
+                    <li>Mon–Fri: 6:00 AM – 6:00 PM</li>
+                    <li>Saturday: Closed</li>
+                    <li>Sunday: Closed</li>
+                </ul>
+                <h4 style="color:var(--primary);margin:20px 0 8px;"><i class="fas fa-map-marker-alt"></i> Location</h4>
+                <p style="color:#555;">239 Norda St, Leslie, Thuli Fakude, 2265</p>
+                <p style="color:#555;margin-top:5px;"><i class="fas fa-phone"></i> +27 61 502 3930</p>
+                <p style="color:#555;"><i class="fas fa-envelope"></i> info@butcherblock.co.za</p>
+            </div>
+            <div style="grid-column:1/-1;">
+                <h3 style="color:var(--primary);margin-bottom:12px;display:flex;align-items:center;gap:8px;">
+                    <i class="fas fa-map-marked-alt"></i> Find Us
+                </h3>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3574.731922658202!2d28.92123462542081!3d-26.36753137697635!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1eeb25061c815c85%3A0x24681f8c7cabe245!2sThe%20Butcher%20Block!5e0!3m2!1sen!2sza!4v1770799816502!5m2!1sen!2sza" width="100%" height="250" style="border:0;border-radius:10px;" allowfullscreen loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PRODUCT SECTIONS (Dynamically populated by JS) -->
+<div class="content-section">
+    <h2 id="bulk-sales" class="section-title">BULK SALES</h2>
+    <div id="bulk-sales-container" class="products-grid" data-category="bulk-sales"></div>
+</div>
+<div class="content-section">
+    <h2 id="beef-cuts" class="section-title">BEEF CUTS</h2>
+    <div id="beef-cuts-container" class="products-grid" data-category="beef-cuts"></div>
+</div>
+<div class="content-section">
+    <h2 id="premium-steaks" class="section-title">PREMIUM STEAKS</h2>
+    <div id="premium-steaks-container" class="products-grid" data-category="premium-steaks"></div>
+</div>
+<div class="content-section">
+    <h2 id="lamb-cuts" class="section-title">LAMB CUTS</h2>
+    <div id="lamb-cuts-container" class="products-grid" data-category="lamb-cuts"></div>
+</div>
+<div class="content-section">
+    <h2 id="chicken" class="section-title">CHICKEN</h2>
+    <div id="chicken-skin-on-container" class="products-grid" data-category="chicken-skin-on"></div>
+    <div id="chicken-skin-off-container" class="products-grid" data-category="chicken-skin-off"></div>
+</div>
+<div class="content-section">
+    <h2 id="processed-meat" class="section-title">PROCESSED MEAT</h2>
+    <div id="processed-meat-container" class="products-grid" data-category="processed-meat"></div>
+</div>
+<div class="content-section">
+    <h2 id="meat-hampers" class="section-title">MEAT HAMPERS</h2>
+    <div id="meat-hampers-container" class="products-grid" data-category="meat-hampers"></div>
+</div>
+
+<!-- PRODUCT MODAL -->
+<div class="modal-overlay" id="productModalOverlay">
+    <div class="modal" id="productModal">
+        <button class="close-modal" onclick="closeProductModal()"><i class="fas fa-times"></i></button>
+        <div class="modal-content">
+            <div class="modal-images">
+                <img src="" alt="" class="main-image" id="modalMainImage">
+            </div>
+            <div class="modal-details">
+                <h3 class="modal-title" id="modalProductName">Product Name</h3>
+                <div class="modal-price" id="modalProductPrice">R0.00</div>
+                <p class="modal-description" id="modalProductDescription">Description</p>
+                <div class="quantity-selector">
+                    <button class="qty-btn" id="decreaseQty">-</button>
+                    <span class="qty-display" id="modalQty">1</span>
+                    <button class="qty-btn" id="increaseQty">+</button>
+                </div>
+                <button class="add-to-cart-modal-btn" id="modalAddToCart">
+                    <i class="fas fa-cart-plus"></i> Add to Cart
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CART MODAL -->
+<div class="modal-overlay" id="cartModalOverlay">
+    <div class="modal" id="cartModal">
+        <button class="close-modal" onclick="closeCartModal()"><i class="fas fa-times"></i></button>
+        <div style="padding:25px;">
+            <h3 class="cart-modal-title"><i class="fas fa-shopping-cart"></i> Your Cart</h3>
+            <div class="cart-items" id="cartItems">
+                <p style="text-align:center;color:#666;">Your cart is empty.</p>
+            </div>
+            <div class="cart-total" id="cartTotal">Total: R0.00</div>
+            <button class="checkout-btn" onclick="sendToWhatsApp()">
+                <i class="fab fa-whatsapp"></i> Send Order via WhatsApp
+            </button>
+            <button class="close-cart-btn" onclick="closeCartModal()">Continue Shopping</button>
+        </div>
+    </div>
+</div>
+
+<!-- FLOATING CONTACT -->
+<div class="floating-contact">
+    <button class="float-btn whatsapp-float" onclick="window.open('https://wa.me/27615023930','_blank')" title="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </button>
+</div>
+
+<!-- AI CHAT -->
+<div class="ai-chat-widget" id="aiChatWidget">
+    <img src="images/bee.jpg" alt="Ask Beelal">
+</div>
+<div class="ai-chat-panel" id="aiChatPanel">
+    <div class="ai-chat-header">
+        <div class="ai-avatar"><img src="images/bee.jpg" alt="Beelal"></div>
+        <h4>Ask Beelal</h4>
+        <button class="ai-close-btn" id="aiCloseBtn">×</button>
+    </div>
+    <div class="ai-chat-messages" id="aiChatMessages">
+        <div class="ai-message bot">
+            Hello! 👋 I'm your <strong>Butcher Block</strong> assistant.<br>
+            Ask me about: location, hours, delivery, or products!
+        </div>
+    </div>
+    <div class="ai-chat-input">
+        <input type="text" id="aiUserInput" placeholder="e.g. Do you deliver?">
+        <button id="aiSendBtn"><i class="fas fa-paper-plane"></i></button>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>BUTCHER BLOCK</h3>
+                <p>Premium Meat Supplier for Restaurants & Home Chefs</p>
+                <div class="social-media">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <nav class="footer-nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#bulk-sales">Shop</a></li>
+                        <li><a href="#" onclick="showBusinessModal()">About Us</a></li>
+                        <li><a href="mailto:info@butcherblock.co.za">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; Butcher Block. All rights reserved. | Powered by Hive Times
+        </div>
+    </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="products-butcherblock.js"></script>
+<script>
+// === CART SYSTEM ===
+const CART_KEY = 'butcher_block_cart';
+const cart = {
+    items: [],
+    init() {
+        try {
+            const stored = localStorage.getItem(CART_KEY);
+            if (stored) this.items = JSON.parse(stored);
+        } catch(e) { this.items = []; }
+        this.updateDisplay();
+    },
+    save() {
+        localStorage.setItem(CART_KEY, JSON.stringify(this.items));
+        this.updateDisplay();
+    },
+    add(product) {
+        const existing = this.items.find(i => i.id === product.id);
+        if (existing) existing.quantity += product.quantity;
+        else this.items.push({...product});
+        this.save();
+    },
+    updateQty(id, delta) {
+        const item = this.items.find(i => i.id === id);
+        if (item) {
+            item.quantity += delta;
+            if (item.quantity <= 0) this.remove(id);
+            else this.save();
+        }
+    },
+    remove(id) {
+        this.items = this.items.filter(i => i.id !== id);
+        this.save();
+    },
+    total() {
+        return this.items.reduce((sum, i) => sum + (i.price * i.quantity), 0).toFixed(2);
+    },
+    updateDisplay() {
+        const count = document.getElementById('cartCount');
+        const itemsEl = document.getElementById('cartItems');
+        const totalEl = document.getElementById('cartTotal');
+        const totalQty = this.items.reduce((s,i) => s + i.quantity, 0);
+        if (count) count.textContent = totalQty;
+        if (itemsEl) {
+            if (this.items.length === 0) {
+                itemsEl.innerHTML = '<p style="text-align:center;color:#666;">Your cart is empty.</p>';
+            } else {
+                itemsEl.innerHTML = this.items.map(item => `
+                    <div class="cart-item">
+                        <img src="${item.image}" class="cart-item-image" onerror="this.src='images/placeholder.jpg'">
+                        <div class="cart-item-details">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">R${(item.price * item.quantity).toFixed(2)} (R${item.price.toFixed(2)}/ea)</div>
+                            <div class="cart-item-quantity">
+                                <button class="cart-qty-btn" onclick="cart.updateQty('${item.id}',-1)">-</button>
+                                <span class="cart-qty-display">${item.quantity}</span>
+                                <button class="cart-qty-btn" onclick="cart.updateQty('${item.id}',1)">+</button>
+                            </div>
+                        </div>
+                        <button class="remove-btn" onclick="cart.remove('${item.id}')"><i class="fas fa-trash"></i></button>
+                    </div>
+                `).join('');
+            }
+        }
+        if (totalEl) totalEl.textContent = `Total: R${this.total()}`;
+    }
+};
+
+// === TOAST ===
+function showToast(msg) {
+    const t = document.createElement('div');
+    t.className = 'toast';
+    t.innerHTML = `<i class="fas fa-check-circle"></i> ${msg}`;
+    document.body.appendChild(t);
+    setTimeout(() => t.remove(), 2500);
+}
+
+// === AI SEARCH ===
+document.getElementById('aiProductSearchInput')?.addEventListener('input', (e) => {
+    const q = e.target.value.trim().toLowerCase();
+    document.querySelectorAll('.products-grid').forEach(grid => {
+        let visible = false;
+        grid.querySelectorAll('.product-card').forEach(card => {
+            const name = card.querySelector('.product-name')?.textContent.toLowerCase() || '';
+            const price = parseFloat(card.dataset.price) || 0;
+            let show = true;
+            if (q) {
+                if (q.includes('under') || q.includes('<')) {
+                    const m = q.match(/\d+(\.\d+)?/);
+                    show = m ? price <= parseFloat(m[0]) : false;
+                } else {
+                    show = name.includes(q);
+                }
+            }
+            card.style.display = show ? 'block' : 'none';
+            if (show) visible = true;
+        });
+        grid.closest('.content-section').style.display = visible ? 'block' : 'none';
+    });
+});
+
+// === MODALS ===
+function showModal(overlayId, modalId) {
+    const overlay = document.getElementById(overlayId);
+    const modal = document.getElementById(modalId);
+    overlay.style.display = 'flex';
+    setTimeout(() => modal?.classList.add('active'), 10);
+    document.body.style.overflow = 'hidden';
+}
+function hideModal(overlayId, modalId) {
+    const modal = document.getElementById(modalId);
+    const overlay = document.getElementById(overlayId);
+    modal?.classList.remove('active');
+    setTimeout(() => { overlay.style.display = 'none'; document.body.style.overflow = ''; }, 300);
+}
+function showBusinessModal() { showModal('businessModalOverlay', 'businessModal'); }
+function closeBusinessModal() { hideModal('businessModalOverlay', 'businessModal'); }
+document.getElementById('closeBusinessModal')?.addEventListener('click', closeBusinessModal);
+document.getElementById('businessModalOverlay')?.addEventListener('click', (e) => { if(e.target===e.currentTarget) closeBusinessModal(); });
+
+// === PRODUCT MODAL ===
+let currentProduct = null;
+function openProductModal(p) {
+    currentProduct = p;
+    document.getElementById('modalProductName').textContent = p.name;
+    document.getElementById('modalProductPrice').textContent = p.price === 0 ? 'Call for Quote' : `R${p.price.toFixed(2)}`;
+    document.getElementById('modalProductDescription').textContent = p.description;
+    document.getElementById('modalMainImage').src = p.image;
+    document.getElementById('modalQty').textContent = '1';
+    showModal('productModalOverlay', 'productModal');
+}
+function closeProductModal() { hideModal('productModalOverlay', 'productModal'); currentProduct = null; }
+document.getElementById('modalAddToCart')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (currentProduct) {
+        const qty = parseInt(document.getElementById('modalQty').textContent);
+        cart.add({...currentProduct, quantity: qty});
+        closeProductModal();
+        showToast(`✅ ${qty}x ${currentProduct.name} added!`);
+    }
+});
+document.getElementById('increaseQty')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const el = document.getElementById('modalQty');
+    el.textContent = parseInt(el.textContent) + 1;
+});
+document.getElementById('decreaseQty')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const el = document.getElementById('modalQty');
+    const v = parseInt(el.textContent);
+    if (v > 1) el.textContent = v - 1;
+});
+
+// === PRODUCT CARD CLICKS ===
+document.addEventListener('click', (e) => {
+    if (e.target.closest('.product-image')) {
+        const card = e.target.closest('.product-card');
+        if (card) {
+            const p = {
+                id: card.dataset.id,
+                name: card.dataset.name,
+                price: parseFloat(card.dataset.price),
+                image: card.dataset.image,
+                description: card.dataset.description,
+                category: card.dataset.category
+            };
+            openProductModal(p);
+        }
+        return;
+    }
+    if (e.target.closest('.add-to-cart-btn')) {
+        const btn = e.target.closest('.add-to-cart-btn');
+        const card = btn.closest('.product-card');
+        if (card) {
+            cart.add({
+                id: card.dataset.id,
+                name: card.dataset.name,
+                price: parseFloat(card.dataset.price),
+                image: card.dataset.image,
+                quantity: 1,
+                businessName: 'Butcher Block',
+                businessLogo: 'images-logo/butcherblock-logo.jpg'
+            });
+            showToast(`✅ ${card.dataset.name} added!`);
+        }
+    }
+});
+
+// === CART MODAL ===
+function showCartModal() { showModal('cartModalOverlay', 'cartModal'); cart.updateDisplay(); }
+function closeCartModal() { hideModal('cartModalOverlay', 'cartModal'); }
+
+// === WHATSAPP ORDER ===
+function sendToWhatsApp() {
+    if (cart.items.length === 0) { alert('Cart is empty!'); return; }
+    let msg = `Hi! I'm enquiring from Hive Times. I'd like to order from Butcher Block:\n\n`;
+    cart.items.forEach(i => {
+        msg += `• ${i.name} x${i.quantity} — R${(i.price*i.quantity).toFixed(2)}\n`;
+    });
+    msg += `\n*Total: R${cart.total()}*\n\nThank you!`;
+    window.open(`https://wa.me/27615023930?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+// === HAMBURGER MENU ===
+const hamburger = document.getElementById('hamburgerBtn');
+const menuOverlay = document.getElementById('menuOverlay');
+const sideMenu = document.getElementById('sideMenu');
+function toggleMenu() {
+    hamburger?.classList.toggle('active');
+    menuOverlay?.classList.toggle('active');
+    sideMenu?.classList.toggle('active');
+    document.body.style.overflow = sideMenu?.classList.contains('active') ? 'hidden' : '';
+}
+hamburger?.addEventListener('click', toggleMenu);
+menuOverlay?.addEventListener('click', toggleMenu);
+function scrollToSection(id) {
+    toggleMenu();
+    setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    }, 300);
+}
+
+// === AI CHAT ===
+document.addEventListener('DOMContentLoaded', () => {
+    const widget = document.getElementById('aiChatWidget');
+    const panel = document.getElementById('aiChatPanel');
+    const closeBtn = document.getElementById('aiCloseBtn');
+    const messages = document.getElementById('aiChatMessages');
+    const input = document.getElementById('aiUserInput');
+    const sendBtn = document.getElementById('aiSendBtn');
+    
+    if (widget && panel) {
+        widget.onclick = () => panel.classList.toggle('active');
+        closeBtn.onclick = () => panel.classList.remove('active');
+    }
+    
+    function addMsg(text, user=false) {
+        if (!messages) return;
+        const d = document.createElement('div');
+        d.className = `ai-message ${user?'user':'bot'}`;
+        d.innerHTML = text.replace(/\n/g,'<br>');
+        messages.appendChild(d);
+        messages.scrollTop = messages.scrollHeight;
+    }
+    
+    function getResponse(q) {
+        const l = q.toLowerCase().trim();
+        if (/(where|located|address|find)/.test(l)) return "📍 We're at <strong>239 Norda St, Leslie, Thuli Fakude, 2265</strong>.";
+        if (/(contact|phone|call|whatsapp)/.test(l)) return "📞 Call/WhatsApp: <strong>+27 61 502 3930</strong>";
+        if (/(email|gmail)/.test(l)) return "📧 Email: <strong>info@butcherblock.co.za</strong>";
+        if (/(open|hours|time|close)/.test(l)) return "🕒 Mon–Fri: 6AM–6PM | Sat–Sun: Closed";
+        if (/(deliver|ship|nationwide)/.test(l)) return "🚚 Yes! We deliver across South Africa. Order via WhatsApp for a quote!";
+        if (/(bulk|wholesale|carcass|forequarter)/.test(l)) return "💼 We specialize in <strong>bulk meat sales</strong>. Contact us for custom quotes!";
+        if (/(beef|steak|ribeye|fillet)/.test(l)) return "🥩 Premium beef cuts: Ribeye, Fillet, Sirloin, T-Bone & more. Browse our Beef section!";
+        if (/(lamb|chop|leg)/.test(l)) return "🐑 Quality lamb: Loin Chops, Leg of Lamb, Shank, Curry Meat & whole/half carcasses.";
+        if (/(chicken|drumstick|thigh)/.test(l)) return "🐔 Fresh chicken: Skin-on & skin-off options. Whole birds, cuts, and family packs.";
+        if (/(boerewors|mince|sausage)/.test(l)) return "🍖 Processed meats: Mince, Boerewors, Braaiwors, Meatballs & Patties.";
+        if (/(hamper|gift)/.test(l)) return "🎁 Curated meat hampers perfect for gifts or events. Contact us for custom options!";
+        return "I can help with location, hours, delivery, or products! Try: \"Do you deliver?\" or \"Show me steaks under R300\"";
+    }
+    
+    function handleSend() {
+        const q = input?.value.trim();
+        if (!q || !messages) return;
+        addMsg(q, true);
+        input.value = '';
+        setTimeout(() => addMsg(getResponse(q)), 400);
+    }
+    
+    sendBtn?.addEventListener('click', handleSend);
+    input?.addEventListener('keypress', (e) => { if(e.key==='Enter') handleSend(); });
+});
+
+// === RENDER PRODUCTS ===
+document.addEventListener('DOMContentLoaded', () => {
+    cart.init();
+    
+    // === SLIDER ===
+fetch('slider.html')
+.then(res => res.ok ? res.text() : Promise.reject('slider.html not found'))
+.then(html => {
+    document.getElementById('slider-container').innerHTML = html;
+    if (typeof Swiper !== 'undefined') {
+        new Swiper('.mySwiper', {
+            spaceBetween: 0,
+            centeredSlides: true,
+            autoplay: { delay: 3000, disableOnInteraction: false },
+            pagination: { el: '.swiper-pagination', clickable: true },
+            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+            loop: true,
+            effect: 'fade',
+            fadeEffect: { crossFade: true }
+        });
+    }
+})
+.catch(err => {
+    console.error('Slider error:', err);
+    document.getElementById('slider-container').innerHTML = `<div style="text-align:center;padding:40px;color:#8B4513;">⚠️ Slider unavailable</div>`;
+});
+
+    
+    // Render products from API
+    if (typeof ButcherBlockProducts !== 'undefined') {
+        document.querySelectorAll('.products-grid[data-category]').forEach(container => {
+            const cat = container.dataset.category;
+            const products = ButcherBlockProducts.getByCategory(cat);
+            container.innerHTML = products.map(p => `
+                <div class="product-card" 
+                     data-id="${p.id}" 
+                     data-name="${p.name}"
+                     data-price="${p.price}"
+                     data-image="${p.image}"
+                     data-description="${p.description}"
+                     data-category="${p.category}">
+                    ${p.badge ? `<span class="badge">${p.badge}</span>` : ''}
+                    <img src="${p.image}" alt="${p.name}" class="product-image" onerror="this.src='${p.imageFallback || 'images/placeholder.jpg'}'">
+                    <div class="product-info">
+                        <div class="product-name">${p.name}</div>
+                        <div class="product-description">${p.description}</div>
+                        <div class="product-price">${p.price === 0 ? 'Call for Quote' : `R${p.price.toFixed(2)}`}</div>
+                        <button class="add-to-cart-btn">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        });
+    } else {
+        console.warn('ButcherBlockProducts API not loaded');
+    }
+    
+    // Close modals on ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeProductModal();
+            closeCartModal();
+            closeBusinessModal();
+        }
+    });
+});
+</script>
+</body>
+</html>
