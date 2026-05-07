@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hive Times | South Africa's Local Business Directory</title>
+<meta name="description" content="Discover trusted local businesses, services & wholesalers across South Africa. Browse verified businesses & connect directly via WhatsApp.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://hivetimes.co.za/">
+<meta name="author" content="Hive Times">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hivetimes.co.za/">
+<meta property="og:title" content="Hive Times | Local Business Directory">
+<meta property="og:description" content="Find trusted South African businesses & services. Connect via WhatsApp.">
+<meta property="og:image" content="https://hivetimes.co.za/images-logo/hive-times-logo.png">
+<meta property="og:locale" content="en_ZA">
+<link rel="icon" type="image/png" href="images-logo/hive-times-logo.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Hive Times",
+  "url": "https://hivetimes.co.za",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Hive Times",
+    "logo": "https://hivetimes.co.za/images-logo/hive-times-logo.png"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://hivetimes.co.za/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<style>
+  /* === FUTURISTIC RED HIVE PATTERN - VISIBLE & PROFESSIONAL === */
+#featured-products-section {
+    background-color: #FFF2F2;
+    background-image: 
+        linear-gradient(60deg, transparent 47%, rgba(165, 28, 28, 0.18) 50%, transparent 53%),
+        linear-gradient(-60deg, transparent 47%, rgba(165, 28, 28, 0.18) 50%, transparent 53%),
+        radial-gradient(circle 2.5px at 15px 15px, rgba(178, 58, 58, 0.4) 90%, transparent 100%),
+        url("image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='104' viewBox='0 0 120 104'%3E%3Cpath d='M60 0L120 30V90L60 120L0 90V30L60 0Z' fill='none' stroke='%23B34444' stroke-width='1.8' opacity='0.4'/%3E%3Cpath d='M60 18L102 39V81L60 102L18 81V39L60 18Z' fill='none' stroke='%238B2525' stroke-width='1' stroke-dasharray='6 3' opacity='0.22'/%3E%3Ccircle cx='60' cy='60' r='4.5' fill='%23A51C1C' opacity='0.35'/%3E%3C/svg%3E"),
+        linear-gradient(180deg, rgba(255,242,242,0.88) 0%, rgba(255,230,230,0.92) 100%);
+    background-size: 120px 104px, 120px 104px, 30px 30px, 120px 104px, auto;
+    background-position: 0 0, 0 0, 0 0, 0 0, 0 0;
+    background-repeat: repeat;
+    position: relative;
+    padding: 50px 20px;
+    overflow: hidden;
+}
+#featured-products-section > * { background-image: none !important; }
+#featured-products-section .section-title,
+#featured-products-section .businesses-grid { background: transparent !important; }
+#featured-products-section .business-card,
+#featured-products-section .product-card,
+#featured-products-section .hive-item {
+    background-color: #FFFFFF !important;
+    border: 1px solid rgba(179, 68, 68, 0.2);
+    box-shadow: 0 6px 20px rgba(139, 37, 37, 0.08);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+#featured-products-section .business-card:hover,
+#featured-products-section .product-card:hover,
+#featured-products-section .hive-item:hover {
+    box-shadow: 0 12px 35px rgba(165, 28, 28, 0.15), 0 0 0 1px rgba(179, 68, 68, 0.35) inset;
+    transform: translateY(-4px);
+    border-color: rgba(165, 28, 28, 0.4);
+}
+#featured-products-section .section-title {
+    color: #8B2525;
+    text-shadow: 0 2px 8px rgba(139, 37, 37, 0.1);
+    position: relative;
+}
+#featured-products-section .section-title::after {
+    background: linear-gradient(90deg, transparent, #A51C1C, transparent) !important;
+}
+
+/* 🎨 UNIFIED DESIGN TOKENS */
+:root {
+  --primary: #8B0000;
+  --primary-dark: #6B0000;
+  --primary-light: #B34444;
+  --secondary: #2c3e50;
+  --bg-light: #f8fafc;
+  --white: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+  --shadow-md: 0 6px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 32px rgba(139, 0, 0, 0.12);
+  --radius: 12px;
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --font-main: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* 🔄 RESET & BASE */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: var(--font-main);
+  line-height: 1.6;
+  color: var(--secondary);
+  background: var(--bg-light);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; transition: var(--transition); }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+ul { list-style: none; }
+.container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+/* 📦 HEADER */
+header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: var(--white);
+  padding: 0.75rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-md);
+}
+.header-inner { display: flex; align-items: center; justify-content: flex-end; gap: 0.75rem; flex-wrap: wrap; }
+.search-bar { order: 2; max-width: 360px; width: 100%; position: relative; }
+.search-bar input {
+  width: 100%; padding: 10px 16px 10px 40px; border-radius: 40px;
+  border: 2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.15);
+  color: var(--white); font-size: 0.95rem; transition: var(--transition);
+}
+.search-bar input::placeholder { color: rgba(255,255,255,0.85); }
+.search-bar input:focus { outline: none; background: rgba(255,255,255,0.25); border-color: var(--white); box-shadow: 0 0 0 3px rgba(255,255,255,0.2); }
+.search-bar i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--white); pointer-events: none; }
+.logo { order: 3; display: flex; align-items: center; gap: 10px; margin-left: auto; }
+.logo img { height: 42px; width: auto; border-radius: 6px; }
+.logo-text { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.4px; display: none; }
+.hamburger { order: 4; display: flex; flex-direction: column; gap: 5px; padding: 8px; cursor: pointer; margin-left: 8px; border-radius: 6px; transition: var(--transition); }
+.hamburger span { width: 24px; height: 2.5px; background: var(--white); border-radius: 2px; transition: var(--transition); }
+.hamburger:hover, .hamburger:focus-visible { background: rgba(255,255,255,0.1); }
+
+/* 📱 SIDEBAR */
+.sidebar {
+  position: fixed; top: 0; left: -300px; width: 280px; height: 100vh;
+  background: var(--secondary); color: var(--white); z-index: 1001;
+  transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: var(--shadow-lg);
+  display: flex; flex-direction: column;
+}
+.sidebar.active { left: 0; }
+.sidebar-header { padding: 1.25rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: space-between; }
+.sidebar-logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.2rem; }
+.sidebar-logo img { height: 36px; border-radius: 5px; }
+.sidebar-close { background: none; border: none; color: var(--white); font-size: 1.4rem; cursor: pointer; padding: 6px; border-radius: 50%; transition: var(--transition); }
+.sidebar-close:hover { background: rgba(255,255,255,0.15); }
+.sidebar-nav { flex: 1; padding: 1rem 0; overflow-y: auto; }
+.sidebar-nav a { display: flex; align-items: center; gap: 12px; padding: 14px 20px; color: rgba(255,255,255,0.9); font-weight: 500; font-size: 0.95rem; transition: var(--transition); border-left: 3px solid transparent; }
+.sidebar-nav a:hover, .sidebar-nav a.active { background: rgba(255,255,255,0.08); color: var(--white); border-left-color: var(--primary-light); padding-left: 23px; }
+.sidebar-nav a i { width: 20px; text-align: center; color: var(--primary-light); }
+.sidebar-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 0.5rem 1.5rem; }
+.sidebar-footer { padding: 1rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+.sidebar-footer a { color: var(--primary-light); font-weight: 600; }
+.sidebar-footer a:hover { color: #ffd700; }
+.overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 1000; opacity: 0; visibility: hidden; transition: var(--transition); backdrop-filter: blur(3px); }
+.overlay.active { opacity: 1; visibility: visible; }
+
+/* 🎠 HERO SLIDER CONTAINER */
+#slider-container { margin-bottom: 1.5rem; }
+.swiper { width: 100%; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-md); }
+.swiper-slide { background: var(--white); display: flex; align-items: center; justify-content: center; min-height: 250px; }
+.swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
+
+/* 🔍 FILTER BAR */
+.filter-bar-compact {
+  background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow-sm);
+  padding: 0.75rem 1rem; margin: 1rem 0 1.5rem; display: flex; align-items: center; gap: 10px;
+  flex-wrap: wrap; width: 100%;
+}
+.filter-icon img { width: 48px; height: 48px; object-fit: contain; animation: float 3s ease-in-out infinite; }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+.filter-dropdown { position: relative; flex: 1; min-width: 160px; max-width: 220px; }
+.filter-toggle {
+  width: 100%; background: var(--bg-light); border: 1.5px solid var(--border); color: var(--secondary);
+  padding: 10px 14px; border-radius: 30px; display: flex; align-items: center; justify-content: space-between;
+  gap: 8px; font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: var(--transition);
+}
+.filter-toggle:hover, .filter-toggle.active { border-color: var(--primary); background: rgba(139, 0, 0, 0.04); }
+.filter-toggle i.fa-chevron-down { font-size: 0.7rem; transition: transform 0.2s ease; }
+.filter-toggle.active i.fa-chevron-down { transform: rotate(180deg); }
+.filter-menu {
+  position: absolute; top: calc(100% + 8px); left: 0; background: var(--white);
+  border-radius: 10px; box-shadow: var(--shadow-lg); min-width: 100%; max-width: 95vw;
+  max-height: 0; overflow: hidden; opacity: 0; transform: translateY(-8px);
+  transition: all 0.25s ease; z-index: 100; border: 1px solid var(--border);
+}
+.filter-menu.show { max-height: 350px; opacity: 1; transform: translateY(0); }
+.filter-menu-header { padding: 10px 14px; font-weight: 600; font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.4px; border-bottom: 1px solid var(--border); background: #fafbfc; }
+.filter-item { width: 100%; background: none; border: none; padding: 10px 14px; display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--secondary); cursor: pointer; transition: var(--transition); text-align: left; }
+.filter-item:hover { background: var(--bg-light); color: var(--primary); }
+.filter-item.active { background: rgba(139, 0, 0, 0.08); color: var(--primary); font-weight: 600; }
+.filter-item i { width: 16px; text-align: center; color: var(--primary-light); opacity: 0.9; }
+.filter-divider { height: 1px; background: var(--border); margin: 6px 0; }
+.active-filters-wrapper { min-height: 28px; margin-bottom: 0.75rem; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.filter-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--bg-light); border: 1px solid var(--border); padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; margin-bottom: 4px; }
+.filter-badge button { background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 0 2px; font-size: 0.9rem; display: flex; }
+.filter-badge button:hover { color: #e11d48; }
+.results-count { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem; }
+
+/* 🏢 BUSINESS GRID & CARDS */
+.section-title { font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800; color: var(--text-main); margin: 2rem 0 1.5rem; text-align: center; position: relative; }
+.section-title::after { content: ''; display: block; width: 70px; height: 4px; background: var(--primary); margin: 0.9rem auto 0; border-radius: 4px; }
+.businesses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; padding-bottom: 3rem; }
+.block {
+  background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow-sm);
+  padding: 1.75rem; text-align: center; transition: var(--transition); position: relative;
+  overflow: hidden; display: flex; flex-direction: column; height: 100%;
+  border: 1px solid rgba(0,0,0,0.04);
+}
+.block:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: rgba(139, 0, 0, 0.15); }
+.block img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--radius); margin-bottom: 1.25rem; transition: var(--transition); }
+.block:hover img { transform: scale(1.02); }
+.block h3 { margin: 0 0 0.5rem; font-size: 1.15rem; color: var(--secondary); font-weight: 700; line-height: 1.3; }
+.block p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.25rem; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; text-overflow: ellipsis; flex: 1; }
+.block-actions { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 1rem; }
+.cta-btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; transition: var(--transition); text-decoration: none; }
+.cta-btn.primary { background: linear-gradient(135deg, var(--primary) 0%, #c0392b 100%); color: #fff; box-shadow: 0 4px 12px rgba(139, 0, 0, 0.25); }
+.cta-btn.primary:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(139, 0, 0, 0.35); }
+.cta-btn.secondary { background: var(--bg-light); color: var(--secondary); border: 1px solid var(--border); }
+.cta-btn.secondary:hover { background: var(--white); border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
+
+/* ⭐ SHARE BUTTONS ONLY (Ratings Removed) */
+.share-section { margin-top: 1rem; display: flex; justify-content: center; gap: 10px; }
+.share-btn { display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; background: var(--bg-light); color: var(--text-muted); font-size: 1rem; transition: var(--transition); }
+.share-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+.share-btn.facebook:hover { background: #1877f2; color: white; }
+.share-btn.whatsapp:hover { background: #25d366; color: white; }
+.share-btn.email:hover { background: #ea4335; color: white; }
+
+/* 🦶 FOOTER */
+footer { background: linear-gradient(160deg, #8B1E1E 0%, #5C1212 100%); color: #ffffff; padding: 3rem 0 1.5rem; margin-top: 4rem; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+.footer-brand img { height: 60px; margin-bottom: 1rem; border-radius: 8px; }
+.footer-brand p { font-size: 0.95rem; line-height: 1.5; opacity: 0.9; }
+.footer-links h4 { color: #ffffff; font-size: 1.05rem; margin-bottom: 0.75rem; font-weight: 600; }
+.footer-links ul { list-style: none; }
+.footer-links li { margin-bottom: 0.6rem; }
+.footer-links a { opacity: 0.85; transition: var(--transition); display: inline-flex; align-items: center; gap: 8px; font-size: 0.95rem; }
+.footer-links a:hover { opacity: 1; color: #ffd700; transform: translateX(4px); }
+.social-links { display: flex; gap: 10px; margin-top: 1rem; }
+.social-links a { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center; font-size: 1.05rem; transition: var(--transition); }
+.social-links a:hover { background: var(--white); color: var(--primary); transform: translateY(-3px); }
+.footer-bottom { text-align: center; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.15); font-size: 0.9rem; opacity: 0.85; }
+
+/* 📱 RESPONSIVE */
+@media (max-width: 1024px) { .filter-dropdown { max-width: 180px; } }
+@media (max-width: 768px) {
+  .header-inner { justify-content: space-between; padding: 0 12px; }
+  .search-bar { order: 4; max-width: 100%; width: 100%; margin-top: 0.75rem; }
+  .logo img { height: 38px; } .logo-text { display: none; }
+  .businesses-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .block { padding: 1.25rem; } .block h3 { font-size: 1rem; } .cta-btn { padding: 8px 14px; font-size: 0.8rem; }
+  .filter-bar-compact { padding: 0.5rem; gap: 8px; }
+  .footer-grid { grid-template-columns: 1fr; text-align: center; }
+  .footer-brand, .footer-links, .social-links { justify-content: center; }
+}
+@media (max-width: 480px) {
+  .businesses-grid { grid-template-columns: 1fr; }
+  .block-actions { flex-direction: column; }
+  .cta-btn { width: 100%; justify-content: center; }
+  .filter-dropdown { min-width: 140px; max-width: 100%; flex: 1; }
+  .filter-menu { left: 50%; transform: translateX(-50%) translateY(-8px); min-width: 90vw; }
+  .filter-menu.show { transform: translateX(-50%) translateY(0); }
+}
+</style>
+</head>
+<body>
+<a href="#main-content" class="sr-only">Skip to main content</a>
+
+<nav class="sidebar" id="sidebar" aria-label="Main Navigation">
+  <div class="sidebar-header">
+    <div class="sidebar-logo"><img src="images-logo/hive-times-logo.png" alt="Hive Times" width="36" height="36"><span>Hive Times</span></div>
+    <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">&times;</button>
+  </div>
+  <div class="sidebar-nav">
+    <a href="https://hivetimes.co.za/" class="active"><i class="fas fa-home"></i><span>Home</span></a>
+    <a href="https://hivetimes.co.za/about%20page%20home.html"><i class="fas fa-bee"></i><span>Join the Hive</span></a>
+    <div class="sidebar-divider"></div>
+    <a href="test page -business.html"><i class="fas fa-building"></i><span>Businesses</span></a>
+    <a href="services.hivetimes.html"><i class="fas fa-hands-helping"></i><span>Services</span></a>
+    </div>
+  <div class="sidebar-footer">
+    <p>© <span id="sidebarYear"></span> Hive Times<br><a href="https://hivetimes.co.za/contact">Contact Support</a></p>
+  </div>
+</nav>
+<div class="overlay" id="overlay"></div>
+
+<header>
+  <div class="container header-inner">
+    <div class="search-bar">
+      <i class="fas fa-search"></i>
+      <input type="search" id="businessSearch" placeholder="Search businesses, services..." aria-label="Search businesses">
+    </div>
+    <a href="/" class="logo" aria-label="Hive Times Home">
+      <img src="images-logo/hive-times-logo.png" alt="Hive Times" width="42" height="42" loading="lazy">
+      <span class="logo-text">Hive Times</span>
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+  <!-- Slider Container -->
+  <div id="slider-container"></div>
+
+<div class="filter-bar-compact" id="filterBar">
+  <div class="filter-icon"><img src="images-logo/bee.jpg" alt="Shop local" loading="lazy"></div>
+  <div class="filter-dropdown" id="nicheDropdown">
+    <button class="filter-toggle" id="nicheToggle" aria-expanded="false" aria-controls="nicheMenu">
+      <span>All Niches</span><i class="fas fa-chevron-down"></i>
+    </button>
+    <div class="filter-menu" id="nicheMenu" role="menu">
+      <div class="filter-menu-header">Business Niche</div>
+      <button class="filter-item active" data-value="all" data-label="All Niches"><i class="fas fa-th"></i> All Niches</button>
+      <button class="filter-item" data-value="automotive" data-label="Automotive"><i class="fas fa-car"></i> Automotive</button>
+      <button class="filter-item" data-value="baking" data-label="Baking"><i class="fas fa-bread-slice"></i> Baking & Bakery</button>
+      <button class="filter-item" data-value="clothing" data-label="Clothing"><i class="fas fa-tshirt"></i> Clothing & Fashion</button>
+      <button class="filter-item" data-value="wholesale" data-label="Wholesale"><i class="fas fa-boxes"></i> Wholesale & Cash & Carry</button>
+      <button class="filter-item" data-value="furniture" data-label="Furniture"><i class="fas fa-couch"></i> Furniture & Home</button>
+      <button class="filter-item" data-value="food-beverages" data-label="Food & Beverages"><i class="fas fa-utensils"></i> Food & Beverages</button>
+      <button class="filter-item" data-value="electronics" data-label="Electronics"><i class="fas fa-laptop"></i> Electronics & Tech</button>
+      <button class="filter-item" data-value="lighting-electrical" data-label="Electrical"><i class="fas fa-bolt"></i> Lighting & Electrical</button>
+      <button class="filter-item" data-value="sweet-shop" data-label="Sweets & Confectionery"><i class="fas fa-candy-cane"></i> Sweets & Confectionery</button>
+      <button class="filter-item" data-value="cleaning" data-label="Cleaning"><i class="fas fa-soap"></i> Cleaning Supplies</button>
+    </div>
+  </div>
+  <div class="filter-dropdown" id="locationDropdown">
+    <button class="filter-toggle" id="locToggle" aria-expanded="false" aria-controls="locMenu">
+      <span>All Locations</span><i class="fas fa-chevron-down"></i>
+    </button>
+    <div class="filter-menu" id="locMenu" role="menu">
+      <div class="filter-menu-header">Location</div>
+      <button class="filter-item active" data-value="all" data-label="All Locations"><i class="fas fa-globe-africa"></i> All Locations</button>
+      <button class="filter-item" data-value="johannesburg" data-label="Johannesburg"><i class="fas fa-city"></i> Johannesburg</button>
+      <button class="filter-item" data-value="sandton" data-label="Sandton"><i class="fas fa-building"></i> Sandton</button>
+      <button class="filter-item" data-value="cape-town" data-label="Cape Town"><i class="fas fa-mountain"></i> Cape Town</button>
+      <button class="filter-item" data-value="kwazulu-natal" data-label="KwaZulu-Natal"><i class="fas fa-water"></i> KwaZulu-Natal</button>
+      <button class="filter-item" data-value="trichardt" data-label="Trichardt"><i class="fas fa-map-marker-alt"></i> Trichardt</button>
+      <button class="filter-item" data-value="leslie" data-label="Leslie"><i class="fas fa-map-pin"></i> Leslie</button>
+    </div>
+  </div>
+</div>
+<div class="active-filters-wrapper" id="activeFiltersWrapper"></div>
+<div id="resultsCount" class="results-count"></div>
+
+<main id="main-content" class="container">
+  <h1 class="sr-only">Hive Times Local Business Directory</h1>
+  <section id="businesses">
+    <h2 class="section-title">Featured Local Businesses</h2>
+    <div class="businesses-grid" id="businessGrid">
+      <!-- N2 Auto Dealership -->
+      <article class="block" id="business-n2-auto" data-niche="automotive" data-location="sandton">
+        <a href="https://n2auto.hivetimes.co.za" target="_blank" rel="noopener"><img src="images-logo/n2auto-logo.jpg" alt="N2 Auto Dealership" width="400" height="300" loading="lazy"></a>
+        <div class="info"><h3>N2 Auto Dealership</h3><p>Luxury & Performance Vehicles in Sandton</p>
+          <div class="block-actions">
+            <a href="https://n2auto.hivetimes.co.za" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a>
+          </div>
+          <div class="share-section"><a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a><a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a></div>
+        </div>
+      </article>
+         <!-- SweetLane -->
+      <article class="block" id="business-sweetlane" data-niche="baking" data-location="johannesburg">
+        <a href="https://sweetlane.hivetimes.co.za/" target="_blank" rel="noopener"><img src="images-logo/sweetlane-logo.jpg" alt="Sweet Lane" width="400" height="300" loading="lazy"></a>
+        <div class="info"><h3>Sweet Lane</h3><p>Freshly baked goods and sweet treats in Cape Town</p>
+          <div class="block-actions"><a href="https://sweetlane.hivetimes.co.za" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a></div>
+          <div class="share-section"><a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a><a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a></div>
+        </div>
+      </article>
+      <!-- BUTCHER BLOCK -->
+      <article class="block" id="business-butcher-block" data-niche="food-beverages" data-location="leslie">
+        <a href="https://butcherblock.hivetimes.co.za/" target="_blank" rel="noopener"><img src="images-logo/butcherblock-logo.jpg" alt="Butcher Block Wholesale" width="400" height="300" loading="lazy"></a>
+        <div class="info"><h3>Butcher Block Wholesale</h3><p>Premium meat supplier for retailers and foodservice</p>
+          <div class="block-actions"><a href="https://butcherblock.hivetimes.co.za" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a>
+          <div class="share-section"><a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a><a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a></div>
+        </div>
+      </article>
+      <!-- Dough & Co -->
+      <article class="block" id="business-dough-and-co" data-niche="baking" data-location="johannesburg">
+        <a href="doughandco.hivetimes.co.za" target="_blank" rel="noopener"><img src="images-logo/doughandco-logo.jpg" alt="Dough & Co" width="400" height="300" loading="lazy"></a>
+        <div class="info"><h3>Dough & Co</h3><p>Freshly baked bread, pastries, and sweet treats</p>
+          <div class="block-actions"><a href="https://hivetimes.co.za/doughandco/index.html" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a>
+          <div class="share-section"><a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a><a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a></div>
+        </div>
+      </article>
+      <!-- Shupz -->
+      <article class="block" id="business-shupz" data-niche="cleaning" data-location="johannesburg">
+        <a href="http://shupz.hivetimes.co.za/" target="_blank" rel="noopener"><img src="images-logo/shupz-logo.jpg" alt="Shupz" width="400" height="300" loading="lazy"></a>
+        <div class="info"><h3>Shupz</h3><p>Premium dishwashing liquid, laundry detergent, soaps & industrial cleaning supplies</p>
+          <div class="block-actions"><a href="http://shupz.hivetimes.co.za" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a></div>
+          <div class="share-section"><a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a><a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a></div>
+        </div>
+      </article>
+      <!-- Nothing Fancy -->
+      <article class="block" id="business-nothing-fancy" data-niche="household-essentials" data-location="johannesburg">
+        <a href="https://hivetimes.co.za/nothingfancy.html" target="_blank" rel="noopener"><img src="images-logo/nothing-fancy-logo.jpg" alt="Nothing Fancy" width="400" height="300" loading="lazy"></a>
+        <div class="info"><h3>Nothing Fancy</h3><p>Wholesale toilet paper, 2-ply bales, kitchen towels & paper products</p>
+          <div class="block-actions"><a href="https://hivetimes.co.za/nothingfancy.html" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a></div>
+          <div class="share-section"><a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a><a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a></div>
+        </div>
+      </article>
+      <!-- MK Investment Holdings -->
+      <article class="block" id="business-mk-invest" data-niche="automotive" data-location="sandton">
+        <a href="https://mkinvest.hivetimes.co.za" target="_blank" rel="noopener"><img src="images-logo/mkinvest-logo.jpg" alt="MK Investment Holdings" width="400" height="300" loading="lazy"></a>
+        <div class="info"><h3>MK Investment Holdings</h3><p>Quality Pre-Owned Vehicles in Sandton</p>
+          <div class="block-actions"><a href="https://mkinvest.hivetimes.co.za" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a></div>
+          <div class="share-section"><a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a><a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a></div>
+        </div>
+      </article>
+      <!-- Dainty Delicacies -->
+      <article class="block" id="business-dainty" data-niche="baking" data-location="cape-town">
+        <a href="https://daintydelicacies.hivetimes.co.za/" target="_blank" rel="noopener"><img src="images-logo/daintydelicacies-logo.jpg" alt="Dainty Delicacies" width="400" height="300" loading="lazy"></a>
+        <div class="info"><h3>Dainty Delicacies</h3><p>Artisanal Cakes, Pastries & Cupcakes in Cape Town</p>
+          <div class="block-actions"><a href="https://daintydelicacies.hivetimes.co.za" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a></div>
+          <div class="share-section"><a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a><a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a></div>
+        </div>
+      </article>
+      <!-- Cupcake Plantation -->
+      <article class="block" id="business-cupcake" data-niche="baking" data-location="johannesburg">
+        <a href="http://cupcakeplantation.hivetimes.co.za/" target="_blank" rel="noopener"><img src="images-logo/cupcakeplantation-logo.jpg" alt="Cupcake Plantation" width="400" height="300" loading="lazy"></a>
+        <div class="info"><h3>Cupcake Plantation</h3><p>Bakery, Cheesecakes, Pastries, Cakes & Brownies</p>
+          <div class="block-actions"><a href="http://cupcakeplantation.hivetimes.co.za" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a></div>
+          <div class="share-section"><a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a><a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a></div>
+        </div>
+      </article>
+      <!-- Delectable Dippers -->
+      <article class="block" id="business-delectable" data-niche="baking" data-location="trichardt">
+        <a href="http://delectabledippers.hivetimes.co.za/" target="_blank" rel="noopener"><img src="images-logo/delectabledippers-logo.jpg" alt="Delectable Dippers" width="400" height="300" loading="lazy"></a>
+        <div class="info"><h3>Delectable Dippers</h3><p>Cakes, Cupcakes, Milktarts & Biscuits</p>
+          <div class="block-actions"><a href="http://delectabledippers.hivetimes.co.za" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a></div>
+          <div class="share-section"><a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a><a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a></div>
+        </div>
+      </article>
+      <!-- Polar Ice Cream -->
+      <article class="block" id="business-polar" data-niche="food-beverages" data-location="johannesburg">
+        <a href="https://polaricecream.hivetimes.co.za/" target="_blank" rel="noopener"><img src="images-logo/polar-ice-cream-logo.png" alt="Polar Ice Cream" width="400" height="300" loading="lazy"></a>
+        <div class="info"><h3>Polar Ice Cream</h3><p>Artisanal Ice cream, Stick Novelties & Frozen Desserts</p>
+          <div class="block-actions"><a href="https://polaricecream.hivetimes.co.za/" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a></div>
+          <div class="share-section"><a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a><a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a></div>
+        </div>
+      </article>
+      <!-- Marrakesh Bites -->
+      <article class="block" id="business-marrakesh" data-niche="food-beverages" data-location="johannesburg">
+        <a href="https://hivetimes.co.za/marrakeshbites.html" target="_blank" rel="noopener"><img src="images-logo/marrakeshbites-logo.jpg" alt="Marrakesh Bites" width="400" height="300" loading="lazy"></a>
+        <div class="info"><h3>Marrakesh Bites</h3><p>Authentic Moroccan cuisine in a vibrant setting</p>
+          <div class="block-actions"><a href="https://hivetimes.co.za/marrakeshbites.html" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a></div>
+          <div class="share-section"><a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a><a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a></div>
+        </div>
+      </article>
+      <!-- Sweet Mart -->
+      <article class="block" id="business-sweet-mart" data-niche="sweet-shop" data-location="johannesburg">
+        <a href="https://hivetimes.co.za/Sweet%20Mart.html" target="_blank" rel="noopener"><img src="images-logo/sweet-mart-logo.jpg" alt="Sweet Mart" width="400" height="300" loading="lazy"></a>
+        <div class="info"><h3>Sweet Mart</h3><p>Confectionery & Candy Wholesale Supplier</p>
+          <div class="block-actions"><a href="https://hivetimes.co.za/Sweet%20Mart.html" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a></div>
+          <div class="share-section"><a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a><a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a></div>
+        </div>
+      </article>
+      <!-- Sweet Deport -->
+      <article class="block" id="business-sweet-deport" data-niche="sweet-shop" data-location="johannesburg">
+        <a href="https://www.sweetdepot.co.za/" target="_blank" rel="noopener"><img src="images-logo/sweet-deport-logo.jpg" alt="Sweet Deport" width="400" height="300" loading="lazy"></a>
+        <div class="info"><h3>Sweet Deport</h3><p>Confectionery Distributor & Wholesale Supplier SA</p>
+          <div class="block-actions"><a href="https://www.sweetdepot.co.za" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a></div>
+          <div class="share-section"><a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a><a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a></div>
+        </div>
+      </article>
+      <!-- The Ahsan Store -->
+      <article class="block" id="business-ahsan" data-niche="clothing" data-location="johannesburg">
+        <a href="https://ahsan.co.za/" target="_blank" rel="noopener"><img src="images-logo/ahsanstore-logo.jpg" alt="The Ahsan Store" width="400" height="300" loading="lazy"></a>
+        <div class="info"><h3>The Ahsan Store</h3><p>Islamic clothing, thobes, hijabs, prayer mats & gifts</p>
+          <div class="block-actions"><a href="https://ahsan.co.za" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a></div>
+          <div class="share-section"><a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a><a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a></div>
+        </div>
+      </article>
+      <!-- Laila Couture -->
+      <article class="block" id="business-laila" data-niche="clothing" data-location="johannesburg">
+        <a href="https://lailacouture.co.za/" target="_blank" rel="noopener"><img src="images-logo/lailacouture-logo.jpg" alt="Laila Couture" width="400" height="300" loading="lazy"></a>
+        <div class="info"><h3>Laila Couture</h3><p>Luxury modest wear, designer abayas & Islamic fashion</p>
+          <div class="block-actions"><a href="https://lailacouture.co.za" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a></div>
+          <div class="share-section"><a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a><a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a></div>
+        </div>
+      </article>
+      <!-- Islamic Design House -->
+      <article class="block" id="business-idh" data-niche="lighting-electrical" data-location="johannesburg">
+        <a href="https://islamicdesignhouse.co.za" target="_blank" rel="noopener"><img src="images-logo/islamic-design-house-logo.jpg" alt="Islamic Design House" width="400" height="300" loading="lazy"></a>
+        <div class="info"><h3>Islamic Design House</h3><p>Premium Islamic home decor, wall art & spiritual furnishings</p>
+          <div class="block-actions"><a href="https://islamicdesignhouse.co.za" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a></div>
+          <div class="share-section"><a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a><a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a></div>
+        </div>
+      </article>
+      <!-- 1701 Nougat -->
+      <article class="block" id="business-1701" data-niche="sweet-shop" data-location="johannesburg">
+        <a href="https://1701luxury.com/" target="_blank" rel="noopener"><img src="image-services/1701-logo.jpg" alt="1701 Nougat" width="400" height="300" loading="lazy"></a>
+        <div class="info"><h3>1701 Nougat & Luxury Gift Boxes</h3><p>Chocolates, Candy, Nougat & Gifting Concierge</p>
+          <div class="block-actions"><a href="https://1701luxury.com" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a></div>
+          <div class="share-section"><a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a><a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a></div>
+        </div>
+      </article>
+      <!-- Sunrise Sweet Market -->
+      <article class="block" id="business-sunrise" data-niche="sweet-shop" data-location="johannesburg">
+        <a href="http://sunrisesweets.co.za/" target="_blank" rel="noopener"><img src="images-logo/sunrisesweets-logo.jpg" alt="Sunrise Sweet Market" width="400" height="300" loading="lazy"></a>
+        <div class="info"><h3>Sunrise Sweet Market</h3><p>Chocolates, Candy, Biscuits & Gummies Wholesale</p>
+          <div class="block-actions"><a href="http://sunrisesweets.co.za" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a></div>
+          <div class="share-section"><a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a><a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a></div>
+        </div>
+      </article>
+      <!-- Tasko Sweets -->
+      <article class="block" id="business-tasko" data-niche="sweet-shop" data-location="johannesburg">
+        <a href="https://taskosweetsonline.co.za/" target="_blank" rel="noopener"><img src="image-services/taskosweets-logo.jpg" alt="Tasko Sweets" width="400" height="300" loading="lazy"></a>
+        <div class="info"><h3>Tasko Sweets</h3><p>Confectionery & Gifting Wholesale</p>
+          <div class="block-actions"><a href="https://taskosweetsonline.co.za" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a></div>
+          <div class="share-section"><a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a><a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a></div>
+        </div>
+      </article>
+      <!-- Dicks Sweets -->
+      <article class="block" id="business-dicks" data-niche="sweet-shop" data-location="johannesburg">
+        <a href="https://www.dickssweets.co.za/" target="_blank" rel="noopener"><img src="image-services/dicksweet-logo.jpg" alt="Dicks Sweets" width="400" height="300" loading="lazy"></a>
+        <div class="info"><h3>Dicks Sweets</h3><p>Traditional Confectionery & Nougat</p>
+          <div class="block-actions"><a href="https://www.dickssweets.co.za" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a></div>
+          <div class="share-section"><a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a><a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a></div>
+        </div>
+      </article>
+      <!-- White House Lighting -->
+      <article class="block" id="business-whitehouse" data-niche="lighting-electrical" data-location="trichardt">
+        <a href="https://whitehouselightingandelectrical.co.za" target="_blank" rel="noopener"><img src="images-logo/whitehouse-electrical-logo.jpg" alt="White House Lighting & Electrical" width="400" height="300" loading="lazy"></a>
+        <div class="info"><h3>White House Lighting & Electrical</h3><p>LED lighting solutions & durable electrical accessories</p>
+          <div class="block-actions"><a href="https://whitehouselightingandelectrical.co.za" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a></div>
+          <div class="share-section"><a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a><a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a></div>
+        </div>
+      </article>
+      <!-- Laptop Solution -->
+      <article class="block" id="business-laptop" data-niche="electronics" data-location="johannesburg">
+        <a href="https://laptopsolutions.co.za/" target="_blank" rel="noopener"><img src="images-logo/laptopsolutions-logo.jpg" alt="Laptop Solution" width="400" height="300" loading="lazy"></a>
+        <div class="info"><h3>Laptop Solution</h3><p>Laptop Parts, Repairs, Screens, Keyboards & Accessories</p>
+          <div class="block-actions"><a href="https://laptopsolutions.co.za" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a></div>
+          <div class="share-section"><a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a><a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a></div>
+        </div>
+      </article>
+      <!-- Africa Cash & Carry -->
+      <article class="block" id="business-africa" data-niche="wholesale" data-location="johannesburg">
+        <a href="https://africacnc.co.za/" target="_blank" rel="noopener"><img src="images-logo/africa-cash-n-carry-logo.jpg" alt="Africa Cash & Carry" width="400" height="300" loading="lazy"></a>
+        <div class="info"><h3>Africa Cash & Carry</h3><p>Major FMCG wholesaler: toiletries, hair care, electronics & household</p>
+          <div class="block-actions"><a href="https://africacnc.co.za" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a></div>
+          <div class="share-section"><a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a><a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a></div>
+        </div>
+      </article>
+      <!-- Devland Cash & Carry -->
+      <article class="block" id="business-devland" data-niche="wholesale" data-location="johannesburg">
+        <a href="https://www.devland.co.za/" target="_blank" rel="noopener"><img src="images-logo/devland-logo.jpg" alt="Devland Cash & Carry" width="400" height="300" loading="lazy"></a>
+        <div class="info"><h3>Devland Cash & Carry</h3><p>Bulk FMCG, groceries & household goods for retailers</p>
+          <div class="block-actions"><a href="https://www.devland.co.za" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a></div>
+          <div class="share-section"><a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a><a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a></div>
+        </div>
+      </article>
+      <!-- Continental Cash & Carry -->
+      <article class="block" id="business-continental" data-niche="wholesale" data-location="johannesburg">
+        <a href="https://www.ccnc.co.za/" target="_blank" rel="noopener"><img src="images-logo/continental-logo.jpg" alt="Continental Cash & Carry" width="400" height="300" loading="lazy"></a>
+        <div class="info"><h3>Continental Cash & Carry</h3><p>Wholesale supplier for independent retailers since 2012</p>
+          <div class="block-actions"><a href="https://www.ccnc.co.za" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a></div>
+          <div class="share-section"><a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a><a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a></div>
+        </div>
+      </article>
+      <!-- Jumbo Cash & Carry -->
+      <article class="block" id="business-jumbo" data-niche="wholesale" data-location="johannesburg">
+        <a href="https://my-catalogue.co.za/retailers/jumbo-cash-and-carry" target="_blank" rel="noopener"><img src="images-logo/jumbo-logo.jpg" alt="Jumbo Cash & Carry" width="400" height="300" loading="lazy"></a>
+        <div class="info"><h3>Jumbo Cash & Carry</h3><p>Massmart-owned wholesaler for traders and small businesses</p>
+          <div class="block-actions"><a href="https://my-catalogue.co.za/retailers/jumbo-cash-and-carry" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a></div>
+          <div class="share-section"><a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a><a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a></div>
+        </div>
+      </article>
+      <!-- jam Clothing -->
+      <article class="block" id="business-jam" data-niche="clothing" data-location="johannesburg">
+        <a href="https://jamclothing.co.za/" target="_blank" rel="noopener"><img src="images-logo/jam-logo.jpg" alt="JAM Clothing" width="400" height="300" loading="lazy"></a>
+        <div class="info"><h3>JAM Clothing</h3><p>Brand-name apparel, footwear & accessories at discounted prices</p>
+          <div class="block-actions"><a href="https://jamclothing.co.za" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a></div>
+          <div class="share-section"><a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a><a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a></div>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="images-logo/hive-times-logo.png" alt="Hive Times" width="100" height="100" loading="lazy">
+        <p>Connecting South Africans with trusted local businesses since 2026.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Directory</h4>
+        <ul><li><a href="/businesses"><i class="fas fa-building"></i> Businesses</a></li><li><a href="/services"><i class="fas fa-hands-helping"></i> Services</a></li><li><a href="/wholesale"><i class="fas fa-boxes"></i> Wholesale</a></li></ul>
+      </div>
+      <div class="footer-links">
+        <h4>Company</h4>
+        <ul><li><a href="https://hivetimes.co.za/about%20page%20home.html"><i class="fas fa-info-circle"></i> About</a></li><li><a href="/contact"><i class="fas fa-envelope"></i> Contact</a></li><li><a href="/terms"><i class="fas fa-file-contract"></i> Terms</a></li></ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <ul><li><a href="tel:+27649220145"><i class="fas fa-phone"></i> +27 64 922 0145</a></li><li><a href="mailto:hivetimes.co.za@gmail.com"><i class="fas fa-envelope"></i> hivetimes.co.za@gmail.com</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; <span id="currentYear"></span> Hive Times. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  'use strict';
+  
+  // === CONFIG ===
+  const CONFIG = { whatsappNumber: '27649220145' };
+  let state = { niche: 'all', location: 'all', query: '' };
+  
+  // === DOM CACHE ===
+  const dom = {
+    sidebar: document.getElementById('sidebar'),
+    overlay: document.getElementById('overlay'),
+    hamburger: document.getElementById('hamburger'),
+    closeBtn: document.getElementById('sidebarClose'),
+    searchInput: document.getElementById('businessSearch'),
+    nicheToggle: document.getElementById('nicheToggle'),
+    nicheMenu: document.getElementById('nicheMenu'),
+    locToggle: document.getElementById('locToggle'),
+    locMenu: document.getElementById('locMenu'),
+    grid: document.getElementById('businessGrid'),
+    filterWrapper: document.getElementById('activeFiltersWrapper'),
+    resultsCount: document.getElementById('resultsCount')
+  };
+
+  // === SIDEBAR TOGGLE ===
+  function toggleSidebar(open = true) {
+    dom.sidebar.classList.toggle('active', open);
+    dom.overlay.classList.toggle('active', open);
+    dom.hamburger.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  dom.hamburger.addEventListener('click', () => toggleSidebar(true));
+  dom.closeBtn.addEventListener('click', () => toggleSidebar(false));
+  dom.overlay.addEventListener('click', () => toggleSidebar(false));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && dom.sidebar.classList.contains('active')) toggleSidebar(false); });
+
+  // === FILTER & DROPDOWNS ===
+  function toggleDropdown(type) {
+    const menu = type === 'niche' ? dom.nicheMenu : dom.locMenu;
+    const toggle = type === 'niche' ? dom.nicheToggle : dom.locToggle;
+    const isOpen = menu.classList.contains('show');
+    document.querySelectorAll('.filter-menu').forEach(m => m.classList.remove('show'));
+    document.querySelectorAll('.filter-toggle').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-expanded', 'false'); });
+    if (!isOpen) {
+      menu.classList.add('show');
+      toggle.classList.add('active');
+      toggle.setAttribute('aria-expanded', 'true');
+    }
+  }
+  dom.nicheToggle.addEventListener('click', (e) => { e.stopPropagation(); toggleDropdown('niche'); });
+  dom.locToggle.addEventListener('click', (e) => { e.stopPropagation(); toggleDropdown('loc'); });
+  document.addEventListener('click', (e) => { if (!e.target.closest('.filter-dropdown')) document.querySelectorAll('.filter-menu').forEach(m => m.classList.remove('show')); });
+
+  // Filter Application
+  function applyFilters() {
+    const cards = dom.grid.querySelectorAll('.block');
+    let visible = 0;
+    cards.forEach(card => {
+      const niche = card.dataset.niche || 'all';
+      const loc = card.dataset.location || 'all';
+      const text = (card.querySelector('h3')?.textContent + ' ' + card.querySelector('p')?.textContent).toLowerCase();
+      const matchNiche = state.niche === 'all' || niche === state.niche;
+      const matchLoc = state.location === 'all' || loc === state.location;
+      const matchQry = state.query === '' || text.includes(state.query.toLowerCase());
+      if (matchNiche && matchLoc && matchQry) {
+        card.style.display = 'flex';
+        visible++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    dom.resultsCount.textContent = visible < cards.length ? `Showing ${visible} of ${cards.length} businesses` : '';
+    renderBadges();
+  }
+
+  function renderBadges() {
+    if (state.niche === 'all' && state.location === 'all' && state.query === '') { dom.filterWrapper.innerHTML = ''; return; }
+    let html = '';
+    if (state.niche !== 'all') html += `<span class="filter-badge">Niche: ${state.niche} <button onclick="HiveDir.setNiche('all')"><i class="fas fa-times"></i></button></span>`;
+    if (state.location !== 'all') html += `<span class="filter-badge">Location: ${state.location} <button onclick="HiveDir.setLocation('all')"><i class="fas fa-times"></i></button></span>`;
+    if (state.query) html += `<span class="filter-badge">Search: "${state.query}" <button onclick="HiveDir.setSearch('')"><i class="fas fa-times"></i></button></span>`;
+    html += `<button class="filter-badge" onclick="HiveDir.clearAll()" style="color:var(--primary);border-color:var(--primary);"><i class="fas fa-broom"></i> Clear All</button>`;
+    dom.filterWrapper.innerHTML = html;
+  }
+
+  // Global exposure for inline badge buttons
+  window.HiveDir = {
+    setNiche: (val) => { state.niche = val; dom.nicheMenu.querySelectorAll('.filter-item').forEach(b => b.classList.toggle('active', b.dataset.value === val)); dom.nicheToggle.querySelector('span').textContent = val === 'all' ? 'All Niches' : dom.nicheMenu.querySelector(`[data-value="${val}"]`).dataset.label; applyFilters(); },
+    setLocation: (val) => { state.location = val; dom.locMenu.querySelectorAll('.filter-item').forEach(b => b.classList.toggle('active', b.dataset.value === val)); dom.locToggle.querySelector('span').textContent = val === 'all' ? 'All Locations' : dom.locMenu.querySelector(`[data-value="${val}"]`).dataset.label; applyFilters(); },
+    setSearch: (val) => { state.query = val; dom.searchInput.value = val; applyFilters(); },
+    clearAll: () => { HiveDir.setNiche('all'); HiveDir.setLocation('all'); HiveDir.setSearch(''); }
+  };
+
+  // Menu Item Clicks
+  dom.nicheMenu.addEventListener('click', (e) => {
+    const btn = e.target.closest('.filter-item');
+    if (btn) { HiveDir.setNiche(btn.dataset.value); toggleDropdown('niche'); }
+  });
+  dom.locMenu.addEventListener('click', (e) => {
+    const btn = e.target.closest('.filter-item');
+    if (btn) { HiveDir.setLocation(btn.dataset.value); toggleDropdown('loc'); }
+  });
+
+  // Search Input
+  let searchTimeout;
+  dom.searchInput.addEventListener('input', (e) => {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => { state.query = e.target.value.trim(); applyFilters(); }, 250);
+  });
+
+  // === SHARE BUTTONS ONLY (Rating System Removed) ===
+  document.querySelectorAll('.share-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const block = btn.closest('.block');
+      const name = block.querySelector('h3').textContent;
+      const url = `${window.location.origin}${window.location.pathname}#${block.id}`;
+      const msg = `Check out ${name} on Hive Times: ${url}`;
+      if (btn.classList.contains('facebook')) window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+      else if (btn.classList.contains('whatsapp')) window.open(/Mobi|Android/i.test(navigator.userAgent) ? `whatsapp://send?text=${encodeURIComponent(msg)}` : `https://web.whatsapp.com/send?text=${encodeURIComponent(msg)}`, '_blank');
+      else if (btn.classList.contains('email')) window.location.href = `mailto:?subject=${encodeURIComponent(name)}&body=${encodeURIComponent(msg)}`;
+    });
+  });
+
+   // Swiper - load Swiper library dynamically then fetch and initialize the slider
+(function loadSwiperAndInit() {
+const swiperScript = document.createElement('script');
+swiperScript.src = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js';
+swiperScript.async = true;
+swiperScript.onload = () => {
+fetch('slider.html').then(response => response.text()).then(html => {
+document.getElementById('slider-container').innerHTML = html;
+if (typeof Swiper !== 'undefined') { new Swiper('.mySwiper', { spaceBetween: 0, centeredSlides: true, autoplay: { delay: 3000, disableOnInteraction: false }, pagination: { el: '.swiper-pagination', clickable: true }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }, loop: true, effect: 'fade', fadeEffect: { crossFade: true }, touchRatio: 1, simulateTouch: true }); }
+}).catch(err => { console.error('Slider failed to load:', err); document.getElementById('slider-container').innerHTML = '<p style="text-align:center; padding:40px; color:#a30909; font-weight:600;">❌ Slider error: ' + err.message + '</p>'; });
+};
+swiperScript.onerror = () => { console.error('Failed to load Swiper library.'); document.getElementById('slider-container').innerHTML = '<p style="text-align:center; padding:40px; color:#a30909; font-weight:600;">❌ Failed to load Swiper library.</p>'; };
+document.head.appendChild(swiperScript);
+})();
+
+  // === INIT ===
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+  document.getElementById('sidebarYear').textContent = new Date().getFullYear();
+  applyFilters();
+})();
+</script>
+</body>
+</html>

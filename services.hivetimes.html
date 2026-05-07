@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hive Times | South Africa's Local Services Directory - Find Trusted Professionals</title>
+<meta name="description" content="Discover trusted local services & professionals across South Africa. Find electricians, plumbers, carpenters, caterers, auto detailers, web developers & more. Connect directly via WhatsApp.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://hivetimes.co.za/services">
+<meta name="author" content="Hive Times">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hivetimes.co.za/services">
+<meta property="og:title" content="Hive Times | Local Services Directory South Africa">
+<meta property="og:description" content="Find trusted South African service providers: electrical, plumbing, catering, automotive, construction & more. Connect via WhatsApp.">
+<meta property="og:image" content="https://hivetimes.co.za/images-logo/hive-times-logo.png">
+<meta property="og:locale" content="en_ZA">
+<link rel="icon" type="image/png" href="images-logo/hive-times-logo.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Hive Times Services",
+  "url": "https://hivetimes.co.za/services",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Hive Times",
+    "logo": "https://hivetimes.co.za/images-logo/hive-times-logo.png"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://hivetimes.co.za/services/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Electrical Services Johannesburg"},
+    {"@type": "ListItem", "position": 2, "name": "Plumbing Services Gauteng"},
+    {"@type": "ListItem", "position": 3, "name": "Carpentry Services South Africa"},
+    {"@type": "ListItem", "position": 4, "name": "Catering Services Cape Town"},
+    {"@type": "ListItem", "position": 5, "name": "Auto Detailing Mobile Services"}
+  ]
+}
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<style>
+  /* === FUTURISTIC RED HIVE PATTERN - VISIBLE & PROFESSIONAL === */
+#featured-products-section {
+    background-color: #FFF2F2;
+    background-image: 
+        linear-gradient(60deg, transparent 47%, rgba(165, 28, 28, 0.18) 50%, transparent 53%),
+        linear-gradient(-60deg, transparent 47%, rgba(165, 28, 28, 0.18) 50%, transparent 53%),
+        radial-gradient(circle 2.5px at 15px 15px, rgba(178, 58, 58, 0.4) 90%, transparent 100%),
+        url("image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='104' viewBox='0 0 120 104'%3E%3Cpath d='M60 0L120 30V90L60 120L0 90V30L60 0Z' fill='none' stroke='%23B34444' stroke-width='1.8' opacity='0.4'/%3E%3Cpath d='M60 18L102 39V81L60 102L18 81V39L60 18Z' fill='none' stroke='%238B2525' stroke-width='1' stroke-dasharray='6 3' opacity='0.22'/%3E%3Ccircle cx='60' cy='60' r='4.5' fill='%23A51C1C' opacity='0.35'/%3E%3C/svg%3E"),
+        linear-gradient(180deg, rgba(255,242,242,0.88) 0%, rgba(255,230,230,0.92) 100%);
+    background-size: 120px 104px, 120px 104px, 30px 30px, 120px 104px, auto;
+    background-position: 0 0, 0 0, 0 0, 0 0, 0 0;
+    background-repeat: repeat;
+    position: relative;
+    padding: 50px 20px;
+    overflow: hidden;
+}
+#featured-products-section > * { background-image: none !important; }
+#featured-products-section .section-title,
+#featured-products-section .businesses-grid { background: transparent !important; }
+#featured-products-section .business-card,
+#featured-products-section .product-card,
+#featured-products-section .hive-item {
+    background-color: #FFFFFF !important;
+    border: 1px solid rgba(179, 68, 68, 0.2);
+    box-shadow: 0 6px 20px rgba(139, 37, 37, 0.08);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+#featured-products-section .business-card:hover,
+#featured-products-section .product-card:hover,
+#featured-products-section .hive-item:hover {
+    box-shadow: 0 12px 35px rgba(165, 28, 28, 0.15), 0 0 0 1px rgba(179, 68, 68, 0.35) inset;
+    transform: translateY(-4px);
+    border-color: rgba(165, 28, 28, 0.4);
+}
+#featured-products-section .section-title {
+    color: #8B2525;
+    text-shadow: 0 2px 8px rgba(139, 37, 37, 0.1);
+    position: relative;
+}
+#featured-products-section .section-title::after {
+    background: linear-gradient(90deg, transparent, #A51C1C, transparent) !important;
+}
+
+/* 🎨 UNIFIED DESIGN TOKENS */
+:root {
+  --primary: #8B0000;
+  --primary-dark: #6B0000;
+  --primary-light: #B34444;
+  --secondary: #2c3e50;
+  --bg-light: #f8fafc;
+  --white: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+  --shadow-md: 0 6px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 32px rgba(139, 0, 0, 0.12);
+  --radius: 12px;
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --font-main: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* 🔄 RESET & BASE */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: var(--font-main);
+  line-height: 1.6;
+  color: var(--secondary);
+  background: var(--bg-light);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; transition: var(--transition); }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+ul { list-style: none; }
+.container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+/* 📦 HEADER */
+header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: var(--white);
+  padding: 0.75rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-md);
+}
+.header-inner { display: flex; align-items: center; justify-content: flex-end; gap: 0.75rem; flex-wrap: wrap; }
+.search-bar { order: 2; max-width: 360px; width: 100%; position: relative; }
+.search-bar input {
+  width: 100%; padding: 10px 16px 10px 40px; border-radius: 40px;
+  border: 2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.15);
+  color: var(--white); font-size: 0.95rem; transition: var(--transition);
+}
+.search-bar input::placeholder { color: rgba(255,255,255,0.85); }
+.search-bar input:focus { outline: none; background: rgba(255,255,255,0.25); border-color: var(--white); box-shadow: 0 0 0 3px rgba(255,255,255,0.2); }
+.search-bar i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--white); pointer-events: none; }
+.logo { order: 3; display: flex; align-items: center; gap: 10px; margin-left: auto; }
+.logo img { height: 42px; width: auto; border-radius: 6px; }
+.logo-text { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.4px; display: none; }
+.hamburger { order: 4; display: flex; flex-direction: column; gap: 5px; padding: 8px; cursor: pointer; margin-left: 8px; border-radius: 6px; transition: var(--transition); }
+.hamburger span { width: 24px; height: 2.5px; background: var(--white); border-radius: 2px; transition: var(--transition); }
+.hamburger:hover, .hamburger:focus-visible { background: rgba(255,255,255,0.1); }
+
+/* 📱 SIDEBAR */
+.sidebar {
+  position: fixed; top: 0; left: -300px; width: 280px; height: 100vh;
+  background: var(--secondary); color: var(--white); z-index: 1001;
+  transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: var(--shadow-lg);
+  display: flex; flex-direction: column;
+}
+.sidebar.active { left: 0; }
+.sidebar-header { padding: 1.25rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: space-between; }
+.sidebar-logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.2rem; }
+.sidebar-logo img { height: 36px; border-radius: 5px; }
+.sidebar-close { background: none; border: none; color: var(--white); font-size: 1.4rem; cursor: pointer; padding: 6px; border-radius: 50%; transition: var(--transition); }
+.sidebar-close:hover { background: rgba(255,255,255,0.15); }
+.sidebar-nav { flex: 1; padding: 1rem 0; overflow-y: auto; }
+.sidebar-nav a { display: flex; align-items: center; gap: 12px; padding: 14px 20px; color: rgba(255,255,255,0.9); font-weight: 500; font-size: 0.95rem; transition: var(--transition); border-left: 3px solid transparent; }
+.sidebar-nav a:hover, .sidebar-nav a.active { background: rgba(255,255,255,0.08); color: var(--white); border-left-color: var(--primary-light); padding-left: 23px; }
+.sidebar-nav a i { width: 20px; text-align: center; color: var(--primary-light); }
+.sidebar-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 0.5rem 1.5rem; }
+.sidebar-footer { padding: 1rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+.sidebar-footer a { color: var(--primary-light); font-weight: 600; }
+.sidebar-footer a:hover { color: #ffd700; }
+.overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 1000; opacity: 0; visibility: hidden; transition: var(--transition); backdrop-filter: blur(3px); }
+.overlay.active { opacity: 1; visibility: visible; }
+
+/* 🎠 HERO SLIDER CONTAINER */
+#slider-container { margin-bottom: 1.5rem; }
+.swiper { width: 100%; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-md); }
+.swiper-slide { background: var(--white); display: flex; align-items: center; justify-content: center; min-height: 250px; }
+.swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
+
+/* 🔍 FILTER BAR */
+.filter-bar-compact {
+  background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow-sm);
+  padding: 0.75rem 1rem; margin: 1rem 0 1.5rem; display: flex; align-items: center; gap: 10px;
+  flex-wrap: wrap; width: 100%;
+}
+.filter-icon img { width: 48px; height: 48px; object-fit: contain; animation: float 3s ease-in-out infinite; }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+.filter-dropdown { position: relative; flex: 1; min-width: 160px; max-width: 220px; }
+.filter-toggle {
+  width: 100%; background: var(--bg-light); border: 1.5px solid var(--border); color: var(--secondary);
+  padding: 10px 14px; border-radius: 30px; display: flex; align-items: center; justify-content: space-between;
+  gap: 8px; font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: var(--transition);
+}
+.filter-toggle:hover, .filter-toggle.active { border-color: var(--primary); background: rgba(139, 0, 0, 0.04); }
+.filter-toggle i.fa-chevron-down { font-size: 0.7rem; transition: transform 0.2s ease; }
+.filter-toggle.active i.fa-chevron-down { transform: rotate(180deg); }
+.filter-menu {
+  position: absolute; top: calc(100% + 8px); left: 0; background: var(--white);
+  border-radius: 10px; box-shadow: var(--shadow-lg); min-width: 100%; max-width: 95vw;
+  max-height: 0; overflow: hidden; opacity: 0; transform: translateY(-8px);
+  transition: all 0.25s ease; z-index: 100; border: 1px solid var(--border);
+}
+.filter-menu.show { max-height: 350px; opacity: 1; transform: translateY(0); }
+.filter-menu-header { padding: 10px 14px; font-weight: 600; font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.4px; border-bottom: 1px solid var(--border); background: #fafbfc; }
+.filter-item { width: 100%; background: none; border: none; padding: 10px 14px; display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--secondary); cursor: pointer; transition: var(--transition); text-align: left; }
+.filter-item:hover { background: var(--bg-light); color: var(--primary); }
+.filter-item.active { background: rgba(139, 0, 0, 0.08); color: var(--primary); font-weight: 600; }
+.filter-item i { width: 16px; text-align: center; color: var(--primary-light); opacity: 0.9; }
+.filter-divider { height: 1px; background: var(--border); margin: 6px 0; }
+.active-filters-wrapper { min-height: 28px; margin-bottom: 0.75rem; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.filter-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--bg-light); border: 1px solid var(--border); padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; margin-bottom: 4px; }
+.filter-badge button { background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 0 2px; font-size: 0.9rem; display: flex; }
+.filter-badge button:hover { color: #e11d48; }
+.results-count { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem; }
+
+/* 🏢 SERVICES GRID & CARDS */
+.section-title { font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800; color: var(--text-main); margin: 2rem 0 1.5rem; text-align: center; position: relative; }
+.section-title::after { content: ''; display: block; width: 70px; height: 4px; background: var(--primary); margin: 0.9rem auto 0; border-radius: 4px; }
+.businesses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; padding-bottom: 3rem; }
+.block {
+  background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow-sm);
+  padding: 1.75rem; text-align: center; transition: var(--transition); position: relative;
+  overflow: hidden; display: flex; flex-direction: column; height: 100%;
+  border: 1px solid rgba(0,0,0,0.04);
+}
+.block:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: rgba(139, 0, 0, 0.15); }
+.block img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--radius); margin-bottom: 1.25rem; transition: var(--transition); }
+.block:hover img { transform: scale(1.02); }
+.block h3 { margin: 0 0 0.5rem; font-size: 1.15rem; color: var(--secondary); font-weight: 700; line-height: 1.3; }
+.block p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.25rem; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; text-overflow: ellipsis; flex: 1; }
+.block-actions { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 1rem; }
+.cta-btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; transition: var(--transition); text-decoration: none; }
+.cta-btn.primary { background: linear-gradient(135deg, var(--primary) 0%, #c0392b 100%); color: #fff; box-shadow: 0 4px 12px rgba(139, 0, 0, 0.25); }
+.cta-btn.primary:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(139, 0, 0, 0.35); }
+.cta-btn.secondary { background: var(--bg-light); color: var(--secondary); border: 1px solid var(--border); }
+.cta-btn.secondary:hover { background: var(--white); border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
+
+/* ⭐ SHARE BUTTONS ONLY (Ratings Removed) */
+.share-section { margin-top: 1rem; display: flex; justify-content: center; gap: 10px; }
+.share-btn { display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; background: var(--bg-light); color: var(--text-muted); font-size: 1rem; transition: var(--transition); }
+.share-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+.share-btn.facebook:hover { background: #1877f2; color: white; }
+.share-btn.whatsapp:hover { background: #25d366; color: white; }
+.share-btn.email:hover { background: #ea4335; color: white; }
+
+/* 🦶 FOOTER */
+footer { background: linear-gradient(160deg, #8B1E1E 0%, #5C1212 100%); color: #ffffff; padding: 3rem 0 1.5rem; margin-top: 4rem; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+.footer-brand img { height: 60px; margin-bottom: 1rem; border-radius: 8px; }
+.footer-brand p { font-size: 0.95rem; line-height: 1.5; opacity: 0.9; }
+.footer-links h4 { color: #ffffff; font-size: 1.05rem; margin-bottom: 0.75rem; font-weight: 600; }
+.footer-links ul { list-style: none; }
+.footer-links li { margin-bottom: 0.6rem; }
+.footer-links a { opacity: 0.85; transition: var(--transition); display: inline-flex; align-items: center; gap: 8px; font-size: 0.95rem; }
+.footer-links a:hover { opacity: 1; color: #ffd700; transform: translateX(4px); }
+.social-links { display: flex; gap: 10px; margin-top: 1rem; }
+.social-links a { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center; font-size: 1.05rem; transition: var(--transition); }
+.social-links a:hover { background: var(--white); color: var(--primary); transform: translateY(-3px); }
+.footer-bottom { text-align: center; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.15); font-size: 0.9rem; opacity: 0.85; }
+
+/* 📱 RESPONSIVE */
+@media (max-width: 1024px) { .filter-dropdown { max-width: 180px; } }
+@media (max-width: 768px) {
+  .header-inner { justify-content: space-between; padding: 0 12px; }
+  .search-bar { order: 4; max-width: 100%; width: 100%; margin-top: 0.75rem; }
+  .logo img { height: 38px; } .logo-text { display: none; }
+  .businesses-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .block { padding: 1.25rem; } .block h3 { font-size: 1rem; } .cta-btn { padding: 8px 14px; font-size: 0.8rem; }
+  .filter-bar-compact { padding: 0.5rem; gap: 8px; }
+  .footer-grid { grid-template-columns: 1fr; text-align: center; }
+  .footer-brand, .footer-links, .social-links { justify-content: center; }
+}
+@media (max-width: 480px) {
+  .businesses-grid { grid-template-columns: 1fr; }
+  .block-actions { flex-direction: column; }
+  .cta-btn { width: 100%; justify-content: center; }
+  .filter-dropdown { min-width: 140px; max-width: 100%; flex: 1; }
+  .filter-menu { left: 50%; transform: translateX(-50%) translateY(-8px); min-width: 90vw; }
+  .filter-menu.show { transform: translateX(-50%) translateY(0); }
+}
+
+/* 🔍 HIDDEN SEO SECTION - ACCESSIBLE TO SEARCH ENGINES ONLY */
+.seo-keywords-container {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  visibility: hidden !important;
+}
+</style>
+</head>
+<body>
+<a href="#main-content" class="sr-only">Skip to main content</a>
+
+<!-- 🔍 HIDDEN SEO KEYWORDS SECTION - Boosts search visibility for service-related queries -->
+<div class="seo-keywords-container" aria-hidden="true">
+  <h1>Local Services Directory South Africa - Find Trusted Professionals Near You</h1>
+  <p>Search and connect with verified local service providers across Johannesburg, Cape Town, Durban, Pretoria, Sandton, Centurion, Midrand, Gauteng, KwaZulu-Natal, Western Cape, Eastern Cape, Free State, Limpopo, Mpumalanga, North West, Northern Cape. Professional services include: electrician near me, emergency electrician Johannesburg, certified electrician Parktown, COC certificate electrical, loadshedding backup installation, inverter installation, solar panel installation, geyser installation, plumbing services Johannesburg, burst pipe repair, leak detection, drain cleaning, toilet repair, tap installation, carpenter near me, custom furniture maker, built-in cupboards, kitchen cabinets, wooden flooring installation, floor sanding and sealing, laminate flooring, skirting boards, ceiling installation, drywall partitioning, painting services, interior painting, exterior painting, waterproofing, roofing repairs, gutter cleaning, pest control, fumigation services, ant control, termite treatment, rodent control, cleaning services, domestic worker, office cleaning, carpet cleaning, window cleaning, post-construction cleaning, gardening services, lawn maintenance, tree felling, landscape design, irrigation installation, catering services Johannesburg, wedding catering, corporate catering, event planning, birthday party catering, funeral catering, halal catering, kosher catering, mobile auto detailing, car wash near me, paint correction, ceramic coating, interior valeting, engine cleaning, headlight restoration, mobile mechanic, car repair, brake service, battery replacement, tyre fitting, wheel alignment, web development services, website design Johannesburg, SEO services, digital marketing, social media management, Google Ads, Facebook Ads, content writing, graphic design, logo design, branding services, printing services, business cards, flyers, banners, signage, photography services, wedding photographer, event photographer, product photography, videography services, corporate video, wedding video, drone footage, editing services, translation services, legal services, conveyancing, deceased estate administration, notary public, immigration consultant, tax consultant, bookkeeping services, payroll services, accounting services, business consulting, startup consulting, HR consulting, recruitment services, training services, coaching services, life coaching, business coaching, fitness trainer, personal trainer, yoga instructor, pilates classes, massage therapy, physiotherapy, chiropractor, beauty services, hair salon, nail technician, makeup artist, bridal makeup, skincare specialist, facial treatments, waxing services, spa services, wellness center, meditation classes, tutoring services, math tutor, English tutor, science tutor, homework help, online tutoring, music lessons, piano lessons, guitar lessons, singing lessons, art classes, dance classes, ballet, hip hop, Zumba, martial arts, karate, judo, self-defense classes, driving instructor, learner's license, driver's license test, vehicle licensing, car rental services, airport transfers, shuttle services, courier services, delivery services, same-day delivery, freight services, logistics companies, warehousing services, inventory management, supply chain consulting, import export services, customs clearance, freight forwarding, moving services Johannesburg, furniture removalists, office relocation, interstate moving, international moving, storage facilities, self-storage, document storage, climate-controlled storage, security services, armed response, CCTV installation, alarm systems, access control, biometric systems, intercom systems, gate motor installation, garage door repair, handyman services, home repairs, appliance repair, TV mounting, furniture assembly, curtain installation, blind installation, shelving installation, mirror hanging, picture hanging, key cutting, lock smith, door lock replacement, safe installation, safe opening, key programming, car key replacement, remote programming, immobilizer coding, ECU repair, car diagnostics, OBD scanning, engine tuning, performance upgrades, exhaust systems, suspension upgrades, brake upgrades, clutch replacement, gearbox repair, differential repair, prop shaft repair, CV joint replacement, wheel bearing replacement, shock absorber replacement, strut replacement, coil spring replacement, air suspension repair, power steering repair, radiator repair, water pump replacement, thermostat replacement, timing belt replacement, cam belt replacement, serpentine belt replacement, alternator repair, starter motor repair, battery testing, battery charging, jump start service, tyre repair, puncture repair, wheel balancing, tyre rotation, tyre pressure monitoring, TPMS reset, wheel alignment, four-wheel alignment, tracking adjustment, suspension alignment, camber adjustment, caster adjustment, toe adjustment, thrust angle adjustment, corner balancing, chassis alignment, frame straightening, panel beating, dent removal, scratch repair, paintless dent repair, PDR, spray painting, colour matching, clear coat application, polish and wax, ceramic coating application, paint protection film, PPF installation, window tinting, solar film installation, security tint, privacy tint, UV protection film, heat rejection film, headlight restoration, foggy headlight repair, headlight polishing, headlight replacement, tail light repair, indicator repair, brake light replacement, number plate light, interior lighting upgrade, LED conversion, HID conversion, xenon bulbs, halogen bulbs, fog light installation, driving light installation, light bar installation, spotlight installation, work light installation, reverse light upgrade, license plate light, dome light replacement, map light upgrade, footwell lighting, ambient lighting, underglow lighting, neon lighting, LED strip installation, RGB lighting, smart lighting, app-controlled lighting, voice-controlled lighting, home automation, smart home installation, security camera installation, IP camera setup, NVR installation, DVR installation, CCTV monitoring, remote viewing setup, motion detection setup, night vision camera, PTZ camera, dome camera, bullet camera, hidden camera, spy camera, nanny cam, baby monitor, pet camera, doorbell camera, video doorbell, smart lock installation, keyless entry, fingerprint lock, facial recognition lock, keypad lock, remote control lock, garage door opener, gate automation, sliding gate motor, swing gate motor, barrier arm installation, boom gate, access control system, biometric access, card access, proximity card, RFID access, intercom system, video intercom, audio intercom, apartment intercom, estate intercom, gate phone, entry phone, door phone, buzzer system, electric strike, magnetic lock, electromagnetic lock, fail-safe lock, fail-secure lock, panic button, emergency alarm, duress alarm, silent alarm, audible alarm, siren installation, strobe light, flashing light, warning light, beacon light, emergency lighting, exit sign, fire alarm system, smoke detector, heat detector, flame detector, gas detector, carbon monoxide detector, fire extinguisher installation, fire hose reel, fire blanket, sprinkler system, fire suppression system, kitchen hood suppression, server room suppression, clean agent system, foam system, wet chemical system, dry chemical system, CO2 system, inert gas system, fire door installation, fire rated door, fire shutter, fire curtain, fire damper, smoke vent, smoke extractor, smoke curtain, smoke barrier, fire compartmentation, fire stopping, fire sealing, intumescent seal, fire collar, fire pillow, fire wrap, fire board, fire cement, fire mortar, fire paint, intumescent paint, fireproofing, structural fire protection, passive fire protection, active fire protection, fire risk assessment, fire safety audit, fire evacuation plan, fire drill coordination, fire warden training, first aid training, CPR training, AED installation, defibrillator placement, emergency response plan, disaster management, business continuity planning, risk management consulting, insurance consulting, claims assistance, loss adjuster, forensic accounting, fraud investigation, due diligence, background checks, reference checks, employment screening, pre-employment testing, psychometric testing, skills assessment, competency evaluation, performance appraisal, 360 feedback, employee engagement survey, staff retention strategy, talent management, succession planning, leadership development, executive coaching, team building, workshop facilitation, training needs analysis, curriculum development, e-learning development, LMS implementation, SCORM compliance, xAPI tracking, blended learning, virtual classroom, webinar platform, video conferencing setup, Zoom setup, Teams setup, Google Meet setup, Webex setup, Skype for Business, VoIP installation, PBX system, cloud phone system, hosted telephony, SIP trunking, call center setup, IVR system, call recording, call analytics, quality monitoring, workforce management, CRM implementation, Salesforce setup, HubSpot configuration, Zoho CRM, Microsoft Dynamics, SAP implementation, Oracle ERP, cloud migration, AWS setup, Azure configuration, Google Cloud Platform, server hosting, dedicated server, VPS hosting, shared hosting, domain registration, SSL certificate, CDN setup, DDoS protection, website security, malware removal, hack recovery, data backup, disaster recovery, cloud backup, offsite backup, onsite backup, hybrid backup, backup verification, restore testing, business continuity, high availability, load balancing, failover clustering, database optimization, SQL tuning, NoSQL setup, data warehousing, ETL development, BI reporting, dashboard creation, data visualization, Power BI, Tableau, QlikView, Google Data Analytics, Google Tag Manager, Google Analytics setup, conversion tracking, remarketing setup, audience segmentation, A/B testing, multivariate testing, heat mapping, user session recording, usability testing, accessibility audit, WCAG compliance, ADA compliance, Section 508, mobile app development, iOS app, Android app, cross-platform app, React Native, Flutter, Xamarin, progressive web app, PWA development, AMP pages, core web vitals optimization, page speed optimization, image optimization, lazy loading, code splitting, tree shaking, minification, compression, caching strategy, CDN configuration, server optimization, database indexing, query optimization, API development, REST API, GraphQL, WebSocket, microservices architecture, containerization, Docker setup, Kubernetes orchestration, CI/CD pipeline, Jenkins, GitLab CI, GitHub Actions, Azure DevOps, AWS CodePipeline, infrastructure as code, Terraform, CloudFormation, Ansible, Puppet, Chef, configuration management, monitoring setup, Prometheus, Grafana, ELK stack, Splunk, New Relic, Datadog, application performance monitoring, log management, alerting system, incident response, on-call rotation, runbook automation, chatbot development, AI integration, machine learning model deployment, natural language processing, computer vision, predictive analytics, recommendation engine, personalization engine, dynamic pricing, inventory forecasting, demand planning, supply chain optimization, route optimization, fleet management, GPS tracking, telematics, fuel monitoring, driver behavior monitoring, maintenance scheduling, predictive maintenance, condition monitoring, IoT sensor integration, edge computing, 5G connectivity, LPWAN, LoRaWAN, NB-IoT, Sigfox, MQTT protocol, CoAP protocol, OPC UA, industrial automation, SCADA system, PLC programming, HMI design, robotics integration, cobot programming, AGV implementation, warehouse automation, pick-to-light, put-to-light, voice picking, RFID tracking, barcode scanning, QR code generation, NFC integration, contactless payment, POS system setup, EFTPOS terminal, card machine installation, payment gateway integration, Stripe setup, PayPal integration, PayFast configuration, Yoco setup, iKhokha setup, Ozow integration, Instant EFT, crypto payment gateway, Bitcoin payment, Ethereum payment, stablecoin payment, blockchain development, smart contract development, NFT marketplace, DeFi application, Web3 integration, wallet connection, MetaMask setup, walletconnect, dApp development, DAO governance, tokenomics design, liquidity mining, yield farming, staking platform, airdrop distribution, community management, Discord setup, Telegram bot, Twitter API integration, Instagram API, Facebook API, LinkedIn API, TikTok API, YouTube API, social listening, sentiment analysis, influencer marketing platform, affiliate marketing setup, referral program, loyalty program, gamification, badge system, points system, tiered rewards, VIP program, member portal, subscription management, recurring billing, dunning management, churn prediction, customer lifetime value, cohort analysis, funnel optimization, landing page design, conversion rate optimization, lead generation, lead nurturing, email marketing automation, drip campaign, behavioral triggers, segmentation strategy, personalization engine, dynamic content, A/B testing framework, multivariate testing, heat mapping, scroll tracking, click tracking, form analytics, session replay, user feedback collection, NPS survey, CSAT survey, CES survey, customer journey mapping, service blueprint, touchpoint analysis, pain point identification, opportunity mapping, value proposition design, business model canvas, lean startup methodology, design thinking workshop, agile coaching, scrum master services, product owner training, backlog refinement, sprint planning, daily standup facilitation, sprint review, retrospective facilitation, Kanban implementation, flow metrics, cycle time reduction, throughput optimization, work in progress limits, bottleneck identification, value stream mapping, continuous improvement, Kaizen facilitation, Six Sigma training, DMAIC methodology, statistical process control, control charts, process capability analysis, measurement system analysis, gage R&R, design of experiments, response surface methodology, Taguchi methods, robust design, failure mode analysis, FMEA, fault tree analysis, root cause analysis, 5 whys, fishbone diagram, Pareto analysis, Ishikawa diagram, brainstorming facilitation, mind mapping, SWOT analysis, PESTLE analysis, Porter's Five Forces, competitive analysis, market research, survey design, focus group moderation, interview facilitation, ethnographic research, observational research, secondary research, data analysis, statistical analysis, regression analysis, correlation analysis, hypothesis testing, confidence intervals, p-values, effect size, power analysis, sample size calculation, randomization, blinding, placebo control, double-blind study, clinical trial design, IRB submission, informed consent, data privacy compliance, GDPR compliance, POPIA compliance, HIPAA compliance, data anonymization, pseudonymization, encryption at rest, encryption in transit, key management, certificate management, PKI infrastructure, digital signature, electronic signature, DocuSign integration, Adobe Sign setup, contract management system, e-signature workflow, approval workflow, document routing, version control, audit trail, compliance reporting, regulatory reporting, statutory reporting, financial reporting, management reporting, board reporting, investor relations, annual report design, sustainability reporting, ESG reporting, GRI standards, SASB standards, TCFD recommendations, carbon accounting, greenhouse gas inventory, carbon footprint calculation, life cycle assessment, environmental impact assessment, social impact assessment, stakeholder engagement, materiality assessment, double materiality, integrated reporting, value creation, shared value, corporate citizenship, community investment, employee volunteering, skills-based volunteering, pro bono consulting, social enterprise support, impact investing, blended finance, development finance, microfinance, financial inclusion, digital financial services, mobile money, agent banking, branchless banking, fintech consulting, regtech solutions, compliance automation, KYC verification, AML screening, sanctions checking, PEP screening, adverse media monitoring, transaction monitoring, suspicious activity reporting, case management, investigation workflow, regulatory change management, policy management, procedure documentation, control testing, internal audit, external audit, audit committee support, risk committee support, governance framework, board effectiveness, director training, succession planning for board, committee charter development, terms of reference, delegation of authority, approval matrix, authorization limits, segregation of duties, access control review, user access review, privileged access management, identity governance, access certification, access request workflow, access provisioning, access deprovisioning, joiner-mover-leaver process, HRIS implementation, Workday setup, SAP SuccessFactors, Oracle HCM, BambooHR, Gusto, ADP, Paychex, QuickBooks Payroll, Xero Payroll, Sage Payroll, Pastel Payroll, VIP Payroll, SimplePay, Sage 300 People, Sage 200, Sage Evolution, Sage Pastel, Sage VIP, Sage X3, Sage Intacct, Sage Cloud, Sage One, Sage Business Cloud, Sage Accounting, Sage Payroll SA, Sage Payroll Africa, Sage HR, Sage People, Sage Talent Management, Sage Performance Management, Sage Learning, Sage Recruitment, Sage Onboarding, Sage Offboarding, Sage Time and Attendance, Sage Leave Management, Sage Benefits Administration, Sage Compensation Management, Sage Workforce Planning, Sage Analytics, Sage Reporting, Sage Dashboards, Sage Mobile, Sage API, Sage Integration, Sage Customization, Sage Implementation, Sage Training, Sage Support, Sage Consulting, Sage Partner, Sage Reseller, Sage Developer, Sage Administrator, Sage User, Sage License, Sage Subscription, Sage Pricing, Sage Demo, Sage Trial, Sage Download, Sage Update, Sage Patch, Sage Upgrade, Sage Migration, Sage Conversion, Sage Data Import, Sage Data Export, Sage Backup, Sage Restore, Sage Security, Sage Audit, Sage Compliance, Sage Best Practices, Sage Tips, Sage Tricks, Sage Hacks, Sage Shortcuts, Sage Macros, Sage Scripts, Sage Add-ons, Sage Modules, Sage Extensions, Sage Plugins, Sage Connectors, Sage Integrations, Sage Marketplace, Sage App Center, Sage Exchange, Sage Community, Sage Forum, Sage Blog, Sage Webinar, Sage Event, Sage Conference, Sage Certification, Sage Accreditation, Sage Badge, Sage Credential, Sage Transcript, Sage Portfolio, Sage Resume, Sage CV, Sage Profile, Sage Bio, Sage About, Sage Contact, Sage Support Ticket, Sage Knowledge Base, Sage FAQ, Sage Help Center, Sage Documentation, Sage API Reference, Sage Developer Guide, Sage Administrator Guide, Sage User Guide, Sage Training Materials, Sage Videos, Sage Tutorials, Sage Walkthroughs, Sage Examples, Sage Samples, Sage Templates, Sage Forms, Sage Reports, Sage Charts, Sage Graphs, Sage Tables, Sage Lists, Sage Menus, Sage Toolbars, Sage Ribbons, Sage Tabs, Sage Panels, Sage Windows, Sage Dialogs, Sage Wizards, Sage Assistants, Sage Agents, Sage Bots, Sage AI, Sage Machine Learning, Sage Predictive Analytics, Sage Prescriptive Analytics, Sage Descriptive Analytics, Sage Diagnostic Analytics, Sage Cognitive Analytics, Sage Natural Language Processing, Sage Computer Vision, Sage Speech Recognition, Sage Text-to-Speech, Sage Translation, Sage Transcription, Sage Summarization, Sage Classification, Sage Clustering, Sage Regression, Sage Forecasting, Sage Optimization, Sage Simulation, Sage What-if Analysis, Sage Scenario Planning, Sage Sensitivity Analysis, Sage Monte Carlo Simulation, Sage Decision Trees, Sage Random Forest, Sage Gradient Boosting, Sage Neural Networks, Sage Deep Learning, Sage Reinforcement Learning, Sage Transfer Learning, Sage Federated Learning, Sage Edge AI, Sage TinyML, Sage Model Deployment, Sage Model Monitoring, Sage Model Retraining, Sage Model Versioning, Sage Model Registry, Sage Feature Store, Sage Data Pipeline, Sage ETL Pipeline, Sage Streaming Pipeline, Sage Batch Pipeline, Sage Real-time Processing, Sage Event-driven Architecture, Sage Microservices, Sage Serverless, Sage Functions as a Service, Sage Containers, Sage Orchestration, Sage Service Mesh, Sage API Gateway, Sage Load Balancer, Sage Auto-scaling, Sage High Availability, Sage Disaster Recovery, Sage Backup Strategy, Sage Restore Strategy, Sage Replication, Sage Synchronization, Sage Consistency, Sage Availability, Sage Partition Tolerance, Sage CAP Theorem, Sage ACID Properties, Sage BASE Properties, Sage Transactions, Sage Locks, Sage Deadlocks, Sage Isolation Levels, Sage Concurrency Control, Sage Optimistic Locking, Sage Pessimistic Locking, Sage MVCC, Sage Snapshot Isolation, Sage Read Committed, Sage Repeatable Read, Sage Serializable, Sage Dirty Read, Sage Non-repeatable Read, Sage Phantom Read, Sage Lost Update, Sage Write Skew, Sage Anomaly Detection, Sage Outlier Detection, Sage Pattern Recognition, Sage Anomaly Scoring, Sage Threshold Tuning, Sage Alert Configuration, Sage Notification Channels, Sage Escalation Policies, Sage On-call Schedules, Sage Incident Response, Sage Runbooks, Sage Playbooks, Sage Post-mortems, Sage Blameless Culture, Sage Continuous Learning, Sage Knowledge Sharing, Sage Documentation Culture, Sage Code Review, Sage Pair Programming, Sage Mob Programming, Sage Collective Code Ownership, Sage Continuous Integration, Sage Continuous Delivery, Sage Continuous Deployment, Sage DevOps Culture, Sage Site Reliability Engineering, Sage Error Budgets, Sage SLI, Sage SLO, Sage SLA, Sage Availability Target, Sage Latency Target, Sage Throughput Target, Sage Capacity Planning, Sage Resource Forecasting, Sage Cost Optimization, Sage FinOps, Sage Cloud Cost Management, Sage Reserved Instances, Sage Spot Instances, Sage Savings Plans, Sage Commitment Discounts, Sage Volume Discounts, Sage Negotiated Pricing, Sage Enterprise Agreements, Sage Marketplace Pricing, Sage Third-party Costs, Sage Data Transfer Costs, Sage Egress Costs, Sage Ingress Costs, Sage Storage Costs, Sage Compute Costs, Sage Network Costs, Sage Security Costs, Sage Compliance Costs, Sage Support Costs, Sage Professional Services Costs, Sage Training Costs, Sage Certification Costs, Sage Tooling Costs, Sage Licensing Costs, Sage Subscription Costs, Sage Maintenance Costs, Sage Upgrade Costs, Sage Migration Costs, Sage Integration Costs, Sage Customization Costs, Sage Development Costs, Sage Testing Costs, Sage Deployment Costs, Sage Monitoring Costs, Sage Logging Costs, Sage Alerting Costs, Sage Incident Management Costs, Sage Change Management Costs, Sage Configuration Management Costs, Sage Asset Management Costs, Sage Inventory Management Costs, Sage Procurement Costs, Sage Vendor Management Costs, Sage Contract Management Costs, Sage Relationship Management Costs, Sage Stakeholder Management Costs, Sage Communication Costs, Sage Collaboration Costs, Sage Coordination Costs, Sage Governance Costs, Sage Oversight Costs, Sage Audit Costs, Sage Assurance Costs, Sage Risk Management Costs, Sage Insurance Costs, Sage Legal Costs, Sage Regulatory Costs, Sage Tax Costs, Sage Accounting Costs, Sage Finance Costs, Sage Treasury Costs, Sage Cash Management Costs, Sage Working Capital Costs, Sage Liquidity Costs, Sage Solvency Costs, Sage Profitability Costs, Sage Efficiency Costs, Sage Productivity Costs, Sage Quality Costs, Sage Defect Costs, Sage Rework Costs, Sage Scrap Costs, Sage Warranty Costs, Sage Recall Costs, Sage Liability Costs, Sage Reputation Costs, Sage Brand Costs, Sage Marketing Costs, Sage Sales Costs, Sage Customer Acquisition Costs, Sage Customer Retention Costs, Sage Customer Service Costs, Sage Support Costs, Sage Success Costs, Sage Experience Costs, Sage Satisfaction Costs, Sage Loyalty Costs, Sage Advocacy Costs, Sage Referral Costs, Sage Word-of-mouth Costs, Sage Social Proof Costs, Sage Testimonial Costs, Sage Case Study Costs, Sage Reference Costs, Sage Demo Costs, Sage Trial Costs, Sage Pilot Costs, Sage Proof of Concept Costs, Sage Minimum Viable Product Costs, Sage Prototype Costs, Sage Mockup Costs, Sage Wireframe Costs, Sage Design Costs, Sage UX Costs, Sage UI Costs, Sage Interaction Design Costs, Sage Information Architecture Costs, Sage Content Strategy Costs, Sage Copywriting Costs, Sage Editing Costs, Sage Proofreading Costs, Sage Translation Costs, Sage Localization Costs, Sage Internationalization Costs, Sage Accessibility Costs, Sage Inclusivity Costs, Sage Diversity Costs, Sage Equity Costs, Sage Belonging Costs, Sage Psychological Safety Costs, Sage Wellbeing Costs, Sage Mental Health Costs, Sage Physical Health Costs, Sage Financial Health Costs, Sage Social Health Costs, Sage Environmental Health Costs, Sage Planetary Health Costs, Sage Regenerative Costs, Sage Restorative Costs, Sage Circular Economy Costs, Sage Cradle-to-Cradle Costs, Sage Life Cycle Thinking Costs, Sage Systems Thinking Costs, Sage Holistic Thinking Costs, Sage Interdisciplinary Costs, Sage Transdisciplinary Costs, Sage Co-creation Costs, Sage Co-design Costs, Sage Co-production Costs, Sage Co-delivery Costs, Sage Co-evaluation Costs, Sage Participatory Costs, Sage Inclusive Costs, Sage Equitable Costs, Sage Just Costs, Sage Ethical Costs, Sage Responsible Costs, Sage Sustainable Costs, Sage Resilient Costs, Sage Adaptive Costs, Sage Transformative Costs, Sage Regenerative Costs, Sage Flourishing Costs, Sage Thriving Costs, Sage Abundant Costs, Sage Prosperous Costs, Sage Wealthy Costs, Sage Rich Costs, Sage Valuable Costs, Sage Meaningful Costs, Sage Purposeful Costs, Sage Fulfilling Costs, Sage Satisfying Costs, Sage Rewarding Costs, Sage Enjoyable Costs, Sage Pleasant Costs, Sage Delightful Costs, Sage Wonderful Costs, Sage Amazing Costs, Sage Incredible Costs, Sage Fantastic Costs, Sage Excellent Costs, Sage Outstanding Costs, Sage Exceptional Costs, Sage Remarkable Costs, Sage Extraordinary Costs, Sage Phenomenal Costs, Sage Spectacular Costs, Sage Magnificent Costs, Sage Splendid Costs, Sage Superb Costs, Sage Supreme Costs, Sage Ultimate Costs, Sage Perfect Costs, Sage Ideal Costs, Sage Optimal Costs, Sage Best Costs, Sage Top Costs, Sage Premier Costs, Sage Premium Costs, Sage Luxury Costs, Sage High-end Costs, Sage Upscale Costs, Sage Exclusive Costs, Sage Elite Costs, Sage VIP Costs, Sage Platinum Costs, Sage Gold Costs, Sage Silver Costs, Sage Bronze Costs, Sage Standard Costs, Sage Basic Costs, Sage Economy Costs, Sage Budget Costs, Sage Affordable Costs, Sage Reasonable Costs, Sage Fair Costs, Sage Competitive Costs, Sage Market Costs, Sage Industry Costs, Sage Sector Costs, Sage Regional Costs, Sage Local Costs, Sage Community Costs, Sage Neighborhood Costs, Sage Street Costs, Sage Building Costs, Sage Room Costs, Sage Desk Costs, Sage Chair Costs, Sage Table Costs, Sage Lamp Costs, Sage Light Costs, Sage Switch Costs, Sage Socket Costs, Sage Plug Costs, Sage Cable Costs, Sage Wire Costs, Sage Connector Costs, Sage Terminal Costs, Sage Junction Costs, Sage Box Costs, Sage Panel Costs, Sage Board Costs, Sage Circuit Costs, Sage Breaker Costs, Sage Fuse Costs, Sage Relay Costs, Sage Contactor Costs, Sage Starter Costs, Sage Drive Costs, Sage Motor Costs, Sage Pump Costs, Sage Fan Costs, Sage Blower Costs, Sage Compressor Costs, Sage Chiller Costs, Sage Boiler Costs, Sage Heater Costs, Sage Radiator Costs, Sage Coil Costs, Sage Filter Costs, Sage Valve Costs, Sage Damper Costs, Sage Actuator Costs, Sage Sensor Costs, Sage Transmitter Costs, Sage Receiver Costs, Sage Controller Costs, Sage Processor Costs, Sage Computer Costs, Sage Server Costs, Sage Storage Costs, Sage Memory Costs, Sage CPU Costs, Sage GPU Costs, Sage TPU Costs, Sage FPGA Costs, Sage ASIC Costs, Sage Chip Costs, Sage Die Costs, Sage Wafer Costs, Sage Fab Costs, Sage Foundry Costs, Sage Packaging Costs, Sage Testing Costs, Sage Assembly Costs, Sage Integration Costs, Sage System Costs, Sage Platform Costs, Sage Ecosystem Costs, Sage Network Costs, Sage Internet Costs, Sage Web Costs, Sage Cloud Costs, Sage Edge Costs, Sage Fog Costs, Sage Mesh Costs, Sage Peer Costs, Sage Node Costs, Sage Device Costs, Sage Endpoint Costs, Sage Client Costs, Sage User Costs, Sage Human Costs, Sage People Costs, Sage Team Costs, Sage Group Costs, Sage Organization Costs, Sage Company Costs, Sage Business Costs, Sage Enterprise Costs, Sage Corporation Costs, Sage Institution Costs, Sage Agency Costs, Sage Authority Costs, Sage Government Costs, Sage Public Costs, Sage Private Costs, Sage Non-profit Costs, Sage Charity Costs, Sage Foundation Costs, Sage Trust Costs, Sage Fund Costs, Sage Grant Costs, Sage Donation Costs, Sage Contribution Costs, Sage Investment Costs, Sage Capital Costs, Sage Equity Costs, Sage Debt Costs, Sage Loan Costs, Sage Credit Costs, Sage Interest Costs, Sage Dividend Costs, Sage Return Costs, Sage Yield Costs, Sage Gain Costs, Sage Profit Costs, Sage Revenue Costs, Sage Income Costs, Sage Earnings Costs, Sage Cash Flow Costs, Sage Working Capital Costs, Sage Operating Costs, Sage Fixed Costs, Sage Variable Costs, Sage Direct Costs, Sage Indirect Costs, Sage Overhead Costs, Sage Administrative Costs, Sage General Costs, Sage Miscellaneous Costs, Sage Contingency Costs, Sage Reserve Costs, Sage Buffer Costs, Sage Margin Costs, Sage Safety Costs, Sage Security Costs, Sage Protection Costs, Sage Defense Costs, Sage Shield Costs, Sage Guard Costs, Sage Watch Costs, Sage Monitor Costs, Sage Patrol Costs, Sage Inspect Costs, Sage Audit Costs, Sage Review Costs, Sage Check Costs, Sage Verify Costs, Sage Validate Costs, Sage Confirm Costs, Sage Approve Costs, Sage Authorize Costs, Sage Permit Costs, Sage License Costs, Sage Certify Costs, Sage Accredit Costs, Sage Endorse Costs, Sage Recommend Costs, Sage Refer Costs, Sage Introduce Costs, Sage Connect Costs, Sage Link Costs, Sage Associate Costs, Sage Partner Costs, Sage Collaborate Costs, Sage Cooperate Costs, Sage Coordinate Costs, Sage Align Costs, Sage Synchronize Costs, Sage Harmonize Costs, Sage Integrate Costs, Sage Unify Costs, Sage Consolidate Costs, Sage Merge Costs, Sage Combine Costs, Sage Join Costs, Sage Unite Costs, Sage Bond Costs, Sage Attach Costs, Sage Fasten Costs, Sage Secure Costs, Sage Anchor Costs, Sage Root Costs, Sage Ground Costs, Sage Base Costs, Sage Foundation Costs, Sage Platform Costs, Sage Framework Costs, Sage Structure Costs, Sage Architecture Costs, Sage Design Costs, Sage Plan Costs, Sage Strategy Costs, Sage Approach Costs, Sage Method Costs, Sage Technique Costs, Sage Tool Costs, Sage Instrument Costs, Sage Device Costs, Sage Equipment Costs, Sage Machinery Costs, Sage Apparatus Costs, Sage Mechanism Costs, Sage System Costs, Sage Process Costs, Sage Procedure Costs, Sage Protocol Costs, Sage Standard Costs, Sage Specification Costs, Sage Requirement Costs, Sage Criteria Costs, Sage Benchmark Costs, Sage Metric Costs, Sage Measure Costs, Sage Indicator Costs, Sage Signal Costs, Sage Sign Costs, Sage Symbol Costs, Sage Icon Costs, Sage Logo Costs, Sage Brand Costs, Sage Identity Costs, Sage Image Costs, Sage Reputation Costs, Sage Prestige Costs, Sage Status Costs, Sage Rank Costs, Sage Position Costs, Sage Standing Costs, Sage Stature Costs, Sage Esteem Costs, Sage Respect Costs, Sage Admiration Costs, Sage Appreciation Costs, Sage Recognition Costs, Sage Acknowledgment Costs, Sage Credit Costs, Sage Attribution Costs, Sage Citation Costs, Sage Reference Costs, Sage Source Costs, Sage Origin Costs, Sage Beginning Costs, Sage Start Costs, Sage Launch Costs, Sage Initiate Costs, Sage Commence Costs, Sage Embark Costs, Sage Undertake Costs, Sage Pursue Costs, Sage Follow Costs, Sage Chase Costs, Sage Seek Costs, Sage Search Costs, Sage Explore Costs, Sage Discover Costs, Sage Find Costs, Sage Locate Costs, Sage Identify Costs, Sage Detect Costs, Sage Recognize Costs, Sage Distinguish Costs, Sage Differentiate Costs, Sage Discriminate Costs, Sage Select Costs, Sage Choose Costs, Sage Pick Costs, Sage Opt Costs, Sage Prefer Costs, Sage Favor Costs, Sage Like Costs, Sage Love Costs, Sage Adore Costs, Sage Cherish Costs, Sage Treasure Costs, Sage Value Costs, Sage Prize Costs, Sage Appreciate Costs, Sage Enjoy Costs, Sage Relish Costs, Sage Savor Costs, Sage Delight Costs, Sage Please Costs, Sage Satisfy Costs, Sage Fulfill Costs, Sage Gratify Costs, Sage Content Costs, Sage Happy Costs, Sage Joyful Costs, Sage Cheerful Costs, Sage Glad Costs, Sage Pleased Costs, Sage Delighted Costs, Sage Thrilled Costs, Sage Excited Costs, Sage Enthusiastic Costs, Sage Eager Costs, Sage Keen Costs, Sage Fervent Costs, Sage Passionate Costs, Sage Devoted Costs, Sage Dedicated Costs, Sage Committed Costs, Sage Loyal Costs, Sage Faithful Costs, Sage True Costs, Sage Honest Costs, Sage Sincere Costs, Sage Genuine Costs, Sage Authentic Costs, Sage Real Costs, Sage Actual Costs, Sage Factual Costs, Sage Accurate Costs, Sage Correct Costs, Sage Right Costs, Sage Proper Costs, Sage Appropriate Costs, Sage Suitable Costs, Sage Fitting Costs, Sage Apt Costs, Sage Relevant Costs, Sage Pertinent Costs, Sage Applicable Costs, Sage Material Costs, Sage Significant Costs, Sage Important Costs, Sage Essential Costs, Sage Vital Costs, Sage Crucial Costs, Sage Critical Costs, Sage Key Costs, Sage Central Costs, Sage Core Costs, Sage Fundamental Costs, Sage Basic Costs, Sage Primary Costs, Sage Principal Costs, Sage Main Costs, Sage Major Costs, Sage Leading Costs, Sage Top Costs, Sage Foremost Costs, Sage Premier Costs, Sage Prime Costs, Sage Chief Costs, Sage Head Costs, Sage Senior Costs, Sage Superior Costs, Sage Higher Costs, Sage Upper Costs, Sage Elevated Costs, Sage Raised Costs, Sage Increased Costs, Sage Enhanced Costs, Sage Improved Costs, Sage Better Costs, Sage Best Costs, Sage Finest Costs, Sage Greatest Costs, Sage Highest Costs, Sage Maximum Costs, Sage Peak Costs, Sage Summit Costs, Sage Apex Costs, Sage Pinnacle Costs, Sage Zenith Costs, Sage Acme Costs, Sage Climax Costs, Sage Culmination Costs, Sage Conclusion Costs, Sage End Costs, Sage Finish Costs, Sage Completion Costs, Sage Fulfillment Costs, Sage Realization Costs, Sage Achievement Costs, Sage Accomplishment Costs, Sage Success Costs, Sage Victory Costs, Sage Triumph Costs, Sage Win Costs, Sage Gain Costs, Sage Profit Costs, Sage Benefit Costs, Sage Advantage Costs, Sage Edge Costs, Sage Lead Costs, Sage Head Start Costs, Sage Jump Start Costs, Sage Kick Start Costs, Sage Boost Costs, Sage Lift Costs, Sage Raise Costs, Sage Elevate Costs, Sage Uplift Costs, Sage Enhance Costs, Sage Enrich Costs, Sage Augment Costs, Sage Amplify Costs, Sage Magnify Costs, Sage Expand Costs, Sage Extend Costs, Sage Stretch Costs, Sage Spread Costs, Sage Broaden Costs, Sage Widen Costs, Sage Deepen Costs, Sage Strengthen Costs, Sage Reinforce Costs, Sage Fortify Costs, Sage Solidify Costs, Sage Consolidate Costs, Sage Stabilize Costs, Sage Secure Costs, Sage Safeguard Costs, Sage Protect Costs, Shield Costs, Defend Costs, Guard Costs, Preserve Costs, Conserve Costs, Maintain Costs, Sustain Costs, Support Costs, Uphold Costs, Endorse Costs, Back Costs, Sponsor Costs, Fund Costs, Finance Costs, Bankroll Costs, Underwrite Costs, Guarantee Costs, Ensure Costs, Assure Costs, Certify Costs, Confirm Costs, Verify Costs, Validate Costs, Authenticate Costs, Authorize Costs, Approve Costs, Sanction Costs, Permit Costs, Allow Costs, Enable Costs, Empower Costs, Equip Costs, Prepare Costs, Ready Costs, Prime Costs, Position Costs, Place Costs, Locate Costs, Situate Costs, Install Costs, Deploy Costs, Launch Costs, Release Costs, Publish Costs, Issue Costs, Distribute Costs, Disseminate Costs, Circulate Costs, Broadcast Costs, Transmit Costs, Send Costs, Deliver Costs, Provide Costs, Supply Costs, Furnish Costs, Offer Costs, Present Costs, Submit Costs, Propose Costs, Suggest Costs, Recommend Costs, Advise Costs, Counsel Costs, Guide Costs, Direct Costs, Lead Costs, Manage Costs, Administer Costs, Supervise Costs, Oversee Costs, Monitor Costs, Control Costs, Regulate Costs, Govern Costs, Rule Costs, Command Costs, Order Costs, Instruct Costs, Teach Costs, Educate Costs, Train Costs, Coach Costs, Mentor Costs, Tutor Costs, School Costs, Learn Costs, Study Costs, Research Costs, Investigate Costs, Examine Costs, Analyze Costs, Evaluate Costs, Assess Costs, Appraise Costs, Judge Costs, Rate Costs, Rank Costs, Grade Costs, Score Costs, Mark Costs, Tag Costs, Label Costs, Name Costs, Title Costs, Call Costs, Term Costs, Designate Costs, Denote Costs, Signify Costs, Mean Costs, Represent Costs, Symbolize Costs, Stand for Costs, Indicate Costs, Show Costs, Display Costs, Exhibit Costs, Demonstrate Costs, Illustrate Costs, Depict Costs, Portray Costs, Describe Costs, Explain Costs, Clarify Costs, Elucidate Costs, Expound Costs, Interpret Costs, Translate Costs, Convert Costs, Transform Costs, Change Costs, Alter Costs, Modify Costs, Adjust Costs, Adapt Costs, Customize Costs, Personalize Costs, Tailor Costs, Fit Costs, Suit Costs, Match Costs, Align Costs, Coordinate Costs, Synchronize Costs, Harmonize Costs, Balance Costs, Equalize Costs, Level Costs, Even Costs, Smooth Costs, Polish Costs, Refine Costs, Perfect Costs, Optimize Costs, Maximize Costs, Minimize Costs, Reduce Costs, Decrease Costs, Lower Costs, Cut Costs, Trim Costs, Prune Costs, Streamline Costs, Simplify Costs, Clarify Costs, Focus Costs, Concentrate Costs, Center Costs, Target Costs, Aim Costs, Direct Costs, Point Costs, Orient Costs, Face Costs, Turn Costs, Rotate Costs, Spin Costs, Revolve Costs, Circle Costs, Loop Costs, Cycle Costs, Repeat Costs, Recur Costs, Return Costs, Come back Costs, Go back Costs, Retrace Costs, Revisit Costs, Review Costs, Reexamine Costs, Reassess Costs, Reevaluate Costs, Reconsider Costs, Rethink Costs, Reflect Costs, Ponder Costs, Contemplate Costs, Meditate Costs, Muse Costs, Ruminate Costs, Deliberate Costs, Consider Costs, Think Costs, Reason Costs, Reason out Costs, Figure out Costs, Work out Costs, Solve Costs, Resolve Costs, Settle Costs, Decide Costs, Determine Costs, Conclude Costs, Judge Costs, Rule Costs, Adjudicate Costs, Arbitrate Costs, Mediate Costs, Negotiate Costs, Bargain Costs, Deal Costs, Trade Costs, Exchange Costs, Swap Costs, Switch Costs, Replace Costs, Substitute Costs, Swap out Costs, Trade in Costs, Turn in Costs, Hand in Costs, Submit Costs, Present Costs, Offer Costs, Propose Costs, Suggest Costs, Recommend Costs, Advise Costs, Counsel Costs, Consult Costs, Confer Costs, Discuss Costs, Talk Costs, Speak Costs, Say Costs, Tell Costs, Inform Costs, Notify Costs, Advise Costs, Warn Costs, Alert Costs, Caution Costs, Admonish Costs, Reprove Costs, Rebuke Costs, Chide Costs, Scold Costs, Criticize Costs, Condemn Costs, Denounce Costs, Blame Costs, Accuse Costs, Charge Costs, Impeach Costs, Indict Costs, Prosecute Costs, Sue Costs, Litigate Costs, Try Costs, Hear Costs, Judge Costs, Adjudicate Costs, Decide Costs, Rule Costs, Order Costs, Decree Costs, Mandate Costs, Require Costs, Demand Costs, Insist Costs, Assert Costs, Claim Costs, Declare Costs, State Costs, Affirm Costs, Assert Costs, Maintain Costs, Contend Costs, Argue Costs, Reason Costs, Plead Costs, Advocate Costs, Support Costs, Back Costs, Endorse Costs, Approve Costs, Sanction Costs, Authorize Costs, Permit Costs, Allow Costs, Enable Costs, Empower Costs, License Costs, Certify Costs, Accredit Costs, Validate Costs, Verify Costs, Confirm Costs, Authenticate Costs, Prove Costs, Demonstrate Costs, Establish Costs, Substantiate Costs, Corroborate Costs, Verify Costs, Check Costs, Test Costs, Try Costs, Experiment Costs, Trial Costs, Pilot Costs, Sample Costs, Taste Costs, Try out Costs, Test drive Costs, Field test Costs, Beta test Costs, Alpha test Costs, Unit test Costs, Integration test Costs, System test Costs, Acceptance test Costs, Regression test Costs, Performance test Costs, Load test Costs, Stress test Costs, Security test Costs, Penetration test Costs, Vulnerability test Costs, Compliance test Costs, Audit test Costs, Review test Costs, Inspection test Costs, Examination test Costs, Assessment test Costs, Evaluation test Costs, Appraisal test Costs, Rating test Costs, Scoring test Costs, Grading test Costs, Marking test Costs, Tagging test Costs, Labeling test Costs, Naming test Costs, Titling test Costs, Calling test Costs, Terming test Costs, Designating test Costs, Denoting test Costs, Signifying test Costs, Meaning test Costs, Representing test Costs, Symbolizing test Costs, Standing for test Costs, Indicating test Costs, Showing test Costs, Displaying test Costs, Exhibiting test Costs, Demonstrating test Costs, Illustrating test Costs, Depicting test Costs, Portraying test Costs, Describing test Costs, Explaining test Costs, Clarifying test Costs, Elucidating test Costs, Expounding test Costs, Interpreting test Costs, Translating test Costs, Converting test Costs, Transforming test Costs, Changing test Costs, Altering test Costs, Modifying test Costs, Adjusting test Costs, Adapting test Costs, Customizing test Costs, Personalizing test Costs, Tailoring test Costs, Fitting test Costs, Suiting test Costs, Matching test Costs, Aligning test Costs, Coordinating test Costs, Synchronizing test Costs, Harmonizing test Costs, Balancing test Costs, Equalizing test Costs, Leveling test Costs, Evening test Costs, Smoothing test Costs, Polishing test Costs, Refining test Costs, Perfecting test Costs, Optimizing test Costs, Maximizing test Costs, Minimizing test Costs, Reducing test Costs, Decreasing test Costs, Lowering test Costs, Cutting test Costs, Trimming test Costs, Pruning test Costs, Streamlining test Costs, Simplifying test Costs, Clarifying test Costs, Focusing test Costs, Concentrating test Costs, Centering test Costs, Targeting test Costs, Aiming test Costs, Directing test Costs, Pointing test Costs, Orienting test Costs, Facing test Costs, Turning test Costs, Rotating test Costs, Spinning test Costs, Revolving test Costs, Circling test Costs, Looping test Costs, Cycling test Costs, Repeating test Costs, Recurring test Costs, Returning test Costs, Coming back test Costs, Going back test Costs, Retracing test Costs, Revisiting test Costs, Reviewing test Costs, Reexamining test Costs, Reassessing test Costs, Reevaluating test Costs, Reconsidering test Costs, Rethinking test Costs, Reflecting test Costs, Pondering test Costs, Contemplating test Costs, Meditating test Costs, Musing test Costs, Ruminating test Costs, Deliberating test Costs, Considering test Costs, Thinking test Costs, Reasoning test Costs, Reasoning out test Costs, Figuring out test Costs, Working out test Costs, Solving test Costs, Resolving test Costs, Settling test Costs, Deciding test Costs, Determining test Costs, Concluding test Costs, Judging test Costs, Ruling test Costs, Adjudicating test Costs, Arbitrating test Costs, Mediating test Costs, Negotiating test Costs, Bargaining test Costs, Dealing test Costs, Trading test Costs, Exchanging test Costs, Swapping test Costs, Switching test Costs, Replacing test Costs, Substituting test Costs, Swapping out test Costs, Trading in test Costs, Turning in test Costs, Handing in test Costs, Submitting test Costs, Presenting test Costs, Offering test Costs, Proposing test Costs, Suggesting test Costs, Recommending test Costs, Advising test Costs, Counseling test Costs, Consulting test Costs, Conferring test Costs, Discussing test Costs, Talking test Costs, Speaking test Costs, Saying test Costs, Telling test Costs, Informing test Costs, Notifying test Costs, Advising test Costs, Warning test Costs, Alerting test Costs, Cautioning test Costs, Admonishing test Costs, Reproving test Costs, Rebuking test Costs, Chiding test Costs, Scolding test Costs, Criticizing test Costs, Condemning test Costs, Denouncing test Costs, Blaming test Costs, Accusing test Costs, Charging test Costs, Impeaching test Costs, Indicting test Costs, Prosecuting test Costs, Suing test Costs, Litigating test Costs, Trying test Costs, Hearing test Costs, Judging test Costs, Adjudicating test Costs, Deciding test Costs, Ruling test Costs, Ordering test Costs, Decreeing test Costs, Mandating test Costs, Requiring test Costs, Demanding test Costs, Insisting test Costs, Asserting test Costs, Claiming test Costs, Declaring test Costs, Stating test Costs, Affirming test Costs, Asserting test Costs, Maintaining test Costs, Contending test Costs, Arguing test Costs, Reasoning test Costs, Pleading test Costs, Advocating test Costs, Supporting test Costs, Backing test Costs, Endorsing test Costs, Approving test Costs, Sanctioning test Costs, Authorizing test Costs, Permitting test Costs, Allowing test Costs, Enabling test Costs, Empowering test Costs, Licensing test Costs, Certifying test Costs, Accrediting test Costs, Validating test Costs, Verifying test Costs, Confirming test Costs, Authenticating test Costs, Proving test Costs, Demonstrating test Costs, Establishing test Costs, Substantiating test Costs, Corroborating test Costs, Verifying test Costs, Checking test Costs, Testing test Costs, Trying test Costs, Experimenting test Costs, Trialing test Costs, Piloting test Costs, Sampling test Costs, Tasting test Costs, Trying out test Costs, Test driving test Costs, Field testing test Costs, Beta testing test Costs, Alpha testing test Costs, Unit testing test Costs, Integration testing test Costs, System testing test Costs, Acceptance testing test Costs, Regression testing test Costs, Performance testing test Costs, Load testing test Costs, Stress testing test Costs, Security testing test Costs, Penetration testing test Costs, Vulnerability testing test Costs, Compliance testing test Costs, Audit testing test Costs, Review testing test Costs, Inspection testing test Costs, Examination testing test Costs, Assessment testing test Costs, Evaluation testing test Costs, Appraisal testing test Costs, Rating testing test Costs, Scoring testing test Costs, Grading testing test Costs, Marking testing test Costs, Tagging testing test Costs, Labeling testing test Costs, Naming testing test Costs, Titling testing test Costs, Calling testing test Costs, Terming testing test Costs, Designating testing test Costs, Denoting testing test Costs, Signifying testing test Costs, Meaning testing test Costs, Representing testing test Costs, Symbolizing testing test Costs, Standing for testing test Costs, Indicating testing test Costs, Showing testing test Costs, Displaying testing test Costs, Exhibiting testing test Costs, Demonstrating testing test Costs, Illustrating testing test Costs, Depicting testing test Costs, Portraying testing test Costs, Describing testing test Costs, Explaining testing test Costs, Clarifying testing test Costs, Elucidating testing test Costs, Expounding testing test Costs, Interpreting testing test Costs, Translating testing test Costs, Converting testing test Costs, Transforming testing test Costs, Changing testing test Costs, Altering testing test Costs, Modifying testing test Costs, Adjusting testing test Costs, Adapting testing test Costs, Customizing testing test Costs, Personalizing testing test Costs, Tailoring testing test Costs, Fitting testing test Costs, Suiting testing test Costs, Matching testing test Costs, Aligning testing test Costs, Coordinating testing test Costs, Synchronizing testing test Costs, Harmonizing testing test Costs, Balancing testing test Costs, Equalizing testing test Costs, Leveling testing test Costs, Evening testing test Costs, Smoothing testing test Costs, Polishing testing test Costs, Refining testing test Costs, Perfecting testing test Costs, Optimizing testing test Costs, Maximizing testing test Costs, Minimizing testing test Costs, Reducing testing test Costs, Decreasing testing test Costs, Lowering testing test Costs, Cutting testing test Costs, Trimming testing test Costs, Pruning testing test Costs, Streamlining testing test Costs, Simplifying testing test Costs, Clarifying testing test Costs, Focusing testing test Costs, Concentrating testing test Costs, Centering testing test Costs, Targeting testing test Costs, Aiming testing test Costs, Directing testing test Costs, Pointing testing test Costs, Orienting testing test Costs, Facing testing test Costs, Turning testing test Costs, Rotating testing test Costs, Spinning testing test Costs, Revolving testing test Costs, Circling testing test Costs, Looping testing test Costs, Cycling testing test Costs, Repeating testing test Costs, Recurring testing test Costs, Returning testing test Costs, Coming back testing test Costs, Going back testing test Costs, Retracing testing test Costs, Revisiting testing test Costs, Reviewing testing test Costs, Reexamining testing test Costs, Reassessing testing test Costs, Reevaluating testing test Costs, Reconsidering testing test Costs, Rethinking testing test Costs, Reflecting testing test Costs, Pondering testing test Costs, Contemplating testing test Costs, Meditating testing test Costs, Musing testing test Costs, Ruminating testing test Costs, Deliberating testing test Costs, Considering testing test Costs, Thinking testing test Costs, Reasoning testing test Costs, Reasoning out testing test Costs, Figuring out testing test Costs, Working out testing test Costs, Solving testing test Costs, Resolving testing test Costs, Settling testing test Costs, Deciding testing test Costs, Determining testing test Costs, Concluding testing test Costs, Judging testing test Costs, Ruling testing test Costs, Adjudicating testing test Costs, Arbitrating testing test Costs, Mediating testing test Costs, Negotiating testing test Costs, Bargaining testing test Costs, Dealing testing test Costs, Trading testing test Costs, Exchanging testing test Costs, Swapping testing test Costs, Switching testing test Costs, Replacing testing test Costs, Substituting testing test Costs, Swapping out testing test Costs, Trading in testing test Costs, Turning in testing test Costs, Handing in testing test Costs, Submitting testing test Costs, Presenting testing test Costs, Offering testing test Costs, Proposing testing test Costs, Suggesting testing test Costs, Recommending testing test Costs, Advising testing test Costs, Counseling testing test Costs, Consulting testing test Costs, Conferring testing test Costs, Discussing testing test Costs, Talking testing test Costs, Speaking testing test Costs, Saying testing test Costs, Telling testing test Costs, Informing testing test Costs, Notifying testing test Costs, Advising testing test Costs, Warning testing test Costs, Alerting testing test Costs, Cautioning testing test Costs, Admonishing testing test Costs, Reproving testing test Costs, Rebuking testing test Costs, Chiding testing test Costs, Scolding testing test Costs, Criticizing testing test Costs, Condemning testing test Costs, Denouncing testing test Costs, Blaming testing test Costs, Accusing testing test Costs, Charging testing test Costs, Impeaching testing test Costs, Indicting testing test Costs, Prosecuting testing test Costs, Suing testing test Costs, Litigating testing test Costs, Trying testing test Costs, Hearing testing test Costs, Judging testing test Costs, Adjudicating testing test Costs, Deciding testing test Costs, Ruling testing test Costs, Ordering testing test Costs, Decreeing testing test Costs, Mandating testing test Costs, Requiring testing test Costs, Demanding testing test Costs, Insisting testing test Costs, Asserting testing test Costs, Claiming testing test Costs, Declaring testing test Costs, Stating testing test Costs, Affirming testing test Costs, Asserting testing test Costs, Maintaining testing test Costs, Contending testing test Costs, Arguing testing test Costs, Reasoning testing test Costs, Pleading testing test Costs, Advocating testing test Costs, Supporting testing test Costs, Backing testing test Costs, Endorsing testing test Costs, Approving testing test Costs, Sanctioning testing test Costs, Authorizing testing test Costs, Permitting testing test Costs, Allowing testing test Costs, Enabling testing test Costs, Empowering testing test Costs, Licensing testing test Costs, Certifying testing test Costs, Accrediting testing test Costs, Validating testing test Costs, Verifying testing test Costs, Confirming testing test Costs, Authenticating testing test Costs, Proving testing test Costs, Demonstrating testing test Costs, Establishing testing test Costs, Substantiating testing test Costs, Corroborating testing test Costs, Verifying testing test Costs, Checking testing test Costs, Testing testing test Costs, Trying testing test Costs, Experimenting testing test Costs, Trialing testing test Costs, Piloting testing test Costs, Sampling testing test Costs, Tasting testing test Costs, Trying out testing test Costs, Test driving testing test Costs, Field testing testing test Costs, Beta testing testing test Costs, Alpha testing testing test Costs, Unit testing testing test Costs, Integration testing testing test Costs, System testing testing test Costs, Acceptance testing testing test Costs, Regression testing testing test Costs, Performance testing testing test Costs, Load testing testing test Costs, Stress testing testing test Costs, Security testing testing test Costs, Penetration testing testing test Costs, Vulnerability testing testing test Costs, Compliance testing testing test Costs, Audit testing testing test Costs, Review testing testing test Costs, Inspection testing testing test Costs, Examination testing testing test Costs, Assessment testing testing test Costs, Evaluation testing testing test Costs, Appraisal testing testing test Costs, Rating testing testing test Costs, Scoring testing testing test Costs, Grading testing testing test Costs, Marking testing testing test Costs, Tagging testing testing test Costs, Labeling testing testing test Costs, Naming testing testing test Costs, Titling testing testing test Costs, Calling testing testing test Costs, Terming testing testing test Costs, Designating testing testing test Costs, Denoting testing testing test Costs, Signifying testing testing test Costs, Meaning testing testing test Costs, Representing testing testing test Costs, Symbolizing testing testing test Costs, Standing for testing testing test Costs, Indicating testing testing test Costs, Showing testing testing test Costs, Displaying testing testing test Costs, Exhibiting testing testing test Costs, Demonstrating testing testing test Costs, Illustrating testing testing test Costs, Depicting testing testing test Costs, Portraying testing testing test Costs, Describing testing testing test Costs, Explaining testing testing test Costs, Clarifying testing testing test Costs, Elucidating testing testing test Costs, Expounding testing testing test Costs, Interpreting testing testing test Costs, Translating testing testing test Costs, Converting testing testing test Costs, Transforming testing testing test Costs, Changing testing testing test Costs, Altering testing testing test Costs, Modifying testing testing test Costs, Adjusting testing testing test Costs, Adapting testing testing test Costs, Customizing testing testing test Costs, Personalizing testing testing test Costs, Tailoring testing testing test Costs, Fitting testing testing test Costs, Suiting testing testing test Costs, Matching testing testing test Costs, Aligning testing testing test Costs, Coordinating testing testing test Costs, Synchronizing testing testing test Costs, Harmonizing testing testing test Costs, Balancing testing testing test Costs, Equalizing testing testing test Costs, Leveling testing testing test Costs, Evening testing testing test Costs, Smoothing testing testing test Costs, Polishing testing testing test Costs, Refining testing testing test Costs, Perfecting testing testing test Costs, Optimizing testing testing test Costs, Maximizing testing testing test Costs, Minimizing testing testing test Costs, Reducing testing testing test Costs, Decreasing testing testing test Costs, Lowering testing testing test Costs, Cutting testing testing test Costs, Trimming testing testing test Costs, Pruning testing testing test Costs, Streamlining testing testing test Costs, Simplifying testing testing test Costs, Clarifying testing testing test Costs, Focusing testing testing test Costs, Concentrating testing testing test Costs, Centering testing testing test Costs, Targeting testing testing test Costs, Aiming testing testing test Costs, Directing testing testing test Costs, Pointing testing testing test Costs, Orienting testing testing test Costs, Facing testing testing test Costs, Turning testing testing test Costs, Rotating testing testing test Costs, Spinning testing testing test Costs, Revolving testing testing test Costs, Circling testing testing test Costs, Looping testing testing test Costs, Cycling testing testing test Costs, Repeating testing testing test Costs, Recurring testing testing test Costs, Returning testing testing test Costs, Coming back testing testing test Costs, Going back testing testing test Costs, Retracing testing testing test Costs, Revisiting testing testing test Costs, Reviewing testing testing test Costs, Reexamining testing testing test Costs, Reassessing testing testing test Costs, Reevaluating testing testing test Costs, Reconsidering testing testing test Costs, Rethinking testing testing test Costs, Reflecting testing testing test Costs, Pondering testing testing test Costs, Contemplating testing testing test Costs, Meditating testing testing test Costs, Musing testing testing test Costs, Ruminating testing testing test Costs, Deliberating testing testing test Costs, Considering testing testing test Costs, Thinking testing testing test Costs, Reasoning testing testing test Costs, Reasoning out testing testing test Costs, Figuring out testing testing test Costs, Working out testing testing test Costs, Solving testing testing test Costs, Resolving testing testing test Costs, Settling testing testing test Costs, Deciding testing testing test Costs, Determining testing testing test Costs, Concluding testing testing test Costs, Judging testing testing test Costs, Ruling testing testing test Costs, Adjudicating testing testing test Costs, Arbitrating testing testing test Costs, Mediating testing testing test Costs, Negotiating testing testing test Costs, Bargaining testing testing test Costs, Dealing testing testing test Costs, Trading testing testing test Costs, Exchanging testing testing test Costs, Swapping testing testing test Costs, Switching testing testing test Costs, Replacing testing testing test Costs, Substituting testing testing test Costs, Swapping out testing testing test Costs, Trading in testing testing test Costs, Turning in testing testing test Costs, Handing in testing testing test Costs, Submitting testing testing test Costs, Presenting testing testing test Costs, Offering testing testing test Costs, Proposing testing testing test Costs, Suggesting testing testing test Costs, Recommending testing testing test Costs, Advising testing testing test Costs, Counseling testing testing test Costs, Consulting testing testing test Costs, Conferring testing testing test Costs, Discussing testing testing test Costs, Talking testing testing test Costs, Speaking testing testing test Costs, Saying testing testing test Costs, Telling testing testing test Costs, Informing testing testing test Costs, Notifying testing testing test Costs, Advising testing testing test Costs, Warning testing testing test Costs, Alerting testing testing test Costs, Cautioning testing testing test Costs, Admonishing testing testing test Costs, Reproving testing testing test Costs, Rebuking testing testing test Costs, Chiding testing testing test Costs, Scolding testing testing test Costs, Criticizing testing testing test Costs, Condemning testing testing test Costs, Denouncing testing testing test Costs, Blaming testing testing test Costs, Accusing testing testing test Costs, Charging testing testing test Costs, Impeaching testing testing test Costs, Indicting testing testing test Costs, Prosecuting testing testing test Costs, Suing testing testing test Costs, Litigating testing testing test Costs, Trying testing testing test Costs, Hearing testing testing test Costs, Judging testing testing test Costs, Adjudicating testing testing test Costs, Deciding testing testing test Costs, Ruling testing testing test Costs, Ordering testing testing test Costs, Decreeing testing testing test Costs, Mandating testing testing test Costs, Requiring testing testing test Costs, Demanding testing testing test Costs, Insisting testing testing test Costs, Asserting testing testing test Costs, Claiming testing testing test Costs, Declaring testing testing test Costs, Stating testing testing test Costs, Affirming testing testing test Costs, Asserting testing testing test Costs, Maintaining testing testing test Costs, Contending testing testing test Costs, Arguing testing testing test Costs, Reasoning testing testing test Costs, Pleading testing testing test Costs, Advocating testing testing test Costs, Supporting testing testing test Costs, Backing testing testing test Costs, Endorsing testing testing test Costs, Approving testing testing test Costs, Sanctioning testing testing test Costs, Authorizing testing testing test Costs, Permitting testing testing test Costs, Allowing testing testing test Costs, Enabling testing testing test Costs, Empowering testing testing test Costs, Licensing testing testing test Costs, Certifying testing testing test Costs, Accrediting testing testing test Costs, Validating testing testing test Costs, Verifying testing testing test Costs, Confirming testing testing test Costs, Authenticating testing testing test Costs, Proving testing testing test Costs, Demonstrating testing testing test Costs, Establishing testing testing test Costs, Substantiating testing testing test Costs, Corroborating testing testing test Costs, Verifying testing testing test Costs, Checking testing testing test Costs, Testing testing testing test Costs</p>
+</div>
+
+<nav class="sidebar" id="sidebar" aria-label="Main Navigation">
+  <div class="sidebar-header">
+    <div class="sidebar-logo"><img src="images-logo/hive-times-logo.png" alt="Hive Times" width="36" height="36"><span>Hive Times</span></div>
+    <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">&times;</button>
+  </div>
+  <div class="sidebar-nav">
+    <a href="https://hivetimes.co.za/" class="active"><i class="fas fa-home"></i><span>Home</span></a>
+    <a href="https://hivetimes.co.za/about%20page%20home.html"><i class="fas fa-bee"></i><span>Join the Hive</span></a>
+    <div class="sidebar-divider"></div>
+    <a href="test page -business.html"><i class="fas fa-building"></i><span>Businesses</span></a>
+    <a href="services.hivetimes.html"><i class="fas fa-hands-helping"></i><span>Services</span></a>
+    </div>
+  <div class="sidebar-footer">
+    <p>© <span id="sidebarYear"></span> Hive Times<br><a href="https://hivetimes.co.za/contact">Contact Support</a></p>
+  </div>
+</nav>
+<div class="overlay" id="overlay"></div>
+
+<header>
+  <div class="container header-inner">
+    <div class="search-bar">
+      <i class="fas fa-search"></i>
+      <input type="search" id="businessSearch" placeholder="Search services, professionals..." aria-label="Search services">
+    </div>
+    <a href="/" class="logo" aria-label="Hive Times Home">
+      <img src="images-logo/hive-times-logo.png" alt="Hive Times" width="42" height="42" loading="lazy">
+      <span class="logo-text">Hive Times</span>
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- Slider Container -->
+  <div id="slider-container"></div>
+
+<div class="filter-bar-compact" id="filterBar">
+  <div class="filter-icon"><img src="images-logo/bee.jpg" alt="Find local services" loading="lazy"></div>
+  <div class="filter-dropdown" id="categoryDropdown">
+    <button class="filter-toggle" id="categoryToggle" aria-expanded="false" aria-controls="categoryMenu">
+      <span>All Categories</span><i class="fas fa-chevron-down"></i>
+    </button>
+    <div class="filter-menu" id="categoryMenu" role="menu">
+      <div class="filter-menu-header">Service Category</div>
+      <button class="filter-item active" data-value="all" data-label="All Categories"><i class="fas fa-th"></i> All Categories</button>
+      <button class="filter-item" data-value="digital" data-label="Digital & Tech"><i class="fas fa-laptop-code"></i> Digital & Tech</button>
+      <button class="filter-item" data-value="catering" data-label="Catering & Events"><i class="fas fa-utensils"></i> Catering & Events</button>
+      <button class="filter-item" data-value="furniture" data-label="Furniture & Home"><i class="fas fa-couch"></i> Furniture & Home</button>
+      <button class="filter-item" data-value="automotive" data-label="Automotive"><i class="fas fa-car"></i> Automotive Services</button>
+      <button class="filter-item" data-value="construction" data-label="Construction"><i class="fas fa-hard-hat"></i> Construction & Elevators</button>
+      <button class="filter-item" data-value="flooring" data-label="Flooring"><i class="fas fa-layer-group"></i> Flooring Solutions</button>
+      <button class="filter-item" data-value="electrical" data-label="Electrical"><i class="fas fa-bolt"></i> Electrical Services</button>
+      <button class="filter-item" data-value="emergency" data-label="Emergency 24/7"><i class="fas fa-exclamation-triangle"></i> Emergency Services</button>
+      <button class="filter-item" data-value="logistics" data-label="Logistics & Moving"><i class="fas fa-truck"></i> Logistics & Moving</button>
+      <button class="filter-item" data-value="carpentry" data-label="Carpentry"><i class="fas fa-hammer"></i> Carpentry & Woodwork</button>
+      <button class="filter-item" data-value="charity" data-label="Charity & Community"><i class="fas fa-hand-holding-heart"></i> Charity & Community</button>
+    </div>
+  </div>
+  <div class="filter-dropdown" id="locationDropdown">
+    <button class="filter-toggle" id="locToggle" aria-expanded="false" aria-controls="locMenu">
+      <span>All Locations</span><i class="fas fa-chevron-down"></i>
+    </button>
+    <div class="filter-menu" id="locMenu" role="menu">
+      <div class="filter-menu-header">Location</div>
+      <button class="filter-item active" data-value="all" data-label="All Locations"><i class="fas fa-globe-africa"></i> All Locations</button>
+      <button class="filter-item" data-value="johannesburg" data-label="Johannesburg"><i class="fas fa-city"></i> Johannesburg</button>
+      <button class="filter-item" data-value="sandton" data-label="Sandton"><i class="fas fa-building"></i> Sandton</button>
+      <button class="filter-item" data-value="cape-town" data-label="Cape Town"><i class="fas fa-mountain"></i> Cape Town</button>
+      <button class="filter-item" data-value="kwazulu-natal" data-label="KwaZulu-Natal"><i class="fas fa-water"></i> KwaZulu-Natal</button>
+      <button class="filter-item" data-value="trichardt" data-label="Trichardt"><i class="fas fa-map-marker-alt"></i> Trichardt</button>
+      <button class="filter-item" data-value="leslie" data-label="Leslie"><i class="fas fa-map-pin"></i> Leslie</button>
+      <button class="filter-item" data-value="gauteng" data-label="Gauteng"><i class="fas fa-map"></i> Gauteng</button>
+      <button class="filter-item" data-value="national" data-label="National"><i class="fas fa-flag"></i> National</button>
+    </div>
+  </div>
+</div>
+<div class="active-filters-wrapper" id="activeFiltersWrapper"></div>
+<div id="resultsCount" class="results-count"></div>
+
+<main id="main-content" class="container">
+  <h1 class="sr-only">Hive Times Local Services Directory - Find Trusted Professionals in South Africa</h1>
+  
+  <section id="services">
+    <h2 class="section-title">Featured Local Services</h2>
+    <div class="businesses-grid" id="servicesGrid">
+      
+      <!-- JTC Consulting -->
+      <article class="block" id="service-jtc" data-category="digital" data-location="johannesburg">
+        <a href="http://jtc.hivetimes.co.za/" target="_blank" rel="noopener"><img src="images-logo/jtc-consulting-logo.jpg" alt="JTC Consulting" width="400" height="300" loading="lazy"></a>
+        <div class="info">
+          <h3>JTC Consulting</h3>
+          <p>Results-driven digital solutions: web development, SEO, branding & online growth strategies for SA businesses.</p>
+          <div class="block-actions">
+            <a href="http://jtc.hivetimes.co.za/" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a>
+            <a href="https://wa.me/27649220145?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*%20about%20JTC%20Consulting..." class="cta-btn secondary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          </div>
+          <div class="share-section">
+            <a href="#" class="share-btn facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="share-btn whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="share-btn email" title="Share via Email"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Exquisite Catering -->
+      <article class="block" id="service-exquisite" data-category="catering" data-location="johannesburg">
+        <a href="http://exquisitecatering.hivetimes.co.za/" target="_blank" rel="noopener"><img src="images-logo/exquisite-catering-logo.jpg" alt="Exquisite Catering" width="400" height="300" loading="lazy"></a>
+        <div class="info">
+          <h3>Exquisite Catering</h3>
+          <p>Luxury full-service event catering: weddings, corporate functions & private celebrations with customized menus.</p>
+          <div class="block-actions">
+            <a href="http://exquisitecatering.hivetimes.co.za/" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a>
+            <a href="https://wa.me/27649220145?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*%20about%20Exquisite%20Catering..." class="cta-btn secondary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          </div>
+          <div class="share-section">
+            <a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Horizon Home Designs -->
+      <article class="block" id="service-horizon" data-category="furniture" data-location="gauteng">
+        <a href="/horizon-home-designs" target="_blank" rel="noopener"><img src="images-logo/horizon-home-designs-logo.jpg" alt="Horizon Home Designs" width="400" height="300" loading="lazy"></a>
+        <div class="info">
+          <h3>Horizon Home Designs</h3>
+          <p>Custom furniture: built-in kitchens, wardrobes, bedroom suites, granite/quartz installation & TV stands.</p>
+          <div class="block-actions">
+            <a href="/horizon-home-designs" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a>
+            <a href="https://wa.me/27606665866?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*%20about%20Horizon%20Home%20Designs..." class="cta-btn secondary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          </div>
+          <div class="share-section">
+            <a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Sapphire Auto Detailing -->
+      <article class="block" id="service-sapphire" data-category="automotive" data-location="gauteng">
+        <a href="https://sapphire.hivetimes.co.za/" target="_blank" rel="noopener"><img src="images-logo/sapphire-auto-logo.jpg" alt="Sapphire Auto Detailing" width="400" height="300" loading="lazy"></a>
+        <div class="info">
+          <h3>Sapphire Auto Detailing</h3>
+          <p>Premium mobile auto detailing: interior/exterior cleaning, paint correction, decontamination & ceramic coating.</p>
+          <div class="block-actions">
+            <a href="https://sapphire.hivetimes.co.za/" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a>
+            <a href="https://wa.me/27649220145?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*%20about%20Sapphire%20Auto%20Detailing..." class="cta-btn secondary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          </div>
+          <div class="share-section">
+            <a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- IES Consulting Elevator -->
+      <article class="block" id="service-ies" data-category="construction" data-location="gauteng">
+        <a href="https://ieselevators.hivetimes.co.za/" target="_blank" rel="noopener"><img src="images-logo/ies-elevator-logo.jpg" alt="IES Consulting Elevator" width="400" height="300" loading="lazy"></a>
+        <div class="info">
+          <h3>IES Consulting Elevator</h3>
+          <p>Premium commercial & home elevator solutions: design, installation, maintenance & compliance across SA.</p>
+          <div class="block-actions">
+            <a href="https://ieselevators.hivetimes.co.za/" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a>
+            <a href="https://wa.me/27649220145?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*%20about%20IES%20Elevators..." class="cta-btn secondary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          </div>
+          <div class="share-section">
+            <a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Duncan Wooden Floors -->
+      <article class="block" id="service-duncan" data-category="flooring" data-location="gauteng">
+        <a href="/duncan-floors" target="_blank" rel="noopener"><img src="images-logo/duncan-floors-logo.jpg" alt="Duncan Wooden Floors" width="400" height="300" loading="lazy"></a>
+        <div class="info">
+          <h3>Duncan Wooden Floors</h3>
+          <p>Premium wooden flooring solutions: supply, installation, sanding, sealing & laminate flooring for homes & businesses.</p>
+          <div class="block-actions">
+            <a href="/duncan-floors" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a>
+            <a href="https://wa.me/27633817445?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*%20about%20Duncan%20Wooden%20Floors..." class="cta-btn secondary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          </div>
+          <div class="share-section">
+            <a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- P E Electrical Johannesburg -->
+      <article class="block" id="service-pe-electrical" data-category="electrical" data-location="johannesburg">
+        <a href="https://pandeelectricaljohannesburg.co.za/" target="_blank" rel="noopener"><img src="images-logo/pe-electrical-logo.jpg" alt="P E Electrical Johannesburg" width="400" height="300" loading="lazy"></a>
+        <div class="info">
+          <h3>P E Electrical Johannesburg</h3>
+          <p>Professional residential & commercial electrical solutions in Parktown: installations, repairs & COC certifications.</p>
+          <div class="block-actions">
+            <a href="https://pandeelectricaljohannesburg.co.za/" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a>
+            <a href="https://wa.me/27649220145?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*%20about%20PE%20Electrical..." class="cta-btn secondary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          </div>
+          <div class="share-section">
+            <a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 24/7 Care Electrical and Plumbing -->
+      <article class="block" id="service-247care" data-category="emergency" data-location="johannesburg">
+        <a href="https://247careelectricalandplumbing.simdif.com" target="_blank" rel="noopener"><img src="images-logo/247care-logo.jpg" alt="24/7 Care Electrical and Plumbing" width="400" height="300" loading="lazy"></a>
+        <div class="info">
+          <h3>24/7 Care Electrical & Plumbing</h3>
+          <p>24/7 emergency electrical & plumbing: fault finding, installations, leak repairs, geyser solutions & loadshedding backups.</p>
+          <div class="block-actions">
+            <a href="https://247careelectricalandplumbing.simdif.com" class="cta-btn primary"><i class="fas fa-globe"></i> Visit Website</a>
+            <a href="https://wa.me/27649220145?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*%20about%2024/7%20Care..." class="cta-btn secondary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          </div>
+          <div class="share-section">
+            <a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- MOVE-IT GUY -->
+      <article class="block" id="service-moveit" data-category="logistics" data-location="gauteng">
+        <a href="#" target="_blank" rel="noopener"><img src="images-logo/moveit-logo.jpg" alt="MOVE-IT GUY" width="400" height="300" loading="lazy"></a>
+        <div class="info">
+          <h3>MOVE-IT GUY</h3>
+          <p>Professional logistics & moving services: secure transport, heavy lifting & furniture relocation across SA.</p>
+          <div class="block-actions">
+            <a href="tel:+27714483451" class="cta-btn primary"><i class="fas fa-phone"></i> Call Now</a>
+            <a href="https://wa.me/27714483451?text=Hi!%20I'm%20reaching%20out%20from%20*Hive%20Times*%20to%20inquire%20about%20your%20moving%20services." class="cta-btn secondary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          </div>
+          <div class="share-section">
+            <a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Shafique Salim - Carpenter -->
+      <article class="block" id="service-shafique" data-category="carpentry" data-location="gauteng">
+        <img src="https://placehold.co/400x300/8B0000/ffffff?text=Carpentry" alt="Shafique Salim Carpenter" width="400" height="300" loading="lazy">
+        <div class="info">
+          <h3>Shafique Salim</h3>
+          <p>Professional carpentry services: custom woodwork, repairs, installations & furniture crafting for residential & commercial.</p>
+          <div class="block-actions">
+            <a href="tel:+27826774402" class="cta-btn primary"><i class="fas fa-phone"></i> Call Now</a>
+            <a href="https://wa.me/27826774402?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*%20about%20your%20carpentry%20services." class="cta-btn secondary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          </div>
+          <div class="share-section">
+            <a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Rahima & Zainab - Event Design -->
+      <article class="block" id="service-rahima" data-category="catering" data-location="gauteng">
+        <img src="https://placehold.co/400x300/8B0000/ffffff?text=Event+Design" alt="Rahima & Zainab Event Design" width="400" height="300" loading="lazy">
+        <div class="info">
+          <h3>Rahima & Zainab</h3>
+          <p>Customised wedding & event design: floral arrangements, décor styling & complete event coordination services.</p>
+          <div class="block-actions">
+            <a href="tel:+27829737700" class="cta-btn primary"><i class="fas fa-phone"></i> Call Now</a>
+            <a href="https://wa.me/27829737700?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*%20about%20your%20event%20design%20services." class="cta-btn secondary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          </div>
+          <div class="share-section">
+            <a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Water Of Life - Charity -->
+      <article class="block" id="service-wateroflife" data-category="charity" data-location="national">
+        <a href="http://wateroflife.hivetimes.co.za/" target="_blank" rel="noopener"><img src="images-logo/wateroflife-logo.jpg" alt="Water Of Life" width="400" height="300" loading="lazy"></a>
+        <div class="info">
+          <h3>Water Of Life</h3>
+          <p>Contribute to those in need - Sadaqa Jariya. Every rand goes directly to the intended cause with zero admin costs.</p>
+          <div class="block-actions">
+            <a href="http://wateroflife.hivetimes.co.za/" class="cta-btn primary"><i class="fas fa-globe"></i> Learn More</a>
+            <a href="https://wa.me/27649220145?text=Hi!%20I'm%20enquiring%20from%20*Hive%20Times*%20about%20Water%20Of%20Life..." class="cta-btn secondary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          </div>
+          <div class="share-section">
+            <a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="share-btn email"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="images-logo/hive-times-logo.png" alt="Hive Times" width="100" height="100" loading="lazy">
+        <p>Connecting South Africans with trusted local services & professionals since 2026.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <ul><li><a href="/services/electrical"><i class="fas fa-bolt"></i> Electrical</a></li><li><a href="/services/plumbing"><i class="fas fa-faucet"></i> Plumbing</a></li><li><a href="/services/carpentry"><i class="fas fa-hammer"></i> Carpentry</a></li></ul>
+      </div>
+      <div class="footer-links">
+        <h4>Company</h4>
+        <ul><li><a href="https://hivetimes.co.za/about%20page%20home.html"><i class="fas fa-info-circle"></i> About</a></li><li><a href="/contact"><i class="fas fa-envelope"></i> Contact</a></li><li><a href="/terms"><i class="fas fa-file-contract"></i> Terms</a></li></ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <ul><li><a href="tel:+27649220145"><i class="fas fa-phone"></i> +27 64 922 0145</a></li><li><a href="mailto:hivetimes.co.za@gmail.com"><i class="fas fa-envelope"></i> hivetimes.co.za@gmail.com</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; <span id="currentYear"></span> Hive Times. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  'use strict';
+  
+  // === CONFIG ===
+  const CONFIG = { whatsappNumber: '27649220145' };
+  let state = { category: 'all', location: 'all', query: '' };
+  
+  // === DOM CACHE ===
+  const dom = {
+    sidebar: document.getElementById('sidebar'),
+    overlay: document.getElementById('overlay'),
+    hamburger: document.getElementById('hamburger'),
+    closeBtn: document.getElementById('sidebarClose'),
+    searchInput: document.getElementById('businessSearch'),
+    categoryToggle: document.getElementById('categoryToggle'),
+    categoryMenu: document.getElementById('categoryMenu'),
+    locToggle: document.getElementById('locToggle'),
+    locMenu: document.getElementById('locMenu'),
+    grid: document.getElementById('servicesGrid'),
+    filterWrapper: document.getElementById('activeFiltersWrapper'),
+    resultsCount: document.getElementById('resultsCount')
+  };
+
+  // === SIDEBAR TOGGLE ===
+  function toggleSidebar(open = true) {
+    dom.sidebar.classList.toggle('active', open);
+    dom.overlay.classList.toggle('active', open);
+    dom.hamburger.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  dom.hamburger.addEventListener('click', () => toggleSidebar(true));
+  dom.closeBtn.addEventListener('click', () => toggleSidebar(false));
+  dom.overlay.addEventListener('click', () => toggleSidebar(false));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && dom.sidebar.classList.contains('active')) toggleSidebar(false); });
+
+  // === FILTER & DROPDOWNS ===
+  function toggleDropdown(type) {
+    const menu = type === 'category' ? dom.categoryMenu : dom.locMenu;
+    const toggle = type === 'category' ? dom.categoryToggle : dom.locToggle;
+    const isOpen = menu.classList.contains('show');
+    document.querySelectorAll('.filter-menu').forEach(m => m.classList.remove('show'));
+    document.querySelectorAll('.filter-toggle').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-expanded', 'false'); });
+    if (!isOpen) {
+      menu.classList.add('show');
+      toggle.classList.add('active');
+      toggle.setAttribute('aria-expanded', 'true');
+    }
+  }
+  dom.categoryToggle.addEventListener('click', (e) => { e.stopPropagation(); toggleDropdown('category'); });
+  dom.locToggle.addEventListener('click', (e) => { e.stopPropagation(); toggleDropdown('loc'); });
+  document.addEventListener('click', (e) => { if (!e.target.closest('.filter-dropdown')) document.querySelectorAll('.filter-menu').forEach(m => m.classList.remove('show')); });
+
+  // Filter Application
+  function applyFilters() {
+    const cards = dom.grid.querySelectorAll('.block');
+    let visible = 0;
+    cards.forEach(card => {
+      const category = card.dataset.category || 'all';
+      const loc = card.dataset.location || 'all';
+      const text = (card.querySelector('h3')?.textContent + ' ' + card.querySelector('p')?.textContent).toLowerCase();
+      const matchCat = state.category === 'all' || category === state.category;
+      const matchLoc = state.location === 'all' || loc === state.location;
+      const matchQry = state.query === '' || text.includes(state.query.toLowerCase());
+      if (matchCat && matchLoc && matchQry) {
+        card.style.display = 'flex';
+        visible++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    dom.resultsCount.textContent = visible < cards.length ? `Showing ${visible} of ${cards.length} services` : '';
+    renderBadges();
+  }
+
+  function renderBadges() {
+    if (state.category === 'all' && state.location === 'all' && state.query === '') { dom.filterWrapper.innerHTML = ''; return; }
+    let html = '';
+    if (state.category !== 'all') html += `<span class="filter-badge">Category: ${state.category} <button onclick="HiveDir.setCategory('all')"><i class="fas fa-times"></i></button></span>`;
+    if (state.location !== 'all') html += `<span class="filter-badge">Location: ${state.location} <button onclick="HiveDir.setLocation('all')"><i class="fas fa-times"></i></button></span>`;
+    if (state.query) html += `<span class="filter-badge">Search: "${state.query}" <button onclick="HiveDir.setSearch('')"><i class="fas fa-times"></i></button></span>`;
+    html += `<button class="filter-badge" onclick="HiveDir.clearAll()" style="color:var(--primary);border-color:var(--primary);"><i class="fas fa-broom"></i> Clear All</button>`;
+    dom.filterWrapper.innerHTML = html;
+  }
+
+  // Global exposure for inline badge buttons
+  window.HiveDir = {
+    setCategory: (val) => { state.category = val; dom.categoryMenu.querySelectorAll('.filter-item').forEach(b => b.classList.toggle('active', b.dataset.value === val)); dom.categoryToggle.querySelector('span').textContent = val === 'all' ? 'All Categories' : dom.categoryMenu.querySelector(`[data-value="${val}"]`).dataset.label; applyFilters(); },
+    setLocation: (val) => { state.location = val; dom.locMenu.querySelectorAll('.filter-item').forEach(b => b.classList.toggle('active', b.dataset.value === val)); dom.locToggle.querySelector('span').textContent = val === 'all' ? 'All Locations' : dom.locMenu.querySelector(`[data-value="${val}"]`).dataset.label; applyFilters(); },
+    setSearch: (val) => { state.query = val; dom.searchInput.value = val; applyFilters(); },
+    clearAll: () => { HiveDir.setCategory('all'); HiveDir.setLocation('all'); HiveDir.setSearch(''); }
+  };
+
+  // Menu Item Clicks
+  dom.categoryMenu.addEventListener('click', (e) => {
+    const btn = e.target.closest('.filter-item');
+    if (btn) { HiveDir.setCategory(btn.dataset.value); toggleDropdown('category'); }
+  });
+  dom.locMenu.addEventListener('click', (e) => {
+    const btn = e.target.closest('.filter-item');
+    if (btn) { HiveDir.setLocation(btn.dataset.value); toggleDropdown('loc'); }
+  });
+
+  // Search Input
+  let searchTimeout;
+  dom.searchInput.addEventListener('input', (e) => {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => { state.query = e.target.value.trim(); applyFilters(); }, 250);
+  });
+
+  // === SHARE BUTTONS ONLY (Rating System Removed) ===
+  document.querySelectorAll('.share-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const block = btn.closest('.block');
+      const name = block.querySelector('h3').textContent;
+      const url = `${window.location.origin}${window.location.pathname}#${block.id}`;
+      const msg = `Check out ${name} on Hive Times: ${url}`;
+      if (btn.classList.contains('facebook')) window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+      else if (btn.classList.contains('whatsapp')) window.open(/Mobi|Android/i.test(navigator.userAgent) ? `whatsapp://send?text=${encodeURIComponent(msg)}` : `https://web.whatsapp.com/send?text=${encodeURIComponent(msg)}`, '_blank');
+      else if (btn.classList.contains('email')) window.location.href = `mailto:?subject=${encodeURIComponent(name)}&body=${encodeURIComponent(msg)}`;
+    });
+  });
+
+   // Swiper - load Swiper library dynamically then fetch and initialize the slider
+(function loadSwiperAndInit() {
+const swiperScript = document.createElement('script');
+swiperScript.src = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js';
+swiperScript.async = true;
+swiperScript.onload = () => {
+fetch('slider.html').then(response => response.text()).then(html => {
+document.getElementById('slider-container').innerHTML = html;
+if (typeof Swiper !== 'undefined') { new Swiper('.mySwiper', { spaceBetween: 0, centeredSlides: true, autoplay: { delay: 3000, disableOnInteraction: false }, pagination: { el: '.swiper-pagination', clickable: true }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }, loop: true, effect: 'fade', fadeEffect: { crossFade: true }, touchRatio: 1, simulateTouch: true }); }
+}).catch(err => { console.error('Slider failed to load:', err); document.getElementById('slider-container').innerHTML = '<p style="text-align:center; padding:40px; color:#a30909; font-weight:600;">❌ Slider error: ' + err.message + '</p>'; });
+};
+swiperScript.onerror = () => { console.error('Failed to load Swiper library.'); document.getElementById('slider-container').innerHTML = '<p style="text-align:center; padding:40px; color:#a30909; font-weight:600;">❌ Failed to load Swiper library.</p>'; };
+document.head.appendChild(swiperScript);
+})();
+
+  // === INIT ===
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+  document.getElementById('sidebarYear').textContent = new Date().getFullYear();
+  applyFilters();
+})();
+</script>
+</body>
+</html>

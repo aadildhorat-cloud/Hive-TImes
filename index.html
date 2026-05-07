@@ -47,6 +47,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   
   <style>
+    
 /* Business Cart Selector Items */
 .business-cart-item {
   background: var(--white);
@@ -326,146 +327,519 @@
       padding: 0 20px;
     }
     
-    /* ===== REARRANGED HEADER ===== */
-    header {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      color: var(--white);
-      padding: 0.75rem 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: var(--shadow);
-    }
+   /* ===== HEADER TWO-ROW LAYOUT ===== */
+header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: var(--white);
+ 
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow);
+}
+
+header .container {
+  display: flex;
+  flex-direction: column;
+
+ 
+}
+
+/* TOP ROW: Cart | Search | Logo */
+.header-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  flex-wrap: nowrap;
+  padding: 0 20px;
+}
+
+/* BOTTOM ROW: Filter Bar + Hamburger */
+.header-bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  
+}
+
+/* Cart Button */
+.cart-btn {
+  position: relative;
+  color: var(--white);
+  font-size: 1.15rem;
+  padding: 8px;
+  border-radius: 50%;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  order: 1;
+}
+
+.cart-btn:hover {
+  background: rgba(255,255,255,0.15);
+  transform: scale(1.05);
+}
+
+.cart-count {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  background: #ff6b6b;
+  color: white;
+  font-size: 0.6rem;
+  font-weight: 700;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Search Bar */
+.search-bar {
+  order: 2;
+  max-width: 320px;
+  width: 100%;
+  position: relative;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 9px 16px 9px 38px;
+  border-radius: 35px;
+  border: 2px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.15);
+  color: var(--white);
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.search-bar input::placeholder { color: rgba(255,255,255,0.85); }
+
+.search-bar input:focus {
+  outline: none;
+  background: rgba(255,255,255,0.25);
+  border-color: var(--white);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.2);
+}
+
+.search-bar i {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--white);
+  font-size: 0.95rem;
+}
+
+/* Logo */
+.logo {
+  order: 3;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 0;
+}
+
+.logo img {
+  height: 42px;
+  width: auto;
+  border-radius: 6px;
+}
+
+.logo-text {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  display: none;
+  color: var(--white);
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 7px;
+  cursor: pointer;
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+
+.hamburger span {
+  width: 24px;
+  height: 2.5px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+.hamburger:hover span { background: #ffd700; }
+
+/* Filter Bar Compact - Updated for bottom row */
+.filter-bar-compact {
+  background: #8B1E1E;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: nowrap !important;
+  width: 100%;
+  max-width: 100%;
+  flex: 1;
+}
+
+.filter-icon {
+  flex: 0 0 60px !important;
+  width: 60px !important;
+  height: 60px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.filter-icon img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+.filter-dropdown {
+  position: relative;
+  flex: 0 0 180px !important;
+  width: 180px !important;
+  min-width: 180px !important;
+  max-width: 180px !important;
+  flex-shrink: 0;
+}
+
+.filter-toggle {
+  width: 100%;
+  background: var(--light);
+  border: 1.5px solid var(--border);
+  color: var(--secondary);
+  padding: 6px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  min-height: 36px;
+  overflow: hidden;
+}
+.filter-toggle:hover,
+.filter-toggle.active {
+  border-color: var(--primary);
+  background: rgba(163, 9, 9, 0.08);
+}
+.filter-toggle i.fa-chevron-down {
+  font-size: 0.6rem;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+.filter-toggle.active i.fa-chevron-down {
+  transform: rotate(180deg);
+}
+.toggle-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  text-align: left;
+  padding-left: 2px;
+}
+
+/* Dropdown Menu Styles (unchanged) */
+.filter-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  background: var(--white);
+  border-radius: 10px;
+  box-shadow: var(--shadow-hover);
+  min-width: 240px;
+  max-width: 90vw;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-6px);
+  transform-origin: top center;
+  transition: 
+    max-height 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.2s ease,
+    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 100;
+  border: 1px solid var(--border);
+  pointer-events: none;
+}
+
+.filter-menu.show {
+  max-height: 400px;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.filter-menu-header {
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 0.7rem;
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  border-bottom: 1px solid var(--border);
+  background: #fafafa;
+}
+.filter-item {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.75rem;
+  color: var(--secondary);
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: left;
+}
+.filter-item:hover { background: var(--light); color: var(--primary); }
+.filter-item.active { background: rgba(163, 9, 9, 0.12); color: var(--primary); font-weight: 600; }
+.filter-item i { width: 16px; text-align: center; color: var(--primary); opacity: 0.9; flex-shrink: 0; }
+.filter-divider { height: 1px; background: var(--border); margin: 5px 0; }
+.location-detect { color: var(--primary); font-weight: 600; }
+
+.active-filters-wrapper { min-height: 0px; margin-bottom: 0.0rem; }
+.filter-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--light); border: 1px solid var(--border);
+  padding: 3px 9px; border-radius: 15px; font-size: 0.72rem;
+  margin-right: 6px; margin-bottom: 0px;
+}
+.filter-badge button { background: none; border: none; color: var(--gray); cursor: pointer; padding: 0 2px; font-size: 0.8rem; }
+.clear-all-filters { background: none; border: none; color: var(--primary); font-weight: 600; font-size: 0.72rem; cursor: pointer; margin-left: 6px; }
+.results-count { text-align: center; color: var(--gray); font-size: 0.72rem; margin-bottom: 0.75rem; }
+
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+
+/* Tablet & Small Desktop */
+@media (max-width: 1023px) {
+  .header-top-row {
+    justify-content: center;
+  }
+  .logo {
+    margin-left: 0;
+  }
+  .search-bar {
+    max-width: 240px;
+  }
+  .filter-dropdown {
+    flex: 0 0 150px !important;
+    width: 150px !important;
+    min-width: 150px !important;
+    max-width: 150px !important;
+  }
+  .filter-toggle { padding: 5px 10px; font-size: 0.72rem; }
+  .filter-menu { min-width: 220px; }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+  header {
+    padding: 0.0rem 0;
+  }
+  
+  .header-top-row {
+    justify-content: flex-start;
+    padding: 0 12px;
+    gap: 0.5rem;
+     flex-wrap: nowrap;
+  }
+  
+  .cart-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+    order: 1;
+  }
+  
+  .search-bar {
+    order: 2;
+    max-width: 100%;
+    width: 100%;
+    margin-top: 0rem;
+  }
+  
+  .search-bar input {
+    padding: 8px 12px 8px 34px;
+    font-size: 0.85rem;
+  }
+  
+  .logo {
+    order: 3;
+    margin-left: 0;
+  }
+  
+  .logo img {
+    height: 38px;
+  }
+  
+  .logo-text {
+    display: none;
+  }
+  
+  /* Bottom Row - Mobile */
+  .header-bottom-row {
     
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+  
+  .filter-bar-compact {
+    gap: 4px;
+    padding: 0.4rem 0.6rem;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .filter-icon {
+    flex: 0 0 40px !important;
+    width: 40px !important;
+  }
+  .filter-icon img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .filter-dropdown {
+    flex: 0 0 110px !important;
+    width: 110px !important;
+    min-width: 110px !important;
+    max-width: 110px !important;
+  }
+  
+  .filter-toggle {
+    padding: 5px 8px;
+    font-size: 0.7rem;
+    min-height: 34px;
+    border-radius: 18px;
+    justify-content: center;
+  }
+  .toggle-label { display: none; }
+  .filter-toggle i.fa-chevron-down { margin-left: 0; }
+  
+  /* Mobile: Center dropdown + open straight down */
+  .filter-menu {
+    min-width: 200px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-6px);
+  }
+  .filter-menu.show {
+    transform: translateX(-50%) translateY(0);
+  }
+  
+  .hamburger {
+    margin-left: 0;
+    padding: 6px;
+  }
+  .hamburger span {
+    width: 22px;
+    height: 2px;
+  }
+}
+
+/* Small Mobile (under 360px) */
+@media (max-width: 360px) {
+  .header-top-row {
+    padding: 0 10px;
     
-    /* Cart Button */
-    .cart-btn {
-      position: relative;
-      color: var(--white);
-      font-size: 1.15rem;
-      padding: 8px;
-      border-radius: 50%;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      order: 1;
-    }
-    
-    .cart-btn:hover {
-      background: rgba(255,255,255,0.15);
-      transform: scale(1.05);
-    }
-    
-    .cart-count {
-      position: absolute;
-      top: -3px;
-      right: -3px;
-      background: #ff6b6b;
-      color: white;
-      font-size: 0.6rem;
-      font-weight: 700;
-      width: 17px;
-      height: 17px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      line-height: 1;
-    }
-    
-    /* Search Bar */
-    .search-bar {
-      order: 2;
-      max-width: 320px;
-      width: 100%;
-      position: relative;
-    }
-    
-    .search-bar input {
-      width: 100%;
-      padding: 9px 16px 9px 38px;
-      border-radius: 35px;
-      border: 2px solid rgba(255,255,255,0.3);
-      background: rgba(255,255,255,0.15);
-      color: var(--white);
-      font-size: 0.9rem;
-      transition: var(--transition);
-    }
-    
-    .search-bar input::placeholder { color: rgba(255,255,255,0.85); }
-    
-    .search-bar input:focus {
-      outline: none;
-      background: rgba(255,255,255,0.25);
-      border-color: var(--white);
-      box-shadow: 0 0 0 3px rgba(255,255,255,0.2);
-    }
-    
-    .search-bar i {
-      position: absolute;
-      left: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--white);
-      font-size: 0.95rem;
-    }
-    
-    /* Logo */
-    .logo {
-      order: 3;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-left: auto;
-    }
-    
-    .logo img {
-      height: 42px;
-      width: auto;
-      border-radius: 6px;
-    }
-    
-    .logo-text {
-      font-size: 1.3rem;
-      font-weight: 700;
-      letter-spacing: -0.4px;
-      display: none;
-    }
-    
-    @media (min-width: 768px) {
-      .logo-text { display: inline; }
-    }
-    
-    /* Hamburger Menu */
-    .hamburger {
-      order: 4;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      padding: 7px;
-      cursor: pointer;
-      margin-left: 8px;
-    }
-    
-    .hamburger span {
-      width: 24px;
-      height: 2.5px;
-      background: var(--white);
-      border-radius: 2px;
-      transition: var(--transition);
-    }
-    
-    .hamburger:hover span { background: #ffd700; }
+  }
+  
+  .search-bar input {
+    padding: 7px 10px 7px 32px;
+    font-size: 0.8rem;
+  }
+  
+  .logo img {
+    height: 34px;
+  }
+  
+  .header-bottom-row {
+    padding: 0 0px 0.0rem;
+  }
+  
+  .filter-bar-compact {
+    gap: 3px;
+    padding: 0.35rem 0.5rem;
+  }
+  
+  .filter-dropdown {
+    flex: 0 0 95px !important;
+    width: 95px !important;
+    min-width: 95px !important;
+    max-width: 95px !important;
+  }
+  
+  .filter-toggle {
+    padding: 4px 6px;
+    font-size: 0.65rem;
+    min-height: 32px;
+  }
+  
+  .filter-menu {
+    min-width: 180px;
+    font-size: 0.7rem;
+  }
+  
+  .hamburger span {
+    width: 20px;
+    height: 2px;
+  }
+}
+
+/* Accessibility */
+.filter-menu:focus-within {
+  max-height: 400px;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filter-menu {
+    transition: none;
+    transform: none;
+  }
+  .filter-menu.show {
+    transform: none;
+  }
+  .cart-btn:hover,
+  .hamburger:hover span {
+    transform: none;
+  }
+}
     
     /* ===== SIDEBAR NAVIGATION ===== */
     .sidebar {
@@ -848,210 +1222,247 @@
       }
     }
     
-    /* ===== COMPACT FILTER BAR - NICHES ===== */
-    .filter-bar-compact {
-    background: #8B1E1E;;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 0.5rem 0.75rem;
-      margin: 1rem 0 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-wrap: nowrap !important;
-      width: 100%;
-      max-width: 100%;
-    }
-    
-    .filter-icon {
-      flex: 0 0 60px !important;
-      width: 60px !important;
-      height: 60px !important;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .filter-icon img {
-      width: 60px;
-      height: 60px;
-      object-fit: contain;
-      animation: float 3s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-2px); }
-    }
-    
-    .filter-dropdown {
-      position: relative;
-      flex: 0 0 180px !important;
-      width: 180px !important;
-      min-width: 180px !important;
-      max-width: 180px !important;
-      flex-shrink: 0;
-    }
-    
-    .filter-toggle {
-      width: 100%;
-      background: var(--light);
-      border: 1.5px solid var(--border);
-      color: var(--secondary);
-      padding: 6px 12px;
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 6px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: var(--transition);
-      white-space: nowrap;
-      min-height: 36px;
-      overflow: hidden;
-    }
-    .filter-toggle:hover,
-    .filter-toggle.active {
-      border-color: var(--primary);
-      background: rgba(163, 9, 9, 0.08);
-    }
-    .filter-toggle i.fa-chevron-down {
-      font-size: 0.6rem;
-      transition: transform 0.2s ease;
-      flex-shrink: 0;
-      margin-left: auto;
-    }
-    .filter-toggle.active i.fa-chevron-down {
-      transform: rotate(180deg);
-    }
-    .toggle-label {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      flex: 1;
-      text-align: left;
-      padding-left: 2px;
-    }
-    
-    .filter-menu {
-      position: absolute;
-      top: calc(100% + 6px);
-      left: 0;
-      background: var(--white);
-      border-radius: 10px;
-      box-shadow: var(--shadow-hover);
-      min-width: 240px;
-      max-width: 90vw;
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      transform: translateY(-8px);
-      transition: all 0.25s ease;
-      z-index: 100;
-      border: 1px solid var(--border);
-    }
-    .filter-menu.show {
-      max-height: 400px;
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .filter-menu-header {
-      padding: 10px 14px;
-      font-weight: 600;
-      font-size: 0.7rem;
-      color: var(--gray);
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
-      border-bottom: 1px solid var(--border);
-      background: #fafafa;
-    }
-    .filter-item {
-      width: 100%;
-      background: none;
-      border: none;
-      padding: 8px 14px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.75rem;
-      color: var(--secondary);
-      cursor: pointer;
-      transition: var(--transition);
-      text-align: left;
-    }
-    .filter-item:hover { background: var(--light); color: var(--primary); }
-    .filter-item.active { background: rgba(163, 9, 9, 0.12); color: var(--primary); font-weight: 600; }
-    .filter-item i { width: 16px; text-align: center; color: var(--primary); opacity: 0.9; flex-shrink: 0; }
-    .filter-divider { height: 1px; background: var(--border); margin: 5px 0; }
-    .location-detect { color: var(--primary); font-weight: 600; }
-    
-    .active-filters-wrapper { min-height: 28px; margin-bottom: 0.75rem; }
-    .filter-badge {
-      display: inline-flex; align-items: center; gap: 4px;
-      background: var(--light); border: 1px solid var(--border);
-      padding: 3px 9px; border-radius: 15px; font-size: 0.72rem;
-      margin-right: 6px; margin-bottom: 4px;
-    }
-    .filter-badge button { background: none; border: none; color: var(--gray); cursor: pointer; padding: 0 2px; font-size: 0.8rem; }
-    .clear-all-filters { background: none; border: none; color: var(--primary); font-weight: 600; font-size: 0.72rem; cursor: pointer; margin-left: 6px; }
-    .results-count { text-align: center; color: var(--gray); font-size: 0.72rem; margin-bottom: 0.75rem; }
-    
-    /* ===== RESPONSIVE FILTER BAR ===== */
-    @media (max-width: 1023px) {
-      .filter-dropdown {
-        flex: 0 0 150px !important;
-        width: 150px !important;
-        min-width: 150px !important;
-        max-width: 150px !important;
-      }
-      .filter-toggle { padding: 5px 10px; font-size: 0.72rem; }
-      .filter-menu { min-width: 220px; }
-    }
-    
-    @media (max-width: 768px) {
-      .filter-bar-compact {
-        gap: 4px;
-        padding: 0.4rem 0.6rem;
-        margin: 0.75rem 0 1.25rem;
-      }
-      .filter-icon { flex: 0 0 40px !important; width: 40px !important; }
-      .filter-icon img { width: 40px; height: 40px; }
-      
-      .filter-dropdown {
-        flex: 0 0 110px !important;
-        width: 110px !important;
-        min-width: 180px !important;
-        max-width: 180px !important;
-      }
-      .filter-toggle {
-        padding: 5px 8px;
-        font-size: 0.7rem;
-        min-height: 34px;
-        border-radius: 18px;
-        justify-content: center;
-      }
-      .toggle-label { display: none; }
-      .filter-toggle i.fa-chevron-down { margin-left: 0; }
-      
-      .filter-menu {
-        min-width: 200px;
-        left: 50%;
-        transform: translateX(-50%) translateY(-8px);
-      }
-    }
-    
-    @media (max-width: 360px) {
-      .filter-bar-compact { gap: 3px; padding: 0.35rem 0.5rem; }
-      .filter-dropdown {
-        flex: 0 0 95px !important;
-        width: 95px !important;
-        min-width: 95px !important;
-        max-width: 95px !important;
-      }
-      .filter-toggle { padding: 4px 6px; font-size: 0.65rem; min-height: 32px; }
-      .filter-menu { min-width: 180px; font-size: 0.7rem; }
-    }
+   /* ===== COMPACT FILTER BAR - NICHES ===== */
+.filter-bar-compact {
+  background: #8B1E1E; /* Fixed: removed double semicolon */
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 0.5rem 0.75rem;
+  margin: 1rem 0 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: nowrap !important;
+  width: 100%;
+  max-width: 100%;
+}
+
+.filter-icon {
+  flex: 0 0 60px !important;
+  width: 60px !important;
+  height: 60px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.filter-icon img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+.filter-dropdown {
+  position: relative;
+  flex: 0 0 180px !important;
+  width: 180px !important;
+  min-width: 180px !important;
+  max-width: 180px !important;
+  flex-shrink: 0;
+}
+
+.filter-toggle {
+  width: 100%;
+  background: var(--light);
+  border: 1.5px solid var(--border);
+  color: var(--secondary);
+  padding: 6px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  min-height: 36px;
+  overflow: hidden;
+}
+.filter-toggle:hover,
+.filter-toggle.active {
+  border-color: var(--primary);
+  background: rgba(163, 9, 9, 0.08);
+}
+.filter-toggle i.fa-chevron-down {
+  font-size: 0.6rem;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+.filter-toggle.active i.fa-chevron-down {
+  transform: rotate(180deg);
+}
+.toggle-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  text-align: left;
+  padding-left: 2px;
+}
+
+/* ===== PROFESSIONAL DROPDOWN MENU - STRAIGHT DOWN OPENING ===== */
+.filter-menu {
+  position: absolute;
+  top: calc(100% + 6px); /* Positions menu directly BELOW toggle */
+  left: 0;
+  background: var(--white);
+  border-radius: 10px;
+  box-shadow: var(--shadow-hover);
+  min-width: 240px;
+  max-width: 90vw;
+  
+  /* Animation states */
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-6px); /* Start 6px ABOVE for downward slide */
+  transform-origin: top center; /* Anchor animation from top edge */
+  
+  /* Professional transition */
+  transition: 
+    max-height 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.2s ease,
+    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  z-index: 100;
+  border: 1px solid var(--border);
+  pointer-events: none; /* Prevent interaction when hidden */
+}
+
+.filter-menu.show {
+  max-height: 400px; /* Allows content to expand */
+  opacity: 1;
+  transform: translateY(0); /* Slide to final position - STRAIGHT DOWN */
+  pointer-events: auto; /* Enable interaction when visible */
+}
+
+.filter-menu-header {
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 0.7rem;
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  border-bottom: 1px solid var(--border);
+  background: #fafafa;
+}
+.filter-item {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.75rem;
+  color: var(--secondary);
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: left;
+}
+.filter-item:hover { background: var(--light); color: var(--primary); }
+.filter-item.active { background: rgba(163, 9, 9, 0.12); color: var(--primary); font-weight: 600; }
+.filter-item i { width: 16px; text-align: center; color: var(--primary); opacity: 0.9; flex-shrink: 0; }
+.filter-divider { height: 1px; background: var(--border); margin: 5px 0; }
+.location-detect { color: var(--primary); font-weight: 600; }
+
+.active-filters-wrapper { min-height: 0px; margin-bottom: 0.0rem; }
+.filter-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--light); border: 1px solid var(--border);
+  padding: 3px 9px; border-radius: 15px; font-size: 0.72rem;
+  margin-right: 6px; margin-bottom: 0px;
+}
+.filter-badge button { background: none; border: none; color: var(--gray); cursor: pointer; padding: 0 2px; font-size: 0.8rem; }
+.clear-all-filters { background: none; border: none; color: var(--primary); font-weight: 600; font-size: 0.72rem; cursor: pointer; margin-left: 6px; }
+.results-count { text-align: center; color: var(--gray); font-size: 0.72rem; margin-bottom: 0.75rem; }
+
+/* ===== RESPONSIVE FILTER BAR ===== */
+@media (max-width: 1023px) {
+  .filter-dropdown {
+    flex: 0 0 150px !important;
+    width: 150px !important;
+    min-width: 150px !important;
+    max-width: 150px !important;
+  }
+  .filter-toggle { padding: 5px 10px; font-size: 0.72rem; }
+  .filter-menu { min-width: 220px; }
+}
+
+@media (max-width: 768px) {
+  .filter-bar-compact {
+    gap: 4px;
+    padding: 0.4rem 0.6rem;
+    margin: 0.75rem 0 1.25rem;
+  }
+  .filter-icon { flex: 0 0 40px !important; width: 40px !important; }
+  .filter-icon img { width: 40px; height: 40px; }
+  
+  .filter-dropdown {
+    flex: 0 0 110px !important;
+    width: 110px !important;
+    min-width: 110px !important; /* Fixed: was conflicting with max-width */
+    max-width: 110px !important;
+  }
+  .filter-toggle {
+    padding: 5px 8px;
+    font-size: 0.7rem;
+    min-height: 34px;
+    border-radius: 18px;
+    justify-content: center;
+  }
+  .toggle-label { display: none; }
+  .filter-toggle i.fa-chevron-down { margin-left: 0; }
+  
+  /* Mobile: Center horizontally + open straight down */
+  .filter-menu {
+    min-width: 200px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-6px); /* Center + start above */
+  }
+  .filter-menu.show {
+    transform: translateX(-50%) translateY(0); /* Center + slide straight down */
+  }
+}
+
+@media (max-width: 360px) {
+  .filter-bar-compact { gap: 3px; padding: 0.35rem 0.5rem; }
+  .filter-dropdown {
+    flex: 0 0 95px !important;
+    width: 95px !important;
+    min-width: 95px !important;
+    max-width: 95px !important;
+  }
+  .filter-toggle { padding: 4px 6px; font-size: 0.65rem; min-height: 32px; }
+  .filter-menu { min-width: 180px; font-size: 0.7rem; }
+}
+
+/* ===== ACCESSIBILITY & UX ENHANCEMENTS ===== */
+.filter-menu:focus-within {
+  /* Keep menu open when navigating with keyboard */
+  max-height: 400px;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filter-menu {
+    transition: none;
+    transform: none;
+  }
+  .filter-menu.show {
+    transform: none;
+  }
+}
     
     /* ===== CART MODAL ===== */
     .modal-overlay {
@@ -1685,6 +2096,7 @@ color: #ffffff; /* White ensures crisp, professional contrast on deep red */
       .header-inner { padding: 0 10px; }
       
       .search-bar {
+        order: 2;
         width: 100%;
         margin-top: 0.75rem;
       }
@@ -1791,16 +2203,19 @@ color: #ffffff; /* White ensures crisp, professional contrast on deep red */
   <!-- Overlay -->
   <div class="overlay" id="overlay"></div>
   
-  <!-- Header -->
-  <header>
-    <div class="container header-inner">
-      <!-- Cart -->
+ <!-- ===== RESTRUCTURED HEADER - CONSISTENT TWO-ROW LAYOUT (ALL DEVICES) ===== -->
+<header>
+  <div class="container">
+    
+    <!-- TOP ROW: Cart | Search | Logo (always horizontal) -->
+    <div class="header-top-row">
+      <!-- Cart Button -->
       <button class="cart-btn" onclick="openCart()" aria-label="View cart">
         <i class="fas fa-shopping-cart"></i>
         <span class="cart-count" id="cartCount">0</span>
       </button>
       
-      <!-- Search -->
+      <!-- Search Bar -->
       <div class="search-bar">
         <i class="fas fa-search"></i>
         <input type="search" id="productSearch" placeholder="Search products..." aria-label="Search products">
@@ -1811,74 +2226,84 @@ color: #ffffff; /* White ensures crisp, professional contrast on deep red */
         <img src="images-logo/hive-times-logo.png" alt="Hive Times" width="42" height="42" loading="lazy">
         <span class="logo-text">Hive Times</span>
       </a>
+    </div>
+    
+    <!-- BOTTOM ROW: Filter Bar + Hamburger Menu (always horizontal) -->
+    <div class="header-bottom-row">
+      <!-- Filter Bar - NICHES & LOCATIONS -->
+      <div class="filter-bar-compact" id="filterBar">
+        <div class="filter-icon">
+          <img src="images-logo/bee.jpg" alt="Shop local" loading="lazy">
+        </div>
+
+        <!-- Niche Dropdown -->
+        <div class="filter-dropdown" id="nicheDropdown">
+          <button class="filter-toggle" id="nicheToggle" aria-expanded="false" aria-controls="nicheMenu">
+            <i class="fas fa-th-large"></i>
+            <span class="toggle-label" id="nicheLabel">All Niches</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="filter-menu" id="nicheMenu" role="menu">
+            <div class="filter-menu-header">Niche</div>
+            <button class="filter-item active" data-value="all"><i class="fas fa-th"></i> All Niches</button>
+            <button class="filter-item" data-value="household-essentials"><i class="fas fa-house"></i> Household Essentials</button>
+            <button class="filter-item" data-value="baking"><i class="fas fa-bread-slice"></i> Baking</button>
+            <button class="filter-item" data-value="frozen-desserts"><i class="fas fa-ice-cream"></i> Frozen Desserts</button>
+            <button class="filter-item" data-value="electronics"><i class="fas fa-laptop"></i> Electronics</button>
+            <button class="filter-item" data-value="automotive"><i class="fas fa-car"></i> Automotive</button>
+            <button class="filter-item" data-value="food-beverages"><i class="fas fa-utensils"></i> Food & Beverages</button>
+            <button class="filter-item" data-value="health-beauty"><i class="fas fa-spa"></i> Health & Beauty</button>
+            <button class="filter-item" data-value="building"><i class="fas fa-hammer"></i> Building Materials</button>
+            <button class="filter-item" data-value="services"><i class="fas fa-briefcase"></i> Professional Services</button>
+            <button class="filter-item" data-value="wholesale"><i class="fas fa-boxes"></i> Wholesale</button>
+          </div>
+        </div>
+
+        <!-- Location Dropdown -->
+        <div class="filter-dropdown" id="locationDropdown">
+          <button class="filter-toggle" id="locToggle" aria-expanded="false" aria-controls="locMenu">
+            <i class="fas fa-map-marker-alt"></i>
+            <span class="toggle-label" id="locLabel">All Locations</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="filter-menu" id="locMenu" role="menu">
+            <div class="filter-menu-header">Location</div>
+            <button class="filter-item active" data-value="all"><i class="fas fa-globe-africa"></i> All Locations</button>
+            <button class="filter-item" data-value="gauteng"><i class="fas fa-city"></i> Gauteng</button>
+            <button class="filter-item" data-value="lenasia"><i class="fas fa-mountain"></i> Lenasia</button>
+            <button class="filter-item" data-value="cape-town"><i class="fas fa-mountain"></i> Cape Town</button>
+            <button class="filter-item" data-value="kwazulu-natal"><i class="fas fa-water"></i> KwaZulu-Natal</button>
+            <button class="filter-item" data-value="eastern-cape"><i class="fas fa-sun"></i> Eastern Cape</button>
+            <button class="filter-item" data-value="free-state"><i class="fas fa-tractor"></i> Free State</button>
+            <button class="filter-item" data-value="limpopo"><i class="fas fa-tree"></i> Limpopo</button>
+            <button class="filter-item" data-value="mpumalanga"><i class="fas fa-cloud-sun"></i> Mpumalanga</button>
+            <button class="filter-item" data-value="north-west"><i class="fas fa-compass"></i> North West</button>
+            <button class="filter-item" data-value="northern-cape"><i class="fas fa-desert"></i> Northern Cape</button>
+            <div class="filter-divider"></div>
+            <button class="filter-item location-detect" id="detectLocation"><i class="fas fa-location-crosshairs"></i> Use My Location</button>
+          </div>
+        </div>
+      </div>
       
-      <!-- Hamburger -->
+      <!-- Hamburger Menu (always aligned right in bottom row) -->
       <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
-  </header>
+    
+  </div>
+  
+  <!-- Active Filters & Results Count (below header rows) -->
+  <div class="container">
+    <div class="active-filters-wrapper" id="activeFiltersWrapper"></div>
+    <div id="resultsCount" class="results-count"></div>
+  </div>
+</header>
   
   <!-- Slider Container -->
-  <div id="slider-container" class="slider-section"></div>
+  <div id="slider-container"></div>
   
-  <!-- Filter Bar - NICHES -->
-  <div class="filter-bar-compact" id="filterBar">
-    <div class="filter-icon">
-      <img src="images-logo/bee.jpg" alt="Shop local" loading="lazy">
-    </div>
-
-    <!-- Niche Dropdown -->
-    <div class="filter-dropdown" id="nicheDropdown">
-      <button class="filter-toggle" id="nicheToggle" aria-expanded="false" aria-controls="nicheMenu">
-        <i class="fas fa-th-large"></i>
-        <span class="toggle-label" id="nicheLabel">All Niches</span>
-        <i class="fas fa-chevron-down"></i>
-      </button>
-      <div class="filter-menu" id="nicheMenu" role="menu">
-        <div class="filter-menu-header">Niche</div>
-        <button class="filter-item active" data-value="all"><i class="fas fa-th"></i> All Niches</button>
-        <button class="filter-item" data-value="household-essentials"><i class="fas fa-house"></i> Household Essentials</button>
-         <button class="filter-item" data-value="baking"><i class="fas fa-bread-slice"></i> Baking</button>
-         <button class="filter-item" data-value="frozen-desserts"><i class="fas fa-ice-cream"></i> Frozen Desserts</button>
-        <button class="filter-item" data-value="electronics"><i class="fas fa-laptop"></i> Electronics</button>
-        <button class="filter-item" data-value="automotive"><i class="fas fa-car"></i> Automotive</button>
-        <button class="filter-item" data-value="food-beverages"><i class="fas fa-utensils"></i> Food & Beverages</button>
-        <button class="filter-item" data-value="health-beauty"><i class="fas fa-spa"></i> Health & Beauty</button>
-        <button class="filter-item" data-value="building"><i class="fas fa-hammer"></i> Building Materials</button>
-        <button class="filter-item" data-value="services"><i class="fas fa-briefcase"></i> Professional Services</button>
-        <button class="filter-item" data-value="wholesale"><i class="fas fa-boxes"></i> Wholesale</button>
-      </div>
-    </div>
-
-    <!-- Location Dropdown -->
-    <div class="filter-dropdown" id="locationDropdown">
-      <button class="filter-toggle" id="locToggle" aria-expanded="false" aria-controls="locMenu">
-        <i class="fas fa-map-marker-alt"></i>
-        <span class="toggle-label" id="locLabel">All Locations</span>
-        <i class="fas fa-chevron-down"></i>
-      </button>
-      <div class="filter-menu" id="locMenu" role="menu">
-        <div class="filter-menu-header">Location</div>
-        <button class="filter-item active" data-value="all"><i class="fas fa-globe-africa"></i> All Locations</button>
-        <button class="filter-item" data-value="gauteng"><i class="fas fa-city"></i> Gauteng</button>
-        <button class="filter-item" data-value="lenasia"><i class="fas fa-mountain"></i> Lenasia</button>
-        <button class="filter-item" data-value="cape-town"><i class="fas fa-mountain"></i> Cape Town</button>
-        <button class="filter-item" data-value="kwazulu-natal"><i class="fas fa-water"></i> KwaZulu-Natal</button>
-        <button class="filter-item" data-value="eastern-cape"><i class="fas fa-sun"></i> Eastern Cape</button>
-        <button class="filter-item" data-value="free-state"><i class="fas fa-tractor"></i> Free State</button>
-        <button class="filter-item" data-value="limpopo"><i class="fas fa-tree"></i> Limpopo</button>
-        <button class="filter-item" data-value="mpumalanga"><i class="fas fa-cloud-sun"></i> Mpumalanga</button>
-        <button class="filter-item" data-value="north-west"><i class="fas fa-compass"></i> North West</button>
-        <button class="filter-item" data-value="northern-cape"><i class="fas fa-desert"></i> Northern Cape</button>
-        <div class="filter-divider"></div>
-        <button class="filter-item location-detect" id="detectLocation"><i class="fas fa-location-crosshairs"></i> Use My Location</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="active-filters-wrapper" id="activeFiltersWrapper"></div>
-  <div id="resultsCount" class="results-count"></div>
+  
   
   <!-- Main Content -->
   <main id="main-content" class="container">
@@ -2143,7 +2568,8 @@ const BUSINESS_WHATSAPP = {
   'dainty-delicacies': '27840967330',  // Dainty Delicacies
   'nothing-fancy': '27710218554',      // Nothing Fancy
   'butcher-block': '27615023930',      // Butcher Block
-  'polar-ice-cream': '27604368376'     // Polar Ice Cream
+  'polar-ice-cream': '27604368376',    // Polar Ice Cream
+  'sweetlane': '27836120605'           // Sweetlane
   // ➕ Add more businesses as needed
 };
     
@@ -2161,6 +2587,7 @@ const BUSINESS_WHATSAPP = {
       },
       locations: {
         'gauteng': 'Gauteng',
+        'johannesburg': 'Johannesburg',
         'cape-town': 'Cape Town',
         'kwazulu-natal': 'KwaZulu-Natal',
         'eastern-cape': 'Eastern Cape',
@@ -2601,31 +3028,20 @@ add(product) {
       window.open(url, '_blank');
     }
 
-    // ===== SLIDER LOADER =====
-    function loadSlider() {
-      fetch('slider.html')
-        .then(res => res.ok ? res.text() : Promise.reject('slider.html not found'))
-        .then(html => {
-          document.getElementById('slider-container').innerHTML = html;
-          if (typeof Swiper !== 'undefined') {
-            new Swiper('.mySwiper', {
-              spaceBetween: 0,
-              centeredSlides: true,
-              autoplay: { delay: 3000, disableOnInteraction: false },
-              pagination: { el: '.swiper-pagination', clickable: true },
-              navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-              loop: true,
-              effect: 'fade',
-              fadeEffect: { crossFade: true }
-            });
-          }
-        })
-        .catch(err => {
-          console.error('Slider error:', err);
-          document.getElementById('slider-container').innerHTML = 
-            `<div style="text-align:center;padding:30px;color:var(--primary);">⚠️ Slider unavailable</div>`;
-        });
-    }
+   // Swiper - load Swiper library dynamically then fetch and initialize the slider
+(function loadSwiperAndInit() {
+const swiperScript = document.createElement('script');
+swiperScript.src = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js';
+swiperScript.async = true;
+swiperScript.onload = () => {
+fetch('slider.html').then(response => response.text()).then(html => {
+document.getElementById('slider-container').innerHTML = html;
+if (typeof Swiper !== 'undefined') { new Swiper('.mySwiper', { spaceBetween: 0, centeredSlides: true, autoplay: { delay: 3000, disableOnInteraction: false }, pagination: { el: '.swiper-pagination', clickable: true }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }, loop: true, effect: 'fade', fadeEffect: { crossFade: true }, touchRatio: 1, simulateTouch: true }); }
+}).catch(err => { console.error('Slider failed to load:', err); document.getElementById('slider-container').innerHTML = '<p style="text-align:center; padding:40px; color:#a30909; font-weight:600;">❌ Slider error: ' + err.message + '</p>'; });
+};
+swiperScript.onerror = () => { console.error('Failed to load Swiper library.'); document.getElementById('slider-container').innerHTML = '<p style="text-align:center; padding:40px; color:#a30909; font-weight:600;">❌ Failed to load Swiper library.</p>'; };
+document.head.appendChild(swiperScript);
+})();
 
    // ===== GLOBAL CART FUNCTIONS =====
 
@@ -2948,10 +3364,10 @@ window.checkoutAllWhatsApp = function() {
         ...(window.DOUGHANDCO_DATA || []).map(p => ({ ...p, source: 'doughandco', businessName: 'Dough & Co' })),
         ...(window.SHUPZ_DATA || []).map(p => ({ ...p, source: 'shupz', businessName: 'Shupz' })),
         ...(window.DAINTY_DATA || []).map(p => ({ ...p, source: 'daintydelicacies', businessName: 'Dainty Delicacies' })),
+        ...(window.BUTCHERBLOCK_DATA || []).map(p => ({ ...p, source: 'butcherblock', businessName: 'Butcher Block' })),
         ...(window.NO_THING_FANCY_DATA || []).map(p => ({ ...p, source: 'nothingfancy', businessName: 'Nothing Fancy' })),
-       ...(window.BUTCHERBLOCK_DATA || []).map(p => ({ ...p, source: 'butcherblock', businessName: 'Butcher Block' })),
-         ...(window.POLAR_DATA || []).map(p => ({ ...p, source: 'polaricecream', businessName: 'Polar Ice Cream' 
-  }))
+        ...(window.SWEETLANE_DATA || []).map(p => ({ ...p, source: 'sweetlane', businessName: 'Sweet Lane' })),
+        ...(window.POLAR_DATA || []).map(p => ({ ...p, source: 'polaricecream', businessName: 'Polar Ice Cream' }))
       ];
       
       if (allProducts.length === 0) {
@@ -2971,6 +3387,7 @@ window.checkoutAllWhatsApp = function() {
   p.source === 'daintydelicacies' ? 'daintydelicacies/index.html' :
   p.source === 'nothingfancy' ? 'nothingfancy/index.html' :
   p.source === 'polaricecream' ? 'polaricecream/index.html' : 
+  p.source === 'sweetlane' ? 'sweetlane/index.html' : 
   p.source === 'butcherblock' ? 'butcherblock/index.html' : 
   'index.html'; // fallback
         
@@ -3047,7 +3464,6 @@ window.checkoutAllWhatsApp = function() {
     // ===== INITIALIZATION =====
     document.addEventListener('DOMContentLoaded', () => {
       Cart.init();
-      loadSlider();
       renderProducts();
       GuidedSearch.init();
       
@@ -3102,5 +3518,6 @@ window.checkoutAllWhatsApp = function() {
   <script src="nothing-fancy/products-nothingfancy.js"> </script>
   <script src="polaricecream/products-polaricecream.js"> </script>
   <script src="butcherblock/products-butcherblock.js"> </script>
+  <script src="/sweetlane/products-sweetlane.js"></script>
 </body>
 </html>
