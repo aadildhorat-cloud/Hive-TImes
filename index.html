@@ -2569,7 +2569,8 @@ const BUSINESS_WHATSAPP = {
   'nothing-fancy': '27710218554',      // Nothing Fancy
   'butcher-block': '27615023930',      // Butcher Block
   'polar-ice-cream': '27604368376',    // Polar Ice Cream
-  'sweetlane': '27836120605'           // Sweetlane
+  'sweetlane': '27836120605',          // Sweetlane
+  'bakenco': '2767 052 7209'           // bakenco
   // ➕ Add more businesses as needed
 };
     
@@ -3360,6 +3361,7 @@ window.checkoutAllWhatsApp = function() {
       if (!grid) return;
       
       const allProducts = [
+        ...(window.POLAR_DATA || []).map(p => ({ ...p, source: 'polaricecream', businessName: 'Polar Ice Cream' })),
         ...(window.PRODUCTS_DATA || []).map(p => ({ ...p, source: 'broadway', businessName: 'Broadway Sweets' })),
         ...(window.DOUGHANDCO_DATA || []).map(p => ({ ...p, source: 'doughandco', businessName: 'Dough & Co' })),
         ...(window.SHUPZ_DATA || []).map(p => ({ ...p, source: 'shupz', businessName: 'Shupz' })),
@@ -3367,7 +3369,7 @@ window.checkoutAllWhatsApp = function() {
         ...(window.BUTCHERBLOCK_DATA || []).map(p => ({ ...p, source: 'butcherblock', businessName: 'Butcher Block' })),
         ...(window.NO_THING_FANCY_DATA || []).map(p => ({ ...p, source: 'nothingfancy', businessName: 'Nothing Fancy' })),
         ...(window.SWEETLANE_DATA || []).map(p => ({ ...p, source: 'sweetlane', businessName: 'Sweet Lane' })),
-        ...(window.POLAR_DATA || []).map(p => ({ ...p, source: 'polaricecream', businessName: 'Polar Ice Cream' }))
+        ...(window.BAKENCO_DATA || []).map(p => ({ ...p, source: 'bakenco', businessName: 'Bake & Co.' }))
       ];
       
       if (allProducts.length === 0) {
@@ -3388,6 +3390,7 @@ window.checkoutAllWhatsApp = function() {
   p.source === 'nothingfancy' ? 'nothingfancy/index.html' :
   p.source === 'polaricecream' ? 'polaricecream/index.html' : 
   p.source === 'sweetlane' ? 'sweetlane/index.html' : 
+  p.source === 'bakenco' ? 'bakenco/index.html' :
   p.source === 'butcherblock' ? 'butcherblock/index.html' : 
   'index.html'; // fallback
         
@@ -3519,5 +3522,6 @@ window.checkoutAllWhatsApp = function() {
   <script src="polaricecream/products-polaricecream.js"> </script>
   <script src="butcherblock/products-butcherblock.js"> </script>
    <script src="sweetlane/products-sweetlane.js"> </script>
+   <script src="bakenco/products-bakenco.js"> </script>
 </body>
 </html>
