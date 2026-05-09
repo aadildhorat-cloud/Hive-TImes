@@ -27,7 +27,11 @@
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="preconnect" href="https://wa.me">
+  <link rel="preconnect" href="https://your-project.supabase.co">
   <link rel="dns-prefetch" href="https://wa.me">
+  
+  <!-- ✅ LCP Fix: Preload hero/first slider image -->
+  <link rel="preload" href="images/hero-slide-1.avif" as="image" fetchpriority="high" imagesrcset="images/hero-slide-1.avif 1200w, images/hero-slide-1.webp 1200w" imagesizes="100vw">
   <link rel="preload" href="images-logo/hive-times-logo.png" as="image" fetchpriority="high">
   
   <!-- 🎨 Async CSS Loading Pattern -->
@@ -118,7 +122,6 @@
       max-width: 100%; 
       height: auto; 
       display: block;
-      aspect-ratio: attr(width) / attr(height);
     }
     
     a { text-decoration: none; color: inherit; transition: var(--transition); }
@@ -176,7 +179,7 @@
       flex-wrap: wrap;
     }
 
-    /* Cart Button */
+    /* Cart Button - ✅ Mobile tap target fix */
     .cart-btn {
       position: relative;
       color: var(--white);
@@ -187,9 +190,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
+      width: 48px; /* ✅ Increased to 48px for accessibility */
+      height: 48px;
       order: 1;
+      min-width: 48px;
+      min-height: 48px;
     }
 
     .cart-btn:hover {
@@ -212,7 +217,6 @@
       align-items: center;
       justify-content: center;
       line-height: 1;
-      /* ✅ CLS Fix: Reserve space */
       min-width: 17px;
       min-height: 17px;
     }
@@ -234,6 +238,7 @@
       color: var(--white);
       font-size: 0.9rem;
       transition: var(--transition);
+      min-height: 44px; /* ✅ Accessible input height */
     }
 
     .search-bar input::placeholder { color: rgba(255,255,255,0.85); }
@@ -252,6 +257,7 @@
       transform: translateY(-50%);
       color: var(--white);
       font-size: 0.95rem;
+      pointer-events: none;
     }
 
     /* Logo */
@@ -261,13 +267,13 @@
       align-items: center;
       gap: 10px;
       margin-left: 0;
+      min-height: 48px;
     }
 
     .logo img {
       height: 42px;
       width: auto;
       border-radius: 6px;
-      /* ✅ CLS Fix: Explicit dimensions */
       aspect-ratio: 1/1;
     }
 
@@ -279,15 +285,19 @@
       color: var(--white);
     }
 
-    /* Hamburger Menu */
+    /* Hamburger Menu - ✅ Mobile tap target fix */
     .hamburger {
       display: flex;
       flex-direction: column;
       gap: 4px;
-      padding: 7px;
+      padding: 12px; /* ✅ Increased padding for 48px tap target */
       cursor: pointer;
       margin-left: 8px;
       flex-shrink: 0;
+      min-width: 48px;
+      min-height: 48px;
+      justify-content: center;
+      align-items: center;
     }
 
     .hamburger span {
@@ -329,7 +339,6 @@
       height: 60px;
       object-fit: contain;
       animation: float 3s ease-in-out infinite;
-      /* ✅ CLS Fix */
       aspect-ratio: 1/1;
     }
     @keyframes float {
@@ -346,12 +355,13 @@
       flex-shrink: 0;
     }
 
+    /* ✅ Filter toggle - increased for mobile accessibility */
     .filter-toggle {
       width: 100%;
       background: var(--light);
       border: 1.5px solid var(--border);
       color: var(--secondary);
-      padding: 6px 12px;
+      padding: 8px 12px; /* ✅ Increased padding */
       border-radius: 20px;
       display: flex;
       align-items: center;
@@ -362,7 +372,7 @@
       cursor: pointer;
       transition: var(--transition);
       white-space: nowrap;
-      min-height: 36px;
+      min-height: 48px; /* ✅ 48px minimum tap target */
       overflow: hidden;
     }
     .filter-toggle:hover,
@@ -410,7 +420,6 @@
       z-index: 100;
       border: 1px solid var(--border);
       pointer-events: none;
-      /* ✅ CLS Fix: Reserve space when hidden */
       min-height: 200px;
     }
 
@@ -435,7 +444,7 @@
       width: 100%;
       background: none;
       border: none;
-      padding: 8px 14px;
+      padding: 12px 14px; /* ✅ Increased padding for tap targets */
       display: flex;
       align-items: center;
       gap: 10px;
@@ -444,6 +453,7 @@
       cursor: pointer;
       transition: var(--transition);
       text-align: left;
+      min-height: 44px; /* ✅ Accessible touch target */
     }
     .filter-item:hover { background: var(--light); color: var(--primary); }
     .filter-item.active { background: rgba(163, 9, 9, 0.12); color: var(--primary); font-weight: 600; }
@@ -458,9 +468,141 @@
       padding: 3px 9px; border-radius: 15px; font-size: 0.72rem;
       margin-right: 6px; margin-bottom: 0px;
     }
-    .filter-badge button { background: none; border: none; color: var(--gray); cursor: pointer; padding: 0 2px; font-size: 0.8rem; }
-    .clear-all-filters { background: none; border: none; color: var(--primary); font-weight: 600; font-size: 0.72rem; cursor: pointer; margin-left: 6px; }
+    .filter-badge button { background: none; border: none; color: var(--gray); cursor: pointer; padding: 0 2px; font-size: 0.8rem; min-width: 24px; min-height: 24px; }
+    .clear-all-filters { background: none; border: none; color: var(--primary); font-weight: 600; font-size: 0.72rem; cursor: pointer; margin-left: 6px; min-height: 32px; padding: 0 8px; }
     .results-count { text-align: center; color: var(--gray); font-size: 0.72rem; margin-bottom: 0.75rem; }
+
+    /* ===== 🛍️ SHOP BY NICHE SECTION ===== */
+    .shop-by-niche {
+      padding: 2rem 0 3rem;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .niche-section-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .niche-section-title {
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 0.75rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .niche-section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--primary);
+      margin: 0.5rem auto 0;
+      border-radius: 3px;
+    }
+
+    .niche-section-subtitle {
+      color: var(--gray);
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .niche-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .niche-card {
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      min-height: 120px;
+    }
+
+    .niche-card:hover,
+    .niche-card:focus {
+      border-color: var(--primary);
+      background: rgba(139, 0, 0, 0.03);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+      outline: none;
+    }
+
+    .niche-card .icon {
+      font-size: 2rem;
+      color: var(--primary);
+      transition: var(--transition);
+    }
+
+    .niche-card:hover .icon,
+    .niche-card:focus .icon {
+      transform: scale(1.1);
+      color: var(--primary-dark);
+    }
+
+    .niche-card span {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--secondary);
+      line-height: 1.3;
+    }
+
+    .niche-card.active {
+      border-color: var(--primary);
+      background: rgba(139, 0, 0, 0.08);
+      box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
+    }
+
+    .niche-card.active .icon {
+      color: var(--primary-dark);
+    }
+
+    .niche-card.active span {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* Responsive for niche grid */
+    @media (max-width: 768px) {
+      .niche-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+      }
+      .niche-card {
+        padding: 1rem 0.75rem;
+        min-height: 100px;
+      }
+      .niche-card .icon { font-size: 1.5rem; }
+      .niche-card span { font-size: 0.75rem; }
+    }
+
+    @media (max-width: 480px) {
+      .niche-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+      }
+      .niche-card {
+        padding: 0.75rem 0.5rem;
+        min-height: 90px;
+      }
+      .niche-card .icon { font-size: 1.25rem; }
+      .niche-card span { font-size: 0.7rem; }
+    }
 
     /* ===== 📱 RESPONSIVE BREAKPOINTS ===== */
     @media (max-width: 1023px) {
@@ -473,14 +615,14 @@
         min-width: 150px !important;
         max-width: 150px !important;
       }
-      .filter-toggle { padding: 5px 10px; font-size: 0.72rem; }
+      .filter-toggle { padding: 8px 10px; font-size: 0.72rem; }
       .filter-menu { min-width: 220px; }
     }
 
     @media (max-width: 768px) {
       header { padding: 0.0rem 0; }
       .header-top-row { justify-content: flex-start; padding: 0 12px; gap: 0.5rem; flex-wrap: nowrap; }
-      .cart-btn { width: 36px; height: 36px; font-size: 1rem; order: 1; }
+      .cart-btn { width: 48px; height: 48px; font-size: 1rem; order: 1; }
       .search-bar { order: 2; max-width: 100%; width: 100%; margin-top: 0rem; }
       .search-bar input { padding: 8px 12px 8px 34px; font-size: 0.85rem; }
       .logo { order: 3; margin-left: 0; }
@@ -496,12 +638,18 @@
         min-width: 110px !important;
         max-width: 110px !important;
       }
-      .filter-toggle { padding: 5px 8px; font-size: 0.7rem; min-height: 34px; border-radius: 18px; justify-content: center; }
+      .filter-toggle { 
+        padding: 8px 8px; 
+        font-size: 0.7rem; 
+        min-height: 48px; /* ✅ Mobile tap target */
+        border-radius: 18px; 
+        justify-content: center; 
+      }
       .toggle-label { display: none; }
       .filter-toggle i.fa-chevron-down { margin-left: 0; }
       .filter-menu { min-width: 200px; left: 50%; transform: translateX(-50%) translateY(-6px); }
       .filter-menu.show { transform: translateX(-50%) translateY(0); }
-      .hamburger { margin-left: 0; padding: 6px; }
+      .hamburger { margin-left: 0; padding: 12px; }
       .hamburger span { width: 22px; height: 2px; }
     }
 
@@ -517,7 +665,7 @@
         min-width: 95px !important;
         max-width: 95px !important;
       }
-      .filter-toggle { padding: 4px 6px; font-size: 0.65rem; min-height: 32px; }
+      .filter-toggle { padding: 8px 6px; font-size: 0.65rem; min-height: 48px; }
       .filter-menu { min-width: 180px; font-size: 0.7rem; }
       .hamburger span { width: 20px; height: 2px; }
     }
@@ -534,6 +682,7 @@
       .filter-menu { transition: none; transform: none; }
       .filter-menu.show { transform: none; }
       .cart-btn:hover, .hamburger:hover span { transform: none; }
+      .niche-card:hover, .niche-card:focus { transform: none; }
     }
     
     /* ===== 🧭 SIDEBAR NAVIGATION ===== */
@@ -582,9 +731,14 @@
       color: var(--white);
       font-size: 1.4rem;
       cursor: pointer;
-      padding: 4px;
+      padding: 8px; /* ✅ Accessible padding */
       border-radius: 50%;
       transition: var(--transition);
+      min-width: 44px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     
     .sidebar-close:hover { background: rgba(255,255,255,0.1); }
@@ -606,6 +760,7 @@
       font-size: 0.95rem;
       transition: var(--transition);
       border-left: 3px solid transparent;
+      min-height: 48px; /* ✅ Accessible touch target */
     }
     
     .sidebar-nav a:hover,
@@ -811,7 +966,6 @@
       aspect-ratio: 1/1;
     }
     
-    /* ✅ FIX: Use .product-name class instead of semantic H3 for styling */
     .product-name {
       font-size: 0.95rem;
       font-weight: 600;
@@ -826,7 +980,6 @@
       overflow: hidden;
     }
     
-    /* Only use .product-title for actual sub-section headings */
     .product-title {
       font-size: 1.1rem;
       font-weight: 700;
@@ -873,6 +1026,10 @@
       font-size: 0.8rem;
       transition: var(--transition);
       white-space: nowrap;
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
     
     .btn-add-cart:hover {
@@ -893,6 +1050,7 @@
       align-items: center;
       gap: 5px;
       text-decoration: none;
+      min-height: 36px;
     }
     
     .btn-visit-website:hover {
@@ -1015,9 +1173,14 @@
     .modal-close-btn {
       font-size: 1.4rem;
       color: var(--gray);
-      padding: 4px;
+      padding: 8px;
       border-radius: 50%;
       transition: var(--transition);
+      min-width: 44px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     
     .modal-close-btn:hover {
@@ -1085,8 +1248,8 @@
     }
     
     .qty-btn {
-      width: 24px;
-      height: 24px;
+      width: 32px;
+      height: 32px;
       border: 1px solid var(--border);
       border-radius: 5px;
       font-weight: 600;
@@ -1095,6 +1258,8 @@
       align-items: center;
       justify-content: center;
       transition: var(--transition);
+      min-width: 32px;
+      min-height: 32px;
     }
     
     .qty-btn:hover {
@@ -1112,9 +1277,14 @@
     .cart-remove {
       color: #e74c3c;
       font-size: 1rem;
-      padding: 4px;
+      padding: 6px;
       border-radius: 50%;
       transition: var(--transition);
+      min-width: 36px;
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
     
     .cart-remove:hover {
@@ -1157,6 +1327,7 @@
       justify-content: center;
       gap: 6px;
       transition: var(--transition);
+      min-height: 48px; /* ✅ Accessible button */
     }
     
     .btn-whatsapp:hover {
@@ -1173,6 +1344,7 @@
       font-weight: 600;
       transition: var(--transition);
       font-size: 0.9rem;
+      min-height: 44px;
     }
     
     .btn-continue:hover { background: #e9ecef; }
@@ -1217,14 +1389,16 @@
       font-size: 1.8rem;
       color: var(--gray);
       background: var(--light);
-      width: 36px;
-      height: 36px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: var(--transition);
       z-index: 2;
+      min-width: 44px;
+      min-height: 44px;
     }
     
     .product-modal-close:hover {
@@ -1295,6 +1469,8 @@
       transition: var(--transition);
       flex-shrink: 0;
       aspect-ratio: 1/1;
+      min-width: 60px;
+      min-height: 60px;
     }
     
     .thumbnail-strip img:hover,
@@ -1328,11 +1504,14 @@
       aspect-ratio: 1/1;
     }
     
+    /* ✅ FIX: Proper heading with fallback text and ARIA live region */
     .product-modal-title {
       font-size: 1.4rem;
       font-weight: 700;
       color: var(--secondary);
       line-height: 1.3;
+      min-height: 2.6rem;
+      margin: 0.5rem 0;
     }
     
     .product-modal-description {
@@ -1407,6 +1586,7 @@
       justify-content: center;
       gap: 8px;
       transition: var(--transition);
+      min-height: 48px;
     }
     
     .modal-add-btn {
@@ -1444,6 +1624,7 @@
       display: flex;
       align-items: center;
       gap: 6px;
+      min-height: 44px;
     }
     
     .product-details summary::-webkit-details-marker { display: none; }
@@ -1500,6 +1681,7 @@
       align-items: center;
       gap: 6px;
       font-size: 0.9rem;
+      min-height: 40px;
     }
     
     .footer-links a:hover {
@@ -1523,8 +1705,8 @@
     }
     
     .social-links a {
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       background: rgba(255,255,255,0.1);
       display: flex;
@@ -1532,6 +1714,8 @@
       justify-content: center;
       font-size: 1rem;
       transition: var(--transition);
+      min-width: 40px;
+      min-height: 40px;
     }
     
     .social-links a:hover {
@@ -1587,6 +1771,7 @@
       border: 2px solid var(--border);
       transition: all 0.2s ease;
       cursor: pointer;
+      min-height: 72px;
     }
 
     .business-cart-item:hover {
@@ -1604,6 +1789,24 @@
       .business-cart-item { padding: 12px; gap: 10px; }
       .business-cart-item img { width: 44px; height: 44px; aspect-ratio: 1/1; }
     }
+    
+    /* ===== 🎯 Skeleton Loading States ===== */
+    .skeleton {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: skeleton-loading 1.5s infinite;
+      border-radius: 8px;
+    }
+    
+    @keyframes skeleton-loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    
+    .skeleton-img { aspect-ratio: 4/3; width: 100%; }
+    .skeleton-text { height: 16px; margin: 8px 0; }
+    .skeleton-text.short { width: 60%; }
+    .skeleton-text.long { width: 100%; }
   </style>
 </head>
 <body>
@@ -1612,14 +1815,10 @@
   <!-- Sidebar Navigation -->
   <nav class="sidebar" id="sidebar" aria-label="Main Navigation">
     <div class="sidebar-header">
-      <div class="sidebar-logo">
-        <picture>
-          <source srcset="images-logo/hive-times-logo.webp" type="image/webp">
-          <source srcset="images-logo/hive-times-logo.avif" type="image/avif">
-          <img src="images-logo/hive-times-logo.png" alt="Hive Times" width="36" height="36" loading="lazy">
-        </picture>
-        <span>Hive Times</span>
-      </div>
+     <div class="sidebar-logo">
+  <img src="images-logo/hive-times-logo.png" alt="Hive Times logo" width="36" height="36" loading="lazy">
+  <span>Hive Times</span>
+</div>
       <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">&times;</button>
     </div>
     
@@ -1659,25 +1858,22 @@
       <div class="header-top-row">
         <!-- Cart Button -->
         <button class="cart-btn" onclick="openCart()" aria-label="View cart">
-          <i class="fas fa-shopping-cart"></i>
+          <i class="fas fa-shopping-cart" aria-hidden="true"></i>
           <span class="cart-count" id="cartCount">0</span>
         </button>
         
         <!-- Search Bar -->
         <div class="search-bar">
-          <i class="fas fa-search"></i>
+          <i class="fas fa-search" aria-hidden="true"></i>
           <input type="search" id="productSearch" placeholder="Search products..." aria-label="Search products">
         </div>
         
         <!-- Logo with Picture Element for WebP/AVIF -->
-        <a href="https://hivetimes.co.za/" class="logo" aria-label="Hive Times Home">
-          <picture>
-            <source srcset="images-logo/hive-times-logo.webp" type="image/webp">
-            <source srcset="images-logo/hive-times-logo.avif" type="image/avif">
-            <img src="images-logo/hive-times-logo.png" alt="Hive Times" width="42" height="42" loading="lazy">
-          </picture>
-          <span class="logo-text">Hive Times</span>
-        </a>
+       <!-- Logo -->
+<a href="https://hivetimes.co.za/" class="logo" aria-label="Hive Times Home">
+  <img src="images-logo/hive-times-logo.png" alt="Hive Times logo" width="62" height="62" loading="lazy">
+  <span class="logo-text">Hive Times</span>
+</a>
       </div>
       
       <!-- BOTTOM ROW: Filter Bar + Hamburger Menu -->
@@ -1685,63 +1881,62 @@
         <!-- Filter Bar - NICHES & LOCATIONS -->
         <div class="filter-bar-compact" id="filterBar">
           <div class="filter-icon">
-            <picture>
-              <source srcset="images-logo/bee.webp" type="image/webp">
-              <img src="images-logo/bee.jpg" alt="Shop local" width="60" height="60" loading="lazy">
-            </picture>
+           
+              <img src="images-logo/bee.jpg" alt="Shop local South African businesses" width="60" height="60" loading="lazy">
+        
           </div>
 
           <!-- Niche Dropdown -->
           <div class="filter-dropdown" id="nicheDropdown">
             <button class="filter-toggle" id="nicheToggle" aria-expanded="false" aria-controls="nicheMenu">
-              <i class="fas fa-th-large"></i>
+              <i class="fas fa-th-large" aria-hidden="true"></i>
               <span class="toggle-label" id="nicheLabel">All Niches</span>
-              <i class="fas fa-chevron-down"></i>
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
             </button>
-            <div class="filter-menu" id="nicheMenu" role="menu">
+            <div class="filter-menu" id="nicheMenu" role="menu" aria-label="Filter by niche">
               <div class="filter-menu-header">Niche</div>
-              <button class="filter-item active" data-value="all"><i class="fas fa-th"></i> All Niches</button>
-              <button class="filter-item" data-value="household-essentials"><i class="fas fa-house"></i> Household Essentials</button>
-              <button class="filter-item" data-value="baking"><i class="fas fa-bread-slice"></i> Baking</button>
-              <button class="filter-item" data-value="frozen-desserts"><i class="fas fa-ice-cream"></i> Frozen Desserts</button>
-              <button class="filter-item" data-value="electronics"><i class="fas fa-laptop"></i> Electronics</button>
-              <button class="filter-item" data-value="automotive"><i class="fas fa-car"></i> Automotive</button>
-              <button class="filter-item" data-value="food-beverages"><i class="fas fa-utensils"></i> Food & Beverages</button>
-              <button class="filter-item" data-value="health-beauty"><i class="fas fa-spa"></i> Health & Beauty</button>
-              <button class="filter-item" data-value="building"><i class="fas fa-hammer"></i> Building Materials</button>
-              <button class="filter-item" data-value="services"><i class="fas fa-briefcase"></i> Professional Services</button>
-              <button class="filter-item" data-value="wholesale"><i class="fas fa-boxes"></i> Wholesale</button>
+              <button class="filter-item active" data-value="all"><i class="fas fa-th" aria-hidden="true"></i> All Niches</button>
+              <button class="filter-item" data-value="household-essentials"><i class="fas fa-house" aria-hidden="true"></i> Household Essentials</button>
+              <button class="filter-item" data-value="baking"><i class="fas fa-bread-slice" aria-hidden="true"></i> Baking</button>
+              <button class="filter-item" data-value="frozen-desserts"><i class="fas fa-ice-cream" aria-hidden="true"></i> Frozen Desserts</button>
+              <button class="filter-item" data-value="electronics"><i class="fas fa-laptop" aria-hidden="true"></i> Electronics</button>
+              <button class="filter-item" data-value="automotive"><i class="fas fa-car" aria-hidden="true"></i> Automotive</button>
+              <button class="filter-item" data-value="food-beverages"><i class="fas fa-utensils" aria-hidden="true"></i> Food & Beverages</button>
+              <button class="filter-item" data-value="health-beauty"><i class="fas fa-spa" aria-hidden="true"></i> Health & Beauty</button>
+              <button class="filter-item" data-value="building"><i class="fas fa-hammer" aria-hidden="true"></i> Building Materials</button>
+              <button class="filter-item" data-value="services"><i class="fas fa-briefcase" aria-hidden="true"></i> Professional Services</button>
+              <button class="filter-item" data-value="wholesale"><i class="fas fa-boxes" aria-hidden="true"></i> Wholesale</button>
             </div>
           </div>
 
           <!-- Location Dropdown -->
           <div class="filter-dropdown" id="locationDropdown">
             <button class="filter-toggle" id="locToggle" aria-expanded="false" aria-controls="locMenu">
-              <i class="fas fa-map-marker-alt"></i>
+              <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
               <span class="toggle-label" id="locLabel">All Locations</span>
-              <i class="fas fa-chevron-down"></i>
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
             </button>
-            <div class="filter-menu" id="locMenu" role="menu">
+            <div class="filter-menu" id="locMenu" role="menu" aria-label="Filter by location">
               <div class="filter-menu-header">Location</div>
-              <button class="filter-item active" data-value="all"><i class="fas fa-globe-africa"></i> All Locations</button>
-              <button class="filter-item" data-value="gauteng"><i class="fas fa-city"></i> Gauteng</button>
-              <button class="filter-item" data-value="lenasia"><i class="fas fa-mountain"></i> Lenasia</button>
-              <button class="filter-item" data-value="cape-town"><i class="fas fa-mountain"></i> Cape Town</button>
-              <button class="filter-item" data-value="kwazulu-natal"><i class="fas fa-water"></i> KwaZulu-Natal</button>
-              <button class="filter-item" data-value="eastern-cape"><i class="fas fa-sun"></i> Eastern Cape</button>
-              <button class="filter-item" data-value="free-state"><i class="fas fa-tractor"></i> Free State</button>
-              <button class="filter-item" data-value="limpopo"><i class="fas fa-tree"></i> Limpopo</button>
-              <button class="filter-item" data-value="mpumalanga"><i class="fas fa-cloud-sun"></i> Mpumalanga</button>
-              <button class="filter-item" data-value="north-west"><i class="fas fa-compass"></i> North West</button>
-              <button class="filter-item" data-value="northern-cape"><i class="fas fa-desert"></i> Northern Cape</button>
+              <button class="filter-item active" data-value="all"><i class="fas fa-globe-africa" aria-hidden="true"></i> All Locations</button>
+              <button class="filter-item" data-value="gauteng"><i class="fas fa-city" aria-hidden="true"></i> Gauteng</button>
+              <button class="filter-item" data-value="lenasia"><i class="fas fa-mountain" aria-hidden="true"></i> Lenasia</button>
+              <button class="filter-item" data-value="cape-town"><i class="fas fa-mountain" aria-hidden="true"></i> Cape Town</button>
+              <button class="filter-item" data-value="kwazulu-natal"><i class="fas fa-water" aria-hidden="true"></i> KwaZulu-Natal</button>
+              <button class="filter-item" data-value="eastern-cape"><i class="fas fa-sun" aria-hidden="true"></i> Eastern Cape</button>
+              <button class="filter-item" data-value="free-state"><i class="fas fa-tractor" aria-hidden="true"></i> Free State</button>
+              <button class="filter-item" data-value="limpopo"><i class="fas fa-tree" aria-hidden="true"></i> Limpopo</button>
+              <button class="filter-item" data-value="mpumalanga"><i class="fas fa-cloud-sun" aria-hidden="true"></i> Mpumalanga</button>
+              <button class="filter-item" data-value="north-west"><i class="fas fa-compass" aria-hidden="true"></i> North West</button>
+              <button class="filter-item" data-value="northern-cape"><i class="fas fa-desert" aria-hidden="true"></i> Northern Cape</button>
               <div class="filter-divider"></div>
-              <button class="filter-item location-detect" id="detectLocation"><i class="fas fa-location-crosshairs"></i> Use My Location</button>
+              <button class="filter-item location-detect" id="detectLocation"><i class="fas fa-location-crosshairs" aria-hidden="true"></i> Use My Location</button>
             </div>
           </div>
         </div>
         
         <!-- Hamburger Menu -->
-        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -1756,6 +1951,63 @@
   
   <!-- Slider Container -->
   <div id="slider-container"></div>
+  
+  <!-- 🛍️ SHOP BY NICHE SECTION - NEWLY ADDED -->
+  <section class="shop-by-niche" aria-labelledby="nicheSectionTitle">
+    <div class="container">
+      <div class="niche-section-header">
+        <h2 class="niche-section-title" id="nicheSectionTitle">Shop by Niche</h2>
+        <p class="niche-section-subtitle">Browse our curated marketplace categories and discover local South African businesses specializing in what you need.</p>
+      </div>
+      
+      <div class="niche-grid" role="list">
+        <button class="niche-card active" data-niche="all" onclick="GuidedSearch.setNiche('all', 'All Niches'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="true">
+          <span class="icon" aria-hidden="true">🐝</span>
+          <span>All Niches</span>
+        </button>
+        <button class="niche-card" data-niche="household-essentials" onclick="GuidedSearch.setNiche('household-essentials', 'Household Essentials'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
+          <span class="icon" aria-hidden="true">🏠</span>
+          <span>Household</span>
+        </button>
+        <button class="niche-card" data-niche="baking" onclick="GuidedSearch.setNiche('baking', 'Baking'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
+          <span class="icon" aria-hidden="true">🍰</span>
+          <span>Baking</span>
+        </button>
+        <button class="niche-card" data-niche="frozen-desserts" onclick="GuidedSearch.setNiche('frozen-desserts', 'Frozen Desserts'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
+          <span class="icon" aria-hidden="true">🍦</span>
+          <span>Frozen</span>
+        </button>
+        <button class="niche-card" data-niche="electronics" onclick="GuidedSearch.setNiche('electronics', 'Electronics'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
+          <span class="icon" aria-hidden="true">🔌</span>
+          <span>Electronics</span>
+        </button>
+        <button class="niche-card" data-niche="automotive" onclick="GuidedSearch.setNiche('automotive', 'Automotive'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
+          <span class="icon" aria-hidden="true">🚗</span>
+          <span>Automotive</span>
+        </button>
+        <button class="niche-card" data-niche="food-beverages" onclick="GuidedSearch.setNiche('food-beverages', 'Food & Beverages'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
+          <span class="icon" aria-hidden="true">🍽️</span>
+          <span>Food & Bev</span>
+        </button>
+        <button class="niche-card" data-niche="health-beauty" onclick="GuidedSearch.setNiche('health-beauty', 'Health & Beauty'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
+          <span class="icon" aria-hidden="true">💄</span>
+          <span>Health & Beauty</span>
+        </button>
+        <button class="niche-card" data-niche="building" onclick="GuidedSearch.setNiche('building', 'Building Materials'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
+          <span class="icon" aria-hidden="true">🔨</span>
+          <span>Building</span>
+        </button>
+        <button class="niche-card" data-niche="services" onclick="GuidedSearch.setNiche('services', 'Professional Services'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
+          <span class="icon" aria-hidden="true">💼</span>
+          <span>Professional</span>
+        </button>
+        <button class="niche-card" data-niche="wholesale" onclick="GuidedSearch.setNiche('wholesale', 'Wholesale'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
+          <span class="icon" aria-hidden="true">📦</span>
+          <span>Wholesale</span>
+        </button>
+      </div>
+    </div>
+  </section>
   
   <!-- Main Content -->
   <main id="main-content" class="container">
@@ -1838,7 +2090,57 @@
     </section>
     
     <!-- Product Grid Container -->
-    <div class="businesses-grid" id="hive-products-grid"></div>
+    <div class="businesses-grid" id="hive-products-grid">
+      <!-- Skeleton loading state shown while JS loads products -->
+      <div class="block product-card skeleton">
+        <div class="skeleton-img"></div>
+        <div class="info product-content">
+          <div class="product-business skeleton-text short"></div>
+          <div class="product-name skeleton-text"></div>
+          <div class="product-description skeleton-text long"></div>
+          <div class="product-footer">
+            <div class="product-price skeleton-text short"></div>
+            <div class="btn-add-cart skeleton-text short"></div>
+          </div>
+        </div>
+      </div>
+      <div class="block product-card skeleton">
+        <div class="skeleton-img"></div>
+        <div class="info product-content">
+          <div class="product-business skeleton-text short"></div>
+          <div class="product-name skeleton-text"></div>
+          <div class="product-description skeleton-text long"></div>
+          <div class="product-footer">
+            <div class="product-price skeleton-text short"></div>
+            <div class="btn-add-cart skeleton-text short"></div>
+          </div>
+        </div>
+      </div>
+      <div class="block product-card skeleton">
+        <div class="skeleton-img"></div>
+        <div class="info product-content">
+          <div class="product-business skeleton-text short"></div>
+          <div class="product-name skeleton-text"></div>
+          <div class="product-description skeleton-text long"></div>
+          <div class="product-footer">
+            <div class="product-price skeleton-text short"></div>
+            <div class="btn-add-cart skeleton-text short"></div>
+          </div>
+        </div>
+      </div>
+      <div class="block product-card skeleton">
+        <div class="skeleton-img"></div>
+        <div class="info product-content">
+          <div class="product-business skeleton-text short"></div>
+          <div class="product-name skeleton-text"></div>
+          <div class="product-description skeleton-text long"></div>
+          <div class="product-footer">
+            <div class="product-price skeleton-text short"></div>
+            <div class="btn-add-cart skeleton-text short"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
   
   <!-- Footer -->
@@ -1846,11 +2148,8 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <picture>
-            <source srcset="images-logo/hive-times-logo.webp" type="image/webp">
-            <source srcset="images-logo/hive-times-logo.avif" type="image/avif">
-            <img src="images-logo/hive-times-logo.png" alt="Hive Times" width="100" height="100" loading="lazy">
-          </picture>
+          
+            <img src="images-logo/hive-times-logo.png" alt="Hive Times logo" width="100" height="100" loading="lazy">
           <p>Connecting South Africans with trusted local businesses since 2026.</p>
           <div class="social-links">
             <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -1892,13 +2191,13 @@
   </footer>
   
   <!-- Cart Modal - Multi-Business -->
-  <div class="modal-overlay" id="cartModal">
+  <div class="modal-overlay" id="cartModal" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="cart-modal">
       <div class="modal-header">
         <h3 class="modal-title" id="cartModalTitle">
-          <i class="fas fa-shopping-cart"></i> Your Carts
+          <i class="fas fa-shopping-cart" aria-hidden="true"></i> Your Carts
         </h3>
-        <button class="modal-close-btn" onclick="closeCart()" aria-label="Close">&times;</button>
+        <button class="modal-close-btn" onclick="closeCart()" aria-label="Close cart modal">&times;</button>
       </div>
       <div class="modal-body">
         <!-- VIEW 1: Select Business Cart -->
@@ -1921,9 +2220,9 @@
         <div id="businessCartView" class="hidden">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border);">
             <button onclick="Cart.showSelectorView()" style="background:none;border:none;color:var(--primary);cursor:pointer;font-size:0.9rem;display:flex;align-items:center;gap:4px;">
-              <i class="fas fa-arrow-left"></i> Back
+              <i class="fas fa-arrow-left" aria-hidden="true"></i> Back
             </button>
-            <img id="currentBusinessLogo" src="" alt="" style="width:32px;height:32px;border-radius:50%;object-fit:cover;aspect-ratio:1/1;">
+            <img id="currentBusinessLogo" src="images-logo/placeholder-logo.png" alt="Business logo" style="width:32px;height:32px;border-radius:50%;object-fit:cover;aspect-ratio:1/1;">
             <span id="currentBusinessName" style="font-weight:600;color:var(--secondary);"></span>
           </div>
           
@@ -1936,11 +2235,11 @@
           
           <div class="cart-actions">
             <button class="btn-whatsapp" onclick="checkoutBusinessWhatsApp()">
-              <i class="fab fa-whatsapp"></i> Order via WhatsApp
+              <i class="fab fa-whatsapp" aria-hidden="true"></i> Order via WhatsApp
             </button>
             <button class="btn-continue" onclick="Cart.showSelectorView()">View Other Carts</button>
             <button class="btn-continue" style="background:#fee;color:#c00;" onclick="Cart.clearBusinessCart()">
-              <i class="fas fa-trash"></i> Clear This Cart
+              <i class="fas fa-trash" aria-hidden="true"></i> Clear This Cart
             </button>
           </div>
         </div>
@@ -1951,13 +2250,13 @@
   <!-- Product Detail Modal -->
   <div class="modal-overlay" id="productModal" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="product-modal">
-      <button class="product-modal-close" onclick="closeProductModal()" aria-label="Close modal">&times;</button>
+      <button class="product-modal-close" onclick="closeProductModal()" aria-label="Close product modal">&times;</button>
       
       <div class="product-modal-grid">
         <!-- Image Gallery -->
         <div class="product-gallery">
           <div class="main-image">
-            <img id="modalMainImage" src="" alt="">
+            <img id="modalMainImage" src="images-logo/placeholder-product.png" alt="Product image">
           </div>
           <div class="thumbnail-strip" id="modalThumbnails"></div>
         </div>
@@ -1965,18 +2264,24 @@
         <!-- Product Info -->
         <div class="product-modal-info">
           <div class="product-modal-business">
-            <img id="modalBusinessLogo" src="" alt="" class="business-logo-small">
+            <!-- ✅ FIX: Added placeholder src, proper alt, and lazy loading -->
+            <img id="modalBusinessLogo" 
+                 src="images-logo/placeholder-logo.png" 
+                 alt="Business logo" 
+                 class="business-logo-small"
+                 loading="lazy">
             <span id="modalBusinessName"></span>
           </div>
           
-          <h2 id="modalProductName" class="product-modal-title"></h2>
+          <!-- ✅ FIX: Added fallback text and ARIA live region for dynamic content -->
+          <h2 id="modalProductName" class="product-modal-title" aria-live="polite">Loading product...</h2>
           <p id="modalProductDescription" class="product-modal-description"></p>
           
           <div class="product-modal-price">R<span id="modalProductPrice">0.00</span></div>
           
           <!-- Quantity Selector -->
           <div class="quantity-selector">
-            <label>Quantity:</label>
+            <label for="modalQty">Quantity:</label>
             <div class="qty-controls">
               <button class="qty-btn" onclick="updateModalQty(-1)" aria-label="Decrease quantity">−</button>
               <span id="modalQty" class="qty-value">1</span>
@@ -1987,16 +2292,16 @@
           <!-- Actions -->
           <div class="modal-actions">
             <button class="btn-add-cart modal-add-btn" onclick="addToCartFromModal()">
-              <i class="fas fa-cart-plus"></i> Add to Cart
+              <i class="fas fa-cart-plus" aria-hidden="true"></i> Add to Cart
             </button>
             <button class="btn-whatsapp modal-whatsapp-btn" onclick="buyNowWhatsApp()">
-              <i class="fab fa-whatsapp"></i> Buy via WhatsApp
+              <i class="fab fa-whatsapp" aria-hidden="true"></i> Buy via WhatsApp
             </button>
           </div>
           
-          <!-- Additional Info -->
+          <!-- Additional Info - ✅ FIX: Proper heading hierarchy (H3, not skipping from H2) -->
           <details class="product-details">
-            <summary><i class="fas fa-info-circle"></i> Product Details</summary>
+            <summary><i class="fas fa-info-circle" aria-hidden="true"></i> Product Details</summary>
             <div id="modalAdditionalInfo" class="details-content"></div>
           </details>
         </div>
@@ -2063,7 +2368,7 @@
         if (!this.carts[businessId]) {
           this.carts[businessId] = {
             businessId, businessName: product.business,
-            businessLogo: product.businessLogo || 'images-logo/hive-times-logo.png',
+            businessLogo: product.businessLogo || 'images-logo/placeholder-logo.png',
             whatsappNumber: product.whatsappNumber || BUSINESS_WHATSAPP[businessId] || CONFIG.whatsappNumber,
             items: []
           };
@@ -2148,7 +2453,7 @@
         this.currentBusinessId = null;
         document.getElementById('cartSelectorView').classList.remove('hidden');
         document.getElementById('businessCartView').classList.add('hidden');
-        document.getElementById('cartModalTitle').innerHTML = '<i class="fas fa-shopping-cart"></i> Your Carts';
+        document.getElementById('cartModalTitle').innerHTML = '<i class="fas fa-shopping-cart" aria-hidden="true"></i> Your Carts';
         this.renderBusinessSelector();
       },
       
@@ -2158,8 +2463,9 @@
         const cart = this.carts[businessId];
         document.getElementById('cartSelectorView').classList.add('hidden');
         document.getElementById('businessCartView').classList.remove('hidden');
-        document.getElementById('cartModalTitle').innerHTML = `<i class="fas fa-store"></i> ${cart.businessName}'s Cart`;
-        document.getElementById('currentBusinessLogo').src = cart.businessLogo;
+        document.getElementById('cartModalTitle').innerHTML = `<i class="fas fa-store" aria-hidden="true"></i> ${cart.businessName}'s Cart`;
+        document.getElementById('currentBusinessLogo').src = cart.businessLogo || 'images-logo/placeholder-logo.png';
+        document.getElementById('currentBusinessLogo').alt = `${cart.businessName} logo`;
         document.getElementById('currentBusinessName').textContent = cart.businessName;
         this.renderBusinessCart();
       },
@@ -2169,14 +2475,14 @@
         const businesses = Object.values(this.carts);
         const combinedSection = document.getElementById('combinedCheckoutSection');
         if (businesses.length === 0) {
-          container.innerHTML = `<div class="cart-empty" style="padding:2rem;"><i class="fas fa-shopping-basket" style="font-size:2.5rem;opacity:0.5;margin-bottom:0.75rem;"></i><p>Your cart is empty</p><button class="btn-continue" onclick="closeCart()" style="margin-top:1rem;">Continue Shopping</button></div>`;
+          container.innerHTML = `<div class="cart-empty" style="padding:2rem;"><i class="fas fa-shopping-basket" style="font-size:2.5rem;opacity:0.5;margin-bottom:0.75rem;" aria-hidden="true"></i><p>Your cart is empty</p><button class="btn-continue" onclick="closeCart()" style="margin-top:1rem;">Continue Shopping</button></div>`;
           combinedSection.classList.add('hidden');
           return;
         }
         container.innerHTML = businesses.map(cart => {
           const total = cart.items.reduce((s, i) => s + (i.price * i.quantity), 0);
           const count = cart.items.reduce((s, i) => s + i.quantity, 0);
-          return `<div class="business-cart-item" style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--light);border-radius:10px;cursor:pointer;transition:var(--transition);border:2px solid transparent;" onmouseenter="this.style.borderColor='var(--primary)'" onmouseleave="this.style.borderColor='transparent'" onclick="Cart.showBusinessCart('${cart.businessId}')"><img src="${cart.businessLogo}" alt="${cart.businessName}" style="width:50px;height:50px;border-radius:8px;object-fit:cover;background:white;padding:4px;aspect-ratio:1/1;"><div style="flex:1;min-width:0;"><div style="font-weight:600;color:var(--secondary);margin-bottom:2px;">${cart.businessName}</div><div style="font-size:0.85rem;color:var(--gray);">${count} item${count !== 1 ? 's' : ''} • R${total.toFixed(2)}</div></div><i class="fas fa-chevron-right" style="color:var(--primary);font-size:0.9rem;"></i></div>`;
+          return `<div class="business-cart-item" style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--light);border-radius:10px;cursor:pointer;transition:var(--transition);border:2px solid transparent;" onmouseenter="this.style.borderColor='var(--primary)'" onmouseleave="this.style.borderColor='transparent'" onclick="Cart.showBusinessCart('${cart.businessId}')"><img src="${cart.businessLogo || 'images-logo/placeholder-logo.png'}" alt="${cart.businessName} logo" style="width:50px;height:50px;border-radius:8px;object-fit:cover;background:white;padding:4px;aspect-ratio:1/1;"><div style="flex:1;min-width:0;"><div style="font-weight:600;color:var(--secondary);margin-bottom:2px;">${cart.businessName}</div><div style="font-size:0.85rem;color:var(--gray);">${count} item${count !== 1 ? 's' : ''} • R${total.toFixed(2)}</div></div><i class="fas fa-chevron-right" style="color:var(--primary);font-size:0.9rem;" aria-hidden="true"></i></div>`;
         }).join('');
         if (businesses.length > 1) {
           combinedSection.classList.remove('hidden');
@@ -2190,7 +2496,7 @@
         const container = document.getElementById('businessCartItems');
         const totalEl = document.getElementById('businessCartTotal');
         if (cart.items.length === 0) {
-          container.innerHTML = `<div class="cart-empty" style="text-align:center;padding:2rem;"><i class="fas fa-shopping-basket" style="font-size:2rem;opacity:0.5;margin-bottom:0.5rem;"></i><p style="color:var(--gray);">This cart is empty</p></div>`;
+          container.innerHTML = `<div class="cart-empty" style="text-align:center;padding:2rem;"><i class="fas fa-shopping-basket" style="font-size:2rem;opacity:0.5;margin-bottom:0.5rem;" aria-hidden="true"></i><p style="color:var(--gray);">This cart is empty</p></div>`;
           totalEl.textContent = 'R0.00';
           return;
         }
@@ -2203,11 +2509,11 @@
             </div>
             <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
               <div class="cart-item-quantity">
-                <button class="qty-btn" onclick="Cart.update('${cart.businessId}', '${item.id}', -1)">−</button>
+                <button class="qty-btn" onclick="Cart.update('${cart.businessId}', '${item.id}', -1)" aria-label="Decrease quantity">−</button>
                 <span class="qty-value">${item.quantity}</span>
-                <button class="qty-btn" onclick="Cart.update('${cart.businessId}', '${item.id}', 1)">+</button>
+                <button class="qty-btn" onclick="Cart.update('${cart.businessId}', '${item.id}', 1)" aria-label="Increase quantity">+</button>
               </div>
-              <button class="cart-remove" onclick="Cart.remove('${cart.businessId}', '${item.id}')" aria-label="Remove" style="font-size:0.85rem;"><i class="fas fa-trash"></i> Remove</button>
+              <button class="cart-remove" onclick="Cart.remove('${cart.businessId}', '${item.id}')" aria-label="Remove item" style="font-size:0.85rem;"><i class="fas fa-trash" aria-hidden="true"></i> Remove</button>
             </div>
           </div>`).join('');
         totalEl.textContent = `R${this.businessTotal(this.currentBusinessId).toFixed(2)}`;
@@ -2219,15 +2525,20 @@
       currentProduct: null, currentQty: 1,
       open(product) {
         this.currentProduct = product; this.currentQty = 1;
-        document.getElementById('modalMainImage').src = product.image;
-        document.getElementById('modalProductName').textContent = product.name;
+        document.getElementById('modalMainImage').src = product.image || 'images-logo/placeholder-product.png';
+        document.getElementById('modalMainImage').alt = product.name || 'Product image';
+        document.getElementById('modalProductName').textContent = product.name || 'Product';
         document.getElementById('modalProductDescription').textContent = product.description || 'Premium product from ' + (product.businessName || 'Hive Times');
-        document.getElementById('modalProductPrice').textContent = product.price.toFixed(2);
+        document.getElementById('modalProductPrice').textContent = product.price?.toFixed(2) || '0.00';
         document.getElementById('modalBusinessName').textContent = product.businessName || 'Hive Times';
-        document.getElementById('modalBusinessLogo').src = product.businessLogo || 'images-logo/hive-times-logo.png';
+        // ✅ FIX: Proper alt text for business logo
+        const businessLogo = product.businessLogo || 'images-logo/placeholder-logo.png';
+        document.getElementById('modalBusinessLogo').src = businessLogo;
+        document.getElementById('modalBusinessLogo').alt = `${product.businessName || 'Hive Times'} logo`;
+        
         const images = product.images || [product.image];
         const thumbsContainer = document.getElementById('modalThumbnails');
-        thumbsContainer.innerHTML = images.map((img, i) => `<img src="${img}" alt="${product.name} ${i+1}" class="${i === 0 ? 'active' : ''}" onclick="ProductModal.changeMainImage('${img}', this)" loading="lazy">`).join('');
+        thumbsContainer.innerHTML = images.map((img, i) => `<img src="${img}" alt="${product.name} image ${i+1}" class="${i === 0 ? 'active' : ''}" onclick="ProductModal.changeMainImage('${img}', this)" loading="lazy">`).join('');
         document.getElementById('modalAdditionalInfo').innerHTML = product.additionalInfo || `<p>${product.description || 'No additional details available.'}</p>`;
         const modal = document.getElementById('productModal');
         modal.classList.add('active');
@@ -2243,13 +2554,14 @@
       },
       changeMainImage(src, thumbEl) {
         document.getElementById('modalMainImage').src = src;
+        document.getElementById('modalMainImage').alt = this.currentProduct?.name + ' - main image';
         document.querySelectorAll('#modalThumbnails img').forEach(t => t.classList.remove('active'));
         thumbEl.classList.add('active');
       },
       updateQty(delta) { this.currentQty = Math.max(1, this.currentQty + delta); document.getElementById('modalQty').textContent = this.currentQty; },
       addToCart() {
         if (!this.currentProduct) return;
-        Cart.add({ id: this.currentProduct.id, name: this.currentProduct.name, price: this.currentProduct.price, quantity: this.currentQty, image: this.currentProduct.image, business: this.currentProduct.businessName || 'Hive Times', businessLogo: this.currentProduct.businessLogo || 'images-logo/hive-times-logo.png', whatsappNumber: this.currentProduct.whatsappNumber || CONFIG.whatsappNumber });
+        Cart.add({ id: this.currentProduct.id, name: this.currentProduct.name, price: this.currentProduct.price, quantity: this.currentQty, image: this.currentProduct.image, business: this.currentProduct.businessName || 'Hive Times', businessLogo: this.currentProduct.businessLogo || 'images-logo/placeholder-logo.png', whatsappNumber: this.currentProduct.whatsappNumber || CONFIG.whatsappNumber });
         this.close();
       },
       buyWhatsApp() {
@@ -2316,7 +2628,7 @@
 
     // ===== GLOBAL CART FUNCTIONS =====
     window.addToHiveCart = function(product) {
-      Cart.add({ id: product.id, name: product.name, price: product.price, image: product.image, business: product.business || 'Hive Times', businessLogo: product.businessLogo || 'images-logo/hive-times-logo.png', description: product.description });
+      Cart.add({ id: product.id, name: product.name, price: product.price, image: product.image, business: product.business || 'Hive Times', businessLogo: product.businessLogo || 'images-logo/placeholder-logo.png', description: product.description });
     };
     window.openCart = function() { Cart.showSelectorView(); document.getElementById('cartModal').classList.add('active'); document.body.style.overflow = 'hidden'; };
     window.closeCart = function() { document.getElementById('cartModal').classList.remove('active'); document.body.style.overflow = ''; Cart.currentBusinessId = null; };
@@ -2372,7 +2684,16 @@
         [this.nicheMenu, this.locMenu].forEach(m => m.classList.remove('show'));
         [this.nicheToggle, this.locToggle].forEach(t => { t.classList.remove('active'); t.setAttribute('aria-expanded', 'false'); });
       },
-      setNiche(value, label) { this.state.niche = value; this.updateToggleUI(this.nicheToggle, this.nicheMenu, value, label, 'niche'); this.applyFilters(); },
+      setNiche(value, label) { 
+        this.state.niche = value; 
+        this.updateToggleUI(this.nicheToggle, this.nicheMenu, value, label, 'niche'); 
+        this.applyFilters();
+        // Update niche card active state
+        document.querySelectorAll('.niche-card').forEach(card => {
+          card.classList.toggle('active', card.dataset.niche === value);
+          card.setAttribute('aria-pressed', card.dataset.niche === value ? 'true' : 'false');
+        });
+      },
       setLocation(value, label) { this.state.location = value; this.updateToggleUI(this.locToggle, this.locMenu, value, label, 'location'); this.applyFilters(); },
       updateToggleUI(toggle, menu, value, label, type) {
         menu.querySelectorAll('.filter-item').forEach(i => i.classList.toggle('active', i.dataset.value === value));
@@ -2383,12 +2704,14 @@
       detectLocation() {
         const btn = document.getElementById('detectLocation');
         if (!navigator.geolocation) return alert('Geolocation not supported');
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Detecting...';
-        navigator.geolocation.getCurrentPosition(pos => { this.setLocation('gauteng', '📍 My Location (Gauteng)'); btn.innerHTML = '<i class="fas fa-location-crosshairs"></i> Use My Location'; }, err => { alert('Location access denied'); btn.innerHTML = '<i class="fas fa-location-crosshairs"></i> Use My Location'; }, { enableHighAccuracy: true, timeout: 5000 });
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Detecting...';
+        navigator.geolocation.getCurrentPosition(pos => { this.setLocation('gauteng', '📍 My Location (Gauteng)'); btn.innerHTML = '<i class="fas fa-location-crosshairs" aria-hidden="true"></i> Use My Location'; }, err => { alert('Location access denied'); btn.innerHTML = '<i class="fas fa-location-crosshairs" aria-hidden="true"></i> Use My Location'; }, { enableHighAccuracy: true, timeout: 5000 });
       },
       applyFilters() {
         const cards = document.querySelectorAll('.product-card, .block'); let visible = 0;
         cards.forEach(card => {
+          // Skip skeleton loaders
+          if (card.classList.contains('skeleton')) return;
           const niche = card.dataset.niche || 'all', loc = card.dataset.location || 'all';
           const text = (card.querySelector('.product-name, h3')?.textContent + ' ' + card.querySelector('.product-description, p')?.textContent + ' ' + card.querySelector('.product-business span')?.textContent).toLowerCase();
           const matchNiche = this.state.niche === 'all' || niche === this.state.niche, matchLoc = this.state.location === 'all' || loc === this.state.location, matchQry = this.state.query === '' || text.includes(this.state.query.toLowerCase());
@@ -2401,10 +2724,10 @@
         const hasFilters = this.state.niche !== 'all' || this.state.location !== 'all' || this.state.query !== '';
         if (!hasFilters) { this.filterWrapper.innerHTML = ''; return; }
         let html = '';
-        if (this.state.niche !== 'all') html += `<span class="filter-badge">Niche: ${this.nicheToggle.querySelector('.toggle-label').textContent} <button onclick="GuidedSearch.setNiche('all','All Niches')"><i class="fas fa-times"></i></button></span>`;
-        if (this.state.location !== 'all') html += `<span class="filter-badge">Location: ${this.locToggle.querySelector('.toggle-label').textContent} <button onclick="GuidedSearch.setLocation('all','All Locations')"><i class="fas fa-times"></i></button></span>`;
-        if (this.state.query) html += `<span class="filter-badge">Search: "${this.state.query}" <button onclick="document.getElementById('productSearch').value='';GuidedSearch.state.query='';GuidedSearch.applyFilters();GuidedSearch.renderActiveBadges()"><i class="fas fa-times"></i></button></span>`;
-        html += `<button class="clear-all-filters" onclick="GuidedSearch.clearAll()">Clear All</button>`;
+        if (this.state.niche !== 'all') html += `<span class="filter-badge">Niche: ${this.nicheToggle.querySelector('.toggle-label').textContent} <button onclick="GuidedSearch.setNiche('all','All Niches')" aria-label="Remove niche filter"><i class="fas fa-times" aria-hidden="true"></i></button></span>`;
+        if (this.state.location !== 'all') html += `<span class="filter-badge">Location: ${this.locToggle.querySelector('.toggle-label').textContent} <button onclick="GuidedSearch.setLocation('all','All Locations')" aria-label="Remove location filter"><i class="fas fa-times" aria-hidden="true"></i></button></span>`;
+        if (this.state.query) html += `<span class="filter-badge">Search: "${this.state.query}" <button onclick="document.getElementById('productSearch').value='';GuidedSearch.state.query='';GuidedSearch.applyFilters();GuidedSearch.renderActiveBadges()" aria-label="Clear search"><i class="fas fa-times" aria-hidden="true"></i></button></span>`;
+        html += `<button class="clear-all-filters" onclick="GuidedSearch.clearAll()" aria-label="Clear all filters">Clear All</button>`;
         this.filterWrapper.innerHTML = html;
       },
       clearAll() { this.setNiche('all', 'All Niches'); this.setLocation('all', 'All Locations'); document.getElementById('productSearch').value = ''; this.state.query = ''; this.applyFilters(); this.renderActiveBadges(); },
@@ -2441,12 +2764,13 @@
         ...(window.BAKENCO_DATA || []).map(p => ({ ...p, source: 'bakenco', businessName: 'Bake & Co.' }))
       ];
       if (allProducts.length === 0) { grid.innerHTML = '<p class="text-center" style="grid-column:1/-1;color:var(--gray);padding:2rem;">Loading products...</p>'; return; }
+      // Remove skeleton loaders
       grid.innerHTML = allProducts.map(p => {
         const productData = JSON.stringify(p).replace(/'/g, "&#39;");
         const nicheSlug = (p.nicheSlug || p.niche || p.category || 'all').toString().trim().toLowerCase();
         const locationSlug = (p.locationSlug || p.location || 'all').toString().trim().toLowerCase();
         const pagePath = p.source === 'broadway' ? 'broadway page.html' : p.source === 'doughandco' ? 'doughandco/index.html' : p.source === 'shupz' ? 'shupz/index.html' : p.source === 'daintydelicacies' ? 'daintydelicacies/index.html' : p.source === 'nothingfancy' ? 'nothingfancy/index.html' : p.source === 'polaricecream' ? 'polaricecream/index.html' : p.source === 'sweetlane' ? 'sweetlane/index.html' : p.source === 'bakenco' ? 'bakenco/index.html' : p.source === 'butcherblock' ? 'butcherblock/index.html' : 'index.html';
-        return `<article class="block product-card" data-product='${productData}' data-niche="${nicheSlug}" data-location="${locationSlug}">${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}<img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='images-logo/placeholder-product.png'" width="300" height="225"><div class="info product-content"><div class="product-business"><img src="${p.businessLogo || 'images-logo/hive-times-logo.png'}" alt="${p.businessName}" loading="lazy" width="20" height="20"><span>${p.businessName}</span></div><p class="product-name">${p.name}</p><p class="product-description">${p.description || ''}</p><div class="product-footer"><span class="product-price">R${p.price.toFixed(2)}</span><div style="display:flex;gap:6px;flex-wrap:wrap;"><button class="btn-add-cart" onclick="event.stopPropagation(); addToHiveCart({ id: '${p.id}', name: '${p.name.replace(/'/g, "\\'")}', price: ${p.price}, image: '${p.image}', business: '${p.businessName}', businessLogo: '${p.businessLogo || 'images-logo/hive-times-logo.png'}' })">Add to Cart</button><a href="${pagePath}" class="btn-visit-website" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="fas fa-external-link-alt"></i> Visit</a></div></div></div></article>`;
+        return `<article class="block product-card" data-product='${productData}' data-niche="${nicheSlug}" data-location="${locationSlug}">${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}<img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='images-logo/placeholder-product.png'" width="300" height="225"><div class="info product-content"><div class="product-business"><img src="${p.businessLogo || 'images-logo/placeholder-logo.png'}" alt="${p.businessName} logo" loading="lazy" width="20" height="20"><span>${p.businessName}</span></div><p class="product-name">${p.name}</p><p class="product-description">${p.description || ''}</p><div class="product-footer"><span class="product-price">R${p.price.toFixed(2)}</span><div style="display:flex;gap:6px;flex-wrap:wrap;"><button class="btn-add-cart" onclick="event.stopPropagation(); addToHiveCart({ id: '${p.id}', name: '${p.name.replace(/'/g, "\\'")}', price: ${p.price}, image: '${p.image}', business: '${p.businessName}', businessLogo: '${p.businessLogo || 'images-logo/placeholder-logo.png'}' })">Add to Cart</button><a href="${pagePath}" class="btn-visit-website" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="fas fa-external-link-alt"></i> Visit</a></div></div></div></article>`;
       }).join('');
       grid.addEventListener('click', (e) => { const card = e.target.closest('.product-card'); if (!card || e.target.closest('.btn-add-cart') || e.target.closest('.btn-visit-website')) return; try { const product = JSON.parse(card.dataset.product.replace(/&#39;/g, "'")); openProductModal(product); } catch(err) { console.error('Error opening product modal:', err); } });
     }
@@ -2479,25 +2803,6 @@
   <script src="butcherblock/products-butcherblock.js" defer></script>
   <script src="sweetlane/products-sweetlane.js" defer></script>
   <script src="bakenco/products-bakenco.js" defer></script>
-  
-  <!-- Server Optimization Hints (for .htaccess reference) -->
-  <!-- 
-  # Enable Brotli/Gzip Compression
-  <IfModule mod_brotli.c>
-    AddOutputFilterByType BROTLI_COMPRESS text/html text/css application/javascript image/svg+xml
-  </IfModule>
-  <IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml
-  </IfModule>
-  
-  # Cache Static Assets
-  <IfModule mod_expires.c>
-    ExpiresActive On
-    ExpiresByType image/webp "access plus 1 year"
-    ExpiresByType image/avif "access plus 1 year"
-    ExpiresByType text/css "access plus 1 year"
-    ExpiresByType application/javascript "access plus 1 year"
-  </IfModule>
-  -->
+
 </body>
 </html>
