@@ -160,94 +160,85 @@
       flex-direction: column;
     }
 
-    /* TOP ROW: Cart | Search | Logo */
+      /* TOP ROW: Logo (Left) | Search (Center) | Cart (Right) */
     .header-top-row {
       display: flex;
       align-items: center;
-      justify-content: flex-end;
-      gap: 0.75rem;
+      justify-content: space-between;
+      gap: 1rem;
       flex-wrap: nowrap;
-      padding: 0 20px;
+     padding: 12px 20px 0 20px;
     }
 
-    /* BOTTOM ROW: Filter Bar + Hamburger */
-    .header-bottom-row {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-
-    /* Cart Button - ✅ Mobile tap target fix */
-    .cart-btn {
-      position: relative;
-      color: var(--white);
-      font-size: 1.15rem;
-      padding: 8px;
-      border-radius: 50%;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 48px; /* ✅ Increased to 48px for accessibility */
-      height: 48px;
+    /* ✅ Logo - Pinned Left */
+    .logo {
       order: 1;
-      min-width: 48px;
-      min-height: 48px;
-    }
-
-    .cart-btn:hover {
-      background: rgba(255,255,255,0.15);
-      transform: scale(1.05);
-    }
-
-    .cart-count {
-      position: absolute;
-      top: -3px;
-      right: -3px;
-      background: #ff6b6b;
-      color: white;
-      font-size: 0.6rem;
-      font-weight: 700;
-      width: 17px;
-      height: 17px;
-      border-radius: 50%;
       display: flex;
       align-items: center;
-      justify-content: center;
-      line-height: 1;
-      min-width: 17px;
-      min-height: 17px;
+      gap: 10px;
+      min-height: 48px;
+      padding: 4px 0;
+      flex-shrink: 0; /* Prevents squishing on smaller screens */
+      transition: opacity 0.2s ease;
+    }
+    .logo:hover { opacity: 0.85; }
+
+    .logo img {
+      height: 40px;
+      width: auto;
+      border-radius: 8px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
     }
 
-    /* Search Bar */
+    .logo-text {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ffffff, #d1d1d1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ✅ Search Bar - True Center */
     .search-bar {
       order: 2;
-      max-width: 320px;
+      max-width: 450px;
       width: 100%;
+      margin: 0 auto; /* 📌 Forces exact center regardless of logo/cart width */
+      flex: 1;
       position: relative;
     }
 
     .search-bar input {
       width: 100%;
-      padding: 9px 16px 9px 38px;
-      border-radius: 35px;
-      border: 2px solid rgba(255,255,255,0.3);
-      background: rgba(255,255,255,0.15);
+      padding: 10px 16px 10px 40px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       color: var(--white);
       font-size: 0.9rem;
-      transition: var(--transition);
-      min-height: 44px; /* ✅ Accessible input height */
+      font-weight: 450;
+      letter-spacing: 0.2px;
+      transition: all 0.25s ease;
+      min-height: 46px;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
     }
 
-    .search-bar input::placeholder { color: rgba(255,255,255,0.85); }
+    .search-bar input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 400;
+    }
 
     .search-bar input:focus {
       outline: none;
-      background: rgba(255,255,255,0.25);
-      border-color: var(--white);
-      box-shadow: 0 0 0 3px rgba(255,255,255,0.2);
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15), inset 0 1px 2px rgba(0, 0, 0, 0.1);
     }
 
     .search-bar i {
@@ -255,36 +246,66 @@
       left: 14px;
       top: 50%;
       transform: translateY(-50%);
-      color: var(--white);
-      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
       pointer-events: none;
+      transition: color 0.25s ease;
     }
 
-    /* Logo */
-    .logo {
+    .search-bar input:focus ~ i { color: var(--white); }
+
+    /* ✅ Cart Button - Pinned Right */
+    .cart-btn {
       order: 3;
+      position: relative;
+      color: var(--white);
+      font-size: 1.2rem;
+      padding: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-left: 0;
-      min-height: 48px;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0; /* Prevents squishing */
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     }
 
-    .logo img {
-      height: 42px;
-      width: auto;
-      border-radius: 6px;
-      aspect-ratio: 1/1;
+    .cart-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
     }
 
-    .logo-text {
-      font-size: 1.3rem;
+    .cart-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: linear-gradient(135deg, #ff6b6b, #e85d5d);
+      color: white;
+      font-size: 0.65rem;
       font-weight: 700;
-      letter-spacing: -0.4px;
-      display: none;
-      color: var(--white);
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      border: 2px solid var(--white);
     }
-
     /* Hamburger Menu - ✅ Mobile tap target fix */
     .hamburger {
       display: flex;
@@ -292,7 +313,7 @@
       gap: 4px;
       padding: 12px; /* ✅ Increased padding for 48px tap target */
       cursor: pointer;
-      margin-left: 8px;
+      margin-left: 800px;
       flex-shrink: 0;
       min-width: 48px;
       min-height: 48px;
@@ -1939,7 +1960,7 @@
        <!-- Logo -->
 <a href="https://hivetimes.co.za/" class="logo" aria-label="Hive Times Home">
   <img src="images-logo/hive-times-logo.png" alt="Hive Times logo" width="62" height="62" loading="lazy">
-  <span class="logo-text">Hive Times</span>
+  <span class="logo-text"></span>
 </a>
       </div>
       
@@ -2000,7 +2021,7 @@
               <button class="filter-item location-detect" id="detectLocation"><i class="fas fa-location-crosshairs" aria-hidden="true"></i> Use My Location</button>
             </div>
           </div>
-        </div>
+        
         
         <!-- Hamburger Menu -->
         <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">
@@ -2813,9 +2834,22 @@
       observeProductGrid() { const observer = new MutationObserver(() => this.applyFilters()); if (this.grid) observer.observe(this.grid, { childList: true }); }
     };
 
-    // ===== PRODUCT RENDERING =====
+    // ===== PRODUCT RENDERING - WITH RANDOMIZED MIX =====
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    // Flag to prevent duplicate event listener
+    let productGridListenerAttached = false;
+
     function renderProducts() {
-      const grid = document.getElementById('hive-products-grid'); if (!grid) return;
+      const grid = document.getElementById('hive-products-grid'); 
+      if (!grid) return;
+      
       const allProducts = [
         ...(window.POLAR_DATA || []).map(p => ({ ...p, source: 'polaricecream', businessName: 'Polar Ice Cream' })),
         ...(window.PRODUCTS_DATA || []).map(p => ({ ...p, source: 'broadway', businessName: 'Broadway Sweets' })),
@@ -2827,35 +2861,92 @@
         ...(window.SWEETLANE_DATA || []).map(p => ({ ...p, source: 'sweetlane', businessName: 'Sweet Lane' })),
         ...(window.BAKENCO_DATA || []).map(p => ({ ...p, source: 'bakenco', businessName: 'Bake & Co.' }))
       ];
-      if (allProducts.length === 0) { grid.innerHTML = '<p class="text-center" style="grid-column:1/-1;color:var(--gray);padding:2rem;">Loading products...</p>'; return; }
-      // Remove skeleton loaders
-      grid.innerHTML = allProducts.map(p => {
+      
+      if (allProducts.length === 0) { 
+        grid.innerHTML = '<p class="text-center" style="grid-column:1/-1;color:var(--gray);padding:2rem;">Loading products...</p>'; 
+        return; 
+      }
+      
+      const shuffledProducts = shuffleArray([...allProducts]);
+      
+      grid.innerHTML = shuffledProducts.map(p => {
         const productData = JSON.stringify(p).replace(/'/g, "&#39;");
         const nicheSlug = (p.nicheSlug || p.niche || p.category || 'all').toString().trim().toLowerCase();
         const locationSlug = (p.locationSlug || p.location || 'all').toString().trim().toLowerCase();
-        const pagePath = p.source === 'broadway' ? 'broadway page.html' : p.source === 'doughandco' ? 'doughandco/index.html' : p.source === 'shupz' ? 'shupz/index.html' : p.source === 'daintydelicacies' ? 'daintydelicacies/index.html' : p.source === 'nothingfancy' ? 'nothingfancy/index.html' : p.source === 'polaricecream' ? 'polaricecream/index.html' : p.source === 'sweetlane' ? 'sweetlane/index.html' : p.source === 'bakenco' ? 'bakenco/index.html' : p.source === 'butcherblock' ? 'butcherblock/index.html' : 'index.html';
-        return `<article class="block product-card" data-product='${productData}' data-niche="${nicheSlug}" data-location="${locationSlug}">${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}<img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='images-logo/placeholder-product.png'" width="300" height="225"><div class="info product-content"><div class="product-business"><img src="${p.businessLogo || 'images-logo/placeholder-logo.png'}" alt="${p.businessName} logo" loading="lazy" width="20" height="20"><span>${p.businessName}</span></div><p class="product-name">${p.name}</p><p class="product-description">${p.description || ''}</p><div class="product-footer"><span class="product-price">R${p.price.toFixed(2)}</span><div style="display:flex;gap:6px;flex-wrap:wrap;"><button class="btn-add-cart" onclick="event.stopPropagation(); addToHiveCart({ id: '${p.id}', name: '${p.name.replace(/'/g, "\\'")}', price: ${p.price}, image: '${p.image}', business: '${p.businessName}', businessLogo: '${p.businessLogo || 'images-logo/placeholder-logo.png'}' })">Add to Cart</button><a href="${pagePath}" class="btn-visit-website" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="fas fa-external-link-alt"></i> Visit</a></div></div></div></article>`;
+        const pagePath = p.source === 'broadway' ? 'broadway page.html' : 
+                         p.source === 'doughandco' ? 'doughandco/index.html' : 
+                         p.source === 'shupz' ? 'shupz/index.html' : 
+                         p.source === 'daintydelicacies' ? 'daintydelicacies/index.html' : 
+                         p.source === 'nothingfancy' ? 'nothingfancy/index.html' : 
+                         p.source === 'polaricecream' ? 'polaricecream/index.html' : 
+                         p.source === 'sweetlane' ? 'sweetlane/index.html' : 
+                         p.source === 'bakenco' ? 'bakenco/index.html' : 
+                         p.source === 'butcherblock' ? 'butcherblock/index.html' : 'index.html';
+        
+        return `<article class="block product-card" data-product='${productData}' data-niche="${nicheSlug}" data-location="${locationSlug}">
+          ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
+          <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='images-logo/placeholder-product.png'" width="300" height="225">
+          <div class="info product-content">
+            <div class="product-business">
+              <img src="${p.businessLogo || 'images-logo/placeholder-logo.png'}" alt="${p.businessName} logo" loading="lazy" width="20" height="20">
+              <span>${p.businessName}</span>
+            </div>
+            <p class="product-name">${p.name}</p>
+            <p class="product-description">${p.description || ''}</p>
+            <div class="product-footer">
+              <span class="product-price">R${p.price.toFixed(2)}</span>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                <button class="btn-add-cart" onclick="event.stopPropagation(); addToHiveCart({ id: '${p.id}', name: '${p.name.replace(/'/g, "\\'")}', price: ${p.price}, image: '${p.image}', business: '${p.businessName}', businessLogo: '${p.businessLogo || 'images-logo/placeholder-logo.png'}' })">Add to Cart</button>
+                <a href="${pagePath}" class="btn-visit-website" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="fas fa-external-link-alt"></i> Visit</a>
+              </div>
+            </div>
+          </div>
+        </article>`;
       }).join('');
-      grid.addEventListener('click', (e) => { const card = e.target.closest('.product-card'); if (!card || e.target.closest('.btn-add-cart') || e.target.closest('.btn-visit-website')) return; try { const product = JSON.parse(card.dataset.product.replace(/&#39;/g, "'")); openProductModal(product); } catch(err) { console.error('Error opening product modal:', err); } });
+      
+      // ✅ Attach modal click handler ONLY ONCE
+      if (!productGridListenerAttached) {
+        grid.addEventListener('click', (e) => { 
+          const card = e.target.closest('.product-card'); 
+          if (!card || e.target.closest('.btn-add-cart') || e.target.closest('.btn-visit-website')) return; 
+          try { 
+            const product = JSON.parse(card.dataset.product.replace(/&#39;/g, "'")); 
+            openProductModal(product); 
+          } catch(err) { 
+            console.error('Error opening product modal:', err); 
+          } 
+        });
+        productGridListenerAttached = true;
+      }
+      
+      // ✅ Re-apply filters AFTER rendering (preserves dropdown state)
+      if (typeof GuidedSearch !== 'undefined' && GuidedSearch.applyFilters) {
+        GuidedSearch.applyFilters();
+      }
     }
-
-    function filterProducts(source) { const cards = document.querySelectorAll('.product-card'); cards.forEach(card => { const data = card.dataset.product || ''; const matches = source === 'all' || data.includes(source); card.style.display = matches ? 'flex' : 'none'; }); }
-
-    // ===== INITIALIZATION =====
-    document.addEventListener('DOMContentLoaded', () => {
-      Cart.init(); renderProducts(); GuidedSearch.init();
+       document.addEventListener('DOMContentLoaded', () => {
+      // ✅ Initialize search/filter system FIRST
+      GuidedSearch.init();
+      
+      // ✅ Then initialize cart
+      Cart.init();
+      
+      // ✅ Then render products (so filters can apply immediately)
+      renderProducts();
+      
+      // ... rest of your event listeners for sidebar, modals, etc.
       const hamburger = document.getElementById('hamburger'), sidebarClose = document.getElementById('sidebarClose'), overlay = document.getElementById('overlay');
       if (hamburger) hamburger.addEventListener('click', toggleSidebar);
       if (sidebarClose) sidebarClose.addEventListener('click', closeSidebar);
       if (overlay) overlay.addEventListener('click', closeSidebar);
-      document.querySelectorAll('.sidebar-nav a').forEach(link => { link.addEventListener('click', () => { if (window.innerWidth <= 768) closeSidebar(); }); });
+      document.querySelectorAll('.sidebar-nav a').forEach(link => { 
+        link.addEventListener('click', () => { if (window.innerWidth <= 768) closeSidebar(); }); 
+      });
       document.getElementById('cartModal').addEventListener('click', (e) => { if (e.target.id === 'cartModal') closeCart(); });
       document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeCart(); closeSidebar(); } });
       document.getElementById('currentYear').textContent = new Date().getFullYear();
       document.getElementById('sidebarYear').textContent = new Date().getFullYear();
     });
-    
-    window.Cart = Cart; window.GuidedSearch = GuidedSearch; window.filterProducts = filterProducts;
   </script>
 
   <!-- External Product Data Scripts - Deferred Loading -->
