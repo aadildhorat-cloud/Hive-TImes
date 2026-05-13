@@ -1990,7 +1990,7 @@
               <button class="filter-item" data-value="electronics"><i class="fas fa-laptop" aria-hidden="true"></i> Electronics</button>
               <button class="filter-item" data-value="automotive"><i class="fas fa-car" aria-hidden="true"></i> Automotive</button>
               <button class="filter-item" data-value="food-beverages"><i class="fas fa-utensils" aria-hidden="true"></i> Food & Beverages</button>
-              <button class="filter-item" data-value="health-beauty"><i class="fas fa-spa" aria-hidden="true"></i> Health & Beauty</button>
+              <button class="filter-item" data-value="medication"><i class="fas fa-spa" aria-hidden="true"></i> Medication & Health</button>
               <button class="filter-item" data-value="building"><i class="fas fa-hammer" aria-hidden="true"></i> Building Materials</button>
               <button class="filter-item" data-value="services"><i class="fas fa-briefcase" aria-hidden="true"></i> Professional Services</button>
               <button class="filter-item" data-value="wholesale"><i class="fas fa-boxes" aria-hidden="true"></i> Wholesale</button>
@@ -2007,8 +2007,9 @@
             <div class="filter-menu" id="locMenu" role="menu" aria-label="Filter by location">
               <div class="filter-menu-header">Location</div>
               <button class="filter-item active" data-value="all"><i class="fas fa-globe-africa" aria-hidden="true"></i> All Locations</button>
-              <button class="filter-item" data-value="gauteng"><i class="fas fa-city" aria-hidden="true"></i> Gauteng</button>
+              <button class="filter-item" data-value="johannesburg"><i class="fas fa-city" aria-hidden="true"></i> Johannesburg</button>
               <button class="filter-item" data-value="lenasia"><i class="fas fa-mountain" aria-hidden="true"></i> Lenasia</button>
+               <button class="filter-item" data-value="azadville"><i class="fas fa-mountain" aria-hidden="true"></i> Azadville</button>
               <button class="filter-item" data-value="cape-town"><i class="fas fa-mountain" aria-hidden="true"></i> Cape Town</button>
               <button class="filter-item" data-value="kwazulu-natal"><i class="fas fa-water" aria-hidden="true"></i> KwaZulu-Natal</button>
               <button class="filter-item" data-value="eastern-cape"><i class="fas fa-sun" aria-hidden="true"></i> Eastern Cape</button>
@@ -2054,6 +2055,10 @@
           <span class="icon" aria-hidden="true">🏠</span>
           <span>Household</span>
         </button>
+           <button class="niche-card" data-niche="medication" onclick="GuidedSearch.setNiche('medication', 'Medication & Health'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
+          <span class="icon" aria-hidden="true">�</span>
+          <span>Medication & Health</span>
+        </button>
         <button class="niche-card" data-niche="baking" onclick="GuidedSearch.setNiche('baking', 'Baking'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
           <span class="icon" aria-hidden="true">🍰</span>
           <span>Baking</span>
@@ -2073,10 +2078,6 @@
         <button class="niche-card" data-niche="food-beverages" onclick="GuidedSearch.setNiche('food-beverages', 'Food & Beverages'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
           <span class="icon" aria-hidden="true">🍽️</span>
           <span>Food & Bev</span>
-        </button>
-        <button class="niche-card" data-niche="health-beauty" onclick="GuidedSearch.setNiche('health-beauty', 'Health & Beauty'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
-          <span class="icon" aria-hidden="true">💄</span>
-          <span>Health & Beauty</span>
         </button>
         <button class="niche-card" data-niche="building" onclick="GuidedSearch.setNiche('building', 'Building Materials'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
           <span class="icon" aria-hidden="true">🔨</span>
@@ -2408,6 +2409,7 @@
       'butcher-block': '27615023930',
       'polar-ice-cream': '27604368376',
       'sweetlane': '27836120605',
+      'nuhashealthyliving': '27836120605',
       'bakenco': '27670527209'
     };
     
@@ -2415,12 +2417,12 @@
       niches: {
         'baking': 'Baking', 'household-essentials': 'Household Essentials',
         'electronics': 'Electronics & Gadgets', 'automotive': 'Automotive & Parts',
-        'food-beverages': 'Food & Beverages', 'health-beauty': 'Health & Beauty',
+        'food-beverages': 'Food & Beverages', 'medication': 'Medication & Health',
         'building': 'Building Materials', 'services': 'Professional Services',
         'wholesale': 'Wholesale Supplies'
       },
       locations: {
-        'gauteng': 'Gauteng', 'johannesburg': 'Johannesburg', 'cape-town': 'Cape Town',
+        'gauteng': 'Gauteng', 'johannesburg': 'Johannesburg', 'azadville': 'Azadville',  'lenasia': 'Lenasia', 'cape-town': 'Cape Town',
         'kwazulu-natal': 'KwaZulu-Natal', 'eastern-cape': 'Eastern Cape',
         'free-state': 'Free State', 'lenasia': 'Lenasia', 'mpumalanga': 'Mpumalanga',
         'north-west': 'North West', 'northern-cape': 'Northern Cape'
@@ -2859,7 +2861,8 @@
         ...(window.BUTCHERBLOCK_DATA || []).map(p => ({ ...p, source: 'butcherblock', businessName: 'Butcher Block' })),
         ...(window.NO_THING_FANCY_DATA || []).map(p => ({ ...p, source: 'nothingfancy', businessName: 'Nothing Fancy' })),
         ...(window.SWEETLANE_DATA || []).map(p => ({ ...p, source: 'sweetlane', businessName: 'Sweet Lane' })),
-        ...(window.BAKENCO_DATA || []).map(p => ({ ...p, source: 'bakenco', businessName: 'Bake & Co.' }))
+        ...(window.BAKENCO_DATA || []).map(p => ({ ...p, source: 'bakenco', businessName: 'Bake & Co.' })),
+       ...(window.NUHASHEALTHYLIVING_DATA || []).map(p => ({ ...p, source: 'nuhashealthyliving', businessName: 'Nuha\'s Healthy Living' }))
       ];
       
       if (allProducts.length === 0) { 
@@ -2874,7 +2877,8 @@
         const nicheSlug = (p.nicheSlug || p.niche || p.category || 'all').toString().trim().toLowerCase();
         const locationSlug = (p.locationSlug || p.location || 'all').toString().trim().toLowerCase();
         const pagePath = p.source === 'broadway' ? 'broadway page.html' : 
-                         p.source === 'doughandco' ? 'doughandco/index.html' : 
+                         p.source === 'doughandco' ? 'doughandco/index.html' :
+                         p.source === 'nuhashealthyliving' ? 'nuhashealthyliving/index.html' : 
                          p.source === 'shupz' ? 'shupz/index.html' : 
                          p.source === 'daintydelicacies' ? 'daintydelicacies/index.html' : 
                          p.source === 'nothingfancy' ? 'nothingfancy/index.html' : 
@@ -2958,6 +2962,6 @@
   <script src="butcherblock/products-butcherblock.js" defer></script>
   <script src="sweetlane/products-sweetlane.js" defer></script>
   <script src="bakenco/products-bakenco.js" defer></script>
-
+  <script src="nuhas-healthy-living/products-nuhashealthyliving.js" defer></script>
 </body>
 </html>
