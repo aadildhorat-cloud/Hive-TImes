@@ -2395,11 +2395,165 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
   body { background: white; color: black; }
   .product-card { break-inside: avoid; }
 }
+/* JOIN HIVE ISOLATED STYLES - UNIFIED & FIXED */
+.join-hive-overlay {
+  position: fixed !important; z-index: 10002 !important; left: 0; top: 0; width: 100%; height: 100%;
+  background: rgba(26, 26, 46, 0.85) !important; backdrop-filter: blur(8px) !important;
+  align-items: center !important; justify-content: center !important; perspective: 1000px;
+  opacity: 0; transition: opacity 0.4s ease !important; display: none !important;
+}
+/* 🔑 CRITICAL FIX: Forces flex layout when active */
+.join-hive-overlay.active { opacity: 1 !important; display: flex !important; }
+
+.join-hive-content {
+  background: #fff; padding: 0; border-radius: 20px; width: 90%; max-width: 550px;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.25); position: relative;
+  transform: rotateX(10deg) translateY(-50px); opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1), opacity 0.4s ease !important;
+  overflow: hidden; border: 1px solid rgba(255,193,7,0.2);
+}
+.join-hive-overlay.active .join-hive-content { transform: rotateX(0) translateY(0); opacity: 1; }
+.join-hive-header {
+  background: linear-gradient(135deg, #FFC107 0%, #FFB300 100%); padding: 30px; text-align: center; position: relative; overflow: hidden;
+}
+.join-hive-header::before {
+  content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%); animation: jh-shimmer 3s infinite;
+}
+@keyframes jh-shimmer { 0%,100%{transform:translate(0,0)} 50%{transform:translate(10%,10%)} }
+.join-hive-header h2 { color: #1a1a2e; font-size: 32px; font-weight: 700; margin: 0; position: relative; z-index: 1; }
+.join-hive-header p { color: #333; margin: 10px 0 0; font-size: 16px; position: relative; z-index: 1; opacity: 0.9; }
+.join-hive-icon { font-size: 48px; display: block; margin-bottom: 10px; animation: jh-float 3s ease-in-out infinite; }
+@keyframes jh-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+.join-hive-close {
+  position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; color: #1a1a2e;
+  width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.3); transition: all 0.3s ease; z-index: 2; border: 2px solid transparent;
+}
+.join-hive-close:hover { background: rgba(255,255,255,0.5); transform: rotate(90deg) scale(1.1); }
+.join-hive-body { padding: 35px; }
+.jh-step { transition: all 0.3s ease; }
+.jh-step.hidden { display: none !important; }
+.jh-step.fade-in { animation: jh-fadeIn 0.5s ease; }
+@keyframes jh-fadeIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.jh-form-group { margin-bottom: 20px; position: relative; }
+.jh-form-group label { font-weight: 600; font-size: 14px; color: #2d2d2d; display: block; margin-bottom: 8px; text-transform: uppercase; }
+.jh-form-group input, .jh-form-group textarea {
+  width: 100%; padding: 15px 18px; border: 2px solid #e0e0e0; border-radius: 12px; font-size: 15px;
+  transition: all 0.3s ease; background: #fafafa; font-family: inherit;
+}
+.jh-form-group input:focus, .jh-form-group textarea:focus {
+  outline: none; border-color: #FFC107; background: #fff; box-shadow: 0 0 0 4px rgba(255,193,7,0.15); transform: translateY(-2px);
+}
+.jh-form-group textarea { resize: vertical; min-height: 90px; line-height: 1.5; }
+.jh-btn {
+  padding: 16px 24px; width: 100%; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer;
+  transition: all 0.3s ease; border: none; font-family: inherit; text-transform: uppercase;
+}
+.jh-btn-primary { background: linear-gradient(135deg, #FFC107 0%, #FFB300 100%); color: #1a1a2e; box-shadow: 0 4px 15px rgba(255,193,7,0.4); }
+.jh-btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255,193,7,0.5); }
+.jh-btn-secondary { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: white; box-shadow: 0 4px 15px rgba(26,26,46,0.4); }
+.jh-btn-secondary:hover { transform: translateY(-3px); }
+.jh-btn-outline { background: transparent; color: #666; border: 2px solid #e0e0e0; }
+.jh-btn-outline:hover { border-color: #FFC107; color: #FFB300; }
+.jh-divider { margin: 25px 0; text-align: center; position: relative; }
+.jh-divider::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #e0e0e0, transparent); }
+.jh-divider span { background: #fff; padding: 0 20px; position: relative; color: #666; font-size: 14px; }
+.join-hive-progress { display: flex; justify-content: center; gap: 10px; margin-bottom: 25px; }
+.join-hive-dot { width: 12px; height: 12px; border-radius: 50%; background: #e0e0e0; transition: all 0.3s ease; }
+.join-hive-dot.active { background: #FFC107; transform: scale(1.3); box-shadow: 0 0 10px rgba(255,193,7,0.5); }
+.jh-success { text-align: center; padding: 30px; }
+.jh-success-icon { font-size: 60px; color: #4CAF50; margin-bottom: 20px; animation: jh-pop 0.5s cubic-bezier(0.68,-0.55,0.265,1.55); }
+@keyframes jh-pop { 0%{transform:scale(0)} 50%{transform:scale(1.2)} 100%{transform:scale(1)} }
+input.jh-error, textarea.jh-error { border-color: #f44336 !important; animation: jh-shake 0.5s; }
+@keyframes jh-shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+.jh-error { color: #f44336; font-size: 12px; margin-top: 5px; display: none; }
+.jh-error.show { display: block; }
+@media (max-width: 600px) {
+  .join-hive-content { width: 95%; margin: 20px; }
+  .join-hive-header { padding: 25px 20px; }
+  .join-hive-header h2 { font-size: 26px; }
+  .join-hive-body { padding: 25px 20px; }
+  .jh-btn { padding: 14px 20px; font-size: 15px; }
+  .join-hive-icon { font-size: 40px; }
+}
 </style>
 </head>
 <body>
+  
 <a href="#main-content" class="sr-only">Skip to main content</a>
+<!-- ==========================================
+JOIN THE HIVE POPUP MODAL (Fixed IDs)
+========================================== -->
+<div id="joinHiveModal" class="join-hive-overlay" style="display: none;">
+  <div class="join-hive-content">
+    <span class="join-hive-close" onclick="closeJoinHive()" title="Close">&times;</span>
+    <div class="join-hive-header">
+      <span class="join-hive-icon">🐝</span>
+      <h2>Join the Hive</h2>
+      <p>Expand Your Digital Presence Today</p>
+    </div>
+    <div class="join-hive-body">
+      <div class="join-hive-progress">
+        <div class="join-hive-dot active" id="jh-dot-1"></div>
+        <div class="join-hive-dot" id="jh-dot-2"></div>
+      </div>
+      
+      <!-- STEP 1 -->
+      <div id="jh-step-1" class="jh-step fade-in">
+        <div class="jh-form-group">
+          <label for="jh-existingUrl">🌐 Already Have a Website?</label>
+          <input type="url" id="jh-existingUrl" placeholder="https://www.yourbusiness.com" autocomplete="url">
+          <!-- FIXED: ID now matches input ID + '-error' -->
+          <div class="jh-error" id="jh-existingUrl-error">Please enter a valid website URL</div>
+        </div>
+        <button class="jh-btn jh-btn-primary" onclick="submitJoinExisting()"><span>📤</span> Submit Existing Website</button>
+        <div class="jh-divider"><span>- OR CREATE NEW -</span></div>
+        <button class="jh-btn jh-btn-secondary" onclick="showJoinStep2()"><span>✨</span> Create a New Website</button>
+      </div>
 
+      <!-- STEP 2 -->
+      <div id="jh-step-2" class="jh-step hidden">
+        <form id="jh-businessForm" onsubmit="submitJoinNew(event)" novalidate>
+          <div class="jh-form-group">
+            <label for="jh-bizName">🏢 Business Name</label>
+            <input type="text" id="jh-bizName" required placeholder="e.g. Acme Corporation" autocomplete="organization">
+            <!-- FIXED: ID now matches input ID + '-error' -->
+            <div class="jh-error" id="jh-bizName-error">Business name is required</div>
+          </div>
+          <div class="jh-form-group">
+            <label for="jh-bizAbout">📖 About Your Business</label>
+            <textarea id="jh-bizAbout" required placeholder="Tell us about your history, mission, and vision..." autocomplete="off"></textarea>
+            <!-- FIXED: ID now matches input ID + '-error' -->
+            <div class="jh-error" id="jh-bizAbout-error">Please describe your business (min 10 chars)</div>
+          </div>
+          <div class="jh-form-group">
+            <label for="jh-bizServices">🛠️ Products / Services</label>
+            <textarea id="jh-bizServices" required placeholder="What do you sell or provide?" autocomplete="off"></textarea>
+            <!-- FIXED: ID now matches input ID + '-error' -->
+            <div class="jh-error" id="jh-bizServices-error">Please list your products or services</div>
+          </div>
+          <div class="jh-form-group">
+            <label for="jh-bizLocation">📍 Location</label>
+            <input type="text" id="jh-bizLocation" required placeholder="City, State/Province, Country" autocomplete="address-level2">
+            <!-- FIXED: ID now matches input ID + '-error' -->
+            <div class="jh-error" id="jh-bizLocation-error">Location is required</div>
+          </div>
+          <button type="submit" class="jh-btn jh-btn-primary"><span>💬</span> Request Quote via WhatsApp</button>
+          <button type="button" class="jh-btn jh-btn-outline" onclick="showJoinStep1()" style="margin-top: 10px;"><span>←</span> Back</button>
+        </form>
+      </div>
+
+      <!-- SUCCESS -->
+      <div id="jh-success" class="jh-success hidden">
+        <div class="jh-success-icon">✓</div>
+        <h3>Message Sent!</h3>
+        <p>We'll get back to you shortly via WhatsApp.</p>
+        <button class="jh-btn jh-btn-secondary" onclick="closeJoinHive()" style="margin-top: 20px;">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- Sidebar Navigation -->
 <nav class="sidebar" id="sidebar" aria-label="Main Navigation">
   <div class="sidebar-header">
@@ -2764,6 +2918,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
 </div>
 <button class="ai-chat-toggle" id="aiChatToggle" onclick="toggleChat()"><img src="images-logo/bee.jpg" alt="Bee" class="bee-icon" width="30" height="30" loading="lazy"><span class="close-icon">&times;</span></button>
 </div>
+
 <!-- Optimized JavaScript - Deferred & Code-Split Ready -->
 <script>
 // ===== CONFIG & TAXONOMY =====
@@ -3751,6 +3906,112 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('currentYear').textContent = new Date().getFullYear();
   document.getElementById('sidebarYear').textContent = new Date().getFullYear();
 });
+(function() {
+  const JH_PHONE = "27649220145";
+  const overlay = document.getElementById('joinHiveModal');
+  const step1 = document.getElementById('jh-step-1');
+  const step2 = document.getElementById('jh-step-2');
+  const success = document.getElementById('jh-success');
+  const dots = [document.getElementById('jh-dot-1'), document.getElementById('jh-dot-2')];
+
+  window.openJoinHive = function() {
+    overlay.style.display = 'flex';
+    void overlay.offsetWidth; 
+    overlay.classList.add('active');
+    showJoinStep1();
+  };
+
+  window.closeJoinHive = function() {
+    overlay.classList.remove('active');
+    setTimeout(() => { overlay.style.display = 'none'; resetJoinForm(); }, 400);
+  };
+
+  window.showJoinStep2 = function() {
+    step1.classList.add('hidden'); step2.classList.remove('hidden'); step2.classList.add('fade-in');
+    dots[0].classList.add('active'); dots[1].classList.add('active');
+  };
+
+  window.showJoinStep1 = function() {
+    step2.classList.add('hidden'); step1.classList.remove('hidden'); step1.classList.add('fade-in');
+    dots[0].classList.add('active'); dots[1].classList.remove('active');
+  };
+
+  // Validation Helper
+  function validateJH(id, errId, isValid) {
+    const f = document.getElementById(id), e = document.getElementById(errId);
+    if(!isValid) { 
+      f.classList.add('jh-error'); 
+      if(e) e.classList.add('show'); 
+      return false; 
+    }
+    f.classList.remove('jh-error'); 
+    if(e) e.classList.remove('show'); 
+    return true;
+  }
+
+  function resetJoinForm() {
+    document.getElementById('jh-businessForm').reset();
+    document.getElementById('jh-existingUrl').value = '';
+    success.classList.add('hidden'); step1.style.display = 'block'; step2.classList.add('hidden');
+    document.querySelectorAll('.jh-error').forEach(el => el.classList.remove('jh-error'));
+    document.querySelectorAll('.show').forEach(el => el.classList.remove('show'));
+    dots[0].classList.add('active'); dots[1].classList.remove('active');
+  }
+
+  // URL Validation - FIXED to allow www. and standard links without http://
+  window.submitJoinExisting = function() {
+    const url = document.getElementById('jh-existingUrl').value.trim();
+    // Regex allows: google.com, www.google.com, http://google.com, etc.
+    const isValid = url && /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?$/i.test(url);
+    
+    if(!validateJH('jh-existingUrl','jh-existingUrl-error', isValid)) {
+      document.getElementById('jh-existingUrl').focus(); return;
+    }
+    sendJH(`*Website URL:* ${url}\nI want to place my existing website on your platform. How much will it cost?`);
+  };
+
+  window.submitJoinNew = function(e) {
+    e.preventDefault();
+    const name = document.getElementById('jh-bizName').value.trim();
+    const about = document.getElementById('jh-bizAbout').value.trim();
+    const services = document.getElementById('jh-bizServices').value.trim();
+    const loc = document.getElementById('jh-bizLocation').value.trim();
+    
+    let v = true;
+    v &= validateJH('jh-bizName','jh-bizName-error', name.length >= 2);
+    v &= validateJH('jh-bizAbout','jh-bizAbout-error', about.length >= 10);
+    v &= validateJH('jh-bizServices','jh-bizServices-error', services.length >= 5);
+    v &= validateJH('jh-bizLocation','jh-bizLocation-error', loc.length >= 3);
+    
+    if(!v) return;
+    
+    sendJH(`*🏢 Name:* ${name}\n*📖 About:* ${about}\n*🛠️ Services:* ${services}\n*📍 Loc:* ${loc}\nPlease quote.`);
+  };
+
+  function sendJH(text) {
+    step1.classList.add('hidden'); step2.classList.add('hidden');
+    success.classList.remove('hidden');
+    setTimeout(() => window.open(`https://wa.me/${JH_PHONE}?text=${encodeURIComponent(text)}`, '_blank'), 800);
+  }
+
+  overlay.addEventListener('click', e => { if(e.target===overlay) closeJoinHive(); });
+  document.addEventListener('keydown', e => { if(e.key==='Escape' && overlay.classList.contains('active')) closeJoinHive(); });
+
+  // FIXED: Event Listener now correctly finds error IDs based on Input IDs
+  document.querySelectorAll('#joinHiveModal input, #joinHiveModal textarea').forEach(f => {
+    f.addEventListener('input', function() {
+      if(this.classList.contains('jh-error')) {
+        this.classList.remove('jh-error');
+        // This looks for ID matching the input's ID + '-error'
+        const err = document.getElementById(this.id + '-error');
+        if(err) err.classList.remove('show');
+      }
+    });
+  });
+
+  // Auto-open logic
+  window.addEventListener('load', () => { setTimeout(openJoinHive, 600); });
+})();
 </script>
 
 <!-- External Product Data Scripts - Deferred Loading for Performance -->
