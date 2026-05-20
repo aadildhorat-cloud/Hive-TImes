@@ -106,6 +106,54 @@
 </script>
 
 <style>
+  /* === HIVE TIMES PRODUCT SECTION BACKGROUND (BURGUNDY HEX) === */
+main#main-content {
+    background-color: #FFF8F8;
+    background-image: 
+        /* Primary Hex Grid */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='104' viewBox='0 0 120 104'%3E%3Cpath d='M60 0L120 30V90L60 120L0 90V30L60 0Z' fill='none' stroke='%238B0000' stroke-width='1.5' opacity='0.08'/%3E%3C/svg%3E"),
+        /* Secondary Larger Hex Overlay */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='156' viewBox='0 0 180 156'%3E%3Cpath d='M90 0L180 45V135L90 180L0 135V45L90 0Z' fill='none' stroke='%23A33140' stroke-width='1' opacity='0.05'/%3E%3C/svg%3E"),
+        /* Soft Vertical Gradient */
+        linear-gradient(180deg, #FFFFFF 0%, #FFF8F8 50%, #F9F0F0 100%);
+    background-size: 120px 104px, 180px 156px, auto;
+    background-position: 0 0, 0 0, 0 0;
+    background-repeat: repeat;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+/* === STRICT ISOLATION: PREVENT PATTERN BLEED INTO UI === */
+#hive-products-grid, .businesses-grid, .product-card, .block, .shop-by-niche, .section-header {
+    background-image: none !important;
+    background-color: transparent !important;
+}
+
+/* === PRODUCT CARDS: CLEAN WHITE WITH HIVE BRANDING === */
+.product-card, .block {
+    background-color: #FFFFFF !important;
+    border: 1px solid rgba(139, 0, 0, 0.1) !important;
+    box-shadow: 0 4px 15px rgba(139, 0, 0, 0.06) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* === HOVER EFFECT (MATCHES HIVE TIMES BRANDING) === */
+.product-card:hover, .block:hover {
+    box-shadow: 0 10px 30px rgba(139, 0, 0, 0.15), 0 0 0 1px rgba(163, 49, 64, 0.3) inset !important;
+    transform: translateY(-4px);
+    border-color: rgba(139, 0, 0, 0.25) !important;
+}
+
+/* === MOBILE PERFORMANCE OPTIMIZATION === */
+@media (max-width: 768px) {
+    main#main-content {
+        background-attachment: scroll;
+        background-image: 
+            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='104' viewBox='0 0 120 104'%3E%3Cpath d='M60 0L120 30V90L60 120L0 90V30L60 0Z' fill='none' stroke='%238B0000' stroke-width='1.5' opacity='0.06'/%3E%3C/svg%3E"),
+            linear-gradient(180deg, #FFFFFF, #FFF8F8);
+        background-size: 120px 104px, auto;
+    }
+}
   /* ==========================================
 AI CHATBOT WIDGET STYLES
 ========================================== */
@@ -677,14 +725,15 @@ header .container {
   transition: opacity 0.2s ease; 
 }
 .logo:hover { opacity: 0.85; }
-.logo img { 
-  height: clamp(36px, 8vw, 40px); 
-  width: auto; 
-  border-radius: 8px; 
-  object-fit: contain; 
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)); 
-  /* Prevent layout shift */
-  aspect-ratio: 1/1;
+.logo img {
+    /* Adjust these values to your preferred size range: clamp(min, preferred, max) */
+    height: clamp(40px, 9vw, 50px); 
+    width: auto;
+    border-radius: 8px;
+    object-fit: contain; /* Prevents cropping/distortion */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    /* REMOVE aspect-ratio: 1/1; UNLESS your logo is perfectly square */
+    aspect-ratio: auto; 
 }
 .logo-text { 
   font-size: clamp(1rem, 3vw, 1.2rem); 
@@ -2274,7 +2323,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
     font-size: clamp(0.8rem, 2.5vw, 0.85rem); 
   }
   .logo { order: 3; margin-left: 0; }
-  .logo img { height: clamp(34px, 7vw, 38px); }
+  .logo img { height: clamp(38px, 8vw, 44px); }
   .logo-text { display: none; }
   .header-bottom-row { flex-wrap: nowrap; justify-content: center; }
   .filter-bar-compact { 
@@ -2331,7 +2380,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
     font-size: clamp(0.75rem, 2.5vw, 0.8rem); 
   }
   .logo { order: 3; margin-left: 0; }
-  .logo img { height: clamp(30px, 7vw, 34px); }
+  .logo img { height: clamp(34px, 7vw, 40px); }
   .header-bottom-row { padding: 0 0 0; }
   .filter-bar-compact { 
     gap: clamp(2px, 2vw, 3px); 
@@ -3458,16 +3507,8 @@ function renderProducts() {
     const productData = JSON.stringify(p).replace(/'/g, "&#39;");
     const nicheSlug = (p.nicheSlug || p.niche || p.category || 'all').toString().trim().toLowerCase();
     const locationSlug = (p.locationSlug || p.location || 'all').toString().trim().toLowerCase();
-    const pagePath = p.source === 'broadway' ? 'broadway page.html' :
-      p.source === 'doughandco' ? 'doughandco/index.html' :
-      p.source === 'nuhashealthyliving' ? 'nuhashealthyliving/index.html' :
-      p.source === 'shupz' ? 'shupz/index.html' :
-      p.source === 'daintydelicacies' ? 'daintydelicacies/index.html' :
-      p.source === 'nothingfancy' ? 'nothingfancy/index.html' :
-      p.source === 'polaricecream' ? 'polaricecream/index.html' :
-      p.source === 'sweetlane' ? 'sweetlane/index.html' :
-      p.source === 'bakenco' ? 'bakenco/index.html' :
-      p.source === 'butcherblock' ? 'butcherblock/index.html' : 'index.html';
+   // Dynamically builds: https://broadway.hivetimes.co.za, https://shupz.hivetimes.co.za, etc.
+const pagePath = p.source ? `https://${p.source}.hivetimes.co.za` : 'https://hivetimes.co.za';
     
     return `<article class="block product-card" data-product='${productData}' data-niche="${nicheSlug}" data-location="${locationSlug}">
       ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
