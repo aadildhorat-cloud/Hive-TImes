@@ -2975,7 +2975,7 @@ const CONFIG = { whatsappNumber: '27649220145' };
 const BUSINESS_WHATSAPP = {
   'broadway-sweets': '27649220145', 'dough-co': '27822597009', 'shupz': '27612290093',
   'dainty-delicacies': '27840967330', 'nothing-fancy': '27710218554', 'butcher-block': '27615023930',
-  'polar-ice-cream': '27604368376', 'sweetlane': '27836120605', 'nuhashealthyliving': '27836120605',
+  'polar-ice-cream': '27604368376', 'sweetlane': '27836120605', 'nuhashealthyliving': '27836120605', 'stashsell': '27676567587',
   'bakenco': '27670527209'
 };
 const FILTER_TAXONOMY = {
@@ -3493,6 +3493,7 @@ function renderProducts() {
     ...(window.NO_THING_FANCY_DATA || []).map(p => ({ ...p, source: 'nothingfancy', businessName: 'Nothing Fancy' })),
     ...(window.SWEETLANE_DATA || []).map(p => ({ ...p, source: 'sweetlane', businessName: 'Sweet Lane' })),
     ...(window.BAKENCO_DATA || []).map(p => ({ ...p, source: 'bakenco', businessName: 'Bake & Co.' })),
+     ...(window.STASHSELL_DATA || []).map(p => ({ ...p, source: 'stashsell', businessName: 'Stashsell' })),
     ...(window.NUHASHEALTHYLIVING_DATA || []).map(p => ({ ...p, source: 'nuhashealthyliving', businessName: 'Nuha\'s Healthy Living' }))
   ];
   
@@ -4065,5 +4066,6 @@ document.addEventListener('DOMContentLoaded', () => {
 <script src="sweetlane/products-sweetlane.js" defer></script>
 <script src="bakenco/products-bakenco.js" defer></script>
 <script src="nuhas-healthy-living/products-nuhashealthyliving.js" defer></script>
+<script src="stashdell/products-stashdell.js" defer></script>
 </body>
 </html>
