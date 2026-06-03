@@ -2526,6 +2526,37 @@ input.jh-error, textarea.jh-error { border-color: #f44336 !important; animation:
   .jh-btn { padding: 14px 20px; font-size: 15px; }
   .join-hive-icon { font-size: 40px; }
 }
+/* ===== COMPACT INTRO STYLES ===== */
+.jh-intro-compact { padding: 12px 8px !important; }
+.jh-intro-header { margin-bottom: 10px; text-align: center; }
+.jh-intro-title { font-size: 15px !important; font-weight: 700; margin: 0 0 4px; line-height: 1.3; color: #2d2d2d; }
+.jh-intro-sub { font-size: 12px; margin: 0; color: #666; }
+
+.jh-intro-compact .jh-benefits-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 10px;
+}
+.jh-intro-compact .jh-benefit-item {
+  background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 6px;
+  padding: 6px 8px; display: flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 500; color: #444; transition: 0.2s;
+}
+.jh-intro-compact .jh-benefit-item i { color: var(--primary); font-size: 12px; flex-shrink: 0; }
+.jh-intro-compact .jh-benefit-item:hover { border-color: var(--primary); background: #fff; }
+
+/* Compact Buttons */
+.jh-intro-compact .jh-btn {
+  padding: 10px !important; font-size: 13px !important; border-radius: 6px; 
+  min-height: auto; width: 100%; margin-bottom: 6px; box-shadow: none;
+}
+.jh-btn-yes { 
+  background: var(--primary) !important; color: white !important; 
+  border: none; 
+}
+.jh-btn-yes:hover { background: var(--primary-dark) !important; transform: none; box-shadow: none; }
+.jh-btn-no { 
+  background: transparent !important; color: #666 !important; border: 1px solid #ccc !important; 
+}
+.jh-btn-no:hover { border-color: #999 !important; background: #f5f5f5 !important; transform: none; }
 </style>
 </head>
 <body>
@@ -2534,26 +2565,41 @@ input.jh-error, textarea.jh-error { border-color: #f44336 !important; animation:
 <!-- ==========================================
 JOIN THE HIVE POPUP MODAL (Fixed IDs)
 ========================================== -->
+<!-- JOIN THE HIVE POPUP MODAL (UPGRADED) -->
 <div id="joinHiveModal" class="join-hive-overlay" style="display: none;">
   <div class="join-hive-content">
     <span class="join-hive-close" onclick="closeJoinHive()" title="Close">&times;</span>
     <div class="join-hive-header">
       <span class="join-hive-icon">🐝</span>
-      <h2>Join the Hive</h2>
-      <p>Expand Your Digital Presence Today</p>
+      <h2>Grow Your Business</h2>
+      <p>Reach Thousands of Local Customers Daily</p>
     </div>
     <div class="join-hive-body">
       <div class="join-hive-progress">
         <div class="join-hive-dot active" id="jh-dot-1"></div>
         <div class="join-hive-dot" id="jh-dot-2"></div>
       </div>
-      
-      <!-- STEP 1 -->
-      <div id="jh-step-1" class="jh-step fade-in">
+
+    <!-- 🆕 STEP 0: INTRO (Compact & Space-Saving) -->
+<div id="jh-intro" class="jh-step fade-in jh-intro-compact">
+  <div class="jh-intro-header">
+    <h3 class="jh-intro-title">Advertise & Get WhatsApp Orders? 🐝</h3>
+    <p class="jh-intro-sub">List on hivetimes.co.za and unlock:</p>
+  </div>
+  <div class="jh-benefits-grid">
+    <div class="jh-benefit-item"><i class="fas fa-bullhorn"></i><span>Advertise to Thousands</span></div>
+    <div class="jh-benefit-item"><i class="fab fa-whatsapp"></i><span>Direct WhatsApp Orders</span></div>
+    <div class="jh-benefit-item"><i class="fas fa-chart-line"></i><span>Boost Local Visibility</span></div>
+    <div class="jh-benefit-item"><i class="fas fa-star"></i><span>Build Customer Trust</span></div>
+  </div>
+  <button class="jh-btn jh-btn-primary jh-btn-yes" onclick="handleJoinYes()"><span>✅</span> Yes, I'm Interested</button>
+</div>
+
+      <!-- STEP 1: Existing Website (Fallback) -->
+      <div id="jh-step-1" class="jh-step hidden">
         <div class="jh-form-group">
           <label for="jh-existingUrl">🌐 Already Have a Website?</label>
           <input type="url" id="jh-existingUrl" placeholder="https://www.yourbusiness.com" autocomplete="url">
-          <!-- FIXED: ID now matches input ID + '-error' -->
           <div class="jh-error" id="jh-existingUrl-error">Please enter a valid website URL</div>
         </div>
         <button class="jh-btn jh-btn-primary" onclick="submitJoinExisting()"><span>📤</span> Submit Existing Website</button>
@@ -2561,43 +2607,23 @@ JOIN THE HIVE POPUP MODAL (Fixed IDs)
         <button class="jh-btn jh-btn-secondary" onclick="showJoinStep2()"><span>✨</span> Create a New Website</button>
       </div>
 
-      <!-- STEP 2 -->
+      <!-- STEP 2: New Business Listing (Fallback) -->
       <div id="jh-step-2" class="jh-step hidden">
         <form id="jh-businessForm" onsubmit="submitJoinNew(event)" novalidate>
-          <div class="jh-form-group">
-            <label for="jh-bizName">🏢 Business Name</label>
-            <input type="text" id="jh-bizName" required placeholder="e.g. Acme Corporation" autocomplete="organization">
-            <!-- FIXED: ID now matches input ID + '-error' -->
-            <div class="jh-error" id="jh-bizName-error">Business name is required</div>
-          </div>
-          <div class="jh-form-group">
-            <label for="jh-bizAbout">📖 About Your Business</label>
-            <textarea id="jh-bizAbout" required placeholder="Tell us about your history, mission, and vision..." autocomplete="off"></textarea>
-            <!-- FIXED: ID now matches input ID + '-error' -->
-            <div class="jh-error" id="jh-bizAbout-error">Please describe your business (min 10 chars)</div>
-          </div>
-          <div class="jh-form-group">
-            <label for="jh-bizServices">🛠️ Products / Services</label>
-            <textarea id="jh-bizServices" required placeholder="What do you sell or provide?" autocomplete="off"></textarea>
-            <!-- FIXED: ID now matches input ID + '-error' -->
-            <div class="jh-error" id="jh-bizServices-error">Please list your products or services</div>
-          </div>
-          <div class="jh-form-group">
-            <label for="jh-bizLocation">📍 Location</label>
-            <input type="text" id="jh-bizLocation" required placeholder="City, State/Province, Country" autocomplete="address-level2">
-            <!-- FIXED: ID now matches input ID + '-error' -->
-            <div class="jh-error" id="jh-bizLocation-error">Location is required</div>
-          </div>
+          <div class="jh-form-group"><label for="jh-bizName">🏢 Business Name</label><input type="text" id="jh-bizName" required placeholder="e.g. Acme Corporation" autocomplete="organization"><div class="jh-error" id="jh-bizName-error">Business name is required</div></div>
+          <div class="jh-form-group"><label for="jh-bizAbout">📖 About Your Business</label><textarea id="jh-bizAbout" required placeholder="Tell us about your history, mission, and vision..." autocomplete="off"></textarea><div class="jh-error" id="jh-bizAbout-error">Please describe your business (min 10 chars)</div></div>
+          <div class="jh-form-group"><label for="jh-bizServices">🛠️ Products / Services</label><textarea id="jh-bizServices" required placeholder="What do you sell or provide?" autocomplete="off"></textarea><div class="jh-error" id="jh-bizServices-error">Please list your products or services</div></div>
+          <div class="jh-form-group"><label for="jh-bizLocation">📍 Location</label><input type="text" id="jh-bizLocation" required placeholder="City, State/Province, Country" autocomplete="address-level2"><div class="jh-error" id="jh-bizLocation-error">Location is required</div></div>
           <button type="submit" class="jh-btn jh-btn-primary"><span>💬</span> Request Quote via WhatsApp</button>
-          <button type="button" class="jh-btn jh-btn-outline" onclick="showJoinStep1()" style="margin-top: 10px;"><span>←</span> Back</button>
+          <button type="button" class="jh-btn jh-btn-outline" onclick="showJoinIntro()" style="margin-top: 10px;"><span>←</span> Back</button>
         </form>
       </div>
 
-      <!-- SUCCESS -->
+      <!-- SUCCESS STATE -->
       <div id="jh-success" class="jh-success hidden">
         <div class="jh-success-icon">✓</div>
-        <h3>Message Sent!</h3>
-        <p>We'll get back to you shortly via WhatsApp.</p>
+        <h3>Redirecting to WhatsApp...</h3>
+        <p>We'll get back to you shortly with pricing & setup details.</p>
         <button class="jh-btn jh-btn-secondary" onclick="closeJoinHive()" style="margin-top: 20px;">Close</button>
       </div>
     </div>
@@ -3949,6 +3975,12 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('sidebarYear').textContent = new Date().getFullYear();
 });
 (function() {
+  window.handleJoinYes = function() {
+    const phone = "27649220145";
+    const message = "Hi Hive Times 🐝, I'm interested in listing my products. Please send me more details on pricing and setup!";
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+    closeJoinHive();
+};
   const JH_PHONE = "27649220145";
   const overlay = document.getElementById('joinHiveModal');
   const step1 = document.getElementById('jh-step-1');
