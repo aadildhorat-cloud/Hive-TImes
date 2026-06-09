@@ -2595,29 +2595,7 @@ JOIN THE HIVE POPUP MODAL (Fixed IDs)
   <button class="jh-btn jh-btn-primary jh-btn-yes" onclick="handleJoinYes()"><span>✅</span> Yes, I'm Interested</button>
 </div>
 
-      <!-- STEP 1: Existing Website (Fallback) -->
-      <div id="jh-step-1" class="jh-step hidden">
-        <div class="jh-form-group">
-          <label for="jh-existingUrl">🌐 Already Have a Website?</label>
-          <input type="url" id="jh-existingUrl" placeholder="https://www.yourbusiness.com" autocomplete="url">
-          <div class="jh-error" id="jh-existingUrl-error">Please enter a valid website URL</div>
-        </div>
-        <button class="jh-btn jh-btn-primary" onclick="submitJoinExisting()"><span>📤</span> Submit Existing Website</button>
-        <div class="jh-divider"><span>- OR CREATE NEW -</span></div>
-        <button class="jh-btn jh-btn-secondary" onclick="showJoinStep2()"><span>✨</span> Create a New Website</button>
-      </div>
-
-      <!-- STEP 2: New Business Listing (Fallback) -->
-      <div id="jh-step-2" class="jh-step hidden">
-        <form id="jh-businessForm" onsubmit="submitJoinNew(event)" novalidate>
-          <div class="jh-form-group"><label for="jh-bizName">🏢 Business Name</label><input type="text" id="jh-bizName" required placeholder="e.g. Acme Corporation" autocomplete="organization"><div class="jh-error" id="jh-bizName-error">Business name is required</div></div>
-          <div class="jh-form-group"><label for="jh-bizAbout">📖 About Your Business</label><textarea id="jh-bizAbout" required placeholder="Tell us about your history, mission, and vision..." autocomplete="off"></textarea><div class="jh-error" id="jh-bizAbout-error">Please describe your business (min 10 chars)</div></div>
-          <div class="jh-form-group"><label for="jh-bizServices">🛠️ Products / Services</label><textarea id="jh-bizServices" required placeholder="What do you sell or provide?" autocomplete="off"></textarea><div class="jh-error" id="jh-bizServices-error">Please list your products or services</div></div>
-          <div class="jh-form-group"><label for="jh-bizLocation">📍 Location</label><input type="text" id="jh-bizLocation" required placeholder="City, State/Province, Country" autocomplete="address-level2"><div class="jh-error" id="jh-bizLocation-error">Location is required</div></div>
-          <button type="submit" class="jh-btn jh-btn-primary"><span>💬</span> Request Quote via WhatsApp</button>
-          <button type="button" class="jh-btn jh-btn-outline" onclick="showJoinIntro()" style="margin-top: 10px;"><span>←</span> Back</button>
-        </form>
-      </div>
+   
 
       <!-- SUCCESS STATE -->
       <div id="jh-success" class="jh-success hidden">
