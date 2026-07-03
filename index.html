@@ -2794,7 +2794,7 @@ const CONFIG = { whatsappNumber: '27649220145' };
 const BUSINESS_WHATSAPP = {
 'broadway-sweets': '27649220145', 'dough-co': '27822597009', 'shupz': '27612290093',
 'dainty-delicacies': '27840967330', 'nothing-fancy': '27710218554', 'butcher-block': '27615023930',
-'polar-ice-cream': '27604368376', 'sweetlane': '27836120605', 'nuhashealthyliving': '27836120605', 'stashsell': '27676567587',
+'polar-ice-cream': '27604368376', 'sweetlane': '27836120605', 'nuhashealthyliving': '27836120605', 'stashsell': '27676567587', 'an': '27746234239',
 'bakenco': '27670527209'
 };
 const FILTER_TAXONOMY = {
@@ -3263,6 +3263,8 @@ function renderProducts() {
         ...(window.NO_THING_FANCY_DATA || []).map(p => ({ ...p, source: 'nothingfancy', businessName: 'Nothing Fancy' })),
         ...(window.SWEETLANE_DATA || []).map(p => ({ ...p, source: 'sweetlane', businessName: 'Sweet Lane' })),
         ...(window.BAKENCO_DATA || []).map(p => ({ ...p, source: 'bakenco', businessName: 'Bake & Co.' })),
+         ...(window.BAKENCO_DATA || []).map(p => ({ ...p, source: 'bakenco', businessName: 'Bake & Co.' })),
+         ...(window.AN_WHOLESALE_DATA || []).map(p => ({ ...p, source: 'an-wholesalers', businessName: 'OB Distributors' })),
         
         // 2. Map Stashsell Data dynamically
         ...stashsellData.map(p => ({ 
@@ -3272,6 +3274,7 @@ function renderProducts() {
             // Ensure image paths are correct if they come from Sheets
             image: p.image ? (p.image.startsWith('http') ? p.image : `/stashsell/images/${p.image}`) : '/stashsell/images/stashsell-logo.jpg'
         })),
+        
         
         ...(window.NUHASHEALTHYLIVING_DATA || []).map(p => ({ ...p, source: 'nuhashealthyliving', businessName: 'Nuha\'s Healthy Living' }))
     ];
@@ -3854,6 +3857,7 @@ window.addEventListener('load', () => { setTimeout(openJoinHive, 600); });
 <script src="sweetlane/products-sweetlane.js" defer></script>
 <script src="bakenco/products-bakenco.js" defer></script>
 <script src="nuhas-healthy-living/products-nuhashealthyliving.js" defer></script>
-<script src="/stashsell/products-stashsell.js"></script>
+<script src="/stashsell/js/products-stashsell.js"></script>
+<script src="an/products-an.js"></script>
 </body>
 </html>
