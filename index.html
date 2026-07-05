@@ -46,6 +46,11 @@
 <noscript>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<!-- Load Stashsell directly from CDN (Instant, Globally Cached) -->
+<script src="https://cdn.jsdelivr.net/gh/aadildhorat-cloud/stashdell@main/js/products-stashsell.js" defer></script>
+
+<!-- Load AN directly from CDN (Instant, Globally Cached) -->
+<script src="https://cdn.jsdelivr.net/gh/aadildhorat-cloud/an@main/js/products-an.js" defer></script>
 </noscript>
 <!-- 🧠 Structured Data - Enhanced & Validated -->
 <script type="application/ld+json">
@@ -2792,10 +2797,9 @@ JOIN THE HIVE POPUP MODAL (Fixed IDs)
 // ===== CONFIG & TAXONOMY =====
 const CONFIG = { whatsappNumber: '27649220145' };
 const BUSINESS_WHATSAPP = {
-'broadway-sweets': '27649220145', 'dough-co': '27822597009', 'shupz': '27612290093',
-'dainty-delicacies': '27840967330', 'nothing-fancy': '27710218554', 'butcher-block': '27615023930',
-'polar-ice-cream': '27604368376', 'sweetlane': '27836120605', 'nuhashealthyliving': '27836120605', 'stashsell': '27676567587', 'an': '27746234239',
-'bakenco': '27670527209'
+'broadway-sweets': '27649220145', 'dough-co': '27822597009', 'shupz': '27612290093','dainty-delicacies': '27840967330',
+'nothing-fancy': '27710218554', 'butcher-block': '27615023930','polar-ice-cream': '27604368376', 'sweetlane': '27836120605', 
+'nuhashealthyliving': '27836120605', 'stashsell': '27676567587', 'an-wholesale': '27746234239','bakenco': '27670527209'
 };
 const FILTER_TAXONOMY = {
 niches: {
@@ -3247,11 +3251,12 @@ return array;
 }
 
 function renderProducts() {
-    const grid = document.getElementById('hive-products-grid'); 
+    const grid = document.getElementById('hive-products-grid');
     if (!grid) return;
 
     // 1. Gather all data sources
     const stashsellData = window.STASHSELL_DATA || window.STASHSELL_PRODUCTS || [];
+    const anData = window.AN_PRODUCTS || window.AN_DATA || [];
     
     const allProducts = [
         ...(window.POLAR_DATA || []).map(p => ({ ...p, source: 'polaricecream', businessName: 'Polar Ice Cream' })),
@@ -3263,78 +3268,79 @@ function renderProducts() {
         ...(window.NO_THING_FANCY_DATA || []).map(p => ({ ...p, source: 'nothingfancy', businessName: 'Nothing Fancy' })),
         ...(window.SWEETLANE_DATA || []).map(p => ({ ...p, source: 'sweetlane', businessName: 'Sweet Lane' })),
         ...(window.BAKENCO_DATA || []).map(p => ({ ...p, source: 'bakenco', businessName: 'Bake & Co.' })),
-         ...(window.BAKENCO_DATA || []).map(p => ({ ...p, source: 'bakenco', businessName: 'Bake & Co.' })),
-         ...(window.AN_WHOLESALE_DATA || []).map(p => ({ ...p, source: 'an-wholesalers', businessName: 'OB Distributors' })),
-        
-        // 2. Map Stashsell Data dynamically
-        ...stashsellData.map(p => ({ 
-            ...p, 
-            source: p.source || 'stashsell', 
-            businessName: p.businessName || 'Stashsell',
-            // Ensure image paths are correct if they come from Sheets
-            image: p.image ? (p.image.startsWith('http') ? p.image : `/stashsell/images/${p.image}`) : '/stashsell/images/stashsell-logo.jpg'
-        })),
-        
-        
-        ...(window.NUHASHEALTHYLIVING_DATA || []).map(p => ({ ...p, source: 'nuhashealthyliving', businessName: 'Nuha\'s Healthy Living' }))
+        ...anData.map(p => ({ ...p, source: 'an-wholesalers', businessName: 'AN Wholesalers' })),
+        ...stashsellData.map(p => ({ ...p, source: p.source || 'stashsell', businessName: p.businessName || 'Stashsell', image: p.image ? (p.image.startsWith('http') ? p.image : `/stashsell/images/${p.image}`) : '/stashsell/images/stashsell-logo.jpg' })),
+        ...(window.NUHASHEALTHYLIVING_DATA || []).map(p => ({ ...p, source: 'nuhashealthyliving', businessName: "Nuha's Healthy Living" }))
     ];
 
     if (allProducts.length === 0) {
-        // Only show loading if we haven't tried to render yet
-        if (!hasRenderedStashsell && stashsellData.length === 0) {
-             grid.innerHTML = '<p class="text-center" style="grid-column:1/-1;color:var(--gray);padding:2rem;">Loading products...</p>';
+        // 🚀 SPEED HACK: If live data is empty, try loading from Cache!
+        const cached = localStorage.getItem('hive_products_cache_v2');
+        if (cached) {
+            try {
+                const cachedProducts = JSON.parse(cached);
+                if (cachedProducts.length > 0) {
+                    renderGrid(grid, cachedProducts);
+                    return;
+                }
+            } catch(e) {}
         }
+        if (!hasRenderedStashsell) grid.innerHTML = '<p class="text-center" style="grid-column:1/-1;color:var(--gray);padding:2rem;">Loading products...</p>';
         return;
     }
 
     hasRenderedStashsell = true;
-    const shuffledProducts = shuffleArray([...allProducts]);
     
+    // 💾 SPEED HACK: Save to Cache for next time!
+    try { localStorage.setItem('hive_products_cache_v2', JSON.stringify(allProducts)); } catch(e) {}
+
+    renderGrid(grid, allProducts);
+}
+
+// Extracted grid rendering to keep code clean
+function renderGrid(grid, productsList) {
+    const shuffledProducts = shuffleArray([...productsList]);
     grid.innerHTML = shuffledProducts.map(p => {
         const productData = JSON.stringify(p).replace(/'/g, "&#39;");
         const nicheSlug = (p.nicheSlug || p.niche || p.category || 'all').toString().trim().toLowerCase();
         const locationSlug = (p.locationSlug || p.location || 'all').toString().trim().toLowerCase();
-        // Dynamically builds: https://broadway.hivetimes.co.za, https://shupz.hivetimes.co.za, etc.
         const pagePath = p.source ? `https://${p.source}.hivetimes.co.za` : 'https://hivetimes.co.za';
+        
         return `<article class="block product-card" data-product='${productData}' data-niche="${nicheSlug}" data-location="${locationSlug}">
-        ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
-        <div class="aspect-ratio-4-3">
-        <img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async" onerror="this.src='images-logo/placeholder-product.png'" width="300" height="225">
-        </div>
-        <div class="info product-content">
-        <div class="product-business">
-        <img src="${p.businessLogo || 'images-logo/placeholder-logo.png'}" alt="${p.businessName} logo" loading="lazy" decoding="async" width="20" height="20">
-        <span>${p.businessName}</span>
-        </div>
-        <p class="product-name">${p.name}</p>
-        <p class="product-description">${p.description || ''}</p>
-        <div class="product-footer">
-        <span class="product-price">R${p.price.toFixed(2)}</span>
-        <div style="display:flex;gap:6px;flex-wrap:wrap;">
-        <button class="btn-add-cart" onclick="event.stopPropagation(); addToHiveCart({ id: '${p.id}', name: '${p.name.replace(/'/g, "\\'")}', price: ${p.price}, image: '${p.image}', business: '${p.businessName}', businessLogo: '${p.businessLogo || 'images-logo/placeholder-logo.png'}' })">Add to Cart</button>
-        <a href="${pagePath}" class="btn-visit-website" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="fas fa-external-link-alt"></i> Visit</a>
-        </div>
-        </div>
-        </div>
+            ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
+            <div class="aspect-ratio-4-3">
+                <img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async" onerror="this.src='images-logo/placeholder-product.png'" width="300" height="225">
+            </div>
+            <div class="info product-content">
+                <div class="product-business">
+                    <img src="${p.businessLogo || 'images-logo/placeholder-logo.png'}" alt="${p.businessName} logo" loading="lazy" decoding="async" width="20" height="20">
+                    <span>${p.businessName}</span>
+                </div>
+                <p class="product-name">${p.name}</p>
+                <p class="product-description">${p.description || ''}</p>
+                <div class="product-footer">
+                    <span class="product-price">R${p.price.toFixed(2)}</span>
+                    <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                        <button class="btn-add-cart" onclick="event.stopPropagation(); addToHiveCart({ id: '${p.id}', name: '${p.name.replace(/'/g, "\\'")}', price: ${p.price}, image: '${p.image}', business: '${p.businessName}', businessLogo: '${p.businessLogo || 'images-logo/placeholder-logo.png'}' })">Add to Cart</button>
+                        <a href="${pagePath}" class="btn-visit-website" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="fas fa-external-link-alt"></i> Visit</a>
+                    </div>
+                </div>
+            </div>
         </article>`;
     }).join('');
 
-    // Re-attach listeners if needed
     if (!productGridListenerAttached) {
         grid.addEventListener('click', (e) => {
             const card = e.target.closest('.product-card');
             if (!card || e.target.closest('.btn-add-cart') || e.target.closest('.btn-visit-website')) return;
-            try { 
-                const product = JSON.parse(card.dataset.product.replace(/&#39;/g, "'")); 
-                openProductModal(product); 
+            try {
+                const product = JSON.parse(card.dataset.product.replace(/&#39;/g, "'"));
+                openProductModal(product);
             } catch(err) { console.error('Error opening product modal:', err); }
         });
         productGridListenerAttached = true;
     }
-    
-    if (typeof GuidedSearch !== 'undefined' && GuidedSearch.applyFilters) { 
-        GuidedSearch.applyFilters(); 
-    }
+    if (typeof GuidedSearch !== 'undefined' && GuidedSearch.applyFilters) GuidedSearch.applyFilters();
 }
 
 window.addToHiveCart = function(product) {
@@ -3717,6 +3723,11 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('🔄 Stashsell data loaded, re-rendering grid...');
         renderProducts();
     });
+// ✅ Listen for AN Wholesalers data load
+document.addEventListener('an:products:loaded', () => {
+    console.log('🔄 AN Wholesalers data loaded, re-rendering grid...');
+    renderProducts();
+});
     
     // Fallback: If data arrives late without event, check periodically
     let checkInterval = setInterval(() => {
@@ -3857,7 +3868,7 @@ window.addEventListener('load', () => { setTimeout(openJoinHive, 600); });
 <script src="sweetlane/products-sweetlane.js" defer></script>
 <script src="bakenco/products-bakenco.js" defer></script>
 <script src="nuhas-healthy-living/products-nuhashealthyliving.js" defer></script>
-<script src="/stashsell/js/products-stashsell.js"></script>
-<script src="an/products-an.js"></script>
+<script src="/stashsell/js/products-stashsell.js" defer></script>
+<script src="/an/js/products-an.js" defer></script>
 </body>
 </html>
