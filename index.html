@@ -2562,6 +2562,9 @@ JOIN THE HIVE POPUP MODAL (Fixed IDs)
 <button class="niche-card" data-niche="baking" onclick="GuidedSearch.setNiche('baking', 'Baking'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
 <span class="icon" aria-hidden="true">🍰</span><span>Baking</span>
 </button>
+<button class="niche-card" data-niche="meat" onclick="GuidedSearch.setNiche('meat', 'Meat'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
+<span class="icon" aria-hidden="true">🥩</span><span>Meat</span>
+</button>
 <button class="niche-card" data-niche="frozen-desserts" onclick="GuidedSearch.setNiche('frozen-desserts', 'Frozen Desserts'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
 <span class="icon" aria-hidden="true">🍦</span><span>Frozen</span>
 </button>
@@ -3864,7 +3867,7 @@ window.addEventListener('load', () => { setTimeout(openJoinHive, 600); });
 <script src="shupz/products-shupz.js" defer></script>
 <script src="nothing-fancy/products-nothingfancy.js" defer></script>
 <script src="polaricecream/products-polaricecream.js" defer></script>
-<script src="butcherblock/products-butcherblock.js" defer></script>
+<script src="/butcherblock/js/products-butcherblock.js" defer></script>
 <script src="sweetlane/products-sweetlane.js" defer></script>
 <script src="bakenco/products-bakenco.js" defer></script>
 <script src="nuhas-healthy-living/products-nuhashealthyliving.js" defer></script>
