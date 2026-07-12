@@ -3268,7 +3268,7 @@ function renderProducts() {
         ...(window.SHUPZ_DATA || []).map(p => ({ ...p, source: 'shupz', businessName: 'Shupz' })),
         ...(window.DAINTY_DATA || []).map(p => ({ ...p, source: 'daintydelicacies', businessName: 'Dainty Delicacies' })),
         ...(window.BUTCHERBLOCK_DATA || []).map(p => ({ ...p, source: 'butcherblock', businessName: 'Butcher Block' })),
-        ...(window.NO_THING_FANCY_DATA || []).map(p => ({ ...p, source: 'nothingfancy', businessName: 'Nothing Fancy' })),
+       ...(window.NOTHINGFANCY_DATA || []).map(p => ({ ...p, source: 'nothingfancy', businessName: 'Nothing Fancy' })),
         ...(window.SWEETLANE_DATA || []).map(p => ({ ...p, source: 'sweetlane', businessName: 'Sweet Lane' })),
         ...(window.BAKENCO_DATA || []).map(p => ({ ...p, source: 'bakenco', businessName: 'Bake & Co.' })),
         ...anData.map(p => ({ ...p, source: 'an-wholesalers', businessName: 'AN Wholesalers' })),
@@ -3865,7 +3865,7 @@ window.addEventListener('load', () => { setTimeout(openJoinHive, 600); });
 <script src="doughandco/products-dough-co.js" defer></script>
 <script src="/daintydelicacies/js/products-daintydelicacies.js" defer></script>
 <script src="shupz/products-shupz.js" defer></script>
-<script src="nothing-fancy/products-nothingfancy.js" defer></script>
+<script src="/nothing-fancy/js/products-nothingfancy.js" defer></script>
 <script src="polaricecream/products-polaricecream.js" defer></script>
 <script src="/butcherblock/js/products-butcherblock.js" defer></script>
 <script src="sweetlane/products-sweetlane.js" defer></script>
