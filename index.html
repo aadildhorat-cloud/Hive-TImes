@@ -2402,9 +2402,143 @@ border: none;
 background: transparent !important; color: #666 !important; border: 1px solid #ccc !important;
 }
 .jh-btn-no:hover { border-color: #999 !important; background: #f5f5f5 !important; transform: none; }
+/* === 🚀 ADVANCED HIVE PRELOADER === */
+#hive-preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a0000 0%, #4a0000 50%, #8B0000 100%);
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+    overflow: hidden;
+}
+#hive-preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+/* Animated Hexagon Background */
+#hive-preloader::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='104' viewBox='0 0 120 104'%3E%3Cpath d='M60 0L120 30V90L60 120L0 90V30L60 0Z' fill='none' stroke='%23FFC107' stroke-width='1' opacity='0.1'/%3E%3C/svg%3E");
+    background-size: 120px 104px;
+    animation: hex-drift 20s linear infinite;
+}
+@keyframes hex-drift {
+    0% { background-position: 0 0; }
+    100% { background-position: 120px 104px; }
+}
+/* Central Logo & Rings */
+.preloader-logo {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    z-index: 2;
+}
+.preloader-logo img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 15px rgba(255, 193, 7, 0.6));
+    animation: pulse-logo 2s ease-in-out infinite;
+}
+.hex-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 3px solid transparent;
+    border-top-color: #FFC107;
+    border-radius: 50%;
+    animation: spin-ring 1.5s linear infinite;
+}
+.hex-ring:nth-child(2) {
+    width: 85%;
+    height: 85%;
+    border-top-color: #FFB300;
+    animation-duration: 2s;
+    animation-direction: reverse;
+}
+@keyframes spin-ring {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+@keyframes pulse-logo {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+/* Text & Progress Bar */
+.preloader-text {
+    font-family: 'Poppins', 'Inter', sans-serif;
+    color: #FFC107;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    z-index: 2;
+    text-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+}
+.preloader-bar-container {
+    width: 250px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 2;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.preloader-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #FFC107, #FFB300, #FFC107);
+    background-size: 200% 100%;
+    border-radius: 10px;
+    animation: load-bar 2s ease-in-out forwards, shimmer 1.5s linear infinite;
+}
+@keyframes load-bar {
+    0% { width: 0%; }
+    20% { width: 20%; }
+    50% { width: 60%; }
+    80% { width: 85%; }
+    100% { width: 100%; }
+}
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    .preloader-logo { width: 100px; height: 100px; }
+    .preloader-logo img { width: 60px; height: 60px; }
+    .preloader-text { font-size: 1rem; letter-spacing: 1px; }
+    .preloader-bar-container { width: 200px; }
+}
 </style>
 </head>
 <body>
+    <!-- 🚀 ADVANCED HIVE PRELOADER -->
+<div id="hive-preloader">
+    <div class="preloader-logo">
+        <div class="hex-ring"></div>
+        <div class="hex-ring"></div>
+        <img src="images-logo/hive-times-logo.png" alt="Loading Hive Times">
+    </div>
+    <div class="preloader-text">Entering the Hive...</div>
+    <div class="preloader-bar-container">
+        <div class="preloader-bar"></div>
+    </div>
+</div>
 <a href="#main-content" class="sr-only">Skip to main content</a>
 <!-- ==========================================
 JOIN THE HIVE POPUP MODAL (Fixed IDs)
@@ -3866,6 +4000,30 @@ if(err) err.classList.remove('show');
 });
 // Auto-open logic
 window.addEventListener('load', () => { setTimeout(openJoinHive, 600); });
+
+// === 🚀 PRELOADER LOGIC (STRICT SHORT TIMER) ===
+// Forces the preloader to hide after a set time, ignoring heavy background scripts.
+setTimeout(function() {
+    const preloader = document.getElementById('hive-preloader');
+    if (preloader && !preloader.classList.contains('hidden')) {
+        preloader.classList.add('hidden');
+        
+        // Remove from DOM after transition to free up memory
+        setTimeout(function() {
+            preloader.remove(); 
+        }, 600); // Matches your CSS transition duration
+    }
+}, 2500); // 👈 CHANGE THIS NUMBER TO ADJUST TIME (2500 = 2.5 seconds)
+
+// Fallback: Force hide after 5 seconds in case of blocked load event
+setTimeout(function() {
+    const preloader = document.getElementById('hive-preloader');
+    if (preloader && !preloader.classList.contains('hidden')) {
+        preloader.classList.add('hidden');
+        setTimeout(function() { preloader.remove(); }, 600);
+    }
+}, 5000);
+
 })();
 </script>
 <!-- External Product Data Scripts - Deferred Loading for Performance -->
