@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DTPGZ964FD"></script>
 <!-- 🔍 SEO Meta Tags - Enhanced -->
 <title>Hive Times | South Africa's Local Business Directory & Marketplace</title>
 <meta name="description" content="Discover trusted South African businesses, wholesale suppliers & local services. Browse verified ratings, read reviews & connect via WhatsApp.">
@@ -3731,6 +3733,11 @@ document.addEventListener('an:products:loaded', () => {
     console.log('🔄 AN Wholesalers data loaded, re-rendering grid...');
     renderProducts();
 });
+// ✅ Listen for Polar Ice Cream data load
+document.addEventListener('polaricecream:products:loaded', () => {
+    console.log('🔄 Polar Ice Cream data loaded, re-rendering grid...');
+    renderProducts();
+});
     
     // Fallback: If data arrives late without event, check periodically
     let checkInterval = setInterval(() => {
@@ -3866,7 +3873,7 @@ window.addEventListener('load', () => { setTimeout(openJoinHive, 600); });
 <script src="/daintydelicacies/js/products-daintydelicacies.js" defer></script>
 <script src="/shupz/js/products-shupz.js" defer></script>
 <script src="/nothing-fancy/js/products-nothingfancy.js" defer></script>
-<script src="polaricecream/products-polaricecream.js" defer></script>
+<script src="/polaricecream/js/products-polaricecream.js" defer></script>
 <script src="/butcherblock/js/products-butcherblock.js" defer></script>
 <script src="/sweetlane/js/products-sweetlane.js" defer></script>
 <script src="bakenco/products-bakenco.js" defer></script>
