@@ -1,0 +1,1783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wadee's Braai Catering | Premium Halaal Braai Services</title>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DTPGZ964FD"></script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- ========== FAVICONS ========== -->
+<link rel="icon" type="image/jpg" href="images/wadees-logo.jpg">
+<link rel="apple-touch-icon" href="images/wadees-logo.jpg">
+<link rel="shortcut icon" href="images/wadeesbraai-logo.jpg">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #FECF07;
+            --primary-dark: #E5B900;
+            --secondary: #BF1E2E;
+            --dark: #0A0A0A;
+            --light: #FFFFFF;
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #EEEEEE;
+            --gray-600: #757575;
+            --gray-800: #424242;
+            --gradient-primary: linear-gradient(135deg, #FECF07 0%, #E5B900 100%);
+            --gradient-dark: linear-gradient(135deg, #0A0A0A 0%, #1a1a1a 100%);
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--gray-800);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            transition: opacity 0.5s ease;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .preloader-content {
+            text-align: center;
+        }
+
+        .preloader-flame {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 50% 50% 20% 20%;
+            animation: flame 1.5s ease-in-out infinite;
+            margin: 0 auto 20px;
+            box-shadow: 0 0 40px rgba(254, 207, 7, 0.6);
+        }
+
+        @keyframes flame {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        .preloader-text {
+            color: var(--primary);
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar-logo i {
+            color: var(--primary);
+        }
+
+        .navbar-menu {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .navbar-menu a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .navbar-menu a:hover::after {
+            width: 100%;
+        }
+
+        .navbar-menu a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(10,10,10,0.9) 0%, rgba(26,26,26,0.8) 100%), 
+                        url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1920') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none" stroke="rgba(254,207,7,0.03)" stroke-width="1"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(254, 207, 7, 0.15);
+            border: 1px solid rgba(254, 207, 7, 0.3);
+            padding: 10px 24px;
+            border-radius: 50px;
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-badge i {
+            font-size: 16px;
+        }
+
+        .hero-title {
+            font-size: clamp(40px, 8vw, 72px);
+            color: var(--light);
+            margin-bottom: 24px;
+            line-height: 1.1;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-title span {
+            color: var(--primary);
+            position: relative;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 40px;
+            font-weight: 300;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--dark);
+            box-shadow: 0 4px 15px rgba(254, 207, 7, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(254, 207, 7, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--light);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-outline:hover {
+            background: var(--light);
+            color: var(--dark);
+            border-color: var(--light);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: var(--gradient-dark);
+            padding: 60px 20px;
+            position: relative;
+            z-index: 2;
+            margin-top: -80px;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 5vw, 48px);
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            color: var(--gray-600);
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--gray-50);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-images {
+            position: relative;
+        }
+
+        .about-image-main {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: var(--shadow-2xl);
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-image-secondary {
+            position: absolute;
+            bottom: -40px;
+            right: -40px;
+            width: 60%;
+            border-radius: 16px;
+            box-shadow: var(--shadow-xl);
+            border: 8px solid white;
+            z-index: 2;
+        }
+
+        .about-badge {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-xl);
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .about-badge-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            font-size: 24px;
+        }
+
+        .about-badge-text {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 24px;
+            line-height: 1.2;
+        }
+
+        .about-badge-text span {
+            display: block;
+            font-size: 12px;
+            color: var(--gray-600);
+            font-weight: 400;
+        }
+
+        .about-content h2 {
+            font-size: 40px;
+            margin-bottom: 24px;
+            color: var(--dark);
+        }
+
+        .about-content p {
+            color: var(--gray-600);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 32px 0;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .about-feature i {
+            color: var(--secondary);
+            font-size: 20px;
+        }
+
+        .about-feature span {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-200);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gray-50);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: var(--secondary);
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--gradient-primary);
+            color: var(--dark);
+            transform: rotateY(360deg);
+        }
+
+        .service-title {
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+
+        .service-description {
+            color: var(--gray-600);
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        .service-link {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s ease;
+        }
+
+        .service-link:hover {
+            gap: 12px;
+        }
+
+        /* Menu Section */
+        .menu {
+            background: var(--gradient-dark);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="60" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></svg>');
+        }
+
+        .menu .section-title {
+            color: white;
+        }
+
+        .menu .section-subtitle {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .menu-category {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .menu-category-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .menu-category-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            font-size: 24px;
+        }
+
+        .menu-category-title {
+            font-size: 24px;
+            color: var(--primary);
+        }
+
+        .menu-items {
+            list-style: none;
+        }
+
+        .menu-item {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item i {
+            color: var(--primary);
+            font-size: 8px;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            border: 1px solid var(--gray-200);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 120px;
+            color: var(--gray-200);
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+        }
+
+        .testimonial-stars {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .testimonial-text {
+            color: var(--gray-600);
+            line-height: 1.8;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .testimonial-role {
+            color: var(--gray-600);
+            font-size: 14px;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: var(--gradient-primary);
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: clamp(32px, 5vw, 48px);
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .cta-subtitle {
+            font-size: 20px;
+            color: var(--dark);
+            opacity: 0.8;
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-dark {
+            background: var(--dark);
+            color: var(--primary);
+        }
+
+        .btn-dark:hover {
+            background: #1a1a1a;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info h3 {
+            font-size: 32px;
+            margin-bottom: 24px;
+            color: var(--dark);
+        }
+
+        .contact-info p {
+            color: var(--gray-600);
+            margin-bottom: 32px;
+            line-height: 1.8;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .contact-item-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gray-50);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .contact-item-content h4 {
+            font-size: 16px;
+            margin-bottom: 4px;
+            color: var(--dark);
+        }
+
+        .contact-item-content p {
+            color: var(--gray-600);
+            margin: 0;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-200);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid var(--gray-200);
+            border-radius: 8px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(254, 207, 7, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 80px 20px 30px;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand .navbar-logo {
+            margin-bottom: 20px;
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social a {
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        .footer-title {
+            font-size: 18px;
+            margin-bottom: 24px;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 14px;
+        }
+
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            z-index: 999;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            animation: bounce 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .navbar-menu {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-image-secondary {
+                right: 20px;
+                bottom: 20px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-flame"></div>
+            <div class="preloader-text">Igniting the Flame</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-logo">
+                <i class="fas fa-fire"></i>
+                Wadee's Braai
+            </a>
+            <ul class="navbar-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-certificate"></i>
+                SANHA Halaal Certified
+            </div>
+            <h1 class="hero-title">
+                Let Us <span>"Meat"</span> for a Braai
+            </h1>
+            <p class="hero-subtitle">
+                Premium Halaal Braai Catering Services Across South Africa. 
+                Over 100+ Five-Star Reviews on Google.
+            </p>
+            <div class="hero-buttons">
+                <a href="https://wa.me/27723706786?text=Hi.%20I'm%20interested%20in%20your%20braai%20catering%20services.%20Please%20send%20me%20a%20quote." 
+                   class="btn btn-primary" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    Get a Quote
+                </a>
+                <a href="#services" class="btn btn-outline">
+                    Explore Services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="stats-container">
+            <div class="stat-item reveal">
+                <div class="stat-number" data-target="100">0</div>
+                <div class="stat-label">Five Star Reviews</div>
+            </div>
+            <div class="stat-item reveal">
+                <div class="stat-number" data-target="500">0</div>
+                <div class="stat-label">Events Catered</div>
+            </div>
+            <div class="stat-item reveal">
+                <div class="stat-number" data-target="15">0</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-item reveal">
+                <div class="stat-number" data-target="100">0</div>
+                <div class="stat-label">% Halaal Certified</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="about-grid">
+            <div class="about-images reveal">
+                <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=800" 
+                     alt="Professional Braai Setup" class="about-image-main">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600" 
+                     alt="Premium Meat" class="about-image-secondary">
+                <div class="about-badge">
+                    <div class="about-badge-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="about-badge-text">
+                        5.0 Rating
+                        <span>On Google Reviews</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-content reveal">
+                <h2>Premium Halaal Braai Catering</h2>
+                <p>
+                    Hosting a braai is now simpler and more delicious than ever before! With a dedicated team of 
+                    professionals, Wadee's Braai Catering offers top-class, complete braai catering in the comfort 
+                    of your own venue.
+                </p>
+                <p>
+                    With a passion for preparing meat to its most tender and fine quality, Wadee's Braai Catering 
+                    is the best option in hassle-free braai catering. Our six 'special' meat items promise to delight 
+                    even the most discerning consumers!
+                </p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Strictly Halaal Certified</span>
+                    </div>
+                    <div class="about-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Professional Staff</span>
+                    </div>
+                    <div class="about-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Premium Quality Meats</span>
+                    </div>
+                    <div class="about-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Full Equipment Setup</span>
+                    </div>
+                </div>
+                <a href="#contact" class="btn btn-primary">
+                    Book Your Event
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="section-header reveal">
+            <div class="section-tag">What We Offer</div>
+            <h2 class="section-title">Our Premium Services</h2>
+            <p class="section-subtitle">
+                From intimate gatherings to large corporate events, we deliver exceptional braai experiences
+            </p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3 class="service-title">Corporate Events</h3>
+                <p class="service-description">
+                    We understand how important it is for corporates to entertain and reward both clients and staff. 
+                    We take pleasure in catering these events on your behalf, promising you peace of mind.
+                </p>
+                <a href="https://wa.me/27723706786?text=Hi.%20I'm%20interested%20in%20corporate%20event%20catering.%20Please%20send%20me%20more%20information." 
+                   class="service-link" target="_blank">
+                    Inquire Now <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <h3 class="service-title">Drop-Off Catering</h3>
+                <p class="service-description">
+                    For events that don't require on-site braai services, we offer convenient drop-off catering. 
+                    Your meat will be perfectly prepared and delivered ready for your enjoyment.
+                </p>
+                <a href="https://wa.me/27723706786?text=Hi.%20I'm%20interested%20in%20drop-off%20catering%20services.%20Please%20send%20me%20more%20information." 
+                   class="service-link" target="_blank">
+                    Inquire Now <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <i class="fas fa-ring"></i>
+                </div>
+                <h3 class="service-title">Wedding Catering</h3>
+                <p class="service-description">
+                    Most people agree that the most important facet of a wedding is the food. We offer hassle-free 
+                    catering packages for weddings and pre/post wedding functions of any size.
+                </p>
+                <a href="https://wa.me/27723706786?text=Hi.%20I'm%20interested%20in%20wedding%20catering%20services.%20Please%20send%20me%20more%20information." 
+                   class="service-link" target="_blank">
+                    Inquire Now <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="service-title">Event Security</h3>
+                <p class="service-description">
+                    Through our affiliation with Vision Tactical Security Services, we offer comprehensive event 
+                    security ensuring ultimate peace of mind for all your occasions.
+                </p>
+                <a href="https://wa.me/27723706786?text=Hi.%20I'm%20interested%20in%20event%20security%20services.%20Please%20send%20me%20more%20information." 
+                   class="service-link" target="_blank">
+                    Inquire Now <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <i class="fas fa-store"></i>
+                </div>
+                <h3 class="service-title">Retail Meats</h3>
+                <p class="service-description">
+                    Our full range of premium quality marinated meats available at stockists throughout South Africa. 
+                    Call or WhatsApp us for a stockist near you.
+                </p>
+                <a href="https://wa.me/27723706786?text=Hi.%20I'm%20interested%20in%20buying%20your%20marinated%20meats.%20Where%20can%20I%20find%20a%20stockist?" 
+                   class="service-link" target="_blank">
+                    Inquire Now <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <i class="fas fa-fire-alt"></i>
+                </div>
+                <h3 class="service-title">Private Braai</h3>
+                <p class="service-description">
+                    Our skilled braai masters bring the grill directly to your home or venue. We handle everything 
+                    from preparation to serving, allowing you to relax and enjoy your event.
+                </p>
+                <a href="https://wa.me/27723706786?text=Hi.%20I'm%20interested%20in%20private%20braai%20services.%20Please%20send%20me%20more%20information." 
+                   class="service-link" target="_blank">
+                    Inquire Now <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="section menu" id="menu">
+        <div class="section-header reveal">
+            <div class="section-tag">Our Menu</div>
+            <h2 class="section-title">Delicious Offerings</h2>
+            <p class="section-subtitle">
+                All sides are freshly prepared on the day of your occasion
+            </p>
+        </div>
+        <div class="menu-grid">
+            <div class="menu-category reveal">
+                <div class="menu-category-header">
+                    <div class="menu-category-icon">
+                        <i class="fas fa-drumstick-bite"></i>
+                    </div>
+                    <h3 class="menu-category-title">Premium Meats</h3>
+                </div>
+                <ul class="menu-items">
+                    <li class="menu-item"><i class="fas fa-circle"></i> Succulent Lamb Chops</li>
+                    <li class="menu-item"><i class="fas fa-circle"></i> Perfectly Tender Steak Cuts</li>
+                    <li class="menu-item"><i class="fas fa-circle"></i> Mexican Chicken Fillets</li>
+                    <li class="menu-item"><i class="fas fa-circle"></i> Expertly Seasoned Chicken Tikka</li>
+                    <li class="menu-item"><i class="fas fa-circle"></i> Juicy Sweet-Chilli Sausages</li>
+                    <li class="menu-item"><i class="fas fa-circle"></i> Spicy Hot Wings</li>
+                    <li class="menu-item"><i class="fas fa-circle"></i> Traditional & Masala Wors</li>
+                    <li class="menu-item"><i class="fas fa-circle"></i> Boneless T-Bone Steak</li>
+                </ul>
+            </div>
+
+            <div class="menu-category reveal">
+                <div class="menu-category-header">
+                    <div class="menu-category-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="menu-category-title">Fresh Salads</h3>
+                </div>
+                <ul class="menu-items">
+                    <li class="menu-item"><i class="fas fa-circle"></i> Green Greek Salad</li>
+                    <li class="menu-item"><i class="fas fa-circle"></i> Fruity Green Salad</li>
+                    <li class="menu-item"><i class="fas fa-circle"></i> Mixed Grilled Salad</li>
+                    <li class="menu-item"><i class="fas fa-circle"></i> Crunchy Coleslaw</li>
+                    <li class="menu-item"><i class="fas fa-circle"></i> Mexican Pasta Salad</li>
+                    <li class="menu-item"><i class="fas fa-circle"></i> Spinach Pesto Pasta</li>
+                    <li class="menu-item"><i class="fas fa-circle"></i> Exotic Gourmet Potato Balls</li>
+                    <li class="menu-item"><i class="fas fa-circle"></i> Traditional Pap & Chakalaka</li>
+                </ul>
+            </div>
+
+            <div class="menu-category reveal">
+                <div class="menu-category-header">
+                    <div class="menu-category-icon">
+                        <i class="fas fa-bread-slice"></i>
+                    </div>
+                    <h3 class="menu-category-title">Breads & Sides</h3>
+                </div>
+                <ul class="menu-items">
+                    <li class="menu-item"><i class="fas fa-circle"></i> Fresh Long Rolls</li>
+                    <li class="menu-item"><i class="fas fa-circle"></i> Garlic Bread</li>
+                    <li class="menu-item"><i class="fas fa-circle"></i> Pita Bread</li>
+                    <li class="menu-item"><i class="fas fa-circle"></i> Naan Bread</li>
+                    <li class="menu-item"><i class="fas fa-circle"></i> Traditional Baked Beans</li>
+                    <li class="menu-item"><i class="fas fa-circle"></i> Hot Bean Noodle Salad</li>
+                    <li class="menu-item"><i class="fas fa-circle"></i> Fritos Salad</li>
+                    <li class="menu-item"><i class="fas fa-circle"></i> Taco Baked Casserole</li>
+                </ul>
+            </div>
+
+            <div class="menu-category reveal">
+                <div class="menu-category-header">
+                    <div class="menu-category-icon">
+                        <i class="fas fa-ice-cream"></i>
+                    </div>
+                    <h3 class="menu-category-title">Desserts</h3>
+                </div>
+                <ul class="menu-items">
+                    <li class="menu-item"><i class="fas fa-circle"></i> Crème Caramel</li>
+                    <li class="menu-item"><i class="fas fa-circle"></i> Malai Barfi</li>
+                    <li class="menu-item"><i class="fas fa-circle"></i> Custard and Jelly</li>
+                    <li class="menu-item"><i class="fas fa-circle"></i> Fresh Fruit Platter</li>
+                    <li class="menu-item"><i class="fas fa-circle"></i> Chocolate Brownies</li>
+                    <li class="menu-item"><i class="fas fa-circle"></i> Malva Pudding</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section" id="testimonials">
+        <div class="section-header reveal">
+            <div class="section-tag">Testimonials</div>
+            <h2 class="section-title">What Our Clients Say</h2>
+            <p class="section-subtitle">
+                Don't just take our word for it - hear from our satisfied customers
+            </p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">
+                    "We are SO glad we used Wadee's Braai for our school event – our guests, parents and students 
+                    loved the food, especially the variety of items. The staff was incredibly friendly & helpful, 
+                    and the affordability took so much stress out of our planning."
+                </p>
+                <div class="testimonial-author">School Event Organizer</div>
+                <div class="testimonial-role">Corporate Client</div>
+            </div>
+
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">
+                    "Wadee's Braai catered my daughter's pre-wedding function. As the mother of the bride, I was 
+                    looking for an all-inclusive catering option. Not only was the meat absolutely delicious, 
+                    Zaheer's team was so professional. I would recommend Wadee's Braai without hesitation!"
+                </p>
+                <div class="testimonial-author">Mother of the Bride</div>
+                <div class="testimonial-role">Wedding Client</div>
+            </div>
+
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">
+                    "What lekker juicy meat it was! Succulent steaks, juicy chops, mmm that chicken & perfect 
+                    sausages. Not to mention that amazing display of yummy salads. My mouth is still watering! 
+                    You will not be disappointed!"
+                </p>
+                <div class="testimonial-author">Hubbul Masaakeen Foundation</div>
+                <div class="testimonial-role">Event Client</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-content">
+            <h2 class="cta-title">Ready to Book Your Event?</h2>
+            <p class="cta-subtitle">
+                Let us bring the heat, flavor, and hospitality to make your event unforgettable
+            </p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/27723706786?text=Hi.%20I'm%20ready%20to%20book%20my%20event.%20Please%20send%20me%20a%20quote." 
+                   class="btn btn-dark" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp Us Now
+                </a>
+                <a href="tel:+27723706786" class="btn btn-outline" style="border-color: var(--dark); color: var(--dark);">
+                    <i class="fas fa-phone"></i>
+                    Call 072 370 6786
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="contact-grid">
+            <div class="contact-info reveal">
+                <h3>Get In Touch</h3>
+                <p>
+                    For a hassle-free, no-obligation quote, please contact Zaheer Wadee. 
+                    We're here to make your event memorable!
+                </p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-item-content">
+                            <h4>Phone</h4>
+                            <p>072 370 6786 / 072 877 8689</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="contact-item-content">
+                            <h4>WhatsApp</h4>
+                            <p>072 370 6786</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-item-content">
+                            <h4>Email</h4>
+                            <p>info@wadeesbraai.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="contact-item-content">
+                            <h4>Certification</h4>
+                            <p>SANHA Halaal Certified</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form reveal">
+                <form id="quoteForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required placeholder="your@email.com">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="072 000 0000">
+                        </div>
+                        <div class="form-group">
+                            <label for="guests">Number of Guests *</label>
+                            <input type="number" id="guests" name="guests" required placeholder="50">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Event Date *</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Event Location *</label>
+                            <input type="text" id="location" name="location" required placeholder="City/Suburb">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Tell us about your event..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                        <i class="fas fa-paper-plane"></i>
+                        Request Quote
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="navbar-logo">
+                    <i class="fas fa-fire"></i>
+                    Wadee's Braai
+                </a>
+                <p>
+                    Premium Halaal braai catering services across South Africa. 
+                    Bringing people together through expertly prepared, flame-grilled meals.
+                </p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/wadeesbraais" target="_blank" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/wadeesbraai/" target="_blank" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/27723706786" target="_blank" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h4 class="footer-title">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#services">Corporate Events</a></li>
+                    <li><a href="#services">Wedding Catering</a></li>
+                    <li><a href="#services">Drop-Off Catering</a></li>
+                    <li><a href="#services">Private Braai</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">Contact</h4>
+                <ul class="footer-links">
+                    <li><a href="tel:+27723706786">072 370 6786</a></li>
+                    <li><a href="mailto:info@wadeesbraai.com">info@wadeesbraai.com</a></li>
+                    <li><a href="https://wa.me/27723706786" target="_blank">WhatsApp Us</a></li>
+                    <li><a href="#">SANHA Certified</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Wadee's Braai Catering. All rights reserved. | Proudly South African</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/27723706786?text=Hi.%20I'm%20interested%20in%20your%20braai%20catering%20services." 
+       class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').classList.add('hidden');
+            }, 1500);
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll Reveal Animation
+        const reveals = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        // Animated Counter
+        const counters = document.querySelectorAll('.stat-number');
+        const animateCounter = (counter) => {
+            const target = +counter.getAttribute('data-target');
+            const increment = target / 50;
+            let current = 0;
+            const updateCounter = () => {
+                if (current < target) {
+                    current += increment;
+                    counter.innerText = Math.ceil(current);
+                    setTimeout(updateCounter, 30);
+                } else {
+                    counter.innerText = target + '+';
+                }
+            };
+            updateCounter();
+        };
+
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        counters.forEach(counter => observer.observe(counter));
+
+        // Form Submission
+        document.getElementById('quoteForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your inquiry! We will contact you shortly.');
+            e.target.reset();
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navbarMenu = document.querySelector('.navbar-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navbarMenu.style.display = navbarMenu.style.display === 'flex' ? 'none' : 'flex';
+            navbarMenu.style.position = 'absolute';
+            navbarMenu.style.top = '100%';
+            navbarMenu.style.left = '0';
+            navbarMenu.style.right = '0';
+            navbarMenu.style.background = 'rgba(10, 10, 10, 0.95)';
+            navbarMenu.style.flexDirection = 'column';
+            navbarMenu.style.padding = '20px';
+            navbarMenu.style.backdropFilter = 'blur(10px)';
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

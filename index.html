@@ -2936,9 +2936,19 @@ JOIN THE HIVE POPUP MODAL (Fixed IDs)
 // ===== CONFIG & TAXONOMY =====
 const CONFIG = { whatsappNumber: '27649220145' };
 const BUSINESS_WHATSAPP = {
-'broadway-sweets': '27649220145', 'dough-co': '27822597009', 'shupz': '27612290093','dainty-delicacies': '27840967330',
-'nothing-fancy': '27710218554', 'butcher-block': '27615023930','polar-ice-cream': '27604368376', 'sweetlane': '27836120605', 
-'nuhashealthyliving': '27836120605', 'stashsell': '27676567587', 'an-wholesale': '27746234239','bakenco': '27670527209'
+  'broadway-sweets': '27649220145',
+  'dough-co': '27822597009',
+  'shupz': '27612290093',
+  'dainty-delicacies': '27840967330',
+  'nothing-fancy': '27710218554',
+  'butcher-block': '27615023930',
+  'polar-ice-cream': '27604368376',
+  'sweetlane': '27836120605',
+  'Wadees-Braai': '27723706786',
+  'nuhashealthyliving': '27836120605',
+  'stashsell': '27676567587',
+  'an-wholesale': '27746234239',
+  'bakenco': '27670527209',
 };
 const FILTER_TAXONOMY = {
 niches: {
@@ -3399,6 +3409,7 @@ function renderProducts() {
     
     const allProducts = [
         ...(window.POLAR_DATA || []).map(p => ({ ...p, source: 'polaricecream', businessName: 'Polar Ice Cream' })),
+        ...(window.WADEES_BRAAI_PRODUCTS || []).map(p => ({ ...p, source: 'wadeesbraai', businessName: "WadeeS Braai" })),
         ...(window.PRODUCTS_DATA || []).map(p => ({ ...p, source: 'broadway', businessName: 'Broadway Sweets' })),
         ...(window.DOUGHANDCO_DATA || []).map(p => ({ ...p, source: 'doughandco', businessName: 'Dough & Co' })),
         ...(window.SHUPZ_DATA || []).map(p => ({ ...p, source: 'shupz', businessName: 'Shupz' })),
@@ -3482,16 +3493,18 @@ function renderGrid(grid, productsList) {
     if (typeof GuidedSearch !== 'undefined' && GuidedSearch.applyFilters) GuidedSearch.applyFilters();
 }
 
+// ✅ NEW (Added whatsappNumber at the end)
 window.addToHiveCart = function(product) {
-Cart.add({
-id: product.id,
-name: product.name,
-price: product.price,
-image: product.image,
-business: product.business || 'Hive Times',
-businessLogo: product.businessLogo || 'images-logo/placeholder-logo.png',
-description: product.description
-});
+  Cart.add({
+    id: product.id,
+    name: product.name,
+    price: product.price,
+    image: product.image,
+    business: product.business || 'Hive Times',
+    businessLogo: product.businessLogo || 'images-logo/placeholder-logo.png',
+    description: product.description,
+    whatsappNumber: product.whatsappNumber || '' // ✅ ADD THIS LINE
+  });
 };
 
 // Swiper - load dynamically with error handling
@@ -3872,6 +3885,10 @@ document.addEventListener('polaricecream:products:loaded', () => {
     console.log('🔄 Polar Ice Cream data loaded, re-rendering grid...');
     renderProducts();
 });
+  document.addEventListener('wadees:products:loaded', () => {
+    console.log('🔄 Wadees Braai data loaded, re-rendering grid...');
+    renderProducts();
+});
     
     // Fallback: If data arrives late without event, check periodically
     let checkInterval = setInterval(() => {
@@ -4038,5 +4055,6 @@ setTimeout(function() {
 <script src="/nuhas-healthy-living/js/products-nuhashealthyliving.js" defer></script>
 <script src="/stashsell/js/products-stashsell.js" defer></script>
 <script src="/an/js/products-an.js" defer></script>
+<script src="/wadeesbraai/js/products-wadeesbraai.js" defer></script>
 </body>
 </html>
