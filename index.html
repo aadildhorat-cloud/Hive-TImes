@@ -663,154 +663,148 @@ background: rgba(255, 107, 107, 0.3);
 }
 /* ===== 🧭 HEADER - Professional Fixed Layout ===== */
 header {
-background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-color: var(--white);
-position: sticky;
-top: 0;
-z-index: 100;
-box-shadow: var(--shadow);
-/* Prevent header from causing CLS */
-contain: layout style;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow);
+    contain: layout style;
 }
 header .container {
-display: flex;
-flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
+
+/* Top Row Layout */
 .header-top-row {
-display: flex;
-align-items: center;
-justify-content: space-between;
-gap: clamp(8px, 3vw, 1rem);
-flex-wrap: nowrap;
-padding: clamp(8px, 2vw, 12px) clamp(12px, 4vw, 20px) 0;
-min-height: var(--header-height-mobile);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(8px, 3vw, 1rem);
+    flex-wrap: nowrap;
+    padding: clamp(8px, 2vw, 12px) clamp(12px, 4vw, 20px) 0;
+    min-height: var(--header-height-mobile);
 }
-/* Logo - Fixed height, optimized */
+
+/* Logo */
 .logo {
-order: 3;
-display: flex;
-align-items: center;
-gap: clamp(6px, 2vw, 10px);
-min-height: clamp(40px, 8vw, 48px);
-padding: 4px 0;
-flex-shrink: 0;
-transition: opacity 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centers the logo image inside its space */
+    gap: clamp(6px, 2vw, 10px);
+    min-height: clamp(40px, 8vw, 48px);
+    padding: 4px 0;
+    flex: 1; /* Takes up all remaining space */
+    transition: opacity 0.2s ease;
 }
 .logo:hover { opacity: 0.85; }
 .logo img {
-/* Adjust these values to your preferred size range: clamp(min, preferred, max) */
-height: clamp(40px, 9vw, 50px);
-width: auto;
-border-radius: 8px;
-object-fit: contain; /* Prevents cropping/distortion */
-filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-/* REMOVE aspect-ratio: 1/1; UNLESS your logo is perfectly square */
-aspect-ratio: auto;
+    height: clamp(40px, 9vw, 50px);
+    width: auto;
+    border-radius: 8px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    aspect-ratio: auto;
 }
-.logo-text {
-font-size: clamp(1rem, 3vw, 1.2rem);
-font-weight: 700;
-letter-spacing: 0.6px;
-text-transform: uppercase;
-background: linear-gradient(135deg, #ffffff, #d1d1d1);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-}
-/* Search Bar - Optimized */
+
+/* Search Bar */
 .search-bar {
-order: 2;
-max-width: clamp(200px, 40vw, 450px);
-width: 100%;
-margin: 0 auto;
-flex: 1;
-position: relative;
+    flex: 1;
+    min-width: 120px;
+    position: relative;
 }
 .search-bar input {
-width: 100%;
-padding: clamp(8px, 2vw, 10px) clamp(12px, 3vw, 16px) clamp(8px, 2vw, 10px) clamp(32px, 8vw, 40px);
-border-radius: 999px;
-border: 1px solid rgba(255, 255, 255, 0.25);
-background: rgba(255, 255, 255, 0.08);
-backdrop-filter: blur(10px);
--webkit-backdrop-filter: blur(10px);
-color: var(--white);
-font-size: clamp(0.85rem, 2.5vw, 0.9rem);
-font-weight: 450;
-letter-spacing: 0.2px;
-transition: all 0.25s ease;
-min-height: clamp(40px, 8vw, 46px);
-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    padding: clamp(8px, 2vw, 10px) clamp(12px, 3vw, 16px) clamp(8px, 2vw, 10px) clamp(32px, 8vw, 40px);
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--white);
+    font-size: clamp(0.85rem, 2.5vw, 0.9rem);
+    font-weight: 450;
+    transition: all 0.25s ease;
+    min-height: clamp(40px, 8vw, 46px);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
-.search-bar input::placeholder {
-color: rgba(255, 255, 255, 0.6);
-font-weight: 400;
-}
+.search-bar input::placeholder { color: rgba(255, 255, 255, 0.6); font-weight: 400; }
 .search-bar input:focus {
-outline: none;
-background: rgba(255, 255, 255, 0.12);
-border-color: rgba(255, 255, 255, 0.6);
-box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15), inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    outline: none;
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15), inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 .search-bar i {
-position: absolute;
-left: clamp(10px, 3vw, 14px);
-top: 50%;
-transform: translateY(-50%);
-color: rgba(255, 255, 255, 0.7);
-font-size: clamp(0.85rem, 2.5vw, 0.9rem);
-pointer-events: none;
-transition: color 0.25s ease;
+    position: absolute;
+    left: clamp(10px, 3vw, 14px);
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: clamp(0.85rem, 2.5vw, 0.9rem);
+    pointer-events: none;
 }
-.search-bar input:focus ~ i { color: var(--white); }
-/* Cart Button - Fixed size, optimized */
+
+/* Cart Button */
 .cart-btn {
-order: 1;
-position: relative;
-color: var(--white);
-font-size: clamp(1rem, 3vw, 1.2rem);
-padding: 0;
-border-radius: 50%;
-background: rgba(255, 255, 255, 0.1);
-border: 1px solid rgba(255, 255, 255, 0.25);
-backdrop-filter: blur(8px);
--webkit-backdrop-filter: blur(8px);
-transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-display: flex;
-align-items: center;
-justify-content: center;
-width: clamp(44px, 8vw, 48px);
-height: clamp(44px, 8vw, 48px);
-flex-shrink: 0;
-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    position: relative;
+    color: var(--white);
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    padding: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(8px);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(44px, 8vw, 48px);
+    height: clamp(44px, 8vw, 48px);
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 .cart-btn:hover {
-background: rgba(255, 255, 255, 0.2);
-border-color: rgba(255, 255, 255, 0.4);
-transform: translateY(-2px);
-box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
 }
-.cart-btn:active {
-transform: translateY(0);
-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+
+/* Hamburger Menu */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(3px, 1vw, 4px);
+    padding: clamp(10px, 3vw, 12px);
+    cursor: pointer;
+    margin-left: auto; 
+    flex-shrink: 0;
+    min-width: clamp(44px, 8vw, 48px);
+    min-height: clamp(44px, 8vw, 48px);
+    justify-content: center;
+    align-items: center;
 }
-.cart-count {
-position: absolute;
-top: -4px;
-right: -4px;
-background: linear-gradient(135deg, #ff6b6b, #e85d5d);
-color: white;
-font-size: clamp(0.6rem, 2vw, 0.65rem);
-font-weight: 700;
-width: clamp(16px, 4vw, 18px);
-height: clamp(16px, 4vw, 18px);
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-line-height: 1;
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-border: 2px solid var(--white);
+.hamburger span {
+    width: clamp(20px, 5vw, 24px);
+    height: clamp(2px, 0.5vw, 2.5px);
+    background: var(--white);
+    border-radius: 2px;
+    transition: var(--transition-fast);
+}
+.hamburger:hover span { background: #ffd700; }
+
+/* Bottom Row Layout (Search & Filters) */
+.header-bottom-row {
+    display: flex;
+    align-items: center;
+    gap: clamp(8px, 2vw, 12px);
+    padding: clamp(8px, 2vw, 12px) clamp(12px, 4vw, 20px) clamp(12px, 2vw, 16px);
+    flex-wrap: nowrap;
+}
+.header-bottom-row .filter-dropdown {
+    flex: 0 0 auto;
+    min-width: clamp(100px, 20vw, 140px);
 }
 /* Hamburger Menu - Optimized */
 .hamburger {
@@ -2139,7 +2133,7 @@ border-radius: 6px !important;
 /* ===== 📱 RESPONSIVE BREAKPOINTS (Mobile-First) ===== */
 @media (max-width: 1023px) {
 :root { --header-height-mobile: 110px; }
-.header-top-row { justify-content: center; }
+.header-top-row { justify-content: space-between; }
 .logo { margin-left: 0; }
 .search-bar { max-width: clamp(180px, 35vw, 240px); }
 .filter-dropdown {
@@ -2152,31 +2146,29 @@ max-width: clamp(130px, 30vw, 150px) !important;
 .filter-menu { min-width: clamp(200px, 55vw, 220px); }
 }
 @media (max-width: 768px) {
-:root { --header-height-mobile: 100px; }
-header { padding: 0; }
-.header-top-row {
-justify-content: flex-start;
-padding: 0 clamp(10px, 3vw, 12px);
-gap: clamp(6px, 2vw, 8px);
-flex-wrap: nowrap;
-}
-.cart-btn {
-width: clamp(44px, 9vw, 48px);
-height: clamp(44px, 9vw, 48px);
-font-size: clamp(0.95rem, 2.5vw, 1rem);
-order: 1;
-}
-.search-bar {
-order: 2;
-max-width: 100%;
-width: 100%;
-margin-top: 0;
-}
-.search-bar input {
-padding: clamp(6px, 2vw, 8px) clamp(10px, 3vw, 12px) clamp(6px, 2vw, 8px) clamp(30px, 7vw, 34px);
-font-size: clamp(0.8rem, 2.5vw, 0.85rem);
-}
-.logo { order: 3; margin-left: 0; }
+    :root { --header-height-mobile: 100px; }
+    header { padding: 0; }
+    .header-top-row {
+        justify-content: space-between;
+        padding: 0 clamp(10px, 3vw, 12px);
+        gap: clamp(6px, 2vw, 8px);
+        flex-wrap: nowrap;
+    }
+    .cart-btn {
+        width: clamp(44px, 9vw, 48px);
+        height: clamp(44px, 9vw, 48px);
+        font-size: clamp(0.95rem, 2.5vw, 1rem);
+    }
+    .search-bar {
+        max-width: 100%;
+        width: 100%;
+        margin-top: 0;
+    }
+    .search-bar input {
+        padding: clamp(6px, 2vw, 8px) clamp(10px, 3vw, 12px) clamp(6px, 2vw, 8px) clamp(30px, 7vw, 34px);
+        font-size: clamp(0.8rem, 2.5vw, 0.85rem);
+    }
+    .logo { margin-left: 0; }
 .logo img { height: clamp(38px, 8vw, 44px); }
 .logo-text { display: none; }
 .header-bottom-row { flex-wrap: nowrap; justify-content: center; }
@@ -2231,7 +2223,7 @@ gap: clamp(12px, 3vw, 14px);
 padding: clamp(5px, 2vw, 7px) clamp(8px, 3vw, 10px) clamp(5px, 2vw, 7px) clamp(28px, 7vw, 32px);
 font-size: clamp(0.75rem, 2.5vw, 0.8rem);
 }
-.logo { order: 3; margin-left: 0; }
+.logo {  margin-left: 0; }
 .logo img { height: clamp(34px, 7vw, 40px); }
 .header-bottom-row { padding: 0 0 0; }
 .filter-bar-compact {
@@ -2524,6 +2516,157 @@ background: transparent !important; color: #666 !important; border: 1px solid #c
     .preloader-text { font-size: 1rem; letter-spacing: 1px; }
     .preloader-bar-container { width: 200px; }
 }
+/* ===== FILTER TOGGLE BUTTONS ===== */
+.filter-toggle-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.filter-main-btn {
+    background: var(--white);
+    border: 2px solid var(--border);
+    color: var(--secondary);
+    padding: 12px 24px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-soft);
+    min-width: 160px;
+    justify-content: center;
+}
+
+.filter-main-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.filter-main-btn.active {
+    background: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+}
+
+.filter-main-btn i.fa-chevron-down {
+    transition: transform 0.3s ease;
+}
+
+.filter-main-btn.active i.fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+/* ===== FILTER SECTIONS ===== */
+.filter-section {
+    animation: fadeIn 0.3s ease;
+    margin-top: 20px;
+}
+
+/* ===== LOCATION GRID (Matches Niche Grid Exactly) ===== */
+.location-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(clamp(80px, 18vw, 110px), 1fr));
+    gap: clamp(8px, 2vw, 12px);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.location-card {
+    background: var(--white);
+    border: 2px solid var(--border);
+    border-radius: clamp(8px, 2vw, 10px);
+    padding: clamp(10px, 2.5vw, 14px) clamp(6px, 2vw, 8px);
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(6px, 2vw, 8px);
+    min-height: clamp(70px, 15vw, 85px);
+}
+
+.location-card:hover, .location-card:focus {
+    border-color: var(--primary);
+    background: rgba(139, 0, 0, 0.03);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+    outline: none;
+}
+
+.location-card .icon {
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    color: var(--primary);
+    transition: var(--transition);
+    line-height: 1;
+}
+
+.location-card:hover .icon, .location-card:focus .icon {
+    transform: scale(1.1);
+    color: var(--primary-dark);
+}
+
+.location-card span {
+    font-size: clamp(0.6rem, 2vw, 0.75rem);
+    font-weight: 600;
+    color: var(--secondary);
+    line-height: 1.2;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.location-card.active {
+    border-color: var(--primary);
+    background: rgba(139, 0, 0, 0.08);
+    box-shadow: 0 0 0 2px rgba(139, 0, 0, 0.1);
+}
+
+.location-card.active .icon { 
+    color: var(--primary-dark); 
+}
+
+.location-card.active span {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.location-detect {
+    border-color: var(--primary);
+    background: rgba(139, 0, 0, 0.05);
+}
+
+.location-detect:hover {
+    background: rgba(139, 0, 0, 0.1);
+}
+
+/* Mobile adjustments to match niche grid */
+@media (max-width: 360px) {
+    .location-grid { 
+        grid-template-columns: repeat(3, 1fr); 
+        gap: clamp(6px, 2vw, 8px); 
+    }
+    .location-card {
+        padding: clamp(8px, 2vw, 10px) clamp(4px, 2vw, 6px);
+        min-height: clamp(64px, 14vw, 68px);
+    }
+    .location-card .icon { 
+        font-size: clamp(1rem, 3vw, 1.1rem); 
+    }
+    .location-card span { 
+        font-size: clamp(0.55rem, 2vw, 0.6rem); 
+    }
+}
 </style>
 </head>
 <body>
@@ -2604,126 +2747,147 @@ JOIN THE HIVE POPUP MODAL (Fixed IDs)
 <!-- Overlay -->
 <div class="overlay" id="overlay"></div>
 <header>
-<div class="container">
-<div class="header-top-row">
-<button class="cart-btn" onclick="openCart()" aria-label="View cart">
-<i class="fas fa-shopping-cart" aria-hidden="true"></i>
-<span class="cart-count" id="cartCount">0</span>
-</button>
-<div class="search-bar">
-<i class="fas fa-search" aria-hidden="true"></i>
-<input type="search" id="productSearch" placeholder="Search products..." aria-label="Search products">
-</div>
-<a href="https://hivetimes.co.za/" class="logo" aria-label="Hive Times Home">
-<img src="images-logo/hive-times-logo.png" alt="Hive Times logo" width="62" height="62" loading="lazy" decoding="async">
-<span class="logo-text"></span>
-</a>
-</div>
-<div class="header-bottom-row">
-<div class="filter-bar-compact" id="filterBar">
-<div class="filter-icon">
-<img src="images-logo/bee.jpg" alt="Shop local South African businesses" width="60" height="60" loading="lazy" decoding="async">
-</div>
-<div class="filter-dropdown" id="nicheDropdown">
-<button class="filter-toggle" id="nicheToggle" aria-expanded="false" aria-controls="nicheMenu">
-<i class="fas fa-th-large" aria-hidden="true"></i>
-<span class="toggle-label" id="nicheLabel">All Niches</span>
-<i class="fas fa-chevron-down" aria-hidden="true"></i>
-</button>
-<div class="filter-menu" id="nicheMenu" role="menu" aria-label="Filter by niche">
-<div class="filter-menu-header">Niche</div>
-<button class="filter-item active" data-value="all"><i class="fas fa-th" aria-hidden="true"></i> All Niches</button>
-<button class="filter-item" data-value="household-essentials"><i class="fas fa-house" aria-hidden="true"></i> Household Essentials</button>
-<button class="filter-item" data-value="baking"><i class="fas fa-bread-slice" aria-hidden="true"></i> Baking</button>
-<button class="filter-item" data-value="frozen-desserts"><i class="fas fa-ice-cream" aria-hidden="true"></i> Frozen Desserts</button>
-<button class="filter-item" data-value="electronics"><i class="fas fa-laptop" aria-hidden="true"></i> Electronics</button>
-<button class="filter-item" data-value="automotive"><i class="fas fa-car" aria-hidden="true"></i> Automotive</button>
-<button class="filter-item" data-value="food-beverages"><i class="fas fa-utensils" aria-hidden="true"></i> Food & Beverages</button>
-<button class="filter-item" data-value="medication"><i class="fas fa-spa" aria-hidden="true"></i> Medication & Health</button>
-<button class="filter-item" data-value="building"><i class="fas fa-hammer" aria-hidden="true"></i> Building Materials</button>
-<button class="filter-item" data-value="services"><i class="fas fa-briefcase" aria-hidden="true"></i> Professional Services</button>
-<button class="filter-item" data-value="wholesale"><i class="fas fa-boxes" aria-hidden="true"></i> Wholesale</button>
-</div>
-</div>
-<div class="filter-dropdown" id="locationDropdown">
-<button class="filter-toggle" id="locToggle" aria-expanded="false" aria-controls="locMenu">
-<i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-<span class="toggle-label" id="locLabel">All Locations</span>
-<i class="fas fa-chevron-down" aria-hidden="true"></i>
-</button>
-<div class="filter-menu" id="locMenu" role="menu" aria-label="Filter by location">
-<div class="filter-menu-header">Location</div>
-<button class="filter-item active" data-value="all"><i class="fas fa-globe-africa" aria-hidden="true"></i> All Locations</button>
-<button class="filter-item" data-value="johannesburg"><i class="fas fa-city" aria-hidden="true"></i> Johannesburg</button>
-<button class="filter-item" data-value="lenasia"><i class="fas fa-mountain" aria-hidden="true"></i> Lenasia</button>
-<button class="filter-item" data-value="azadville"><i class="fas fa-mountain" aria-hidden="true"></i> Azadville</button>
-<button class="filter-item" data-value="cape-town"><i class="fas fa-mountain" aria-hidden="true"></i> Cape Town</button>
-<button class="filter-item" data-value="kwazulu-natal"><i class="fas fa-water" aria-hidden="true"></i> KwaZulu-Natal</button>
-<button class="filter-item" data-value="eastern-cape"><i class="fas fa-sun" aria-hidden="true"></i> Eastern Cape</button>
-<button class="filter-item" data-value="free-state"><i class="fas fa-tractor" aria-hidden="true"></i> Free State</button>
-<button class="filter-item" data-value="limpopo"><i class="fas fa-tree" aria-hidden="true"></i> Limpopo</button>
-<button class="filter-item" data-value="mpumalanga"><i class="fas fa-cloud-sun" aria-hidden="true"></i> Mpumalanga</button>
-<button class="filter-item" data-value="north-west"><i class="fas fa-compass" aria-hidden="true"></i> North West</button>
-<button class="filter-item" data-value="northern-cape"><i class="fas fa-desert" aria-hidden="true"></i> Northern Cape</button>
-<div class="filter-divider"></div>
-<button class="filter-item location-detect" id="detectLocation">
-<i class="fas fa-location-crosshairs" aria-hidden="true"></i> Use My Location
-</button>
-</div>
-</div>
-<button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">
-<span></span><span></span><span></span>
-</button>
-</div>
-</div>
-<div class="container">
-<div class="active-filters-wrapper" id="activeFiltersWrapper"></div>
-<div id="resultsCount" class="results-count"></div>
-</div>
-</div>
+    <div class="container">
+        <!-- TOP ROW: Hamburger, Logo, Cart -->
+        <div class="header-top-row">
+            <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">
+                <span></span><span></span><span></span>
+            </button>
+            <a href="https://hivetimes.co.za/" class="logo" aria-label="Hive Times Home">
+                <img src="images-logo/hive-times-logo.png" alt="Hive Times logo" width="62" height="62" loading="lazy" decoding="async">
+                <span class="logo-text"></span>
+            </a>
+            <button class="cart-btn" onclick="openCart()" aria-label="View cart">
+                <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </div>
+        
+        <!-- BOTTOM ROW: Search Bar, Categories, Location -->
+        <div class="header-bottom-row">
+            <div class="search-bar">
+                <i class="fas fa-search" aria-hidden="true"></i>
+                <input type="search" id="productSearch" placeholder="Search products..." aria-label="Search products">
+            </div>
+            
+          
+        </div>
+    </div>
+    <div class="container">
+        <div class="active-filters-wrapper" id="activeFiltersWrapper"></div>
+        <div id="resultsCount" class="results-count"></div>
+    </div>
 </header>
 <div id="slider-container"></div>
 <section class="shop-by-niche" aria-labelledby="nicheSectionTitle">
 <div class="container">
-<div class="niche-grid" role="list">
-<button class="niche-card active" data-niche="all" onclick="GuidedSearch.setNiche('all', 'All Niches'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="true">
-<span class="icon" aria-hidden="true">🐝</span><span>All Niches</span>
-</button>
-<button class="niche-card" data-niche="household-essentials" onclick="GuidedSearch.setNiche('household-essentials', 'Household Essentials'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
-<span class="icon" aria-hidden="true">🏠</span><span>Household</span>
-</button>
-<button class="niche-card" data-niche="medication" onclick="GuidedSearch.setNiche('medication', 'Medication & Health'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
-<span class="icon" aria-hidden="true">💊</span><span>Medication & Health</span>
-</button>
-<button class="niche-card" data-niche="baking" onclick="GuidedSearch.setNiche('baking', 'Baking'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
-<span class="icon" aria-hidden="true">🍰</span><span>Baking</span>
-</button>
-<button class="niche-card" data-niche="meat" onclick="GuidedSearch.setNiche('meat', 'Meat'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
-<span class="icon" aria-hidden="true">🥩</span><span>Meat</span>
-</button>
-<button class="niche-card" data-niche="frozen-desserts" onclick="GuidedSearch.setNiche('frozen-desserts', 'Frozen Desserts'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
-<span class="icon" aria-hidden="true">🍦</span><span>Frozen</span>
-</button>
-<button class="niche-card" data-niche="electronics" onclick="GuidedSearch.setNiche('electronics', 'Electronics'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
-<span class="icon" aria-hidden="true">🔌</span><span>Electronics</span>
-</button>
-<button class="niche-card" data-niche="automotive" onclick="GuidedSearch.setNiche('automotive', 'Automotive'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
-<span class="icon" aria-hidden="true">🚗</span><span>Automotive</span>
-</button>
-<button class="niche-card" data-niche="food-beverages" onclick="GuidedSearch.setNiche('food-beverages', 'Food & Beverages'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
-<span class="icon" aria-hidden="true">🍽️</span><span>Food & Bev</span>
-</button>
-<button class="niche-card" data-niche="building" onclick="GuidedSearch.setNiche('building', 'Building Materials'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
-<span class="icon" aria-hidden="true">🔨</span><span>Building</span>
-</button>
-<button class="niche-card" data-niche="services" onclick="GuidedSearch.setNiche('services', 'Professional Services'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
-<span class="icon" aria-hidden="true">💼</span><span>Professional</span>
-</button>
-<button class="niche-card" data-niche="wholesale" onclick="GuidedSearch.setNiche('wholesale', 'Wholesale'); this.classList.add('active'); document.querySelectorAll('.niche-card').forEach(c => { if(c !== this) c.classList.remove('active'); });" role="listitem" aria-pressed="false">
-<span class="icon" aria-hidden="true">📦</span><span>Wholesale</span>
-</button>
-</div>
-</div>
+<section class="shop-by-niche" aria-labelledby="nicheSectionTitle">
+    <div class="container">
+        <div class="niche-section-header">
+            <h2 class="niche-section-title" id="nicheSectionTitle">Shop by Category & Location</h2>
+            <p class="niche-section-subtitle">Filter products by niche category or find businesses near you</p>
+        </div>
+        
+        <!-- Two Main Toggle Buttons -->
+        <div class="filter-toggle-buttons">
+            <button class="filter-main-btn" id="categoriesBtn" onclick="toggleFilterSection('categories')" aria-expanded="false" aria-controls="categoriesSection">
+                <i class="fas fa-th-large" aria-hidden="true"></i>
+                <span>Categories</span>
+                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <button class="filter-main-btn" id="locationBtn" onclick="toggleFilterSection('location')" aria-expanded="false" aria-controls="locationSection">
+                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                <span>Location</span>
+                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <!-- Categories Section (Hidden by default) -->
+        <div class="filter-section" id="categoriesSection" style="display: none;">
+            <div class="niche-grid" role="list">
+                <button class="niche-card active" data-niche="all" onclick="GuidedSearch.setNiche('all', 'All Niches'); updateActiveNiche(this);" role="listitem" aria-pressed="true">
+                    <span class="icon" aria-hidden="true">🐝</span><span>All Niches</span>
+                </button>
+                <button class="niche-card" data-niche="household-essentials" onclick="GuidedSearch.setNiche('household-essentials', 'Household Essentials'); updateActiveNiche(this);" role="listitem" aria-pressed="false">
+                    <span class="icon" aria-hidden="true">🏠</span><span>Household</span>
+                </button>
+                <button class="niche-card" data-niche="medication" onclick="GuidedSearch.setNiche('medication', 'Medication & Health'); updateActiveNiche(this);" role="listitem" aria-pressed="false">
+                    <span class="icon" aria-hidden="true">💊</span><span>Medication & Health</span>
+                </button>
+                <button class="niche-card" data-niche="baking" onclick="GuidedSearch.setNiche('baking', 'Baking'); updateActiveNiche(this);" role="listitem" aria-pressed="false">
+                    <span class="icon" aria-hidden="true">🍰</span><span>Baking</span>
+                </button>
+                <button class="niche-card" data-niche="meat" onclick="GuidedSearch.setNiche('meat', 'Meat'); updateActiveNiche(this);" role="listitem" aria-pressed="false">
+                    <span class="icon" aria-hidden="true"></span><span>Meat</span>
+                </button>
+                <button class="niche-card" data-niche="frozen-desserts" onclick="GuidedSearch.setNiche('frozen-desserts', 'Frozen Desserts'); updateActiveNiche(this);" role="listitem" aria-pressed="false">
+                    <span class="icon" aria-hidden="true">🍦</span><span>Frozen</span>
+                </button>
+                <button class="niche-card" data-niche="electronics" onclick="GuidedSearch.setNiche('electronics', 'Electronics'); updateActiveNiche(this);" role="listitem" aria-pressed="false">
+                    <span class="icon" aria-hidden="true"></span><span>Electronics</span>
+                </button>
+                <button class="niche-card" data-niche="automotive" onclick="GuidedSearch.setNiche('automotive', 'Automotive'); updateActiveNiche(this);" role="listitem" aria-pressed="false">
+                    <span class="icon" aria-hidden="true"></span><span>Automotive</span>
+                </button>
+                <button class="niche-card" data-niche="food-beverages" onclick="GuidedSearch.setNiche('food-beverages', 'Food & Beverages'); updateActiveNiche(this);" role="listitem" aria-pressed="false">
+                    <span class="icon" aria-hidden="true">🍽️</span><span>Food & Bev</span>
+                </button>
+                <button class="niche-card" data-niche="building" onclick="GuidedSearch.setNiche('building', 'Building Materials'); updateActiveNiche(this);" role="listitem" aria-pressed="false">
+                    <span class="icon" aria-hidden="true"></span><span>Building</span>
+                </button>
+                <button class="niche-card" data-niche="services" onclick="GuidedSearch.setNiche('services', 'Professional Services'); updateActiveNiche(this);" role="listitem" aria-pressed="false">
+                    <span class="icon" aria-hidden="true">💼</span><span>Professional</span>
+                </button>
+                <button class="niche-card" data-niche="wholesale" onclick="GuidedSearch.setNiche('wholesale', 'Wholesale'); updateActiveNiche(this);" role="listitem" aria-pressed="false">
+                    <span class="icon" aria-hidden="true">📦</span><span>Wholesale</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Location Section (Hidden by default) -->
+        <div class="filter-section" id="locationSection" style="display: none;">
+            <div class="location-grid" role="list">
+                <button class="location-card active" data-location="all" onclick="GuidedSearch.setLocation('all', 'All Locations'); updateActiveLocation(this);" role="listitem" aria-pressed="true">
+                    <span class="icon" aria-hidden="true">🌍</span><span>All Locations</span>
+                </button>
+                <button class="location-card" data-location="johannesburg" onclick="GuidedSearch.setLocation('johannesburg', 'Johannesburg'); updateActiveLocation(this);" role="listitem" aria-pressed="false">
+                    <span class="icon" aria-hidden="true">🏙️</span><span>Johannesburg</span>
+                </button>
+                <button class="location-card" data-location="lenasia" onclick="GuidedSearch.setLocation('lenasia', 'Lenasia'); updateActiveLocation(this);" role="listitem" aria-pressed="false">
+                    <span class="icon" aria-hidden="true">🏔️</span><span>Lenasia</span>
+                </button>
+                <button class="location-card" data-location="azadville" onclick="GuidedSearch.setLocation('azadville', 'Azadville'); updateActiveLocation(this);" role="listitem" aria-pressed="false">
+                    <span class="icon" aria-hidden="true">🏔️</span><span>Azadville</span>
+                </button>
+                <button class="location-card" data-location="cape-town" onclick="GuidedSearch.setLocation('cape-town', 'Cape Town'); updateActiveLocation(this);" role="listitem" aria-pressed="false">
+                    <span class="icon" aria-hidden="true">🏔️</span><span>Cape Town</span>
+                </button>
+                <button class="location-card" data-location="kwazulu-natal" onclick="GuidedSearch.setLocation('kwazulu-natal', 'KwaZulu-Natal'); updateActiveLocation(this);" role="listitem" aria-pressed="false">
+                    <span class="icon" aria-hidden="true"></span><span>KwaZulu-Natal</span>
+                </button>
+                <button class="location-card" data-location="eastern-cape" onclick="GuidedSearch.setLocation('eastern-cape', 'Eastern Cape'); updateActiveLocation(this);" role="listitem" aria-pressed="false">
+                    <span class="icon" aria-hidden="true">️</span><span>Eastern Cape</span>
+                </button>
+                <button class="location-card" data-location="free-state" onclick="GuidedSearch.setLocation('free-state', 'Free State'); updateActiveLocation(this);" role="listitem" aria-pressed="false">
+                    <span class="icon" aria-hidden="true"></span><span>Free State</span>
+                </button>
+                <button class="location-card" data-location="limpopo" onclick="GuidedSearch.setLocation('limpopo', 'Limpopo'); updateActiveLocation(this);" role="listitem" aria-pressed="false">
+                    <span class="icon" aria-hidden="true">🌳</span><span>Limpopo</span>
+                </button>
+                <button class="location-card" data-location="mpumalanga" onclick="GuidedSearch.setLocation('mpumalanga', 'Mpumalanga'); updateActiveLocation(this);" role="listitem" aria-pressed="false">
+                    <span class="icon" aria-hidden="true"></span><span>Mpumalanga</span>
+                </button>
+                <button class="location-card" data-location="north-west" onclick="GuidedSearch.setLocation('north-west', 'North West'); updateActiveLocation(this);" role="listitem" aria-pressed="false">
+                    <span class="icon" aria-hidden="true">🧭</span><span>North West</span>
+                </button>
+                <button class="location-card" data-location="northern-cape" onclick="GuidedSearch.setLocation('northern-cape', 'Northern Cape'); updateActiveLocation(this);" role="listitem" aria-pressed="false">
+                    <span class="icon" aria-hidden="true">🏜️</span><span>Northern Cape</span>
+                </button>
+                
+            </div>
+        </div>
+    </div>
+</section>
 </section>
 <main id="main-content" class="container">
 <section class="section-header" itemscope itemtype="https://schema.org/ItemList">
@@ -3257,134 +3421,155 @@ message += `*🎯 GRAND TOTAL: R${Cart.grandTotal().toFixed(2)}*
 Please confirm availability for all items.`;
 window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
 };
-// ===== FILTER & SEARCH SYSTEM (Debounced & Optimized) =====
+// ===== FILTER & SEARCH SYSTEM (Debounced & Null-Safe) =====
 const GuidedSearch = {
-state: { niche: 'all', location: 'all', query: '' },
-init() {
-this.cacheDOM();
-this.bindEvents();
-this.loadFromURL();
-this.observeProductGrid();
-},
-cacheDOM() {
-this.nicheToggle = document.getElementById('nicheToggle'); this.nicheMenu = document.getElementById('nicheMenu');
-this.locToggle = document.getElementById('locToggle'); this.locMenu = document.getElementById('locMenu');
-this.searchInput = document.getElementById('productSearch'); this.filterWrapper = document.getElementById('activeFiltersWrapper');
-this.resultsCount = document.getElementById('resultsCount'); this.grid = document.getElementById('hive-products-grid');
-},
-bindEvents() {
-this.nicheToggle.addEventListener('click', e => { e.stopPropagation(); this.toggleDropdown('niche'); });
-this.locToggle.addEventListener('click', e => { e.stopPropagation(); this.toggleDropdown('loc'); });
-this.nicheMenu.addEventListener('click', e => { const btn = e.target.closest('.filter-item'); if (btn) this.setNiche(btn.dataset.value, btn.textContent.trim()); });
-this.locMenu.addEventListener('click', e => { const btn = e.target.closest('.filter-item'); if (btn) { if (btn.id === 'detectLocation') this.detectLocation(); else this.setLocation(btn.dataset.value, btn.textContent.trim()); } });
-this.searchInput.addEventListener('input', e => { this.state.query = e.target.value.trim(); this.debouncedApply(); });
-document.addEventListener('click', e => { if (!e.target.closest('.filter-dropdown')) this.closeAllDropdowns(); }, { passive: true });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') this.closeAllDropdowns(); });
-},
-toggleDropdown(type) {
-const menu = type === 'niche' ? this.nicheMenu : this.locMenu,
-toggle = type === 'niche' ? this.nicheToggle : this.locToggle,
-isOpen = menu.classList.contains('show');
-this.closeAllDropdowns();
-if (!isOpen) {
-menu.classList.add('show');
-toggle.classList.add('active');
-toggle.setAttribute('aria-expanded', 'true');
-}
-},
-closeAllDropdowns() {
-[this.nicheMenu, this.locMenu].forEach(m => m.classList.remove('show'));
-[this.nicheToggle, this.locToggle].forEach(t => {
-t.classList.remove('active');
-t.setAttribute('aria-expanded', 'false');
-});
-},
-setNiche(value, label) {
-this.state.niche = value;
-this.updateToggleUI(this.nicheToggle, this.nicheMenu, value, label, 'niche');
-this.applyFilters();
-document.querySelectorAll('.niche-card').forEach(card => {
-card.classList.toggle('active', card.dataset.niche === value);
-card.setAttribute('aria-pressed', card.dataset.niche === value ? 'true' : 'false');
-});
-},
-setLocation(value, label) {
-this.state.location = value;
-this.updateToggleUI(this.locToggle, this.locMenu, value, label, 'location');
-this.applyFilters();
-},
-updateToggleUI(toggle, menu, value, label, type) {
-menu.querySelectorAll('.filter-item').forEach(i => i.classList.toggle('active', i.dataset.value === value));
-toggle.querySelector('.toggle-label').textContent = value === 'all' ? (type === 'niche' ? 'All Niches' : 'All Locations') : label.replace(/^[\s\w]+\s+/, '');
-this.closeAllDropdowns(); this.updateURL(); this.renderActiveBadges();
-},
-detectLocation() {
-const btn = document.getElementById('detectLocation');
-if (!navigator.geolocation) return alert('Geolocation not supported');
-btn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Detecting...';
-navigator.geolocation.getCurrentPosition(pos => {
-this.setLocation('gauteng', '📍 My Location (Gauteng)');
-btn.innerHTML = '<i class="fas fa-location-crosshairs" aria-hidden="true"></i> Use My Location';
-}, err => {
-alert('Location access denied');
-btn.innerHTML = '<i class="fas fa-location-crosshairs" aria-hidden="true"></i> Use My Location';
-}, { enableHighAccuracy: true, timeout: 5000 });
-},
-applyFilters() {
-const cards = document.querySelectorAll('.product-card, .block'); let visible = 0;
-cards.forEach(card => {
-if (card.classList.contains('skeleton')) return;
-const niche = card.dataset.niche || 'all', loc = card.dataset.location || 'all';
-const text = (card.querySelector('.product-name, h3')?.textContent + ' ' + card.querySelector('.product-description, p')?.textContent + ' ' + card.querySelector('.product-business span')?.textContent).toLowerCase();
-const matchNiche = this.state.niche === 'all' || niche === this.state.niche,
-matchLoc = this.state.location === 'all' || loc === this.state.location,
-matchQry = this.state.query === '' || text.includes(this.state.query.toLowerCase());
-if (matchNiche && matchLoc && matchQry) { card.style.display = 'flex'; visible++; } else { card.style.display = 'none'; }
-});
-this.resultsCount.textContent = visible < cards.length ? `Showing ${visible} of ${cards.length} products` : '';
-},
-debouncedApply: (function() { let timeout; return function() { clearTimeout(timeout); timeout = setTimeout(() => GuidedSearch.applyFilters(), 300); }; })(),
-renderActiveBadges() {
-const hasFilters = this.state.niche !== 'all' || this.state.location !== 'all' || this.state.query !== '';
-if (!hasFilters) { this.filterWrapper.innerHTML = ''; return; }
-let html = '';
-if (this.state.niche !== 'all') html += `<span class="filter-badge">Niche: ${this.nicheToggle.querySelector('.toggle-label').textContent} <button onclick="GuidedSearch.setNiche('all','All Niches')" aria-label="Remove niche filter"><i class="fas fa-times" aria-hidden="true"></i></button></span>`;
-if (this.state.location !== 'all') html += `<span class="filter-badge">Location: ${this.locToggle.querySelector('.toggle-label').textContent} <button onclick="GuidedSearch.setLocation('all','All Locations')" aria-label="Remove location filter"><i class="fas fa-times" aria-hidden="true"></i></button></span>`;
-if (this.state.query) html += `<span class="filter-badge">Search: "${this.state.query}" <button onclick="document.getElementById('productSearch').value='';GuidedSearch.state.query='';GuidedSearch.applyFilters();GuidedSearch.renderActiveBadges()" aria-label="Clear search"><i class="fas fa-times" aria-hidden="true"></i></button></span>`;
-html += `<button class="clear-all-filters" onclick="GuidedSearch.clearAll()" aria-label="Clear all filters">Clear All</button>`;
-this.filterWrapper.innerHTML = html;
-},
-clearAll() {
-this.setNiche('all', 'All Niches');
-this.setLocation('all', 'All Locations');
-document.getElementById('productSearch').value = '';
-this.state.query = '';
-this.applyFilters();
-this.renderActiveBadges();
-},
-updateURL() {
-const params = new URLSearchParams();
-if (this.state.niche !== 'all') params.set('niche', this.state.niche);
-if (this.state.location !== 'all') params.set('loc', this.state.location);
-if (this.state.query) params.set('q', this.state.query);
-const newURL = params.toString() ? `${window.location.pathname}?${params.toString()}` : window.location.pathname;
-history.replaceState({}, '', newURL);
-},
-loadFromURL() {
-const p = new URLSearchParams(window.location.search);
-if (p.get('niche')) this.setNiche(p.get('niche'), '');
-if (p.get('loc')) this.setLocation(p.get('loc'), '');
-if (p.get('q')) {
-this.searchInput.value = p.get('q');
-this.state.query = p.get('q');
-}
-this.applyFilters();
-this.renderActiveBadges();
-},
-observeProductGrid() {
-const observer = new MutationObserver(() => this.applyFilters());
-if (this.grid) observer.observe(this.grid, { childList: true });
-}
+    state: { niche: 'all', location: 'all', query: '' },
+    init() {
+        this.cacheDOM();
+        this.bindEvents();
+        this.loadFromURL();
+        this.observeProductGrid();
+    },
+    cacheDOM() {
+        // These will now be null, which is fine
+        this.nicheToggle = document.getElementById('nicheToggle'); 
+        this.nicheMenu = document.getElementById('nicheMenu');
+        this.locToggle = document.getElementById('locToggle'); 
+        this.locMenu = document.getElementById('locMenu');
+        
+        this.searchInput = document.getElementById('productSearch'); 
+        this.filterWrapper = document.getElementById('activeFiltersWrapper');
+        this.resultsCount = document.getElementById('resultsCount'); 
+        this.grid = document.getElementById('hive-products-grid');
+    },
+    bindEvents() {
+        // ✅ Added safety checks (if) so it doesn't crash on null elements
+        if (this.nicheToggle) this.nicheToggle.addEventListener('click', e => { e.stopPropagation(); this.toggleDropdown('niche'); });
+        if (this.locToggle) this.locToggle.addEventListener('click', e => { e.stopPropagation(); this.toggleDropdown('loc'); });
+        if (this.nicheMenu) this.nicheMenu.addEventListener('click', e => { const btn = e.target.closest('.filter-item'); if (btn) this.setNiche(btn.dataset.value, btn.textContent.trim()); });
+        if (this.locMenu) this.locMenu.addEventListener('click', e => { const btn = e.target.closest('.filter-item'); if (btn) { if (btn.id === 'detectLocation') this.detectLocation(); else this.setLocation(btn.dataset.value, btn.textContent.trim()); } });
+        
+        this.searchInput.addEventListener('input', e => { this.state.query = e.target.value.trim(); this.debouncedApply(); });
+        document.addEventListener('click', e => { if (!e.target.closest('.filter-dropdown')) this.closeAllDropdowns(); }, { passive: true });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') this.closeAllDropdowns(); });
+    },
+    toggleDropdown(type) {
+        const menu = type === 'niche' ? this.nicheMenu : this.locMenu,
+              toggle = type === 'niche' ? this.nicheToggle : this.locToggle;
+        if (!menu || !toggle) return; // Exit if elements don't exist
+        const isOpen = menu.classList.contains('show');
+        this.closeAllDropdowns();
+        if (!isOpen) {
+            menu.classList.add('show');
+            toggle.classList.add('active');
+            toggle.setAttribute('aria-expanded', 'true');
+        }
+    },
+    closeAllDropdowns() {
+        [this.nicheMenu, this.locMenu].forEach(m => m && m.classList.remove('show'));
+        [this.nicheToggle, this.locToggle].forEach(t => {
+            if (t) {
+                t.classList.remove('active');
+                t.setAttribute('aria-expanded', 'false');
+            }
+        });
+    },
+    setNiche(value, label) {
+        this.state.niche = value;
+        this.updateToggleUI(this.nicheToggle, this.nicheMenu, value, label, 'niche');
+        this.applyFilters();
+        document.querySelectorAll('.niche-card').forEach(card => {
+            card.classList.toggle('active', card.dataset.niche === value);
+            card.setAttribute('aria-pressed', card.dataset.niche === value ? 'true' : 'false');
+        });
+    },
+    setLocation(value, label) {
+        this.state.location = value;
+        this.updateToggleUI(this.locToggle, this.locMenu, value, label, 'location');
+        this.applyFilters();
+    },
+    updateToggleUI(toggle, menu, value, label, type) {
+        if (menu) menu.querySelectorAll('.filter-item').forEach(i => i.classList.toggle('active', i.dataset.value === value));
+        if (toggle) {
+            const lbl = toggle.querySelector('.toggle-label');
+            if (lbl) lbl.textContent = value === 'all' ? (type === 'niche' ? 'All Niches' : 'All Locations') : label.replace(/^[\s\w]+\s+/, '');
+        }
+        this.closeAllDropdowns(); 
+        this.updateURL(); 
+        this.renderActiveBadges();
+    },
+    detectLocation() {
+        const btn = document.getElementById('detectLocation');
+        if (!navigator.geolocation) return alert('Geolocation not supported');
+        if (btn) btn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Detecting...';
+        navigator.geolocation.getCurrentPosition(pos => {
+            this.setLocation('gauteng', '📍 My Location (Gauteng)');
+            if (btn) btn.innerHTML = '<i class="fas fa-location-crosshairs" aria-hidden="true"></i> Use My Location';
+        }, err => {
+            alert('Location access denied');
+            if (btn) btn.innerHTML = '<i class="fas fa-location-crosshairs" aria-hidden="true"></i> Use My Location';
+        }, { enableHighAccuracy: true, timeout: 5000 });
+    },
+    applyFilters() {
+        const cards = document.querySelectorAll('.product-card, .block'); let visible = 0;
+        cards.forEach(card => {
+            if (card.classList.contains('skeleton')) return;
+            const niche = card.dataset.niche || 'all', loc = card.dataset.location || 'all';
+            const text = (card.querySelector('.product-name, h3')?.textContent + ' ' + card.querySelector('.product-description, p')?.textContent + ' ' + card.querySelector('.product-business span')?.textContent).toLowerCase();
+            const matchNiche = this.state.niche === 'all' || niche === this.state.niche,
+                  matchLoc = this.state.location === 'all' || loc === this.state.location,
+                  matchQry = this.state.query === '' || text.includes(this.state.query.toLowerCase());
+            if (matchNiche && matchLoc && matchQry) { card.style.display = 'flex'; visible++; } else { card.style.display = 'none'; }
+        });
+        this.resultsCount.textContent = visible < cards.length ? `Showing ${visible} of ${cards.length} products` : '';
+    },
+    debouncedApply: (function() { let timeout; return function() { clearTimeout(timeout); timeout = setTimeout(() => GuidedSearch.applyFilters(), 300); }; })(),
+    renderActiveBadges() {
+        const hasFilters = this.state.niche !== 'all' || this.state.location !== 'all' || this.state.query !== '';
+        if (!hasFilters) { this.filterWrapper.innerHTML = ''; return; }
+        let html = '';
+        
+        // ✅ Fallback to FILTER_TAXONOMY if the dropdown toggles are removed from HTML
+        const nicheLabel = this.nicheToggle ? this.nicheToggle.querySelector('.toggle-label').textContent : (FILTER_TAXONOMY.niches[this.state.niche] || this.state.niche);
+        const locLabel = this.locToggle ? this.locToggle.querySelector('.toggle-label').textContent : (FILTER_TAXONOMY.locations[this.state.location] || this.state.location);
+
+        if (this.state.niche !== 'all') html += `<span class="filter-badge">Niche: ${nicheLabel} <button onclick="GuidedSearch.setNiche('all','All Niches')" aria-label="Remove niche filter"><i class="fas fa-times" aria-hidden="true"></i></button></span>`;
+        if (this.state.location !== 'all') html += `<span class="filter-badge">Location: ${locLabel} <button onclick="GuidedSearch.setLocation('all','All Locations')" aria-label="Remove location filter"><i class="fas fa-times" aria-hidden="true"></i></button></span>`;
+        if (this.state.query) html += `<span class="filter-badge">Search: "${this.state.query}" <button onclick="document.getElementById('productSearch').value='';GuidedSearch.state.query='';GuidedSearch.applyFilters();GuidedSearch.renderActiveBadges()" aria-label="Clear search"><i class="fas fa-times" aria-hidden="true"></i></button></span>`;
+        html += `<button class="clear-all-filters" onclick="GuidedSearch.clearAll()" aria-label="Clear all filters">Clear All</button>`;
+        this.filterWrapper.innerHTML = html;
+    },
+    clearAll() {
+        this.setNiche('all', 'All Niches');
+        this.setLocation('all', 'All Locations');
+        document.getElementById('productSearch').value = '';
+        this.state.query = '';
+        this.applyFilters();
+        this.renderActiveBadges();
+    },
+    updateURL() {
+        const params = new URLSearchParams();
+        if (this.state.niche !== 'all') params.set('niche', this.state.niche);
+        if (this.state.location !== 'all') params.set('loc', this.state.location);
+        if (this.state.query) params.set('q', this.state.query);
+        const newURL = params.toString() ? `${window.location.pathname}?${params.toString()}` : window.location.pathname;
+        history.replaceState({}, '', newURL);
+    },
+    loadFromURL() {
+        const p = new URLSearchParams(window.location.search);
+        if (p.get('niche')) this.setNiche(p.get('niche'), '');
+        if (p.get('loc')) this.setLocation(p.get('loc'), '');
+        if (p.get('q')) {
+            this.searchInput.value = p.get('q');
+            this.state.query = p.get('q');
+        }
+        this.applyFilters();
+        this.renderActiveBadges();
+    },
+    observeProductGrid() {
+        const observer = new MutationObserver(() => this.applyFilters());
+        if (this.grid) observer.observe(this.grid, { childList: true });
+    }
 };
 
 // ===== PRODUCT RENDERING (Optimized with Stashsell Async Support) =====
@@ -4042,6 +4227,88 @@ setTimeout(function() {
 }, 5000);
 
 })();
+// ===== TOGGLE FILTER SECTIONS =====
+function toggleFilterSection(section) {
+    const categoriesSection = document.getElementById('categoriesSection');
+    const locationSection = document.getElementById('locationSection');
+    const categoriesBtn = document.getElementById('categoriesBtn');
+    const locationBtn = document.getElementById('locationBtn');
+    
+    if (section === 'categories') {
+        const isShowing = categoriesSection.style.display !== 'none';
+        categoriesSection.style.display = isShowing ? 'none' : 'block';
+        locationSection.style.display = 'none';
+        categoriesBtn.classList.toggle('active', !isShowing);
+        locationBtn.classList.remove('active');
+        categoriesBtn.setAttribute('aria-expanded', !isShowing);
+        locationBtn.setAttribute('aria-expanded', 'false');
+    } else if (section === 'location') {
+        const isShowing = locationSection.style.display !== 'none';
+        locationSection.style.display = isShowing ? 'none' : 'block';
+        categoriesSection.style.display = 'none';
+        locationBtn.classList.toggle('active', !isShowing);
+        categoriesBtn.classList.remove('active');
+        locationBtn.setAttribute('aria-expanded', !isShowing);
+        categoriesBtn.setAttribute('aria-expanded', 'false');
+    }
+}
+
+// Update active niche card
+function updateActiveNiche(card) {
+    document.querySelectorAll('.niche-card').forEach(c => {
+        c.classList.remove('active');
+        c.setAttribute('aria-pressed', 'false');
+    });
+    card.classList.add('active');
+    card.setAttribute('aria-pressed', 'true');
+}
+
+// Update active location card
+function updateActiveLocation(card) {
+    document.querySelectorAll('.location-card').forEach(c => {
+        c.classList.remove('active');
+        c.setAttribute('aria-pressed', 'false');
+    });
+    card.classList.add('active');
+    card.setAttribute('aria-pressed', 'true');
+}
+
+// Detect location function
+function detectMyLocation() {
+    const btn = document.getElementById('detectLocationBtn');
+    if (!navigator.geolocation) {
+        alert('Geolocation is not supported by your browser');
+        return;
+    }
+    
+    btn.innerHTML = '<span class="icon"><i class="fas fa-spinner fa-spin"></i></span><span>Detecting...</span>';
+    
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            // For demo purposes, set to Gauteng
+            GuidedSearch.setLocation('gauteng', ' My Location (Gauteng)');
+            updateActiveLocation(btn);
+            btn.innerHTML = '<span class="icon">📍</span><span>My Location</span>';
+        },
+        (error) => {
+            alert('Unable to retrieve your location');
+            btn.innerHTML = '<span class="icon">📍</span><span>Use My Location</span>';
+        },
+        { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
+    );
+}
+
+// Close sections when clicking outside
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.shop-by-niche')) {
+        document.getElementById('categoriesSection').style.display = 'none';
+        document.getElementById('locationSection').style.display = 'none';
+        document.getElementById('categoriesBtn').classList.remove('active');
+        document.getElementById('locationBtn').classList.remove('active');
+        document.getElementById('categoriesBtn').setAttribute('aria-expanded', 'false');
+        document.getElementById('locationBtn').setAttribute('aria-expanded', 'false');
+    }
+});
 </script>
 <!-- External Product Data Scripts - Deferred Loading for Performance -->
 <script src="/doughandco/js/products-dough-co.js" defer></script>
