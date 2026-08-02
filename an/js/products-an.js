@@ -1,12 +1,12 @@
 /**
- 🪣 AN - Centralized Product Data & Utilities
- 📁 Path: /an/products-an.js
- 🔄 DYNAMIC MODE: Fetches from Google Sheets API (JSON)
+🪣 AN - Centralized Product Data & Utilities
+📁 Path: /an/products-an.js
+🔄 DYNAMIC MODE: Fetches from Google Sheets API
 */
 (function () {
+// 🎛️ CONFIGURATION
 const CONFIG = {
-    // ⚠️ IMPORTANT: Use the EXACT same URL that worked in your browser
-    SHEETS_API_URL: "https://script.google.com/macros/s/AKfycbxxuoRYa2qwzS0cqAbvJvK3AS-Q6_eefetP3rMi1XCvjj6n2Y_NwygUucrFeKxT9Qcn/exec", 
+    SHEETS_API_URL: "https://script.google.com/macros/s/AKfycby0HsCmA3mYRVQJsRG54Y5rkUsMH1P3iPWMpf1HmTXnnrS1AkdqNfxWxXnylgcAn18s/exec",
     basePath: "",
     imageDir: "/an/images",
     fallbackImage: "/an/images/an-logo.jpg",
@@ -15,25 +15,294 @@ const CONFIG = {
 
     resolveImage: function(src) {
         if (!src) return CONFIG.fallbackImage;
-        if (src.indexOf('http') === 0 || src.indexOf('/') === 0) return src;
+        if (src.indexOf('http://') === 0 || src.indexOf('https://') === 0) return src;
+        if (src.indexOf(CONFIG.basePath) === 0) return src;
+        if (src.indexOf('/') === 0) return src;
         return CONFIG.basePath + CONFIG.imageDir + "/" + src;
     }
 };
 
-// 📦 STATIC FALLBACK DATA
+// 📦 STATIC FALLBACK DATA - Used if Sheets API fails
 const FALLBACK_PRODUCTS = [
-    { id: "super-b-25kg", name: "Super B 25kg", price: 187.99, category: "maize-meal", niche: "wholesale", location: "Johannesburg", description: "Super B maize meal 25kg bag", badge: "💚 Popular", image: "images/super-b-25kg.jpg" },
-    { id: "dl-sugar-12-5kg", name: "DL Sugar 12.5kg", price: 217.99, category: "sugar", niche: "wholesale", location: "Johannesburg", description: "DL Brown Sugar 12.5kg", badge: "⭐ Value Pack", image: "images/dl-sugar-12-5kg.jpg" }
+    { 
+        id: "super-b-25kg", 
+        name: "Super B 25kg", 
+        price: 187.99, 
+        category: "maize-meal", 
+        niche: "groceries", 
+        location: "south-africa", 
+        description: "Super B maize meal 25kg bag - premium quality", 
+        badge: "💚 Popular",
+        image: "images/super-b-25kg.jpg", 
+        businessLogo: "/an/images/an-logo.jpg"
+    },
+    { 
+        id: "super-b-12-5kg", 
+        name: "Super B 12.5kg", 
+        price: 92.99, 
+        category: "maize-meal", 
+        niche: "groceries", 
+        location: "south-africa", 
+        description: "Super B maize meal 12.5kg bag", 
+        badge: "🔥 Best Seller",
+        image: "images/super-b-12-5kg.jpg" 
+    },
+    { 
+        id: "shaya-25kg", 
+        name: "Shaya 25kg", 
+        price: 180.99, 
+        category: "maize-meal", 
+        niche: "groceries", 
+        location: "south-africa", 
+        description: "Shaya maize meal 25kg - quality guaranteed", 
+        badge: "⭐ Value Pack",
+        image: "images/shaya-25kg.jpg" 
+    },
+    { 
+        id: "shaya-12-5kg", 
+        name: "Shaya 12.5kg", 
+        price: 89.99, 
+        category: "maize-meal", 
+        niche: "groceries", 
+        location: "south-africa", 
+        description: "Shaya maize meal 12.5kg bag", 
+        badge: "",
+        image: "images/shaya-12-5kg.jpg" 
+    },
+    { 
+        id: "pride-praipap-12-5kg", 
+        name: "Pride PraiPap 12.5kg", 
+        price: 98.99, 
+        category: "maize-meal", 
+        niche: "groceries", 
+        location: "south-africa", 
+        description: "Pride PraiPap instant maize meal 12.5kg", 
+        badge: "🎯 Special",
+        image: "images/pride-praipap.jpg" 
+    },
+    { 
+        id: "golden-cake-flour-5kg", 
+        name: "Golden Cake Flour 5kg", 
+        price: 265.99, 
+        category: "flour", 
+        niche: "groceries", 
+        location: "south-africa", 
+        description: "Golden Cake Flour 5kg - perfect for baking", 
+        badge: "",
+        image: "images/golden-cake-flour-5kg.jpg" 
+    },
+    { 
+        id: "golden-cake-flour-12-5kg", 
+        name: "Golden Cake Flour 12.5kg", 
+        price: 128.99, 
+        category: "flour", 
+        niche: "groceries", 
+        location: "south-africa", 
+        description: "Golden Cake Flour 12.5kg bulk pack", 
+        badge: "💰 Budget Friendly",
+        image: "images/golden-cake-flour-12-5kg.jpg" 
+    },
+    { 
+        id: "farm-food-cake-flour-12-5kg", 
+        name: "Farm Food Cake Flour 12.5kg", 
+        price: 127.50, 
+        category: "flour", 
+        niche: "groceries", 
+        location: "south-africa", 
+        description: "Farm Food Cake Flour 12.5kg", 
+        badge: "",
+        image: "images/farm-food-flour.jpg" 
+    },
+    { 
+        id: "dl-sugar-12-5kg", 
+        name: "DL Sugar 12.5kg", 
+        price: 217.99, 
+        category: "sugar", 
+        niche: "groceries", 
+        location: "south-africa", 
+        description: "DL Brown Sugar 12.5kg bulk pack", 
+        badge: "⭐ Value Pack",
+        image: "images/dl-sugar-12-5kg.jpg" 
+    },
+    { 
+        id: "dl-sugar-5kg", 
+        name: "DL Sugar 5kg", 
+        price: 88.99, 
+        category: "sugar", 
+        niche: "groceries", 
+        location: "south-africa", 
+        description: "DL Brown Sugar 5kg", 
+        badge: "",
+        image: "images/dl-sugar-5kg.jpg" 
+    },
+    { 
+        id: "festive-rice-10kg", 
+        name: "Festive Rice 10kg", 
+        price: 89.99, 
+        category: "rice", 
+        niche: "groceries", 
+        location: "south-africa", 
+        description: "Festive Rice 10kg - premium quality", 
+        badge: "🔥 Best Seller",
+        image: "images/festive-rice-10kg.jpg" 
+    },
+    { 
+        id: "festive-rice-5kg", 
+        name: "Festive Rice 5kg", 
+        price: 51.99, 
+        category: "rice", 
+        niche: "groceries", 
+        location: "south-africa", 
+        description: "Festive Rice 5kg bag", 
+        badge: "💰 Budget Friendly",
+        image: "images/festive-rice-5kg.jpg" 
+    },
+    { 
+        id: "pan-oil-20l", 
+        name: "Pan Oil 20L", 
+        price: 565.99, 
+        category: "cooking-oil", 
+        niche: "groceries", 
+        location: "south-africa", 
+        description: "Pan Palm Oil 20L bulk - best value", 
+        badge: "⭐ Value Pack",
+        image: "images/pan-oil-20l.jpg" 
+    },
+    { 
+        id: "pan-oil-5l", 
+        name: "Pan Oil 5L", 
+        price: 134.99, 
+        category: "cooking-oil", 
+        niche: "groceries", 
+        location: "south-africa", 
+        description: "Pan Palm Oil 5L", 
+        badge: "",
+        image: "images/pan-oil-5l.jpg" 
+    },
+    { 
+        id: "pan-oil-2l", 
+        name: "Pan Oil 2L", 
+        price: 53.99, 
+        category: "cooking-oil", 
+        niche: "groceries", 
+        location: "south-africa", 
+        description: "Pan Palm Oil 2L bottle", 
+        badge: "",
+        image: "images/pan-oil-2l.jpg" 
+    },
+    { 
+        id: "valley-beans-10kg", 
+        name: "Valley Beans 10kg", 
+        price: 259.99, 
+        category: "beans", 
+        niche: "groceries", 
+        location: "south-africa", 
+        description: "Valley Beans 10kg bulk pack", 
+        badge: "",
+        image: "images/valley-beans-10kg.jpg" 
+    },
+    { 
+        id: "speko-rice-10kg", 
+        name: "Speko Rice 10kg", 
+        price: 125.99, 
+        category: "rice", 
+        niche: "groceries", 
+        location: "south-africa", 
+        description: "Speko Rice 10kg - quality rice", 
+        badge: "🎯 Special",
+        image: "images/speko-rice-10kg.jpg" 
+    },
+    { 
+        id: "white-star-12-5kg", 
+        name: "White Star 12.5kg", 
+        price: 109.99, 
+        category: "maize-meal", 
+        niche: "groceries", 
+        location: "south-africa", 
+        description: "White Star maize meal 12.5kg", 
+        badge: "",
+        image: "images/white-star-12-5kg.jpg" 
+    },
+    { 
+        id: "sasko-12-5kg", 
+        name: "Sasko 12.5kg", 
+        price: 126.99, 
+        category: "flour", 
+        niche: "groceries", 
+        location: "south-africa", 
+        description: "Sasko Cake Wheat Flour 12.5kg", 
+        badge: "💚 Popular",
+        image: "images/sasko-12-5kg.jpg" 
+    },
+    { 
+        id: "tastic-rice-2kg", 
+        name: "Tastic Rice 2kg", 
+        price: 289.99, 
+        category: "rice", 
+        niche: "groceries", 
+        location: "south-africa", 
+        description: "Tastic Rice 2kg premium pack", 
+        badge: "",
+        image: "images/tastic-rice-2kg.jpg" 
+    },
+    { 
+        id: "soap-back-10x1kg", 
+        name: "Soap Back 10x1kg", 
+        price: 259.99, 
+        category: "soap", 
+        niche: "household", 
+        location: "south-africa", 
+        description: "Goldi Soap Back 10x1kg bulk pack", 
+        badge: "⭐ Value Pack",
+        image: "images/soap-back-10x1kg.jpg" 
+    },
+    { 
+        id: "head-feet-10x1kg", 
+        name: "Head&Feet 10x1kg", 
+        price: 120.99, 
+        category: "chicken-parts", 
+        niche: "frozen", 
+        location: "south-africa", 
+        description: "Goldi Chicken Heads & Feet 10x1kg", 
+        badge: "🔥 Best Seller",
+        image: "images/head-feet-10x1kg.jpg" 
+    },
+    { 
+        id: "neck-10x1kg", 
+        name: "Neck 10x1kg", 
+        price: 265.99, 
+        category: "chicken-parts", 
+        niche: "frozen", 
+        location: "south-africa", 
+        description: "Goldi Frozen Chicken Necks 10x1kg", 
+        badge: "",
+        image: "images/neck-10x1kg.jpg" 
+    },
+    { 
+        id: "mix-portions-6x2kg", 
+        name: "Mix Portions 6x2kg", 
+        price: 540.99, 
+        category: "chicken-portions", 
+        niche: "frozen", 
+        location: "south-africa", 
+        description: "Goldi Mixed Portions 6x2kg bulk", 
+        badge: "⭐ Value Pack",
+        image: "images/mix-portions-6x2kg.jpg" 
+    }
 ];
 
+// 🌐 State management
 let PRODUCTS = [];
 let isLoading = false;
 let loadError = null;
 
+// 🔄 Fetch products from Google Sheets
 function fetchProducts() {
     return new Promise(function(resolve) {
+        // Check if URL is still the placeholder
         if (!CONFIG.SHEETS_API_URL || CONFIG.SHEETS_API_URL.indexOf("YOUR_DEPLOYMENT_ID") !== -1) {
-            console.warn("⚠️ SHEETS_API_URL not configured. Using fallback data.");
+            console.warn("⚠️ Using fallback data - SHEETS_API_URL not configured");
+            console.warn("🔧 Fix: Edit this file and replace SHEETS_API_URL with your actual Google Apps Script Web App URL");
             processProducts(FALLBACK_PRODUCTS);
             return resolve(PRODUCTS);
         }
@@ -47,47 +316,56 @@ function fetchProducts() {
             }, 100);
             return;
         }
-
+        
         isLoading = true;
         
-        // 🚀 FIX: Use fetch() with ?format=json to avoid browser script-blocking
-        fetch(CONFIG.SHEETS_API_URL + '?format=json')
-            .then(response => response.json())
-            .then(data => {
-                isLoading = false;
-                if (data.products && Array.isArray(data.products) && data.products.length > 0) {
-                    console.log("✅ Loaded " + data.products.length + " products from Sheets via JSON");
-                    processProducts(data.products);
-                } else {
-                    console.warn("⚠️ API returned empty products. Using fallback.");
-                    processProducts(FALLBACK_PRODUCTS);
-                }
-                resolve(PRODUCTS);
-            })
-            .catch(err => {
-                isLoading = false;
-                loadError = err;
-                console.error("❌ Fetch error:", err);
-                console.warn("⚠️ Failed to fetch from Sheets. Using fallback.");
-                processProducts(FALLBACK_PRODUCTS);
-                resolve(PRODUCTS);
-            });
+        // Load as dynamic script (since Apps Script serves JS format)
+        const script = document.createElement("script");
+        // 📱 FIX: Add timestamp to prevent mobile browsers from caching old data
+        script.src = CONFIG.SHEETS_API_URL + (CONFIG.SHEETS_API_URL.includes('?') ? '&' : '?') + 't=' + Date.now();
+        script.onload = function() {
+            console.log("✅ Products loaded from Google Sheets");
+            isLoading = false;
+            
+            // 🔧 CRITICAL FIX: Process the loaded data into the internal PRODUCTS array
+            if (window.AN_PRODUCTS && Array.isArray(window.AN_PRODUCTS)) {
+                processProducts(window.AN_PRODUCTS);
+            }
+            
+            resolve(PRODUCTS);
+        };
+        script.onerror = function() {
+            console.warn("⚠️ Failed to load from Sheets, using fallback");
+            isLoading = false;
+            loadError = new Error("Script load failed");
+            processProducts(FALLBACK_PRODUCTS);
+            resolve(PRODUCTS);
+        };
+        document.head.appendChild(script);
     });
 }
 
+// 🔄 Process raw product data
 function processProducts(rawProducts) {
     PRODUCTS = rawProducts.map(function(product) {
+        const resolvedImage = CONFIG.resolveImage(product.image);
+
+        // 🖼️ FIX: Resolve popup images URLs
+        const resolvedPopupImages = (product.popupImages || []).map(function(img) {
+            return CONFIG.resolveImage(img);
+        });
+
         return {
             id: product.id,
             name: product.name,
-            price: parseFloat(product.price) || 0,
+            price: product.price,
             category: product.category,
             niche: product.niche,
             location: product.location,
             description: product.description,
             badge: product.badge,
-            image: CONFIG.resolveImage(product.image),
-            popupImages: (product.popupImages || []).map(img => CONFIG.resolveImage(img)), // ✅ Gallery images for popup
+            image: resolvedImage,
+            popupImages: resolvedPopupImages, // ✅ ADDED: Passes gallery to HTML
             imageFallback: CONFIG.fallbackImage,
             businessName: product.businessName || CONFIG.businessName,
             businessLogo: CONFIG.businessLogo,
@@ -97,22 +375,24 @@ function processProducts(rawProducts) {
         };
     });
     window.AN_PRODUCTS = PRODUCTS;
+    // Add this line to make it compatible with Hive Times marketplace
     window.AN_DATA = PRODUCTS;
+
     return PRODUCTS;
 }
 
-// 🛠️ Utility API - Available globally (Matches Stashsell)
+// 🛠️ Utility API - Available globally
 window.ANProducts = {
     getAll: function() { return PRODUCTS; },
-    getById: function(id) { return PRODUCTS.find(p => p.id === id); },
+    getById: function(id) { return PRODUCTS.find(function(p) { return p.id === id; }); },
     getByCategory: function(category) { 
-        return PRODUCTS.filter(p => p.categorySlug === category.toLowerCase()); 
+        return PRODUCTS.filter(function(p) { return p.categorySlug === category.toLowerCase(); }); 
     },
     getByLocation: function(location) { 
-        return PRODUCTS.filter(p => p.locationSlug === location.toLowerCase()); 
+        return PRODUCTS.filter(function(p) { return p.locationSlug === location.toLowerCase(); }); 
     },
     getByNiche: function(niche) { 
-        return PRODUCTS.filter(p => p.nicheSlug === niche.toLowerCase()); 
+        return PRODUCTS.filter(function(p) { return p.nicheSlug === niche.toLowerCase(); }); 
     },
     filter: function(filters) {
         return PRODUCTS.filter(function(p) {
@@ -190,12 +470,14 @@ fetchProducts().then(function() {
     }
     console.groupEnd();
     
+    // Dispatch event so your HTML can listen and render products
     if (typeof document !== 'undefined' && document.dispatchEvent) {
         try {
             document.dispatchEvent(new CustomEvent('an:products:loaded', {
                 detail: { products: PRODUCTS }
             }));
         } catch(err) {
+            // Fallback for older browsers
             var evt = document.createEvent('CustomEvent');
             evt.initCustomEvent('an:products:loaded', true, true, { products: PRODUCTS });
             document.dispatchEvent(evt);
@@ -203,72 +485,6 @@ fetchProducts().then(function() {
     }
 });
 
-// Listen for products loaded from Google Sheets
-document.addEventListener('DOMContentLoaded', () => {
-    if (window.AN_PRODUCTS && window.AN_PRODUCTS.length > 0) {
-        renderDynamicCategories();
-    } else {
-        document.addEventListener('an:products:loaded', renderDynamicCategories);
-    }
-});
-
-function renderDynamicCategories() {
-    const products = window.AN_PRODUCTS || [];
-    const container = document.getElementById('dynamicCategoriesContainer');
-    const menuContainer = document.getElementById('dynamicMenuCategories');
-    
-    if (!products.length) return;
-    
-    // Group by category
-    const categories = {};
-    products.forEach(p => {
-        const slug = p.categorySlug || 'uncategorized';
-        if (!categories[slug]) categories[slug] = { slug, name: formatCategoryName(slug), icon: getCategoryIcon(slug), products: [] };
-        categories[slug].products.push(p);
-    });
-    
-    let sectionsHTML = '', menuHTML = '';
-    Object.values(categories).forEach(cat => {
-        sectionsHTML += `<section id="${cat.slug}"><h2 class="section-title"><i class="fas ${cat.icon}"></i> ${cat.name}</h2><div class="products-grid">${cat.products.map(p => `<article class="product-card" onclick="openProductModal('${p.id}')"><div class="product-image-wrap"><img src="${p.image}" alt="${p.name}" loading="lazy">${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}</div><div class="product-info"><h3 class="product-name">${p.name}</h3><p class="product-description">${p.description}</p><div class="product-price">R${p.price.toFixed(2)}</div><button class="add-to-cart-btn" onclick="event.stopPropagation();openProductModal('${p.id}')"><i class="fas fa-eye"></i> View Details</button></div></article>`).join('')}</div></section>`;
-        menuHTML += `<div class="menu-item"><a href="#${cat.slug}" class="menu-link" onclick="scrollToSection('${cat.slug}')"><i class="fas ${cat.icon}"></i><span>${cat.name}</span></a></div>`;
-    });
-    
-    if (container) container.innerHTML = sectionsHTML;
-    if (menuContainer) menuContainer.innerHTML = menuHTML;
-}
-
-// Helper functions
-function formatCategoryName(slug) {
-    return slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-}
 
 
-function getCategoryIcon(slug) {
-    const icons = {
-        'maize-meal': 'fa-bread-slice',
-        'flour': 'fa-wheat-awn',
-        'sugar': 'fa-cube',
-        'rice': 'fa-bowl-rice',
-        'cooking-oil': 'fa-bottle-droplet',
-        'beans': 'fa-seedling',
-        'soap': 'fa-soap',
-        'frozen-meat': 'fa-snowflake',
-        'wholesale': 'fa-boxes-stacked',
-        'groceries': 'fa-cart-shopping'
-    };
-    return icons[slug] || 'fa-box';
-}
-
-function scrollToSection(sectionId) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-    }
-}
-
-// Fallback for modal if not defined in HTML
-window.openProductModal = window.openProductModal || function(id) { 
-    console.log('Opening modal for product:', id); 
-};
-
-})();
+})()
