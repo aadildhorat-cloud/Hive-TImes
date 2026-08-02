@@ -666,7 +666,7 @@ header {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   color: var(--white);
   position: sticky;
-  top: 0;
+  top: 0px;
   z-index: 100;
   box-shadow: 0 2px 12px rgba(0,0,0,0.08); /* ✅ Softer, cleaner shadow */
   border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* ✅ Subtle premium border */
@@ -2770,22 +2770,93 @@ background: transparent !important; color: #666 !important; border: 1px solid #c
     background: rgba(139, 0, 0, 0.1);
 }
 
-/* Mobile adjustments to match niche grid */
+/* ==========================================
+📱 MOBILE OPTIMIZATION: COMPACT FILTERS & GRIDS
+========================================== */
+
+/* Tablets & Large Mobiles */
+@media (max-width: 768px) {
+  /* 1. Make main toggle buttons smaller & proportional */
+  .filter-toggle-buttons {
+    gap: 8px !important;
+    margin-bottom: 12px !important;
+  }
+  .filter-main-btn {
+    padding: 8px 16px !important;
+    font-size: 0.85rem !important;
+    min-width: 130px !important;
+  }
+
+  /* 2. Force a clean 3-column grid for Categories & Locations */
+  .niche-grid, .location-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+  }
+  
+  /* 3. Compact the cards (smaller padding, tighter spacing) */
+  .niche-card, .location-card {
+    padding: 10px 6px !important;
+    min-height: 64px !important;
+    gap: 4px !important;
+    border-radius: 10px !important;
+    border-width: 1.5px !important; /* Thinner border looks cleaner on mobile */
+  }
+  
+  .niche-card .icon, .location-card .icon {
+    font-size: 1.2rem !important;
+  }
+  
+  .niche-card span, .location-card span {
+    font-size: 0.65rem !important;
+    line-height: 1.2 !important;
+  }
+}
+
+/* Standard Smartphones (e.g., iPhone 12/13/14, Galaxy S) */
+@media (max-width: 480px) {
+  .filter-main-btn {
+    padding: 6px 12px !important;
+    font-size: 0.8rem !important;
+    min-width: 110px !important;
+  }
+
+  .niche-grid, .location-grid {
+    gap: 6px !important;
+  }
+  
+  .niche-card, .location-card {
+    padding: 8px 4px !important;
+    min-height: 58px !important;
+    gap: 3px !important;
+  }
+  
+  .niche-card .icon, .location-card .icon {
+    font-size: 1.1rem !important;
+  }
+  
+  .niche-card span, .location-card span {
+    font-size: 0.6rem !important;
+  }
+}
+
+/* Small Smartphones (e.g., iPhone SE, older Androids) */
 @media (max-width: 360px) {
-    .location-grid { 
-        grid-template-columns: repeat(3, 1fr); 
-        gap: clamp(6px, 2vw, 8px); 
-    }
-    .location-card {
-        padding: clamp(8px, 2vw, 10px) clamp(4px, 2vw, 6px);
-        min-height: clamp(64px, 14vw, 68px);
-    }
-    .location-card .icon { 
-        font-size: clamp(1rem, 3vw, 1.1rem); 
-    }
-    .location-card span { 
-        font-size: clamp(0.55rem, 2vw, 0.6rem); 
-    }
+  .niche-grid, .location-grid {
+    gap: 5px !important;
+  }
+  
+  .niche-card, .location-card {
+    padding: 6px 2px !important;
+    min-height: 52px !important;
+  }
+  
+  .niche-card .icon, .location-card .icon {
+    font-size: 1rem !important;
+  }
+  
+  .niche-card span, .location-card span {
+    font-size: 0.55rem !important;
+  }
 }
 </style>
 </head>
