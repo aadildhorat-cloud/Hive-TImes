@@ -3197,6 +3197,53 @@ background: transparent !important; color: #666 !important; border: 1px solid #c
     font-size: 0.55rem !important;
   }
 }
+/* ── Text Under Logo ── */
+.pt-core {
+  flex-direction: column;
+  height: auto;
+  width: auto;
+  gap: 18px;
+}
+
+.pt-core-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  z-index: 5;
+  margin-top: 12px;
+}
+
+.pt-core-text-top {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+.pt-core-text-brand {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: clamp(1.4rem, 5vw, 2rem);
+  font-weight: 900;
+  letter-spacing: 5px;
+  background: linear-gradient(90deg, #FFC107, #FFD54F, #FFC107, #FF8F00);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: pt-gold-shimmer 2.5s linear infinite;
+  text-shadow: none;
+}
+
+/* Mobile adjustment */
+@media (max-width: 600px) {
+  .pt-core { gap: 14px; }
+  .pt-core-text { margin-top: 8px; }
+  .pt-core-text-top { font-size: 0.65rem; letter-spacing: 2px; }
+  .pt-core-text-brand { font-size: 1.3rem; letter-spacing: 4px; }
+}
 </style>
 </head>
 <body>
@@ -3241,31 +3288,23 @@ background: transparent !important; color: #666 !important; border: 1px solid #c
     <i style="--p:15"></i>
   </div>
 
-  <!-- Central Glowing Core -->
-  <div class="pt-core">
-    <div class="pt-core-glow"></div>
-    <div class="pt-core-inner">
-      <img src="images-logo/hive-times-logo.png" alt="Hive Times" class="pt-logo">
-    </div>
-    <div class="pt-orbit pt-orbit-1"></div>
-    <div class="pt-orbit pt-orbit-2"></div>
-    <div class="pt-orbit pt-orbit-3"></div>
+<!-- Central Glowing Core -->
+<div class="pt-core">
+  <div class="pt-core-glow"></div>
+  <div class="pt-core-inner">
+    <img src="images-logo/hive-times-logo.png" alt="Hive Times" class="pt-logo">
   </div>
+  <div class="pt-orbit pt-orbit-1"></div>
+  <div class="pt-orbit pt-orbit-2"></div>
+  <div class="pt-orbit pt-orbit-3"></div>
+  <!-- ✅ NEW: Text under logo -->
+  <div class="pt-core-text">
+    <span class="pt-core-text-top">You are now entering</span>
+    <span class="pt-core-text-brand">THE HIVE</span>
+  </div>
+</div>
 
-  <!-- "Entering The Hive" Popup -->
-  <div class="pt-popup">
-    <div class="pt-popup-border"></div>
-    <div class="pt-popup-card">
-      <div class="pt-popup-bee">🐝</div>
-      <h2 class="pt-popup-title">You Are Now Entering</h2>
-      <h1 class="pt-popup-brand">THE HIVE</h1>
-      <p class="pt-popup-sub">Connecting you to South Africa's trusted local businesses</p>
-      <div class="pt-popup-track">
-        <div class="pt-popup-fill" id="ptFill"></div>
-      </div>
-      <p class="pt-popup-status" id="ptStatus">Initializing portal…</p>
-    </div>
-  </div>
+
 
   <!-- Cinematic Vignette -->
   <div class="pt-vignette"></div>
