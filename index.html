@@ -2514,80 +2514,419 @@ border: none;
 background: transparent !important; color: #666 !important; border: 1px solid #ccc !important;
 }
 .jh-btn-no:hover { border-color: #999 !important; background: #f5f5f5 !important; transform: none; }
-/* === 🚀 ADVANCED HIVE PRELOADER === */
-#hive-preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #1a0000 0%, #4a0000 50%, #8B0000 100%);
-    z-index: 99999;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.6s ease, visibility 0.6s ease;
-    overflow: hidden;
+/* =============================================
+   🌀 PORTAL PRELOADER — ENTERING THE HIVE
+   ============================================= */
+
+#hive-portal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at 50% 50%, #1a0005 0%, #0d0003 55%, #000 100%);
+  overflow: hidden;
+  perspective: 800px;
+  transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0.9s;
 }
-#hive-preloader.hidden {
-    opacity: 0;
-    visibility: hidden;
+
+#hive-portal.pt-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
-/* Animated Hexagon Background */
-#hive-preloader::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='104' viewBox='0 0 120 104'%3E%3Cpath d='M60 0L120 30V90L60 120L0 90V30L60 0Z' fill='none' stroke='%23FFC107' stroke-width='1' opacity='0.1'/%3E%3C/svg%3E");
-    background-size: 120px 104px;
-    animation: hex-drift 20s linear infinite;
+
+/* ── 3D Tunnel Rings ── */
+.pt-tunnel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
 }
-@keyframes hex-drift {
-    0% { background-position: 0 0; }
-    100% { background-position: 120px 104px; }
+
+.pt-ring {
+  position: absolute;
+  width: calc(100vmin - var(--i) * 6vmin);
+  height: calc(100vmin - var(--i) * 6vmin);
+  border: 2px solid rgba(255, 193, 7, calc(0.55 - var(--i) * 0.04));
+  border-radius: 50%;
+  animation: pt-ring-fly 3s linear infinite;
+  animation-delay: calc(var(--i) * -0.25s);
+  box-shadow: 0 0 18px rgba(255, 193, 7, 0.12),
+              inset 0 0 18px rgba(139, 0, 0, 0.15);
+  will-change: transform, opacity;
 }
-/* Central Logo & Rings */
-.preloader-logo {
-    position: relative;
-    width: 120px;
-    height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 30px;
-    z-index: 2;
+
+/* Every other ring is hexagonal */
+.pt-ring:nth-child(odd) {
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+  border-radius: 0;
+  border-width: 1.5px;
+  border-color: rgba(139, 0, 0, calc(0.5 - var(--i) * 0.03));
 }
-.preloader-logo img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    filter: drop-shadow(0 0 15px rgba(255, 193, 7, 0.6));
-    animation: pulse-logo 2s ease-in-out infinite;
+
+@keyframes pt-ring-fly {
+  0%   { transform: translateZ(-700px) scale(0.1) rotate(0deg);   opacity: 0; }
+  10%  { opacity: 1; }
+  80%  { opacity: 0.8; }
+  100% { transform: translateZ(300px) scale(1.8) rotate(90deg);  opacity: 0; }
 }
-.hex-ring {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 3px solid transparent;
-    border-top-color: #FFC107;
-    border-radius: 50%;
-    animation: spin-ring 1.5s linear infinite;
+
+/* ── Warp Speed Lines ── */
+.pt-warp {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
 }
-.hex-ring:nth-child(2) {
-    width: 85%;
-    height: 85%;
-    border-top-color: #FFB300;
-    animation-duration: 2s;
-    animation-direction: reverse;
+
+.pt-warp span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent, rgba(255,193,7,0.65), transparent);
+  transform-origin: center top;
+  transform: rotate(calc(var(--r) * 15deg)) translateY(-46vh);
+  animation: pt-warp-line 1.2s linear infinite;
+  animation-delay: calc(var(--r) * -0.05s);
+  border-radius: 2px;
+  will-change: transform, opacity;
 }
-@keyframes spin-ring {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+
+.pt-warp span:nth-child(even) {
+  background: linear-gradient(to bottom, transparent, rgba(139,0,0,0.5), transparent);
+  width: 1.5px;
+  height: 70px;
 }
-@keyframes pulse-logo {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.1); opacity: 0.8; }
+
+@keyframes pt-warp-line {
+  0%   { opacity: 0; transform: rotate(calc(var(--r) * 15deg)) translateY(-8vh) scaleY(0.2); }
+  15%  { opacity: 1; }
+  100% { opacity: 0; transform: rotate(calc(var(--r) * 15deg)) translateY(-68vh) scaleY(2); }
+}
+
+/* ── Floating Particles ── */
+.pt-particles {
+  position: absolute;
+  inset: 0;
+}
+
+.pt-particles i {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #FFC107;
+  border-radius: 50%;
+  top: calc(8% + var(--p) * 6%);
+  left: calc(4% + var(--p) * 6%);
+  opacity: 0;
+  animation: pt-particle-drift 2.6s ease-in-out infinite;
+  animation-delay: calc(var(--p) * -0.16s);
+  box-shadow: 0 0 8px 2px rgba(255, 193, 7, 0.4);
+  will-change: transform, opacity;
+}
+
+.pt-particles i:nth-child(3n) {
+  background: #ff5555;
+  box-shadow: 0 0 8px 2px rgba(255, 85, 85, 0.4);
+  width: 3px;
+  height: 3px;
+}
+
+.pt-particles i:nth-child(4n) {
+  background: #fff;
+  box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.3);
+  width: 2px;
+  height: 2px;
+}
+
+@keyframes pt-particle-drift {
+  0%   { transform: translate(0, 0) scale(0);       opacity: 0; }
+  25%  { opacity: 1; transform: translate(15px, -25px) scale(1); }
+  60%  { opacity: 0.7; }
+  100% { transform: translate(50px, -110px) scale(0); opacity: 0; }
+}
+
+/* ── Central Core / Logo ── */
+.pt-core {
+  position: relative;
+  z-index: 5;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pt-core-glow {
+  position: absolute;
+  inset: -50px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(255, 193, 7, 0.18) 0%,
+    rgba(139, 0, 0, 0.1) 45%,
+    transparent 70%);
+  animation: pt-glow-breathe 2.2s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+.pt-core-inner {
+  width: 105px;
+  height: 105px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,193,7,0.1) 0%, transparent 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  animation: pt-core-pulse 2s ease-in-out infinite;
+}
+
+.pt-logo {
+  width: 74px;
+  height: 74px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 22px rgba(255, 193, 7, 0.85))
+         drop-shadow(0 0 45px rgba(139, 0, 0, 0.5));
+  animation: pt-logo-throb 1.8s ease-in-out infinite;
+}
+
+/* Orbiting hex rings */
+.pt-orbit {
+  position: absolute;
+  border: 1.5px solid rgba(255, 193, 7, 0.25);
+  border-radius: 50%;
+  animation: pt-orbit-spin linear infinite;
+  will-change: transform;
+}
+
+.pt-orbit::before {
+  content: '⬡';
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 15px;
+  color: #FFC107;
+  text-shadow: 0 0 8px rgba(255, 193, 7, 0.6);
+}
+
+.pt-orbit-1 { width: 140px; height: 140px; animation-duration: 4s; }
+.pt-orbit-2 { width: 185px; height: 185px; animation-duration: 6.5s; animation-direction: reverse; border-color: rgba(139,0,0,0.3); }
+.pt-orbit-2::before { color: #ff6b6b; text-shadow: 0 0 8px rgba(255,107,107,0.6); }
+.pt-orbit-3 { width: 230px; height: 230px; animation-duration: 9s; border-color: rgba(255,193,7,0.12); }
+.pt-orbit-3::before { font-size: 12px; opacity: 0.6; }
+
+@keyframes pt-orbit-spin   { to { transform: rotate(360deg); } }
+@keyframes pt-core-pulse   { 0%,100% { transform: scale(1); }    50% { transform: scale(1.07); } }
+@keyframes pt-logo-throb   { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.85; } }
+@keyframes pt-glow-breathe { from { transform: scale(0.85); opacity: 0.5; } to { transform: scale(1.25); opacity: 1; } }
+
+/* ── Popup Card ── */
+.pt-popup {
+  position: absolute;
+  z-index: 10;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%) translateY(40px);
+  opacity: 0;
+  animation: pt-popup-rise 0.8s 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  width: min(440px, 92vw);
+}
+
+@keyframes pt-popup-rise {
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* Animated gradient border */
+.pt-popup-border {
+  position: absolute;
+  inset: -2px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #FFC107, #8B0000, #FFC107, #8B0000, #FFC107);
+  background-size: 400% 400%;
+  animation: pt-border-flow 3s ease infinite;
+  filter: blur(5px);
+  opacity: 0.55;
+}
+
+@keyframes pt-border-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+.pt-popup-card {
+  position: relative;
+  background: rgba(12, 2, 5, 0.93);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 193, 7, 0.2);
+  border-radius: 20px;
+  padding: 34px 30px 28px;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Subtle hex pattern inside card */
+.pt-popup-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='70' viewBox='0 0 120 104'%3E%3Cpath d='M60 0L120 30V90L60 120L0 90V30L60 0Z' fill='none' stroke='%23FFC107' stroke-width='0.5' opacity='0.05'/%3E%3C/svg%3E");
+  background-size: 80px 70px;
+  pointer-events: none;
+}
+
+.pt-popup-bee {
+  font-size: 44px;
+  margin-bottom: 10px;
+  display: inline-block;
+  animation: pt-bee-float 1.6s ease-in-out infinite;
+}
+
+@keyframes pt-bee-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  30%      { transform: translateY(-7px) rotate(-6deg); }
+  70%      { transform: translateY(-3px) rotate(6deg); }
+}
+
+.pt-popup-title {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: clamp(0.85rem, 3.5vw, 1.1rem);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.pt-popup-brand {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: clamp(1.8rem, 7vw, 2.6rem);
+  font-weight: 900;
+  letter-spacing: 6px;
+  margin: 4px 0 6px;
+  background: linear-gradient(90deg, #FFC107, #FFD54F, #FFC107, #FF8F00, #FFC107);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: pt-gold-shimmer 2.5s linear infinite;
+  text-shadow: none;
+}
+
+@keyframes pt-gold-shimmer {
+  to { background-position: 250% center; }
+}
+
+.pt-popup-sub {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: clamp(0.7rem, 2.5vw, 0.82rem);
+  margin: 4px 0 20px;
+  line-height: 1.5;
+}
+
+/* Progress bar */
+.pt-popup-track {
+  width: 100%;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.pt-popup-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #8B0000, #FFC107, #FFB300);
+  background-size: 200% 100%;
+  animation: pt-fill-go 3s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+             pt-fill-shimmer 1s linear infinite;
+  box-shadow: 0 0 12px rgba(255, 193, 7, 0.5);
+}
+
+@keyframes pt-fill-go {
+  0%   { width: 0%; }
+  15%  { width: 18%; }
+  35%  { width: 42%; }
+  55%  { width: 65%; }
+  75%  { width: 82%; }
+  100% { width: 100%; }
+}
+
+@keyframes pt-fill-shimmer {
+  to { background-position: -200% 0; }
+}
+
+.pt-popup-status {
+  color: rgba(255, 193, 7, 0.65);
+  font-size: 0.72rem;
+  letter-spacing: 0.5px;
+  margin: 0;
+  min-height: 1.3em;
+  transition: opacity 0.3s;
+}
+
+/* ── Vignette ── */
+.pt-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.8) 100%);
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* ── Exit Flash ── */
+.pt-flash {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255,215,0,0.9) 0%, rgba(255,193,7,0.6) 40%, transparent 70%);
+  opacity: 0;
+  z-index: 50;
+  pointer-events: none;
+  transition: opacity 0.15s;
+}
+
+.pt-flash.pt-flash-go {
+  animation: pt-flash-burst 0.7s ease-out forwards;
+}
+
+@keyframes pt-flash-burst {
+  0%   { opacity: 0; transform: scale(0.5); }
+  30%  { opacity: 1; transform: scale(1.2); }
+  100% { opacity: 0; transform: scale(3); }
+}
+
+/* ── Mobile Tweaks ── */
+@media (max-width: 600px) {
+  .pt-core { width: 115px; height: 115px; }
+  .pt-core-inner { width: 82px; height: 82px; }
+  .pt-logo { width: 56px; height: 56px; }
+  .pt-orbit-1 { width: 108px; height: 108px; }
+  .pt-orbit-2 { width: 145px; height: 145px; }
+  .pt-orbit-3 { width: 180px; height: 180px; }
+  .pt-popup { bottom: 7%; }
+  .pt-popup-card { padding: 26px 20px 22px; }
+  .pt-popup-bee { font-size: 36px; }
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  #hive-portal *,
+  #hive-portal *::before,
+  #hive-portal *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  .pt-popup { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 /* Text & Progress Bar */
 .preloader-text {
@@ -2861,17 +3200,78 @@ background: transparent !important; color: #666 !important; border: 1px solid #c
 </style>
 </head>
 <body>
-    <!-- 🚀 ADVANCED HIVE PRELOADER -->
-<div id="hive-preloader">
-    <div class="preloader-logo">
-        <div class="hex-ring"></div>
-        <div class="hex-ring"></div>
-        <img src="images-logo/hive-times-logo.png" alt="Loading Hive Times">
+    <!-- 🌀 PORTAL PRELOADER — ENTERING THE HIVE -->
+<div id="hive-portal" aria-live="polite" aria-label="Loading Hive Times">
+
+  <!-- 3D Tunnel Rings -->
+  <div class="pt-tunnel">
+    <div class="pt-ring" style="--i:0"></div>
+    <div class="pt-ring" style="--i:1"></div>
+    <div class="pt-ring" style="--i:2"></div>
+    <div class="pt-ring" style="--i:3"></div>
+    <div class="pt-ring" style="--i:4"></div>
+    <div class="pt-ring" style="--i:5"></div>
+    <div class="pt-ring" style="--i:6"></div>
+    <div class="pt-ring" style="--i:7"></div>
+    <div class="pt-ring" style="--i:8"></div>
+    <div class="pt-ring" style="--i:9"></div>
+    <div class="pt-ring" style="--i:10"></div>
+    <div class="pt-ring" style="--i:11"></div>
+  </div>
+
+  <!-- Warp Speed Lines -->
+  <div class="pt-warp">
+    <span style="--r:0"></span><span style="--r:1"></span><span style="--r:2"></span>
+    <span style="--r:3"></span><span style="--r:4"></span><span style="--r:5"></span>
+    <span style="--r:6"></span><span style="--r:7"></span><span style="--r:8"></span>
+    <span style="--r:9"></span><span style="--r:10"></span><span style="--r:11"></span>
+    <span style="--r:12"></span><span style="--r:13"></span><span style="--r:14"></span>
+    <span style="--r:15"></span><span style="--r:16"></span><span style="--r:17"></span>
+    <span style="--r:18"></span><span style="--r:19"></span><span style="--r:20"></span>
+    <span style="--r:21"></span><span style="--r:22"></span><span style="--r:23"></span>
+  </div>
+
+  <!-- Floating Particles -->
+  <div class="pt-particles">
+    <i style="--p:0"></i><i style="--p:1"></i><i style="--p:2"></i>
+    <i style="--p:3"></i><i style="--p:4"></i><i style="--p:5"></i>
+    <i style="--p:6"></i><i style="--p:7"></i><i style="--p:8"></i>
+    <i style="--p:9"></i><i style="--p:10"></i><i style="--p:11"></i>
+    <i style="--p:12"></i><i style="--p:13"></i><i style="--p:14"></i>
+    <i style="--p:15"></i>
+  </div>
+
+  <!-- Central Glowing Core -->
+  <div class="pt-core">
+    <div class="pt-core-glow"></div>
+    <div class="pt-core-inner">
+      <img src="images-logo/hive-times-logo.png" alt="Hive Times" class="pt-logo">
     </div>
-    <div class="preloader-text">Entering the Hive...</div>
-    <div class="preloader-bar-container">
-        <div class="preloader-bar"></div>
+    <div class="pt-orbit pt-orbit-1"></div>
+    <div class="pt-orbit pt-orbit-2"></div>
+    <div class="pt-orbit pt-orbit-3"></div>
+  </div>
+
+  <!-- "Entering The Hive" Popup -->
+  <div class="pt-popup">
+    <div class="pt-popup-border"></div>
+    <div class="pt-popup-card">
+      <div class="pt-popup-bee">🐝</div>
+      <h2 class="pt-popup-title">You Are Now Entering</h2>
+      <h1 class="pt-popup-brand">THE HIVE</h1>
+      <p class="pt-popup-sub">Connecting you to South Africa's trusted local businesses</p>
+      <div class="pt-popup-track">
+        <div class="pt-popup-fill" id="ptFill"></div>
+      </div>
+      <p class="pt-popup-status" id="ptStatus">Initializing portal…</p>
     </div>
+  </div>
+
+  <!-- Cinematic Vignette -->
+  <div class="pt-vignette"></div>
+
+  <!-- Exit Flash -->
+  <div class="pt-flash" id="ptFlash"></div>
 </div>
 <a href="#main-content" class="sr-only">Skip to main content</a>
 <!-- ==========================================
@@ -3310,7 +3710,7 @@ niches: {
 'baking': 'Baking', 'household-essentials': 'Household Essentials',
 'electronics': 'Electronics & Gadgets', 'automotive': 'Automotive & Parts',
 'food-beverages': 'Food & Beverages', 'medication': 'Medication & Health',
-'building': 'Building Materials', 'services': 'Professional Services',
+'building': 'Building Materials', 'services': 'Professional Services', 'meat': 'Meat',
 'wholesale': 'Wholesale Supplies'
 },
 locations: {
@@ -3828,8 +4228,8 @@ function renderGrid(grid, productsList) {
     const shuffledProducts = shuffleArray([...productsList]);
     grid.innerHTML = shuffledProducts.map(p => {
         const productData = JSON.stringify(p).replace(/'/g, "&#39;");
-        const nicheSlug = (p.nicheSlug || p.niche || p.category || 'all').toString().trim().toLowerCase();
-        const locationSlug = (p.locationSlug || p.location || 'all').toString().trim().toLowerCase();
+       const nicheSlug = (p.nicheSlug || p.niche || p.Niche || p.category || p.Category || 'all').toString().trim().toLowerCase();
+const locationSlug = (p.locationSlug || p.location || p.Location || 'all').toString().trim().toLowerCase();
         const pagePath = p.source ? `https://${p.source}.hivetimes.co.za` : 'https://hivetimes.co.za';
         
         return `<article class="block product-card" data-product='${productData}' data-niche="${nicheSlug}" data-location="${locationSlug}">
@@ -4394,28 +4794,58 @@ if(err) err.classList.remove('show');
 // Auto-open logic
 window.addEventListener('load', () => { setTimeout(openJoinHive, 600); });
 
-// === 🚀 PRELOADER LOGIC (STRICT SHORT TIMER) ===
-// Forces the preloader to hide after a set time, ignoring heavy background scripts.
-setTimeout(function() {
-    const preloader = document.getElementById('hive-preloader');
-    if (preloader && !preloader.classList.contains('hidden')) {
-        preloader.classList.add('hidden');
-        
-        // Remove from DOM after transition to free up memory
-        setTimeout(function() {
-            preloader.remove(); 
-        }, 600); // Matches your CSS transition duration
-    }
-}, 2500); // 👈 CHANGE THIS NUMBER TO ADJUST TIME (2500 = 2.5 seconds)
+// =============================================
+// 🌀 PORTAL PRELOADER — ENTERING THE HIVE
+// =============================================
+(function () {
+  const portal   = document.getElementById('hive-portal');
+  const statusEl = document.getElementById('ptStatus');
+  const flash    = document.getElementById('ptFlash');
+  if (!portal) return;
 
-// Fallback: Force hide after 5 seconds in case of blocked load event
-setTimeout(function() {
-    const preloader = document.getElementById('hive-preloader');
-    if (preloader && !preloader.classList.contains('hidden')) {
-        preloader.classList.add('hidden');
-        setTimeout(function() { preloader.remove(); }, 600);
+  // Rotating status messages
+  const messages = [
+    'Initializing portal…',
+    'Scanning local businesses…',
+    'Loading verified sellers…',
+    'Connecting to the Hive…',
+    'Preparing your experience…',
+    'Almost there…'
+  ];
+  let idx = 0;
+  const msgTimer = setInterval(() => {
+    idx++;
+    if (idx < messages.length && statusEl) {
+      statusEl.style.opacity = '0';
+      setTimeout(() => {
+        statusEl.textContent = messages[idx];
+        statusEl.style.opacity = '1';
+      }, 200);
     }
-}, 5000);
+  }, 550);
+
+  // Dismiss with flash effect
+  function dismissPortal() {
+    clearInterval(msgTimer);
+
+    // Trigger flash burst
+    if (flash) flash.classList.add('pt-flash-go');
+
+    // Fade out after flash starts
+    setTimeout(() => {
+      portal.classList.add('pt-done');
+      setTimeout(() => portal.remove(), 1000);
+    }, 350);
+  }
+
+  // Auto-dismiss after 3.4s
+  setTimeout(dismissPortal, 3400);
+
+  // Hard fallback — never exceed 6s
+  setTimeout(() => {
+    if (document.body.contains(portal)) dismissPortal();
+  }, 6000);
+})();
 
 })();
 // ===== TOGGLE FILTER SECTIONS =====
