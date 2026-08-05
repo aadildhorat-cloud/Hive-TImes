@@ -1308,7 +1308,7 @@ input.jh-error, textarea.jh-error { border-color: #f44336 !important; animation:
 }
 
 /* ==========================================
-   PORTAL PRELOADER
+   PORTAL PRELOADER (OPTIMIZED FOR MOBILE)
    ========================================== */
 #hive-portal {
   position: fixed; inset: 0; z-index: 99999;
@@ -1327,13 +1327,16 @@ input.jh-error, textarea.jh-error { border-color: #f44336 !important; animation:
   border-radius: 50%;
   animation: pt-ring-fly 3s linear infinite;
   animation-delay: calc(var(--i) * -0.25s);
-  box-shadow: 0 0 18px rgba(255, 193, 7, 0.12), inset 0 0 18px rgba(139, 0, 0, 0.15);
-  will-change: transform, opacity;
+  box-shadow: none;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  /* Removed will-change to prevent GPU layer trashing */
 }
 .pt-ring:nth-child(odd) {
   clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
   border-radius: 0; border-width: 1.5px;
   border-color: rgba(139, 0, 0, calc(0.5 - var(--i) * 0.03));
+  transform-style: flat; /* Prevents clip-path tearing in 3D space */
 }
 @keyframes pt-ring-fly {
   0% { transform: translateZ(-700px) scale(0.1) rotate(0deg); opacity: 0; }
@@ -1350,7 +1353,9 @@ input.jh-error, textarea.jh-error { border-color: #f44336 !important; animation:
   transform: rotate(calc(var(--r) * 15deg)) translateY(-46vh);
   animation: pt-warp-line 1.2s linear infinite;
   animation-delay: calc(var(--r) * -0.05s);
-  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  /* Removed will-change */
 }
 .pt-warp span:nth-child(even) { background: linear-gradient(to bottom, transparent, rgba(139,0,0,0.5), transparent); width: 1.5px; height: 70px; }
 @keyframes pt-warp-line {
@@ -1365,11 +1370,13 @@ input.jh-error, textarea.jh-error { border-color: #f44336 !important; animation:
   top: calc(8% + var(--p) * 6%); left: calc(4% + var(--p) * 6%);
   opacity: 0; animation: pt-particle-drift 2.6s ease-in-out infinite;
   animation-delay: calc(var(--p) * -0.16s);
-  box-shadow: 0 0 8px 2px rgba(255, 193, 7, 0.4);
-  will-change: transform, opacity;
+  box-shadow: none; /* Removed heavy shadow */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  /* Removed will-change */
 }
-.pt-particles i:nth-child(3n) { background: #ff5555; box-shadow: 0 0 8px 2px rgba(255, 85, 85, 0.4); width: 3px; height: 3px; }
-.pt-particles i:nth-child(4n) { background: #fff; box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.3); width: 2px; height: 2px; }
+.pt-particles i:nth-child(3n) { background: #ff5555; width: 3px; height: 3px; }
+.pt-particles i:nth-child(4n) { background: #fff; width: 2px; height: 2px; }
 @keyframes pt-particle-drift {
   0% { transform: translate(0, 0) scale(0); opacity: 0; }
   25% { opacity: 1; transform: translate(15px, -25px) scale(1); }
@@ -1393,7 +1400,7 @@ input.jh-error, textarea.jh-error { border-color: #f44336 !important; animation:
   filter: drop-shadow(0 0 22px rgba(255, 193, 7, 0.85)) drop-shadow(0 0 45px rgba(139, 0, 0, 0.5));
   animation: pt-logo-throb 1.8s ease-in-out infinite;
 }
-.pt-orbit { position: absolute; border: 1.5px solid rgba(255, 193, 7, 0.25); border-radius: 50%; animation: pt-orbit-spin linear infinite; will-change: transform; }
+.pt-orbit { position: absolute; border: 1.5px solid rgba(255, 193, 7, 0.25); border-radius: 50%; animation: pt-orbit-spin linear infinite; /* Removed will-change */ }
 .pt-orbit::before { content: '⬡'; position: absolute; top: -9px; left: 50%; transform: translateX(-50%); font-size: 15px; color: #FFC107; text-shadow: 0 0 8px rgba(255, 193, 7, 0.6); }
 .pt-orbit-1 { width: 140px; height: 140px; animation-duration: 4s; }
 .pt-orbit-2 { width: 185px; height: 185px; animation-duration: 6.5s; animation-direction: reverse; border-color: rgba(139,0,0,0.3); }
@@ -1429,6 +1436,35 @@ input.jh-error, textarea.jh-error { border-color: #f44336 !important; animation:
   .pt-core-text { margin-top: 8px; }
   .pt-core-text-top { font-size: 0.65rem; letter-spacing: 2px; }
   .pt-core-text-brand { font-size: 1.3rem; letter-spacing: 4px; }
+}
+
+/* ==========================================
+   MOBILE PRELOADER OPTIMIZATION (FIXES GLITCHING)
+   ========================================== */
+@media (max-width: 768px) {
+  /* 1. Hide the heavy 3D tunnel and warp lines to prevent GPU crash */
+  .pt-tunnel, .pt-warp {
+    display: none !important;
+  }
+  
+  /* 2. Hide excess particles (keep only the first 4) */
+  .pt-particles i:nth-child(n+5) {
+    display: none !important;
+  }
+
+  /* 3. Ensure no hidden shadows are rendering on mobile */
+  .pt-ring, .pt-particles i, .pt-core-glow {
+    box-shadow: none !important;
+    filter: none !important;
+  }
+
+  /* 4. Simplify the text gradient if it causes text-flickering on iOS */
+  .pt-core-text-brand {
+    background: none;
+    -webkit-text-fill-color: #FFC107;
+    color: #FFC107;
+    animation: none;
+  }
 }
 
 /* ==========================================
