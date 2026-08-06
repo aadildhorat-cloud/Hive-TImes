@@ -2124,7 +2124,7 @@ function renderProducts() {
     ...(window.NOTHINGFANCY_DATA || []).map(p => ({ ...p, source: 'nothingfancy', businessName: 'Nothing Fancy' })),
     ...(window.SWEETLANE_DATA || []).map(p => ({ ...p, source: 'sweetlane', businessName: 'Sweet Lane' })),
     ...(window.BAKENCO_DATA || []).map(p => ({ ...p, source: 'bakenco', businessName: 'Bake & Co.' })),
-    ...anData.map(p => ({ ...p, source: 'an-wholesalers', businessName: 'AN Wholesalers' })),
+    ...anData.map(p => ({ ...p, source: 'anwholesalers', businessName: 'AN Wholesalers' })),
     ...stashsellData.map(p => ({ ...p, source: p.source || 'stashsell', businessName: p.businessName || 'Stashsell', image: p.image ? (p.image.startsWith('http') ? p.image : `/stashsell/images/${p.image}`) : '/stashsell/images/stashsell-logo.jpg' })),
     ...(window.NUHASHEALTHYLIVING_DATA || []).map(p => ({ ...p, source: 'nuhashealthyliving', businessName: "Nuha's Healthy Living" }))
   ];
