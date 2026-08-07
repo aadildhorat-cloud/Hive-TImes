@@ -1531,6 +1531,37 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
   body { background: white; color: black; }
   .product-card { break-inside: avoid; }
 }
+/* Premium Website Button Styles */
+.jh-btn-premium {
+  background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+  color: #FFC107 !important;
+  border: 2px solid #FFC107;
+  margin-top: 12px;
+  box-shadow: 0 4px 15px rgba(44, 62, 80, 0.4);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.jh-btn-premium::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,193,7,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.jh-btn-premium:hover::before {
+  left: 100%;
+}
+
+.jh-btn-premium:hover {
+  background: linear-gradient(135deg, #FFC107 0%, #FFB300 100%);
+  color: #1a1a2e !important;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.5);
+}
 </style>
 </head>
 <body>
@@ -1603,7 +1634,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
           <div class="jh-benefit-item"><i class="fas fa-chart-line"></i><span>Boost Local Visibility</span></div>
           <div class="jh-benefit-item"><i class="fas fa-star"></i><span>Build Customer Trust</span></div>
         </div>
-        <button class="jh-btn jh-btn-primary jh-btn-yes" onclick="handleJoinYes()">✅ Yes, I'm Interested</button>
+  
+<button class="jh-btn jh-btn-primary jh-btn-yes" onclick="handleJoinYes()">✅ Yes, I'm Interested</button>
+<button class="jh-btn jh-btn-premium" onclick="getPremiumWebsite()">🚀 Get a Premium Website Now</button>
       </div>
       <div id="jh-success" class="jh-success hidden">
         <div class="jh-success-icon">✓</div>
@@ -2257,7 +2290,19 @@ function updateActiveLocation(card) { document.querySelectorAll('.location-card'
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay?.classList.contains('active')) closeJoinHive(); });
   window.addEventListener('load', () => { setTimeout(openJoinHive, 600); });
 })();
+// Add this function inside your script tag
+window.getPremiumWebsite = function() {
+  // OPTION A: Send a WhatsApp message directly to your sales number
+  const premiumMsg = encodeURIComponent("Hi Hive Times 🐝, I clicked 'Get a Premium Website' and I'm interested in upgrading! Please send me the details and pricing.");
+  window.open(`https://wa.me/27649220145?text=${premiumMsg}`, '_blank');
+  
+  /* 
+  // OPTION B: Link to a specific page on your site (Uncomment to use instead of WhatsApp)
+  window.open('https://hivetimes.co.za/premium-packages', '_blank');
+  */
 
+  closeJoinHive(); // Closes the popup after they click
+};
 // ===== PORTAL PRELOADER =====
 (function() {
   const portal = document.getElementById('hive-portal'), flash = document.getElementById('ptFlash');
