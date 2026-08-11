@@ -1562,6 +1562,76 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(255, 193, 7, 0.5);
 }
+/* ==========================================
+   JOIN HIVE FLOATING WIDGET (Below Beelal)
+   ========================================== */
+.join-hive-fab {
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 9998; /* Sits just below Beelal's 9999 */
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: #FFC107;
+  border: 2px solid #FFC107;
+  border-radius: 50px;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  box-shadow: 0 8px 25px rgba(139, 0, 0, 0.3);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  font-family: var(--font-main);
+}
+
+.join-hive-fab:hover {
+  transform: translateY(-4px) scale(1.03);
+  background: #FFC107;
+  color: var(--primary-dark);
+  box-shadow: 0 12px 30px rgba(255, 193, 7, 0.5);
+}
+
+.join-hive-fab i { font-size: 1.1rem; }
+
+.join-hive-fab .pulse-ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%; height: 100%;
+  border-radius: 50px;
+  border: 2px solid #FFC107;
+  animation: fab-pulse 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes fab-pulse {
+  0% { width: 100%; height: 100%; opacity: 0.6; }
+  100% { width: 140%; height: 180%; opacity: 0; }
+}
+
+/* Mobile: Turn into a clean circle below Beelal */
+@media (max-width: 768px) {
+  .join-hive-fab {
+    bottom: 20px;
+    right: 30px;
+    padding: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    justify-content: center;
+    box-shadow: 0 6px 15px rgba(139, 0, 0, 0.25);
+  }
+  .join-hive-fab .fab-text { display: none; }
+  .join-hive-fab i { font-size: 1.3rem; margin: 0; }
+}
+
+/* Small Mobile Alignment */
+@media (max-width: 480px) {
+  .join-hive-fab { right: 20px; bottom: 20px; }
+}
 </style>
 </head>
 <body>
@@ -1880,7 +1950,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
     </div>
   </div>
 </div>
-
+<!-- ==========================================
+     JOIN HIVE FLOATING WIDGET (Below Beelal)
+     ========================================== -->
+<a href="https://hivetimes.co.za/about%20page%20home" class="join-hive-fab" aria-label="Join the Hive">
+  <span class="pulse-ring"></span>
+  <i class="fas fa-store" aria-hidden="true"></i>
+  <span class="fab-text">Join the Hive</span>
+</a>
 <!-- AI CHATBOT WIDGET -->
 <div class="ai-chat-widget" id="aiChatWidget">
   <div class="ai-chat-window" id="aiChatWindow">
