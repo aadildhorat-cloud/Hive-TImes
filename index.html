@@ -1632,6 +1632,169 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
 @media (max-width: 480px) {
   .join-hive-fab { right: 20px; bottom: 20px; }
 }
+/* ==========================================
+   WIDE, COLORED CATEGORY & LOCATION BUTTONS
+   ========================================== */
+.filter-toggle-buttons {
+  display: flex;
+  gap: 16px;
+  margin: 0 auto 26px;
+  width: 100%;
+  max-width: 880px;   /* wide bar, centered under the title */
+  flex-wrap: wrap;
+}
+
+.filter-main-btn {
+  flex: 1 1 340px;               /* stretches wide to fill the row */
+  min-width: 280px;
+  justify-content: flex-start;
+  gap: 14px;
+  padding: 14px 22px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  box-shadow: 0 6px 18px rgba(139, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Left icon chip — gold on maroon */
+.filter-main-btn > i:first-child {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #FFC107;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+}
+
+.filter-main-btn span { flex: 1; text-align: left; }
+
+/* Chevron pushed to the far right */
+.filter-main-btn i.fa-chevron-down {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.75);
+  transition: transform 0.3s ease, color 0.25s ease;
+  flex-shrink: 0;
+}
+
+/* Hover — brighter maroon + gold border hint */
+.filter-main-btn:hover {
+  background: linear-gradient(135deg, #A11515 0%, #7a0000 100%);
+  color: #ffffff;
+  border-color: rgba(255, 193, 7, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(139, 0, 0, 0.38);
+}
+
+.filter-main-btn:hover > i:first-child {
+  background: #FFC107;
+  color: var(--primary-dark);
+}
+
+/* Active / open — flips to gold so users see it's selected */
+.filter-main-btn.active {
+  background: linear-gradient(135deg, #FFC107 0%, #FFB300 100%);
+  color: #1a1a2e;
+  border-color: transparent;
+  box-shadow: 0 8px 24px rgba(255, 193, 7, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.filter-main-btn.active > i:first-child { background: rgba(26, 26, 46, 0.12); color: #1a1a2e; }
+.filter-main-btn.active i.fa-chevron-down { color: #1a1a2e; }
+
+/* Press feedback + focus ring */
+.filter-main-btn:active { transform: translateY(0) scale(0.99); }
+.filter-main-btn:focus-visible { outline: 3px solid rgba(255, 193, 7, 0.85); outline-offset: 3px; }
+
+/* Mobile: full-width stacked buttons
+   (!important beats your existing mobile overrides) */
+@media (max-width: 768px) {
+  .filter-toggle-buttons { flex-direction: column; gap: 12px; max-width: 100%; }
+  .filter-main-btn {
+    width: 100%;
+    min-width: 0 !important;
+    padding: 12px 16px !important;
+    font-size: 0.92rem !important;
+  }
+  .filter-main-btn > i:first-child { width: 36px; height: 36px; }
+}
+
+@media (max-width: 360px) {
+  .filter-main-btn { padding: 10px 14px !important; font-size: 0.85rem !important; gap: 10px; }
+  .filter-main-btn > i:first-child { width: 32px; height: 32px; font-size: 0.9rem; }
+}
+/* ==========================================
+   MOBILE FIX: SIDE-BY-SIDE FILTER BUTTONS
+   ========================================== */
+@media (max-width: 768px) {
+  .filter-toggle-buttons {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;   /* never stack */
+    gap: 10px;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .filter-main-btn {
+    flex: 1 1 0 !important;         /* equal 50/50 widths */
+    width: auto !important;
+    min-width: 0 !important;        /* beats the old 130px/110px rules */
+    padding: 12px 12px !important;
+    font-size: 0.88rem !important;
+    gap: 10px;
+    min-height: 48px;               /* comfortable tap target */
+    justify-content: flex-start;
+  }
+
+  .filter-main-btn > i:first-child {
+    width: 34px;
+    height: 34px;
+    font-size: 0.85rem;
+    border-radius: 9px;
+  }
+
+  .filter-main-btn span {
+    flex: 1;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;        /* prevents text wrapping/breaking layout */
+  }
+
+  .filter-main-btn i.fa-chevron-down { font-size: 0.65rem; }
+}
+
+/* Small phones (≤380px) — tighten further */
+@media (max-width: 380px) {
+  .filter-toggle-buttons { gap: 8px; }
+  .filter-main-btn {
+    padding: 10px 9px !important;
+    font-size: 0.78rem !important;
+    gap: 7px;
+  }
+  .filter-main-btn > i:first-child { width: 30px; height: 30px; font-size: 0.78rem; }
+}
+
+/* Very small phones (≤340px) */
+@media (max-width: 340px) {
+  .filter-main-btn {
+    padding: 8px 7px !important;
+    font-size: 0.72rem !important;
+  }
+  .filter-main-btn > i:first-child { width: 26px; height: 26px; font-size: 0.7rem; }
+}
 </style>
 </head>
 <body>
@@ -1775,8 +1938,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
 <section class="shop-by-niche" aria-labelledby="nicheSectionTitle">
   <div class="container">
     <div class="niche-section-header">
-      <h2 class="niche-section-title" id="nicheSectionTitle">Shop by Category & Location</h2>
-      <p class="niche-section-subtitle">Filter products by niche category or find businesses near you</p>
+  
     </div>
     <div class="filter-toggle-buttons">
       <button class="filter-main-btn" id="categoriesBtn" onclick="toggleFilterSection('categories')" aria-expanded="false" aria-controls="categoriesSection">
@@ -1794,7 +1956,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
       <div class="niche-grid" role="list">
         <button class="niche-card active" data-niche="all" onclick="GuidedSearch.setNiche('all', 'All Niches'); updateActiveNiche(this);" role="listitem" aria-pressed="true"><span class="icon">🐝</span><span>All Niches</span></button>
         <button class="niche-card" data-niche="household-essentials" onclick="GuidedSearch.setNiche('household-essentials', 'Household Essentials'); updateActiveNiche(this);" role="listitem" aria-pressed="false"><span class="icon">🏠</span><span>Household</span></button>
-        <button class="niche-card" data-niche="medication" onclick="GuidedSearch.setNiche('medication', 'Medication & Health'); updateActiveNiche(this);" role="listitem" aria-pressed="false"><span class="icon">💊</span><span>Medication</span></button>
+        <button class="niche-card" data-niche="clothing" onclick="GuidedSearch.setNiche('clothing', 'Clothing'); updateActiveNiche(this);" role="listitem" aria-pressed="false"><span class="icon">👕</span><span>Clothing</span></button>
+         <button class="niche-card" data-niche="medication" onclick="GuidedSearch.setNiche('medication', 'Medication & Health'); updateActiveNiche(this);" role="listitem" aria-pressed="false"><span class="icon">💊</span><span>Medication</span></button>
         <button class="niche-card" data-niche="baking" onclick="GuidedSearch.setNiche('baking', 'Baking'); updateActiveNiche(this);" role="listitem" aria-pressed="false"><span class="icon">🍰</span><span>Baking</span></button>
         <button class="niche-card" data-niche="meat" onclick="GuidedSearch.setNiche('meat', 'Meat'); updateActiveNiche(this);" role="listitem" aria-pressed="false"><span class="icon">🥩</span><span>Meat</span></button>
         <button class="niche-card" data-niche="frozen-desserts" onclick="GuidedSearch.setNiche('frozen-desserts', 'Frozen Desserts'); updateActiveNiche(this);" role="listitem" aria-pressed="false"><span class="icon">🍦</span><span>Frozen</span></button>
@@ -1995,15 +2158,23 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
 // ===== CONFIG =====
 const CONFIG = { whatsappNumber: '27649220145' };
 const BUSINESS_WHATSAPP = {
-  'broadway-sweets': '27649220145', 'dough-co': '27822597009',
-  'shupz': '27612290093', 'dainty-delicacies': '27840967330',
-  'nothing-fancy': '27710218554', 'butcher-block': '27615023930',
-  'polar-ice-cream': '27604368376', 'sweetlane': '27836120605',
-  'wadees-braai': '27723706786', 'nuhashealthyliving': '27836120605',
-  'stashsell': '27676567587', 'an-wholesalers': '27746234239', 'bakenco': '27670527209'
+  'broadway-sweets': '27649220145', 
+  'dough-co': '27822597009',
+  'shupz': '27612290093', 
+  'dainty-delicacies': '27840967330',
+  'nothing-fancy': '27710218554', 
+  'butcher-block': '27615023930',
+  'polar-ice-cream': '27604368376', 
+  'sweetlane': '27836120605',
+  'wadees-braai': '27723706786', 
+  'nuhashealthyliving': '27836120605',
+  'stashsell': '27676567587', 
+  'an-wholesalers': '27746234239', 
+  'bagit': '27625596946', 
+  'bakenco': '27670527209'
 };
 const FILTER_TAXONOMY = {
-  niches: { 'baking': 'Baking', 'household-essentials': 'Household Essentials', 'electronics': 'Electronics & Gadgets', 'automotive': 'Automotive & Parts', 'food-beverages': 'Food & Beverages', 'medication': 'Medication & Health', 'building': 'Building Materials', 'services': 'Professional Services', 'meat': 'Meat', 'wholesale': 'Wholesale Supplies' },
+  niches: { 'baking': 'Baking', 'household-essentials': 'Household Essentials', 'Clothing': 'clothing', 'electronics': 'Electronics & Gadgets', 'automotive': 'Automotive & Parts', 'food-beverages': 'Food & Beverages', 'medication': 'Medication & Health', 'building': 'Building Materials', 'services': 'Professional Services', 'meat': 'Meat', 'wholesale': 'Wholesale Supplies' },
   locations: { 'gauteng': 'Gauteng', 'johannesburg': 'Johannesburg', 'azadville': 'Azadville', 'lenasia': 'Lenasia', 'cape-town': 'Cape Town', 'kwazulu-natal': 'KwaZulu-Natal', 'eastern-cape': 'Eastern Cape', 'free-state': 'Free State', 'limpopo': 'Limpopo', 'mpumalanga': 'Mpumalanga', 'north-west': 'North West', 'northern-cape': 'Northern Cape' }
 };
 
@@ -2236,7 +2407,8 @@ function renderProducts() {
     ...(window.BAKENCO_DATA || []).map(p => ({ ...p, source: 'bakenco', businessName: 'Bake & Co.' })),
     ...anData.map(p => ({ ...p, source: 'anwholesalers', businessName: 'AN Wholesalers' })),
     ...stashsellData.map(p => ({ ...p, source: p.source || 'stashsell', businessName: p.businessName || 'Stashsell', image: p.image ? (p.image.startsWith('http') ? p.image : `/stashsell/images/${p.image}`) : '/stashsell/images/stashsell-logo.jpg' })),
-    ...(window.NUHASHEALTHYLIVING_DATA || []).map(p => ({ ...p, source: 'nuhashealthyliving', businessName: "Nuha's Healthy Living" }))
+    ...(window.NUHASHEALTHYLIVING_DATA || []).map(p => ({ ...p, source: 'nuhashealthyliving', businessName: "Nuha's Healthy Living" })),
+     ...(window.BAGIT_PRODUCTS || []).map(p => ({ ...p, source: 'bagit', businessName: "BagIt" }))
   ];
   if (!allProducts.length) {
     const cached = localStorage.getItem('hive_products_cache_v2');
@@ -2415,10 +2587,10 @@ document.addEventListener('DOMContentLoaded', () => {
   chatBot.init();
   renderProducts();
 
-  // Listen for async product data
-  ['stashsell:products:loaded', 'an:products:loaded', 'polaricecream:products:loaded', 'wadees:products:loaded'].forEach(evt => {
-    document.addEventListener(evt, () => renderProducts());
-  });
+ // Listen for async product data
+['stashsell:products:loaded', 'an:products:loaded', 'polaricecream:products:loaded', 'wadees:products:loaded', 'bagit:products:loaded'].forEach(evt => {
+  document.addEventListener(evt, () => renderProducts());
+});
 
   // Fallback polling
   let checkInterval = setInterval(() => {
@@ -2469,6 +2641,6 @@ document.addEventListener('click', e => {
 <script src="/stashsell/js/products-stashsell.js" defer></script>
 <script src="/an/js/products-an.js" defer></script>
 <script src="/wadeesbraai/js/products-wadeesbraai.js" defer></script>
-
+<script src="/bagit/js/products-bagit.js" defer></script>
 </body>
 </html>
