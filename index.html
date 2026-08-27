@@ -2560,8 +2560,8 @@ window.getPremiumWebsite = function() {
     if (flash) flash.classList.add('pt-flash-go');
     setTimeout(() => { portal.classList.add('pt-done'); setTimeout(() => portal.remove(), 1000); }, 350);
   }
-  setTimeout(dismiss, 3400);
-  setTimeout(() => { if (document.body.contains(portal)) dismiss(); }, 3500);
+  setTimeout(dismiss, 3000);
+  setTimeout(() => { if (document.body.contains(portal)) dismiss(); }, 3000);
 })();
 
 // ===== SWIPER LOADER =====
