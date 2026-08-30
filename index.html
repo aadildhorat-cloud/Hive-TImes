@@ -56,6 +56,28 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 </noscript>
+<!-- PWA Meta Tags -->
+<link rel="manifest" href="/manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Hive Times">
+<link rel="apple-touch-icon" href="images-logo/hive-times-logo.png">
+
+<!-- Service Worker Registration -->
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(registration => {
+        console.log('SW registered:', registration);
+      })
+      .catch(error => {
+        console.log('SW registration failed:', error);
+      });
+  });
+}
+</script>
 
 <!-- External Product Scripts (CDN) -->
 <script src="https://cdn.jsdelivr.net/gh/aadildhorat-cloud/stashdell@main/js/products-stashsell.js" defer></script>
@@ -2152,7 +2174,462 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
     <span class="close-icon">&times;</span>
   </button>
 </div>
+<!-- Mobile Bottom Navigation -->
+<nav class="mobile-bottom-nav" id="mobileBottomNav">
+  <a href="#" class="nav-item active" data-section="home">
+    <i class="fas fa-home"></i>
+    <span>Home</span>
+  </a>
+  <a href="#" class="nav-item" data-section="categories">
+    <i class="fas fa-th-large"></i>
+    <span>Categories</span>
+  </a>
+  <a href="#" class="nav-item" data-section="cart">
+    <i class="fas fa-shopping-cart"></i>
+    <span>Cart</span>
+    <span class="nav-badge" id="navCartBadge">0</span>
+  </a>
+  <a href="#" class="nav-item" data-section="wishlist">
+    <i class="fas fa-heart"></i>
+    <span>Wishlist</span>
+  </a>
+  <a href="#" class="nav-item" data-section="account">
+    <i class="fas fa-user"></i>
+    <span>Account</span>
+  </a>
+</nav>
 
+<!-- Install App Banner -->
+<div class="install-banner" id="installBanner" style="display: none;">
+  <div class="install-content">
+    <img src="images-logo/hive-times-logo.png" alt="Hive Times" class="install-icon">
+    <div class="install-text">
+      <strong>Install Hive Times App</strong>
+      <p>Get the best shopping experience</p>
+    </div>
+    <button class="install-btn" id="installBtn">Install</button>
+    <button class="install-close" onclick="document.getElementById('installBanner').style.display='none'">&times;</button>
+  </div>
+</div>
+
+<style>
+/* Mobile Bottom Navigation */
+.mobile-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  display: none;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px 0;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+  z-index: 999;
+  border-top: 1px solid #e9ecef;
+}
+
+@media (max-width: 768px) {
+  .mobile-bottom-nav {
+    display: flex;
+  }
+  
+  body {
+    padding-bottom: 70px;
+  }
+  
+  .join-hive-fab {
+    bottom: 80px !important;
+  }
+  
+  .ai-chat-widget {
+    bottom: 160px !important;
+  }
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 16px;
+  color: #6c757d;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
+  min-width: 60px;
+}
+
+.nav-item i {
+  font-size: 1.3rem;
+}
+
+.nav-item span {
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.nav-item.active {
+  color: var(--primary);
+}
+
+.nav-item.active i {
+  transform: scale(1.1);
+}
+
+.nav-badge {
+  position: absolute;
+  top: 0;
+  right: 8px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+/* Install Banner */
+.install-banner {
+  position: fixed;
+  bottom: 80px;
+  left: 10px;
+  right: 10px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  z-index: 998;
+  animation: slideUp 0.3s ease;
+}
+
+.install-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+}
+
+.install-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+}
+
+.install-text {
+  flex: 1;
+}
+
+.install-text strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--secondary);
+  margin-bottom: 2px;
+}
+
+.install-text p {
+  font-size: 0.8rem;
+  color: var(--gray);
+  margin: 0;
+}
+
+.install-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.install-btn:hover {
+  background: var(--primary-dark);
+  transform: scale(1.05);
+}
+
+.install-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--gray);
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Enhanced Mobile Product Cards */
+@media (max-width: 768px) {
+  .product-card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  
+  .product-card:active {
+    transform: scale(0.98);
+  }
+  
+  .btn-add-cart {
+    padding: 8px 12px;
+    font-size: 0.75rem;
+  }
+}
+
+/* Swipe Actions */
+.swipe-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.swipe-actions {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+.swipe-action {
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.swipe-action.wishlist {
+  background: #FFC107;
+}
+
+.swipe-action.delete {
+  background: #e74c3c;
+}
+</style>
+
+<script>
+// Mobile Navigation Handler
+document.addEventListener('DOMContentLoaded', () => {
+  const navItems = document.querySelectorAll('.nav-item');
+  
+  navItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      const section = item.dataset.section;
+      
+      // Update active state
+      navItems.forEach(nav => nav.classList.remove('active'));
+      item.classList.add('active');
+      
+      // Handle navigation
+      switch(section) {
+        case 'home':
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          break;
+        case 'categories':
+          document.querySelector('.shop-by-niche').scrollIntoView({ behavior: 'smooth' });
+          break;
+        case 'cart':
+          openCart();
+          break;
+        case 'wishlist':
+          showWishlist();
+          break;
+        case 'account':
+          showAccount();
+          break;
+      }
+    });
+  });
+  
+  // Update cart badge
+  const updateNavBadge = () => {
+    const badge = document.getElementById('navCartBadge');
+    if (badge && typeof Cart !== 'undefined') {
+      const count = Cart.totalCount();
+      badge.textContent = count;
+      badge.style.display = count > 0 ? 'flex' : 'none';
+    }
+  };
+  
+  // Update badge on cart changes
+  const originalAdd = Cart.add;
+  Cart.add = function(product) {
+    originalAdd.call(this, product);
+    updateNavBadge();
+  };
+  
+  const originalUpdate = Cart.update;
+  Cart.update = function(bid, pid, delta) {
+    originalUpdate.call(this, bid, pid, delta);
+    updateNavBadge();
+  };
+  
+  const originalRemove = Cart.remove;
+  Cart.remove = function(bid, pid) {
+    originalRemove.call(this, bid, pid);
+    updateNavBadge();
+  };
+  
+  // Initial badge update
+  updateNavBadge();
+});
+
+// Wishlist functionality
+const Wishlist = {
+  items: JSON.parse(localStorage.getItem('hive_wishlist') || '[]'),
+  
+  toggle(product) {
+    const index = this.items.findIndex(item => item.id === product.id);
+    if (index > -1) {
+      this.items.splice(index, 1);
+      this.showNotification('Removed from wishlist');
+    } else {
+      this.items.push(product);
+      this.showNotification('Added to wishlist ❤️');
+    }
+    this.save();
+  },
+  
+  save() {
+    localStorage.setItem('hive_wishlist', JSON.stringify(this.items));
+  },
+  
+  showNotification(msg) {
+    const t = document.createElement('div');
+    t.style.cssText = 'position:fixed;bottom:100px;left:50%;transform:translateX(-50%);background:var(--secondary);color:white;padding:12px 24px;border-radius:40px;box-shadow:var(--shadow-hover);z-index:2000;font-weight:500;font-size:0.9rem;';
+    t.textContent = msg;
+    document.body.appendChild(t);
+    setTimeout(() => t.remove(), 2500);
+  }
+};
+
+function showWishlist() {
+  const items = Wishlist.items;
+  if (items.length === 0) {
+    alert('Your wishlist is empty');
+    return;
+  }
+  
+  let message = 'Your Wishlist:\n\n';
+  items.forEach((item, index) => {
+    message += `${index + 1}. ${item.name} - R${item.price.toFixed(2)}\n`;
+  });
+  alert(message);
+}
+
+function showAccount() {
+  const accountMenu = `
+    <div style="padding:20px;">
+      <h3 style="margin-bottom:15px;color:var(--secondary);">My Account</h3>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <button onclick="alert('Order tracking coming soon!')" style="padding:12px;background:var(--light);border:1px solid var(--border);border-radius:8px;text-align:left;cursor:pointer;">
+          <i class="fas fa-box"></i> My Orders
+        </button>
+        <button onclick="showWishlist()" style="padding:12px;background:var(--light);border:1px solid var(--border);border-radius:8px;text-align:left;cursor:pointer;">
+          <i class="fas fa-heart"></i> Wishlist
+        </button>
+        <button onclick="alert('Settings coming soon!')" style="padding:12px;background:var(--light);border:1px solid var(--border);border-radius:8px;text-align:left;cursor:pointer;">
+          <i class="fas fa-cog"></i> Settings
+        </button>
+        <button onclick="window.open('https://hivetimes.co.za/contact','_blank')" style="padding:12px;background:var(--light);border:1px solid var(--border);border-radius:8px;text-align:left;cursor:pointer;">
+          <i class="fas fa-headset"></i> Support
+        </button>
+      </div>
+    </div>
+  `;
+  
+  const modal = document.createElement('div');
+  modal.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px;';
+  modal.innerHTML = `
+    <div style="background:white;border-radius:12px;max-width:400px;width:100%;max-height:80vh;overflow-y:auto;">
+      ${accountMenu}
+      <button onclick="this.closest('div[style*=fixed]').remove()" style="width:100%;padding:15px;background:var(--primary);color:white;border:none;font-weight:600;cursor:pointer;">Close</button>
+    </div>
+  `;
+  document.body.appendChild(modal);
+}
+
+// PWA Install Prompt
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  
+  // Show install banner after 3 seconds
+  setTimeout(() => {
+    const banner = document.getElementById('installBanner');
+    if (banner && !localStorage.getItem('hive_app_dismissed')) {
+      banner.style.display = 'block';
+    }
+  }, 3000);
+});
+
+document.getElementById('installBtn')?.addEventListener('click', async () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === 'accepted') {
+      document.getElementById('installBanner').style.display = 'none';
+    }
+    deferredPrompt = null;
+  }
+});
+
+// Add wishlist button to product cards
+document.addEventListener('click', (e) => {
+  const card = e.target.closest('.product-card');
+  if (!card) return;
+  
+  // Check if wishlist button already exists
+  if (card.querySelector('.wishlist-btn')) return;
+  
+  // Add wishlist button
+  const wishlistBtn = document.createElement('button');
+  wishlistBtn.className = 'wishlist-btn';
+  wishlistBtn.innerHTML = '<i class="far fa-heart"></i>';
+  wishlistBtn.style.cssText = 'position:absolute;top:10px;left:10px;background:white;border:none;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:2;transition:all 0.2s ease;';
+  
+  wishlistBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    try {
+      const productData = JSON.parse(card.dataset.product.replace(/&#39;/g, "'"));
+      Wishlist.toggle(productData);
+      const icon = wishlistBtn.querySelector('i');
+      icon.classList.toggle('far');
+      icon.classList.toggle('fas');
+      icon.style.color = icon.classList.contains('fas') ? '#e74c3c' : '';
+    } catch(err) {
+      console.error(err);
+    }
+  });
+  
+  card.style.position = 'relative';
+  card.appendChild(wishlistBtn);
+});
+</script>
 <!-- JAVASCRIPT -->
 <script>
 // ===== CONFIG =====
