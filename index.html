@@ -2492,6 +2492,14 @@ font-size: 0.72rem !important;
 }
 .filter-main-btn > i:first-child { width: 26px; height: 26px; font-size: 0.7rem; }
 }
+/* ==========================================
+🤖 HIDE AI CHATBOT WHEN MODALS/SIDEBAR ARE OPEN
+========================================== */
+.join-hive-overlay.active ~ .ai-chat-widget,
+.modal-overlay.active ~ .ai-chat-widget,
+.sidebar.active ~ .ai-chat-widget {
+    display: none !important;
+}
 </style>
 </head>
 <body>
