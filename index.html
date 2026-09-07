@@ -2900,29 +2900,36 @@ font-size: 0.72rem !important;
 <span class="close-icon">&times;</span>
 </button>
 </div>
-<!-- Mobile Bottom Navigation -->
 <nav class="mobile-bottom-nav" id="mobileBottomNav">
-<a href="#" class="nav-item active" data-section="home">
-<i class="fas fa-home"></i>
-<span>Home</span>
-</a>
-<a href="https://hivetimes.co.za/about%20page%20home" class="nav-item" data-section="join-hive">
-<i class="fas fa-hive"></i>
-<span>Join The Hive</span>
-</a>
-<a href="#" class="nav-item" data-section="cart">
-<i class="fas fa-shopping-cart"></i>
-<span>Cart</span>
-<span class="nav-badge" id="navCartBadge">0</span>
-</a>
-<a href="https://business.hivetimes.co.za/" class="nav-item" data-section="businesses">
-<i class="fas fa-building"></i>
-<span>Businesses</span>
-</a>
-<a href="https://business.hivetimes.co.za/" class="nav-item" data-section="services">
-<i class="fas fa-concierge-bell"></i>
-<span>Services</span>
-</a>
+    <!-- Ensure your JS handles the click for 'home', or change # to / -->
+    <a href="/" class="nav-item active" data-section="home">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+    </a>
+
+    <!-- FIX: Replaced spaces with hyphens -->
+    <a href="https://hivetimes.co.za/join-the-hive" class="nav-item" data-section="join-hive">
+        <i class="fas fa-hive"></i>
+        <span>Join The Hive</span>
+    </a>
+
+    <!-- Ensure your JS handles the click for 'cart' -->
+    <a href="#" class="nav-item" data-section="cart">
+        <i class="fas fa-shopping-cart"></i>
+        <span>Cart</span>
+        <span class="nav-badge" id="navCartBadge">0</span>
+    </a>
+
+    <a href="https://business.hivetimes.co.za/businesses" class="nav-item" data-section="businesses">
+        <i class="fas fa-building"></i>
+        <span>Businesses</span>
+    </a>
+
+    <!-- FIX: Added a specific path for services -->
+    <a href="https://business.hivetimes.co.za/services" class="nav-item" data-section="services">
+        <i class="fas fa-concierge-bell"></i>
+        <span>Services</span>
+    </a>
 </nav>
 <!-- Install App Banner -->
 <div class="install-banner" id="installBanner" style="display: none;">
