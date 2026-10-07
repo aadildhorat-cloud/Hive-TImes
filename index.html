@@ -3066,7 +3066,7 @@
       'dainty-delicacies': '27840967330', 'nothing-fancy': '27710218554', 'butcher-block': '27615023930',
       'polar-ice-cream': '27604368376', 'sweetlane': '27836120605', 'wadees-braai': '27723706786',
       'nuhashealthyliving': '27836120605', 'stashsell': '27676567587', 'an-wholesalers': '27746234239',
-      'bagit': '27625596946', 'bakenco': '27670527209'
+      'bagit': '27625596946', 'bakenco': '27670527209', 'aureriacandy': '27793388849', 
     };
     const FILTER_TAXONOMY = {
       niches: { 'baking': 'Baking', 'household-essentials': 'Household Essentials', 'Clothing': 'clothing', 'electronics': 'Electronics & Gadgets', 'automotive': 'Automotive & Parts', 'food-beverages': 'Food & Beverages', 'medication': 'Medication & Health', 'building': 'Building Materials', 'services': 'Professional Services', 'meat': 'Meat', 'wholesale': 'Wholesale Supplies' },
@@ -3691,7 +3691,14 @@
         ...anData.map(p => ({ ...p, source: 'anwholesalers', businessName: 'AN Wholesalers' })),
         ...stashsellData.map(p => ({ ...p, source: p.source || 'stashsell', businessName: p.businessName || 'Stashsell', image: p.image ? (p.image.startsWith('http') ? p.image : `/stashsell/images/${p.image}`) : '/stashsell/images/stashsell-logo.jpg' })),
         ...(window.NUHASHEALTHYLIVING_DATA || []).map(p => ({ ...p, source: 'nuhashealthyliving', businessName: "Nuha's Healthy Living" })),
-        ...(window.BAGIT_PRODUCTS || []).map(p => ({ ...p, source: 'bagit', businessName: "BagIt" }))
+        ...(window.BAGIT_PRODUCTS || []).map(p => ({ ...p, source: 'bagit', businessName: "BagIt" })),
+          ...(window.aureria_CANDY_PRODUCTS || window.aureria_PRODUCTS || []).map(p => ({ 
+        ...p, 
+        source: 'aureriacandy', 
+        businessName: p.businessName || 'aureria Candy',
+        // Ensure images point to the correct GitHub raw URL if they are relative
+        image: p.image && !p.image.startsWith('http') ? `https://raw.githubusercontent.com/aadildhorat-cloud/hive-times-assets/main/aureria-candy/images/${p.image.split('/').pop()}` : p.image
+    }))
       ];
       if (!allProducts.length) {
         const cached = localStorage.getItem('hive_products_cache_v2');
@@ -3981,7 +3988,7 @@
       chatBot.init();
       renderProducts();
       
-      ['stashsell:products:loaded', 'an:products:loaded', 'polaricecream:products:loaded', 'wadees:products:loaded', 'bagit:products:loaded'].forEach(evt => {
+      ['stashsell:products:loaded', 'an:products:loaded', 'polaricecream:products:loaded', 'wadees:products:loaded', 'bagit:products:loaded','aureria:products:loaded'].forEach(evt => {
         document.addEventListener(evt, () => renderProducts());
       });
       
@@ -4211,5 +4218,7 @@
   <script src="/an/js/products-an.js" defer></script>
   <script src="/wadeesbraai/js/products-wadeesbraai.js" defer></script>
   <script src="/bagit/js/products-bagit.js" defer></script>
+  <script src="/mahnewhghwaymotorspares/js/products-mahnewhighwaymotorespare.js" defer></script>
+  <script src="/aureriacandy/js/products-aureriacandy.js" defer></script>
 </body>
 </html>
