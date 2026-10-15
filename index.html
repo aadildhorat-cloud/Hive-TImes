@@ -2172,122 +2172,431 @@
       100% { width: 140%; height: 180%; opacity: 0; }
     }
 
-    /* ==========================================
-    PORTAL PRELOADER
-    ========================================== */
-    #hive-portal {
-      position: fixed; inset: 0; z-index: 99999;
-      display: flex; align-items: center; justify-content: center;
-      background: radial-gradient(ellipse at 50% 50%, #1a0005 0%, #0d0003 55%, #000 100%);
-      overflow: hidden; perspective: 800px;
-      transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.9s;
-    }
-    #hive-portal.pt-done { opacity: 0; visibility: hidden; pointer-events: none; }
-    .pt-tunnel { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; transform-style: preserve-3d; }
-    .pt-ring {
-      position: absolute;
-      width: calc(100vmin - var(--i) * 6vmin);
-      height: calc(100vmin - var(--i) * 6vmin);
-      border: 2px solid rgba(255, 193, 7, calc(0.55 - var(--i) * 0.04));
-      border-radius: 50%;
-      animation: pt-ring-fly 3s linear infinite;
-      animation-delay: calc(var(--i) * -0.25s);
-      box-shadow: none;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-    }
-    .pt-ring:nth-child(odd) {
-      clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
-      border-radius: 0; border-width: 1.5px;
-      border-color: rgba(139, 0, 0, calc(0.5 - var(--i) * 0.03));
-      transform-style: flat;
-    }
-    @keyframes pt-ring-fly {
-      0% { transform: translateZ(-700px) scale(0.1) rotate(0deg); opacity: 0; }
-      10% { opacity: 1; }
-      80% { opacity: 0.8; }
-      100% { transform: translateZ(300px) scale(1.8) rotate(90deg); opacity: 0; }
-    }
-    .pt-warp { position: absolute; inset: 0; overflow: hidden; }
-    .pt-warp span {
-      position: absolute; top: 50%; left: 50%;
-      width: 2px; height: 100px;
-      background: linear-gradient(to bottom, transparent, rgba(255,193,7,0.65), transparent);
-      transform-origin: center top;
-      transform: rotate(calc(var(--r) * 15deg)) translateY(-46vh);
-      animation: pt-warp-line 1.2s linear infinite;
-      animation-delay: calc(var(--r) * -0.05s);
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-    }
-    .pt-warp span:nth-child(even) { background: linear-gradient(to bottom, transparent, rgba(139,0,0,0.5), transparent); width: 1.5px; height: 70px; }
-    @keyframes pt-warp-line {
-      0% { opacity: 0; transform: rotate(calc(var(--r) * 15deg)) translateY(-8vh) scaleY(0.2); }
-      15% { opacity: 1; }
-      100% { opacity: 0; transform: rotate(calc(var(--r) * 15deg)) translateY(-68vh) scaleY(2); }
-    }
-    .pt-particles { position: absolute; inset: 0; }
-    .pt-particles i {
-      position: absolute; width: 4px; height: 4px;
-      background: #FFC107; border-radius: 50%;
-      top: calc(8% + var(--p) * 6%); left: calc(4% + var(--p) * 6%);
-      opacity: 0; animation: pt-particle-drift 2.6s ease-in-out infinite;
-      animation-delay: calc(var(--p) * -0.16s);
-      box-shadow: none;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-    }
-    .pt-particles i:nth-child(3n) { background: #ff5555; width: 3px; height: 3px; }
-    .pt-particles i:nth-child(4n) { background: #fff; width: 2px; height: 2px; }
-    @keyframes pt-particle-drift {
-      0% { transform: translate(0, 0) scale(0); opacity: 0; }
-      25% { opacity: 1; transform: translate(15px, -25px) scale(1); }
-      60% { opacity: 0.7; }
-      100% { transform: translate(50px, -110px) scale(0); opacity: 0; }
-    }
-    .pt-core { position: relative; z-index: 5; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; }
-    .pt-core-glow {
-      position: absolute; inset: -50px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 193, 7, 0.18) 0%, rgba(139, 0, 0, 0.1) 45%, transparent 70%);
-      animation: pt-glow-breathe 2.2s ease-in-out infinite alternate; z-index: 1;
-    }
-    .pt-core-inner {
-      width: 105px; height: 105px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,193,7,0.1) 0%, transparent 70%);
-      display: flex; align-items: center; justify-content: center; z-index: 2;
-      animation: pt-core-pulse 2s ease-in-out infinite;
-    }
-    .pt-logo {
-      width: 74px; height: 74px; object-fit: contain;
-      filter: drop-shadow(0 0 22px rgba(255, 193, 7, 0.85)) drop-shadow(0 0 45px rgba(139, 0, 0, 0.5));
-      animation: pt-logo-throb 1.8s ease-in-out infinite;
-    }
-    .pt-orbit { position: absolute; border: 1.5px solid rgba(255, 193, 7, 0.25); border-radius: 50%; animation: pt-orbit-spin linear infinite; }
-    .pt-orbit::before { content: '⬡'; position: absolute; top: -9px; left: 50%; transform: translateX(-50%); font-size: 15px; color: #FFC107; text-shadow: 0 0 8px rgba(255, 193, 7, 0.6); }
-    .pt-orbit-1 { width: 140px; height: 140px; animation-duration: 4s; }
-    .pt-orbit-2 { width: 185px; height: 185px; animation-duration: 6.5s; animation-direction: reverse; border-color: rgba(139,0,0,0.3); }
-    .pt-orbit-2::before { color: #ff6b6b; text-shadow: 0 0 8px rgba(255,107,107,0.6); }
-    .pt-orbit-3 { width: 230px; height: 230px; animation-duration: 9s; border-color: rgba(255,193,7,0.12); }
-    .pt-orbit-3::before { font-size: 12px; opacity: 0.6; }
-    @keyframes pt-orbit-spin { to { transform: rotate(360deg); } }
-    @keyframes pt-core-pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.07); } }
-    @keyframes pt-logo-throb { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.85; } }
-    @keyframes pt-glow-breathe { from { transform: scale(0.85); opacity: 0.5; } to { transform: scale(1.25); opacity: 1; } }
-    .pt-core-text { display: flex; flex-direction: column; align-items: center; gap: 4px; z-index: 5; margin-top: 12px; }
-    .pt-core-text-top { font-size: clamp(0.7rem, 2.5vw, 0.85rem); font-weight: 500; color: rgba(255, 255, 255, 0.7); letter-spacing: 2.5px; text-transform: uppercase; }
-    .pt-core-text-brand {
-      font-size: clamp(1.4rem, 5vw, 2rem); font-weight: 900; letter-spacing: 5px;
-      background: linear-gradient(90deg, #FFC107, #FFD54F, #FFC107, #FF8F00);
-      background-size: 200% auto;
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      animation: pt-gold-shimmer 2.5s linear infinite;
-    }
-    @keyframes pt-gold-shimmer { to { background-position: 250% center; } }
-    .pt-vignette { position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.8) 100%); pointer-events: none; z-index: 4; }
-    .pt-flash { position: absolute; inset: 0; background: radial-gradient(circle, rgba(255,215,0,0.9) 0%, rgba(255,193,7,0.6) 40%, transparent 70%); opacity: 0; z-index: 50; pointer-events: none; transition: opacity 0.15s; }
-    .pt-flash.pt-flash-go { animation: pt-flash-burst 0.7s ease-out forwards; }
-    @keyframes pt-flash-burst { 0% { opacity: 0; transform: scale(0.5); } 30% { opacity: 1; transform: scale(1.2); } 100% { opacity: 0; transform: scale(3); } }
+   /* ==========================================
+PREMIUM PORTAL PRELOADER
+========================================== */
+#hive-portal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at center, #1a0005 0%, #0a0002 50%, #000 100%);
+  overflow: hidden;
+  perspective: 1200px;
+  transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.9s;
+}
 
+#hive-portal.pt-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Deep void background */
+.pt-void {
+  position: absolute;
+  inset: -50%;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(139, 0, 0, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 30% 70%, rgba(255, 193, 7, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 70% 30%, rgba(255, 193, 7, 0.06) 0%, transparent 50%);
+  animation: pt-void-rotate 30s linear infinite;
+}
+
+@keyframes pt-void-rotate {
+  to { transform: rotate(360deg); }
+}
+
+/* Subtle hex grid for depth */
+.pt-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(30deg, rgba(255, 193, 7, 0.04) 12%, transparent 12.5%, transparent 87%, rgba(255, 193, 7, 0.04) 87%),
+    linear-gradient(150deg, rgba(255, 193, 7, 0.04) 12%, transparent 12.5%, transparent 87%, rgba(255, 193, 7, 0.04) 87%),
+    linear-gradient(30deg, rgba(139, 0, 0, 0.06) 12%, transparent 12.5%, transparent 87%, rgba(139, 0, 0, 0.06) 87%),
+    linear-gradient(150deg, rgba(139, 0, 0, 0.06) 12%, transparent 12.5%, transparent 87%, rgba(139, 0, 0, 0.06) 87%);
+  background-size: 80px 140px;
+  background-position: 0 0, 0 0, 40px 70px, 40px 70px;
+  opacity: 0.5;
+  animation: pt-grid-drift 20s linear infinite;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+
+@keyframes pt-grid-drift {
+  to { background-position: 80px 140px, 80px 140px, 120px 210px, 120px 210px; }
+}
+
+/* Portal stage - centers everything in 3D */
+.pt-portal-stage {
+  position: relative;
+  width: 420px;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  margin-bottom: 40px;
+}
+
+/* Vortex container */
+.pt-vortex {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+/* Outer vortex rings - hexagonal, flying toward viewer */
+.pt-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(255, 193, 7, 0.6);
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+  animation: pt-ring-fly 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation-delay: calc(var(--d) * -0.5s);
+  transform-origin: center;
+  filter: drop-shadow(0 0 8px rgba(255, 193, 7, 0.5));
+}
+
+.pt-ring--outer {
+  border-color: rgba(255, 193, 7, 0.7);
+  box-shadow: inset 0 0 20px rgba(255, 193, 7, 0.2);
+}
+
+.pt-ring--inner {
+  border-color: rgba(139, 0, 0, 0.8);
+  filter: drop-shadow(0 0 12px rgba(139, 0, 0, 0.6));
+  animation-duration: 2.5s;
+}
+
+.pt-vortex--inner {
+  transform: scale(0.6);
+}
+
+@keyframes pt-ring-fly {
+  0% {
+    transform: translateZ(-600px) scale(0.1) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateZ(200px) scale(2.2) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+/* Energy particles being sucked into the portal */
+.pt-particles {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pt-particles i {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #FFC107;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #FFC107, 0 0 16px rgba(255, 193, 7, 0.6);
+  animation: pt-particle-suck 2s ease-in infinite;
+  animation-delay: calc(var(--a) * -0.01s);
+  transform: rotate(calc(var(--a) * 1deg)) translateY(-220px);
+}
+
+.pt-particles i:nth-child(3n) {
+  background: #ff5555;
+  box-shadow: 0 0 8px #ff5555, 0 0 16px rgba(255, 85, 85, 0.6);
+  width: 3px;
+  height: 3px;
+}
+
+.pt-particles i:nth-child(4n) {
+  background: #fff;
+  box-shadow: 0 0 6px #fff;
+  width: 2px;
+  height: 2px;
+}
+
+@keyframes pt-particle-suck {
+  0% {
+    transform: rotate(calc(var(--a) * 1deg)) translateY(-240px) scale(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+    transform: rotate(calc(var(--a) * 1deg + 60deg)) translateY(-180px) scale(1);
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: rotate(calc(var(--a) * 1deg + 360deg)) translateY(0) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Central portal core */
+.pt-core {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+.pt-core-halo {
+  position: absolute;
+  inset: -40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 193, 7, 0.3) 0%, rgba(139, 0, 0, 0.15) 40%, transparent 70%);
+  animation: pt-halo-breathe 3s ease-in-out infinite;
+  filter: blur(10px);
+}
+
+.pt-core-halo--2 {
+  inset: -80px;
+  background: radial-gradient(circle, rgba(139, 0, 0, 0.25) 0%, transparent 60%);
+  animation-delay: -1.5s;
+  animation-duration: 4s;
+}
+
+@keyframes pt-halo-breathe {
+  0%, 100% { transform: scale(0.9); opacity: 0.6; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+
+.pt-core-hex {
+  position: relative;
+  width: 130px;
+  height: 150px;
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.15) 0%, rgba(139, 0, 0, 0.25) 100%);
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 193, 7, 0.8);
+  box-shadow:
+    0 0 40px rgba(255, 193, 7, 0.5),
+    inset 0 0 30px rgba(255, 193, 7, 0.2);
+  animation: pt-core-pulse 2.5s ease-in-out infinite;
+}
+
+.pt-core-hex::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.08) 0%, rgba(139, 0, 0, 0.15) 100%);
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+}
+
+@keyframes pt-core-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 40px rgba(255, 193, 7, 0.5), inset 0 0 30px rgba(255, 193, 7, 0.2);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 60px rgba(255, 193, 7, 0.8), inset 0 0 40px rgba(255, 193, 7, 0.3);
+  }
+}
+
+.pt-logo {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 15px rgba(255, 193, 7, 0.9)) drop-shadow(0 0 30px rgba(255, 193, 7, 0.5));
+  animation: pt-logo-float 3s ease-in-out infinite;
+  z-index: 2;
+}
+
+@keyframes pt-logo-float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-6px) scale(1.03); }
+}
+
+/* Text group */
+.pt-text {
+  text-align: center;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  animation: pt-text-rise 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s backwards;
+}
+
+@keyframes pt-text-rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.pt-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  position: relative;
+  padding: 0 20px;
+}
+
+.pt-label::before,
+.pt-label::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 30px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 193, 7, 0.6));
+}
+
+.pt-label::before { left: -20px; }
+.pt-label::after { right: -20px; transform: rotate(180deg); }
+
+.pt-title {
+  font-size: 52px;
+  font-weight: 900;
+  letter-spacing: 8px;
+  margin: 0;
+  background: linear-gradient(90deg, #FFC107 0%, #FFD54F 25%, #FF8F00 50%, #FFD54F 75%, #FFC107 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: pt-gold-shimmer 3s linear infinite;
+  text-shadow: 0 0 40px rgba(255, 193, 7, 0.3);
+  filter: drop-shadow(0 2px 10px rgba(255, 193, 7, 0.3));
+}
+
+@keyframes pt-gold-shimmer {
+  to { background-position: 200% center; }
+}
+
+.pt-progress {
+  position: relative;
+  width: 240px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 8px 0;
+}
+
+.pt-progress-bar {
+  position: absolute;
+  inset: 0;
+  width: 0%;
+  background: linear-gradient(90deg, #8B0000, #FFC107, #FFD54F);
+  border-radius: 10px;
+  animation: pt-fill 2.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  box-shadow: 0 0 12px rgba(255, 193, 7, 0.6);
+}
+
+.pt-progress-glow {
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 40px;
+  height: 11px;
+  background: radial-gradient(ellipse, rgba(255, 215, 0, 0.8) 0%, transparent 70%);
+  animation: pt-glow-sweep 2.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  filter: blur(2px);
+}
+
+@keyframes pt-fill {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+@keyframes pt-glow-sweep {
+  0% { left: -40px; opacity: 0; }
+  10% { opacity: 1; }
+  100% { left: calc(100% + 40px); opacity: 1; }
+}
+
+.pt-sub {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+/* Exit flash */
+.pt-flash {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 215, 0, 0.95) 0%, rgba(255, 193, 7, 0.6) 30%, transparent 65%);
+  opacity: 0;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.pt-flash.pt-flash-go {
+  animation: pt-flash-burst 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes pt-flash-burst {
+  0% { opacity: 0; transform: scale(0.3); }
+  40% { opacity: 1; transform: scale(1.2); }
+  100% { opacity: 0; transform: scale(3); }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .pt-ring, .pt-particles i, .pt-void, .pt-grid,
+  .pt-core-halo, .pt-core-hex, .pt-logo, .pt-title,
+  .pt-progress-bar, .pt-progress-glow {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  .pt-portal-stage {
+    width: 320px;
+    height: 320px;
+    margin-bottom: 30px;
+  }
+  .pt-core { width: 130px; height: 130px; }
+  .pt-core-hex { width: 105px; height: 120px; }
+  .pt-logo { width: 65px; height: 65px; }
+  .pt-title { font-size: 38px; letter-spacing: 6px; }
+  .pt-progress { width: 200px; }
+  .pt-label { font-size: 10px; letter-spacing: 4px; }
+  .pt-sub { font-size: 10px; letter-spacing: 2px; }
+  .pt-particles i { transform: rotate(calc(var(--a) * 1deg)) translateY(-170px); }
+}
+
+@media (max-width: 480px) {
+  .pt-portal-stage { width: 260px; height: 260px; }
+  .pt-core { width: 110px; height: 110px; }
+  .pt-core-hex { width: 90px; height: 104px; }
+  .pt-logo { width: 55px; height: 55px; }
+  .pt-title { font-size: 30px; letter-spacing: 4px; }
+  .pt-progress { width: 180px; }
+  .pt-ring { border-width: 1.5px; }
+}
     /* ==========================================
     MOBILE BOTTOM NAV & INSTALL BANNER
     ========================================== */
@@ -2604,46 +2913,62 @@
   </style>
 </head>
 <body>
-  <!-- PORTAL PRELOADER -->
-  <div id="hive-portal" aria-live="polite" aria-label="Loading Hive Times">
-    <div class="pt-tunnel">
-      <div class="pt-ring" style="--i:0"></div><div class="pt-ring" style="--i:1"></div>
-      <div class="pt-ring" style="--i:2"></div><div class="pt-ring" style="--i:3"></div>
-      <div class="pt-ring" style="--i:4"></div><div class="pt-ring" style="--i:5"></div>
-      <div class="pt-ring" style="--i:6"></div><div class="pt-ring" style="--i:7"></div>
-      <div class="pt-ring" style="--i:8"></div><div class="pt-ring" style="--i:9"></div>
-      <div class="pt-ring" style="--i:10"></div><div class="pt-ring" style="--i:11"></div>
+<!-- PORTAL PRELOADER -->
+<div id="hive-portal" aria-live="polite" aria-label="Loading Hive Times">
+  <div class="pt-void"></div>
+  <div class="pt-grid"></div>
+  
+  <div class="pt-portal-stage">
+    <!-- Outer vortex rings -->
+    <div class="pt-vortex">
+      <div class="pt-ring pt-ring--outer" style="--d:0"></div>
+      <div class="pt-ring pt-ring--outer" style="--d:1"></div>
+      <div class="pt-ring pt-ring--outer" style="--d:2"></div>
+      <div class="pt-ring pt-ring--outer" style="--d:3"></div>
+      <div class="pt-ring pt-ring--outer" style="--d:4"></div>
+      <div class="pt-ring pt-ring--outer" style="--d:5"></div>
     </div>
-    <div class="pt-warp">
-      <span style="--r:0"></span><span style="--r:1"></span><span style="--r:2"></span><span style="--r:3"></span>
-      <span style="--r:4"></span><span style="--r:5"></span><span style="--r:6"></span><span style="--r:7"></span>
-      <span style="--r:8"></span><span style="--r:9"></span><span style="--r:10"></span><span style="--r:11"></span>
-      <span style="--r:12"></span><span style="--r:13"></span><span style="--r:14"></span><span style="--r:15"></span>
-      <span style="--r:16"></span><span style="--r:17"></span><span style="--r:18"></span><span style="--r:19"></span>
-      <span style="--r:20"></span><span style="--r:21"></span><span style="--r:22"></span><span style="--r:23"></span>
+    
+    <!-- Inner energy rings -->
+    <div class="pt-vortex pt-vortex--inner">
+      <div class="pt-ring pt-ring--inner" style="--d:0"></div>
+      <div class="pt-ring pt-ring--inner" style="--d:1"></div>
+      <div class="pt-ring pt-ring--inner" style="--d:2"></div>
+      <div class="pt-ring pt-ring--inner" style="--d:3"></div>
     </div>
+    
+    <!-- Energy particles being drawn in -->
     <div class="pt-particles">
-      <i style="--p:0"></i><i style="--p:1"></i><i style="--p:2"></i><i style="--p:3"></i>
-      <i style="--p:4"></i><i style="--p:5"></i><i style="--p:6"></i><i style="--p:7"></i>
-      <i style="--p:8"></i><i style="--p:9"></i><i style="--p:10"></i><i style="--p:11"></i>
-      <i style="--p:12"></i><i style="--p:13"></i><i style="--p:14"></i><i style="--p:15"></i>
+      <i style="--a:0"></i><i style="--a:30"></i><i style="--a:60"></i>
+      <i style="--a:90"></i><i style="--a:120"></i><i style="--a:150"></i>
+      <i style="--a:180"></i><i style="--a:210"></i><i style="--a:240"></i>
+      <i style="--a:270"></i><i style="--a:300"></i><i style="--a:330"></i>
     </div>
+    
+    <!-- Central portal core with logo -->
     <div class="pt-core">
-      <div class="pt-core-glow"></div>
-      <div class="pt-core-inner">
+      <div class="pt-core-halo"></div>
+      <div class="pt-core-halo pt-core-halo--2"></div>
+      <div class="pt-core-hex">
         <img src="images-logo/hive-times-logo.png" alt="Hive Times" class="pt-logo">
       </div>
-      <div class="pt-orbit pt-orbit-1"></div>
-      <div class="pt-orbit pt-orbit-2"></div>
-      <div class="pt-orbit pt-orbit-3"></div>
-      <div class="pt-core-text">
-        <span class="pt-core-text-top">You are now entering</span>
-        <span class="pt-core-text-brand">THE HIVE</span>
-      </div>
     </div>
-    <div class="pt-vignette"></div>
-    <div class="pt-flash" id="ptFlash"></div>
   </div>
+  
+  <!-- Text & progress -->
+  <div class="pt-text">
+    <span class="pt-label">Opening Gateway</span>
+    <h1 class="pt-title">THE HIVE</h1>
+    <div class="pt-progress">
+      <div class="pt-progress-bar"></div>
+      <div class="pt-progress-glow"></div>
+    </div>
+    <span class="pt-sub">South Africa's Local Marketplace</span>
+  </div>
+  
+  <!-- Exit flash -->
+  <div class="pt-flash" id="ptFlash"></div>
+</div>
 
   <a href="#main-content" class="sr-only">Skip to main content</a>
 
