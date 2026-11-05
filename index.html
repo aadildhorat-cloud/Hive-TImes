@@ -4665,48 +4665,5 @@ if (installClose && installBanner) {
 <script src="/js/businesses-config.js" defer></script>
 <script src="/js/dynamic-business-loader.js" defer></script>
 
-<!-- MOBILE BOTTOM NAVIGATION -->
-<nav class="mobile-bottom-nav" id="mobileBottomNav">
-  <a href="#main-content" class="nav-item active" data-section="home">
-    <i class="fas fa-home"></i>
-    <span>Home</span>
-  </a>
-  <a href="#categoriesSection" class="nav-item" data-section="categories">
-    <i class="fas fa-th-large"></i>
-    <span>Categories</span>
-  </a>
-  <a href="#" class="nav-item" data-section="cart" onclick="event.preventDefault(); openCart();">
-    <i class="fas fa-shopping-cart"></i>
-    <span>Cart</span>
-    <span class="nav-badge" id="navCartBadge" style="display:none;">0</span>
-  </a>
-  <a href="#" class="nav-item" data-section="wishlist" onclick="event.preventDefault(); showWishlist();">
-    <i class="fas fa-heart"></i>
-    <span>Wishlist</span>
-  </a>
-  <a href="#" class="nav-item" data-section="account" onclick="event.preventDefault(); showAccount();">
-    <i class="fas fa-user"></i>
-    <span>Account</span>
-  </a>
-</nav>
-
-<!-- PWA INSTALL BANNER -->
-<div class="install-banner" id="installBanner" style="display:none;">
-  <button class="install-close" id="installClose" aria-label="Close install banner">&times;</button>
-  <div class="install-content">
-    <img src="images-logo/hive-times-logo.png" alt="Hive Times" class="install-icon">
-    <div class="install-text">
-      <strong>Install Hive Times App</strong>
-      <p>Get a faster experience and offline access.</p>
-    </div>
-    <button class="install-btn" id="installBtn">Install</button>
-  </div>
-</div>
-
-<!-- BACK TO TOP BUTTON -->
-<button class="back-to-top" id="backToTop" aria-label="Back to top">
-  <i class="fas fa-arrow-up"></i>
-</button>
-
 </body>
 </html>
